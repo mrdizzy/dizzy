@@ -1,9 +1,0 @@
-<h1><%= bigarrow %> Listing articles</h1>
-<table class="articles">
-
-<%= render (:partial => "article_link", :collection => @articles ) %>
-</table>
-<%= link_to 'Previous page', { :page => @article_pages.current.previous } if @article_pages.current.previous %>
-<%= link_to 'Next page', { :page => @article_pages.current.next } if @article_pages.current.next %> 
-
-

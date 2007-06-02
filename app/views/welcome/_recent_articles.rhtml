@@ -1,4 +1,0 @@
-	<h3><b><%= link_to recent_articles.title, { :controller => :content, :action => :show, :id => recent_articles.id } %></b></h3>
-	<p><span class="date"><%= recent_articles.date.to_s(:long) %> </span><%= diamond %> <b>by <%= recent_articles.author.username %></b><br/>
-	<%= recent_articles.excerpt %></p>
-	

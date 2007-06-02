@@ -1,8 +1,0 @@
-<div id="portfolio_item_form_<%= portfolio_item.id %>">
-<% fields_for "portfolio_items[#{portfolio_item.id}]", portfolio_item do |f| %>  
-	<p>
-	<%= f.file_field :uploaded_data %>
-	<%= f.collection_select :portfolio_type_id, designs, :id, :description %>
-	</p>  
-<% end %>
-</div>

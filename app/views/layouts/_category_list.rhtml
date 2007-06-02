@@ -1,7 +1,0 @@
-	<%	@categories = Category.find(:all, :order => :name) %>
-	<h2 class="blue_bold">Categories</h2>
-			<ul>
-			<% @categories.each do |category| %>
-			<li><%= link_to category.name, { :controller => "content", :action => "articles_for_category", :id => category.id }, :method => :get %></li>
-			<% end %>
-			</ul>
