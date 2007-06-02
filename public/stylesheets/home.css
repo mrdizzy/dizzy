@@ -1,0 +1,151 @@
+* {
+   padding:0;
+   margin:0;
+   border:0;
+}
+.clearfix { 
+	clear:both;
+}
+body {  
+	font: normal 8pt arial,helvetica
+	font-size:8pt;
+	background-color: #fff;
+}
+.black { color:#555; }
+
+.date { color:#888; text-indent:0; padding-top: 0.8em; }
+
+.calendar_month {
+text-indent: 0;
+letter-spacing:-0.1em;
+padding:0;
+font-size:16px;
+}
+.leader {
+font-size:10pt;
+font-weight:bold;
+}
+.article_header {
+	font: normal 3em Georgia, 'Times New Roman', Times, serif;
+	letter-spacing:-0.1em;
+}
+p {  
+	font: normal 8pt arial,helvetica
+	font-size:8pt;
+	margin: 0px; 
+	line-height: 11pt; 
+ 	color:#000; 
+	background-color: #fff;
+}
+a:link {
+	color: #29A4BD; 
+}
+a:visited {
+	color: #000; 
+}
+a:hover {
+	color: #BC3F88;
+}
+a img {
+	border:0px;
+}
+.indent {
+	text-indent:30pt;
+}
+h3 {
+	font-size: 14px;
+	line-height: 16px;
+	color: #888;
+}
+h1,p,h3,h5 {
+    text-indent:3em;
+	padding-top:1em;
+}
+h4 { 
+	font-size: 32px;
+	letter-spacing:-0.2em;
+	line-height: 40px;
+	font-weight:bold;
+	color: #888;
+}
+h6 { 
+	font: normal 2.5em Georgia, 'Times New Roman', Times, serif; color:#888;
+}
+h5 { 
+	font: 1.2em Georgia, 'Times New Roman', Times, serif;
+	line-height:1.6em;
+}
+.no_indent{ 
+	padding-left:0;
+	}
+ul { 
+	padding-top:1em;
+	padding-left:5em;
+	list-style-image: url("http://www.dizzy.co.uk/g/f/dot.gif");
+}
+hr {
+border: none 0; 
+border-top: 1px dashed #888;
+width: 100%;
+height: 1px;
+} 
+.grey {
+	color: #888;
+	}
+.black {
+	color: #000;
+	}
+a.cartbar:visited,a.cartbar:link { 
+	color:#29A4BD;
+}
+a.cartbar:hover {
+	color: #BC3F88;
+}
+.nopadding { 
+padding: 0 0 0 0;
+}
+#top_line {
+	position:absolute; top:163px;
+}
+.left {
+float:left;
+}
+#top_container { 
+ border:1px dotted #999;
+ width:98%;
+ 90px;
+ margin:0 auto;
+}
+#logo { 
+ width:40%;
+ text-align:center;
+ height:90px;
+ float:left;
+ border-right: 1px dotted #999;
+}
+#package { 
+ padding-top:20px;
+ width:58%; 
+ height:90px;
+ float:right;
+ text-align:center;
+}
+.button {
+	float:left;
+	width:24%;
+	text-align:center;
+	vertical-align:baseline;
+}
+#footer { 
+ clear:both;
+ width:98%; 
+ margin: 0 auto;
+ height:100px;
+ border:1px dotted #999;
+}
+#small_logo {
+  float: right; 
+  text-align:right;
+  padding-right:5px;
+  padding-top:25px;
+}

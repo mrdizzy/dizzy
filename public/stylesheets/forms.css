@@ -1,0 +1,58 @@
+/* Forma
+==================================== */
+input:focus { 
+  background-color: #D1ECF9;
+}
+input {
+  border-color:#999;
+  border-style:solid;
+  border-width:2px 1px 1px 2px;
+  color:#434343;
+  font-size:1.4em;
+  padding:0.2em;
+  width:20em;
+  margin:0;
+}
+.hover {
+	background-color: #D1ECF9;}
+input.checkbox {
+width: 2em;
+padding:0;
+}
+input.submit {
+width: 136px;
+height:34px;
+margin: 0 auto;
+background:url(/images/f/buttons/submit2.png) no-repeat;
+outline: none;
+padding:0;
+border:0;
+}
+input.submit:hover {
+background: url(/images/f/buttons/submit2.png) no-repeat 0 -34px;
+padding:0;
+border:0;
+}
+textarea {
+ border-color:#999;
+  border-style:solid;
+  border-width:2px 1px 1px 2px;
+  width:95%;
+}
+select {
+ border-color:#999;
+  border-style:solid;
+  border-width:2px 1px 1px 2px;
+  
+}
+label {
+  font-size: 1.2em;
+  padding: 0;
+  font-weight: bold;
+  display:block;
+	margin-top: 1em;
+}
+#contact_form {
+ border-bottom:1px dashed #999;
+ padding-bottom: 1em;
+}
