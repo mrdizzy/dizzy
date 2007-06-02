@@ -1,0 +1,17 @@
+<p><label for="article_title">Title</label>
+<%= form.text_field :title %></p>
+
+<p><label for="article_content">Content</label>
+<%= form.text_area :content %></p>
+<%= drop_receiving_element ("article_content", :hoverclass => "hover", :url => { :action => :update_binary} ) %>
+<p><label for="article_excerpt">Excerpt</label>
+<%= form.text_area :excerpt %></p>
+<p><label for="article_date">Date</label>
+<%= form.datetime_select :date %></p>
+<div id="select_author">
+<p><label for="article_author">Author</label>
+<%= form.collection_select(:author_id, Author.find(:all), :id, :username)%></p></div>
+
+<div id="select_category">
+<p><label for="article_categories">Category</label>
+<%= form.collection_select(:category_ids, Category.find(:all, :order => :name), :id, :name, {}, {:multiple=> :true, :name=> 'article[category_ids][]'}) %></p></div>

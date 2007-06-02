@@ -1,0 +1,70 @@
+<!-- LEFT COLUMN -->
+<div id="right_column">
+	<!-- Main article -->
+	<h1><%= asterisk %> <%= @main_article.title %></h1>
+	<p><span class="date"><%= @main_article.date.to_s(:long) %> </span><%= diamond %> <b>by <%= @main_article.author.username %></b></p>
+	<h2><%= @main_article.excerpt %></h2>
+	<%=spiro%>
+	<p><%= truncate(@main_article.content, 300) %></p>
+
+	<!-- Recent articles -->
+	<div id="second">
+		<h2 class="blue_bold"><%= asterisk %> Recent articles</h2>		
+		<%= render (:partial => "recent_articles", :collection => @recent_articles ) %>
+	</div>
+	
+	<!-- Design packages -->	
+	<div id="third">
+		<div class="left"><img class="block" src="/images/h/cornerleft.png"></div>
+		<div class="right"><img class="block" src="/images/h/cornerright.png"></div>
+		<div id="design_packages">
+			<h2 class="blue_bold"><img alt="*" height="13" src="/images/f/bullets/pixels/asterisk.png?1180299393" width="13" /> Design packages</h2>
+
+			<h3><a href=""><b>Logo design</b></a> <img src="/images/h/box1.png"></h3>
+			<%=diamond%> Two original concepts
+			<%=diamond%> Up to 10 revisions
+			<%=diamond%> Vector and bitmap versions
+			<%=diamond%> <b>£99.99</b>
+			
+			<h3><a href=""><b>Stationery design</b></a> <img src="/images/h/box2.png"></h3>
+			<%=diamond%> Two original concepts
+			<%=diamond%> Up to 5 revisions
+			<%=diamond%> Unlimited colour scheme revisions
+			<%=diamond%> <b>£99.99</b>
+			
+			<h3><a href=""><b>Web design</b></a> <img src="/images/h/box3.png"></h3>
+			<%=diamond%> Two original concepts
+			<%=diamond%> Up to 5 revisions
+			<%=diamond%> Unlimited colour scheme revisions
+			<%=diamond%> <b>£299.99</b>
+			
+		</div>
+	</div>
+</div>
+<!-- RIGHT COLUMN -->
+<div id="left_column">	
+	<!-- Latest logos -->
+	<div id="latest_container">
+		<h2 class="blue_bold"><%= asterisk %> Latest work</h2>
+		<div id="logo_container">
+			<div id="latest_logo"><img src="/binaries/portfolio_image/<%= @logos[0].id %>" /></div>
+		</div>
+		<div id="logo_pagination">
+	  		<%= render :partial => "logo_pagination" %>
+		</div>
+	</div>
+	<br/><br/>
+	<!-- Quote -->
+	<%= image_tag("h/quote/quote1.png") %>
+	<!-- Latest book -->
+	<div id="fourth">
+		<h2 class="blue_bold"><img alt="*" height="13" src="/images/f/bullets/pixels/asterisk.png?1180299393" width="13" /> Latest book</h2>
+		
+		<h3><a href=""><b>Do-It-Yourself Limited Company Formation</b></a></h3>
+		
+		<p>Contains everything you need to set up and learn how to run a UK limited company, from annual returns through to VAT and resolutions. <img src="/images/f/bullets/pixels/diamond.png" /> <a href="">And it's free to download now!</a></p>
+		
+		<p style="text-align:center"><img src="/images/css.png" />
+		
+	</div>
+</div>

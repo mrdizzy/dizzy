@@ -1,0 +1,253 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+
+<HTML><HEAD><TITLE>Dizzy > View cart</TITLE>
+
+<STYLE type=text/css>
+	
+#header {
+	TEXT-ALIGN: center
+}
+#logo {
+	FLOAT: left; WIDTH: 109px; 
+}
+#bluebox {
+	PADDING-RIGHT: 12px; PADDING-LEFT: 12px; BACKGROUND-IMAGE: url(graphics/furniture/bluebox.gif); PADDING-BOTTOM: 1px; MARGIN-LEFT: 109px; PADDING-TOP: 1px; BACKGROUND-REPEAT: no-repeat; TEXT-ALIGN: right; HEIGHT: 126px;
+}
+#whitewelcome {
+	PADDING-TOP: 15px;
+}
+#contents { 
+PADDING-LEFT: 12px;
+float:left;
+}
+#cartbar {
+FLOAT: right; position: relative; top: -15px;
+} 
+#footer {
+	MARGIN-TOP: 15px; MARGIN-LEFT: auto; WIDTH: 740px; MARGIN-RIGHT: auto; POSITION: relative; top: 25px;
+}
+#footer_line {
+	POSITION: absolute; TOP: -25px
+}
+#spirograph {
+	LEFT: 350px; FLOAT: left; POSITION: relative
+}
+#topline { 
+position: relative; top: -10px; z-index: 1;
+}
+#dizzy_man {
+	LEFT: 150px; FLOAT: left; POSITION: relative
+}
+#small_diz_logo {
+	LEFT: 450px; FLOAT: left; POSITION: relative
+}
+
+#welcome {
+	CLEAR: both; MARGIN-BOTTOM: 15px; MARGIN-LEFT: auto; WIDTH: 350px; MARGIN-RIGHT: auto; 
+}
+#forms { 
+CLEAR:both; TEXT-ALIGN: left;
+</style>
+
+<LINK href="stylesheets/stylesheet2.css" type=text/css rel=stylesheet>
+<BODY>
+	
+<DIV id=page_container>
+	<DIV id=header>
+		<DIV id=logo><IMG alt="Dizzy logo" src="graphics/furniture/maindizzylogo.gif" width="105" height="115" /> </DIV>
+		<DIV id=bluebox>
+		<DIV id="whitewelcome"><IMG alt=Welcome src="graphics/home/whitewelcome.gif" /></DIV>
+		<IMG alt="---" src="graphics/line.gif"><BR>
+		<IMG src="graphics/furniture/homebutton.gif" alt="Home" /> 
+<IMG src="graphics/furniture/businessbutton.gif" alt="Business" /> 
+<IMG src="graphics/furniture/computebutton.gif" ALT="Computing" /> 
+		</DIV>
+	</DIV>
+
+<DIV id=topline>
+<IMG src="graphics/topline.gif" /></DIV>
+<DIV class=clearfix id=header>
+<DIV id="contents">
+	<img src="graphics/furniture/you-are-here.gif" vspace="0" hspace="0">
+<A CLASS="category" HREF="/index.pl?adtrack=&campaign=">
+Home</A> > <b class="header">View Cart</B></font>
+</DIV>
+<DIV id="cartbar">
+	
+<img src="graphics/furniture/cartbar2.gif" />
+</DIV>
+<DIV id="forms">
+<!-- NEW CUSTOMERS FORM -->
+
+
+<!-- HIDDEN FIELDS -->
+
+<FORM action="http://www.clickink.co.uk/get_form.pl" method=GET>
+
+<!-- HIDDEN FIELDS -->
+
+<TABLE WIDTH=600 border=0 cellpadding=5 cellspacing=1>
+	<TR>	
+		<TD>
+		<h1 class="bold">Existing clients</h1>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+		<TABLE width=100%>
+			<TR>
+				<TD width=50%>
+				
+				<h1 class="table_items">Email<BR>
+					
+				<input type=text name="customernumber" value="" size=25>
+				</TD>
+				<TD width=50%>
+				
+				<h1 class="table_items">Password<BR>
+				
+				
+				<input type=text name="postcode" value="" size=25>
+				</TD>
+			</TR>
+		</TABLE>
+		</TD>
+	</TR>
+	<TR>	
+		<TD>
+		<TABLE width=100% align=center border=0 cellspacing=0 cellpadding=0>
+			<TR>
+				<TD width=100%><IMG SRC="/graphics/singledarkgreydot.gif" width=100% height=1></TD>
+			</TR>
+		</TABLE>
+		</TD>
+	</TR>	
+	<TR>	
+		<TD align=center><input type=image SRC="graphics/furniture/submit.gif" border=0></TD>
+	</TR>		
+</TABLE>	
+</FORM>
+
+<FORM action="enter_payment.pl" method=GET>
+	<input type="hidden" name="purpose" value="payment_2">
+<TABLE WIDTH=600 border=0 cellpadding=4 cellspacing=1>
+	<TR>	
+		<TD>
+		<h1 class="bold">New clients</h1>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+		<TABLE width=100%>
+			<TR>
+				<TD width=50%>
+				
+				<h1 class="table_items">Email address<BR>
+				
+				<input type=text name="email" size=30 value="">
+				</TD>
+				<TD width=50%>
+				<TABLE WIDTH=100%>
+					<TR>
+						<TD>
+						<h1 class="table_items">Title<BR>
+						<select name="title">
+<option value="Mr">Mr</option>
+<option value="Mrs">Mrs</option>
+<option value="Miss">Miss</option>
+<option value="Ms">Ms</option>
+</select>
+						</TD>
+						<TD>
+						
+						<h1 class="table_items">First Name<BR>
+						
+						<input type=text name="firstname" size=10 value="">
+						</TD>
+						<TD>
+						
+						<h1 class="table_items">Surname<BR>
+						
+						<input type=text name="surname" size=15 value="">
+						</TD>
+					</TR>
+				</TABLE>
+				</TD>
+			</TR>
+			<TR>
+				<TD WIDTH=50%>
+				
+				<h1 class="table_items">Telephone<BR>
+				
+				<input type=text name="telephone" size=25 value="">
+				</TD>
+				<TD WIDTH=50%>
+				
+				<h1 class="table_items">Address<BR>
+				
+				<input type=text name="address1" size=25 value=""></TD>
+			</TR>
+			<TR>
+				<TD WIDTH=50%></TD>
+				<TD WIDTH=50%><input type=text name="address2" size=25 value="">
+				</TD>
+			</TR>			
+
+			<TR>
+				<TD WIDTH=50%>
+				<h1 class="table_items">Company<BR>
+				<input type=text name="company" size=25 value="">
+				</TD>
+				<TD WIDTH=50%>
+				
+				<h1 class="table_items">Town<BR>
+				
+				<input type=text name="town" size=25 value="">
+				</TD>
+			</TR>
+			<TR>
+				<TD WIDTH=50%>
+				
+				<h1 class="table_items">If a friend told you about Dizzy, please enter their 
+				email address here to enable them to get points<BR>
+				<input type=text name="referral" size=10 value="">
+				
+				</TD>
+				<TD WIDTH=50%>
+				
+				<h1 class="table_items">County<BR>
+				
+				<input type=text name="county" size=25 value="">
+				</TD>
+			</TR>
+			<TR>
+				<TD WIDTH=50%>
+				</TD>
+				<TD WIDTH=50%>
+				
+				<h1 class="table_items">Postcode<BR>
+				
+				<input type=text name="postcode" size=25 value="">
+				</TD>
+			</TR>
+		</TABLE>
+		</TD>
+	</TR>
+	<TR>	
+		<TD align=center><input type=image SRC="graphics/furniture/submit.gif" border=0></TD>
+	</TR>		
+</TABLE>	
+</FORM>
+</DIV>
+</DIV>
+
+<DIV id=footer>
+	<DIV id=footer_line><IMG src="graphics/furniture/footerline.gif" alt="---" /></DIV>
+	<DIV id=footer_container>
+	<DIV id=dizzy_man><IMG src="graphics/furniture/dizzyman.gif" alt="Dizzy man" /></DIV>
+	<DIV id=spirograph><IMG src="graphics/furniture/spiro.gif" alt="*" /></DIV></DIV>
+	<DIV id=small_diz_logo><IMG 
+src="graphics/furniture/smalllogo.gif" alt="Dizzy" /></DIV>
+</DIV>
+</BODY>
+</HTML>

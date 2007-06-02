@@ -1,0 +1,197 @@
+<patTemplate:tmpl name="table"><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head><title>Dizzy: Outside the words.</title>
+<link href="http://www.dizzy.co.uk/stylesheets/stylesheet1.css" type="text/css" rel="stylesheet">
+
+<script>
+	
+<patTemplate:tmpl name="images">
+
+image{PAT_ROW_VAR} = new Image; 
+
+image{PAT_ROW_VAR}.src = "/g/p/{IMAGE}_clogo.png";
+</patTemplate:tmpl>
+
+</script>
+
+<style type="text/css">
+
+#logos {
+padding: 10px 0px 10px 0;
+}
+table { width:98%;
+margin: 0 auto;
+text-align:center;
+vertical-align:middle;
+border-collapse:collapse;
+}	
+	td {
+	border-style:dotted;
+border-width:1px;
+border-color:#888;
+border-spacing:20px;
+padding:0px;
+height:100px;
+width:20%;
+
+}
+#top_line {
+	position:absolute; top:163px;
+}
+
+#icons {
+	padding-top:53px;
+	}
+#cart { 
+	padding-top:4px;
+}
+#cart_menu { 
+	float:right; 
+}
+
+#content_container { 
+	margin: 0 auto; width:90%;
+	display:block;
+}
+#column1 { 
+	position: absolute;
+	left:10px;
+	top:260px;
+	width:240px;
+	text-align:right;
+}
+
+#silver { 
+display:inline;
+}
+
+#column2 { 
+	background:#fff;
+	margin-left: 259px;
+	margin-right:314px;
+	voice-family: "\"}\"";
+	voice-family: inherit;
+	margin-left: 261px;
+	margin-right:316px;
+	padding: 15px 0 0 0;
+}
+#column3 { 
+	position: absolute;
+	right:10px;
+	top:320px;
+	width:300px;
+	text-align:center;
+}
+#welcome {
+	width: 350px; 
+	height:69px;
+	margin: 0 auto;
+}
+#icon {
+	float: left; 	
+}
+#headline_text {
+	padding-top:20px;
+}
+
+#logos1 {
+height:80px;
+width:640px;
+vertical-align:middle;
+}
+</style>
+</head>
+
+<body>
+	
+<div id="top_container">
+	<div id="logo"><img src="http://www.dizzy.co.uk/g/e/slogan.png" width="180" height="36" alt="Making business beautiful."/><img src="http://www.dizzy.co.uk/g/e/logo.png" width="85" height="84" alt="logo"/></div>
+	<div id="package">	
+			<div id="button1" class="button"><img name="button1" src="/g/f/home.png" />  <br/>
+			<a href="/">Home</a></div>
+			<div id="button2" class="button"><img src="/g/f/login.png" /><br/>
+			<a href="/">Login</a></div>
+			<div id="button3" class="button"><img src="/g/f/cart.png" /><br/>
+			<a href="/">View Cart</a></div>		
+			<div id="button4" class="button"><img src="/g/f/life.png" /><br/>
+			<a href="/">Help</a></div>
+</div>
+</div>
+<div id="header_container">
+	
+	<!-- WELCOME TO HEADER -->
+	<div id="welcome">
+		<div id="icon"><IMG alt="House" src="/g/f/suitcase.gif" 
+/></div>
+		<div id="headline_text"><img alt="Welcome to Dizzy New Media" 
+src="/g/f/finance.gif" /> </div>
+	</div>
+</div>
+
+	<img src="/g/f/you-are-here.gif" />
+<a class="category" href="/">
+Home</a> > <a class="category" HREF="/index.pl?adtrack=&campaign=">
+Business</A> ><b class="header">Business identity</b>
+	<div id="column1">
+			<img src="/g/products/logos.gif" alt="Premium Logo Package" /><br />
+			<img src="/g/f/adobepdf.gif" />
+	</div>
+	<div id="column2">
+			<img src="/g/snapshot.gif" />
+			<p><img src="/g/f/offer.gif"> Buy this package today, and you'll get our stationery design package <B>completely free!</B>
+				<h3> When you choose our premium logo package, our designers will produce a minimum of four initial logo concepts for 
+				you to choose from. You'll then get unlimited rounds of changes for those concepts.</h3><P align=justify> Read below 
+					to find out how the design process works, to check out our portfolio for examples of the beautiful 
+				work we can do for you... </h3>
+			<ul>
+				<li> Four initial logo concepts within 72 hours</li>
+				<li> Unlimited rounds of changes for logo</li>
+				<li> Logo supplied in bitmap file formats (.GIF .JPG and .PNG) for use on the Web</li>
+				<li> Logo and stationery supplied in vector file formats (.PDF .EPS .AI) for use in print</li> 
+				<li> 50 printed copies of each letterhead, business card and compliment slips posted to you</li>
+			</ul>
+	</div>
+	<div id="column3">				
+			<img src="//g/f/buy/11999.gif" alt="Buy Ebook Version Now" \><br/>
+			<A HREF="/cart.pl?purpose=add&code=1&identno=$identno">[click here to buy the standalone ebook version instantly...]</A>
+	</div>			
+	<div id="content_container" class="clearfix">
+		<div id="logos">
+		
+
+<table>
+<patTemplate:tmpl name="row">
+   
+    <tr>
+    <patTemplate:tmpl name="cells">
+        <td><a href="/scripts/portfolio.php?purpose=view_single&id={VALUE}" onmouseover="image{COUNTER}.src='/g/p/{VALUE}_clogo.png'"
+        onmouseout="image{COUNTER}.src='/g/p/{VALUE}_glogo.png'">
+        <img name="image{COUNTER}" src="/g/p/{VALUE}_glogo.png"></a></td>
+    </patTemplate:tmpl>
+    </tr>
+
+</patTemplate:tmpl>
+   </table>
+</div>
+
+						<h3>"Corporate identity" or "branding" is a posh name for describing a company's "uniform". 
+		Just like a football team has colours for its kit, the same applies to businesses. If you look at 
+		any big companies, you'll notice that they have a consistent style: for example, McDonald's main colours are 
+		red and yellow, and this colour theme is used as background throughout everything the company creates, 
+		from their advertising, to their signage and the cartons their chips come in.</h3> 
+		
+		<p>
+			<img src="/g/f/square.gif"> Their designers have chosen one style of font and they stick to that choice rigidly, using it 
+			 repetitively - in the letters they write, the signage on their 
+		distribution vans - and their logo, the famous golden arches, is branded on 
+		everything they create. This continual repetition works on our brains so that we come to associate 
+		these colours, themes, and fonts with the McDonald's corporation, and can instantly recognise them. 
+		They help us remember a company, and they help that company to stand out from the crowd, in the same 
+		way we remember Elvis Presley for always wearing white suits and having a quiff in his hair. Branding 
+		makes a business unique and identifiable from its competitors. Without a strong image, a company 
+	can easily blend into the background mix of its competition. </p>
+	 
+	<img src="examples.gif" />
+
+</div>	
+
+</patTemplate:tmpl>

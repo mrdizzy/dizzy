@@ -1,0 +1,179 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+
+<HTML><HEAD><TITLE>Dizzy > View cart</TITLE>
+<STYLE type=text/css>
+	
+#header {
+	TEXT-ALIGN: center
+}
+#logo {
+	FLOAT: left; WIDTH: 109px; 
+}
+#bluebox {
+	PADDING-RIGHT: 12px; PADDING-LEFT: 12px; BACKGROUND-IMAGE: url(graphics/furniture/bluebox.gif); PADDING-BOTTOM: 1px; MARGIN-LEFT: 109px; PADDING-TOP: 1px; BACKGROUND-REPEAT: no-repeat; TEXT-ALIGN: right; HEIGHT: 126px;
+}
+#whitewelcome {
+	PADDING-TOP: 15px;
+}
+#contents { 
+PADDING-LEFT: 12px;
+float:left;
+}
+#cartbar {
+FLOAT: right; position: relative; top: -15px;
+} 
+#footer {
+	MARGIN-TOP: 15px; MARGIN-LEFT: auto; WIDTH: 740px; MARGIN-RIGHT: auto; POSITION: relative; top: 25px;
+}
+#footer_line {
+	POSITION: absolute; TOP: -25px
+}
+#spirograph {
+	LEFT: 350px; FLOAT: left; POSITION: relative
+}
+#topline { 
+position: relative; top: -10px;
+}
+#dizzy_man {
+	LEFT: 150px; FLOAT: left; POSITION: relative
+}
+#small_diz_logo {
+	LEFT: 450px; FLOAT: left; POSITION: relative
+}
+#welcome {
+	CLEAR: both; MARGIN-BOTTOM: 15px; MARGIN-LEFT: auto; WIDTH: 350px; MARGIN-RIGHT: auto; 
+}
+#forms { 
+CLEAR:both; TEXT-ALIGN: left;
+}
+</style>
+
+<LINK href="stylesheets/stylesheet2.css" type=text/css rel=stylesheet>
+<BODY>
+	
+<DIV id=page_container>
+	<DIV id=header>
+		<DIV id=logo><IMG alt="Dizzy logo" src="graphics/furniture/maindizzylogo.gif" width="105" height="115" /> </DIV>
+		<DIV id=bluebox>
+		<DIV id="whitewelcome"><IMG alt=Welcome src="graphics/home/whitewelcome.gif" /></DIV>
+		<IMG alt="---" src="graphics/line.gif"><BR>
+		<IMG src="graphics/furniture/homebutton.gif" alt="Home" /> 
+<IMG src="graphics/furniture/businessbutton.gif" alt="Business" /> 
+<IMG src="graphics/furniture/computebutton.gif" ALT="Computing" /> 
+		</DIV>
+	</DIV>
+
+<DIV id=topline>
+<IMG src="graphics/topline.gif" /></DIV>
+<DIV class=clearfix id=header>
+<DIV id="contents">
+	<img src="graphics/furniture/you-are-here.gif" vspace="0" hspace="0">
+<A CLASS="category" HREF="">
+Home</A> > <b class="header">View Cart</B></font>
+</DIV>
+<DIV id="cartbar">
+	
+<img src="graphics/furniture/cartbar2.gif" />
+</DIV>
+<DIV id="forms">
+<FORM ACTION="http://www.dizzy.co.uk/enter_payment.pl">
+<input type="hidden" name="purpose" value="send_payment">
+<TMPL_IF NAME="generic_error"><B><FONT COLOR=#FF0000><TMPL_VAR NAME="generic_error"></FONT></B><BR></TMPL_IF>
+<TABLE WIDTH=600 border=0 cellpadding=5 cellspacing=1>
+	<TR>
+	<TR>	
+		<TD>
+		<h1 class="bold">Enter card details</h1>
+		</TD>
+	</TR>
+	<TR>	
+		<TD>
+		<TABLE width=100% align=center border=0 cellspacing=0 cellpadding=0>
+			<TR>
+				<TD width=100%><IMG SRC="/graphics/singledarkgreydot.gif" width=100% height=1></TD>
+			</TR>
+		</TABLE>
+		</TD>
+	</TR>
+	<TR>
+		<TD>
+		<TABLE width=100%>
+				<TR>
+				<TD width=50%>
+			<h1 class="table_items">Card type<br>
+			 <TMPL_VAR NAME="card_types">
+				</TD>
+				<TD width=50%><h1 class="table_items">
+					<TMPL_IF NAME="bad_expiry">
+				<B><FONT COLOR=#FF0000>Please enter a valid expiry date</FONT></B><BR>
+				<TMPL_ELSE>
+				Expiry date<BR>
+				</TMPL_IF>
+			
+				<TMPL_VAR NAME="expirymonth"> <TMPL_VAR NAME="expiryyear">
+				</TD>
+			</TR>
+			<TR>
+				<TD width=50%><h1 class="table_items">
+								<TMPL_IF NAME="bad_card">
+				<B><FONT COLOR=#FF0000>Please enter a valid card number</FONT></B><BR>
+				<TMPL_ELSE>			
+					Card number<br>
+				</TMPL_IF>
+				<input type=text name="cardnumber" size=20 value="<TMPL_VAR NAME="cardnumber">">
+				</TD>
+				<TD width=50%>
+		<h1 class="table_items">
+								<TMPL_IF NAME="bad_issue">
+				<B><FONT COLOR=#FF0000>Please enter a valid issue number</FONT></B><BR>
+				<TMPL_ELSE>			
+					Issue no. (Switch/Solo/Maestro cards only)<br>
+				</TMPL_IF>
+				<input type=text name="issueno" size=3 maxlength=2 value="<TMPL_VAR NAME="issueno">">
+				</TD>
+			</TR>
+			<TR>
+				<TD width=50%>			
+				<h1 class="table_items">
+					<TMPL_IF NAME="bad_cardholder">
+				<B><FONT COLOR=#FF0000>Please enter a valid cardholder name</FONT></B><BR>
+				<TMPL_ELSE>
+				Name on card<BR>
+				</TMPL_IF>
+				<input type=text name="cardholder" size=35 value="<TMPL_VAR NAME="cardholder">">
+				</TD>
+				<TD width=50%><h1 class="table_items">
+					<TMPL_IF NAME="bad_security">
+				<B><FONT COLOR=#FF0000>Please enter a valid security code</FONT></B><BR>
+				<TMPL_ELSE>
+				Security code<BR>
+				</TMPL_IF>
+				<input type=text name="security" size=4 maxlength=3 value="<TMPL_VAR NAME="security">">
+				</TD>
+			</TR>	
+		</TABLE>
+		
+		<P align=center>
+			<input type="hidden" name="title" value="<TMPL_VAR NAME="title">">
+			<input type="hidden" name="address1" value="<TMPL_VAR NAME="address1">">
+			<input type="hidden" name="postcode" value="<TMPL_VAR NAME="postcode">">
+			<input type="hidden" name="telephone" value="<TMPL_VAR NAME="telephone">">
+			<input type="hidden" name="email" value="<TMPL_VAR NAME="email">">
+			
+<input type=image src="graphics/furniture/submit.gif">
+</FORM>
+		</TD>
+	</TR>
+</TABLE>
+</DIV>
+</DIV>
+<DIV id=footer>
+	<DIV id=footer_line><IMG src="graphics/furniture/footerline.gif" alt="---" /></DIV>
+	<DIV id=footer_container>
+	<DIV id=dizzy_man><IMG src="graphics/furniture/dizzyman.gif" alt="Dizzy man" /></DIV>
+	<DIV id=spirograph><IMG src="graphics/furniture/spiro.gif" alt="*" /></DIV></DIV>
+	<DIV id=small_diz_logo><IMG 
+src="graphics/furniture/smalllogo.gif" alt="Dizzy" /></DIV>
+</DIV>
+</BODY>
+</HTML>

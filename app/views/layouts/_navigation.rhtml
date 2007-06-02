@@ -1,0 +1,11 @@
+	<div id="navigation"><table style="width:100%; text-align:center; border-bottom: 1px dashed #999;">
+	
+			<tr>
+				<td><%= diamond %> <%= link_to "Portfolio", { :controller => :portfolio, :action => :show } %></td>
+				<td><%= diamond %> <%= link_to_remote "Contact us", :url => { :controller => :welcome, :action => :contact } %></td>
+				<td><%= diamond %> <a href="">Cheatsheets</a></td>
+				<td><%= diamond %> <a href="">Ruby on Rails</a></td>
+			</tr>
+		</table>
+	</div>
+	

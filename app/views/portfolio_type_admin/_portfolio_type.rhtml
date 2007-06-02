@@ -1,0 +1,23 @@
+<% @portfolio_type = portfolio_type %>
+<p><%= error_message_on :portfolio_type, 'description' %></p>
+
+<p><label for="portfolio_type_description">Description</label>
+<%= text_field "portfolio_type[]", "description" %></p>
+
+<p><%= error_message_on 'portfolio_type', 'column_space', "Title simply " %></p>
+
+<p><label for="portfolio_type_column_space">Column space</label>
+<%= select 'portfolio_type[]', 'column_space', 0..3, {} %></p>
+
+<p><%= error_message_on 'portfolio_type', 'position' %></p>
+
+<p><label for="portfolio_type_position">Position</label>
+<%= select 'portfolio_type[]', 'position', 0..20, {} %></p>
+<p><label for="portfolio_type_visible">Visible?</label>
+<%= check_box "portfolio_type[]", "visible" %></p>
+<p><%= error_message_on 'portfolio_type', 'image_header' %></p>
+<label for="portfolio_type_image_header">Header</label>
+<div class="fileinputs">
+	<%= file_field "portfolio_type[]", 'uploaded_data', :class => "file" %></p>
+</div>
+

@@ -1,0 +1,2 @@
+<p><label for="article_author">Author</label>
+    <%= collection_select(:author, :id, Author.find(:all), :id, :username, {}, { :name => "article[author_id]"}) %>    </p>

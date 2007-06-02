@@ -1,0 +1,16 @@
+<% for column in Company.content_columns %>
+<p>
+  <b><%= column.human_name %>:</b> 
+
+</p>
+<% end %>
+
+<% for column in @company.portfolio_items %>
+<p>
+<%= column.id %>
+<%= column.portfolio_type.description %>
+<img src="/portfolio_admin/code_image/<%= column.id %>">
+</p>
+<% end %>
+<%= link_to 'Edit', :action => 'edit', :id => @company %> |
+<%= link_to 'Back', :action => 'list' %>

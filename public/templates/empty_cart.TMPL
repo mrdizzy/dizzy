@@ -1,0 +1,93 @@
+<patTemplate:tmpl name="empty_cart">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+
+<HTML><HEAD><TITLE>Dizzy > View cart</TITLE>
+
+<STYLE type=text/css>
+
+	
+#header {
+	TEXT-ALIGN: center
+}
+#logo {
+	FLOAT: left; WIDTH: 109px; 
+}
+#bluebox {
+	PADDING-RIGHT: 12px; PADDING-LEFT: 12px; BACKGROUND-IMAGE: url(../graphics/furniture/bluebox.gif); PADDING-BOTTOM: 1px; MARGIN-LEFT: 109px; PADDING-TOP: 1px; BACKGROUND-REPEAT: no-repeat; TEXT-ALIGN: right; HEIGHT: 126px;
+}
+#whitewelcome {
+	PADDING-TOP: 15px;
+}
+#contents { 
+PADDING-LEFT: 12px;
+float:left;
+}
+#cartbar {
+FLOAT: right; position: relative; top: -15px;
+} 
+#footer {
+	MARGIN-TOP: 15px; MARGIN-LEFT: auto; WIDTH: 740px; MARGIN-RIGHT: auto; POSITION: relative; top: 25px;
+}
+#footer_line {
+	POSITION: absolute; TOP: -25px
+}
+#spirograph {
+	LEFT: 350px; FLOAT: left; POSITION: relative
+}
+#topline { 
+position: relative; top: -10px; z-index: 1;
+}
+#dizzy_man {
+	LEFT: 150px; FLOAT: left; POSITION: relative
+}
+#small_diz_logo {
+	LEFT: 450px; FLOAT: left; POSITION: relative
+}
+
+#welcome {
+	CLEAR: both; MARGIN-BOTTOM: 15px; MARGIN-LEFT: auto; WIDTH: 350px; MARGIN-RIGHT: auto; 
+}
+#empty { margin-left: auto; width:50%; margin-right:auto; }
+
+</style>
+
+<LINK href="../stylesheets/stylesheet1.css" type=text/css rel=stylesheet>
+<BODY>
+	
+<DIV id=page_container>
+	<DIV id=header>
+		<DIV id=logo><IMG alt="Dizzy logo" src="../graphics/furniture/maindizzylogo.gif" width="105" height="115" /> </DIV>
+		<DIV id=bluebox>
+		<DIV id="whitewelcome"><IMG alt=Welcome src="../graphics/home/whitewelcome.gif" /></DIV>
+		<IMG alt="---" src="../graphics/line.gif"><BR>
+		<IMG src="../graphics/furniture/homebutton.gif" alt="Home" /> 
+<IMG src="../graphics/furniture/businessbutton.gif" alt="Business" /> 
+<IMG src="../graphics/furniture/computebutton.gif" ALT="Computing" /> 
+		</DIV>
+	</DIV>
+
+	<DIV id=topline><IMG src="../graphics/topline.gif" /></DIV>
+	<DIV class=clearfix id=header>
+		<DIV id="contents">
+		<img src="../graphics/furniture/you-are-here.gif" vspace="0" hspace="0">
+	<A CLASS="category" HREF="/">
+	Home</A> > <b class="header">View Cart</B></font>
+		</DIV>
+		<DIV id="cartbar"><img src="../graphics/furniture/cartbar.gif" /></DIV>
+	</div>
+	<div id="empty" class="clearfix">
+		<div id="dozyman"><img src="../graphics/furniture/dozyman.gif" width="37" height="104" />
+		<h6 class="grey">Your cart is empty.</h6></div>
+</div>
+	
+<DIV id=footer>
+	<DIV id=footer_line><IMG src="../graphics/furniture/footerline.gif" alt="---" /></DIV>
+	<DIV id=footer_container>
+	<DIV id=dizzy_man><IMG src="../graphics/furniture/dizzyman.gif" alt="Dizzy man" /></DIV>
+	<DIV id=spirograph><IMG src="../graphics/furniture/spiro.gif" alt="*" /></DIV></DIV>
+	<DIV id=small_diz_logo><IMG 
+src="../graphics/furniture/smalllogo.gif" alt="Dizzy" /></DIV>
+</DIV>
+</BODY>
+</HTML>
+</patTemplate:tmpl>

@@ -1,0 +1,16 @@
+
+<h1><%= bigarrow %> Editing article "<%= @article.title %>"</h1>
+
+<% form_for :article, :url => {:controller => "content_admin", :action => "update", :id => @article}, :html => { :name => "edit_form" } do |form| %>
+<%= render :partial => "form", :object => form %>
+
+<%= submit_button %>
+ <% end %>
+ <h2 class="blue_bold"><%= asterisk %> Options</h2>
+  <div id="add_new_category">
+  <%= render :partial => "add_new_category_link", :object => @article %>
+  </div>
+  <div id="add_new_author">
+  <%= render :partial => "add_new_author_link" %>
+	</div>
+<%= link_to 'Back', :action => 'list' %>
