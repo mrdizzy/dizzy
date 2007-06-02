@@ -1,0 +1,28 @@
+<h1><%= bigarrow %> Portfolio types</h1>
+<table class="articles">
+  <tr>
+  
+    <th>Position</th>
+    <th>Visible?</th>
+  	<th>Column Space</th>
+  	<th>Description</th>
+  </tr>
+  
+<% for portfolio_type in @portfolio_types %>
+  <tr>
+    <td><%= portfolio_type.position %></td>
+     <td><%= visible?(portfolio_type.visible) %></td>
+    <td><%= portfolio_type.column_space %></td>
+        <td><%= portfolio_type.description %></td>
+   
+    <td><%= link_to 'Edit', :action => 'edit', :id => portfolio_type %></td>
+    <td><%= link_to 'Destroy', { :action => 'destroy', :id => portfolio_type }, :confirm => 'Are you sure?', :method => :post %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to 'Previous page', { :page => @portfolio_type_pages.current.previous } if @portfolio_type_pages.current.previous %>
+<%= link_to 'Next page', { :page => @portfolio_type_pages.current.next } if @portfolio_type_pages.current.next %> 
+
+
+<p><%= asterisk %> <%= link_to 'New', :action => 'new' %></p>

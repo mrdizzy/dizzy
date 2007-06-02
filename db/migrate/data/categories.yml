@@ -1,0 +1,50 @@
+migrations:
+  name: Migrations
+  
+action_mailer:
+  name: Action Mailer
+  
+beginners:
+  name: Beginners
+
+data_structures: 
+  name: Data Structures
+  
+scaffolding:
+  name: Scaffolding
+  
+controllers: 
+  name: Controllers
+
+models: 
+  name: Models
+
+ajax: 
+  name: AJAX
+  
+file_handling:
+  name: File handling
+  
+active_record:
+  name: Active Record
+  
+routing_and_urls:
+  name: Routing and URLs
+  
+capistrano:
+  name: Capistrano
+  
+testing: 
+  name: Testing
+  
+time_and_dates: 
+  name: Time and Dates
+
+REST: 
+  name: REST
+  
+Plugins: 
+  name: Plugins
+  
+Generators: 
+  name: Generators

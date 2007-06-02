@@ -1,0 +1,9 @@
+ <% @title = @article.title %>
+ 
+ <h1><%= @article.title %></h1>
+ 
+			<p><span class="date"><%= @article.date.to_s(:long) %></span> <%= image_tag("f/bullets/pixels/diamond.png") %> <b>By <%= @article.author.username %></b></p>
+ <h2><%= @article.excerpt %></h2>
+<div class="spiro"><%= image_tag("f/branding/spiro.png", :size =>"40x41") %></div>
+
+<%= markdown(@article.content) %>

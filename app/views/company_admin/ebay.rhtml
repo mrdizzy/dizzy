@@ -1,0 +1,11 @@
+<ul><% for company in @companies %>
+<li><%= company.name %>
+	<ul>
+		<% for item in company.portfolio_items %>
+	<li><%= item.id %>
+	<li><%= item.filename %>
+	<li><%= item.portfolio_type.description %>
+<% end %>
+	</ul>
+<% end %>
+</ul>

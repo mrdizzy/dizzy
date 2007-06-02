@@ -1,0 +1,9 @@
+<div id="portfolio_item_<%= index %>">
+<% fields_for "portfolio_items[#{index}]", item do |f| %>  
+	<p>
+	<%= f.file_field :uploaded_data %>
+	<%= f.collection_select :portfolio_type_id, designs, :id, :description %>
+	<%= link_to_remote 'remove', :url => { :action => 'remove_item', :index => index } %>
+	</p>  
+<% end %>
+</div> 
