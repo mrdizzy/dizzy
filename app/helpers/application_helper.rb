@@ -1,6 +1,8 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
-	
+	def markdown(text)
+	BlueCloth::new(text).to_html
+end
 	def get_random_companies
 		@five_random_companies = Company.find(:all, :order => 'RAND()', :limit => 5)
 	end

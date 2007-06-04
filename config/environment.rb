@@ -6,7 +6,7 @@
 RAILS_GEM_VERSION = '1.2.3' unless defined? RAILS_GEM_VERSION
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
-require 'bluecloth'
+
 Rails::Initializer.run do |config|
   # Skip frameworks you're not going to use
   # config.frameworks -= [ :action_web_service, :action_mailer ]
@@ -35,7 +35,6 @@ Rails::Initializer.run do |config|
   # Use Active Record's schema dumper instead of SQL when creating the test database
   # (enables use of different database adapters for development and test environments)
   # config.active_record.schema_format = :ruby
-
   # See Rails::Configuration for more options
 end
 
