@@ -9,6 +9,6 @@
    <% end %>
    </div>
    <%= render :partial => 'add_item_link', :locals => { :index => @company.portfolio_items.size } %>
-  <%= submit_tag "Create" %>
+  <%= submit_button %>
 <%= end_form_tag %>
 <%= link_to 'Back', :action => 'list' %>

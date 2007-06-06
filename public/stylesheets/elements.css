@@ -26,9 +26,11 @@ tbody {
 ==================================== */
 .left {
 	float:left;
+	width:50%;
 }
 .right {
 	float:right;
+	width:50%;
 }
 .block {
 	display:block;
@@ -83,12 +85,12 @@ th {
 	clear: both;
 }
 #left_column {
-	width:23%;
+	width:37%;
 	float:right;
 	margin-left: 2%;
 }
 #right_column {	
-	width:75%;
+	width:60%;
 	float:left;
 }
 
@@ -202,4 +204,31 @@ tr.even {
 ========================*/
 #hierarchy {
 	margin-top: 1em;
+}
+
+/* Package pages 
+========================*/
+#webone {
+	background-color:#BAE1EC;
+}
+#package_left_column {
+	width:47%;
+	float:right;
+	margin-left: 2%;
+}
+#package_right_column {	
+	width:50%;
+	float:left;
+}
+#web_design {
+	border-bottom:1px dotted #999;
+	border-left:1px dotted #999;
+	width:100%;
+	padding:0.5em;
+}
+#screenshot {
+
+	float:left;
+	margin-right:1em;
+	width:245px;background-image:url("/images/f/backgrounds/back.png");
 }

@@ -1,12 +1,6 @@
 /* Lists
 ==================================== */
-#left_column ul { 
-font-size: 1.1em;
-	padding-left: 4em;
-	list-style:none;
-	line-height: 2.8em;
-	border-bottom: 1px dashed #434343;
-}
+
 ul { 
   font-size: 1.1em;
   padding-left: 4em;
@@ -28,7 +22,7 @@ border:0;
 
 }
 li.alt {
-	background-image:url("/images/back.png");
+	background-image:url("/images/f/backgrounds/spiral2.png");
 	background-repeat:no-repeat;
 	background-position: top right;
 }

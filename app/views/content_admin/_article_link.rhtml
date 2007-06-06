@@ -3,7 +3,7 @@
 		<p><%= article_link.excerpt %></p></td>
 	<td><span class="date"><%= article_link.date.to_s(:long) %></span><br/>
 		<% article_link.categories.each do |category| %>
-		<%= link_to category.name, { :action => "articles_for_category", :id => category.id } %>
+		Posted in: <%= link_to category.name, { :action => "articles_for_category", :id => category.id } %>
 		<% end %><p>
 		<%= link_to 'edit', { :action => 'edit', :id => article_link.id } %> <%= diamond %> <%= link_to_remote 'delete', :url => { :action => 'destroy', :id => article_link.id } %> </p>
 		</td>
