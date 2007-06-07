@@ -1,57 +1,35 @@
-<!-- LEFT COLUMN -->
-<div id="package_right_column">
-
-<h1><%= bigarrow %> How it works</h1>
-<br/>
-<h2>You've visited two web sites, looking to buy a simple ink cartridge. The first is a hideous green colour, and loaded with flash animations that take ages to start before you can start browsing...</h2>
-<%= spiro %>
-<p>
- There doesn't seem to be any order to the layout, so it's also difficult to find what you're looking for. On top of that, when you try to find out contact information about the company - to check that it's trustworthy - it's nowhere to be seen.</p>
-<p>...the second web site is simple, but clean. The logo is striking and it looks like the sort of logo that a big company would be behind. That's a good sign: a company with enough money to spend on design clearly isn't amateurish, and so you feel more able to place your trust in them, rather than a small one-man band. It's easy to find the cartridge you want too: there's a search box, as well as links to each category of manufacturer. <p>Everything loads quick and fast, and there are sections on each page linking to delivery information, contact details and information about the company. There are even photos of the team who work there: you start to feel like you know them personally! The only negative thing is that the prices are a little higher...</p>
-</p>
-<h3 class="blue_bold">Which web site do you order from?</h3>
-<p>At Dizzy, we know design is important. And we know that it's not just about how something looks, but how it works too. Let us help you achieve success.</p>
+<div id="packages_container">
+	<div id="case_study">
+	<div class="left"><h1><%= bigarrow %> Case Study</h1><h2 class="blue_bold"><%= asterisk %> www.heavenly.co.uk</h2></div>
+	<div class="right"><%= image_tag('packages/heavenlylogo.png') %></div>
+	<div class="clearfix">
+				
+		<div id="screenshot"><%= image_tag('packages/heavenlyweb.png') %></div>
+		<h2>click.ink is a Web site that makes buying ink cartridges a breeze.</h2>
+			<p>
+			Ink cartridges are pretty boring, bless them. When you're buying an ink cartridge, you're not really interested in downloading Flash animations of a cartridge spinning in 3D, you just want to make sure it's good quality, relatively inexpensive, that you're buying the right one for your printer and that you can order it <i>quickly</i> without jumping through hoops.</p>
+			<ul><li>We created a clean, simple design that was super-fast to load, easy to navigate and provided information such as estimated delivery times and stock levels clearly in a concise, obvious way.</li>
+			<li>Customers want to order their ink cartridges fast, and they want information on their previous and outstanding orders displayed quickly and concisely. We instantly displayed this information for existing customers on the homepage if they chose to be remembered, allowing them to re-order with just one click. For new customers, placing a first order was easy: we didn't make them fill in a hundred questions spread over five different pages. </li>
+			<li>We also needed to make sure the site was easy to administer from behind the scenes: handling customer emails and returns, adding new types of cartridges, applying refunds and showing stock levels were just some of the back-end features available in a completely Web-based control panel.</li></ul>
+		</div>
+		<%= spiro %>
+	</div>
+		
 </div>
-<div id="package_left_column">
-<h1><%= asterisk %> <a href="">Web design B </a> <img src="/images/h/box1.png"></h1>
-<p>
-<%=diamond%> E-commerce enabled
-			<%=diamond%> Bespoke graphic design
-			<%=diamond%> Automated backend
-			<%=diamond%> <b>£899</b></p>
-		
-	<div id="web_design">
-		<div class="left"><%= bigarrow %> <%= image_tag('packages/clickinklogo.png') %></div>
-		<div class="right"><h2 class="blue_bold"><%= asterisk %> www.clickink.co.uk</h2></div>
-		<div class="clearfix">
-			
-			<div id="screenshot"><%= image_tag('packages/clickink.png') %></div>
-			<p><b>E-commerce.</b> If you need to sell your products directly online, our e-commerce solution is perfect. Everything is automated, so you can take payments online, keep your catalog updated, and inform your customers of despatch by email. And of course, you get a beautiful custom design.</p>
-<b><%=diamond %> Ruby on Rails <%= diamond %> XHTML Strict <%= diamond %> CSS 2.1
-		<%= diamond %> MySQL <%= diamond %></b>
-			
-		</div>
+<div id="web_package">
+	<div class="left"><img class="block" src="/images/h/cornerleft.png"></div>
+	<div class="right"><img class="block" src="/images/h/cornerright.png"></div>
+	<div id="design_packages">
+		<h1><%= asterisk %> <a href="">Web design </a> <img src="/images/h/box1.png"></h1>
+<h2><a href="">Bespoke</a> <%= diamond %> <a href="">E-commerce</a> <%= diamond %> <b>Basic</b> <%= diamond %> If you don't need an e-commerce system, then this package is for you.</h2><p> We'll make sure your site is beautiful, simple and effective. Using our built-in content management system, you can update it yourself instantly, adding or editing pages as you wish, and they'll automatically use the custom-designed templates we provide to keep your site looking consistent. You won't need to employ outside monkeys to keep things up to date! </p> 
+			<b>Home page template</b> <%=diamond%> Your homepage is the first thing people will see, we'll make sure it gets your visitors interested.<br/>
+			<b>Three sub-page templates</b> <%=diamond%> Web sites generally have a consistent layout, but not all pages are equal. You might want a seperate image gallery, or a section for press releases. We'll give you three sub-page templates that you can use interchangeably with our content management system.<br/>
+			<b>Content management system</b> <%=diamond%> Updating your Web site is as simple as entering text into a form on your site. Just choose which template to use, and a new page will be created, or an existing page updated. <br/>
+			<b>Custom graphic design</b> <%=diamond%> We'll make sure your web site looks beautiful, creating icons and graphics that are functional and attractive 	<br/>
+			<b>Prices starting at £299</b> <%=diamond%> Development time between 3 and 6 weeks
 	</div>
-	<h1><%= asterisk %> <a href="">Web design A </a> <img src="/images/h/box1.png"></h1>
-<p>
-<%=diamond%> Built-in content management
-			<%=diamond%> Bespoke graphic design
-			<%=diamond%> Contact form
-			<%=diamond%> <b>£399.99</b></p>
-		
-	<div id="web_design">
-		<div class="left"><%= bigarrow %> <%= image_tag('packages/heavenlylogo.png') %></div>
-		<div class="right"><h2 class="blue_bold"><%= asterisk %> www.heavenly.co.uk</h2></div>
-		<div class="clearfix">
-			
-			<div id="screenshot"><%= image_tag('packages/heavenlyweb.png') %></div>
-			<p><b>Basic.</b> If you don't need to sell products directly online, a brochure style web site is the most basic of our range. You'll be able to provide customers with all information they need, and easily keep your site up to date with our built-in content management system. </p>
-<b><%=diamond %> Ruby on Rails <%= diamond %> XHTML Strict <%= diamond %> CSS 2.1
-		<%= diamond %> MySQL <%= diamond %></b>
-			
-		</div>
-	</div>
-	
-<!-- RIGHT COLUMN -->
+	<div class="left"><img class="block" src="/images/h/cornerbottomleft.png"></div>
+	<div class="right"><img class="block" src="/images/h/cornerbottomright.png"></div>
+</div>
 
 </div>

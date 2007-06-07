@@ -35,7 +35,7 @@ desc "Tasks to execute after update"
 task :after_update do
 	
 	# relink shared deployment database configuration
-	run "ln -nfs #{deploy_to}/#{shared_path}/config/database.yml #{release_path}/config/database.yml"
+	run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
 	# relink rails vendor
 	# run "ln -nfs #{shared_rails_dir} #{release_path}/vendor/rails "
 	# chmod dispatch.fcgi and reaper
@@ -76,7 +76,7 @@ namespace :deploy do
 	EOF
 	
 	 # put database configuration in shared config dir
-	 run "mkdir -p #{deploy_to}/#{shared_path}/config" 
-	 put database_configuration, "#{deploy_to}/#{shared_path}/config/database.yml"
+	 run "mkdir -p #{shared_path}/config" 
+	 put database_configuration, "#{shared_path}/config/database.yml"
 	end
 end
