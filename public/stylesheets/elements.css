@@ -21,16 +21,14 @@ tbody {
 } 
 #footer a:hover {
 	background-color:transparent;
-	}
+}
 /* Global reusable classes
 ==================================== */
 .left {
 	float:left;
-	width:50%;
 }
 .right {
 	float:right;
-	width:50%;
 }
 .block {
 	display:block;
@@ -208,27 +206,26 @@ tr.even {
 
 /* Package pages 
 ========================*/
-#webone {
-	background-color:#BAE1EC;
+#packages_container {
+	margin-top:1em;
+	}
+#case_study {	
+	width:62%;
+	float:left;
+	margin-right:2em;
 }
-#package_left_column {
-	width:47%;
+#screenshot {	
 	float:right;
-	margin-left: 2%;
-}
-#package_right_column {	
-	width:50%;
-	float:left;
-}
-#web_design {
-	border-bottom:1px dotted #999;
-	border-left:1px dotted #999;
-	width:100%;
-	padding:0.5em;
-}
-#screenshot {
-
-	float:left;
 	margin-right:1em;
 	width:245px;background-image:url("/images/f/backgrounds/back.png");
+}
+#web_package h1 {
+	margin-top:0.25em;
+}
+#web_package {	
+	width: 35%;
+	float:right;	
+	background-color:#BAE1EC;
+	margin:0;
+	padding:0;
 }
