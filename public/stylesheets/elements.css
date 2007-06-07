@@ -202,13 +202,17 @@ tr.even {
 ========================*/
 #hierarchy {
 	margin-top: 1em;
+	margin-bottom:0;
+}
+/* Cheatsheets 
+========================*/
+#cheatsheet_image {
+	float:right;
+	text-align:center;	
 }
 
 /* Package pages 
 ========================*/
-#packages_container {
-	margin-top:1em;
-	}
 #case_study {	
 	width:62%;
 	float:left;
