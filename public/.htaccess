@@ -8,7 +8,9 @@ Options +FollowSymLinks +ExecCGI
 # 
 # Example:
    RewriteEngine on
-   #RewriteCond %{REQUEST_URI} ^/notrails.*
+  RewriteCond %{DOCUMENT_ROOT}/system/maintenance.html -f
+  RewriteCond %{SCRIPT_FILENAME} !maintenance.html
+  RewriteRule ^.*$ /system/maintenance.html [L]
 
 #Redirect all requests not available on the filesystem to Rails
 # By default the cgi dispatcher is used which is very slow
