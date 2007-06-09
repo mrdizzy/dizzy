@@ -4,7 +4,7 @@ class BinariesController < ApplicationController
 		@image_data = PortfolioItem.find(params[:id])
 		@image = @image_data.data
 		send_data(@image, :type => @image_data.content_type, :disposition => 'inline')
-	endas
+	end
 	
 	def portfolio_type 
 		@image_data = PortfolioType.find(params[:id])

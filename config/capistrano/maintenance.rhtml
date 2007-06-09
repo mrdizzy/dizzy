@@ -1,0 +1,16 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head><title>Down for <%= reason ? reason : "maintenance" %> - Dizzy</title>
+<link href="/stylesheets/elements.css" media="all" rel="Stylesheet" type="text/css" />
+<link href="/stylesheets/typography.css" media="all" rel="Stylesheet" type="text/css" />
+</head>
+<body>
+	<div id="error_container">
+		<div id="error_left">
+<img src="/images/f/branding/dozy.png" /></div>
+	<div id="error_right">
+<h1><img src="/images/f/bullets/pixels/asterisk.png" height="13" width="13" /> Dizzy is down for  <%= reason ? reason : "maintenance" %></h1>
+<p>As of <span class="blue_bold"><%= Time.now.strftime("%H:%M %Z") %></span> Dizzy is down for <%= reason ? reason : "maintenance" %>.<br/> We are anticipating to be back <%= deadline ? deadline : "shortly" %>.</p>
+</div>
+</div>
+</body>
+</html>

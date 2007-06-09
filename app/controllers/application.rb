@@ -3,7 +3,7 @@
 class ApplicationController < ActionController::Base
 	require 'bluecloth'
 		include ExceptionNotifiable
-local_addresses.clear
+#local_addresses.clear
  # def local_request?
   #  return false
  # end

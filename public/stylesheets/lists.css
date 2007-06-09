@@ -1,16 +1,13 @@
 /* Lists
 ==================================== */
-
 ul { 
   font-size: 1.1em;
   padding-left: 4em;
-  list-style-image:url(/images/f/bullets/circular/dot2.gif);
+  list-style-image:url(/images/f/bullets/pixels/diamond.png);
   line-height: 1.4em;
-  border:0; 
   margin-bottom:1em;
 }
 .commentlist {
-
 	border-bottom: 1px dashed #434343;
 }
 .commentlist li {
@@ -18,8 +15,13 @@ ul {
 	line-height: 1.4em;
 	padding: 0;
 	margin-bottom: 2em;  
-border:0;
-
+	border:0;
+}
+.categories li {
+	line-height: 2em;
+}
+.categories li a:visited {
+	color:#555;
 }
 li.alt {
 	background-image:url("/images/f/backgrounds/spiral2.png");

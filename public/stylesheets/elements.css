@@ -83,15 +83,15 @@ th {
 	clear: both;
 }
 #left_column {
-
-	width:37%;
+	width:28%;
 	float:right;
 	margin-left: 2%;
 }
 #right_column {	
-	width:60%;
+	width:69%;
 	float:left;
 }
+
 
 /* Backend Portfolio
 ==================================== */
