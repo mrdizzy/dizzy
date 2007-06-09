@@ -19,7 +19,11 @@ tbody {
 	font-style: normal;
 	border: none;
 } 
-#footer a:hover {
+img {
+	vertical-align:middle;
+}
+
+#footer a:hover, #latest_logo a:hover {
 	background-color:transparent;
 }
 /* Global reusable classes
@@ -121,9 +125,7 @@ td.standard {
 	vertical-align: middle;
 	text-align:center;
 	}
-img {
-	vertical-align:middle;
-}
+
 
 /* Welcome
 ============= */

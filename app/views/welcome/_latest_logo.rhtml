@@ -1,1 +1,1 @@
-<img src="/binaries/portfolio_image/<%= @logos[0].id %>" />
+<%= link_to image_tag("/binaries/portfolio_image/#{@logos[0].id}"), :controller => :portfolio, :action => :show, :id => @logos[0].company_id %>
