@@ -83,6 +83,7 @@ th {
 	clear: both;
 }
 #left_column {
+
 	width:37%;
 	float:right;
 	margin-left: 2%;
@@ -209,6 +210,23 @@ tr.even {
 #cheatsheet_image {
 	float:right;
 	text-align:center;	
+}
+
+/* Error pages 
+========================*/
+#error_container {
+	text-align:center;
+}
+#error_left {
+	float:left;
+	width:33%;
+		
+	text-align:right;	
+}
+#error_right {
+	width:65%;
+	float:right;
+	text-align:left;	
 }
 
 /* Package pages 

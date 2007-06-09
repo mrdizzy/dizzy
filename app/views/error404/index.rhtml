@@ -1,0 +1,16 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head><title>Error 404 Page Not Found - Dizzy</title>
+<%= stylesheet_link_tag "typography", :media => "all" %>
+<%= stylesheet_link_tag "elements", :media => "all" %>
+</head>
+<body>
+	<div id="error_container">
+		<div id="error_left">
+<%= image_tag("f/branding/dozy.png") %></div>
+	<div id="error_right">
+<h1><%= asterisk %> Error 404 - Page Not Found</h1>
+<p>Unfortunately, we could not find the URL <span class="blue_bold">/<%= @error %></span></p>
+</div>
+</div>
+</body>
+</html>
