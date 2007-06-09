@@ -18,6 +18,14 @@ Rails::Initializer.run do |config|
   # (by default production uses :info, the others :debug)
   # config.log_level = :debug
 
+  config.action_mailer.delivery_method = :smtp 
+  config.action_mailer.smtp_settings = {
+:address => "www21.a2hosting.com" ,
+:domain => "dizzy.co.uk" ,
+:authentication => :login,
+:user_name => "dizzynew" ,
+:password => "ruhegochelupraju"
+}
   # Use the database for sessions instead of the file system
   # (create the session table with 'rake create_sessions_table')
   # config.action_controller.session_store = :active_record_store
@@ -50,4 +58,6 @@ end
 # Include your application configuration below
 #ActionController::AbstractRequest.relative_url_root = "/dizzy" 
 
-
+ExceptionNotifier.exception_recipients = %w(david.pettifer@googlemail.com)
+ExceptionNotifier.sender_address = %("Application Error" <errors@dizzy.co.uk>)
+ExceptionNotifier.email_prefix = "[Dizzy] "
