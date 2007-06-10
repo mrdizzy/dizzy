@@ -22,7 +22,6 @@ tbody {
 img {
 	vertical-align:middle;
 }
-
 #footer a:hover, #latest_logo a:hover {
 	background-color:transparent;
 }
@@ -125,7 +124,6 @@ td.standard {
 	vertical-align: middle;
 	text-align:center;
 	}
-
 
 /* Welcome
 ============= */
@@ -253,3 +251,33 @@ tr.even {
 	margin:0;
 	padding:0;
 }
+
+/* Cheatsheets
+========================*/
+#cheatsheets_left {
+	float:left;
+	width:75%;
+}
+#cheatsheets_second {
+	float:right;
+	margin-top:2em;
+	width:33%;
+	background-color:#BAE1EC;
+}
+#cheatsheets_first {
+	width:66%;
+	float:left;
+}
+#cheatsheets_right {
+	float:right;
+	width:23%;
+	margin-top:2em;
+	margin-left:1em;
+}
+.center {
+	text-align:center;
+	}
+.cheatsheet_image {
+	float:left;
+	margin-right:2em;
+	}

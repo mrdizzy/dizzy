@@ -14,16 +14,10 @@
 		<div id="right_logo"><img alt="Old -> New" src="/images/f/branding/cocktail_transform_static.png" /></div>
 	</div>
 	<%= render :partial => "/layouts/navigation" %>
-		<div id="content_container">
-			<div id="left_column">
-		<%= render :partial => "/layouts/category_list", :object => @categories %>
-		<%= render :partial => "/layouts/search" %>
-			</div>
-			<div id="right_column">
+		<div id="content_container">		
 			
 			<%= yield %>
-			
-						</div>
+									
 		</div>
 	<%= render :partial => "/layouts/footer" %>
 </div>
