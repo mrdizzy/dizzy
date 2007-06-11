@@ -7,7 +7,8 @@ RewriteEngine on
 
 # Display maintenance page if it exists
 RewriteCond %{REQUEST_URI} ^/images(.*)$ [OR]
-RewriteCond %{REQUEST_URI} ^/stylesheets/(.*)$
+RewriteCond %{REQUEST_URI} ^/stylesheets/(.*)$ [OR]
+RewriteCond %{REQUEST_URI} ^/g/(.*)$
 RewriteRule .* - [L]
  
 RewriteCond %{DOCUMENT_ROOT}/system/maintenance.html -f
