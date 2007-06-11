@@ -6,7 +6,11 @@ Options +FollowSymLinks +ExecCGI
 RewriteEngine on
 
 # Display maintenance page if it exists
-
+ RewriteCond %{REQUEST_URI} ^/g/(.*)$ [OR]
+ RewriteCond %{REQUEST_URI} ^/images/(.*)$ [OR]
+ RewriteCond %{REQUEST_URI} ^/stylesheets/(.*)$ [OR]
+ RewriteRule .* - [L]
+ 
 RewriteCond %{DOCUMENT_ROOT}/system/maintenance.html -f
 RewriteCond %{SCRIPT_FILENAME} !maintenance.html
 RewriteRule ^.*$ /system/maintenance.html [L]
