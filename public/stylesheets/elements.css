@@ -211,6 +211,24 @@ tr.even {
 	float:right;
 	text-align:center;	
 }
+.cheatodd {
+	background-color: #D0ECF8;
+}
+#cheatsheet pre code {
+	background-color: transparent; 
+}
+
+#cheatsheet h2 {
+	border-bottom: 1px dashed #999;
+	font-weight:bold;
+	margin-top:1em;
+}
+
+#cheatsheet h3 {
+	margin-top: 1em;
+  color: #29A4BD;
+  font-weight: bold;
+}
 
 /* Error pages 
 ========================*/

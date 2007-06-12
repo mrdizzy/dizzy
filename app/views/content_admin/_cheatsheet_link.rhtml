@@ -1,0 +1,26 @@
+<tr class="<%= cycle('odd', 'even') %>" >
+	<td class="content"><h3 class="blue_bold"><%= asterisk %> <%= cheatsheet_link.title %></h3>
+		
+<div class="left"><br/><br/><br/><br/><br/>
+			<%= image_tag("f/small_icons/pdf.png") %>
+			
+			<%= diamond %> <%= link_to "PDF", :controller => :binaries, :action => :get_cheatsheet_pdf, :id => cheatsheet_link.id %>
+		</div>
+		
+		<div class="right"><br/><br/><br/><br/><br/>
+			<%= image_tag("f/small_icons/html.png") %>
+			<%= diamond %> <a href="">HTML</a>
+		</div>
+		<p class="center"><%= image_tag("/binaries/cheatsheet_thumbnail/#{cheatsheet_link.id}") %>
+		</td>
+	<td><span class="date"><%= cheatsheet_link.date.to_s(:long) %></span><p>
+		<% cheatsheet_link.categories.each do |category| %>
+		<span class="blue_bold">Posted in</span> <%= diamond %> <%= link_to category.name, { :action => "articles_for_category", :id => category.id } %>
+		<% end %></p>
+		
+		<p><%= cheatsheet_link.description %> </p>
+	<p class="center">
+		<%= link_to "edit", :controller => :content_admin, :action => :edit_cheatsheet, :id => cheatsheet_link.id %> <%= diamond %> <%= link_to_remote "delete", :controller => :content_admin, :action => :delete_cheatsheet, :id => cheatsheet_link.id %></p>
+		</td>
+	<td>by<br/><b><%= cheatsheet_link.author.username%></b></td>
+</tr>

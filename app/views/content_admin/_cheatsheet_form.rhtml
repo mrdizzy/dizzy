@@ -1,0 +1,19 @@
+<p><label for="cheatsheet_title"><%= diamond %> Title</label>
+<%= cheatsheet_form.text_field :title %></p>
+<p><label for="cheatsheet_PDF"><%= diamond %> PDF</label>
+<%= cheatsheet_form.file_field :pdf_data %>
+<p><label for="cheatsheet_PDF"><%= diamond %> PNG Thumbnail</label>
+<%= cheatsheet_form.file_field :thumbnail_data %>
+<p><label for="article_content"><%= diamond %> Description</label>
+<%= cheatsheet_form.text_area :description %></p>
+<p><label for="article_content"><%= diamond %> Content</label>
+<%= cheatsheet_form.text_area :content %></p>
+<p><label for="article_date"><%= diamond %> Date</label>
+<%= cheatsheet_form.datetime_select :date %></p>
+<div id="select_author">
+<p><label for="cheatsheet_author"><%= diamond %> Author</label>
+<%= cheatsheet_form.collection_select(:author_id, Author.find(:all), :id, :username)%></p></div>
+
+<div id="select_category">
+<p><label for="cheatsheet_categories"><%= diamond %> Category</label>
+<%= cheatsheet_form.collection_select(:category_ids, Category.find(:all, :order => :name), :id, :name, {}, {:multiple=> :true, :name=> 'cheatsheet[category_ids][]'}) %></p></div>

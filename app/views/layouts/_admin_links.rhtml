@@ -27,6 +27,7 @@ myField.value += myValue;
 	<li><%= link_to 'Articles', :controller => "content_admin", :action => "list" %></li>
 	<li><%= link_to 'Categories', :controller => "content_admin", :action => "categories" %></li>
 	<li><%= link_to 'Portfolio', :controller => "company_admin", :action => "list" %></li>
+	<li><%= link_to 'Cheatsheets', :controller => "content_admin", :action => "list_cheatsheets" %></li>
 	<li><%= link_to_remote 'Upload', :url => { :controller => "content_admin", :action => "file_upload_form" } %></li>
 </ul>
 

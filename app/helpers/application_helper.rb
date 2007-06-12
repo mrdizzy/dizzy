@@ -3,6 +3,14 @@ module ApplicationHelper
 	def markdown(text)
 	BlueCloth::new(text).to_html
 end
+
+  def textilize(text)
+          if text.blank?
+            ""
+          else
+            textilized = RedCloth.new(text).to_html
+          end
+        end	
 	def get_random_companies
 		@five_random_companies = Company.find(:all, :order => 'RAND()', :limit => 5)
 	end

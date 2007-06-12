@@ -16,7 +16,7 @@ ActionController::Routing::Routes.draw do |map|
  map.connect "binaries/footer_logo/:id.:extension", :controller => "binaries", :action => "footer_logo"
  map.connect "binaries/footer_logo/:id/over.:extension", :controller => "binaries", :action => "grey_footer_logo"	
   map.connect "binaries/portfolio_image/:id.:extension", :controller => "binaries", :action => "portfolio_image"	
-  
+    map.connect "binaries/cheatsheet_thumbnail/:id.:extension", :controller => "binaries", :action => "cheatsheet_thumbnail"	
   # Allow downloading Web Service WSDL as a file with an extension
   # instead of a file named 'wsdl'
   #map.connect ':controller/service.wsdl', :action => 'wsdl'

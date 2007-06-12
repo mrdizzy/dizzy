@@ -6,6 +6,12 @@ class BinariesController < ApplicationController
 		send_data(@image, :type => @image_data.content_type, :disposition => 'inline')
 	end
 	
+	def cheatsheet_thumbnail 
+		@image_data = Cheatsheet.find(params[:id])
+		@image = @image_data.thumbnail
+		send_data(@image, :type => @image_data.thumbnail_content_type, :disposition => 'inline')
+	end
+	
 	def portfolio_type 
 		@image_data = PortfolioType.find(params[:id])
 		@image = @image_data.header_binary
@@ -27,5 +33,12 @@ class BinariesController < ApplicationController
 	def get_file
 		@data = Binary.find(params[:id])
 		send_data(@data.binary, :type => @data.content_type, :disposition => 'inline')
+	end
+	
+	def get_cheatsheet_pdf
+		@pdf_data = Cheatsheet.find(params[:id])
+		@pdf = @pdf_data.pdf
+		send_data(@pdf, :type => @pdf_data.content_type, :disposition => 'attachment')
+		Cheatsheet.increment_counter(:counter, params[:id]) 
 	end
 end

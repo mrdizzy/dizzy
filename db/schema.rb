@@ -2,7 +2,7 @@
 # migrations feature of ActiveRecord to incrementally modify your database, and
 # then regenerate this schema definition.
 
-ActiveRecord::Schema.define(:version => 19) do
+ActiveRecord::Schema.define(:version => 30) do
 
   create_table "articles", :force => true do |t|
     t.column "title",     :string
@@ -12,10 +12,15 @@ ActiveRecord::Schema.define(:version => 19) do
     t.column "excerpt",   :text
   end
 
+  add_index "articles", ["author_id"], :name => "fk_articles_authors"
+
   create_table "articles_categories", :id => false, :force => true do |t|
     t.column "category_id", :integer
     t.column "article_id",  :integer
   end
+
+  add_index "articles_categories", ["category_id"], :name => "fk_articles_categories_categories"
+  add_index "articles_categories", ["article_id"], :name => "fk_articles_categories_articles"
 
   create_table "authors", :force => true do |t|
     t.column "username",  :string
@@ -34,6 +39,32 @@ ActiveRecord::Schema.define(:version => 19) do
   create_table "categories", :force => true do |t|
     t.column "name", :string
   end
+
+  create_table "categories_cheatsheets", :id => false, :force => true do |t|
+    t.column "category_id",   :integer
+    t.column "cheatsheet_id", :integer
+  end
+
+  add_index "categories_cheatsheets", ["category_id"], :name => "fk_categories_cheatsheets_categories"
+  add_index "categories_cheatsheets", ["cheatsheet_id"], :name => "fk_categories_cheatsheets_cheatsheets"
+
+  create_table "cheatsheets", :force => true do |t|
+    t.column "thumbnail",              :binary
+    t.column "pdf",                    :binary
+    t.column "title",                  :string
+    t.column "description",            :string
+    t.column "author_id",              :integer
+    t.column "date",                   :datetime
+    t.column "filename",               :string
+    t.column "content_type",           :string
+    t.column "size",                   :integer
+    t.column "thumbnail_size",         :integer
+    t.column "thumbnail_content_type", :string
+    t.column "counter",                :integer
+    t.column "content",                :text
+  end
+
+  add_index "cheatsheets", ["author_id"], :name => "fk_cheatsheets_authors"
 
   create_table "comments", :force => true do |t|
   end

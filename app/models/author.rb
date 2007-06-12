@@ -11,7 +11,8 @@
 #
 
 class Author < ActiveRecord::Base
-	has_many :articles, :dependent => :destroy
+	has_many :articles
+	has_many :cheatsheets
 	
 	validates_presence_of :firstname, :surname, :email, :username
 	validates_uniqueness_of :username, :email

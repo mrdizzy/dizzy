@@ -12,6 +12,43 @@ class ContentAdminController < ApplicationController
     @article_pages, @articles = paginate :articles, :per_page => 10, :order => "'date' desc"
   end
 
+
+## Cheatsheets ##########################################
+
+  def new_cheatsheet 
+  	@cheatsheet = Cheatsheet.new
+  end
+  
+  def update_cheatsheet
+  	 @cheatsheet = Cheatsheet.find(params[:id])
+    if @cheatsheet.update_attributes(params[:cheatsheet])
+      flash[:notice] = 'Cheatsheet was successfully updated.'
+      redirect_to :action => 'edit', :id => @cheatsheet
+    else
+      render :action => 'edit_cheatsheet'
+    end
+  end
+  
+  def create_cheatsheet 
+  	@cheatsheet = Cheatsheet.new(params[:cheatsheet])
+  	 if @cheatsheet.save
+      flash[:notice] = 'Cheatsheet was successfully created.'
+      redirect_to :action => 'list'
+    else
+      render :action => 'new_cheatsheet'
+    end
+  end
+  
+  def edit_cheatsheet
+  	@cheatsheet =  Cheatsheet.find(params[:id])  
+  end
+  
+  def list_cheatsheets
+  	 @cheatsheet_pages, @cheatsheets = paginate :cheatsheets, :per_page => 10, :order => "'date' desc"
+  end
+  
+## Articles ##########################################
+
   def new
     @article = Article.new
   end
@@ -62,6 +99,9 @@ class ContentAdminController < ApplicationController
  	 	end
  	 end
  end
+ 
+ 
+## Categories ##########################################
  
   def categories 
   	@categories = Category.find(:all, :order => :name)
