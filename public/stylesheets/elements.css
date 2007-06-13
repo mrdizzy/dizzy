@@ -211,18 +211,18 @@ tr.even {
 	float:right;
 	text-align:center;	
 }
-.cheatodd {
+.odd {
 	background-color: #D0ECF8;
-}
-#cheatsheet pre code {
-	background-color: transparent; 
 }
 
 #cheatsheet h2 {
 	border-bottom: 1px dashed #999;
 	font-weight:bold;
 	margin-top:1em;
+	text-align:center;
 }
+
+#cheatsheet td { padding:0.5em;}
 
 #cheatsheet h3 {
 	margin-top: 1em;
@@ -299,3 +299,7 @@ tr.even {
 	float:left;
 	margin-right:2em;
 	}
+	
+#cheatsheet table {
+	border-collapse: collapse;
+	padding:10px; }

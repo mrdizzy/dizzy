@@ -1,0 +1,7 @@
+#left_column {display:none; }
+#right_column { width:100%;}
+#navigation { display:none; }
+ #cheatsheet h2 {
+	
+	page-break-before:always;
+}

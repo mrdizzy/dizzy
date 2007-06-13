@@ -4,13 +4,22 @@ module ApplicationHelper
 	BlueCloth::new(text).to_html
 end
 
-  def textilize(text)
-          if text.blank?
-            ""
-          else
-            textilized = RedCloth.new(text).to_html
-          end
-        end	
+def textilize(text)
+	 textilized = RedCloth.new(text)
+            textilized.to_html
+end
+
+def parse_coderay(text)
+	
+	 text.scan(/(<code\:([a-z].+?)>(.+?)<\/code>)/m).each do |match|
+	 	puts match[0]
+      text.gsub!(match[0],"<notextile>" + CodeRay.scan(match[2], match[1].to_sym).div(  :css => :class) + "</notextile>")
+   		end
+   		
+   		return text
+end
+	
+
 	def get_random_companies
 		@five_random_companies = Company.find(:all, :order => 'RAND()', :limit => 5)
 	end
@@ -36,4 +45,5 @@ end
 			diamond
 		end
 	end 
+	
 end
