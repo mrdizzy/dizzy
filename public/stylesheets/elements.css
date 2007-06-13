@@ -222,6 +222,10 @@ tr.even {
 	text-align:center;
 }
 
+#cheatsheet h2:first-child {
+	color:#D0ECF8;
+}
+
 #cheatsheet td { padding:0.5em;}
 
 #cheatsheet h3 {

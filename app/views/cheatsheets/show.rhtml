@@ -1,5 +1,8 @@
  <div id="cheatsheet">
  	<% @title = @cheatsheet.title %>
+ 	
+ <h1><%= asterisk %> <%= @cheatsheet.title %></h1>
+ 	
 <%= textilize(parse_coderay(@cheatsheet.content)) %>
 
 </div>

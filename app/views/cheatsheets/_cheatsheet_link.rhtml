@@ -9,7 +9,7 @@
 		
 		<div class="right"><br/><br/><br/><br/><br/>
 			<%= image_tag("f/small_icons/html.png") %>
-			<%= diamond %> <a href="">HTML</a>
+			<%= diamond %> <%= link_to "HTML", :action=> :show, :id => cheatsheet_link.id %> </a>
 		</div>
 		<p class="center"><%= image_tag("/binaries/cheatsheet_thumbnail/#{cheatsheet_link.id}") %>
 		</td>

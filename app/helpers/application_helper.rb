@@ -12,7 +12,7 @@ end
 def parse_coderay(text)
 	
 	 text.scan(/(<code\:([a-z].+?)>(.+?)<\/code>)/m).each do |match|
-	 	puts match[0]
+	 
       text.gsub!(match[0],"<notextile>" + CodeRay.scan(match[2], match[1].to_sym).div(  :css => :class) + "</notextile>")
    		end
    		

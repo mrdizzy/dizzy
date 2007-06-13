@@ -1,12 +1,20 @@
 /* Lists
 ==================================== */
 ul { 
-  font-size: 1.1em;
   padding-left: 4em;
   list-style-image:url(/images/f/bullets/pixels/diamond.png);
   line-height: 1.4em;
   margin-bottom:1em;
 }
+
+li.alt {
+	background-image:url("/images/f/backgrounds/spiral2.png");
+	background-repeat:no-repeat;
+	background-position: top right;
+}
+
+/* Comments */
+
 .commentlist {
 	border-bottom: 1px dashed #434343;
 }
@@ -17,14 +25,21 @@ ul {
 	margin-bottom: 2em;  
 	border:0;
 }
+
+/* Directory structures */
+
+.directory {
+	font-size:1.1em;
+	}
+.directory ul {
+	list-style-image:url(/images/f/small_icons/folder.png);
+}
+
+/* Categories */
+
 .categories li {
 	line-height: 2em;
 }
 .categories li a:visited {
 	color:#555;
-}
-li.alt {
-	background-image:url("/images/f/backgrounds/spiral2.png");
-	background-repeat:no-repeat;
-	background-position: top right;
 }
