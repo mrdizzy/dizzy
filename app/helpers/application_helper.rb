@@ -3,7 +3,7 @@ module ApplicationHelper
 	def markdown(text)
 	BlueCloth::new(text).to_html
 end
-
+require 'coderay'
 def textilize(text)
 	 textilized = RedCloth.new(text)
             textilized.to_html

@@ -12,6 +12,7 @@ set :password, "ruhegochelupraju"
 set :deploy_to, "/home/dizzynew/rails_apps/#{application}"
 set :deploy_via, :export
 
+set :rails_env, "development"
 # If you aren't using Subversion to manage your source code, specify
 # your SCM below:
 # set :scm, :subversion
