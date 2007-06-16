@@ -12,12 +12,17 @@ class ContentAdminController < ApplicationController
     @article_pages, @articles = paginate :articles, :per_page => 10, :order => "'date' desc"
   end
 
-
 ## Cheatsheets ##########################################
 
   def new_cheatsheet 
   	@cheatsheet = Cheatsheet.new
   end
+  
+  def destroy_cheatsheet 
+  
+  Cheatsheet.delete(params[:id])
+
+  end  	
   
   def update_cheatsheet
   	 @cheatsheet = Cheatsheet.find(params[:id])

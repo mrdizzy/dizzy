@@ -207,11 +207,17 @@ tr.even {
 }
 /* Cheatsheets 
 ========================*/
+
+/* Index */
 #cheatsheet_image {
 	float:right;
 	text-align:center;	
 }
-.odd {
+#cheatsheet td { padding:0.5em;}
+
+/* Page */
+
+#cheatsheet .odd {
 	background-color: #D0ECF8;
 }
 
@@ -221,12 +227,6 @@ tr.even {
 	margin-top:1em;
 	text-align:center;
 }
-
-#cheatsheet h2:first-child {
-	color:#D0ECF8;
-}
-
-#cheatsheet td { padding:0.5em;}
 
 #cheatsheet h3 {
 	margin-top: 1em;

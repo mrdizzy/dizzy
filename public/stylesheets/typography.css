@@ -1,11 +1,8 @@
 /* Typography
 ==================================== */
-b, strong, em {
-font-weight: bold;
-}
-.date { 
-color: #BBBDBF;
-}
+b, strong, em { font-weight: bold; }
+
+.date { color: #BBBDBF; }
 
 /* approx 21px*/
 h1 {
@@ -31,6 +28,7 @@ h3 {
 h4 {
         font-size: 1.2em;
 }
+
 /* approx 11px*/
 p {
 	font-size: 1.1em;
@@ -38,6 +36,7 @@ p {
 	padding: 0;
 	margin-bottom: 1em;
 }
+
 .blue_bold {
   margin-top: 1em;
   color: #29A4BD;
@@ -54,18 +53,15 @@ a:visited {
 }
 a:hover {
   background-color: #D1ECF9;
-
 }
 li a {
   color: #000;
   font-weight:bold;
 }
-
 li a:visited {
   color: #000;
   font-weight:bold;
 }
-
 li a:hover { 
   color:#000
 }
@@ -74,21 +70,19 @@ li a:hover {
 ==================================== */
 pre {
 	 white-space: pre-wrap;       /* css-3 */
- white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
- white-space: -pre-wrap;      /* Opera 4-6 */
- white-space: -o-pre-wrap;    /* Opera 7 */
- word-wrap: break-word;       /* Internet Explorer 5.5+ */
- }
+	 white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+	 white-space: -pre-wrap;      /* Opera 4-6 */
+	 white-space: -o-pre-wrap;    /* Opera 7 */
+	 word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
  
 code { 
 	font-size:1.6em; background-color:transparent;
 	color: #29A4BD; 
 }
-
 pre code {
 	color: #434343;
-	}
-
+}
 
 .CodeRay {
   font-family: 'Courier New', 'Terminal', monospace;

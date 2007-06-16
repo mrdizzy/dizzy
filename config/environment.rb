@@ -4,9 +4,9 @@
 # (Use only when you can't set environment variables through your web/app server)
 # ENV['RAILS_ENV'] = 'production'
 RAILS_GEM_VERSION = '1.2.3' unless defined? RAILS_GEM_VERSION
+
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
-
 
 Rails::Initializer.run do |config|
   # Skip frameworks you're not going to use
@@ -21,12 +21,12 @@ Rails::Initializer.run do |config|
 
   config.action_mailer.delivery_method = :smtp 
   config.action_mailer.smtp_settings = {
-:address => "www21.a2hosting.com" ,
-:domain => "dizzy.co.uk" ,
-:authentication => :login,
-:user_name => "dizzynew" ,
-:password => "ruhegochelupraju"
-}
+	:address => "www21.a2hosting.com" ,
+	:domain => "dizzy.co.uk" ,
+	:authentication => :login,
+	:user_name => "dizzynew" ,
+	:password => "ruhegochelupraju"
+  }
   # Use the database for sessions instead of the file system
   # (create the session table with 'rake create_sessions_table')
   # config.action_controller.session_store = :active_record_store

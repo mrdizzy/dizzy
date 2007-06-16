@@ -1,11 +1,3 @@
-# == Schema Information
-# Schema version: 19
-#
-# Table name: comments
-#
-#  id :integer(11)   not null, primary key
-#
-
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 one:
   id: 1
