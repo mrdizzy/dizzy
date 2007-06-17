@@ -52,7 +52,7 @@ module CheatsheetsHelper
 						results << "<td>"
 						counter = counter_stack.last - 1
 						counter_stack.pop
-						counter_stack.push (row_stack.last - 1)
+						counter_stack.push(row_stack.last - 1)
 					else
 						counter = counter_stack.last - 1
 						counter_stack.pop

@@ -7,6 +7,6 @@ class ContentController < ApplicationController
 	end
 	
 	def articles_for_category 
-		@category = Category.find(params[:id])
+		@category = Category.find_by_permalink(params[:permalink])
 	end
 end

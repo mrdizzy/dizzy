@@ -11,7 +11,7 @@
 			<%= image_tag("f/small_icons/html.png") %>
 			<%= diamond %> <a href="">HTML</a>
 		</div>
-		<p class="center"><%= image_tag("/binaries/cheatsheet_thumbnail/#{cheatsheet_link.id}.png") %>
+		<p class="center"><%= image_tag("/cheatsheets/thumbnails/#{cheatsheet_link.permalink}.png") %>
 		</td>
 	<td><span class="date"><%= cheatsheet_link.date.to_s(:long) %></span><p>
 		<% cheatsheet_link.categories.each do |category| %>

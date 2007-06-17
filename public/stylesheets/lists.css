@@ -26,6 +26,14 @@ li.alt {
 	border:0;
 }
 
+/* Errors list 
+================ */
+#errorExplanation ul li {
+	font-size:1.1em;
+	color: #29A4BD; 
+	font-weight:bold;
+}
+
 /* Directory structure lists
 ==================================== */
 ul.directory  {

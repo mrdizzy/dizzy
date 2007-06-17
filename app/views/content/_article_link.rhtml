@@ -1,0 +1,10 @@
+<tr class="<%= cycle('odd', 'even') %>" >
+	<td class="content"><h3 class="blue_bold"><%= asterisk %> <%= article_link.title %></h3>
+		<p><%= article_link.excerpt %></p></td>
+	<td><span class="date"><%= article_link.date.to_s(:long) %></span><br/>
+		<% article_link.categories.each do |category| %>
+		Posted in: <%= link_to category.name, { :action => "articles_for_category", :id => category.id } %>
+		<% end %>
+		</td>
+	<td><b><%= article_link.author.username%></b></td>
+</tr>

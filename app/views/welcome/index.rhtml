@@ -1,7 +1,7 @@
 <!-- LEFT COLUMN -->
 <div id="right_column">
 	<!-- Main article -->
-	<h1><%= asterisk %> <%= link_to @main_article.title, { :controller => :content, :action => :show, :id => @main_article.id } %></h1>
+	<h1><%= asterisk %> <%= link_to @main_article.title, { :controller => :content, :action => :show, :permalink => @main_article.permalink } %></h1>
 	<p><span class="date"><%= @main_article.date.to_s(:long) %> </span><%= diamond %> <b>by <%= @main_article.author.username %></b></p>
 	<h2><%= @main_article.excerpt %></h2>
 	<%=spiro%>

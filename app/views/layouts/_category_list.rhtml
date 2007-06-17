@@ -5,7 +5,7 @@
 	<h2 class="blue_bold"><%= asterisk %> Categories</h2>
 			<ul class="categories">
 			<% @categories.each do |category| %>
-			<li><%= link_to category.name, { :controller => "content", :action => "articles_for_category", :id => category.id }, :method => :get %></li>
+			<li><%= link_to category.name, { :controller => "content", :action => "articles_for_category", :permalink => category.permalink } %></li>
 			<% end %>
 			</ul>
 </div>

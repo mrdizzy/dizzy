@@ -17,6 +17,6 @@ class Article < ActiveRecord::Base
 	has_and_belongs_to_many :categories
 	belongs_to :author
 	
-	validates_presence_of :content, :title, :date, :author_id, :exerpt, :permalink
+	validates_presence_of :content, :title, :date, :author_id, :excerpt, :permalink
 	validates_uniqueness_of :title, :permalink
 end

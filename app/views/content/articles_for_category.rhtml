@@ -1,5 +1,5 @@
 <% @title = @category.name %>
 <h1><%= bigarrow %> <%= @category.name %></h1>
   <table class="articles">
- <%= render :partial => "/content_admin/article_link", :collection => @category.articles %>
+ <%= render :partial => "article_link", :collection => @category.articles %>
  </table>
