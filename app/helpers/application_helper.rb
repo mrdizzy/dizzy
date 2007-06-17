@@ -9,7 +9,10 @@ module ApplicationHelper
 	end
 	
 	def parse_coderay(text)	
-	 	
+	 	text.gsub!(/&lt;/, '<')
+	 	text.gsub!(/&gt;/, '>')
+	 	text.gsub!(/&amp;/, '&')
+	 	text.gsub!(/&quot;/, '"')
 	      CodeRay.scan(text, :ruby).div(  :css => :class)
 	  
 	   	

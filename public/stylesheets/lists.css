@@ -28,10 +28,7 @@ li.alt {
 
 /* Directory structures */
 
-.directory {
-	font-size:1.1em;
-	}
-.directory ul {
+ul.directory  {
 	list-style-image:url(/images/f/small_icons/folder.png);
 }
 
