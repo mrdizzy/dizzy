@@ -13,9 +13,7 @@ module ApplicationHelper
 	 	text.gsub!(/&gt;/, '>')
 	 	text.gsub!(/&amp;/, '&')
 	 	text.gsub!(/&quot;/, '"')
-	      CodeRay.scan(text, :ruby).div(  :css => :class)
-	  
-	   	
+	   	CodeRay.scan(text, :ruby).div(  :css => :class)	   	
 	end
 	
 	def get_random_companies
@@ -48,6 +46,5 @@ module ApplicationHelper
 		if input 
 			diamond
 		end
-	end 
-	
+	end 	
 end

@@ -73,24 +73,37 @@ pre {
 	 white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
 	 white-space: -pre-wrap;      /* Opera 4-6 */
 	 white-space: -o-pre-wrap;    /* Opera 7 */
-	 word-wrap: break-word;       /* Internet Explorer 5.5+ */
+	      /* Internet Explorer 5.5+ */
+	 
 }
- 
+ .CodeRay
+ { inherit:none;
+ 	}
 code { 
-	font-size:1.6em; background-color:transparent;
+	background-color:transparent;
 	color: #29A4BD; 
+	font-family:"Courier New","Courier", monospace;
+	font-size:1.4em;
 }
-pre code {
+h3 code { font-size:1em;}
+pre {
+	font-family:"Courier New","Courier",monospace;
+font-size:1.4em;
+	
+	} 
+/*pre code {	
 	color: #434343;
-}
+	
+}*/
 
 .CodeRay {
-  font-family: 'Courier New', 'Terminal', monospace;
+  font-family: 'Courier', monospace;
+ 
 }
 
 .CodeRay .no { padding: 0px 4px }
 .CodeRay .code { width: 100% }
-.CodeRay .code pre { font-size:1.8em; background-color:transparent; }
+.CodeRay .code pre { background-color:transparent;  }
 
 .CodeRay .bi { color:#509; font-weight:bold }
 .CodeRay .c  { color:#888 }
