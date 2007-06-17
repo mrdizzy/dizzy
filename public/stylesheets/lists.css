@@ -36,6 +36,7 @@ ul.directory  {
 
 .categories li {
 	line-height: 2em;
+	font-size:1.1em;
 }
 .categories li a:visited {
 	color:#555;

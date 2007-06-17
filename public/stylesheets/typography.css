@@ -72,16 +72,19 @@ li a:hover {
 p code, td code {
 	color: #29A4BD; 
 }
-h3 code { font-size:1em;}
+h3 code { font-size:1em; }
+
 pre, code {
-	background-color:transparent;	
+	 white-space: pre-wrap;       /* css-3 */
+	 white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+	 white-space: -pre-wrap;      /* Opera 4-6 */
+	 white-space: -o-pre-wrap;    /* Opera 7 */
 	font-family:"Courier New","Courier", monospace;
 	font-size:1.4em;
 } 
 
 .CodeRay .no { padding: 0px 4px }
 .CodeRay .code { width: 100% }
-.CodeRay .code pre { background-color:transparent;  }
 
 .CodeRay .bi { color:#509; font-weight:bold }
 .CodeRay .c  { color:#888 }
@@ -114,7 +117,7 @@ pre, code {
 .CodeRay .pt {  font-weight:bold }
 .CodeRay .r  {  font-weight:bold }
 
-.CodeRay .rx { background-color:#ffffff }
+.CodeRay .rx {  }
 .CodeRay .rx .fu  {  font-weight: bold }
 
 .CodeRay .s  { font-style:italic; }
