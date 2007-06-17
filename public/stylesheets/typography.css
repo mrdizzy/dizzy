@@ -68,38 +68,16 @@ li a:hover {
 
 /* Syntax highlighting 
 ==================================== */
-pre {
-	 white-space: pre-wrap;       /* css-3 */
-	 white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
-	 white-space: -pre-wrap;      /* Opera 4-6 */
-	 white-space: -o-pre-wrap;    /* Opera 7 */
-	      /* Internet Explorer 5.5+ */
-	 
-}
- .CodeRay
- { inherit:none;
- 	}
-code { 
-	background-color:transparent;
+
+p code, td code {
 	color: #29A4BD; 
-	font-family:"Courier New","Courier", monospace;
-	font-size:1.4em;
 }
 h3 code { font-size:1em;}
-pre {
-	font-family:"Courier New","Courier",monospace;
-font-size:1.4em;
-	
-	} 
-/*pre code {	
-	color: #434343;
-	
-}*/
-
-.CodeRay {
-  font-family: 'Courier', monospace;
- 
-}
+pre, code {
+	background-color:transparent;	
+	font-family:"Courier New","Courier", monospace;
+	font-size:1.4em;
+} 
 
 .CodeRay .no { padding: 0px 4px }
 .CodeRay .code { width: 100% }
