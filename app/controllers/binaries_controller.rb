@@ -1,4 +1,5 @@
 class BinariesController < ApplicationController
+	caches_page :cheatsheet_thumbnail, :portfolio_image,:portfolio_type, :footer_logo, :grey_footer_logo, :get_file, :get_cheatsheet_pdf
 	
 	def portfolio_image 
 		@image_data = PortfolioItem.find(params[:id])
@@ -7,7 +8,7 @@ class BinariesController < ApplicationController
 	end
 	
 	def cheatsheet_thumbnail 
-		@image_data = Cheatsheet.find(params[:id])
+		@image_data = Cheatsheet.find_by_permalink(params[:permalink])
 		@image = @image_data.thumbnail
 		send_data(@image, :type => @image_data.thumbnail_content_type, :disposition => 'inline')
 	end
@@ -36,9 +37,9 @@ class BinariesController < ApplicationController
 	end
 	
 	def get_cheatsheet_pdf
-		@pdf_data = Cheatsheet.find(params[:id])
+		@pdf_data = Cheatsheet.find_by_permalink(params[:permalink])
 		@pdf = @pdf_data.pdf
 		send_data(@pdf, :type => @pdf_data.content_type, :disposition => 'attachment')
-		Cheatsheet.increment_counter(:counter, params[:id]) 
+		
 	end
 end

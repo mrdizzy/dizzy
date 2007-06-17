@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 19
+# Schema version: 34
 #
 # Table name: articles
 #
@@ -9,6 +9,7 @@
 #  date      :datetime      
 #  author_id :integer(11)   
 #  excerpt   :text          
+#  permalink :string(255)   
 #
 
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html

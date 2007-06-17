@@ -11,12 +11,16 @@ ActionController::Routing::Routes.draw do |map|
 
   # You can have the root of your site routed by hooking up '' 
   # -- just remember to delete public/index.html.
-	map.connect '', :controller => "welcome"
+	map.connect '/', :controller => "welcome"
+	map.connect "articles/:permalink", :controller => "content", :action => "show"
+
   # Handle binaries from database
-	map.connect "binaries/footer_logo/:id.:extension", :controller => "binaries", :action => "footer_logo"
+    	map.connect "binaries/footer_logo/:id.:extension", :controller => "binaries", :action => "footer_logo"
 	map.connect "binaries/footer_logo/:id/over.:extension", :controller => "binaries", :action => "grey_footer_logo"	
-	map.connect "binaries/portfolio_image/:id.:extension", :controller => "binaries", :action => "portfolio_image"	
-    map.connect "binaries/cheatsheet_thumbnail/:id.:extension", :controller => "binaries", :action => "cheatsheet_thumbnail"	
+	map.connect "cheatsheets/thumbnails/:permalink.:extension", :controller => "binaries", :action => "cheatsheet_thumbnail"
+	map.connect "cheatsheets/:permalink.:extension", :controller => "binaries", :action => "get_cheatsheet_pdf"	
+	map.connect "cheatsheets/:permalink", :controller => "cheatsheets", :action => "show"
+	
   # Allow downloading Web Service WSDL as a file with an extension
   # instead of a file named 'wsdl'
   #map.connect ':controller/service.wsdl', :action => 'wsdl'

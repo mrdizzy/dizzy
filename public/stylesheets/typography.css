@@ -49,21 +49,10 @@ a:link {
   color: #29A4BD; 
 }
 a:visited {
-  color: #29A4BD; 
+  color:#555;
 }
 a:hover {
   background-color: #D1ECF9;
-}
-li a {
-  color: #000;
-  font-weight:bold;
-}
-li a:visited {
-  color: #000;
-  font-weight:bold;
-}
-li a:hover { 
-  color:#000
 }
 
 /* Syntax highlighting 

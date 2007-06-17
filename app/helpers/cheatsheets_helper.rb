@@ -9,6 +9,7 @@ module CheatsheetsHelper
 		counter_stack = []
 		counter = 0
 		row_cycle = 0
+		break_counter = 0
 		
 		while parser.has_next?
 			pull_event = parser.pull
@@ -26,8 +27,16 @@ module CheatsheetsHelper
 		      	tag_stack.push "td" if pull_event[0] == "Cell"
 		      	tag_stack.push "table" if pull_event[0] == "Table"
 		       	tag_stack.push "p" if pull_event[0] == "p"
-
-				if pull_event[0] == "Cell"
+				if pull_event[0] == "subhead"
+					
+					if break_counter > 1
+						results << "<h2 class=\"break\">"
+					else
+						results << "<h2>"
+					end
+				break_counter = break_counter + 1
+				
+				elsif pull_event[0] == "Cell"
 					if counter_stack.last == row_stack.last						
 						results << "<td>"
 						counter = counter_stack.last - 1

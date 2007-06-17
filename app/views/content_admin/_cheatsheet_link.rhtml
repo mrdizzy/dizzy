@@ -4,14 +4,14 @@
 <div class="left"><br/><br/><br/><br/><br/>
 			<%= image_tag("f/small_icons/pdf.png") %>
 			
-			<%= diamond %> <%= link_to "PDF", :controller => :binaries, :action => :get_cheatsheet_pdf, :id => cheatsheet_link.id %>
+			<%= diamond %> <%= link_to "PDF", :controller => :binaries, :action => :get_cheatsheet_pdf, :id => cheatsheet_link.id, :extension => "pdf" %>
 		</div>
 		
 		<div class="right"><br/><br/><br/><br/><br/>
 			<%= image_tag("f/small_icons/html.png") %>
 			<%= diamond %> <a href="">HTML</a>
 		</div>
-		<p class="center"><%= image_tag("/binaries/cheatsheet_thumbnail/#{cheatsheet_link.id}") %>
+		<p class="center"><%= image_tag("/binaries/cheatsheet_thumbnail/#{cheatsheet_link.id}.png") %>
 		</td>
 	<td><span class="date"><%= cheatsheet_link.date.to_s(:long) %></span><p>
 		<% cheatsheet_link.categories.each do |category| %>

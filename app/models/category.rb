@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 19
+# Schema version: 34
 #
 # Table name: categories
 #
@@ -9,7 +9,8 @@
 
 class Category < ActiveRecord::Base
 	has_and_belongs_to_many :articles
-	validates_uniqueness_of :name
 	has_and_belongs_to_many :cheatsheets
+	
+	validates_uniqueness_of :name
 	validates_presence_of :name
 end

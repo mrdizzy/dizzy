@@ -3,7 +3,7 @@
 ul { 
   padding-left: 4em;
   list-style-image:url(/images/f/bullets/pixels/diamond.png);
-  line-height: 1.4em;
+  line-height: 1.6em;
   margin-bottom:1em;
 }
 
@@ -13,8 +13,8 @@ li.alt {
 	background-position: top right;
 }
 
-/* Comments */
-
+/* Comments List
+==================================== */
 .commentlist {
 	border-bottom: 1px dashed #434343;
 }
@@ -26,18 +26,19 @@ li.alt {
 	border:0;
 }
 
-/* Directory structures */
-
+/* Directory structure lists
+==================================== */
 ul.directory  {
 	list-style-image:url(/images/f/small_icons/folder.png);
-}
-
-/* Categories */
-
-.categories li {
-	line-height: 2em;
 	font-size:1.1em;
 }
-.categories li a:visited {
-	color:#555;
+ul.directory ul, ul.directory ul ul, ul.directory ul ul ul  {
+	font-size:1em; }
+
+/* Categories list
+==================================== */
+ul.categories, #admin_links ul {
+	font-weight:bold;
+	line-height: 2em;
+	font-size:1.1em;
 }
