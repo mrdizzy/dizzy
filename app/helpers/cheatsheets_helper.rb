@@ -24,7 +24,7 @@ module CheatsheetsHelper
 		       tag_stack.push "ul" if pull_event[0] == "ul"
 		        tag_stack.push "li" if pull_event[0] == "li"
 		      tag_stack.push "td" if pull_event[0] == "Cell"
-		      puts pull_event[0]
+		     
 		      tag_stack.push "table" if pull_event[0] == "Table"
 		       tag_stack.push "p" if pull_event[0] == "p"
 
