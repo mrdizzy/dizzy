@@ -15,7 +15,7 @@
 		</td>
 	<td><span class="date"><%= cheatsheet_link.date.to_s(:long) %></span><p>
 		<% cheatsheet_link.categories.each do |category| %>
-		<span class="blue_bold">Posted in</span> <%= diamond %> <%= link_to category.name, { :action => "articles_for_category", :id => category.id } %>
+		<span class="blue_bold">Posted in</span> <%= diamond %> <%= link_to category.name, { :controller => "content", :action => "articles_for_category", :permalink => category.permalink } %>
 		<% end %></p>
 		
 		<p><%= cheatsheet_link.description %> </p>

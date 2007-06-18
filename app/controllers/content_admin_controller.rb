@@ -22,8 +22,11 @@ class ContentAdminController < ApplicationController
   end
   
   def destroy_cheatsheet 
-  
-  Cheatsheet.delete(params[:id])
+  @cheatsheet = Cheatsheet.find(params[:id])
+ # Cheatsheet.transaction do
+	#  @cheatsheet.categories.delete_all
+	  @cheatsheet.destroy
+ # end
 
   end  	
   
@@ -41,7 +44,7 @@ class ContentAdminController < ApplicationController
   	@cheatsheet = Cheatsheet.new(params[:cheatsheet])
   	 if @cheatsheet.save
       flash[:notice] = 'Cheatsheet was successfully created.'
-      redirect_to :action => 'list'
+      redirect_to :action => 'list_cheatsheets'
     else
       render :action => 'new_cheatsheet'
     end
@@ -87,29 +90,38 @@ class ContentAdminController < ApplicationController
   end
 
   def destroy
-    Article.find(params[:id]).destroy
-    redirect_to :action => 'list'
+    @article = Article.find(params[:id])
+    	#Article.transaction do
+		 # @cheatsheet.categories.delete_all
+		  @article.destroy
+	#  end
   end
   
+ 
 ## Categories ##########################################
-  	
+   	
 	def articles_for_category 
 		@category = Category.find(params[:id])
 	end
 	
  def delete_categories  
  	 @categories = Category.find(params[:categories])
- 	 	 Category.delete(params[:categories])
- 	 render :update do |page|
- 	 	@categories.each do |category| 	 		
- 	 		@category = category
- 	 		page.replace_html category.id.to_s, :partial => "deleted_category"
- 	 	end
+ 	 	 if Category.delete(params[:categories])
+		 	 render :update do |page|
+		 	 	@categories.each do |category| 	 		
+		 	 		@category = category
+		 	 		page.replace_html category.id.to_s, :partial => "deleted_category"
+		 	 	end
+	 	 	end
+	 	else
+			render :update do |page|
+		 	 	@categories.each do |category| 	 		
+		 	 		@category = category
+		 	 		page.replace_html category.id.to_s, :partial => "delete_category_error"
+	 	 	end
+		end
  	 end
  end
- 
- 
-## Categories ##########################################
  
   def categories 
   	@categories = Category.find(:all, :order => :name)

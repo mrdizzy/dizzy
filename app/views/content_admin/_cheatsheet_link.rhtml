@@ -20,7 +20,7 @@
 		
 		<p><%= cheatsheet_link.description %> </p>
 	<p class="center">
-		<%= link_to "edit", :controller => :content_admin, :action => :edit_cheatsheet, :id => cheatsheet_link.id %> <%= diamond %> <%= link_to_remote "delete", :controller => :content_admin, :action => :delete_cheatsheet, :id => cheatsheet_link.id %></p>
+		<%= link_to "edit", :controller => :content_admin, :action => :edit_cheatsheet, :id => cheatsheet_link.id %> <%= diamond %> <%= link_to "delete", :controller => :content_admin, :action => :destroy_cheatsheet, :id => cheatsheet_link.id %></p>
 		</td>
 	<td>by<br/><b><%= cheatsheet_link.author.username%></b></td>
 </tr>
