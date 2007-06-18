@@ -1,0 +1,640 @@
+<%
+def fixture_data(name)
+  render_binary("#{RAILS_ROOT}/db/migrate/data/images/#{name}")
+end
+
+def render_binary(filename)
+  data = File.open(filename,'rb').read
+  "!binary | #{[data].pack('m').gsub(/\n/,"\n    ")}\n"
+end
+%>
+
+heavenlylogo:
+  id: 1
+  portfolio_type_id: 4
+  data: <%= fixture_data("logos/heavenly.png") %>
+  size: 123
+  filename: heavenlylogo.png
+  content_type: image/png
+  company_id: 1
+
+smartlogo:
+  id: 2
+  portfolio_type_id: 4
+  data: <%= fixture_data("logos/smart.png") %>
+  size: 123
+  filename: smartlogo.png
+  content_type: image/png
+  company_id: 2
+  
+pinklogo:
+  id: 3
+  portfolio_type_id: 4
+  data: <%= fixture_data("logos/pink.png") %>
+  size: 123
+  filename: pinklogo.png
+  content_type: image/png
+  company_id: 3
+  
+hilarylogo:
+  id: 4
+  portfolio_type_id: 4
+  data: <%= fixture_data("logos/hilary.png") %>
+  size: 123
+  filename: hilarylogo.png
+  content_type: image/png
+  company_id: 4
+
+hurricanelogo:
+  id: 5
+  portfolio_type_id: 4
+  data: <%= fixture_data("logos/hurricane.png") %>
+  size: 123
+  filename: hurricanelogo.png
+  content_type: image/png
+  company_id: 5
+
+silverlogo:
+  id: 6
+  portfolio_type_id: 4
+  data: <%= fixture_data("logos/silver.png") %>
+  size: 123
+  filename: silverlogo.png
+  content_type: image/png
+  company_id: 6
+  
+roselogo:
+  id: 7
+  portfolio_type_id: 4
+  data: <%= fixture_data("logos/rose.png") %>
+  size: 123
+  filename: roselogo.png
+  content_type: image/png
+  company_id: 7
+  
+casualbaylogo:
+  id: 8
+  portfolio_type_id: 4
+  data: <%= fixture_data("logos/casualbay.png") %>
+  size: 123
+  filename: casualbaylogo.png
+  content_type: image/png
+  company_id: 8
+  
+chickenlogo:
+  id: 9
+  portfolio_type_id: 4
+  data: <%= fixture_data("logos/chicken.png") %>
+  size: 123
+  filename: chickenlogo.png
+  content_type: image/png
+  company_id: 9
+  
+towergatelogo:
+  id: 10
+  portfolio_type_id: 4
+  data: <%= fixture_data("logos/towergate.png") %>
+  size: 123
+  filename: towergatelogo.png
+  content_type: image/png
+  company_id: 10
+  
+walktowalklogo:
+  id: 11
+  portfolio_type_id: 4
+  data: <%= fixture_data("logos/walktowalk.png") %>
+  size: 123
+  filename: walktowalklogo.png
+  content_type: image/png
+  company_id: 11
+
+heavenlyheader:
+  id: 12
+  portfolio_type_id: 7
+  data: <%= fixture_data("headers/heavenly.png") %>
+  size: 123
+  filename: heavenlyheader.png
+  content_type: image/png
+  company_id: 1
+
+smartheader:
+  id: 13
+  portfolio_type_id: 7
+  data: <%= fixture_data("headers/smart.png") %>
+  size: 123
+  filename: smartheader.png
+  content_type: image/png
+  company_id: 2
+  
+pinkheader:
+  id: 14
+  portfolio_type_id: 7
+  data: <%= fixture_data("headers/pink.png") %>
+  size: 123
+  filename: pinkheader.png
+  content_type: image/png
+  company_id: 3
+  
+hilaryheader:
+  id: 15
+  portfolio_type_id: 7
+  data: <%= fixture_data("headers/hilary.png") %>
+  size: 123
+  filename: hilaryheader.png
+  content_type: image/png
+  company_id: 4
+
+hurricaneheader:
+  id: 16
+  portfolio_type_id: 7
+  data: <%= fixture_data("headers/hurricane.png") %>
+  size: 123
+  filename: hurricaneheader.png
+  content_type: image/png
+  company_id: 5
+
+silverheader:
+  id: 17
+  portfolio_type_id: 7
+  data: <%= fixture_data("headers/silver.png") %>
+  size: 123
+  filename: silverheader.png
+  content_type: image/png
+  company_id: 6
+  
+roseheader:
+  id: 18
+  portfolio_type_id: 7
+  data: <%= fixture_data("headers/rose.png") %>
+  size: 123
+  filename: roseheader.png
+  content_type: image/png
+  company_id: 7
+  
+casualbayheader:
+  id: 19
+  portfolio_type_id: 7
+  data: <%= fixture_data("headers/casualbay.png") %>
+  size: 123
+  filename: casualbayheader.png
+  content_type: image/png
+  company_id: 8
+  
+chickenheader:
+  id: 20
+  portfolio_type_id: 7
+  data: <%= fixture_data("headers/chicken.png") %>
+  size: 123
+  filename: chickenheader.png
+  content_type: image/png
+  company_id: 9
+  
+towergateheader:
+  id: 21
+  portfolio_type_id: 7
+  data: <%= fixture_data("headers/towergate.png") %>
+  size: 123
+  filename: towergateheader.png
+  content_type: image/png
+  company_id: 10
+  
+walktowalkheader:
+  id: 22
+  portfolio_type_id: 7
+  data: <%= fixture_data("headers/walktowalk.png") %>
+  size: 123
+  filename: walktowalkheader.png
+  content_type: image/png
+  company_id: 11
+  
+heavenlycard:
+  id: 23
+  portfolio_type_id: 1
+  data: <%= fixture_data("cards/heavenly.png") %>
+  size: 123
+  filename: heavenlycard.png
+  content_type: image/png
+  company_id: 1
+
+smartcard:
+  id: 24
+  portfolio_type_id: 1
+  data: <%= fixture_data("cards/smart.png") %>
+  size: 123
+  filename: smartcard.png
+  content_type: image/png
+  company_id: 2
+  
+pinkcard:
+  id: 25
+  portfolio_type_id: 1
+  data: <%= fixture_data("cards/pink.png") %>
+  size: 123
+  filename: pinkcard.png
+  content_type: image/png
+  company_id: 3
+  
+hilarycard:
+  id: 26
+  portfolio_type_id: 1
+  data: <%= fixture_data("cards/hilary.png") %>
+  size: 123
+  filename: hilarycard.png
+  content_type: image/png
+  company_id: 4
+
+hurricanecard:
+  id: 27
+  portfolio_type_id: 1
+  data: <%= fixture_data("cards/hurricane.png") %>
+  size: 123
+  filename: hurricanecard.png
+  content_type: image/png
+  company_id: 5
+
+silvercard:
+  id: 28
+  portfolio_type_id: 1
+  data: <%= fixture_data("cards/silver.png") %>
+  size: 123
+  filename: silvercard.png
+  content_type: image/png
+  company_id: 6
+  
+rosecard:
+  id: 29
+  portfolio_type_id: 1
+  data: <%= fixture_data("cards/rose.png") %>
+  size: 123
+  filename: rosecard.png
+  content_type: image/png
+  company_id: 7
+  
+casualbaycard:
+  id: 30
+  portfolio_type_id: 1
+  data: <%= fixture_data("cards/casualbay.png") %>
+  size: 123
+  filename: casualbaycard.png
+  content_type: image/png
+  company_id: 8
+  
+chickencard:
+  id: 31
+  portfolio_type_id: 1
+  data: <%= fixture_data("cards/chicken.png") %>
+  size: 123
+  filename: chickencard.png
+  content_type: image/png
+  company_id: 9
+  
+towergatecard:
+  id: 32
+  portfolio_type_id: 1
+  data: <%= fixture_data("cards/towergate.png") %>
+  size: 123
+  filename: towergatecard.png
+  content_type: image/png
+  company_id: 10
+  
+walktowalkcard:
+  id: 33
+  portfolio_type_id: 1
+  data: <%= fixture_data("cards/walktowalk.png") %>
+  size: 123
+  filename: walktowalkcard.png
+  content_type: image/png
+  company_id: 11
+  
+heavenlyletterhead:
+  id: 34
+  portfolio_type_id: 3
+  data: <%= fixture_data("letterheads/heavenly.png") %>
+  size: 123
+  filename: heavenlyletterhead.png
+  content_type: image/png
+  company_id: 1
+
+smartletterhead:
+  id: 35
+  portfolio_type_id: 3
+  data: <%= fixture_data("letterheads/smart.png") %>
+  size: 123
+  filename: smartletterhead.png
+  content_type: image/png
+  company_id: 2
+  
+pinkletterhead:
+  id: 36
+  portfolio_type_id: 3
+  data: <%= fixture_data("letterheads/pink.png") %>
+  size: 123
+  filename: pinkletterhead.png
+  content_type: image/png
+  company_id: 3
+  
+hilaryletterhead:
+  id: 37
+  portfolio_type_id: 3
+  data: <%= fixture_data("letterheads/hilary.png") %>
+  size: 123
+  filename: hilaryletterhead.png
+  content_type: image/png
+  company_id: 4
+
+hurricaneletterhead:
+  id: 38
+  portfolio_type_id: 3
+  data: <%= fixture_data("letterheads/hurricane.png") %>
+  size: 123
+  filename: hurricaneletterhead.png
+  content_type: image/png
+  company_id: 5
+
+silverletterhead:
+  id: 39
+  portfolio_type_id: 3
+  data: <%= fixture_data("letterheads/silver.png") %>
+  size: 123
+  filename: silverletterhead.png
+  content_type: image/png
+  company_id: 6
+  
+roseletterhead:
+  id: 40
+  portfolio_type_id: 3
+  data: <%= fixture_data("letterheads/rose.png") %>
+  size: 123
+  filename: roseletterhead.png
+  content_type: image/png
+  company_id: 7
+  
+casualbayletterhead:
+  id: 41
+  portfolio_type_id: 3
+  data: <%= fixture_data("letterheads/casualbay.png") %>
+  size: 123
+  filename: casualbayletterhead.png
+  content_type: image/png
+  company_id: 8
+  
+chickenletterhead:
+  id: 42
+  portfolio_type_id: 3
+  data: <%= fixture_data("letterheads/chicken.png") %>
+  size: 123
+  filename: chickenletterhead.png
+  content_type: image/png
+  company_id: 9
+  
+towergateletterhead:
+  id: 43
+  portfolio_type_id: 3
+  data: <%= fixture_data("letterheads/towergate.png") %>
+  size: 123
+  filename: towergateletterhead.png
+  content_type: image/png
+  company_id: 10
+  
+walktowalkletterhead:
+  id: 44
+  portfolio_type_id: 3
+  data: <%= fixture_data("letterheads/walktowalk.png") %>
+  size: 123
+  filename: walktowalkletterhead.png
+  content_type: image/png
+  company_id: 11
+
+heavenlyslip:
+  id: 45
+  portfolio_type_id: 8
+  data: <%= fixture_data("slips/heavenly.png") %>
+  size: 123
+  filename: heavenlyslip.png
+  content_type: image/png
+  company_id: 1
+
+smartslip:
+  id: 46
+  portfolio_type_id: 8
+  data: <%= fixture_data("slips/smart.png") %>
+  size: 123
+  filename: smartslip.png
+  content_type: image/png
+  company_id: 2
+  
+pinkslip:
+  id: 47
+  portfolio_type_id: 8
+  data: <%= fixture_data("slips/pink.png") %>
+  size: 123
+  filename: pinkslip.png
+  content_type: image/png
+  company_id: 3
+  
+hilaryslip:
+  id: 48
+  portfolio_type_id: 8
+  data: <%= fixture_data("slips/hilary.png") %>
+  size: 123
+  filename: hilaryslip.png
+  content_type: image/png
+  company_id: 4
+
+hurricaneslip:
+  id: 49
+  portfolio_type_id: 8
+  data: <%= fixture_data("slips/hurricane.png") %>
+  size: 123
+  filename: hurricaneslip.png
+  content_type: image/png
+  company_id: 5
+
+silverslip:
+  id: 50
+  portfolio_type_id: 8
+  data: <%= fixture_data("slips/silver.png") %>
+  size: 123
+  filename: silverslip.png
+  content_type: image/png
+  company_id: 6
+  
+roseslip:
+  id: 51
+  portfolio_type_id: 8
+  data: <%= fixture_data("slips/rose.png") %>
+  size: 123
+  filename: roseslip.png
+  content_type: image/png
+  company_id: 7
+  
+casualbayslip:
+  id: 52
+  portfolio_type_id: 8
+  data: <%= fixture_data("slips/casualbay.png") %>
+  size: 123
+  filename: casualbayslip.png
+  content_type: image/png
+  company_id: 8
+  
+chickenslip:
+  id: 53
+  portfolio_type_id: 8
+  data: <%= fixture_data("slips/chicken.png") %>
+  size: 123
+  filename: chickenslip.png
+  content_type: image/png
+  company_id: 9
+  
+towergateslip:
+  id: 54
+  portfolio_type_id: 8
+  data: <%= fixture_data("slips/towergate.png") %>
+  size: 123
+  filename: towergateslip.png
+  content_type: image/png
+  company_id: 10
+  
+walktowalkslip:
+  id: 55
+  portfolio_type_id: 8
+  data: <%= fixture_data("slips/walktowalk.png") %>
+  size: 123
+  filename: walktowalkslip.png
+  content_type: image/png
+  company_id: 11
+  
+heavenlyleaflet:
+  id: 56
+  portfolio_type_id: 2
+  data: <%= fixture_data("leaflets/heavenly.png") %>
+  size: 123
+  filename: heavenlyleaflet.png
+  content_type: image/png
+  company_id: 1
+  
+ellabellalogo:
+  id: 57
+  portfolio_type_id: 4
+  data: <%= fixture_data("logos/ellabella.png") %>
+  size: 123
+  filename: ellabellalogo.png
+  content_type: image/png
+  company_id: 12
+  
+ellabellacard:
+  id: 58
+  portfolio_type_id: 1
+  data: <%= fixture_data("cards/ellabella.png") %>
+  size: 123
+  filename: ellabellacard.png
+  content_type: image/png
+  company_id: 12
+  
+ellabellaheader:
+  id: 59
+  portfolio_type_id: 7
+  data: <%= fixture_data("headers/ellabella.png") %>
+  size: 123
+  filename: ellabellaheader.png
+  content_type: image/png
+  company_id: 12
+  
+ellabellaletterhead:
+  id: 60
+  portfolio_type_id: 3
+  data: <%= fixture_data("letterheads/ellabella.png") %>
+  size: 123
+  filename: ellabellaletterhead.png
+  content_type: image/png
+  company_id: 12  
+  
+ellabellaslip:
+  id: 61
+  portfolio_type_id: 8
+  data: <%= fixture_data("slips/ellabella.png") %>
+  size: 123
+  filename: ellabellaslip.png
+  content_type: image/png
+  company_id: 12  
+
+organiclogo:
+  id: 62
+  portfolio_type_id: 4
+  data: <%= fixture_data("logos/organic.png") %>
+  size: 123
+  filename: organiclogo.png
+  content_type: image/png
+  company_id: 13
+    
+organicheader:
+  id: 64
+  portfolio_type_id: 7
+  data: <%= fixture_data("headers/organic.png") %>
+  size: 123
+  filename: organicheader.png
+  content_type: image/png
+  company_id: 13
+  
+organicletterhead:
+  id: 65
+  portfolio_type_id: 3
+  data: <%= fixture_data("letterheads/organic.png") %>
+  size: 123
+  filename: organicletterhead.png
+  content_type: image/png
+  company_id: 13
+  
+organicslip:
+  id: 66
+  portfolio_type_id: 8
+  data: <%= fixture_data("slips/organic.png") %>
+  size: 123
+  filename: organicslip.png
+  content_type: image/png
+  company_id: 13
+
+casamientologo:
+  id: 67
+  portfolio_type_id: 4
+  data: <%= fixture_data("logos/casamiento.png") %>
+  size: 123
+  filename: casamientologo.png
+  content_type: image/png
+  company_id: 14
+  
+casamientocard:
+  id: 68
+  portfolio_type_id: 1
+  data: <%= fixture_data("cards/casamiento.png") %>
+  size: 123
+  filename: casamientocard.png
+  content_type: image/png
+  company_id: 14
+  
+casamientoheader:
+  id: 69
+  portfolio_type_id: 7
+  data: <%= fixture_data("headers/casamiento.png") %>
+  size: 123
+  filename: casamientoheader.png
+  content_type: image/png
+  company_id: 14
+  
+casamientoletterhead:
+  id: 70
+  portfolio_type_id: 3
+  data: <%= fixture_data("letterheads/casamiento.png") %>
+  size: 123
+  filename: casamientoletterhead.png
+  content_type: image/png
+  company_id: 14
+  
+casamientoslip:
+  id: 71
+  portfolio_type_id: 8
+  data: <%= fixture_data("slips/casamiento.png") %>
+  size: 123
+  filename: casamientoslip.png
+  content_type: image/png
+  company_id: 14
