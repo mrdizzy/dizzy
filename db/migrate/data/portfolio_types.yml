@@ -27,21 +27,25 @@ small_colour_logo:
   description: Small Colour Logo
   column_space: 1
   position: 100
+  visible: NULL
   
 small_grey_logo:
   id: 6
   description: Small Grey Logo
   column_space: 1
   position: 101
+  visible: NULL
   
 header:
   id: 7
   description: Header
   column_space: 1
   position: 102
-  
+  visible: NULL
+    
 compliment_slip:
   id: 8
   description: Compliment Slip
   column_space: 1
   position: 4
+

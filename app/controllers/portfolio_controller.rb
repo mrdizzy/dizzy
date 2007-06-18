@@ -33,14 +33,14 @@ class PortfolioController < ApplicationController
 	end
 	
 	def portfolio_list
-		@company_pages, @companies = paginate :companies, :per_page => 2, :order => :name
+		@company_pages, @companies = paginate :companies, :per_page => 8, :order => :name
 		render :update do |page|
 			page.replace_html :portfolio_list, :partial => "portfolio_list"
 		end
 	end
 	
 	def show			
-		@company_pages, @companies = paginate :companies, :per_page => 2, :order => :name
+		@company_pages, @companies = paginate :companies, :per_page => 8, :order => :name
 		if (params[:id]) 
 			@company 	= Company.find(params[:id])
 		else
