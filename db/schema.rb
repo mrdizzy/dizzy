@@ -2,7 +2,7 @@
 # migrations feature of ActiveRecord to incrementally modify your database, and
 # then regenerate this schema definition.
 
-ActiveRecord::Schema.define(:version => 35) do
+ActiveRecord::Schema.define(:version => 36) do
 
   create_table "articles", :force => true do |t|
     t.column "title",     :string
@@ -13,15 +13,15 @@ ActiveRecord::Schema.define(:version => 35) do
     t.column "permalink", :string
   end
 
-  add_index "articles", ["author_id"], :name => "fk_articles_authors"
+  add_index "articles", ["author_id"], :name => "author_id"
 
   create_table "articles_categories", :id => false, :force => true do |t|
     t.column "category_id", :integer
     t.column "article_id",  :integer
   end
 
-  add_index "articles_categories", ["category_id"], :name => "fk_articles_categories_categories"
-  add_index "articles_categories", ["article_id"], :name => "fk_articles_categories_articles"
+  add_index "articles_categories", ["category_id"], :name => "category_id"
+  add_index "articles_categories", ["article_id"], :name => "article_id"
 
   create_table "authors", :force => true do |t|
     t.column "username",  :string
@@ -47,8 +47,8 @@ ActiveRecord::Schema.define(:version => 35) do
     t.column "cheatsheet_id", :integer
   end
 
-  add_index "categories_cheatsheets", ["category_id"], :name => "fk_categories_cheatsheets_categories"
-  add_index "categories_cheatsheets", ["cheatsheet_id"], :name => "fk_categories_cheatsheets_cheatsheets"
+  add_index "categories_cheatsheets", ["category_id"], :name => "category_id"
+  add_index "categories_cheatsheets", ["cheatsheet_id"], :name => "cheatsheet_id"
 
   create_table "cheatsheets", :force => true do |t|
     t.column "thumbnail",              :binary
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(:version => 35) do
     t.column "permalink",              :string
   end
 
-  add_index "cheatsheets", ["author_id"], :name => "fk_cheatsheets_authors"
+  add_index "cheatsheets", ["author_id"], :name => "author_id"
 
   create_table "comments", :force => true do |t|
   end
@@ -86,8 +86,8 @@ ActiveRecord::Schema.define(:version => 35) do
     t.column "data",              :binary
   end
 
-  add_index "portfolio_items", ["portfolio_type_id"], :name => "fk_portfolio_items_portfolio_types"
-  add_index "portfolio_items", ["company_id"], :name => "fk_portfolio_items_companies"
+  add_index "portfolio_items", ["portfolio_type_id"], :name => "portfolio_type_id"
+  add_index "portfolio_items", ["company_id"], :name => "company_id"
 
   create_table "portfolio_types", :force => true do |t|
     t.column "description",         :string,  :limit => 40
@@ -98,5 +98,18 @@ ActiveRecord::Schema.define(:version => 35) do
     t.column "header_content_type", :string
     t.column "visible",             :boolean,               :default => true
   end
+
+  add_foreign_key "articles", ["author_id"], "authors", ["id"], :name => "articles_ibfk_1"
+
+  add_foreign_key "articles_categories", ["category_id"], "categories", ["id"], :name => "articles_categories_ibfk_1"
+  add_foreign_key "articles_categories", ["article_id"], "articles", ["id"], :name => "articles_categories_ibfk_2"
+
+  add_foreign_key "categories_cheatsheets", ["category_id"], "categories", ["id"], :name => "categories_cheatsheets_ibfk_1"
+  add_foreign_key "categories_cheatsheets", ["cheatsheet_id"], "cheatsheets", ["id"], :name => "categories_cheatsheets_ibfk_2"
+
+  add_foreign_key "cheatsheets", ["author_id"], "authors", ["id"], :name => "cheatsheets_ibfk_1"
+
+  add_foreign_key "portfolio_items", ["portfolio_type_id"], "portfolio_types", ["id"], :name => "portfolio_items_ibfk_1"
+  add_foreign_key "portfolio_items", ["company_id"], "companies", ["id"], :name => "portfolio_items_ibfk_2"
 
 end
