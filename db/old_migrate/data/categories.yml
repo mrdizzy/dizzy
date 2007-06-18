@@ -1,0 +1,67 @@
+migrations:
+  name: Migrations
+  permalink: migrations
+  
+action_mailer:
+  name: Action Mailer
+  permalink: action-mailer
+    
+beginners:
+  name: Beginners
+  permalink: beginners
+
+data_structures: 
+  name: Data Structures
+  permalink: data-structures
+  
+scaffolding:
+  name: Scaffolding
+  permalink: scaffolding
+    
+controllers: 
+  name: Controllers
+  permalink: controllers
+
+models: 
+  name: Models
+  permalink: models
+
+ajax: 
+  name: AJAX
+  permalink: ajax
+  
+file_handling:
+  name: File handling
+  permalink: file-handling
+  
+active_record:
+  name: Active Record
+  permalink: active-record
+  
+routing_and_urls:
+  name: Routing and URLs
+  permalink: routing-and-urls  
+
+capistrano:
+  name: Capistrano
+  permalink: capistrano
+    
+testing: 
+  name: Testing
+  permalink: testing
+  
+time_and_dates: 
+  name: Time and Dates
+  permalink: time-and-dates
+  
+REST: 
+  name: REST
+  permalink: rest
+  
+Plugins: 
+  name: Plugins
+  permalink: plugins
+
+Generators: 
+  name: Generators
+  permalink: generators
