@@ -1,6 +1,28 @@
-/* Forms
+/* Search box 
 ==================================== */
+#search_form {
+		border-top: 1px dashed #999;
+}
 
+#search {
+	width:95%;
+	
+}
+
+/* Contact
+==================================== */
+#contact_form {
+	 border-bottom:1px dashed #999;
+	 padding-bottom: 1em;
+}
+
+/* Generic
+==================================== */
+#contact_form {
+	 border-bottom:1px dashed #999;
+	 padding-bottom: 1em;
+}
+	
 .hover {
 	background-color: #D1ECF9;}
 
@@ -54,8 +76,4 @@ label {
   font-weight: bold;
   display:block;
 	margin-top: 1em;
-}
-#contact_form {
-	 border-bottom:1px dashed #999;
-	 padding-bottom: 1em;
 }

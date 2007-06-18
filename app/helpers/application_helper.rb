@@ -47,4 +47,14 @@ module ApplicationHelper
 			diamond
 		end
 	end 	
+
+	def posted_in(categories)
+		result = []		
+		categories.each do |category|
+			puts category.permalink
+			result <<
+		 (link_to category.name, {:controller => :content, :action => :articles_for_category, :permalink => category.permalink })
+	end
+	"<span class=\"blue_bold\">Posted in</span> " + diamond + " " + result.to_sentence(:skip_last_comma => true)
+	end
 end

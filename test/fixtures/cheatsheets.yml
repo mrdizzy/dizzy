@@ -21,7 +21,15 @@
 #
 
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-one:
+capistrano:
   id: 1
+  thumbnail: blob
+  pdf: blob
+  title: Capistrano 1.2.0
+  permalink: capistrano-1-2-0
+  size: 23434
+  content: The content of this cheatsheet is here.
+  author_id: 1
+  filename: capistrano-1-2-0.pdf
 two:
   id: 2

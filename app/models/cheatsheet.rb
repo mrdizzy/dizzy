@@ -24,10 +24,10 @@ class Cheatsheet < ActiveRecord::Base
 	has_permalink :title 
 	has_and_belongs_to_many :categories
 	belongs_to :author
-	validates_presence_of :title, :description, :permalink, :content, :author_id, :date
+	validates_presence_of :title, :description, :permalink, :content, :author_id, :date, :thumbnail, :pdf, :size, :author_id, :date, :filename, :content_type, :thumbnail_size, :thumbnail_content_type
 	
 	def thumbnail_data=(binary_data)
-		unless binary_data.blank?
+		unless binary_data.blank?		
 			self.thumbnail_content_type = binary_data.content_type.chomp
 			self.thumbnail = binary_data.read
 			self.thumbnail_size = binary_data.size
@@ -41,6 +41,5 @@ class Cheatsheet < ActiveRecord::Base
 			self.pdf = binary_data.read
 			self.size = binary_data.size
 		end
-	end	
-	
+	end
 end

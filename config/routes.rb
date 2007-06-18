@@ -15,12 +15,13 @@ ActionController::Routing::Routes.draw do |map|
 	map.connect "articles/:permalink", :controller => "content", :action => "show"
 
   # Handle binaries from database
+  map.connect "categories/:permalink", :controller => "content", :action => "articles_for_category"
     	map.connect "binaries/footer_logo/:id.:extension", :controller => "binaries", :action => "footer_logo"
 	map.connect "binaries/footer_logo/:id/over.:extension", :controller => "binaries", :action => "grey_footer_logo"	
 	map.connect "cheatsheets/thumbnails/:permalink.:extension", :controller => "binaries", :action => "cheatsheet_thumbnail"
 	map.connect "cheatsheets/:permalink.:extension", :controller => "binaries", :action => "get_cheatsheet_pdf"	
 	map.connect "cheatsheets/:permalink", :controller => "cheatsheets", :action => "show"
-	map.connect "categories/:permalink", :controller => "content", :action => "articles_for_category"
+	
 	map.connect "binaries/portfolio_image/:id.:extension", :controller => "binaries", :action => "portfolio_image"
 	
   # Allow downloading Web Service WSDL as a file with an extension
