@@ -6,6 +6,9 @@ ul {
   line-height: 1.6em;
   margin-bottom:1em;
 }
+#article ul {
+	font-size:1.1em;
+}
 
 li.alt {
 	background-image:url("/images/f/backgrounds/spiral2.png");

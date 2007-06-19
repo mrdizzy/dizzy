@@ -85,16 +85,15 @@ th {
 	padding:0;
 	clear: both;
 }
-#left_column {
+#left_column, #welcome_right {
 	width:28%;
 	float:right;
 	margin-left: 2%;
 }
-#right_column {	
+#right_column, #welcome_left {	
 	width:69%;
 	float:left;
 }
-
 
 /* Backend Portfolio
 ==================================== */

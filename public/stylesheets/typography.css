@@ -54,6 +54,9 @@ a:visited {
 a:hover {
   background-color: #D1ECF9;
 }
+#welcome_left a:visited, #welcome_right a:visited {
+	color: #29A4BD; 
+}
 
 /* Syntax highlighting 
 ==================================== */
@@ -71,6 +74,11 @@ pre, code {
 	font-family:"Courier New","Courier", monospace;
 	font-size:1.4em;
 } 
+
+#article div.CodeRay {
+	  background-color: #D1ECF9;
+}
+.CodeRay { margin-bottom: 1em;}
 
 .CodeRay .no { padding: 0px 4px }
 .CodeRay .code { width: 100% }

@@ -6,4 +6,4 @@
  <h2><%= @article.excerpt %></h2>
 <div class="spiro"><%= image_tag("f/branding/spiro.png", :size =>"40x41") %></div>
 
-<%= markdown(@article.content) %>
+<%= parse_cheatsheet_xml(@article.content) %>
