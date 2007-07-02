@@ -4,17 +4,11 @@
  
 <p><span class="date"><%= @article.date.to_s(:long) %></span> <%= image_tag("f/bullets/pixels/diamond.png") %>  <b>By <%= @article.author.username %></b></p>
 
-<h2><%= @article.excerpt %></h2>
+<h2><%= @article.description %></h2>
 
 <div class="spiro"><%= image_tag("f/branding/spiro.png", :size =>"40x41") %></div>
 
 <%= parse_cheatsheet_xml(@article.content) %>
 
 <!-- CONTENTS -->
-	
-<div id="comments">
-	<h1><%= asterisk %> Comments</h1>
-	<div id="add_comment"><p><%= diamond %> <%= link_to_remote("Add new comment",{ :url => { :action => "comment_form", :id => @article.id} }) %></p></div>
-	
-		<%= prepare_comments(@article.comments) %>
-</div>
+	<%= render (:partial => "content/comments" ) %>

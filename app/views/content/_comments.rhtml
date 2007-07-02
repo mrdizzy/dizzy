@@ -1,0 +1,6 @@
+<div id="comments">
+	<h1><%= asterisk %> Comments</h1>
+	<div id="add_comment"><p><%= diamond %> <%= link_to_remote("Add new comment",{ :url => { :action => "comment_form", :id => comments.id} }) %></p></div>
+	
+		<%= prepare_comments(comments.comments) %>
+</div>

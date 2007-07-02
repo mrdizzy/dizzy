@@ -4,6 +4,7 @@
  <h1><%= asterisk %> <%= @cheatsheet.title %> Cheatsheet</h1>
  	
 <%= parse_cheatsheet_xml(@cheatsheet.content) %>
+<%= render (:partial => "content/comments", :object => @cheatsheet ) %>
 
 </div>
 
