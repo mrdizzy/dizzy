@@ -56,7 +56,7 @@ class CreateDatabase < ActiveRecord::Migration
     t.column "visible",             :boolean,               :default => true
   end
   
-  add_index "cheatsheets", ["author_id"], :name => "author_id"
+  add_index "cheatsheets", ["author_id"], :name => "cheatsheets_author_id"
   
   create_table "articles", :force => true do |t|
     t.column "title",     :string
@@ -67,14 +67,14 @@ class CreateDatabase < ActiveRecord::Migration
     t.column "permalink", :string
   end
 
-  add_index "articles", ["author_id"], :name => "author_id"
+  add_index "articles", ["author_id"], :name => "articles_author_id"
 
   create_table "articles_categories", :id => false, :force => true do |t|
     t.column "category_id", :integer
     t.column "article_id",  :integer
   end
 
-  add_index "articles_categories", ["category_id"], :name => "category_id"
+  add_index "articles_categories", ["category_id"], :name => "articles_category_id"
   add_index "articles_categories", ["article_id"], :name => "article_id"
 
   create_table "categories_cheatsheets", :id => false, :force => true do |t|
@@ -82,7 +82,7 @@ class CreateDatabase < ActiveRecord::Migration
     t.column "cheatsheet_id", :integer
   end
 
-  add_index "categories_cheatsheets", ["category_id"], :name => "category_id"
+  add_index "categories_cheatsheets", ["category_id"], :name => "cheatsheets_category_id"
   add_index "categories_cheatsheets", ["cheatsheet_id"], :name => "cheatsheet_id"
  
   create_table "portfolio_items", :force => true do |t|

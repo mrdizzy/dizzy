@@ -2,7 +2,7 @@
 # migrations feature of ActiveRecord to incrementally modify your database, and
 # then regenerate this schema definition.
 
-ActiveRecord::Schema.define(:version => 5) do
+ActiveRecord::Schema.define(:version => 8) do
 
   create_table "articles", :force => true do |t|
     t.column "title",     :string
@@ -13,14 +13,14 @@ ActiveRecord::Schema.define(:version => 5) do
     t.column "permalink", :string
   end
 
-  add_index "articles", ["author_id"], :name => "author_id"
+  add_index "articles", ["author_id"], :name => "articles_author_id"
 
   create_table "articles_categories", :id => false, :force => true do |t|
     t.column "category_id", :integer
     t.column "article_id",  :integer
   end
 
-  add_index "articles_categories", ["category_id"], :name => "category_id"
+  add_index "articles_categories", ["category_id"], :name => "articles_category_id"
   add_index "articles_categories", ["article_id"], :name => "article_id"
 
   create_table "authors", :force => true do |t|
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(:version => 5) do
     t.column "cheatsheet_id", :integer
   end
 
-  add_index "categories_cheatsheets", ["category_id"], :name => "category_id"
+  add_index "categories_cheatsheets", ["category_id"], :name => "cheatsheets_category_id"
   add_index "categories_cheatsheets", ["cheatsheet_id"], :name => "cheatsheet_id"
 
   create_table "cheatsheets", :force => true do |t|
@@ -67,10 +67,18 @@ ActiveRecord::Schema.define(:version => 5) do
     t.column "permalink",              :string
   end
 
-  add_index "cheatsheets", ["author_id"], :name => "author_id"
+  add_index "cheatsheets", ["author_id"], :name => "cheatsheets_author_id"
 
   create_table "comments", :force => true do |t|
+    t.column "content",    :string
+    t.column "subject",    :string
+    t.column "email",      :string
+    t.column "parent_id",  :integer
+    t.column "article_id", :integer
+    t.column "created_at", :datetime
   end
+
+  add_index "comments", ["article_id"], :name => "article_id"
 
   create_table "companies", :force => true do |t|
     t.column "name",        :string, :limit => 40
@@ -108,6 +116,8 @@ ActiveRecord::Schema.define(:version => 5) do
   add_foreign_key "categories_cheatsheets", ["cheatsheet_id"], "cheatsheets", ["id"], :name => "categories_cheatsheets_ibfk_2"
 
   add_foreign_key "cheatsheets", ["author_id"], "authors", ["id"], :name => "cheatsheets_ibfk_1"
+
+  add_foreign_key "comments", ["article_id"], "articles", ["id"], :name => "comments_ibfk_1"
 
   add_foreign_key "portfolio_items", ["portfolio_type_id"], "portfolio_types", ["id"], :name => "portfolio_items_ibfk_1"
   add_foreign_key "portfolio_items", ["company_id"], "companies", ["id"], :name => "portfolio_items_ibfk_2"

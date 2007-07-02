@@ -2,8 +2,9 @@ class WelcomeController < ApplicationController
 	
 	def index
 		paginate_logos
-		@main_article = Article.find(:first, :order=> "'id' desc")
+		
 		@recent_articles = Article.find(:all, :order=> "'id' desc", :limit => 5)
+		@main_article = @recent_articles.shift
 	end
 	
 	def next_logo

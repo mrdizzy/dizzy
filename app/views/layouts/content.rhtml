@@ -6,6 +6,13 @@
 <%= stylesheet_link_tag "forms", :media => "all" %>
 <%= stylesheet_link_tag "lists", :media => "all" %>
 <%= stylesheet_link_tag "printer", :media => "print" %>
+<%= javascript_include_tag "prototype" %>
+<%= javascript_include_tag "rollover" %>
+<script type="text/javascript">
+    window.onload = function() {
+      new Rollover('footer', {suffixSeperator: '/'});
+    }    
+  </script>
 </head>
 <body>	
 

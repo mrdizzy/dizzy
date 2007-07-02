@@ -4,6 +4,24 @@ module ApplicationHelper
 		BlueCloth::new(text).to_html
 	end
 	
+	def prepare_comments(comments,result=Array.new,counter=0)
+		counter = counter + 1
+		comments.each do |comment|
+			
+			if counter.even?
+			result << "<div class=\"odd\" id=\"comment_#{comment.id}\">"
+			else
+				result << "<div class=\"normal\" id=\"comment_#{comment.id}\">"
+			end
+			result << "<span class=\"date\">#{comment.created_at.to_s(:long)}</span> " + diamond + " <b>#{comment.subject}</b><p>#{comment.content}</p><div id=\"reply_#{comment.id}\">" + link_to_remote("Reply",{ :url => { :action => "reply", :id => comment.id} })  + "</div>"
+						
+				prepare_comments(comment.children,result,counter) unless comment.children.empty?
+						
+			result << "</div>"
+		end
+		result		
+	end
+	
 	def textilize(text)
 		 textilized = RedCloth.new(text).to_html
 	end

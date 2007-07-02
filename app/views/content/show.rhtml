@@ -7,3 +7,17 @@
 <div class="spiro"><%= image_tag("f/branding/spiro.png", :size =>"40x41") %></div>
 
 <%= parse_cheatsheet_xml(@article.content) %>
+	<% puts prepare_comments(@article.comments) %>
+<div id="comments">
+	<h1><%= asterisk %> Comments</h1>
+<%= prepare_comments(@article.comments) %>
+	<% form_for :comment, :url => { :action => "create_comment", :id => @article.id } do |form| %>
+	<label for="comment_subject"><%= diamond %> Subject</label>
+<%= form.text_field :subject %><br/>
+	<label for="comment_email"><%= diamond %> Email</label>
+<%= form.text_field :email %><br/>
+		<label for="comment_content"><%= diamond %> Comment</label>
+<%= form.text_area :content %><br/>
+  <%= submit_button %>
+	<% end %>
+</div>

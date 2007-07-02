@@ -1,10 +1,37 @@
 <tr class="<%= cycle('odd', 'even') %>" >
+	<% if article_link.is_a?(Article) %>
 	<td class="content"><h3 class="blue_bold"><%= asterisk %> <%= article_link.title %></h3>
 		<p><%= article_link.excerpt %></p></td>
 	<td><span class="date"><%= article_link.date.to_s(:long) %></span><br/>
-		<% article_link.categories.each do |category| %>
-		Posted in: <%= link_to category.name, { :action => "articles_for_category", :id => category.id } %>
-		<% end %>
+		<%= posted_in(article_link.categories) %>
 		</td>
 	<td><b><%= article_link.author.username%></b></td>
+
+<% else %>
+
+	<td class="content"><h3 class="blue_bold"><%= asterisk %> <%= article_link.title %></h3>
+		
+<div class="left"><br/><br/><br/><br/><br/>
+			<%= image_tag("f/small_icons/pdf.png") %>
+			
+			<%= diamond %> <%= link_to "PDF",{ :controller => "binaries", :action=> "get_cheatsheet_pdf", :permalink => article_link.permalink, :extension => "pdf"} %> 
+		</div>
+		
+		<div class="right"><br/><br/><br/><br/><br/>
+			<%= image_tag("f/small_icons/html.png") %>
+			<%= diamond %> <%= link_to "HTML",{ :controller => "cheatsheets", :action=> :show, :permalink => article_link.permalink} %> 
+		</div>
+		<p class="center"><%= image_tag("/cheatsheets/thumbnails/#{article_link.permalink}.png") %>
+		</td>
+	<td><span class="date"><%= article_link.date.to_s(:long) %></span><p>
+		<%= posted_in(article_link.categories) %>
+		</p>
+		
+		<p><%= article_link.description %> </p>
+	
+		</td>
+	<td>by<br/><b><%= article_link.author.username%></b></td>
+
+
+<% end %>
 </tr>

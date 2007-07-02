@@ -7,4 +7,6 @@
 #
 
 class Comment < ActiveRecord::Base
+	belongs_to :article
+	acts_as_tree :order => :subject
 end

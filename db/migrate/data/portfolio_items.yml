@@ -638,3 +638,202 @@ casamientoslip:
   filename: casamientoslip.png
   content_type: image/png
   company_id: 14
+
+smartsmallcolourlogo:
+  id: 72
+  portfolio_type_id: 5
+  data: <%= fixture_data("smallcolourlogos/smart.png") %>
+  size: 123
+  filename: smartsmallcolourlogo.png
+  content_type: image/png
+  company_id: 2
+  
+smartsmallgreylogo:
+  id: 73
+  portfolio_type_id: 6
+  data: <%= fixture_data("smallgreylogos/smart.png") %>
+  size: 123
+  filename: smartsmallgreylogo.png
+  content_type: image/png
+  company_id: 2
+  
+rosesmallcolourlogo:
+  id: 74
+  portfolio_type_id: 5
+  data: <%= fixture_data("smallcolourlogos/rose.png") %>
+  size: 123
+  filename: rosesmallcolourlogo.png
+  content_type: image/png
+  company_id: 7
+  
+rosesmallgreylogo:
+  id: 75
+  portfolio_type_id: 6
+  data: <%= fixture_data("smallgreylogos/rose.png") %>
+  size: 123
+  filename: rosesmallgreylogo.png
+  content_type: image/png
+  company_id: 7
+  
+chickensmallcolourlogo:
+  id: 76
+  portfolio_type_id: 5
+  data: <%= fixture_data("smallcolourlogos/chicken.png") %>
+  size: 123
+  filename: chickensmallcolourlogo.png
+  content_type: image/png
+  company_id: 9
+  
+chickensmallgreylogo:
+  id: 77
+  portfolio_type_id: 6
+  data: <%= fixture_data("smallgreylogos/chicken.png") %>
+  size: 123
+  filename: chickensmallgreylogo.png
+  content_type: image/png
+  company_id: 9
+
+walktowalksmallgreylogo:
+  id: 78
+  portfolio_type_id: 6
+  data: <%= fixture_data("smallgreylogos/walktowalk.png") %>
+  size: 123
+  filename: walktowalksmallgreylogo.png
+  content_type: image/png
+  company_id: 11
+  
+walktowalksmallcolourlogo:
+  id: 79
+  portfolio_type_id: 5
+  data: <%= fixture_data("smallcolourlogos/walktowalk.png") %>
+  size: 123
+  filename: walktowalksmallcolourlogo.png
+  content_type: image/png
+  company_id: 11
+  
+silversmallcolourlogo:
+  id: 80
+  portfolio_type_id: 5
+  data: <%= fixture_data("smallcolourlogos/silver.png") %>
+  size: 123
+  filename: silversmallcolourlogo.png
+  content_type: image/png
+  company_id: 6
+  
+silversmallgreylogo:
+  id: 81
+  portfolio_type_id: 6
+  data: <%= fixture_data("smallgreylogos/silver.png") %>
+  size: 123
+  filename: silversmallgreylogo.png
+  content_type: image/png
+  company_id: 6
+
+hurricanesmallcolourlogo:
+  id: 82
+  portfolio_type_id: 5
+  data: <%= fixture_data("smallcolourlogos/hurricane.png") %>
+  size: 123
+  filename: hurricanesmallcolourlogo.png
+  content_type: image/png
+  company_id: 5
+  
+hurricanesmallgreylogo:
+  id: 83
+  portfolio_type_id: 6
+  data: <%= fixture_data("smallgreylogos/hurricane.png") %>
+  size: 123
+  filename: hurricanesmallgreylogo.png
+  content_type: image/png
+  company_id: 5
+  company_id: 6
+
+ellabellasmallcolourlogo:
+  id: 84
+  portfolio_type_id: 5
+  data: <%= fixture_data("smallcolourlogos/ellabella.png") %>
+  size: 123
+  filename: ellabellasmallcolourlogo.png
+  content_type: image/png
+  company_id: 12
+  
+ellabellasmallgreylogo:
+  id: 85
+  portfolio_type_id: 6
+  data: <%= fixture_data("smallgreylogos/ellabella.png") %>
+  size: 123
+  filename: ellabellasmallgreylogo.png
+  content_type: image/png
+  company_id: 12
+  
+hilarytudorsmallcolourlogo:
+  id: 86
+  portfolio_type_id: 5
+  data: <%= fixture_data("smallcolourlogos/hilarytudor.png") %>
+  size: 123
+  filename: hilarytudorsmallcolourlogo.png
+  content_type: image/png
+  company_id: 4
+  
+hilarytudorsmallgreylogo:
+  id: 87
+  portfolio_type_id: 6
+  data: <%= fixture_data("smallgreylogos/hilarytudor.png") %>
+  size: 123
+  filename: hilarytudorsmallgreylogo.png
+  content_type: image/png
+  company_id: 4
+  
+pinkgorillassmallcolourlogo:
+  id: 88
+  portfolio_type_id: 5
+  data: <%= fixture_data("smallcolourlogos/pinkgorillas.png") %>
+  size: 123
+  filename: pinkgorillassmallcolourlogo.png
+  content_type: image/png
+  company_id: 3
+  
+pinkgorillassmallgreylogo:
+  id: 89
+  portfolio_type_id: 6
+  data: <%= fixture_data("smallgreylogos/pinkgorillas.png") %>
+  size: 123
+  filename: pinkgorillassmallgreylogo.png
+  content_type: image/png
+  company_id: 3
+  
+casualbaysmallcolourlogo:
+  id: 90
+  portfolio_type_id: 5
+  data: <%= fixture_data("smallcolourlogos/casualbay.png") %>
+  size: 123
+  filename: casualbaysmallcolourlogo.png
+  content_type: image/png
+  company_id: 8
+  
+casualbaysmallgreylogo:
+  id: 91
+  portfolio_type_id: 6
+  data: <%= fixture_data("smallgreylogos/casualbay.png") %>
+  size: 123
+  filename: casualbaysmallgreylogo.png
+  content_type: image/png
+  company_id: 8
+  
+heavenlysmallcolourlogo:
+  id: 92
+  portfolio_type_id: 5
+  data: <%= fixture_data("smallcolourlogos/heavenly.png") %>
+  size: 123
+  filename: heavenlysmallcolourlogo.png
+  content_type: image/png
+  company_id: 1
+  
+heavenlysmallgreylogo:
+  id: 93
+  portfolio_type_id: 6
+  data: <%= fixture_data("smallgreylogos/heavenly.png") %>
+  size: 123
+  filename: heavenlysmallgreylogo.png
+  content_type: image/png
+  company_id: 1
