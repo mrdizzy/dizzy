@@ -3,7 +3,7 @@ class WelcomeController < ApplicationController
 	def index
 		paginate_logos
 		
-		@recent_articles = Article.find(:all, :order=> "'id' desc", :limit => 5)
+		@recent_articles = Content.find(:all, :order => "'id' desc", :limit => 5)
 		@main_article = @recent_articles.shift
 	end
 	

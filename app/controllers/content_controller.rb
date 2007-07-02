@@ -5,7 +5,7 @@ class ContentController < ApplicationController
 		@comment = Comment.new		
 		@categories = Category.find(:all, :order => :name)
 		if @content.is_a?(Article) 
-			render (:template => "content/show")
+			render (:template => "content/article")
 		else
 			render (:template => "content/cheatsheet")
 		end
