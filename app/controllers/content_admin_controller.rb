@@ -1,6 +1,6 @@
 class ContentAdminController < ApplicationController
 	
-	cache_sweeper :cheatsheet_sweeper
+	
 	
   def index
     list

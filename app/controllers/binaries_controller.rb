@@ -10,7 +10,7 @@ class BinariesController < ApplicationController
 	def cheatsheet_thumbnail 
 		@image_data = Cheatsheet.find_by_permalink(params[:permalink])
 		@image = @image_data.thumbnail
-		send_data(@image, :type => @image_data.thumbnail_content_type, :disposition => 'inline')
+		send_data(@image, :type => "image/png", :disposition => 'inline')
 	end
 	
 	def portfolio_type 
@@ -39,7 +39,7 @@ class BinariesController < ApplicationController
 	def get_cheatsheet_pdf
 		@pdf_data = Cheatsheet.find_by_permalink(params[:permalink])
 		@pdf = @pdf_data.pdf
-		send_data(@pdf, :type => @pdf_data.content_type, :disposition => 'attachment')
+		send_data(@pdf, :type => "application/pdf", :disposition => 'attachment')
 		
 	end
 end

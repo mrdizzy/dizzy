@@ -23,9 +23,9 @@ class ContentController < ApplicationController
 	end
 	
 	def articles_for_category 
-		@category = Category.find_by_permalink(params[:permalink])		
-		@results = [ @category.cheatsheets, @category.articles].flatten
-		@results.sort! { |a,b| b.date <=> a.date }		
+		@category = Category.find_by_permalink(params[:permalink])
+			
+		@results = @category.contents		
 	end
 	def comment_form 
 		

@@ -1,6 +1,6 @@
 <tr class="<%= cycle('odd', 'even') %>" >
 	<td class="content"><h3 class="blue_bold"><%= asterisk %> <%= link_to article_link.title, { :controller => "content", :action => "show", :permalink => article_link.permalink } %></h3>
-		<p><%= article_link.excerpt %></p></td>
+		<p><%= article_link.description %></p></td>
 	<td><span class="date"><%= article_link.date.to_s(:long) %></span><br/>
 		<% article_link.categories.each do |category| %>
 		Posted in: <%= link_to category.name, { :action => "articles_for_category", :id => category.id } %>

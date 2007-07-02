@@ -2,7 +2,7 @@
 # migrations feature of ActiveRecord to incrementally modify your database, and
 # then regenerate this schema definition.
 
-ActiveRecord::Schema.define(:version => 8) do
+ActiveRecord::Schema.define(:version => 11) do
 
   create_table "articles", :force => true do |t|
     t.column "title",     :string
@@ -50,6 +50,14 @@ ActiveRecord::Schema.define(:version => 8) do
   add_index "categories_cheatsheets", ["category_id"], :name => "cheatsheets_category_id"
   add_index "categories_cheatsheets", ["cheatsheet_id"], :name => "cheatsheet_id"
 
+  create_table "categories_contents", :id => false, :force => true do |t|
+    t.column "category_id", :integer
+    t.column "content_id",  :integer
+  end
+
+  add_index "categories_contents", ["category_id"], :name => "category_id"
+  add_index "categories_contents", ["content_id"], :name => "content_id"
+
   create_table "cheatsheets", :force => true do |t|
     t.column "thumbnail",              :binary
     t.column "pdf",                    :binary
@@ -85,6 +93,24 @@ ActiveRecord::Schema.define(:version => 8) do
     t.column "description", :string
   end
 
+  create_table "contents", :force => true do |t|
+    t.column "type",           :string
+    t.column "title",          :string
+    t.column "description",    :string
+    t.column "author_id",      :integer
+    t.column "date",           :datetime
+    t.column "content",        :text
+    t.column "filename",       :string
+    t.column "content_type",   :string
+    t.column "size",           :integer
+    t.column "thumbnail_size", :integer
+    t.column "thumbnail",      :binary
+    t.column "pdf",            :binary
+    t.column "permalink",      :string
+  end
+
+  add_index "contents", ["author_id"], :name => "author_id"
+
   create_table "portfolio_items", :force => true do |t|
     t.column "portfolio_type_id", :integer
     t.column "company_id",        :integer
@@ -115,9 +141,14 @@ ActiveRecord::Schema.define(:version => 8) do
   add_foreign_key "categories_cheatsheets", ["category_id"], "categories", ["id"], :name => "categories_cheatsheets_ibfk_1"
   add_foreign_key "categories_cheatsheets", ["cheatsheet_id"], "cheatsheets", ["id"], :name => "categories_cheatsheets_ibfk_2"
 
+  add_foreign_key "categories_contents", ["category_id"], "categories", ["id"], :name => "categories_contents_ibfk_1"
+  add_foreign_key "categories_contents", ["content_id"], "contents", ["id"], :name => "categories_contents_ibfk_2"
+
   add_foreign_key "cheatsheets", ["author_id"], "authors", ["id"], :name => "cheatsheets_ibfk_1"
 
   add_foreign_key "comments", ["article_id"], "articles", ["id"], :name => "comments_ibfk_1"
+
+  add_foreign_key "contents", ["author_id"], "authors", ["id"], :name => "contents_ibfk_1"
 
   add_foreign_key "portfolio_items", ["portfolio_type_id"], "portfolio_types", ["id"], :name => "portfolio_items_ibfk_1"
   add_foreign_key "portfolio_items", ["company_id"], "companies", ["id"], :name => "portfolio_items_ibfk_2"

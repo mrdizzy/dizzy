@@ -8,8 +8,7 @@
 #
 
 class Category < ActiveRecord::Base
-	has_and_belongs_to_many :articles
-	has_and_belongs_to_many :cheatsheets
+	has_and_belongs_to_many :contents
 	
 	has_permalink :name
 	

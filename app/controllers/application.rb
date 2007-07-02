@@ -2,6 +2,7 @@
 # Likewise, all the methods added will be available for all controllers.
 class ApplicationController < ActionController::Base
 	require 'bluecloth'
+	require_dependency 'content'
 	
 	
 		include ExceptionNotifiable

@@ -4,8 +4,8 @@
 <p><label for="article_content"><%= diamond %> Content</label>
 <%= form.text_area :content %></p>
 <%= drop_receiving_element ("article_content", :hoverclass => "hover", :url => { :action => :update_binary} ) %>
-<p><label for="article_excerpt"><%= diamond %> Excerpt</label>
-<%= form.text_area :excerpt %></p>
+<p><label for="article_excerpt"><%= diamond %> Description/Excerpt</label>
+<%= form.text_area :description %></p>
 <p><label for="article_date"><%= diamond %> Date</label>
 <%= form.datetime_select :date %></p>
 <div id="select_author">
