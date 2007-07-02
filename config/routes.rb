@@ -20,7 +20,7 @@ ActionController::Routing::Routes.draw do |map|
 	map.connect "binaries/footer_logo/:id/over.:extension", :controller => "binaries", :action => "grey_footer_logo"	
 	map.connect "cheatsheets/thumbnails/:permalink.:extension", :controller => "binaries", :action => "cheatsheet_thumbnail"
 	map.connect "cheatsheets/:permalink.:extension", :controller => "binaries", :action => "get_cheatsheet_pdf"	
-	map.connect "cheatsheets/:permalink", :controller => "cheatsheets", :action => "show"
+	map.connect "cheatsheets/:permalink", :controller => "content", :action => "show"
 	
 	map.connect "binaries/portfolio_image/:id.:extension", :controller => "binaries", :action => "portfolio_image"
 	

@@ -1,9 +1,14 @@
 class ContentController < ApplicationController
 	
 	def show 
-		@article = Article.find_by_permalink(params[:permalink])		
+		@content = Content.find_by_permalink(params[:permalink])		
 		@comment = Comment.new		
 		@categories = Category.find(:all, :order => :name)
+		if @content.is_a?(Article) 
+			render (:template => "content/show")
+		else
+			render (:template => "content/cheatsheet")
+		end
 	end
 	
 	def create_comment 

@@ -1,0 +1,10 @@
+ <div id="cheatsheet">
+ 	<% @title = @content.title %>
+ 	
+ <h1><%= asterisk %> <%= @content.title %> Cheatsheet</h1>
+ 	
+<%= parse_cheatsheet_xml(@content.content) %>
+<%= render (:partial => "content/comments", :object => @content ) %>
+
+</div>
+

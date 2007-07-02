@@ -1,7 +1,5 @@
 class ContentAdminController < ApplicationController
 	
-	
-	
   def index
     list
     render :action => 'list'
@@ -95,8 +93,7 @@ class ContentAdminController < ApplicationController
 		 # @cheatsheet.categories.delete_all
 		  @article.destroy
 	#  end
-  end
-  
+  end  
  
 ## Categories ##########################################
    	
