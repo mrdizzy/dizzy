@@ -27,4 +27,13 @@ class ContentController < ApplicationController
 		@results = [ @category.cheatsheets, @category.articles].flatten
 		@results.sort! { |a,b| b.date <=> a.date }		
 	end
+	def comment_form 
+		
+		render :update do |page|
+			page.insert_html :after, "add_comment", :partial => "main_comment_form", :locals => { :comment => Comment.new, :id => params[:id] }
+			
+			page.remove "add_comment"
+		end
+	end
+	
 end

@@ -1,6 +1,6 @@
 <tr class="<%= cycle('odd', 'even') %>" >
 	<% if article_link.is_a?(Article) %>
-	<td class="content"><h3 class="blue_bold"><%= asterisk %> <%= article_link.title %></h3>
+	<td class="content"><h3 class="blue_bold"><%= asterisk %> <%= link_to article_link.title, { :controller => "content", :action => "show", :permalink => article_link.permalink } %></h3>
 		<p><%= article_link.excerpt %></p></td>
 	<td><span class="date"><%= article_link.date.to_s(:long) %></span><br/>
 		<%= posted_in(article_link.categories) %>
