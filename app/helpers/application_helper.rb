@@ -69,7 +69,6 @@ module ApplicationHelper
 	def posted_in(categories)
 		result = []		
 		categories.each do |category|
-			puts category.permalink
 			result <<
 		 (link_to category.name, {:controller => :content, :action => :articles_for_category, :permalink => category.permalink })
 	end
