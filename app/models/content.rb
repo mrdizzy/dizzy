@@ -7,7 +7,7 @@ class Article < Content
 	
 		has_permalink :title
 	#has_and_belongs_to_many :categories
-	has_many :comments
+	
 	belongs_to :author
 	
 	validates_presence_of :content, :title, :date, :author_id, :description, :permalink

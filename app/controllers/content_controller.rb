@@ -11,6 +11,20 @@ class ContentController < ApplicationController
 		end
 	end
 	
+	def articles_for_category 
+		@category = Category.find_by_permalink(params[:permalink])
+			
+		@results = @category.contents		
+	end	
+
+	#### COMMENTS ####
+	
+	def reply
+		render :update do |page|
+			page.replace_html "reply_#{params[:id]}", :partial => 'comment_form', :locals => { :comment => Comment.new, :id => params[:id] }
+		end
+	end
+	
 	def create_comment 
 		@article = Article.find(params[:id])
 		@article.comments.create(params[:comment])
@@ -21,17 +35,6 @@ class ContentController < ApplicationController
 		@comment.children.create(params[:comment])
 	end	
 	
-	def reply
-		render :update do |page|
-			page.replace_html "reply_#{params[:id]}", :partial => 'comment_form', :locals => { :comment => Comment.new, :id => params[:id] }
-		end
-	end
-	
-	def articles_for_category 
-		@category = Category.find_by_permalink(params[:permalink])
-			
-		@results = @category.contents		
-	end
 	def comment_form 
 		
 		render :update do |page|
