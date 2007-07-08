@@ -4,10 +4,14 @@ module ApplicationHelper
 		BlueCloth::new(text).to_html
 	end
 	
-	def bools
-		"blah"		
+	def get_ticket_type(ticket)
+		if ticket.is_a?(IncomingTicket)
+			"------>Incoming"
+		else
+			"<------Outgoing"
+		end
 	end
-	
+		
 	def prepare_comments(comments,result=Array.new,counter=0)
 		counter = counter + 1
 		comments.each do |comment|			
@@ -41,12 +45,6 @@ module ApplicationHelper
 		@five_random_companies = Company.find(:all, :order => 'RAND()', :limit => 5)
 	end
 
-	# Graphics for HTML
-	def spiro 
-		"<div class=\"spiro\">" + image_tag("f/branding/spirosmall.png", :size=> "29x29", :alt => "---") + 
-		"</div"
-	end
-	
 	def submit_button
 			submit_tag '', { :class => 'submit' } 
 	end
@@ -61,6 +59,12 @@ module ApplicationHelper
 	
 	def asterisk
 		image_tag("f/bullets/pixels/asterisk.png", :size=> "13x13", :alt => "*")
+	end
+	
+	# Graphics for HTML
+	def spiro
+		"<div class=\"spiro\">" + image_tag("f/branding/spirosmall.png", :size=> "29x29", :alt => "---") + 
+		"</div>"
 	end
 	
 	def visible?(input)
@@ -175,5 +179,5 @@ module ApplicationHelper
 		  	end
 		end
 		return results.join		
-	end			
+	end		
 end

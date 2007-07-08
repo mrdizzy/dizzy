@@ -27,10 +27,10 @@
 	<% end %>
 </div>
 <div id="conversation">
-<%= @conversation.parse_code %>
+	<h1><%= asterisk %> <%= @conversation.parse_code %></h1>
 <% @conversation.tickets.each do |ticket| %>
 	
-	<p><b><%= bools %></b></p>
+	<%= get_ticket_type(ticket) %>
 	<p><%= ticket.date.to_s(:long) %></p>
 	<p><%= ticket.initial_report %></p>
 	<b>Attachments:</b>
