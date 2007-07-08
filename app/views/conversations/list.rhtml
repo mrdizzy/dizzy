@@ -1,0 +1,32 @@
+<h1>Open conversations</h1>
+
+<table>
+ 
+  <% @open_conversations.each do |conversation| %>
+   <tr>
+    <td><%= conversation.status %></td>
+    
+    <td><td><%= link_to conversation.subject, :action => 'view_thread', :id => conversation.id %></td></td>
+    
+    <td><%= conversation.id %></td>
+    </tr>
+  <% end %>
+
+
+</table>
+<h1>Untagged conversations</h1>
+
+<table>
+ 
+  <% @untagged_conversations.each do |conversation| %>
+   <tr>
+    <td><%= conversation.status %></td>
+    
+    <td><%= link_to conversation.subject, :action => 'view_thread', :id => conversation.id %></td>
+    
+    <td><%= conversation.id %></td>
+    </tr>
+  <% end %>
+
+
+</table>
