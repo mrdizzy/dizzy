@@ -6,14 +6,13 @@ module ApplicationHelper
 	
 	def prepare_comments(comments,result=Array.new,counter=0)
 		counter = counter + 1
-		comments.each do |comment|
-			
+		comments.each do |comment|			
 			if counter.even?
 			result << "<div class=\"odd\" id=\"comment_#{comment.id}\">"
 			else
 				result << "<div class=\"normal\" id=\"comment_#{comment.id}\">"
 			end
-			result << "<span class=\"date\">#{comment.created_at.to_s(:long)}</span> " + diamond + " <b>#{comment.subject}</b><p>#{comment.content}</p><div id=\"reply_#{comment.id}\">" + link_to_remote("Reply",{ :url => { :action => "reply", :id => comment.id} })  + "</div>"
+			result << "<span class=\"date\">#{comment.created_at.to_s(:long)}</span> " + diamond + " <b>#{comment.subject}</b><p>#{comment.body}</p><div id=\"reply_#{comment.id}\">" + link_to_remote("Reply",{ :url => { :action => "reply", :id => comment.id} })  + "</div>"
 						
 				prepare_comments(comment.children,result,counter) unless comment.children.empty?
 						
@@ -93,10 +92,11 @@ module ApplicationHelper
 				when :start_element
 		    	
 		      	tag_stack.push "h1" if pull_event[0] == "title"
-		      	tag_stack.push "code" if pull_event[0] == "code"
+		      	tag_stack.push "code" if pull_event[0] == "c"
 		      	tag_stack.push "h2" if pull_event[0] == "subhead"
 		      	tag_stack.push "h3" if pull_event[0] == "minihead"
-		      	tag_stack.push "ruby" if pull_event[0] == "ruby"
+		      	tag_stack.push "h3" if pull_event[0] == "h3"
+		      	tag_stack.push "ruby" if pull_event[0] == "r"
 		       	tag_stack.push "ul" if pull_event[0] == "ul"
 		        tag_stack.push "li" if pull_event[0] == "li"
 		      	tag_stack.push "td" if pull_event[0] == "Cell"
@@ -111,11 +111,13 @@ module ApplicationHelper
 						results << "<h2>"
 					end
 				break_counter = break_counter + 1
+				elsif pull_event[0] == "img"
+					image_id = pull_event[1]['src']
+					results << "<img src=\"/binaries/get/#{image_id}\" />"				
 				elsif pull_event[0] == "article"
-				results << "<div id=\"article\">"
-				
+					results << "<div id=\"article\">"				
 				elsif pull_event[0] == "Cell"
-					if counter_stack.last == row_stack.last						
+					if counter_stack.last == row_stack.last					
 						results << "<td>"
 						counter = counter_stack.last - 1
 						counter_stack.pop

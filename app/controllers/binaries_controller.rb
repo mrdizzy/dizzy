@@ -42,4 +42,8 @@ class BinariesController < ApplicationController
 		send_data(@pdf, :type => "application/pdf", :disposition => 'attachment')
 		
 	end
+		def get
+		@data = Binary.find(params[:id])
+		send_data(@data.binary, :type => @data.content_type, :disposition => 'inline')
+	end
 end

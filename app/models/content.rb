@@ -6,7 +6,6 @@ end
 class Article < Content
 	
 		has_permalink :title
-	#has_and_belongs_to_many :categories
 	
 	belongs_to :author
 	
@@ -17,7 +16,6 @@ end
 class Cheatsheet < Content
 		has_permalink :title 
 		
-	#has_and_belongs_to_many :categories
 	belongs_to :author
 	validates_presence_of :title, :description, :permalink, :content, :author_id, :date, :thumbnail, :pdf, :size, :author_id, :date, :filename, :thumbnail_size
 	

@@ -27,7 +27,7 @@ myField.value += myValue;
 	<li><%= link_to 'Articles', :controller => "content_admin", :action => "list" %></li>
 	<li><%= link_to 'Categories', :controller => "content_admin", :action => "categories" %></li>
 	<li><%= link_to 'Portfolio', :controller => "company_admin", :action => "list" %></li>
-	<li><%= link_to 'Cheatsheets', :controller => "content_admin", :action => "list_cheatsheets" %></li>
+	<li><%= link_to 'Cheatsheets', :controller => "content_admin", :action => "list" %></li>
 	<li><%= link_to_remote 'Upload', :url => { :controller => "content_admin", :action => "file_upload_form" } %></li>
 </ul>
 
@@ -35,7 +35,7 @@ myField.value += myValue;
 <h2 class="blue_bold"><%= asterisk %> Recent files</h2>
 <div id="list_files"><ul>
 	<% Binary.find(:all, :limit => 10, :order => "id DESC").each do |binary| %>
-	<li><a href="javascript:insertAtCursor('![Alt text](/binaries/get_file/<%= binary.id %>)')"><%= binary.filename %></a></li>
+	<li><a href="javascript:insertAtCursor('<img src=\'1\' />')"><%= binary.filename %></a></li>
 	
 	<% end %></ul>
 </div>

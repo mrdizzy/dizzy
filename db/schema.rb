@@ -2,7 +2,7 @@
 # migrations feature of ActiveRecord to incrementally modify your database, and
 # then regenerate this schema definition.
 
-ActiveRecord::Schema.define(:version => 15) do
+ActiveRecord::Schema.define(:version => 23) do
 
   create_table "authors", :force => true do |t|
     t.column "username",  :string
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(:version => 15) do
   end
 
   create_table "comments", :force => true do |t|
-    t.column "content",    :string
+    t.column "body",       :string
     t.column "subject",    :string
     t.column "email",      :string
     t.column "parent_id",  :integer
@@ -58,6 +58,22 @@ ActiveRecord::Schema.define(:version => 15) do
     t.column "permalink",      :string
   end
 
+  create_table "conversations", :force => true do |t|
+    t.column "subject",     :string
+    t.column "status",      :string
+    t.column "customer_id", :integer
+  end
+
+  create_table "customers", :force => true do |t|
+    t.column "firstname", :string
+    t.column "surname",   :string
+  end
+
+  create_table "emails", :force => true do |t|
+    t.column "email",       :string
+    t.column "customer_id", :integer
+  end
+
   create_table "portfolio_items", :force => true do |t|
     t.column "portfolio_type_id", :integer
     t.column "company_id",        :integer
@@ -78,6 +94,36 @@ ActiveRecord::Schema.define(:version => 15) do
     t.column "header_filename",     :string
     t.column "header_content_type", :string
     t.column "visible",             :boolean,               :default => true
+  end
+
+  create_table "sessions", :force => true do |t|
+    t.column "session_id", :string
+    t.column "data",       :text
+    t.column "updated_at", :datetime
+  end
+
+  add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
+  add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
+
+  create_table "ticket_collaterals", :force => true do |t|
+    t.column "name",         :string
+    t.column "body",         :binary
+    t.column "ticket_id",    :integer
+    t.column "content_type", :string
+  end
+
+  create_table "tickets", :force => true do |t|
+    t.column "initial_report",  :text
+    t.column "conversation_id", :integer
+    t.column "status",          :boolean
+    t.column "email_id",        :integer
+    t.column "date",            :datetime
+  end
+
+  create_table "users", :force => true do |t|
+    t.column "name",            :string
+    t.column "hashed_password", :string
+    t.column "salt",            :string
   end
 
 end

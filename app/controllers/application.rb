@@ -2,8 +2,7 @@
 # Likewise, all the methods added will be available for all controllers.
 class ApplicationController < ActionController::Base
 	require 'bluecloth'
-	require_dependency 'content'
-	
+	require_dependency 'content'	
 	
 		include ExceptionNotifiable
 #local_addresses.clear
@@ -19,4 +18,11 @@ class ApplicationController < ActionController::Base
       #      render_text(IO.read(File.join(RAILS_ROOT, 'public', '500.html')), "500 Internal Error")
       #  end
      # end   
+     private
+	def authorize
+		unless User.find_by_id(session[:user_id])
+			flash[:notice] = "Please log in"
+			redirect_to(:controller => "login" , :action => "login" )
+		end
+	end
 end

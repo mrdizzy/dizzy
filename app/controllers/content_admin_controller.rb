@@ -1,5 +1,5 @@
 class ContentAdminController < ApplicationController
-	
+	before_filter :authorize
   def index
     list
     render :action => 'list'
@@ -10,7 +10,7 @@ class ContentAdminController < ApplicationController
          :redirect_to => { :action => :list }
 
   def list
-    @article_pages, @articles = paginate :articles, :per_page => 10, :order => "'date' desc"
+    @content_pages, @contents = paginate :contents, :per_page => 10, :order => "'date' desc"
   end
 
 ## Cheatsheets ##########################################
@@ -201,6 +201,7 @@ class ContentAdminController < ApplicationController
   
   def upload_file
   	@binary = Binary.new(params[:binary])
+  	puts @binary
   	@binary.save	
   		
   end

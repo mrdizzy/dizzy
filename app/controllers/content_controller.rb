@@ -5,9 +5,9 @@ class ContentController < ApplicationController
 		@comment = Comment.new		
 		@categories = Category.find(:all, :order => :name)
 		if @content.is_a?(Article) 
-			render (:template => "content/article")
+			render(:template => "content/article")
 		else
-			render (:template => "content/cheatsheet")
+			render(:template => "content/cheatsheet")
 		end
 	end
 	
@@ -16,6 +16,11 @@ class ContentController < ApplicationController
 			
 		@results = @category.contents		
 	end	
+	
+	def list_cheatsheets 
+		@results = Cheatsheet.find(:all)
+			render(:template => "content/articles_for_category")
+	end
 
 	#### COMMENTS ####
 	
@@ -26,8 +31,9 @@ class ContentController < ApplicationController
 	end
 	
 	def create_comment 
-		@article = Article.find(params[:id])
-		@article.comments.create(params[:comment])
+		@content = Content.find(params[:id])		
+		
+		@content.comments.create(params[:comment])
 	end
 	
 	def create_child_comment 
@@ -35,13 +41,11 @@ class ContentController < ApplicationController
 		@comment.children.create(params[:comment])
 	end	
 	
-	def comment_form 
-		
+	def comment_form 		
 		render :update do |page|
 			page.insert_html :after, "add_comment", :partial => "main_comment_form", :locals => { :comment => Comment.new, :id => params[:id] }
 			
 			page.remove "add_comment"
 		end
-	end
-	
+	end	
 end
