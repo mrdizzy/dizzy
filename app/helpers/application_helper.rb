@@ -4,6 +4,10 @@ module ApplicationHelper
 		BlueCloth::new(text).to_html
 	end
 	
+	def bools
+		"blah"		
+	end
+	
 	def prepare_comments(comments,result=Array.new,counter=0)
 		counter = counter + 1
 		comments.each do |comment|			

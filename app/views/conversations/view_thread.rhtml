@@ -30,7 +30,7 @@
 <%= @conversation.parse_code %>
 <% @conversation.tickets.each do |ticket| %>
 	
-	<p><b><%= get_ticket_type(ticket) %></b></p>
+	<p><b><%= bools %></b></p>
 	<p><%= ticket.date.to_s(:long) %></p>
 	<p><%= ticket.initial_report %></p>
 	<b>Attachments:</b>
