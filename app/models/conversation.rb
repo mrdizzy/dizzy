@@ -7,3 +7,8 @@ class Conversation < ActiveRecord::Base
 		"DIZY-#{id}-"
 	end
 end
+
+class OpenConversation < Conversation
+end
+class ClosedConversation < Conversation
+end

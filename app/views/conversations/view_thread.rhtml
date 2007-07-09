@@ -23,23 +23,34 @@
 	<% end %>
 <% end %>
 	<% end %>
-	  	<%= submit_tag "Send" %>
+	  	<%= submit_button %>
 	<% end %>
 </div>
+<!-- VIEWING THREAD -->
+
 <div id="conversation">
-	<h1><%= asterisk %> <%= @conversation.parse_code %></h1>
+	<h1><%= asterisk %> <%= @conversation.parse_code %> "<%= @conversation.subject %>"</h1>
 <% @conversation.tickets.each do |ticket| %>
 	
-	<%= get_ticket_type(ticket) %>
-	<p><%= ticket.date.to_s(:long) %></p>
+	<% if ticket.is_a?(IncomingTicket) %>
+	<div class="odd">
+		-----&gt; Incoming
+		<% else %>
+		<div>
+			&lt;------ Outgoing
+			<% end %>
+		<p><%= ticket.date.to_s(:long) %></p>
 	<p><%= ticket.initial_report %></p>
+	<% unless ticket.ticket_collaterals.blank? %>
 	<b>Attachments:</b>
 	<ul>
 	<% ticket.ticket_collaterals.each do |collateral| %>
 	<li><%= link_to collateral.name, :controller => "render_binary", :action => 'attachment', :id => collateral.id %></li>
+
 	<% end %>
 	</ul>
-<hr/>
+	<% end %>
+
 </div>
 <% end %>
 </body>

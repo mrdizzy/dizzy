@@ -41,7 +41,7 @@ class Mercury < ActionMailer::Base
 		if email.subject =~ /DIZY-([0-9]{1,6})-/
 			conversation = Conversation.find($1)
 			
-			conversation.status = 'OPEN'
+			#conversation.status = 'OPEN'
 			unless email_addy.nil?
 				ticket.email = email_addy
 			else
@@ -51,12 +51,13 @@ class Mercury < ActionMailer::Base
 		
 		# Start new thread
 		else
-			conversation = Conversation.new
+			conversation = OpenConversation.new
 			conversation.subject = email.subject			
 			
 			#### No existing email in database	
 			if email_addy.nil?
-				conversation.status = 'UNTAGGED'
+				
+				
 				ticket.build_email( :email => from_email )
 							
 				conversation.build_customer(:firstname => email.friendly_from)
@@ -64,12 +65,12 @@ class Mercury < ActionMailer::Base
 				
 			# Existing email but no customer
 			elsif !email_addy.nil? and email_addy.customer.nil?
-				conversation.status = 'UNTAGGED'
+			
 				ticket.email = email_addy	
 				
 			# Existing email and customer					
 			else 				
-				conversation.status = 'OPEN'
+			
 				conversation.customer = email_addy.customer
 				ticket.email = email_addy
 			end

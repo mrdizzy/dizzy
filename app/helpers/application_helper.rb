@@ -3,14 +3,7 @@ module ApplicationHelper
 	def markdown(text)
 		BlueCloth::new(text).to_html
 	end
-	
-	def get_ticket_type(ticket)
-		if ticket.is_a?(IncomingTicket)
-			"------>Incoming"
-		else
-			"<------Outgoing"
-		end
-	end
+
 		
 	def prepare_comments(comments,result=Array.new,counter=0)
 		counter = counter + 1

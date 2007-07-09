@@ -320,6 +320,12 @@ tr.even {
 	border-collapse: collapse;
 	padding:10px; }
 	
+/* Conversations 
+========================*/
+#conversation .odd {
+	background-color: #D0ECF8;
+	}
+	
 /* Comments 
 ========================*/
 #add_comment {

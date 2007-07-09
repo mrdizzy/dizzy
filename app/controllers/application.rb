@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
 	require 'bluecloth'
 	require_dependency 'content'	
 	require_dependency 'ticket'
+	require_dependency 'conversation'
 	
 		include ExceptionNotifiable
 #local_addresses.clear
