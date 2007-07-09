@@ -14,6 +14,17 @@ class ConversationsController < ApplicationController
 		2.times { @ticket.ticket_collaterals.build }
   	end  
 	
+	def reply_form
+		@conversation = Conversation.find(params[:id])
+		
+		@ticket = Ticket.new
+		2.times { @ticket.ticket_collaterals.build }
+		render :update do |page|
+			page.insert_html :after, "ticket_#{params[:ticket]}", :partial => "reply_form"
+		page.visual_effect :toggle_blind, :reply_form
+		end	
+	end
+	
    	def send_reply 
 		@conversation = Conversation.find(params[:id])
 		@ticket = OutgoingTicket.new(params[:ticket])
@@ -25,7 +36,7 @@ class ConversationsController < ApplicationController
 		Customer.transaction do
 		@ticket.save!		
 		email = Mercury.deliver_ticket_response(@ticket)
-		render(:text => "<pre>" + email.encoded + "</pre>" )
+		redirect_to :action => "list"
 	end
   end
 end

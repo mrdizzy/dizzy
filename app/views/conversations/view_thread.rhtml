@@ -7,25 +7,7 @@
 <%= javascript_include_tag :defaults %>
 </head>
 <body>
-<div id="add_reply">
-<a href="#" onclick="Element.toggle('reply_box'); Element.remove('add_reply'); return true;">Add reply</a>
-<br/></div>
-<div id="reply_box" style="display: none;">
 
-<% form_for(:conversation, @conversation, :url =>{:action => :send_reply, :id => @conversation.id }, :html =>{:multipart => true}) do |form| %>
-	<% fields_for "ticket", @ticket do |f| %>  
-	<p>
-	<%= f.text_area :initial_report %>
-	</p>  
-	<% @ticket.ticket_collaterals.each_with_index do |collateral, index| %> 
-	<% fields_for "ticket_collaterals[#{index}]", collateral do |f| %>
-	<p><%= f.file_field :data_file %></p>
-	<% end %>
-<% end %>
-	<% end %>
-	  	<%= submit_button %>
-	<% end %>
-</div>
 <!-- VIEWING THREAD -->
 
 <div id="conversation">
@@ -33,11 +15,11 @@
 <% @conversation.tickets.each do |ticket| %>
 	
 	<% if ticket.is_a?(IncomingTicket) %>
-	<div class="odd">
-		-----&gt; Incoming
+	<div class="odd" id="ticket_<%= ticket.id %>">
+		<h3 class="blue_bold"><%= bigarrow %> Incoming</h3>
 		<% else %>
-		<div>
-			&lt;------ Outgoing
+		<div class="normal" id="ticket_<%= ticket.id %>">
+			<h3 class="blue_bold"><%= bigleftarrow %> Outgoing</h3>
 			<% end %>
 		<p><%= ticket.date.to_s(:long) %></p>
 	<p><%= ticket.initial_report %></p>
@@ -50,6 +32,7 @@
 	<% end %>
 	</ul>
 	<% end %>
+	<%= diamond %> <%= link_to_remote "Reply", :url => { :controller => :conversations, :action => :reply_form, :id => @conversation.id, :ticket => ticket.id } %>
 
 </div>
 <% end %>

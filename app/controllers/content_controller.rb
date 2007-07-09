@@ -12,8 +12,7 @@ class ContentController < ApplicationController
 	end
 	
 	def articles_for_category 
-		@category = Category.find_by_permalink(params[:permalink])
-			
+		@category = Category.find_by_permalink(params[:permalink])			
 		@results = @category.contents		
 	end	
 	
@@ -25,8 +24,11 @@ class ContentController < ApplicationController
 	#### COMMENTS ####
 	
 	def reply
-		render :update do |page|
-			page.replace_html "reply_#{params[:id]}", :partial => 'comment_form', :locals => { :comment => Comment.new, :id => params[:id] }
+		render :update do |page|			
+			page.insert_html :after, "reply_#{params[:id]}", :partial => 'comment_form', :locals => { :comment => Comment.new, :id => params[:id] }
+			
+			page.visual_effect :toggle_blind, :comment_form
+			page.replace_html "reply_#{params[:id]}", "<span class=\"date\">Reply</span>"
 		end
 	end
 	

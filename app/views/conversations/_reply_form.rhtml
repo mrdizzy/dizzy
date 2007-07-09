@@ -1,0 +1,13 @@
+
+<div id="reply_form" style="display:none;">
+	<h1><%= bigarrow %> Send reply</h1>
+<% form_for(:conversation, @conversation, :url =>{:action => :send_reply, :id => @conversation.id }, :html =>{:multipart => true}) do |form| %>
+	<% fields_for "ticket", @ticket do |f| %>  
+	<p>
+	<%= f.text_area :initial_report %>
+	</p>  
+
+	<% end %>
+	  	<%= submit_button %>
+	<% end %>
+</div>

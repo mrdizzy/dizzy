@@ -14,8 +14,7 @@ class WelcomeController < ApplicationController
 			page.delay(4) do
 				page.replace_html :latest_logo, :partial => "latest_logo"
 				page.visual_effect :appear, :latest_logo
-			end
-			
+			end			
 			page.replace_html :logo_pagination, :partial => "logo_pagination"
 		end
 	end	

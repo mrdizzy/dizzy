@@ -3,7 +3,6 @@ module ApplicationHelper
 	def markdown(text)
 		BlueCloth::new(text).to_html
 	end
-
 		
 	def prepare_comments(comments,result=Array.new,counter=0)
 		counter = counter + 1
@@ -45,7 +44,9 @@ module ApplicationHelper
 	def bigarrow
 		image_tag("f/bullets/pixels/bigarrow.png", :size=> "17x13", :alt => "->")
 	end	
-	
+	def bigleftarrow
+		image_tag("f/bullets/arrows/bigleftarrow.png", :size=> "17x13", :alt => "->")
+	end		
 	def diamond
 		image_tag("f/bullets/pixels/diamond.png", :size=> "5x5", :alt => "*")
 	end

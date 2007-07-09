@@ -41,7 +41,7 @@ class Mercury < ActionMailer::Base
 		if email.subject =~ /DIZY-([0-9]{1,6})-/
 			conversation = Conversation.find($1)
 			
-			#conversation.status = 'OPEN'
+			conversation[:type] = 'OpenConversation' 
 			unless email_addy.nil?
 				ticket.email = email_addy
 			else

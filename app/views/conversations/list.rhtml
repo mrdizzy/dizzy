@@ -1,17 +1,12 @@
 <h1><%= asterisk %> Open conversations</h1>
 
-<table>
- 
+<table> 
   <% @open_conversations.each do |conversation| %>
-   <tr>
-   
-    
+   <tr>    
     <td><%= diamond %> <%= link_to conversation.subject, :action => 'view_thread', :id => conversation.id %></td>
     <td><%= conversation.customer.firstname %></td>
-    <td><%= conversation.tickets.last.date.to_s(:long) %>
+    <td><%= conversation.tickets.first.date.to_s(:long) %>
     <td><%= conversation.id %></td>
     </tr>
   <% end %>
-
-
 </table>
