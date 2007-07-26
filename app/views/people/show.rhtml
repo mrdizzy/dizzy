@@ -1,0 +1,12 @@
+<b><%= @person.person_type.description %></b><br/>
+<%= @person.firstname %> <%= @person.surname %>
+<h1>Conversations</h1>
+<p>
+<% @person.conversations.each do |conversation| %>
+	<%= link_to conversation.subject, :controller => :conversations, :action => :view_thread, :id => conversation.id %><br/>
+	<% end %>
+</p>
+	
+
+<%= link_to 'Edit', :action => 'edit', :id => @person %> |
+<%= link_to 'Back', :action => 'list' %>

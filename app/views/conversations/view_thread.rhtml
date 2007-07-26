@@ -9,7 +9,9 @@
 <body>
 
 <!-- VIEWING THREAD -->
-
+<% @conversation.emails.each do |email| %>
+	<%= email.email %>
+	<% end %>
 <div id="conversation">
 	<h1><%= asterisk %> <%= @conversation.parse_code %> "<%= @conversation.subject %>"</h1>
 <% @conversation.tickets.each do |ticket| %>

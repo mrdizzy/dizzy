@@ -33,7 +33,7 @@ class ConversationsController < ApplicationController
 	
 		@ticket.conversation = @conversation
 		@ticket.date = Time.now
-		Customer.transaction do
+		Person.transaction do
 		@ticket.save!		
 		email = Mercury.deliver_ticket_response(@ticket)
 		redirect_to :action => "list"

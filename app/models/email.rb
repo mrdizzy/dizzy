@@ -1,5 +1,5 @@
 class Email < ActiveRecord::Base
-	belongs_to :customer
+	belongs_to :person
 	has_many :tickets
 	validates_uniqueness_of :email
 	validates_presence_of :email
