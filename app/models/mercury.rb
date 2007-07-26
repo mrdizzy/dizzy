@@ -1,12 +1,12 @@
 require 'net/imap'
 class Mercury < ActionMailer::Base
-		require_dependency 'customer'	
 		require_dependency 'ticket'	
+		require_dependency 'conversation'
 	
   	def ticket_response(ticket)
 	    subject     "#{ticket.conversation.subject} #{ticket.conversation.parse_code}"
 	    body(:ticket => ticket)
-	    addys = ticket.conversation.customer.emails.map { |addy| addy.email }
+	    addys = ticket.conversation.person.emails.map { |addy| addy.email }
 	    recipients  addys
 	    from        'casamiento@dizzy.co.uk'
 	    sent_on    ticket.date
@@ -46,7 +46,7 @@ class Mercury < ActionMailer::Base
 				ticket.email = email_addy
 			else
 				new_email = ticket.build_email(:email => from_email)
-				conversation.customer.emails << new_email
+				conversation.person.emails << new_email
 			end
 		
 		# Start new thread
@@ -60,18 +60,18 @@ class Mercury < ActionMailer::Base
 				
 				ticket.build_email( :email => from_email )
 							
-				conversation.build_customer(:firstname => email.friendly_from)
-				ticket.email.customer = conversation.customer
+				conversation.build_person(:firstname => email.friendly_from)
+				ticket.email.person = conversation.person
 				
 			# Existing email but no customer
-			elsif !email_addy.nil? and email_addy.customer.nil?
+			elsif !email_addy.nil? and email_addy.person.nil?
 			
 				ticket.email = email_addy	
 				
 			# Existing email and customer					
 			else 				
 			
-				conversation.customer = email_addy.customer
+				conversation.person = email_addy.person
 				ticket.email = email_addy
 			end
 		end		

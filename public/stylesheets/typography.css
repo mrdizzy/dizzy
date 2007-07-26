@@ -78,8 +78,12 @@ pre, code {
 	 white-space: -pre-wrap;      /* Opera 4-6 */
 	 white-space: -o-pre-wrap;    /* Opera 7 */
 	font-family:"Courier New","Courier", monospace;
-	font-size:1.1em;
+	font-size:1.3em;
 } 
+
+#cheatsheet code, #article code {
+	font-size:1em;
+}
 
 #article div.CodeRay {
 	  background-color: #D1ECF9;

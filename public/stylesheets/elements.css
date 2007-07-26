@@ -25,6 +25,7 @@ img {
 #footer a:hover, #latest_logo a:hover {
 	background-color:transparent;
 }
+
 /* Global reusable classes
 ==================================== */
 .left {
@@ -78,35 +79,6 @@ th {
 	float:right;
 }
 
-/* Article Content
-==================================== */
-#article {
-		font-family: "Verdana",sans-serif;
-}
-#article p {
-	font-size:1.3em;
-}
-#article ul {
-	font-size:1.3em;
-}
-#article h3 {
-	font-weight:bold;
-	color: #29A4BD; 	
-}
-#content_container { 
-	margin: 0 auto; width:100%;
-	padding:0;
-	clear: both;
-}
-#left_column, #welcome_right {
-	width:28%;
-	float:right;
-	margin-left: 2%;
-}
-#right_column, #welcome_left {	
-	width:69%;
-	float:left;
-}
 
 /* Backend Portfolio
 ==================================== */
@@ -194,6 +166,14 @@ td.standard {
 	width:100%;
 }
 
+/* Hierarchy 
+========================*/
+#hierarchy {
+	margin-top: 1em;
+	margin-bottom:0;
+}
+
+
 /* Article links 
 ========================= */
 table.articles {
@@ -211,16 +191,47 @@ tr.even {
 	background-repeat:no-repeat;
 	background-position:top right;
 }
-/* Hierarchy 
-========================*/
-#hierarchy {
-	margin-top: 1em;
-	margin-bottom:0;
+
+/* Article Content
+==================================== */
+
+#article p {
+	font-family: "Verdana",sans-serif;
+	font-size:1.3em;
 }
+#article ul {
+	font-family: "Verdana",sans-serif;
+	font-size:1.3em;
+}
+#article h3 {
+	font-weight:bold;
+	color: #29A4BD; 	
+}
+#content_container { 
+	margin: 0 auto; width:100%;
+	padding:0;
+	clear: both;
+}
+#left_column, #welcome_right {
+	width:28%;
+	float:right;
+	margin-left: 2%;
+}
+#right_column, #welcome_left {	
+	width:69%;
+	float:left;
+}
+
 /* Cheatsheets 
 ========================*/
 
 /* Index */
+
+#cheatsheet p {
+	font-family: "Verdana",sans-serif;
+	font-size:1.3em;
+}
+
 #cheatsheet_image {
 	float:right;
 	text-align:center;	
@@ -232,14 +243,12 @@ tr.even {
 #cheatsheet .odd {
 	background-color: #D0ECF8;
 }
-
 #cheatsheet h2 {
 	border-bottom: 1px dashed #999;
 	font-weight:bold;
 	margin-top:1em;
 	text-align:center;
 }
-
 #cheatsheet h3 {
 	margin-top: 1em;
   color: #29A4BD;
@@ -288,7 +297,6 @@ tr.even {
 
 /* Cheatsheets
 ========================*/
-
 #cheatsheets_left {
 	float:left;
 	width:75%;
@@ -320,7 +328,6 @@ tr.even {
 	border-collapse: collapse;
 	padding:10px; }
 	
-	
 /* Comments 
 ========================*/
 #add_comment {
@@ -328,14 +335,11 @@ tr.even {
 }
 
 #comments {
-	font-size: 1.1em;
-	line-height: 1.4em;
+		line-height: 1.4em;
 }
 
-	
 /* Odd & Even backgrounds 
 ========================*/
-
 #comments .odd, #conversation .odd {
 	border: 1px dotted #888;
 	padding:5px;

@@ -1,42 +1,12 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
-	def markdown(text)
-		BlueCloth::new(text).to_html
-	end
-		
-	def prepare_comments(comments,result=Array.new,counter=0)
-		counter = counter + 1
-		comments.each do |comment|			
-			if counter.even?
-			result << "<div class=\"odd\" id=\"comment_#{comment.id}\">"
-			else
-				result << "<div class=\"normal\" id=\"comment_#{comment.id}\">"
-			end
-			result << "<span class=\"date\">#{comment.created_at.to_s(:long)}</span> " + diamond + " <b>#{comment.subject}</b><p>#{comment.body}</p><div id=\"reply_#{comment.id}\">" + link_to_remote("Reply",{ :url => { :action => "reply", :id => comment.id} })  + "</div>"
-						
-				prepare_comments(comment.children,result,counter) unless comment.children.empty?
-						
-			result << "</div>"
-		end
-		result		
-	end
-	
-	def textilize(text)
-		 textilized = RedCloth.new(text).to_html
-	end
-	
-	def parse_coderay(text)	
-	 	text.gsub!(/&lt;/, '<')
-	 	text.gsub!(/&gt;/, '>')
-	 	text.gsub!(/&amp;/, '&')
-	 	text.gsub!(/&quot;/, '"')
-	   	CodeRay.scan(text, :ruby).div(  :css => :class)	   	
-	end
-	
+
 	def get_random_companies
 		@five_random_companies = Company.find(:all, :order => 'RAND()', :limit => 5)
 	end
 
+	# Graphics
+	###########################
 	def submit_button
 			submit_tag '', { :class => 'submit' } 
 	end
@@ -44,9 +14,11 @@ module ApplicationHelper
 	def bigarrow
 		image_tag("f/bullets/pixels/bigarrow.png", :size=> "17x13", :alt => "->")
 	end	
+	
 	def bigleftarrow
 		image_tag("f/bullets/arrows/bigleftarrow.png", :size=> "17x13", :alt => "->")
 	end		
+	
 	def diamond
 		image_tag("f/bullets/pixels/diamond.png", :size=> "5x5", :alt => "*")
 	end
@@ -55,7 +27,6 @@ module ApplicationHelper
 		image_tag("f/bullets/pixels/asterisk.png", :size=> "13x13", :alt => "*")
 	end
 	
-	# Graphics for HTML
 	def spiro
 		"<div class=\"spiro\">" + image_tag("f/branding/spirosmall.png", :size=> "29x29", :alt => "---") + 
 		"</div>"
@@ -174,4 +145,37 @@ module ApplicationHelper
 		end
 		return results.join		
 	end		
+		def markdown(text)
+		BlueCloth::new(text).to_html
+	end
+		
+	def prepare_comments(comments,result=Array.new,counter=0)
+		counter = counter + 1
+		comments.each do |comment|			
+			if counter.even?
+			result << "<div class=\"odd\" id=\"comment_#{comment.id}\">"
+			else
+				result << "<div class=\"normal\" id=\"comment_#{comment.id}\">"
+			end
+			result << "<span class=\"date\">#{comment.created_at.to_s(:long)}</span> " + diamond + " <b>#{comment.subject}</b><p>#{comment.body}</p><div id=\"reply_#{comment.id}\">" + link_to_remote("Reply",{ :url => { :action => "reply", :id => comment.id} })  + "</div>"
+						
+				prepare_comments(comment.children,result,counter) unless comment.children.empty?
+						
+			result << "</div>"
+		end
+		result		
+	end
+	
+	def textilize(text)
+		 textilized = RedCloth.new(text).to_html
+	end
+	
+	def parse_coderay(text)	
+	 	text.gsub!(/&lt;/, '<')
+	 	text.gsub!(/&gt;/, '>')
+	 	text.gsub!(/&amp;/, '&')
+	 	text.gsub!(/&quot;/, '"')
+	   	CodeRay.scan(text, :ruby).div(  :css => :class)	   	
+	end
+	
 end

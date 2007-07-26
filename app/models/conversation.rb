@@ -1,6 +1,6 @@
 class Conversation < ActiveRecord::Base
 		has_many :tickets, :dependent => :destroy, :order => "date DESC" 
-	belongs_to :customer
+	belongs_to :person
 	belongs_to :conversation_type
 	#has_many :emails, :through => :customer
 	
