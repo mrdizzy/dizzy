@@ -45,7 +45,7 @@ class Mercury < ActionMailer::Base
 		else
 			conversation = OpenConversation.new
 			conversation.subject = email.subject	
-			
+		end
 			email.from.each do |from|
 				email_addy = Email.find_by_email(from)
 				if email_addy.nil?
@@ -55,22 +55,27 @@ class Mercury < ActionMailer::Base
 					conversation.people << person
 					ticket.from_recipients.build(:email => new_email)
 				else
-					ticket.emails << email_addy
+					from_recipient =  FromRecipient.new
+					from_recipient.email = email_addy					
+					ticket.from_recipients << from_recipient
 				end
 			end
-			
-			email.cc.each do |cc|
-				email_addy = Email.find_by_email(cc)
-				if email_addy.nil?
-					new_email = Email.new(:email => cc)
-					person = Person.new(:firstname => "Boo2")
-					new_email.person = person
-					conversation.people << person
-					ticket.cc_recipients.build(:email => new_email)
-				else
-					ticket.emails << email_addy
+			unless email.cc.nil?
+				email.cc.each do |cc| 
+					email_addy = Email.find_by_email(cc)
+					if email_addy.nil?
+						new_email = Email.new(:email => cc)
+						person = Person.new(:firstname => "Boo2")
+						new_email.person = person
+						conversation.people << person
+						ticket.cc_recipients.build(:email => new_email)
+					else
+						cc_recipient =  CcRecipient.new
+						cc_recipient.email = email_addy					
+						ticket.cc_recipients << cc_recipient
+					end
 				end
-			end
+			end	
 			
 			email.to.each do |to|
 				email_addy = Email.find_by_email(to)
@@ -81,12 +86,14 @@ class Mercury < ActionMailer::Base
 					conversation.people << person
 					ticket.to_recipients.build(:email => new_email)
 				else
-					ticket.emails << email_addy
+					to_recipient =  ToRecipient.new
+					to_recipient.email = email_addy					
+					ticket.to_recipients << to_recipient
 				end
 			end
 			conversation.tickets << ticket
 			conversation.save
-		end		
+		
 	end
 	
 	def self.check_mail
@@ -99,6 +106,6 @@ class Mercury < ActionMailer::Base
 		    #Mark message as deleted and it will be removed from storage when session closed
 		    imap.store(message_id, "+FLAGS", [:Deleted])
 	    end
-	   	imap.expunge
+	   	#imap.expunge
 	end
 end
