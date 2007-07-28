@@ -6,6 +6,12 @@
 
 <p><label for="person_surname">Surname</label><br/>
 <%= text_field 'person', 'surname'  %></p>
+<p><label for="person_email">Email</label><br/>
+
+
+<% @person.emails.each do |email| %>
+	<%= email.email %>
+	<% end %>
 
 <p><label for="person_type_id">Type</label><br/>
 <%= collection_select 'person', :person_type_id, PersonType.find(:all), :id, :description %>

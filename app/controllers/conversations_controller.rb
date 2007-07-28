@@ -22,7 +22,7 @@ class ConversationsController < ApplicationController
 		@ticket = Ticket.find(params[:id])
 		@conversation = @ticket.conversation.id
 		
-		@to_recipients = @ticket.to_recipients.collect { |recipient| [recipient.email.email, recipient.email_id]}
+		@to_recipients = @ticket.to_recipients.collect { |recipient| [recipient.email.email, recipient.email_id]} + @ticket.from_recipients.collect { |recipient| [recipient.email.email, recipient.email_id]}
 		@cc_recipients = @ticket.cc_recipients.collect { |recipient| [recipient.email.email, recipient.email_id]}
 		
 		@ticket = Ticket.new
