@@ -35,8 +35,7 @@ class Mercury < ActionMailer::Base
 			end
 		end
 	
-		# Existing conversation thread
-		
+		# Existing conversation thread		
 		if email.subject =~ /DIZY-([0-9]{1,6})-/
 			conversation = Conversation.find($1)			
 			conversation[:type] = 'OpenConversation' 
@@ -93,7 +92,6 @@ class Mercury < ActionMailer::Base
 			end
 			conversation.tickets << ticket
 			conversation.save
-		
 	end
 	
 	def self.check_mail
@@ -106,6 +104,6 @@ class Mercury < ActionMailer::Base
 		    #Mark message as deleted and it will be removed from storage when session closed
 		    imap.store(message_id, "+FLAGS", [:Deleted])
 	    end
-	   	#imap.expunge
+	   	imap.expunge
 	end
 end

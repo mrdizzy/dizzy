@@ -19,14 +19,16 @@ class ConversationsController < ApplicationController
   	end  
 	
 	def reply_form
-		@conversation = Conversation.find(params[:id])
-		@recipients = @conversation.tickets.collect { |ticket| ticket.recipients }.flatten
-		@recipients = @recipients.collect { |recipient| [recipient.email.email,recipient.email_id]}.uniq
+		@ticket = Ticket.find(params[:id])
+		@conversation = @ticket.conversation.id
+		
+		@to_recipients = @ticket.to_recipients.collect { |recipient| [recipient.email.email, recipient.email_id]}
+		@cc_recipients = @ticket.cc_recipients.collect { |recipient| [recipient.email.email, recipient.email_id]}
 		
 		@ticket = Ticket.new
 		2.times { @ticket.ticket_collaterals.build }
 		render :update do |page|
-			page.insert_html :after, "ticket_#{params[:ticket]}", :partial => "reply_form"
+			page.insert_html :after, "ticket_#{params[:id]}", :partial => "reply_form"
 		page.visual_effect :toggle_blind, :reply_form
 		end	
 	end

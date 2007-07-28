@@ -40,7 +40,7 @@
 	<% end %>
 	</ul>
 	<% end %>
-	<%= diamond %> <%= link_to_remote "Reply", :url => { :controller => :conversations, :action => :reply_form, :id => @conversation.id, :ticket => ticket.id } %>
+	<%= diamond %> <%= link_to_remote "Reply", :url => { :controller => :conversations, :action => :reply_form, :id => ticket.id } %>
 
 </div>
 <% end %>

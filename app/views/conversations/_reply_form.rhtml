@@ -1,15 +1,20 @@
 
 <div id="reply_form" style="display:none;">
 	<h1><%= bigarrow %> Send reply</h1>
-<% form_for(:conversation, @conversation, :url =>{:action => :send_reply, :id => @conversation.id }, :html =>{:multipart => true}) do |form| %>
-	<% fields_for "ticket", @ticket do |f| %>  
-	
-	<%= select_tag('ticket[email_ids][]', options_for_select(@recipients), {:multiple=> :true}) %>
+<% form_for(:ticket, @ticket, :url =>{:action => :send_reply, :id => @conversation }, :html =>{:multipart => true}) do |form| %>
 	<p>
-	<%= f.text_area :initial_report %>
+	To:
+	<%= select_tag('ticket[to_recipients][]', options_for_select(@to_recipients), {:multiple=> :true}) %>
+</p>
+	<p>
+	Cc:
+	<%= select_tag('ticket[cc_recipients][]', options_for_select(@cc_recipients), {:multiple=> :true}) %>
+</p>
+	<p>
+	<%= form.text_area :initial_report %>
 	</p>  
 
-	<% end %>
+	
 	  	<%= submit_button %>
 	<% end %>
 </div>
