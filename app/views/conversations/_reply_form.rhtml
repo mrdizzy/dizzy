@@ -3,6 +3,8 @@
 	<h1><%= bigarrow %> Send reply</h1>
 <% form_for(:conversation, @conversation, :url =>{:action => :send_reply, :id => @conversation.id }, :html =>{:multipart => true}) do |form| %>
 	<% fields_for "ticket", @ticket do |f| %>  
+	
+	<%= select_tag('ticket[email_ids][]', options_for_select(@recipients), {:multiple=> :true}) %>
 	<p>
 	<%= f.text_area :initial_report %>
 	</p>  

@@ -4,7 +4,8 @@
   <% @open_conversations.each do |conversation| %>
    <tr>    
     <td><%= diamond %> <%= link_to conversation.subject, :action => 'view_thread', :id => conversation.id %></td>
-    <td><%= conversation.person.firstname %></td>
+    <td><% conversation.people.each do |person| %>
+    	<%= person.firstname %> - <% end %></td>
     <td><%= conversation.tickets.first.date.to_s(:long) %>
     <td><%= conversation.id %></td>
     </tr>

@@ -9,11 +9,10 @@
 <body>
 
 <!-- VIEWING THREAD -->
-<% @conversation.emails.each do |email| %>
-	<%= email.email %>
-	<% end %>
 <div id="conversation">
 	<h1><%= asterisk %> <%= @conversation.parse_code %> "<%= @conversation.subject %>"</h1>
+	<p><b>People in this conversation:</b><% @conversation.people.each do |person| %>
+    	<%= person.firstname %>, <% end %></p>
 <% @conversation.tickets.each do |ticket| %>
 	
 	<% if ticket.is_a?(IncomingTicket) %>
@@ -23,6 +22,13 @@
 		<div class="normal" id="ticket_<%= ticket.id %>">
 			<h3 class="blue_bold"><%= bigleftarrow %> Outgoing</h3>
 			<% end %>
+			
+			<!-- Recipients -->
+			<p><b>To:</b> <% ticket.to_recipients.each do |recipient| %>
+				<%= recipient.email.person.firstname %>
+				<% end %></p>
+		
+			
 		<p><%= ticket.date.to_s(:long) %></p>
 	<p><%= ticket.initial_report %></p>
 	<% unless ticket.ticket_collaterals.blank? %>

@@ -2,11 +2,12 @@ require 'net/imap'
 class Mercury < ActionMailer::Base
 		require_dependency 'ticket'	
 		require_dependency 'conversation'
+		require_dependency 'recipient'
 	
   	def ticket_response(ticket)
 	    subject     "#{ticket.conversation.subject} #{ticket.conversation.parse_code}"
 	    body(:ticket => ticket)
-	    addys = ticket.conversation.person.emails.map { |addy| addy.email }
+	    addys = ticket.to_recipients.collect { |recipient| recipient.email.email }
 	    recipients  addys
 	    from        'casamiento@dizzy.co.uk'
 	    sent_on    ticket.date
@@ -33,50 +34,59 @@ class Mercury < ActionMailer::Base
 				ticket.ticket_collaterals << collateral
 			end
 		end
-		from_email = email.from[0]	
-				
-		email_addy = Email.find_by_email(from_email)
+	
+		# Existing conversation thread
 		
-		# Get existing thread identifier
 		if email.subject =~ /DIZY-([0-9]{1,6})-/
-			conversation = Conversation.find($1)
-			
+			conversation = Conversation.find($1)			
 			conversation[:type] = 'OpenConversation' 
-			unless email_addy.nil?
-				ticket.email = email_addy
-			else
-				new_email = ticket.build_email(:email => from_email)
-				conversation.person.emails << new_email
-			end
-		
-		# Start new thread
+			
+		# New conversation thread
 		else
 			conversation = OpenConversation.new
-			conversation.subject = email.subject			
+			conversation.subject = email.subject	
 			
-			#### No existing email in database	
-			if email_addy.nil?
-				
-				
-				ticket.build_email( :email => from_email )
-							
-				conversation.build_person(:firstname => email.friendly_from)
-				ticket.email.person = conversation.person
-				
-			# Existing email but no customer
-			elsif !email_addy.nil? and email_addy.person.nil?
-			
-				ticket.email = email_addy	
-				
-			# Existing email and customer					
-			else 				
-			
-				conversation.person = email_addy.person
-				ticket.email = email_addy
+			email.from.each do |from|
+				email_addy = Email.find_by_email(from)
+				if email_addy.nil?
+					new_email = Email.new(:email => from)
+					person = Person.new(:firstname => "Boo")
+					new_email.person = person
+					conversation.people << person
+					ticket.from_recipients.build(:email => new_email)
+				else
+					ticket.emails << email_addy
+				end
 			end
+			
+			email.cc.each do |cc|
+				email_addy = Email.find_by_email(cc)
+				if email_addy.nil?
+					new_email = Email.new(:email => cc)
+					person = Person.new(:firstname => "Boo2")
+					new_email.person = person
+					conversation.people << person
+					ticket.cc_recipients.build(:email => new_email)
+				else
+					ticket.emails << email_addy
+				end
+			end
+			
+			email.to.each do |to|
+				email_addy = Email.find_by_email(to)
+				if email_addy.nil?
+					new_email = Email.new(:email => to)
+					person = Person.new(:firstname => "Boo3")
+					new_email.person = person
+					conversation.people << person
+					ticket.to_recipients.build(:email => new_email)
+				else
+					ticket.emails << email_addy
+				end
+			end
+			conversation.tickets << ticket
+			conversation.save
 		end		
-		conversation.tickets << ticket		
-		conversation.save!	
 	end
 	
 	def self.check_mail
@@ -84,11 +94,11 @@ class Mercury < ActionMailer::Base
 	    imap.authenticate('LOGIN', 'casamiento@dizzy.co.uk', 'world1')
 	    imap.select('INBOX')
 	    imap.search(['ALL']).each do |message_id|
-	      msg = imap.fetch(message_id,'RFC822')[0].attr['RFC822']
-	      Mercury.receive(msg)
-	      #Mark message as deleted and it will be removed from storage when session closed
-	      imap.store(message_id, "+FLAGS", [:Deleted])
+		    msg = imap.fetch(message_id,'RFC822')[0].attr['RFC822']
+		    Mercury.receive(msg)
+		    #Mark message as deleted and it will be removed from storage when session closed
+		    imap.store(message_id, "+FLAGS", [:Deleted])
 	    end
-	     imap.expunge
+	   	imap.expunge
 	end
 end

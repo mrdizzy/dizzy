@@ -1,9 +1,13 @@
 class ConversationsController < ApplicationController
-		before_filter :authorize
+	require_dependency 'recipient'
+	require_dependency 'ticket'
+	before_filter :authorize
+		
 	def index
 	    list
 	    render :action => 'list'
   	end
+  	
 	def list
 		@open_conversations = OpenConversation.find(:all)
 	end
@@ -16,6 +20,8 @@ class ConversationsController < ApplicationController
 	
 	def reply_form
 		@conversation = Conversation.find(params[:id])
+		@recipients = @conversation.tickets.collect { |ticket| ticket.recipients }.flatten
+		@recipients = @recipients.collect { |recipient| [recipient.email.email,recipient.email_id]}.uniq
 		
 		@ticket = Ticket.new
 		2.times { @ticket.ticket_collaterals.build }
@@ -28,15 +34,12 @@ class ConversationsController < ApplicationController
    	def send_reply 
 		@conversation = Conversation.find(params[:id])
 		@ticket = OutgoingTicket.new(params[:ticket])
-		
-		#params[:ticket_collaterals].each_value { |collateral| @ticket.ticket_collaterals.build(collateral) }
-	
 		@ticket.conversation = @conversation
 		@ticket.date = Time.now
-		Person.transaction do
-		@ticket.save!		
+		@ticket.save!
+			
 		email = Mercury.deliver_ticket_response(@ticket)
 		redirect_to :action => "list"
 	end
-  end
+
 end

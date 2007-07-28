@@ -2,7 +2,10 @@
 # migrations feature of ActiveRecord to incrementally modify your database, and
 # then regenerate this schema definition.
 
-ActiveRecord::Schema.define(:version => 32) do
+ActiveRecord::Schema.define(:version => 40) do
+
+  create_table "addresses", :force => true do |t|
+  end
 
   create_table "authors", :force => true do |t|
     t.column "username",  :string
@@ -59,9 +62,13 @@ ActiveRecord::Schema.define(:version => 32) do
   end
 
   create_table "conversations", :force => true do |t|
-    t.column "subject",   :string
-    t.column "type",      :string
-    t.column "person_id", :integer
+    t.column "subject", :string
+    t.column "type",    :string
+  end
+
+  create_table "conversations_people", :id => false, :force => true do |t|
+    t.column "conversation_id", :integer
+    t.column "person_id",       :integer
   end
 
   create_table "emails", :force => true do |t|
@@ -101,6 +108,12 @@ ActiveRecord::Schema.define(:version => 32) do
     t.column "visible",             :boolean,               :default => true
   end
 
+  create_table "recipients", :force => true do |t|
+    t.column "email_id",  :integer
+    t.column "ticket_id", :integer
+    t.column "type",      :string
+  end
+
   create_table "sessions", :force => true do |t|
     t.column "session_id", :string
     t.column "data",       :text
@@ -121,7 +134,6 @@ ActiveRecord::Schema.define(:version => 32) do
     t.column "initial_report",  :text
     t.column "conversation_id", :integer
     t.column "type",            :string
-    t.column "email_id",        :integer
     t.column "date",            :datetime
   end
 
