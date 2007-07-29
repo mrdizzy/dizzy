@@ -1,0 +1,14 @@
+
+			<!-- Recipients -->
+			<% unless @ticket.to_recipients.empty? %>
+				<p><b>To</b><%= to_recipients(@ticket) %></p>
+			<% end %>
+			
+			<% unless @ticket.from_recipients.empty? %>
+				<p><b>From</b><%= from_recipients(@ticket) %></p>		
+			<% end %>
+					
+			<% unless @ticket.cc_recipients.empty? %>
+				<p><b>Cc</b><%= cc_recipients(@ticket) %></p>
+			<% end %>
+		<p><b>Date: </b> <%= @ticket.date.to_s(:long) %></p>

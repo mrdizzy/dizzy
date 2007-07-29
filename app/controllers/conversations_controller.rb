@@ -14,9 +14,20 @@ class ConversationsController < ApplicationController
 	
 	def view_thread		
 		@conversation = Conversation.find(params[:id])
-		@ticket = Ticket.new
-		2.times { @ticket.ticket_collaterals.build }
   	end  
+  	
+  	def view_ticket 
+  		@ticket = Ticket.find(params[:id])
+  		render :update do |page|
+			page.replace_html "details_#{params[:id]}", :partial => "view_ticket"
+		end	
+  	end
+  	
+  	def add_attachment
+  		render :update do |page|
+			page.insert_html :after, "add_attachment", :partial => "add_attachment"
+		end			
+  	end
 	
 	def reply_form
 		@ticket = Ticket.find(params[:id])
@@ -34,8 +45,13 @@ class ConversationsController < ApplicationController
 	end
 	
    	def send_reply 
+
 		@conversation = Conversation.find(params[:id])
 		@ticket = OutgoingTicket.new(params[:ticket])
+	
+		params[:data_file].each do |collateral|
+   			@ticket.ticket_collaterals.build(:data_file => collateral)
+   		end
 		@ticket.conversation = @conversation
 		@ticket.date = Time.now
 		@ticket.save!

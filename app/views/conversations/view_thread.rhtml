@@ -10,9 +10,8 @@
 
 <!-- VIEWING THREAD -->
 <div id="conversation">
-	<h1><%= asterisk %> <%= @conversation.parse_code %> "<%= @conversation.subject %>"</h1>
-	<p><b>People in this conversation:</b><% @conversation.people.each do |person| %>
-    	<%= person.firstname %>, <% end %></p>
+	<h1><%= asterisk %> "<%= @conversation.subject %>"</h1>
+
 <% @conversation.tickets.each do |ticket| %>
 	
 	<% if ticket.is_a?(IncomingTicket) %>
@@ -21,34 +20,15 @@
 		<% else %>
 		<div class="normal" id="ticket_<%= ticket.id %>">
 			<h3 class="blue_bold"><%= bigleftarrow %> Outgoing</h3>
-			<% end %>
-			
-			<!-- Recipients -->
-			<% unless ticket.to_recipients.empty? %>
-				<p><b>To:</b> <%= to_recipients(ticket) %></p>
-			<% end %>
-			
-			<% unless ticket.from_recipients.empty? %>
-				<p><b>From:</b> <%= from_recipients(ticket) %></p>		
-			<% end %>
-					
-			<% unless ticket.cc_recipients.empty? %>
-				<p><b>Cc:</b> <%= cc_recipients(ticket) %></p>
-			<% end %>
-		<p><%= ticket.date.to_s(:long) %></p>
-	<p><%= ticket.initial_report %></p>
-	<% unless ticket.ticket_collaterals.blank? %>
-	<b>Attachments:</b>
-	<ul>
-	<% ticket.ticket_collaterals.each do |collateral| %>
-	<li><%= link_to collateral.name, :controller => "render_binary", :action => 'attachment', :id => collateral.id %></li>
-
-	<% end %>
-	</ul>
-	<% end %>
-	<%= diamond %> <%= link_to_remote "Reply", :url => { :controller => :conversations, :action => :reply_form, :id => ticket.id } %>
+			<% end %> 
+			<div id="details_<%= ticket.id %>"><p><%= diamond %> <%= link_to_remote "Show details", :url => { :controller => :conversations, :action => :view_ticket, :id => ticket.id } %></p></div>
+			<div id="content_<%= ticket.id %>"><p>
+<%= ticket.initial_report %> </p></div>
+<p>
+	<%= diamond %> <%= link_to_remote "Reply", :url => { :controller => :conversations, :action => :reply_form, :id => ticket.id } %></p>
 
 </div>
 <% end %>
+</div>
 </body>
 </html>

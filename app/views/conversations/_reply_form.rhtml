@@ -13,6 +13,12 @@
 	<p>
 	<%= form.text_area :initial_report %>
 	</p>  
+	<div id="add_attachment">
+	<p>
+		<%= diamond %>
+<%= link_to_remote "Add attachment", :url => { :controller => :conversations, :action => :add_attachment } %></p>
+</div>	
+
 
 	
 	  	<%= submit_button %>

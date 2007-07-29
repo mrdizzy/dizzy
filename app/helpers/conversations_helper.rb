@@ -1,7 +1,7 @@
 module ConversationsHelper
 	
 	def format_recipient(recipient)
-		recipient.email.person.firstname + " &lt;" + recipient.email.email + "&gt;"
+		" " + diamond + " " + (link_to recipient.email.person.firstname, {:controller => :people, :action => :show, :id => recipient.email.person.id })  + " &lt;" + recipient.email.email + "&gt;"
 	end
 	
 	def to_recipients(ticket)
