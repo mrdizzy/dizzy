@@ -7,8 +7,10 @@ class Mercury < ActionMailer::Base
   	def ticket_response(ticket)
 	    subject     "#{ticket.conversation.subject} #{ticket.conversation.parse_code}"
 	    body(:ticket => ticket)
-	    addys = ticket.to_recipients.collect { |recipient| recipient.email.email }
-	    recipients  addys
+	    to_addresses = ticket.to_recipients.collect { |recipient| recipient.email.email }
+	    cc_addresses = ticket.cc_recipients.collect { |recipient| recipient.email.email }
+	    recipients  to_addresses
+	    cc	cc_addresses
 	    from        'casamiento@dizzy.co.uk'
 	    sent_on    ticket.date
 	    
@@ -45,6 +47,7 @@ class Mercury < ActionMailer::Base
 			conversation = OpenConversation.new
 			conversation.subject = email.subject	
 		end
+			unless email.from_addrs.nil?
 			email.from_addrs.each do |from|
 				email_addy = Email.find_by_email(from.spec)
 				name = from.name.split(" ")
@@ -61,14 +64,21 @@ class Mercury < ActionMailer::Base
 					ticket.from_recipients << from_recipient
 				end
 			end
+		end
 			unless email.cc_addrs.nil?
 				email.cc_addrs.each do |cc| 
 					email_addy = Email.find_by_email(cc.spec)
-					name = cc.name.split(" ")
+
 								
 					if email_addy.nil?
+						if cc.name 
+							name = cc.name.split(" ")
+							person = Person.new(:firstname => name[0], :surname => name[1])
+						else
+							person = Person.new(:firstname => "Unidentified")
+						end
 						new_email = Email.new(:email => cc.spec)
-						person = Person.new(:firstname => name[0], :surname => name[1])
+						
 						new_email.person = person
 						conversation.people << person
 						ticket.cc_recipients.build(:email => new_email)
@@ -79,14 +89,20 @@ class Mercury < ActionMailer::Base
 					end
 				end
 			end	
-			
-			email.to_addrs.each do |to|
+			unless email.to_addrs.nil?
+				
+				email.to_addrs.each do |to|
 				next if to.spec == "casamiento@dizzy.co.uk"
 				email_addy = Email.find_by_email(to.spec)
-				name = to.name.split(" ") if to.name
+				
 				if email_addy.nil?
 					new_email = Email.new(:email => to.spec)
-					person = Person.new(:firstname => name[0], :surname => name[1])
+					if to.name 
+						name = to.name.split(" ")
+						person = Person.new(:firstname => name[0], :surname => name[1])
+					else 
+							person = Person.new(:firstname => "Unidentified")
+					end
 					new_email.person = person
 					conversation.people << person
 					ticket.to_recipients.build(:email => new_email)
@@ -96,6 +112,7 @@ class Mercury < ActionMailer::Base
 					ticket.to_recipients << to_recipient
 				end
 			end
+		end
 			conversation.tickets << ticket
 			conversation.save
 	end

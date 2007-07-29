@@ -24,11 +24,17 @@
 			<% end %>
 			
 			<!-- Recipients -->
-			<p><b>To:</b> <% ticket.to_recipients.each do |recipient| %>
-				<%= recipient.email.person.firstname %>
-				<% end %></p>
-		
+			<% unless ticket.to_recipients.empty? %>
+				<p><b>To:</b> <%= to_recipients(ticket) %></p>
+			<% end %>
 			
+			<% unless ticket.from_recipients.empty? %>
+				<p><b>From:</b> <%= from_recipients(ticket) %></p>		
+			<% end %>
+					
+			<% unless ticket.cc_recipients.empty? %>
+				<p><b>Cc:</b> <%= cc_recipients(ticket) %></p>
+			<% end %>
 		<p><%= ticket.date.to_s(:long) %></p>
 	<p><%= ticket.initial_report %></p>
 	<% unless ticket.ticket_collaterals.blank? %>
