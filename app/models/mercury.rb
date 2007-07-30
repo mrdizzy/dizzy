@@ -23,6 +23,7 @@ class Mercury < ActionMailer::Base
 	end
   
 	def receive(email)
+		
 		ticket = IncomingTicket.new	
 		ticket.initial_report = email.body
 		ticket.date = email.date
@@ -115,6 +116,8 @@ class Mercury < ActionMailer::Base
 		end
 			conversation.tickets << ticket
 			conversation.save
+			
+		
 	end
 	
 	def self.check_mail
@@ -123,10 +126,15 @@ class Mercury < ActionMailer::Base
 	    imap.select('INBOX')
 	    imap.search(['ALL']).each do |message_id|
 		    msg = imap.fetch(message_id,'RFC822')[0].attr['RFC822']
-		    Mercury.receive(msg)
+		   EmailBody.create(:body => msg)
 		    #Mark message as deleted and it will be removed from storage when session closed
 		    imap.store(message_id, "+FLAGS", [:Deleted])
 	    end
 	   	imap.expunge
+	  EmailBody.find(:all).each do |email|
+	  	receive(email.body)
+	  	email.destroy
+  end
 	end
+	
 end
