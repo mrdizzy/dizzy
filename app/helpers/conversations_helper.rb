@@ -26,4 +26,25 @@ module ConversationsHelper
 		end
 		result
 	end
+	def get_children(folder)
+		result = "<ul>"
+		folder.children.each do |child|
+			result = result + "<li>#{child.name}</li>"
+			if child.children
+				result = result + get_children(child)
+			end
+		end
+		result = result + "</ul>"
+	end
+	def get_folders
+		result = "<ul>"
+		Folder.find_all_by_parent_id(nil).each do |folder|
+			result = result + "<li>#{folder.name}</li>"
+			if folder.children 
+				result = result + get_children(folder)
+			end
+		end
+		result = result + "</ul>"
+		result
+	end
 end
