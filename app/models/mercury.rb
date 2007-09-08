@@ -55,7 +55,7 @@ class Mercury < ActionMailer::Base
 				
 				if email_addy.nil?
 					new_email = Email.new(:email => from.spec)
-					person = Person.new(:firstname => name[0], :surname => name[1])
+					person = Person.new(:firstname => name[0], :surname => name[1], :person_type_id => 1)
 					new_email.person = person
 					conversation.people << person
 					ticket.from_recipients.build(:email => new_email)
@@ -74,9 +74,9 @@ class Mercury < ActionMailer::Base
 					if email_addy.nil?
 						if cc.name 
 							name = cc.name.split(" ")
-							person = Person.new(:firstname => name[0], :surname => name[1])
+							person = Person.new(:firstname => name[0], :surname => name[1], :person_type_id => 1)
 						else
-							person = Person.new(:firstname => "Unidentified")
+							person = Person.new(:firstname => "Unidentified", :person_type_id => 1)
 						end
 						new_email = Email.new(:email => cc.spec)
 						
@@ -100,9 +100,9 @@ class Mercury < ActionMailer::Base
 					new_email = Email.new(:email => to.spec)
 					if to.name 
 						name = to.name.split(" ")
-						person = Person.new(:firstname => name[0], :surname => name[1])
+						person = Person.new(:firstname => name[0], :surname => name[1], :person_type_id => 1)
 					else 
-							person = Person.new(:firstname => "Unidentified")
+							person = Person.new(:firstname => "Unidentified", :person_type_id => 1)
 					end
 					new_email.person = person
 					conversation.people << person

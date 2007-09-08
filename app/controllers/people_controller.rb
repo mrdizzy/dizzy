@@ -34,6 +34,12 @@ class PeopleController < ApplicationController
     @person = Person.find(params[:id])
   end
 
+  def change_type
+  	@person = Person.find(params[:id])
+  	@person.person_type_id = params[:person_type_id]
+  	@person.save
+  	end
+
   def update
     @person = Person.find(params[:id])
     if @person.update_attributes(params[:person])

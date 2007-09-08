@@ -1,12 +1,13 @@
 <b><%= @person.person_type.description %></b><br/>
 <%= @person.firstname %> <%= @person.surname %>
+<% form_tag :action => 'change_type', :id => @person do %>
+<%= select_tag :person_type_id, options_from_collection_for_select(PersonType.find(:all), :id, :description) %>
+<%= submit_tag %>
+<% end %>
 <h1>Conversations</h1>
 <p>
 <% @person.conversations.each do |conversation| %>
 	<%= link_to conversation.subject, :controller => :conversations, :action => :view_thread, :id => conversation.id %><br/>
 	<% end %>
 </p>
-	
 
-<%= link_to 'Edit', :action => 'edit', :id => @person %> |
-<%= link_to 'Back', :action => 'list' %>
