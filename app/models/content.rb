@@ -7,7 +7,7 @@ class Article < Content
 	
 		has_permalink :title
 	
-	belongs_to :author
+	belongs_to :user
 	
 	validates_presence_of :content, :title, :date, :author_id, :description, :permalink
 	validates_uniqueness_of :title, :permalink
@@ -16,7 +16,7 @@ end
 class Cheatsheet < Content
 		has_permalink :title 
 		
-	belongs_to :author
+	belongs_to :user
 	validates_presence_of :title, :description, :permalink, :content, :author_id, :date, :thumbnail, :pdf, :size, :author_id, :date, :filename, :thumbnail_size
 	
 	def thumbnail_data=(binary_data)

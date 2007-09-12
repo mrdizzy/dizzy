@@ -2,16 +2,9 @@
 # migrations feature of ActiveRecord to incrementally modify your database, and
 # then regenerate this schema definition.
 
-ActiveRecord::Schema.define(:version => 43) do
+ActiveRecord::Schema.define(:version => 48) do
 
   create_table "addresses", :force => true do |t|
-  end
-
-  create_table "authors", :force => true do |t|
-    t.column "username",  :string
-    t.column "firstname", :string
-    t.column "surname",   :string
-    t.column "email",     :string
   end
 
   create_table "binaries", :force => true do |t|
@@ -49,7 +42,7 @@ ActiveRecord::Schema.define(:version => 43) do
     t.column "type",           :string
     t.column "title",          :string
     t.column "description",    :string
-    t.column "author_id",      :integer
+    t.column "user_id",        :integer
     t.column "date",           :datetime
     t.column "content",        :text
     t.column "filename",       :string
@@ -150,6 +143,9 @@ ActiveRecord::Schema.define(:version => 43) do
     t.column "name",            :string
     t.column "hashed_password", :string
     t.column "salt",            :string
+    t.column "firstname",       :string
+    t.column "surname",         :string
+    t.column "email",           :string
   end
 
 end

@@ -1,0 +1,29 @@
+<%
+def fixture_data(name)
+  render_text("#{RAILS_ROOT}/db/migrate/data/contents/#{name}")
+end
+
+def render_text(filename)
+  data = File.open(filename,'rb').read
+  data = data.gsub("\n","")
+
+end
+%>
+
+
+
+migrations:
+  id: 1
+  type: Cheatsheet
+  title: Rails Migrations
+  description: Understanding how to use Rails' migrations features
+  author_id: 1
+  date: 2007-07-02 23:36:00
+  content: <%= fixture_data("cheatsheets/rails_migrations.txt") %>
+  filename: rails_migrations.pdf
+  content_type:
+  size: 234497
+  thumbnail_size: 7953
+  thumbnail:
+  pdf: 
+  permalink: rails-migrations
