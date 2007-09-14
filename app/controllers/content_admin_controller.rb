@@ -159,12 +159,12 @@ class ContentAdminController < ApplicationController
     end  	
   end  
   
-## Authors ##########################################
+## Users ##########################################
 
-  def add_new_author 
-  	@author = Author.new  
+  def add_new_user
+  	@user = User.new  
   		render :update do |page|
-			page.replace_html :add_new_author, :partial => 'add_new_author'
+			page.replace_html :add_new_user, :partial => 'add_new_user'
 		end	
   end 
   
