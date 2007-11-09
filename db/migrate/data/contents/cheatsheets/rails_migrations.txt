@@ -1,40 +1,54 @@
 <cheatsheet>
-    <title>Rails Migrations</title>
-    <section>
-        <subhead>Up Methods</subhead>
-            <method>
-                <minihead>execute</minihead>
-                <p>Takes a single string identifying a valid SQL command to execute directly</p>
-                <r>  execute "alter table line_items
+	<title>Rails Migrations</title>
+	<section>
+		<subhead>Up Methods</subhead>
+			<method>
+				<minihead>execute</minihead>
+				<p>Takes a single string identifying a valid SQL command to execute directly</p>
+				<r>  execute "alter table line_items
   add constraint fk_line_item_products
   foreign key (product_id) references products(id)"</r>
-              </method>
+  			</method>
+
+
+
 <method_odd>
-<minihead>create_table</minihead>
-<p>Creates a table on the database. Creates a table called <c>:table_name</c> and makes the table object available to a block that can then add columns to it, following the same format as <c>add_column</c>.The options hash is for fragments like "<c>DEFAULT CARSET=UTF-8</c>" that are appended to the create table definition.</p>
+<minihead>create_table</minihead> 
+<p>Creates a table on the database. Creates a table called <c>:table_name</c> and makes the table object available to a block that can then add columns to it, following the same format as <c>add_column</c>.The options hash is for fragments like "<c>DEFAULT CHARSET=UTF-8</c>" that are appended to the create table definition.</p>
 <r>
   create_table :table_name, ( :primary_key => column_name) ( :id => false ) ( :options =>{options}) do |t|
     t.column :column_name, :column_type, :options
   end
 </r>
-<c>:force => true</c> - forces drop of an existing table of the same name before creation the new one
-<c>:temporary => true</c> - creates a temporary table, one that goes away when the application disconnects from the database
-<c>:options => ""</c> - lets you specify options to your underlying database, will lose default ENGINE=InnoDB statement
+<p><c>:force => true</c> - forces drop of an existing table of the same name before creation the new one</p>
+<p><c>:temporary => true</c> - creates a temporary table, one that goes away when the application disconnects from the database</p> 
+<p><c>:options => ""</c> - lets you specify options to your underlying database, will lose default <c>ENGINE=InnoDB</c> statement</p>
 </method_odd>
+
+
+
 <method>
 <minihead>add_column</minihead>
 <p>Creates a new column on the specified table.</p>
 <r>
   add_column :table_name, :column_name, :column_type
 </r>
-<c>:null => true</c> - forces drop of an existing table of the same name before creating the new one
+<p><c>:null => true</c> - forces drop of an existing table of the same name before creating the new one</p>
 </method>
+
+
+
+
 <method_odd>
 <minihead>add_index</minihead>
 <p>Creates an index for the specified table.</p>
 <r>
   add_index :table_name, :column_name, :unique => true</r>
 </method_odd>
+
+
+
+
 <method>
 <minihead>rename_table</minihead>
 <p>Renames the specified table.</p>
@@ -42,11 +56,17 @@
   rename_table :new_table_name, :old_table_name
 </r>
 </method>
+
+
+
 <method_odd>
 <minihead>rename_column</minihead>
-<p>Renames the old column_name to new_column_name</p>
+<r>
+  rename_table :old_column_name, :new_column_name
+</r>
 </method_odd>
 </section>
+
 <section>
 <subhead>Mapping</subhead>
 
@@ -88,8 +108,8 @@ class CreateCustomers &lt; ActiveRecord::Migration
     end
     SystemSetting.create :name =&gt; "notice", :label =&gt; "Use notice?", :value =&gt; 1
   end
- 
-  def self.down
+  
+  def self.down 
     drop_table :customers
   end
 end
@@ -101,19 +121,17 @@ end
 <method>
 <minihead>generate migration</minihead>
 
-<c>ruby script/generate migration add_price_column</c>
+<p><c>ruby script/generate migration add_price_column</c></p>
 </method>
 <method>
 <minihead>run all unapplied migrations</minihead>
 
-<c>rake db:migrate</c>
+<p><c>rake db:migrate</c></p>
 </method>
 <method>
 <minihead>migrate database to specific version</minihead>
 
-<c>rake db:migrate VERSION=18</c>
+<p><c>rake db:migrate VERSION=18</c></p>
 </method>
 </section>
 </cheatsheet>
-
-

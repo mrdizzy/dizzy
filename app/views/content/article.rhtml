@@ -2,7 +2,7 @@
  
 <h1><%= @content.title %></h1>
  
-<p><span class="date"><%= @content.date.to_s(:long) %></span> <%= image_tag("f/bullets/pixels/diamond.png") %>  <b>By <%= @content.author.username %></b></p>
+<p><span class="date"><%= @content.date.to_s(:long) %></span> <%= image_tag("f/bullets/pixels/diamond.png") %>  <b>By <%= @content.user.name %></b></p>
 
 <h2><%= @content.description %></h2>
 

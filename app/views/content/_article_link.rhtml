@@ -5,7 +5,7 @@
 	<td><span class="date"><%= article_link.date.to_s(:long) %></span><br/>
 		<%= posted_in(article_link.categories) %>
 		</td>
-	<td><b><%= article_link.author.username%></b></td>
+	<td><b><%= article_link.user.name%></b></td>
 
 <% else %>
 
@@ -30,8 +30,7 @@
 		<p><%= article_link.description %> </p>
 	
 		</td>
-	<td>by<br/><b><%= article_link.author.username%></b></td>
-
+	<td>by<br/><b><%= article_link.user.name%></b></td>
 
 <% end %>
 </tr>

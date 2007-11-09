@@ -9,7 +9,7 @@ class Article < Content
 	
 	belongs_to :user
 	
-	validates_presence_of :content, :title, :date, :author_id, :description, :permalink
+	validates_presence_of :content, :title, :date, :user_id, :description, :permalink
 	validates_uniqueness_of :title, :permalink
 end
 
@@ -17,7 +17,7 @@ class Cheatsheet < Content
 		has_permalink :title 
 		
 	belongs_to :user
-	validates_presence_of :title, :description, :permalink, :content, :author_id, :date, :thumbnail, :pdf, :size, :author_id, :date, :filename, :thumbnail_size
+	validates_presence_of :title, :description, :permalink, :content, :date, :user_id, :date
 	
 	def thumbnail_data=(binary_data)
 		unless binary_data.blank?		

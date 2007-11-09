@@ -2,7 +2,7 @@
 <div id="welcome_left">
 	<!-- Main article -->
 	<h1><%= asterisk %> <%= link_to @main_article.title, { :controller => :content, :action => :show, :permalink => @main_article.permalink } %></h1>
-	<p><span class="date"><%= @main_article.date.to_s(:long) %> </span><%= diamond %> <b>by <%= @main_article.author.username %></b></p>
+	<p><span class="date"><%= @main_article.date.to_s(:long) %> </span><%= diamond %> <b>by <%= @main_article.user.name %></b></p>
 	<h2><%= @main_article.description %></h2>
 	<%=spiro%>
 	<p><%= strip_tags(truncate(@main_article.content, 300)) %></p>

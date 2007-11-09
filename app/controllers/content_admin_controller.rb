@@ -32,7 +32,7 @@ class ContentAdminController < ApplicationController
   	 @cheatsheet = Cheatsheet.find(params[:id])
     if @cheatsheet.update_attributes(params[:cheatsheet])
       flash[:notice] = 'Cheatsheet was successfully updated.'
-      redirect_to :action => 'edit_cheatsheet', :id => @cheatsheet
+      redirect_to :action => "index"
     else
       render :action => 'edit_cheatsheet'
     end
