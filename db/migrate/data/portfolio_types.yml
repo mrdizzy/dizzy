@@ -1,24 +1,43 @@
+<%
+def fixture_data(name)
+  render_binary("#{RAILS_ROOT}/db/migrate/data/images/#{name}")
+end
+
+def render_binary(filename)
+  data = File.open(filename,'rb').read
+  "!binary | #{[data].pack('m').gsub(/\n/,"\n    ")}\n"
+end
+%>
+
 business card:
   id: 1
   description: Business cards
   column_space: 1
+  header_binary: <%= fixture_data("portfolio_headers/business.gif") %>
+  header_content_type: image/gif
   position: 2
   
 leaflet:
   id: 2
   description: Leaflet
+  header_binary: <%= fixture_data("portfolio_headers/leaflet.gif") %>
+  header_content_type: image/gif
   column_space: 2
   position: 5
   
 letterhead:
   id: 3
   description: Letterhead
+  header_binary: <%= fixture_data("portfolio_headers/letterhead.gif") %>
+  header_content_type: image/gif
   column_space: 1
   position: 3
 
 big_colour_logo:
   id: 4
   description: Logo
+  header_binary: <%= fixture_data("portfolio_headers/logo.gif") %>
+  header_content_type: image/gif
   column_space: 1
   position: 1
 
@@ -46,6 +65,8 @@ header:
 compliment_slip:
   id: 8
   description: Compliment Slip
+  header_binary: <%= fixture_data("portfolio_headers/compliment.gif") %>
+  header_content_type: image/gif
   column_space: 1
   position: 4
 

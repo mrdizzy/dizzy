@@ -12,36 +12,13 @@
 		<h2 class="blue_bold"><%= asterisk %> Recent articles</h2>		
 		<%= render (:partial => "recent_articles", :collection => @recent_articles ) %>
 	</div>
-	
-	<!-- Design packages -->	
+		<!-- Recent articles -->
 	<div id="third">
-		<div class="left"><img class="block" src="/images/h/cornerleft.png"></div>
-		<div class="right"><img class="block" src="/images/h/cornerright.png"></div>
-		<div id="design_packages">
-			<h2 class="blue_bold"><img alt="*" height="13" src="/images/f/bullets/pixels/asterisk.png?1180299393" width="13" /> Design packages</h2>
-
-			<h3><a href=""><b>Logo design</b></a> <img src="/images/h/box1.png"></h3>
-			<%=diamond%> Two original concepts
-			<%=diamond%> Up to 10 revisions
-			<%=diamond%> Vector and bitmap versions
-			<%=diamond%> <b>£99.99</b>
-			
-			<h3><a href=""><b>Stationery design</b></a> <img src="/images/h/box2.png"></h3>
-			<%=diamond%> Two original concepts
-			<%=diamond%> Up to 5 revisions
-			<%=diamond%> Unlimited colour scheme revisions
-			<%=diamond%> <b>£99.99</b>
-			
-			<h3><a href=""><b>Web design</b></a> <img src="/images/h/box3.png"></h3>
-			<%=diamond%> Two original concepts
-			<%=diamond%> Up to 5 revisions
-			<%=diamond%> Unlimited colour scheme revisions
-			<%=diamond%> <b>£299.99</b>
-			
-		</div>
-			<div class="left"><img class="block" src="/images/h/cornerbottomleft.png"></div>
-	<div class="right"><img class="block" src="/images/h/cornerbottomright.png"></div>
+		<h2 class="blue_bold"><%= asterisk %> Latest cheatsheet</h2>		
+		<%= render (:partial => "recent_articles", :collection => @recent_articles ) %>
 	</div>
+	
+	
 </div>
 <!-- RIGHT COLUMN -->
 <div id="welcome_right">	
@@ -58,14 +35,6 @@
 	<br/><br/>
 	<!-- Quote -->
 	<%= image_tag("h/quote/quote1.png") %>
-	<!-- Latest book -->
-	<div id="fourth">
-		<h2 class="blue_bold"><img alt="*" height="13" src="/images/f/bullets/pixels/asterisk.png?1180299393" width="13" /> Latest book</h2>
-		
-		<h3><a href=""><b>Do-It-Yourself Limited Company Formation</b></a></h3>
-		
-		<p>Contains everything you need to set up and learn how to run a UK limited company, from annual returns through to VAT and resolutions. <img src="/images/f/bullets/pixels/diamond.png" /> <a href="">And it's free to download now!</a></p>
-		
-		<p style="text-align:center"><img src="/images/css.png" />	
-	</div>
+	
+	
 </div>
