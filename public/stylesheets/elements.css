@@ -118,9 +118,7 @@ td.standard {
 ============= */
 #welcome_left {
 	float:left;
-	width:401px;
-		padding-left:8px;
-	
+	width:400px;	
 }
 #welcome_middle {
 	float:left;
@@ -167,6 +165,15 @@ td.standard {
 	border-left: 1px dashed #999;
 	border-right: 1px dashed #999;
 	
+}
+.answer {
+	border-bottom: 1px dotted #999;
+	padding-top:7px;
+	padding-bottom:7px;
+}
+.inside {
+	padding-left:7px;
+	padding-right:4px;
 }
 /*#sky_box {	
 	width:100%;

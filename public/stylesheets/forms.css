@@ -44,6 +44,10 @@ input.checkbox {
 	width: 2em;
 	padding:0;
 }
+input.radio {
+	width: 2em;
+}
+
 input.submit {
 	width: 136px;
 	height:34px;

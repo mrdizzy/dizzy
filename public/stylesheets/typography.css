@@ -42,7 +42,10 @@ p {
   color: #29A4BD;
   font-weight: bold;
 }
-
+.nopadding {
+	margin:0;
+	padding:0;
+}
 /* Links
 ==================================== */
 a:link {

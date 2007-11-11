@@ -1,11 +1,11 @@
 class WelcomeController < ApplicationController
-	
+	include CivicDuty::Actions
 	def index
 		paginate_logos
 		
 		@recent_articles = Article.find(:all, :order => "'id' desc", :limit => 5)
 		@main_article = @recent_articles.shift
-		
+		@poll = Poll.find(:first, :order => "'id' desc")
 		@cheatsheet = Cheatsheet.find(:first, :order => "'id' desc")
 	end
 	
@@ -28,6 +28,10 @@ class WelcomeController < ApplicationController
 		end
 	end
 	
+	def vote 
+		@vote = Vote.find(params[:result])
+		@vote.increment!("total")
+	end
 	private
 	
 	def paginate_logos

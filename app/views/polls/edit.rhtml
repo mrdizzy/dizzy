@@ -1,0 +1,16 @@
+<h1>Editing poll</h1>
+
+<% form_tag :action => 'update', :id => @poll do %>
+  <%= render :partial => 'form' %>
+     <div id="items">
+  <% @poll.votes.each do |item| %> 
+<% fields_for "votes[#{item.id}]", item do |f| %>  
+<%= f.text_field :option %><br/>
+   <% end %>
+   <% end %>
+   </div>
+  <%= submit_tag 'Edit' %>
+<% end %>
+
+<%= link_to 'Show', :action => 'show', :id => @poll %> |
+<%= link_to 'Back', :action => 'list' %>
