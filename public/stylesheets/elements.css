@@ -9,7 +9,7 @@ tbody {
 	line-height: 1.4em;
 }
 #page_container { 
-	width:90%;
+	width:850px;
 	margin: 0 auto;
 }
 * {
@@ -60,10 +60,16 @@ th {
 #top_container {
 	width:100%;
 	height:100px;
+	border-left: 1px dashed #888;
+	border-right: 1px dashed #888;
 	border-bottom: 1px dashed #888;
 	background-image:url("/images/f/backgrounds/back.png");
 	background-repeat:no-repeat;
 	background-position: top right;
+}
+#slogan {
+	padding-top:53px;
+	float:left;
 }
 #logo { 
 	 text-align:left;
@@ -78,7 +84,6 @@ th {
 	height:90px;
 	float:right;
 }
-
 
 /* Backend Portfolio
 ==================================== */
@@ -111,16 +116,44 @@ td.standard {
 
 /* Welcome
 ============= */
+#welcome_left {
+	float:left;
+	width:400px;
+		padding-left:8px;
+	border-left: 1px dashed #999;
+}
+#welcome_middle {
+	float:left;
+	width:173px;
+	border-left: 1px dashed #999;
+	padding-left:15px;
+	}
 #latest_container {
 	width:100%;
-	border-left: 1px dotted #999;
-	border-bottom:1px dotted #999;
 	padding-left: 0.4em;
+}
+#welcome_right {
+	width:248px;
+	float:left;
+	border-left: 1px dashed #999;
+	border-right: 1px dashed #999;	
+}
+#recent {
+	width:100%;
+	border-top: 1px dashed #999;
+	
+}
+#quote {
+	width:248px;
+	border-top: 1px dashed #999;
+	text-align:center;
+	padding-top:10px;
+	padding-bottom:10px;	
 }
 #logo_pagination {
 	width:100%;
 	text-align:center;
-	}
+}
 #latest_logo {
 	width:100%;
 	vertical-align:middle;
@@ -130,29 +163,14 @@ td.standard {
 #logo_container {
 	height:120px;	
 }
-#second {
-	width:46%;
-	float:left;
-	border-top:1px dotted #999;
-	border-left: 1px dotted #999;
-		padding-left:1em
-}
-#third {	
-	width: 48%;
+
+/*#sky_box {	
+	width:100%;
 	float:right;	
-	
+	background-color:#BAE1EC;
 	margin:0;
 	padding:0;
-}
-#fourth {
-	border-top:1px dotted #999;
-	border-left:1px dotted #999;
-	margin-top:1em;
-	padding-left:0.7em;
-}
-#design_packages {
-	padding: 0 1em 1em 1em;
-}
+} */
 
 /* Footer
 ==================================== */
@@ -172,7 +190,6 @@ td.standard {
 	margin-top: 1em;
 	margin-bottom:0;
 }
-
 
 /* Article links 
 ========================= */
@@ -211,13 +228,14 @@ tr.even {
 	margin: 0 auto; width:100%;
 	padding:0;
 	clear: both;
+	
 }
-#left_column, #welcome_right {
+#left_column {
 	width:28%;
 	float:right;
 	margin-left: 2%;
 }
-#right_column, #welcome_left {	
+#right_column {	
 	width:69%;
 	float:left;
 }

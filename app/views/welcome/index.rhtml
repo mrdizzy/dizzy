@@ -1,40 +1,47 @@
 <!-- LEFT COLUMN -->
-<div id="welcome_left">
-	<!-- Main article -->
-	<h1><%= asterisk %> <%= link_to @main_article.title, { :controller => :content, :action => :show, :permalink => @main_article.permalink } %></h1>
-	<p><span class="date"><%= @main_article.date.to_s(:long) %> </span><%= diamond %> <b>by <%= @main_article.user.name %></b></p>
-	<h2><%= @main_article.description %></h2>
-	<%=spiro%>
-	<p><%= strip_tags(truncate(@main_article.content, 300)) %></p>
+<div id="first_half">
+	<div id="welcome_left">
+		<!-- Main article -->
+		<h1><%= asterisk %> <%= link_to @main_article.title, { :controller => :content, :action => :show, :permalink => @main_article.permalink } %></h1>
+		<p><span class="date"><%= @main_article.date.to_s(:long) %> </span><%= diamond %> <b>by <%= @main_article.user.name %></b></p>
+		<h2><%= @main_article.description %></h2>
+		<%=spiro%>
+		<p><%= strip_tags(truncate(@main_article.content, 300)) %> . <%= link_to "More&gt;&gt;", { :controller => :content, :action => :show, :permalink => @main_article.permalink } %></p>
+		
+		<div id="recent"><h2 class="blue_bold"><%= asterisk %> Recent articles</h2>		
+		<%= render (:partial => "recent_articles", :collection => @recent_articles ) %>
+		</div>
+	</div>
+	<div id="welcome_middle"><h2 class="blue_bold"><%= asterisk %> Latest cheatsheet</h2>	<p>
+			<span class="date"><%= @main_article.date.to_s(:short) %> </span> <%= diamond %> <b>		<%= @cheatsheet.title %> </b>
+		</p><%= image_tag("quickstart.png") %><p><b class="blue_bold">This Quickstart guide contains everything you need to get started with Capistrano, the deployment software</p>
+		
+		</div>
+	<!-- RIGHT COLUMN -->
+	<div id="welcome_right">	
+		<!-- Latest logos -->
+		<div id="latest_container">
+			<h2 class="blue_bold"><%= asterisk %> Our latest work</h2>
+			<div id="logo_container">
+				<div id="latest_logo"><%= link_to image_tag("/binaries/portfolio_image/#{@logos[0].id}"), :controller => :portfolio, :action => :show, :id => @logos[0].company_id %></div>
+			</div>
+			<div id="logo_pagination">
+		  		<%= render :partial => "logo_pagination" %>
+			</div>
+		</div>
+		<div id="quote">
+			<%= image_tag("quote.png") %>
+			</div>
+		</div>
 
+
+</div>
+<div id="second_half">
 	<!-- Recent articles -->
 	<div id="second">
-		<h2 class="blue_bold"><%= asterisk %> Recent articles</h2>		
-		<%= render (:partial => "recent_articles", :collection => @recent_articles ) %>
 	</div>
 		<!-- Recent articles -->
 	<div id="third">
-		<h2 class="blue_bold"><%= asterisk %> Latest cheatsheet</h2>		
-		<%= render (:partial => "recent_articles", :collection => @recent_articles ) %>
+	
 	</div>
-	
-	
-</div>
-<!-- RIGHT COLUMN -->
-<div id="welcome_right">	
-	<!-- Latest logos -->
-	<div id="latest_container">
-		<h2 class="blue_bold"><%= asterisk %> Our latest work</h2>
-		<div id="logo_container">
-			<div id="latest_logo"><%= link_to image_tag("/binaries/portfolio_image/#{@logos[0].id}"), :controller => :portfolio, :action => :show, :id => @logos[0].company_id %></div>
-		</div>
-		<div id="logo_pagination">
-	  		<%= render :partial => "logo_pagination" %>
-		</div>
-	</div>
-	<br/><br/>
-	<!-- Quote -->
-	<%= image_tag("h/quote/quote1.png") %>
-	
-	
 </div>

@@ -5,6 +5,8 @@ class WelcomeController < ApplicationController
 		
 		@recent_articles = Cheatsheet.find(:all, :order => "'id' desc", :limit => 5)
 		@main_article = @recent_articles.shift
+		
+		@cheatsheet = Cheatsheet.find(:first, :order => "'id' desc")
 	end
 	
 	def next_logo
