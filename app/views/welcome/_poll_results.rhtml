@@ -4,6 +4,6 @@
 <% total_votes = @poll.votes.sum(:total) %>
 <% @poll.votes.each do |vote| %>
 	<p class="nopadding"><%= vote.option %> (<%= vote.total %>)
-	<div style="width:<%= (vote.total.to_f/total_votes) * 100.round %>%;background-color:black;">&nbsp;</div></p>
+	<div style="width:95%;border:1px dotted grey;padding:3px;"><div style="width:<%= (vote.total.to_f/total_votes) * 100.round %>%;background-color:#29A4BD;">&nbsp;</div></div></p>
 	<% end %>
 
