@@ -1,0 +1,10 @@
+<div id="poll"><h2 class="blue_bold"><%= asterisk %> Poll</h2>	
+<p><span class="date"> <%= @poll.created_at.to_s(:long)  %></span><br/>
+<%= diamond %> <b><%= @poll.name %></b></p> <% form_remote_tag :url => { :action => "vote" } do %>
+	<% @poll.votes.each do |vote| %>
+	<div class="answer">
+		<p class="nopadding"><%= radio_button_tag :result, vote.id, false, { :class => "radio" } %> <span class="blue_bold"><%= vote.option %></span></p>
+ 	</div>
+ 	<% end %>
+<%= submit_button %>
+<% end %></div>

@@ -30,7 +30,12 @@ class WelcomeController < ApplicationController
 	
 	def vote 
 		@vote = Vote.find(params[:result])
-		@vote.increment!("total")
+		@poll = @vote.poll
+		@vote.increment!(:total)
+		render :update do |page|
+			page.replace_html :poll, :partial => "poll_results"
+		
+		end
 	end
 	private
 	

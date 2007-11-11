@@ -1,0 +1,9 @@
+<h2 class="blue_bold"><%= asterisk %> Poll</h2>	
+<p><span class="date"> <%= @poll.created_at.to_s(:long)  %></span><br/>
+<%= diamond %> <b><%= @poll.name %></b></p>
+<% total_votes = @poll.votes.sum(:total) %>
+<% @poll.votes.each do |vote| %>
+	<p class="nopadding"><%= vote.option %> (<%= vote.total %>)
+	<div style="width:<%= (vote.total.to_f/total_votes) * 100.round %>%;background-color:black;">&nbsp;</div></p>
+	<% end %>
+

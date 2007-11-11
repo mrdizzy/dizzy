@@ -39,15 +39,7 @@
 			<%= image_tag("quote.png") %>
 			</div>
 			<div class="inside">
-		<h2 class="blue_bold"><%= asterisk %> Poll</h2>	
-			 <p><span class="date"> <%= @poll.created_at.to_s(:long)  %></span><br/> <%= diamond %> <%= @poll.name %></p> <% form_tag(:action => :vote) do %>
-			 <% @poll.votes.each do |vote| %>
-			<div class="answer">
-			 			 	<%= radio_button_tag :result, vote.id, false, { :class => "radio" } %> <%= vote.option %>
-			 	</div>
-			 			 	<% end %>
-			 <%= submit_button %>
-			 <% end %>
+		<%= render (:partial => "poll") %>
          </div>
 		</div>
 
