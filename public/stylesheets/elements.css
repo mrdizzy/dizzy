@@ -118,14 +118,15 @@ td.standard {
 ============= */
 #welcome_left {
 	float:left;
-	width:400px;
+	width:401px;
 		padding-left:8px;
-	border-left: 1px dashed #999;
+	
 }
 #welcome_middle {
 	float:left;
 	width:173px;
 	border-left: 1px dashed #999;
+	border-right: 1px dashed #999;
 	padding-left:15px;
 	}
 #latest_container {
@@ -133,10 +134,9 @@ td.standard {
 	padding-left: 0.4em;
 }
 #welcome_right {
-	width:248px;
+	width:249px;
 	float:left;
-	border-left: 1px dashed #999;
-	border-right: 1px dashed #999;	
+	
 }
 #recent {
 	width:100%;
@@ -163,7 +163,11 @@ td.standard {
 #logo_container {
 	height:120px;	
 }
-
+#first_half {
+	border-left: 1px dashed #999;
+	border-right: 1px dashed #999;
+	
+}
 /*#sky_box {	
 	width:100%;
 	float:right;	

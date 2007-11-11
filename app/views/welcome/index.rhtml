@@ -12,10 +12,13 @@
 		<%= render (:partial => "recent_articles", :collection => @recent_articles ) %>
 		</div>
 	</div>
-	<div id="welcome_middle"><h2 class="blue_bold"><%= asterisk %> Latest cheatsheet</h2>	<p>
+	<div id="welcome_middle"><h2 class="blue_bold"><%= asterisk %> Latest guide</h2>	<p>
 			<span class="date"><%= @main_article.date.to_s(:short) %> </span> <%= diamond %> <b>		<%= @cheatsheet.title %> </b>
 		</p><%= image_tag("quickstart.png") %><p><b class="blue_bold">This Quickstart guide contains everything you need to get started with Capistrano, the deployment software</p>
-		
+				<%=spiro%>
+		<h2 class="blue_bold"><%= asterisk %> Latest cheatsheet</h2>	<p>
+			<span class="date"><%= @main_article.date.to_s(:short) %> </span> <%= diamond %> <b>		<%= @cheatsheet.title %> </b>
+		</p><%= image_tag("h/cheatsheet2.png") %><p><b class="blue_bold">This Quickstart guide contains everything you need to get started with Capistrano, the deployment software</p>
 		</div>
 	<!-- RIGHT COLUMN -->
 	<div id="welcome_right">	
@@ -34,14 +37,5 @@
 			</div>
 		</div>
 
-
-</div>
-<div id="second_half">
-	<!-- Recent articles -->
-	<div id="second">
-	</div>
-		<!-- Recent articles -->
-	<div id="third">
-	
-	</div>
+<div class="clearfix">&nbsp;</div>
 </div>
