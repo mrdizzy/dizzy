@@ -1,0 +1,10 @@
+.poll_bar_container {
+	width:95%;
+	border:1px dotted grey;
+	padding:3px;
+}
+
+.poll_bar {
+	height:20px;
+	background-color:black;	
+}

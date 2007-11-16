@@ -1,5 +1,5 @@
 class WelcomeController < ApplicationController
-	include CivicDuty::Actions
+
 	def index
 		paginate_logos
 		
@@ -28,15 +28,7 @@ class WelcomeController < ApplicationController
 		end
 	end
 	
-	def vote 
-		@vote = Vote.find(params[:result])
-		@poll = @vote.poll
-		@vote.increment!(:total)
-		render :update do |page|
-			page.replace_html :poll, :partial => "poll_results"
-		
-		end
-	end
+	
 	private
 	
 	def paginate_logos
