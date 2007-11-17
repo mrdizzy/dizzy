@@ -1,0 +1,20 @@
+<div id="poll">
+	<h2>Poll</h2>	
+<p><span class="date"> <%= @poll.created_at.to_s(:long)  %></p>
+
+<!-- Name of poll -->	
+<p><%= @poll.name %></p> 
+
+
+<!-- Display radio buttons for each voting option -->
+<% form_remote_tag :url => { :controller => "polls", :action => "vote" } do %>
+	<% @poll.votes.each do |vote| %>
+	
+		<p><%= radio_button_tag :result, vote.id, false, { :class => "radio" } %>
+		<%= vote.option %></p>
+ 
+ 	<% end %>
+ 	<p><%= submit_tag %></p>
+<% end %>
+
+</div>
