@@ -113,7 +113,7 @@ end
 
       By default, the maintenance page will just say the site is down for \
       "maintenance", and will be back "shortly", but you can customize the \
-      page by specifying the REASON and UNTIL environment variables:
+      page by specifying the REASON and UNTIL dcfsenvironment variables:
 
         $ cap deploy:web:disable \\
               BECAUSE="hardware upgrade" \\
