@@ -12,7 +12,7 @@ set :password, "ruhegochelupraju"
 set :deploy_to, "/home/dizzynew/rails_apps/#{application}"
 set :deploy_via, :export
 
-set :rails_env, "development"
+set :rails_env, "production"
 # If you aren't using Subversion to manage your source code, specify
 # your SCM below:
 # set :scm, :subversion
@@ -97,6 +97,13 @@ EOF
 	
 end
 namespace :deploy do
+	
+	task :start do
+run "cd ~/rails_apps/dizzy/current;mongrel_rails start -d -p 3012 -e production < /dev/null >& /dev/null"
+end
+	task :restart do
+run "cd ~/rails_apps/dizzy/current;mongrel_rails restart"
+end
  namespace :web do
     desc <<-DESC
       Present a maintenance page to visitors. Disables your application's web \
