@@ -99,12 +99,12 @@ end
 namespace :deploy do
 	
 	task :start do
-send(run_method, "cd #{deploy_to}/#{current_dir} && mongrel_rails cluster::start")
+send(run_method, "cd #{deploy_to}/current && mongrel_rails cluster::start")
 end
 
 desc "Restart the mongrel cluster"
 	task :restart, :roles => :app do
-	send(run_method, "cd #{deploy_to}/#{current_dir} && mongrel_rails cluster::restart")
+	send(run_method, "cd #{deploy_to}/current && mongrel_rails cluster::restart")
 end
  namespace :web do
     desc <<-DESC
