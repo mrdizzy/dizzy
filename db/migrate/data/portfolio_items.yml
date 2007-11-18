@@ -594,51 +594,6 @@ organicslip:
   content_type: image/png
   company_id: 13
 
-casamientologo:
-  id: 67
-  portfolio_type_id: 4
-  data: <%= fixture_data("logos/casamiento.png") %>
-  size: 123
-  filename: casamientologo.png
-  content_type: image/png
-  company_id: 14
-  
-casamientocard:
-  id: 68
-  portfolio_type_id: 1
-  data: <%= fixture_data("cards/casamiento.png") %>
-  size: 123
-  filename: casamientocard.png
-  content_type: image/png
-  company_id: 14
-  
-casamientoheader:
-  id: 69
-  portfolio_type_id: 7
-  data: <%= fixture_data("headers/casamiento.png") %>
-  size: 123
-  filename: casamientoheader.png
-  content_type: image/png
-  company_id: 14
-  
-casamientoletterhead:
-  id: 70
-  portfolio_type_id: 3
-  data: <%= fixture_data("letterheads/casamiento.png") %>
-  size: 123
-  filename: casamientoletterhead.png
-  content_type: image/png
-  company_id: 14
-  
-casamientoslip:
-  id: 71
-  portfolio_type_id: 8
-  data: <%= fixture_data("slips/casamiento.png") %>
-  size: 123
-  filename: casamientoslip.png
-  content_type: image/png
-  company_id: 14
-
 smartsmallcolourlogo:
   id: 72
   portfolio_type_id: 5
@@ -837,3 +792,57 @@ heavenlysmallgreylogo:
   filename: heavenlysmallgreylogo.png
   content_type: image/png
   company_id: 1
+  
+towergatesmallcolourlogo:
+  id: 94
+  portfolio_type_id: 5
+  data: <%= fixture_data("smallcolourlogos/towergate.png") %>
+  size: 123
+  filename: towergatesmallcolourlogo.png
+  content_type: image/png
+  company_id: 10
+
+towergatesmallgreylogo:
+  id: 95
+  portfolio_type_id: 6
+  data: <%= fixture_data("smallgreylogos/towergate.png") %>
+  size: 123
+  filename: towergatesmallgreylogo.png
+  content_type: image/png
+  company_id: 10
+
+boxsmallcolourlogo:
+  id: 96
+  portfolio_type_id: 5
+  data: <%= fixture_data("smallcolourlogos/outofyourbox.png") %>
+  size: 123
+  filename: boxsmallcolourlogo.png
+  content_type: image/png
+  company_id: 14
+
+boxsmallgreylogo:
+  id: 97
+  portfolio_type_id: 6
+  data: <%= fixture_data("smallgreylogos/outofyourbox.png") %>
+  size: 123
+  filename: boxsmallgreylogo.png
+  content_type: image/png
+  company_id: 14
+  
+organicsmallcolourlogo:
+  id: 98
+  portfolio_type_id: 5
+  data: <%= fixture_data("smallcolourlogos/organic.png") %>
+  size: 123
+  filename: organicxsmallcolourlogo.png
+  content_type: image/png
+  company_id: 13
+
+organicsmallgreylogo:
+  id: 99
+  portfolio_type_id: 6
+  data: <%= fixture_data("smallgreylogos/organic.png") %>
+  size: 123
+  filename: organicsmallgreylogo.png
+  content_type: image/png
+  company_id: 13
