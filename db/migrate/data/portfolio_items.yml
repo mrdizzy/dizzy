@@ -701,7 +701,6 @@ hurricanesmallgreylogo:
   filename: hurricanesmallgreylogo.png
   content_type: image/png
   company_id: 5
-  company_id: 6
 
 ellabellasmallcolourlogo:
   id: 84
@@ -892,3 +891,66 @@ outofyourboxheader:
   content_type: image/png
   company_id: 14
  
+phoenixlogo:
+  id: 105
+  portfolio_type_id: 4
+  data: <%= fixture_data("logos/phoenix.png") %>
+  size: 123
+  filename: phoenixlogo.png
+  content_type: image/png
+  company_id: 15
+  
+phoenixboxslip:
+  id: 106
+  portfolio_type_id: 8
+  data: <%= fixture_data("slips/phoenix.png") %>
+  size: 123
+  filename: phoenixslip.png
+  content_type: image/png
+  company_id: 15
+  
+phoenixletterhead:
+  id: 107
+  portfolio_type_id: 3
+  data: <%= fixture_data("letterheads/phoenix.png") %>
+  size: 123
+  filename: phoenixletterhead.png
+  content_type: image/png
+  company_id: 15
+  
+phoenixboxcard:
+  id: 108
+  portfolio_type_id: 1
+  data: <%= fixture_data("cards/phoenix.png") %>
+  size: 123
+  filename: phoenixcard.png
+  content_type: image/png
+  company_id: 15
+  
+phoenixheader:
+  id: 109
+  portfolio_type_id: 7
+  data: <%= fixture_data("headers/phoenix.png") %>
+  size: 123
+  filename: phoenixheader.png
+  content_type: image/png
+  company_id: 15
+
+phoenixsmallcolourlogo:
+  id: 110
+  portfolio_type_id: 5
+  data: <%= fixture_data("smallcolourlogos/phoenix.png") %>
+  size: 123
+  filename: phoenixsmallcolourlogo.png
+  content_type: image/png
+  company_id: 15
+  
+phoenixsmallgreylogo:
+  id: 111
+  portfolio_type_id: 6
+  data: <%= fixture_data("smallgreylogos/phoenix.png") %>
+  size: 123
+  filename: phoenixsmallgreylogo.png
+  content_type: image/png
+  company_id: 15
+
