@@ -1,0 +1,6 @@
+---
+cwd: ~/rails_apps/dizzy/current
+port: 3012
+environment: production
+pid_file: log/mongrel.pid
+servers: 1
