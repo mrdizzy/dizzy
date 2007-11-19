@@ -1,9 +1,9 @@
 <div id="poll">
-	<h2>Poll</h2>	
+	<h3 class="blue_bold"><%= asterisk %> Poll</h3>	
 <p><span class="date"> <%= @poll.created_at.to_s(:long)  %></p>
 
 <!-- Name of poll -->	
-<p><%= @poll.name %></p> 
+<p><b><%= @poll.name %></b></p> 
 
 
 <!-- Display radio buttons for each voting option -->
@@ -14,7 +14,7 @@
 		<%= vote.option %></p>
  
  	<% end %>
- 	<p><%= submit_tag %></p>
+ 	<p><%= submit_button %></p>
 <% end %>
 
 </div>

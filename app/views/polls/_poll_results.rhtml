@@ -1,15 +1,16 @@
-<h2>Results</h2>	
-<p><%= @poll.created_at.to_s(:long)  %></p>
+<h3 class="blue_bold"><%= asterisk %> Results</h3>	
+<p><span class="date"><%= @poll.created_at.to_s(:long)  %></span></p>
 	
-<p><%= @poll.name %></p>
+<p><b><%= @poll.name %></b></p>
 
 <p>Total votes: <b><%= total_votes = @poll.votes.sum(:total) %></b></p>
 
 <% @poll.votes.each do |vote| %>
-	<p><%= vote.option %> (<%= vote.total %>)
+	<div id="results">
+	<p class="nopadding"><%= diamond %> <%= vote.option %> (<%= vote.total %>)</p>
 	<div class="poll_bar_container">
 	<div class="poll_bar" style="width:<%= (vote.total.to_f/total_votes) * 100.round %>%;">&nbsp;</div>
 	</div>
-	</p>
+	</div>
 <% end %>
 
