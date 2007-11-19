@@ -77,6 +77,7 @@ module ApplicationHelper
 		      	tag_stack.push "table" if pull_event[0] == "Table"
 		      	tag_stack.push "div" if pull_event[0] == "article"
 		       	tag_stack.push "p" if pull_event[0] == "p"
+		       	tag_stack.push "b" if pull_event[0] == "b"
 				if pull_event[0] == "subhead"
 					
 					if break_counter > 1
