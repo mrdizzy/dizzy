@@ -175,13 +175,6 @@ td.standard {
 	padding-left:7px;
 	padding-right:4px;
 }
-/*#sky_box {	
-	width:100%;
-	float:right;	
-	background-color:#BAE1EC;
-	margin:0;
-	padding:0;
-} */
 
 /* Footer
 ==================================== */
@@ -250,6 +243,9 @@ tr.even {
 #right_column {	
 	width:69%;
 	float:left;
+}
+#article ul li code {
+	color: #29A4BD; 
 }
 
 /* Cheatsheets 
