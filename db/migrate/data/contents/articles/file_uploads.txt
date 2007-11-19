@@ -1,10 +1,10 @@
 <p>In this tutorial, I'll create a simple application to upload photos through a simple HTML form, and store them in the database, then render and display them on demand. The steps we'll go through are as follows:</p>
-
+<p>
 <ul>
 <li><b>Create a model.</b> We'll use this model for the photographs, and we'll call it "Photo"</li>
 <li><b>Create a migration.</b> Use a database migration to create a table in the database to hold the photographs</li>
 <li><b>Handle the upload.</b> In the view, we'll create a template containing a HTML multi-part form and a corresponding action that will allow users to upload their photograph files</li>
-<li><b>Render the image from the database.</b> Once you've got the images in the database, how do you pull them out and display them again? That's what I'll show you...</li></ul>
+<li><b>Render the image from the database.</b> Once you've got the images in the database, how do you pull them out and display them again? That's what I'll show you...</li></ul></p>
 
 <minihead>Building the foundations</minihead>
 <p>

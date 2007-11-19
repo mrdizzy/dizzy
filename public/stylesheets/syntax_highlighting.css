@@ -20,9 +20,7 @@ pre, code {
 	font-size:1em;
 }
 
-#article div.CodeRay {
-	  background-color: #D1ECF9;
-}
+
 .CodeRay { margin-bottom: 1em;}
 
 .CodeRay .no { padding: 0px 4px }
