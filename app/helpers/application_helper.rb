@@ -70,6 +70,7 @@ module ApplicationHelper
 		      	tag_stack.push "h3" if pull_event[0] == "minihead"
 		      	tag_stack.push "h3" if pull_event[0] == "h3"
 		      	tag_stack.push "ruby" if pull_event[0] == "r"
+		      	tag_stack.push "rhtml" if pull_event[0] == "rh"
 		       	tag_stack.push "ul" if pull_event[0] == "ul"
 		        tag_stack.push "li" if pull_event[0] == "li"
 		      	tag_stack.push "td" if pull_event[0] == "Cell"
@@ -128,7 +129,9 @@ module ApplicationHelper
 	      		end
 		    when :text
 		    	if tag_stack.last == "ruby"
-		    		results << parse_coderay(pull_event[0])	      		
+		    		results << parse_coderay(pull_event[0], :ruby)	 
+		    	elsif tag_stack.last == "rhtml"
+		    		results << parse_coderay(pull_event[0], :rhtml)     		
 	      		else	
 		    		results << pull_event[0]   
 	      		end 
@@ -170,12 +173,13 @@ module ApplicationHelper
 		 textilized = RedCloth.new(text).to_html
 	end
 	
-	def parse_coderay(text)	
+	def parse_coderay(text, language)	
 	 	text.gsub!(/&lt;/, '<')
 	 	text.gsub!(/&gt;/, '>')
 	 	text.gsub!(/&amp;/, '&')
 	 	text.gsub!(/&quot;/, '"')
-	   	CodeRay.scan(text, :ruby).div(  :css => :class)	   	
+	 	
+	   	CodeRay.scan(text, language).div( :line_numbers => :inline, :css => :class)	   	
 	end
 	
 end

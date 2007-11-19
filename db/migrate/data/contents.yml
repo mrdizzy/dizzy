@@ -26,18 +26,18 @@ migrations:
   pdf: 
   permalink: rails-migrations
   
-foreignkey:
+file_uploads:
   id: 2
   type: Article
-  title: Foreign Key Plugin
-  description: Automatically have foreign keys created in your database with this plugin
+  title: Beginning File Uploads to the Database
+  description: Learn how to upload files to the database, then retrieve and display them
   author_id: 1
   date: 2007-07-02 23:36:00
-  content: "<%= fixture_data("articles/foreign_keys.txt") %>"
+  content: "<%= fixture_data("articles/file_uploads.txt") %>"
   filename: 
   content_type:
   size: 
   thumbnail_size: 
   thumbnail:
   pdf: 
-  permalink: foreign-keys-plugin
+  permalink: beginning-file-uploads
