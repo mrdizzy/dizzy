@@ -1,5 +1,5 @@
 <%
-def fixture_data(name)
+def fixture_text_data(name)
   render_text("#{RAILS_ROOT}/db/migrate/data/contents/#{name}")
 end
 
@@ -7,6 +7,16 @@ def render_text(filename)
   data = File.open(filename,'rb').read
   data = data.gsub("\n",'\n')
   data = data.gsub('"','\"')
+end
+%>
+<%
+def fixture_binary_data(name)
+  render_binary("#{RAILS_ROOT}/db/migrate/data/contents/#{name}")
+end
+
+def render_binary(filename)
+  data = File.open(filename,'rb').read
+  "!binary | #{[data].pack('m').gsub(/\n/,"\n    ")}\n"
 end
 %>
 
@@ -17,13 +27,13 @@ migrations:
   description: Understanding how to use Rails' migrations features
   author_id: 1
   date: 2007-07-02 23:36:00
-  content: "<%= fixture_data("cheatsheets/rails_migrations.txt") %>"
+  content: "<%= fixture_text_data("cheatsheets/rails_migrations.txt") %>"
   filename: rails_migrations.pdf
   content_type:
   size: 234497
   thumbnail_size: 7953
-  thumbnail:
-  pdf: 
+  thumbnail: <%= fixture_binary_data("cheatsheets/rails-migrations.png") %>
+  pdf: <%= fixture_binary_data("cheatsheets/rails-migrations.pdf") %>
   permalink: rails-migrations
   
 file_uploads:
@@ -33,7 +43,7 @@ file_uploads:
   description: Learn how to upload files to the database, then retrieve and display them
   author_id: 1
   date: 2007-07-02 23:36:00
-  content: "<%= fixture_data("articles/file_uploads.txt") %>"
+  content: "<%= fixture_text_data("articles/file_uploads.txt") %>"
   filename: 
   content_type:
   size: 
