@@ -4,8 +4,7 @@
 	<p><label for="company_name">Company</label>
  	<%= form.text_field :name %></p>
  	<p><label for="company_description">Description</label>
-  	<%= form.text_field :description %></p>
-  	  
+  	<%= form.text_field :description %></p>  	  
   	<div id="existing_items">
   	<% @company.portfolio_items.each do |@portfolio_item| %>  
 		<div id="portfolio_item_container_<%= @portfolio_item.id %>" class="portfolio_item_header">
@@ -17,7 +16,7 @@
   			<% end %>
   			</ul>
   			<p>
-  			<img src="/binaries/portfolio_image/<%= @portfolio_item.id -%>" /> </p>
+  			<img src="/binaries/portfolio_image/<%= @portfolio_item.id -%>.png" /> </p>
   			<p>
  		<%= link_to_remote 'edit', :url => { :action => 'edit_image', :id => @portfolio_item.id } %> <%= diamond %> <%= link_to_remote 'delete', :url => { :action => 'delete_image', :id => @portfolio_item.id } %> 
  			</p>

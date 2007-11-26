@@ -1,7 +1,6 @@
 class BinariesController < ApplicationController
 	caches_page :cheatsheet_thumbnail, :portfolio_image,:portfolio_type, :footer_logo, :grey_footer_logo, :get_file, :get_cheatsheet_pdf
 	
-	cache_sweeper :content_binary_sweeper
 	
 	def portfolio_image 
 		@image_data = PortfolioItem.find(params[:id])

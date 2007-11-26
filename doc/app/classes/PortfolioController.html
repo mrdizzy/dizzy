@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: PortfolioController</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">PortfolioController</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/app/controllers/portfolio_controller_rb.html">
+                app/controllers/portfolio_controller.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                <a href="ApplicationController.html">
+                ApplicationController
+               </a>
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000148">portfolio_list</a>&nbsp;&nbsp;
+      <a href="#M000149">show</a>&nbsp;&nbsp;
+      <a href="#M000147">show_ajax</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000148" class="method-detail">
+        <a name="M000148"></a>
+
+        <div class="method-heading">
+          <a href="#M000148" class="method-signature">
+          <span class="method-name">portfolio_list</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000148-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000148-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/controllers/portfolio_controller.rb, line 35</span>
+35:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">portfolio_list</span>
+36:                 <span class="ruby-ivar">@company_pages</span>, <span class="ruby-ivar">@companies</span> = <span class="ruby-identifier">paginate</span> <span class="ruby-identifier">:companies</span>, <span class="ruby-identifier">:per_page</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">8</span>, <span class="ruby-identifier">:order</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:name</span>
+37:                 <span class="ruby-identifier">render</span> <span class="ruby-identifier">:update</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">page</span><span class="ruby-operator">|</span>
+38:                         <span class="ruby-identifier">page</span>.<span class="ruby-identifier">replace_html</span> <span class="ruby-identifier">:portfolio_list</span>, <span class="ruby-identifier">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;portfolio_list&quot;</span>
+39:                 <span class="ruby-keyword kw">end</span>
+40:         <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000149" class="method-detail">
+        <a name="M000149"></a>
+
+        <div class="method-heading">
+          <a href="#M000149" class="method-signature">
+          <span class="method-name">show</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000149-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000149-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/controllers/portfolio_controller.rb, line 42</span>
+42:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">show</span>                       
+43:                 <span class="ruby-ivar">@company_pages</span>, <span class="ruby-ivar">@companies</span> = <span class="ruby-identifier">paginate</span> <span class="ruby-identifier">:companies</span>, <span class="ruby-identifier">:per_page</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">8</span>, <span class="ruby-identifier">:order</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:name</span>
+44:                 <span class="ruby-keyword kw">if</span> (<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>]) 
+45:                         <span class="ruby-ivar">@company</span>     = <span class="ruby-constant">Company</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>])
+46:                 <span class="ruby-keyword kw">else</span>
+47:                         <span class="ruby-ivar">@company</span>     = <span class="ruby-constant">Company</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">:first</span>)
+48:                 <span class="ruby-keyword kw">end</span>
+49:         <span class="ruby-ivar">@header</span> = <span class="ruby-constant">PortfolioItem</span>.<span class="ruby-identifier">find_by_portfolio_type_id_and_company_id</span>(<span class="ruby-value">7</span>,<span class="ruby-ivar">@company</span>.<span class="ruby-identifier">id</span>)
+50:         <span class="ruby-ivar">@portfolio_item</span> = <span class="ruby-constant">PortfolioItem</span>.<span class="ruby-identifier">find_all_by_company_id</span>(    <span class="ruby-ivar">@company</span>.<span class="ruby-identifier">id</span>, 
+51:                         <span class="ruby-identifier">:include</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:portfolio_type</span>,                                                                                                                     <span class="ruby-identifier">:order</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;portfolio_types.position,portfolio_types.column_space&quot;</span>, 
+52:                         <span class="ruby-identifier">:conditions</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;portfolio_types.visible = 1&quot;</span> )
+53:         
+54:                 <span class="ruby-identifier">column_total</span>  = <span class="ruby-value">0</span> 
+55:                 <span class="ruby-identifier">counter</span>               = <span class="ruby-value">0</span> 
+56:                 <span class="ruby-ivar">@newrow</span>               = []
+57:                 <span class="ruby-ivar">@portfolio_item</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">item</span><span class="ruby-operator">|</span>
+58:                       <span class="ruby-ivar">@newrow</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">item</span>)
+59:                 <span class="ruby-identifier">column_total</span> = <span class="ruby-identifier">item</span>.<span class="ruby-identifier">portfolio_type</span>.<span class="ruby-identifier">column_space</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">column_total</span> 
+60:                         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">column_total</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">3</span> 
+61:                                 <span class="ruby-identifier">result</span> = <span class="ruby-identifier">column_total</span> <span class="ruby-operator">-</span> <span class="ruby-value">3</span> 
+62:                                 <span class="ruby-identifier">column_total</span> = (<span class="ruby-identifier">item</span>.<span class="ruby-identifier">portfolio_type</span>.<span class="ruby-identifier">column_space</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">result</span>) 
+63:                                 <span class="ruby-ivar">@portfolio_item</span>[(<span class="ruby-identifier">counter</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>)].<span class="ruby-identifier">portfolio_type</span>.<span class="ruby-identifier">column_space</span> = (<span class="ruby-ivar">@portfolio_item</span>[(<span class="ruby-identifier">counter</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>)].<span class="ruby-identifier">portfolio_type</span>.<span class="ruby-identifier">column_space</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">result</span>) 
+64:                                 <span class="ruby-identifier">column_total</span> = <span class="ruby-value">0</span>
+65:                         <span class="ruby-keyword kw">end</span> 
+66:                         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">column_total</span> <span class="ruby-operator">==</span> <span class="ruby-value">3</span> 
+67:                                 <span class="ruby-identifier">column_total</span> = <span class="ruby-value">0</span> 
+68:                         <span class="ruby-keyword kw">end</span> 
+69:                 <span class="ruby-identifier">counter</span> = <span class="ruby-identifier">counter</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span> 
+70:         <span class="ruby-keyword kw">end</span>   
+71:         <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000147" class="method-detail">
+        <a name="M000147"></a>
+
+        <div class="method-heading">
+          <a href="#M000147" class="method-signature">
+          <span class="method-name">show_ajax</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000147-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000147-source">
+<pre>
+    <span class="ruby-comment cmt"># File app/controllers/portfolio_controller.rb, line 3</span>
+ 3:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">show_ajax</span>          
+ 4:                 <span class="ruby-ivar">@company</span>      = <span class="ruby-constant">Company</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>])
+ 5:         <span class="ruby-ivar">@header</span> = <span class="ruby-constant">PortfolioItem</span>.<span class="ruby-identifier">find_by_portfolio_type_id_and_company_id</span>(<span class="ruby-value">7</span>,<span class="ruby-ivar">@company</span>.<span class="ruby-identifier">id</span>)
+ 6:         <span class="ruby-ivar">@portfolio_item</span> = <span class="ruby-constant">PortfolioItem</span>.<span class="ruby-identifier">find_all_by_company_id</span>(    <span class="ruby-ivar">@company</span>.<span class="ruby-identifier">id</span>, 
+ 7:                                                                                                                         <span class="ruby-identifier">:include</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:portfolio_type</span>, 
+ 8:                                                                                                                         <span class="ruby-identifier">:order</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;portfolio_types.position,portfolio_types.column_space&quot;</span>, 
+ 9:                                                                                                                         <span class="ruby-identifier">:conditions</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;portfolio_types.visible = 1&quot;</span> )
+10:                 <span class="ruby-identifier">column_total</span>  = <span class="ruby-value">0</span> 
+11:                 <span class="ruby-identifier">counter</span>               = <span class="ruby-value">0</span> 
+12:                 <span class="ruby-ivar">@newrow</span>               = []
+13:                 <span class="ruby-keyword kw">for</span> <span class="ruby-identifier">item</span> <span class="ruby-keyword kw">in</span> <span class="ruby-ivar">@portfolio_item</span>
+14:                       <span class="ruby-ivar">@newrow</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">item</span>)
+15:                 <span class="ruby-identifier">column_total</span> = <span class="ruby-identifier">item</span>.<span class="ruby-identifier">portfolio_type</span>.<span class="ruby-identifier">column_space</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">column_total</span> 
+16:                         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">column_total</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">3</span> 
+17:                                 <span class="ruby-identifier">result</span> = <span class="ruby-identifier">column_total</span> <span class="ruby-operator">-</span> <span class="ruby-value">3</span> 
+18:                                 <span class="ruby-identifier">column_total</span> = (<span class="ruby-identifier">item</span>.<span class="ruby-identifier">portfolio_type</span>.<span class="ruby-identifier">column_space</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">result</span>) 
+19:                                 <span class="ruby-ivar">@portfolio_item</span>[(<span class="ruby-identifier">counter</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>)].<span class="ruby-identifier">portfolio_type</span>.<span class="ruby-identifier">column_space</span> = (<span class="ruby-ivar">@portfolio_item</span>[(<span class="ruby-identifier">counter</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>)].<span class="ruby-identifier">portfolio_type</span>.<span class="ruby-identifier">column_space</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">result</span>) 
+20:                                 <span class="ruby-identifier">column_total</span> = <span class="ruby-value">0</span>
+21:                         <span class="ruby-keyword kw">end</span> 
+22:                         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">column_total</span> <span class="ruby-operator">==</span> <span class="ruby-value">3</span> 
+23:                                 <span class="ruby-identifier">column_total</span> = <span class="ruby-value">0</span> 
+24:                         <span class="ruby-keyword kw">end</span> 
+25:                 <span class="ruby-identifier">counter</span> = <span class="ruby-identifier">counter</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span> 
+26:         <span class="ruby-keyword kw">end</span>   
+27: 
+28:                 <span class="ruby-identifier">render</span> <span class="ruby-identifier">:update</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">page</span><span class="ruby-operator">|</span>                      
+29:                                 <span class="ruby-identifier">page</span>.<span class="ruby-identifier">replace_html</span> <span class="ruby-identifier">:logos</span>, <span class="ruby-identifier">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;portfolio_table&quot;</span>             
+30:                                 
+31:                                 <span class="ruby-identifier">page</span>.<span class="ruby-identifier">replace_html</span> <span class="ruby-identifier">:company_description</span>, <span class="ruby-identifier">:partial</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;company_description&quot;</span>   
+32:                 <span class="ruby-keyword kw">end</span>
+33:         <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

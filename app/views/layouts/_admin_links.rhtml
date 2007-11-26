@@ -32,10 +32,3 @@ myField.value += myValue;
 </ul>
 
 </div>
-<h2 class="blue_bold"><%= asterisk %> Recent files</h2>
-<div id="list_files"><ul>
-	<% Binary.find(:all, :limit => 10, :order => "id DESC").each do |binary| %>
-	<li><a href="javascript:insertAtCursor('<img src=\'1\' />')"><%= binary.filename %></a></li>
-	
-	<% end %></ul>
-</div>

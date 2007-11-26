@@ -1,5 +1,7 @@
 class CompanyAdminController < ApplicationController
 		
+	cache_sweeper :portfolio_item_sweeper
+		
   	def index
     	list
     	render :action => 'list'
