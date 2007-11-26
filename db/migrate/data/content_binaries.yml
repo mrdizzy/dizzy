@@ -1,0 +1,14 @@
+<%
+def fixture_binary_data(name)
+  render_binary("#{RAILS_ROOT}/db/migrate/data/contents/#{name}")
+end
+
+def render_binary(filename)
+  data = File.open(filename,'rb').read
+  "!binary | #{[data].pack('m').gsub(/\n/,"\n    ")}\n"
+end
+%>
+railsmigrations:
+  id: 1
+  binary_data: <%= fixture_binary_data("cheatsheets/rails-migrations.pdf") %>
+  content_id: 1

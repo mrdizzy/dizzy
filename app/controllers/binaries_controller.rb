@@ -38,11 +38,11 @@ class BinariesController < ApplicationController
 	
 	def get_cheatsheet_pdf
 		@pdf_data = Cheatsheet.find_by_permalink(params[:permalink])
-		@pdf = @pdf_data.pdf
+		@pdf = @pdf_data.content_binary.binary_data
 		send_data(@pdf, :type => "application/pdf", :disposition => 'attachment')
 		
 	end
-		def get
+	def get
 		@data = Binary.find(params[:id])
 		send_data(@data.binary, :type => @data.content_type, :disposition => 'inline')
 	end

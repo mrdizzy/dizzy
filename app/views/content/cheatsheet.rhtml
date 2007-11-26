@@ -1,10 +1,13 @@
  <div id="cheatsheet">
  	<% @title = @content.title %>
- 	
- <h1><%= asterisk %> <%= @content.title %> Cheatsheet</h1>
+ 	<div id="cheatsheet_title">
+ <h1><%= asterisk %> <%= @content.title %> Cheatsheet</h1></div>
+ <div id="download_pdf"><p><%= image_tag("f/small_icons/pdf.png") %> <%= diamond %> <%= link_to "Download pretty PDF version",{ :controller => "binaries", :action=> "get_cheatsheet_pdf", :permalink => @content.permalink, :extension => "pdf"} %></p></div>
+			<div id="content">
+			
  	
 <%= parse_cheatsheet_xml(@content.content) %>
 <%= render (:partial => "content/comments", :object => @content ) %>
-
+</div>
 </div>
 

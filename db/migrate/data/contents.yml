@@ -24,16 +24,14 @@ migrations:
   id: 1
   type: Cheatsheet
   title: Rails Migrations
-  description: Understanding how to use Rails' migrations features
+  description: Up and down methods, rake tasks, database mapping, loading fixtures, example migration file, all packed onto one A4 page for an easy at-a-glance reference
   author_id: 1
   date: 2007-07-02 23:36:00
   content: "<%= fixture_text_data("cheatsheets/rails_migrations.txt") %>"
   filename: rails_migrations.pdf
   content_type:
-  size: 234497
   thumbnail_size: 7953
   thumbnail: <%= fixture_binary_data("cheatsheets/rails-migrations.png") %>
-  pdf: <%= fixture_binary_data("cheatsheets/rails-migrations.pdf") %>
   permalink: rails-migrations
   
 file_uploads:
@@ -46,8 +44,6 @@ file_uploads:
   content: "<%= fixture_text_data("articles/file_uploads.txt") %>"
   filename: 
   content_type:
-  size: 
   thumbnail_size: 
   thumbnail:
-  pdf: 
   permalink: beginning-file-uploads

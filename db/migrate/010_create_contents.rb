@@ -15,8 +15,8 @@ class CreateContents < ActiveRecord::Migration
     t.column "content_type",           :string
     t.column "size",                   :integer
     t.column "thumbnail_size",         :integer
-    t.column "thumbnail",              :binary
-    t.column "pdf",                    :binary
+    t.column "thumbnail",              :binary,   :limit => 100.bytes
+    t.column "pdf",                    :binary,   :limit => 2.megabytes
     t.column "permalink",              :string    	
     end
   end

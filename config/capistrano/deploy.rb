@@ -31,8 +31,8 @@ ssh_options[:port] = 7822
 	# DATABASE
 # =============================================================================
 set :database_adapter, "mysql"
-set :database_username, "dizzynew_melanie"
-set :database_password, "world1"
+set :database_username, "dizzynew"
+set :database_password, "ruhegochelupraju"
 set :database_hostname, "localhost"
 
 # =============================================================================

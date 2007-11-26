@@ -280,6 +280,17 @@ tr.even {
   color: #29A4BD;
   font-weight: bold;
 }
+#cheatsheet_title {
+	float:left;
+}
+#download_pdf {
+	padding-top:20px;
+	float:right;
+	
+}
+#content {
+	clear:both;
+}
 
 /* Error pages 
 ========================*/

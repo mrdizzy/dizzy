@@ -17,6 +17,7 @@ class ContentAdminController < ApplicationController
 
   def new_cheatsheet 
   	@cheatsheet = Cheatsheet.new
+  	@binary = ContentBinary.new
   end
   
   def destroy_cheatsheet 
@@ -30,7 +31,7 @@ class ContentAdminController < ApplicationController
   
   def update_cheatsheet
   	 @cheatsheet = Cheatsheet.find(params[:id])
-    if @cheatsheet.update_attributes(params[:cheatsheet])
+    if @cheatsheet.update_attributes(params[:cheatsheet]) && @cheatsheet.content_binary.update_attributes(params[:binary])
       flash[:notice] = 'Cheatsheet was successfully updated.'
       redirect_to :action => "index"
     else
@@ -40,6 +41,9 @@ class ContentAdminController < ApplicationController
   
   def create_cheatsheet 
   	@cheatsheet = Cheatsheet.new(params[:cheatsheet])
+  	@binary = ContentBinary.new(params[:binary])
+  	@cheatsheet.content_binary = @binary
+  
   	 if @cheatsheet.save
       flash[:notice] = 'Cheatsheet was successfully created.'
       redirect_to :action => 'list_cheatsheets'
