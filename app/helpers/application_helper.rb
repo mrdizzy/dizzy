@@ -27,6 +27,10 @@ module ApplicationHelper
 		image_tag("f/bullets/pixels/asterisk.png", :size=> "13x13", :alt => "*")
 	end
 	
+	def solid_arrow
+		image_tag("f/bullets/arrows/solidarrow.png", :size=> "13x9", :alt => ">")
+	end
+	
 	def spiro
 		"<div class=\"spiro\">" + image_tag("f/branding/spirosmall.png", :size=> "29x29", :alt => "---") + 
 		"</div>"
@@ -70,7 +74,9 @@ module ApplicationHelper
 		      	tag_stack.push "h3" if pull_event[0] == "minihead"
 		      	tag_stack.push "h3" if pull_event[0] == "h3"
 		      	tag_stack.push "ruby" if pull_event[0] == "r"
+		      	tag_stack.push "rubynum" if pull_event[0] == "rnum"
 		      	tag_stack.push "rhtml" if pull_event[0] == "rh"
+		      	tag_stack.push "rhtmlnum" if pull_event[0] == "rhnum"
 		       	tag_stack.push "ul" if pull_event[0] == "ul"
 		        tag_stack.push "li" if pull_event[0] == "li"
 		      	tag_stack.push "td" if pull_event[0] == "Cell"
@@ -130,9 +136,13 @@ module ApplicationHelper
 	      		end
 		    when :text
 		    	if tag_stack.last == "ruby"
-		    		results << parse_coderay(pull_event[0], :ruby)	 
+		    		results << parse_coderay(pull_event[0], :ruby, "none")	 
 		    	elsif tag_stack.last == "rhtml"
-		    		results << parse_coderay(pull_event[0], :rhtml)     		
+		    		results << parse_coderay(pull_event[0], :rhtml, "none") 
+		    	elsif tag_stack.last == "rhtmlnum"
+		    		results << parse_coderay(pull_event[0], :rhtml, "inline")
+		    		elsif tag_stack.last == "rubynum"
+		    		results << parse_coderay(pull_event[0], :ruby, "inline")    		
 	      		else	
 		    		results << pull_event[0]   
 	      		end 
@@ -174,13 +184,16 @@ module ApplicationHelper
 		 textilized = RedCloth.new(text).to_html
 	end
 	
-	def parse_coderay(text, language)	
+	def parse_coderay(text, language, line_numbers)	
 	 	text.gsub!(/&lt;/, '<')
 	 	text.gsub!(/&gt;/, '>')
 	 	text.gsub!(/&amp;/, '&')
 	 	text.gsub!(/&quot;/, '"')
-	 	
-	   	CodeRay.scan(text, language).div( :line_numbers => :inline, :css => :class)	   	
+	 	if line_numbers == "inline"
+	   		CodeRay.scan(text, language).div( :line_numbers => :inline, :css => :class)	
+	   	else 
+	   		CodeRay.scan(text, language).div( :css => :class)	
+	   	end   	
 	end
 	
 end

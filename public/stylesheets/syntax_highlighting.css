@@ -4,8 +4,12 @@ p code, td code {
 	color: #29A4BD; 
 }
 h3 code { font-size:1em; }
+.code {
+	margin-bottom: 1em;
+}
 
 pre, code {
+ word-wrap: break-word;       /* Internet Explorer 5.5+ */
 	 white-space: pre-wrap;       /* css-3 */
 	 white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
 	 white-space: -pre-wrap;      /* Opera 4-6 */

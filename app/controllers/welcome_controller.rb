@@ -25,6 +25,7 @@ class WelcomeController < ApplicationController
 		render :update do |page|
 			page.insert_html :after, :navigation, :partial => "contact"
 			page.visual_effect :toggle_blind, :contact_form
+			page.replace_html :contact_us, "<b>Contact us</b>"
 		end
 	end
 	
