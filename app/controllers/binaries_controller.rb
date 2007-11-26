@@ -1,6 +1,8 @@
 class BinariesController < ApplicationController
 	caches_page :cheatsheet_thumbnail, :portfolio_image,:portfolio_type, :footer_logo, :grey_footer_logo, :get_file, :get_cheatsheet_pdf
 	
+	cache_sweeper :content_binary_sweeper
+	
 	def portfolio_image 
 		@image_data = PortfolioItem.find(params[:id])
 		@image = @image_data.data
@@ -39,9 +41,9 @@ class BinariesController < ApplicationController
 	def get_cheatsheet_pdf
 		@pdf_data = Cheatsheet.find_by_permalink(params[:permalink])
 		@pdf = @pdf_data.content_binary.binary_data
-		send_data(@pdf, :type => "application/pdf", :disposition => 'attachment')
-		
+		send_data(@pdf, :type => "application/pdf", :disposition => 'attachment')		
 	end
+	
 	def get
 		@data = Binary.find(params[:id])
 		send_data(@data.binary, :type => @data.content_type, :disposition => 'inline')

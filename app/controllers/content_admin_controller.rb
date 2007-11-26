@@ -1,5 +1,7 @@
 class ContentAdminController < ApplicationController
 	before_filter :authorize
+	
+	cache_sweeper :content_binary_sweeper, :only => [ :destroy_cheatsheet, :update_cheatsheet, :create_cheatsheet ]
   def index
     list
     render :action => 'list'
@@ -31,7 +33,13 @@ class ContentAdminController < ApplicationController
   
   def update_cheatsheet
   	 @cheatsheet = Cheatsheet.find(params[:id])
-    if @cheatsheet.update_attributes(params[:cheatsheet]) && @cheatsheet.content_binary.update_attributes(params[:binary])
+  	 @cheatsheet.update_attributes(params[:cheatsheet])
+ 
+  	 unless params[:binary][:uploaded_data].blank?
+  	 	puts "upating"
+		@cheatsheet.content_binary.update_attributes(params[:binary])
+	end
+    if @cheatsheet.valid? && @cheatsheet.content_binary.valid? 
       flash[:notice] = 'Cheatsheet was successfully updated.'
       redirect_to :action => "index"
     else
