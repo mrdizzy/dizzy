@@ -8,9 +8,7 @@ end
 
 
 namespace(:db) do
-  require File.join(File.dirname(__FILE__), 'helpers')
-
-  FIXTURE_DIRECTORY = path('test', 'fixtures', RAILS_ENV)
+  
   
   namespace :bootstrap do
     desc "Load initial database fixtures (in db/bootstrap/*.yml) into the current environment's database.  Load specific fixtures using FIXTURES=x,y"
