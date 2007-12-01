@@ -1,0 +1,111 @@
+--- 
+portfolio_types_00001: 
+  visible: "1"
+  column_space: "1"
+  id: "1"
+  description: Business cards
+  header_content_type: image/gif
+  header_filename: 
+  header_binary: !binary |
+    R0lGODlhSQAQAKIHAI2NjdLS0re3t3Nzc6SkpO/v72ZmZv///yH5BAEAAAcA
+    LAAAAABJABAAAAP/eLrc/jDKSau9eAbBiy2Cl42TYASHMQCDQVSmQM6QiRqA
+    AhiiRv8NWyp3IPB2CqGgRQgYBE7BDuAp7AayghGrVckU2hYgcH2lCATqdHfD
+    EgYo5MEW3dRVAaMMMLYZA4B/gAssUAEgeU8pK0twAS1tLC4HcjYmBB53LwU4
+    dWR8ipShClEMBRs4iwdOKEUnQ0knla9GLndfOCYGuzhWeL5wsa2ruampQnOv
+    qcRSPMmtvjGlQ6wOBQMDYNikoysKxjnVrjdjZDyXjyd2bE/TvdiAh4bY89kH
+    11iA8EY5qfj6r1qoGHNvCp0pgNqF8idpzJteD6ks8GULW5p+RHwBQAakDKPH
+    jyBDihxJsuSFBAA7
+
+  position: "2"
+portfolio_types_00002: 
+  visible: "1"
+  column_space: "2"
+  id: "2"
+  description: Leaflet
+  header_content_type: image/gif
+  header_filename: 
+  header_binary: !binary |
+    R0lGODlhJgAQAKIHAO/v74uLi9fX1729vXNzc6WlpWZmZv///yH5BAEAAAcA
+    LAAAAAAmABAAAAOReLrc/jDKOcegDQxiSMDGhy2FMQiBAVlLOLZiCrkKrQAp
+    caFdcRhAA++A61yCwp9IEQgIBiaNoHQKCYqH5tMksAKUi+4J9dFAP7SUWEAG
+    15ZQZOB8dqfiQfTSBhUwPG92JkkMNlZsAAQ6T4kEUy5pBo0nA1+KVz9IlQEc
+    TgKKBU2CRJxWBxuSL6qrrK2ur7AMCQA7
+
+  position: "5"
+portfolio_types_00003: 
+  visible: "1"
+  column_space: "1"
+  id: "3"
+  description: Letterhead
+  header_content_type: image/gif
+  header_filename: 
+  header_binary: !binary |
+    R0lGODlhPAAQAKIHAGhoaPHx8bW1tYqKiqamptjY2MbGxv///yH5BAEAAAcA
+    LAAAAAA8ABAAAAPWeLrc/jDKSau9RxhcCxBcIwDFAQxSIJSHAU7eGypjeUqx
+    csPfvNQm1CIwAHw8xqSxQDSCap9TcRA4NHuFIoCgyEpJQcZgUBgJRoSCh0wk
+    j1xGgmFJ6I3LAEO5UBcEjAZzYDsHMWp3PWGGWQNvhT1/ZEeMVnADcxsHdTZC
+    GUonOWEjSo1goSejSZeorCxAhHMsXYk3sQxAp6uyYUGYCptBamqABQYBkTYk
+    f3nFKqa0VMTGdCfLxUsmSn5aZJpGLUtXbs8vN+LDW2OFU0A+7u/w8fLz9PXw
+    CQA7
+
+  position: "3"
+portfolio_types_00004: 
+  visible: "1"
+  column_space: "1"
+  id: "4"
+  description: Logo
+  header_content_type: image/gif
+  header_filename: 
+  header_binary: !binary |
+    R0lGODlhHAAQAKIHAPDw8L+/v3V1ddnZ2Y6OjqSkpGZmZv///yH5BAEAAAcA
+    LAAAAAAcABAAAAN2eLrc/jBKFcK8yxCMNb/eAhSCBhyjIQTGcASEah2hIqzB
+    DcTBUA4swoBH21AMMxaroCi0bgtojeU6DDTI49V4iBUXyuOy+RREzZqB2ocT
+    EHZIXys4zBru9wBcUDjBCTEuORozHwoxJ4YMMAFOTIoMAwWAhZCGCQA7
+
+  position: "1"
+portfolio_types_00005: 
+  visible: 
+  column_space: "1"
+  id: "5"
+  description: Small Colour Logo
+  header_content_type: 
+  header_filename: 
+  header_binary: 
+  position: "100"
+portfolio_types_00006: 
+  visible: 
+  column_space: "1"
+  id: "6"
+  description: Small Grey Logo
+  header_content_type: 
+  header_filename: 
+  header_binary: 
+  position: "101"
+portfolio_types_00007: 
+  visible: 
+  column_space: "1"
+  id: "7"
+  description: Header
+  header_content_type: 
+  header_filename: 
+  header_binary: 
+  position: "102"
+portfolio_types_00008: 
+  visible: "1"
+  column_space: "1"
+  id: "8"
+  description: Compliment Slip
+  header_content_type: image/gif
+  header_filename: 
+  header_binary: !binary |
+    R0lGODlhWQAQAKIHAIyMjNPT07W1tezs7HR0dKSkpGZmZv///yH5BAEAAAcA
+    LAAAAABZABAAAAP/eLrc/jDKSau9OGs5ghDD9gDGAYqZYARsNJAEQBRoQw4G
+    UDMBDakBAiFCEuxGpUHoeCBFgEoIzrcYCAi5gGmFLbxyHYOABAg5cwdDATYo
+    CLVfgjEgJn8NYkXcs3ICAFczW1oMBWIBNyoAiAYEPYd4LEJfaTp4AnQzQUN/
+    fCyNjyAkAUtvpEB+WYYfKwxTempAB3RGlXQ+dIyVu00lW6ssnWoHODpOC28K
+    qCU3Cm+tC7QLObLStnmzdSVoaL3KOXjhi9hox3pYBFZ9zL69OOlVw8SxrdZZ
+    8rlnljrev9AK9oy1i0ZtnTtnQzKxCHZIhjotARVuosSN3zEgpkgFPLBqQkmB
+    TwWW9Vq0CiCJRiDcZBmUrda9P2C8VVRwccULLIs2fjFyc8bDVG7kMAGIbSgT
+    c0ZbJj060OgLQktrrIlKteqBBAA7
+
+  position: "4"
