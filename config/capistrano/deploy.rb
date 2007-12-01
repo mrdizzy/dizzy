@@ -97,7 +97,10 @@ EOF
 	
 end
 namespace :deploy do
-	
+	task :remigrate do
+		
+	send(run_method, "cd #{deploy_to}/current && rake remigrate")
+end
 	task :start do
 send(run_method, "cd #{deploy_to}/current && mongrel_rails cluster::start")
 end
