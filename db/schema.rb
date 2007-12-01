@@ -2,9 +2,18 @@
 # migrations feature of ActiveRecord to incrementally modify your database, and
 # then regenerate this schema definition.
 
-ActiveRecord::Schema.define(:version => 56) do
+ActiveRecord::Schema.define(:version => 10) do
 
   create_table "addresses", :force => true do |t|
+  end
+
+  create_table "binaries", :force => true do |t|
+    t.column "binary_data",  :binary
+    t.column "type",         :string
+    t.column "content_type", :string
+    t.column "size",         :integer
+    t.column "filename",     :string
+    t.column "content_id",   :integer
   end
 
   create_table "categories", :force => true do |t|
@@ -31,23 +40,14 @@ ActiveRecord::Schema.define(:version => 56) do
     t.column "description", :string
   end
 
-  create_table "content_binaries", :force => true do |t|
-    t.column "binary_data", :binary
-    t.column "content_id",  :integer
-  end
-
   create_table "contents", :force => true do |t|
-    t.column "type",           :string
-    t.column "title",          :string
-    t.column "description",    :string
-    t.column "user_id",        :integer
-    t.column "date",           :datetime
-    t.column "content",        :text
-    t.column "filename",       :string
-    t.column "content_type",   :string
-    t.column "thumbnail_size", :integer
-    t.column "thumbnail",      :binary
-    t.column "permalink",      :string
+    t.column "type",        :string
+    t.column "title",       :string
+    t.column "description", :string
+    t.column "user_id",     :integer
+    t.column "date",        :datetime
+    t.column "content",     :text
+    t.column "permalink",   :string
   end
 
   create_table "conversations", :force => true do |t|

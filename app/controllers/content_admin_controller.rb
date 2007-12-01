@@ -19,7 +19,8 @@ class ContentAdminController < ApplicationController
 
   def new_cheatsheet 
   	@cheatsheet = Cheatsheet.new
-  	@binary = ContentBinary.new
+  	@pdf = Pdf.new
+  	@thumbnail = Thumbnail.new
   end
   
   def destroy_cheatsheet 
@@ -35,11 +36,22 @@ class ContentAdminController < ApplicationController
   	 @cheatsheet = Cheatsheet.find(params[:id])
   	 @cheatsheet.update_attributes(params[:cheatsheet])
  
-  	 unless params[:binary][:uploaded_data].blank?
-  	 	puts "upating"
-		@cheatsheet.content_binary.update_attributes(params[:binary])
+  	 unless params[:pdf][:uploaded_data].blank?
+  	 	if @cheatsheet.pdf 	 	
+  	 			@cheatsheet.pdf.update_attributes(params[:pdf])
+		else 
+			@cheatsheet.pdf = Pdf.new(params[:pdf])
+		end
 	end
-    if @cheatsheet.valid? && @cheatsheet.content_binary.valid? 
+	unless params[:thumbnail][:uploaded_data].blank?
+		if @cheatsheet.thumbnail	 	
+			@cheatsheet.thumbnail.update_attributes(params[:thumbnail])
+  	 		
+		else 
+			@cheatsheet.thumbnail = Thumbnail.new(params[:thumbnail])
+		end
+	end
+    if @cheatsheet.valid? && @cheatsheet.pdf.valid? && @cheatsheet.thumbnail.valid?
       flash[:notice] = 'Cheatsheet was successfully updated.'
       redirect_to :action => "index"
     else
@@ -49,10 +61,18 @@ class ContentAdminController < ApplicationController
   
   def create_cheatsheet 
   	@cheatsheet = Cheatsheet.new(params[:cheatsheet])
-  	@binary = ContentBinary.new(params[:binary])
-  	@cheatsheet.content_binary = @binary
-  
-  	 if @cheatsheet.save
+  	
+  	unless params[:pdf][:uploaded_data].blank?
+  		@pdf = Pdf.new(params[:pdf])
+	     @cheatsheet.pdf = @pdf
+  	end
+  	unless params[:thumbnail][:uploaded_data].blank?
+  		@thumbnail = Thumbnail.new(params[:thumbnail])
+    	 @cheatsheet.thumbnail = @thumbnail
+     end
+
+  	 if @cheatsheet.valid?
+  	 	@cheatsheet.save
       flash[:notice] = 'Cheatsheet was successfully created.'
       redirect_to :action => 'list_cheatsheets'
     else

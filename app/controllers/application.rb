@@ -3,6 +3,7 @@
 class ApplicationController < ActionController::Base
 	require 'bluecloth'
 	require_dependency 'content'	
+	require_dependency 'binary'
 	require_dependency 'ticket'
 	require_dependency 'conversation'
 	

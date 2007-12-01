@@ -1,11 +1,13 @@
 class Content < ActiveRecord::Base
 	has_and_belongs_to_many :categories
-	has_many :comments
-	has_one :content_binary
+	has_many :comments, :dependent => :destroy
+	has_one :pdf, :dependent => :destroy
+	has_one :thumbnail, :dependent => :destroy	
 	has_permalink :title 
 		
 	belongs_to :user
 	validates_uniqueness_of :title, :permalink
+
 end
 
 class Article < Content

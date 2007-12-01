@@ -14,14 +14,14 @@
 <div class="left"><br/><br/><br/><br/><br/>
 			<%= image_tag("f/small_icons/pdf.png") %>
 			
-			<%= diamond %> <%= link_to "PDF",{ :controller => "binaries", :action=> "get_cheatsheet_pdf", :permalink => article_link.permalink, :extension => "pdf"} %> 
+			<%= diamond %> <%= link_to "PDF",{ :controller => "binaries", :action=> "pdf", :permalink => article_link.permalink } %> 
 		</div>
 		
 		<div class="right"><br/><br/><br/><br/><br/>
 			<%= image_tag("f/small_icons/html.png") %>
 			<%= diamond %> <%= link_to "HTML",{ :controller => "content", :action=> :show, :permalink => article_link.permalink} %> 
 		</div>
-		<p class="center"><%= image_tag("/cheatsheets/thumbnails/#{article_link.permalink}.png") %>
+		<p class="center"><%= image_tag("/thumbnails/#{article_link.permalink}.png") %>
 		</td>
 	<td><span class="date"><%= article_link.date.to_s(:long) %></span><p>
 		<%= posted_in(article_link.categories) %>

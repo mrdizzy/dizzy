@@ -25,13 +25,9 @@ migrations:
   type: Cheatsheet
   title: Rails Migrations
   description: Up and down methods, rake tasks, database mapping, loading fixtures, example migration file, all packed onto one A4 page for an easy at-a-glance reference
-  author_id: 1
+  user_id: 1
   date: 2007-07-02 23:36:00
   content: "<%= fixture_text_data("cheatsheets/rails_migrations.txt") %>"
-  filename: rails_migrations.pdf
-  content_type:
-  thumbnail_size: 7953
-  thumbnail: <%= fixture_binary_data("cheatsheets/rails-migrations.png") %>
   permalink: rails-migrations
   
 file_uploads:
@@ -39,11 +35,7 @@ file_uploads:
   type: Article
   title: Beginning File Uploads to the Database
   description: Learn how to upload files to the database, then retrieve and display them
-  author_id: 1
+  user_id: 1
   date: 2007-07-02 23:36:00
   content: "<%= fixture_text_data("articles/file_uploads.txt") %>"
-  filename: 
-  content_type:
-  thumbnail_size: 
-  thumbnail:
   permalink: beginning-file-uploads

@@ -1,12 +1,14 @@
 <p><label for="cheatsheet_title"><%= diamond %> Title</label>
 <%= cheatsheet_form.text_field :title %></p>
- <% fields_for :binary, @binary do |binary_fields| %>
-    <p><label for="cheatsheet_PDF"><%= diamond %> PDF</label>
-<%= binary_fields.file_field :uploaded_data %></p>
+ <% fields_for :pdf do |pdf_fields| %>
+    <p><label for="pdf"><%= diamond %> PDF</label>
+<%= pdf_fields.file_field :uploaded_data %></p>
+    <% end %>
+ <% fields_for :thumbnail do |thumbnail_fields| %>
+    <p><label for="thumbnail"><%= diamond %> ThumbnailF</label>
+<%= thumbnail_fields.file_field :uploaded_data %></p>
     <% end %>
 
-<p><label for="cheatsheet_PDF"><%= diamond %> PNG Thumbnail</label>
-<%= cheatsheet_form.file_field :thumbnail_data %></p>
 <p><label for="article_content"><%= diamond %> Description</label>
 <%= cheatsheet_form.text_area :description %></p>
 <p><label for="article_content"><%= diamond %> Content</label>

@@ -1,19 +1,19 @@
-class ContentBinarySweeper < ActionController::Caching::Sweeper
+class BinarySweeper < ActionController::Caching::Sweeper
 	
-	observe ContentBinary
+	observe Binary
 	
-	def after_save(content_binary)
-expire_binary(content_binary.content.permalink)
+	def after_save(binary)
+expire_binary(binary.content.permalink)
 	
 	end
 	
-	def after_destroy(content_binary)
-		expire_binary(content_binary.content.permalink)
+	def after_destroy(binary)
+		expire_binary(binary.content.permalink)
 	end
 	
 	private 
 	
 	def expire_binary(permalink)
-			expire_page(:controller => "binaries", :action=> "get_cheatsheet_pdf", :permalink => permalink, :extension => "pdf")
+
 	end
 end

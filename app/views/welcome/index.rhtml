@@ -18,7 +18,7 @@
 	<div id="welcome_middle">
 		<h2 class="blue_bold"><%= asterisk %> Latest cheatsheet</h2>	<p>
 			<span class="date"><%= @cheatsheet.date.to_s(:short) %> </span> <%= diamond %> <b>		<%= @cheatsheet.title %> </b>
-		</p><%= link_to(image_tag("/cheatsheets/thumbnails/#{@cheatsheet.permalink}.png"), :controller => :content, :action => :show, :permalink => @cheatsheet.permalink) %><p><%= solid_arrow %> <span class="blue_bold"><%= @cheatsheet.description %></span></p>
+		</p><%= link_to(image_tag("/thumbnails/#{@cheatsheet.permalink}.png"), :controller => :content, :action => :show, :permalink => @cheatsheet.permalink) %><p><%= solid_arrow %> <span class="blue_bold"><%= @cheatsheet.description %></span></p>
 		<%=spiro%>
 		<h2 class="blue_bold"><%= asterisk %> Latest guide</h2>	<p>
 			<span class="date"><%= @main_article.date.to_s(:short) %> </span> <%= diamond %> <b>		<%= @cheatsheet.title %> </b>
