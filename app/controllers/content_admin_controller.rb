@@ -1,7 +1,7 @@
 class ContentAdminController < ApplicationController
 	before_filter :authorize
 	
-	cache_sweeper :content_binary_sweeper, :only => [ :destroy_cheatsheet, :update_cheatsheet, :create_cheatsheet ]
+	
   def index
     list
     render :action => 'list'
