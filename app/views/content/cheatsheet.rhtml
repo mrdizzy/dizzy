@@ -3,9 +3,12 @@
  	<div id="cheatsheet_title">
  <h1><%= asterisk %> <%= @content.title %> Cheatsheet</h1></div>
  <div id="download_pdf"><p><%= image_tag("f/small_icons/pdf.png") %> <%= diamond %> <%= link_to "Download pretty PDF version",{ :controller => "binaries", :action=> "pdf", :permalink => @content.permalink} %></p></div>
+
 			<div id="content">
 			
 <%= parse_cheatsheet_xml(@content.content) %>
+<%= render (:partial => "content/related", :object => @content ) %>
 <%= render (:partial => "content/comments", :object => @content ) %>
+
 </div>
 </div>

@@ -1,5 +1,5 @@
 class Content < ActiveRecord::Base
-	has_many :categories_contents
+	has_many :categories_contents, :dependent => :destroy
 	has_many :categories, :through => :categories_contents
 	has_many :comments, :dependent => :destroy
 	has_one :pdf, :dependent => :destroy
@@ -8,6 +8,11 @@ class Content < ActiveRecord::Base
 		
 	belongs_to :user
 	validates_uniqueness_of :title, :permalink
+	
+	def related_article
+		related_article = CategoriesContent.find_by_category_id(self.main_category, :limit => 1, :order => "id DESC")
+		related_article.content
+	end
 	
 	def main_category
 		main_category = CategoriesContent.find_by_content_id_and_main(self.id, 1)	
@@ -36,9 +41,7 @@ class Content < ActiveRecord::Base
 		CategoriesContent.delete(current_main_category.id)
 		new_main_category = CategoriesContent.create(:content_id => self.id, :main => 1, :category_id => object_id)
 		self.categories_contents << new_main_category
-	end
-	
-	
+	end	
 end
 
 class Article < Content

@@ -1,6 +1,10 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
 
+    def article_link(object)
+    	link_to object.title, { :controller => :content, :action => :show, :permalink => object.permalink }
+    end
+
 	def get_random_companies
 		@five_random_companies = Company.find(:all, :order => 'RAND()', :limit => 5)
 	end
