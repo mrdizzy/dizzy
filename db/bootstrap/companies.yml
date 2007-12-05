@@ -1,61 +1,61 @@
 --- 
-companies_00006: 
+companies_006: 
   name: Silver
   id: "6"
   description: Sleek, chic, understated, powerful
-companies_00007: 
+companies_007: 
   name: Rose
   id: "7"
   description: Dark, seductive, enigmatic
-companies_00008: 
+companies_008: 
   name: Casual Bay
   id: "8"
   description: Delicate, feminine, magical, beauty
-companies_00009: 
+companies_009: 
   name: Chicken
   id: "9"
   description: Fun, hilarity, zany, bold, offbeat
-companies_00010: 
+companies_010: 
   name: Towergate Financial
   id: "10"
   description: Zenith, strength, authority, modern
-companies_00011: 
+companies_011: 
   name: Walk to Walk
   id: "11"
   description: Movement
-companies_00012: 
+companies_012: 
   name: Ella Bella
   id: "12"
   description: Mystical, feminine, beautiful
-companies_00001: 
+companies_001: 
   name: Heavenly Chocolate Fountains
   id: "1"
   description: Fun, entertaining, social
-companies_00013: 
+companies_013: 
   name: Organic Chemistry
   id: "13"
   description: Biological, technical
-companies_00002: 
+companies_002: 
   name: Smart Enterprises
   id: "2"
   description: Innovative, dynamic, movement, technological
-companies_00014: 
+companies_014: 
   name: getoutofyourbox.co.uk
   id: "14"
   description: logical, freedom
-companies_00003: 
+companies_003: 
   name: Pink Gorillas
   id: "3"
   description: Zany, irreverent, humourous, young, trendy, clubbing
-companies_00015: 
+companies_015: 
   name: Phoenix
   id: "15"
   description: Minimalistic, streamlined, efficient, quiet strength, modern
-companies_00004: 
+companies_004: 
   name: Hilary Tudor
   id: "4"
   description: Traditional, heritage, quality, classical
-companies_00005: 
+companies_005: 
   name: Hurricane Sound
   id: "5"
   description: Futuristic, mathematical, technological, precision

@@ -1,4 +1,4 @@
-namespace(:db) do
+namespace :db do
   namespace :bootstrap do
     desc "Load initial database fixtures (in db/bootstrap/*.yml) into the current environment's database.  Load specific fixtures using FIXTURES=x,y"
     task :load => :environment do

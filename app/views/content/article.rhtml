@@ -12,5 +12,9 @@
 <%= parse_cheatsheet_xml(@content.content) %>
 
 <!-- COMMENTS -->
+	<%= render (:partial => "content/related", :object => @content ) %>
+	
 	<%= render (:partial => "content/comments", :object => @content ) %>
+	
+	
 </div>

@@ -1,69 +1,69 @@
 --- 
-categories_00016: 
-  permalink: plugins
-  name: Plugins
-  id: "16"
-categories_00005: 
-  permalink: scaffolding
-  name: Scaffolding
-  id: "5"
-categories_00017: 
-  permalink: generators
-  name: Generators
-  id: "17"
-categories_00006: 
-  permalink: controllers
-  name: Controllers
-  id: "6"
-categories_00007: 
-  permalink: models
-  name: Models
-  id: "7"
-categories_00008: 
-  permalink: ajax
-  name: AJAX
-  id: "8"
-categories_00009: 
+categories_009: 
   permalink: file-handling
   name: File handling
   id: "9"
-categories_00010: 
+categories_010: 
   permalink: active-record
   name: Active Record
   id: "10"
-categories_00011: 
+categories_011: 
   permalink: routing-and-urls
   name: Routing and URLs
   id: "11"
-categories_00012: 
+categories_012: 
   permalink: capistrano
   name: Capistrano
   id: "12"
-categories_00001: 
+categories_001: 
   permalink: migrations
   name: Migrations
   id: "1"
-categories_00013: 
+categories_013: 
   permalink: testing
   name: Testing
   id: "13"
-categories_00002: 
+categories_002: 
   permalink: action-mailer
   name: Action Mailer
   id: "2"
-categories_00014: 
+categories_014: 
   permalink: time-and-dates
   name: Time and Dates
   id: "14"
-categories_00003: 
+categories_003: 
   permalink: beginners
   name: Beginners
   id: "3"
-categories_00015: 
+categories_015: 
   permalink: rest
   name: REST
   id: "15"
-categories_00004: 
+categories_004: 
   permalink: data-structures
   name: Data Structures
   id: "4"
+categories_016: 
+  permalink: plugins
+  name: Plugins
+  id: "16"
+categories_005: 
+  permalink: scaffolding
+  name: Scaffolding
+  id: "5"
+categories_017: 
+  permalink: generators
+  name: Generators
+  id: "17"
+categories_006: 
+  permalink: controllers
+  name: Controllers
+  id: "6"
+categories_007: 
+  permalink: models
+  name: Models
+  id: "7"
+categories_008: 
+  permalink: ajax
+  name: AJAX
+  id: "8"
