@@ -1,7 +1,6 @@
 class ContentAdminController < ApplicationController
 	before_filter :authorize
 	
-	
   def index
     list
     render :action => 'list'
@@ -29,7 +28,6 @@ class ContentAdminController < ApplicationController
 	#  @cheatsheet.categories.delete_all
 	  @cheatsheet.destroy
  # end
-
   end  	
   
   def update_cheatsheet
@@ -51,7 +49,8 @@ class ContentAdminController < ApplicationController
 			@cheatsheet.thumbnail = Thumbnail.new(params[:thumbnail])
 		end
 	end
-    if @cheatsheet.valid? && @cheatsheet.pdf.valid? && @cheatsheet.thumbnail.valid?
+
+    if @cheatsheet.valid? && @cheatsheet.pdf.valid? && @cheatsheet.thumbnail.valid? && @cheatsheet.categories.all?(&:valid?)
       flash[:notice] = 'Cheatsheet was successfully updated.'
       redirect_to :action => "index"
     else
@@ -113,7 +112,7 @@ class ContentAdminController < ApplicationController
     @article = Article.find(params[:id])
     if @article.update_attributes(params[:article])
       flash[:notice] = 'Article was successfully updated.'
-      redirect_to :action => 'edit', :id => @article
+      redirect_to :action => 'list'
     else
       render :action => 'edit'
     end
@@ -199,7 +198,6 @@ class ContentAdminController < ApplicationController
 			page.replace_html :add_new_user, :partial => 'add_new_user'
 		end	
   end 
-  
   
   def create_author 
   	@author = Author.new(params[:author]) 

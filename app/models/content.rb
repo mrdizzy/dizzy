@@ -23,12 +23,11 @@ class Content < ActiveRecord::Base
 	
 	def subcategories=(object_ids)
 		current_subcategories = CategoriesContent.find_all_by_content_id_and_main(self.id, nil)
-		puts "!!!"
-		puts current_subcategories.class
 		CategoriesContent.delete(current_subcategories)
 		
 		object_ids.each do |object_id|
-			CategoriesContent.create(:main => nil, :content_id => self.id, :category_id => object_id)
+			linked_subcategory = CategoriesContent.new(:main => nil, :content_id => self.id, :category_id => object_id)
+			self.categories_contents << linked_subcategory		
 		end
 	end
 	
@@ -36,6 +35,7 @@ class Content < ActiveRecord::Base
 		current_main_category = CategoriesContent.find_by_content_id_and_main(self.id, 1)
 		CategoriesContent.delete(current_main_category.id)
 		new_main_category = CategoriesContent.create(:content_id => self.id, :main => 1, :category_id => object_id)
+		self.categories_contents << new_main_category
 	end
 	
 	
