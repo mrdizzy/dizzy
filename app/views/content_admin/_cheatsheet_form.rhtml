@@ -5,7 +5,7 @@
 <%= pdf_fields.file_field :uploaded_data %></p>
     <% end %>
  <% fields_for :thumbnail do |thumbnail_fields| %>
-    <p><label for="thumbnail"><%= diamond %> ThumbnailF</label>
+    <p><label for="thumbnail"><%= diamond %> Thumbnail</label>
 <%= thumbnail_fields.file_field :uploaded_data %></p>
     <% end %>
 
@@ -19,6 +19,13 @@
 <p><label for="cheatsheet_author"><%= diamond %> User</label>
 <%= cheatsheet_form.collection_select(:user_id, User.find(:all), :id, :name)%></p></div>
 
-<div id="select_category">
-<p><label for="cheatsheet_categories"><%= diamond %> Category</label>
-<%= cheatsheet_form.collection_select(:category_ids, Category.find(:all, :order => :name), :id, :name, {}, {:multiple=> :true, :name=> 'cheatsheet[category_ids][]'}) %></p></div>
+<div id="select_main_category">
+<p><label for="cheatsheet_maincategory"><%= diamond %> Main category </label>
+<%= cheatsheet_form.collection_select(:main_category, Category.find(:all, :order => :name), :id, :name, {}, { :name => 'cheatsheet[main_category]'} ) %></p>
+<%= @cheatsheet.main_category %>
+</div>
+
+<div id="select_subcategory">
+<p><label for="cheatsheet_subcategories"><%= diamond %> Subcategories</label>
+<%= cheatsheet_form.collection_select(:subcategories, Category.find(:all, :order => :name), :id, :name, {}, {:multiple=> :true}) %></p></div>
+

@@ -8,7 +8,8 @@
 #
 
 class Category < ActiveRecord::Base
-	has_and_belongs_to_many :contents,  :order => "date DESC"
+	has_many :categories_contents
+	has_many :contents, :through => :categories_contents, :order => "date DESC"
 	
 	has_permalink :name
 	

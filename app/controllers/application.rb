@@ -1,13 +1,13 @@
 # Filters added to this controller will be run for all controllers in the application.
 # Likewise, all the methods added will be available for all controllers.
 class ApplicationController < ActionController::Base
+	include ExceptionNotifiable
 	require 'bluecloth'
 	require_dependency 'content'	
 	require_dependency 'binary'
 	require_dependency 'ticket'
 	require_dependency 'conversation'
 	
-		include ExceptionNotifiable
 #local_addresses.clear
  # def local_request?
   #  return false
