@@ -1,26 +1,4 @@
-<script language="javascript" type="text/javascript">
 
-function insertAtCursor(myValue) {
-//IE support
-myField = document.edit_form['article[content]']
-if (document.selection) {
-myField.focus();
-sel = document.selection.createRange();
-sel.text = myValue;
-}
-//MOZILLA/NETSCAPE support
-else if (myField.selectionStart || myField.selectionStart == '0') {
-var startPos = myField.selectionStart;
-var endPos = myField.selectionEnd;
-myField.value = myField.value.substring(0, startPos)
-+ myValue
-+ myField.value.substring(endPos, myField.value.length);
-} else {
-myField.value += myValue;
-}
-}
-
-</script>
 <div id="admin_links">
 	<h2 class="blue_bold"><%= asterisk %> Options</h2>
 <ul>

@@ -105,7 +105,7 @@ namespace :deploy do
 	
 	task :remigrate do
 		
-	send(run_method, "cd #{deploy_to}/current && rake remigrate RAILS_ENV=production")
+	send(run_method, "cd #{deploy_to}/current && rake db:remigrate RAILS_ENV=production")
 end
 	task :start do
 send(run_method, "cd #{deploy_to}/current && mongrel_rails cluster::start")

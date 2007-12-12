@@ -60,9 +60,3 @@ a:hover {
   background-color: #29A4BD;
   color: white;
 }
-#welcome_left a:visited, #welcome_right a:visited {
-	color: #29A4BD; 
-}
-#welcome_left a:hover, #welcome_right a:hover {
-	color: white;
-	}

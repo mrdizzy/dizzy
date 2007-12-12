@@ -7,7 +7,3 @@ namespace(:db) do
 	  Rake::Task["db:bootstrap:load"].invoke
 	end
 end
-
-
-
-  

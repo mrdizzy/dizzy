@@ -52,11 +52,4 @@ class Cheatsheet < Content
 
 	validates_presence_of :title, :description, :permalink, :content, :date, :user_id, :date
 	
-	def thumbnail_data=(binary_data)
-		unless binary_data.blank?		
-			
-			self.thumbnail = binary_data.read
-			self.thumbnail_size = binary_data.size
-		end
-	end
 end
