@@ -58,17 +58,16 @@ module ApplicationHelper
 	class ContentParser
 		 require 'rexml/document'
 		 include REXML
-		require 'enumerator'
+		 require 'enumerator'
 	
 	@@TAGS = { "title" => "h1", "c" => "code", "subhead" => "h2", "minihead" => "h3", "r" => "ruby", "rnum" => "rubynum", "rh" => "rhtml", "rhnum"=> "rhtmlnum", "article" => "div", }
 	
 		 attr_accessor :xml
-		 def parse_doc
+		
+		 def parse_doc		 	
 		 	doc = Document.new(@xml)
 		 	@@TAGS.each_pair do |key, value|	 	
-		 		doc.root.elements.each("//#{key}") do |element|
-		 			element.name = value
-		 		end
+		 		doc.root.elements.each("//#{key}") { |element| element.name = value }
 	 		end
 		 	doc.root.elements.each("//sample_code") do |table|
 		 		parse_table(table,"sample_code")
@@ -78,18 +77,18 @@ module ApplicationHelper
 	 		end
 	 		doc.root.elements.each("//ruby") do |ruby|
 	 			code = Document.new(parse_coderay(ruby.text, :ruby, "none"))
-	 			ruby.parent.replace_child(ruby, code)		
+	 			ruby.replace_with(code)		
  			end
  			doc.root.elements.each("//rubynum") do |ruby|
-	 			code = Document.new(parse_coderay(ruby.text, :ruby, :inline))	
-	 			ruby.parent.replace_child(ruby, code)			
+	 			code = Document.new(parse_coderay(ruby.text, :ruby, "inline"))	
+	 			ruby.replace_with(code)			
  			end
 	 		doc		
 	     end
 	 
 	 	 def parse_table(table, css_class)
-	 	 	columns 		= table.attributes["aid:tcols"].to_i
-			cells			= []
+	 	 	columns 	= table.attributes["aid:tcols"].to_i
+			cells		= []
 			counter		= 1
 			table.name = "table"
 			table.attributes["class"] = css_class
@@ -106,18 +105,17 @@ module ApplicationHelper
 	 	 	end	
 	 	 end
 	 	 
-	def parse_coderay(text, language, line_numbers)	
-	 	text.gsub!(/&lt;/, '<')
-	 	text.gsub!(/&gt;/, '>')
-	 	text.gsub!(/&amp;/, '&')
-	 	text.gsub!(/&quot;/, '"')
-	 	if line_numbers == "inline"
-	   		CodeRay.scan(text, language).div( :line_numbers => :inline, :css => :class)	
-	   	else 
-	   		CodeRay.scan(text, language).div( :css => :class)	
-	   	end   	
-	end
-	
+		def parse_coderay(text, language, line_numbers)	
+		 	text.gsub!(/&lt;/, '<')
+		 	text.gsub!(/&gt;/, '>')
+		 	text.gsub!(/&amp;/, '&')
+		 	text.gsub!(/&quot;/, '"')
+		 	if line_numbers == "inline"
+		   		CodeRay.scan(text, language).div( :line_numbers => :inline, :css => :class)	
+		   	else 
+		   		CodeRay.scan(text, language).div( :css => :class)	
+		   	end   	
+		end	
 	end
 	
 	def parse_cheatsheet_xml(xml)
