@@ -8,9 +8,9 @@
  <% end %>
  <h2 class="blue_bold"><%= asterisk %> Options</h2>
   <div id="add_new_category">
-  <%= render :partial => "add_new_category_link", :object => @article %>
+  <%= render :partial => "shared/admin/add_new_category_link", :object => @article %>
   </div>
   <div id="add_new_user">
-  <%= render :partial => "add_new_user_link" %>
+  <%= render :partial => "shared/admin/add_new_user_link" %>
 	</div>
 <%= link_to 'Back', :action => 'list' %>

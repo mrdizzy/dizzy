@@ -1,23 +1,31 @@
 <p><label for="article_title"><%= diamond %> Title</label>
 <%= form.text_field :title %></p>
 
+<p><label for="article_permalink"><%= diamond %> Link</label>
+	<%= form.text_field :permalink %></p>
+
 <p><label for="article_content"><%= diamond %> Content</label>
 <%= form.text_area :content %></p>
+
 <%= drop_receiving_element ("article_content", :hoverclass => "hover", :url => { :action => :update_binary} ) %>
+
 <p><label for="article_excerpt"><%= diamond %> Description/Excerpt</label>
 <%= form.text_area :description %></p>
+
 <p><label for="article_date"><%= diamond %> Date</label>
 <%= form.datetime_select :date %></p>
+
 <div id="select_author">
-<p><label for="article_author"><%= diamond %> User</label>
-<%= form.collection_select(:user_id, User.find(:all), :id, :name)%></p></div>
-
-
+	<p><label for="article_author"><%= diamond %> User</label>
+	<%= form.collection_select(:user_id, User.find(:all), :id, :name)%></p>
+</div>
+	
 <div id="select_main_category">
-<p><label for="cheatsheet_maincategory"><%= diamond %> Main category </label>
-<%= form.collection_select(:main_category, Category.find(:all, :order => :name), :id, :name, {}, { :name => 'cheatsheet[main_category]'} ) %></p>
+	<p><label for="select_main_category"><%= diamond %> Main category </label>
+	<%= form.collection_select(:main_category, Category.find(:all, :order => :name), :id, :name, {}, { :name => 'article[main_category]'} ) %></p>
 </div>
 
 <div id="select_subcategory">
-<p><label for="cheatsheet_subcategories"><%= diamond %> Subcategories</label>
-<%= form.collection_select(:subcategories, Category.find(:all, :order => :name), :id, :name, {}, {:multiple=> :true}) %></p></div>
+	<p><label for="select_subcategory"><%= diamond %> Subcategories</label>
+	<%= form.collection_select(:subcategories, Category.find(:all, :order => :name), :id, :name, {}, {:multiple=> :true}) %></p>
+</div>

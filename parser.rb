@@ -3,45 +3,43 @@ class ContentParser
 	 include REXML
 	require 'enumerator'
 
-@@TAGS = { "b" => "bold", "h1" => "main_header"}
-
 	 attr_accessor :xml
+	
 	 def parse_doc
-	 	doc = Document.new(@xml) 	 	
-	 	doc.each_element do |element| 
-	 		parse_element(element)
- 		end
+	 	doc = Document.new(@xml)
+	 	 	
+		doc.root.elements.each("//*") do |element|						
+			send("#{element.name}", element)
+		end 
+	
 		puts doc
      end
      
-	 def parse_element(elements)	
-	 	elements.each_element do |element|	 	
-	 		element.name=@@TAGS[element.name] if @@TAGS[element.name]
-	 		if element.name == "Table"
-	 			parse_table(elements,element)
- 			else
-	 			parse_element(element) 
- 			end			
- 		end
- 	 end
- 	 
- 	 def parse_table(parent,table)
- 	 	columns 		= table.attributes["aid:tcols"].to_i
-		cells			= []
+	def method_missing(methodname, *args)
+ 	end
+ 	
+	def pd(element)
+		element.name = "Paragraph"
+	end
+    def table(table)
+    	columns 	= table.attributes["aid:tcols"].to_i
+		cells		= []
+		counter		= 1
 		table.name = "table"
- 	 	table.each { |cell| cells << cell }
- 	 	cells.each_slice(columns) do |row|
- 	 		tr = Element.new("tr")
- 	 		table << tr
- 	 		row.each do |cell|
- 	 			cell.name = "td"
- 	 			tr << cell
- 	 		end
- 	 	end	
- 	 end
+		table.elements.to_a("cell").each_slice(columns) do |row|
+	 	 		counter = counter + 1
+	 	 		tr = Element.new("tr")
+	 	 		
+	 	 		table << tr
+	 	 		row.each do |cell|
+	 	 			cell.name = "td"	 	 		
+	 	 			tr << cell
+	 	 		end
+ 	end
+    end
 end
 @document = ContentParser.new
 
-@document.xml = "<root><h1>Hi my name is <b>David</b>. Thank you for saying hi</h1><Table xmlns:aid=\"http://ns.adobe.com/AdobeInDesign/4.0/\" aid:table=\"table\" aid:trows=\"2\" aid:tcols=\"2\"><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"27.6290601173522\">Code:</Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"232.158341457451\"><r>text_field( :post, :title, :size =&gt; 20, :class =&gt; &quot;blue&quot; )</r></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"27.6290601173522\">Output:</Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"232.158341457451\"><r>&lt;input type=&quot;text&quot; id=&quot;post_title&quot; name=&quot;post[title]&quot; size=&quot;20&quot; value=&quot;\#{@post.title}&quot; class=&quot;blue&quot; /&gt;</r></Cell></Table><Table xmlns:aid=\"http://ns.adobe.com/AdobeInDesign/4.0/\" aid:table=\"table\" aid:trows=\"2\" aid:tcols=\"2\"><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"27.6290601173522\">Code:</Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"232.158341457451\"><r>text_field( :post, :title, :size =&gt; 20, :class =&gt; &quot;blue&quot; )</r></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"27.6290601173522\">Output:</Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"232.158341457451\"><r>&lt;input type=&quot;text&quot; id=&quot;post_title&quot; name=&quot;post[title]&quot; size=&quot;20&quot; value=&quot;\#{@post.title}&quot; class=&quot;blue&quot; /&gt;</r></Cell></Table></root>"
+@document.xml = "<html><head><title>Title</title></head><body><h1>Article</h1><p>Introduction to article, <b>with part in bold</b></p>.<table aid:tcols=\"2\"><cell>red</cell><cell>orange</cell><cell>yellow</cell><cell>green</cell><cell>blue</cell><cell>indigo</cell><cell>violent</cell></table></body></html>"
 
 @document.parse_doc

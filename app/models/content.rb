@@ -4,10 +4,9 @@ class Content < ActiveRecord::Base
 	has_many :comments, :dependent => :destroy
 	has_one :pdf, :dependent => :destroy
 	has_one :thumbnail, :dependent => :destroy	
-	has_permalink :title 
 		
 	belongs_to :user
-	validates_uniqueness_of :title, :permalink
+	validates_uniqueness_of :permalink
 	
 	def related_article
 		related_article = CategoriesContent.find_by_category_id(self.main_category, :limit => 1, :order => "id DESC")
@@ -37,8 +36,10 @@ class Content < ActiveRecord::Base
 	end
 	
 	def main_category=(object_id)
-		current_main_category = CategoriesContent.find_by_content_id_and_main(self.id, 1)
-		CategoriesContent.delete(current_main_category.id)
+		if (self.id)
+			current_main_category = CategoriesContent.find_by_content_id_and_main(self.id, 1)
+			CategoriesContent.delete(current_main_category.id)
+		end
 		new_main_category = CategoriesContent.create(:content_id => self.id, :main => 1, :category_id => object_id)
 		self.categories_contents << new_main_category
 	end	
@@ -49,7 +50,5 @@ class Article < Content
 end
 
 class Cheatsheet < Content
-
-	validates_presence_of :title, :description, :permalink, :content, :date, :user_id, :date
-	
+	validates_presence_of :title, :description, :content, :date, :user_id, :date, :permalink
 end

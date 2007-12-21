@@ -12,21 +12,23 @@ ActionController::Routing::Routes.draw do |map|
   # You can have the root of your site routed by hooking up '' 
   # -- just remember to delete public/index.html.
 	map.connect '/', :controller => "welcome"
-	map.connect "articles/:permalink", :controller => "content", :action => "show"
-
+	#map.connect "articles/:permalink", :controller => "content", :action => "show"
+    map.connect "ruby-on-rails/:permalink", :controller => "content", :action => "show"
+  
   # Thumbnails and PDF files
+  	map.connect "cheatsheets", :controller => "content", :action => "list_cheatsheets"
+  map.connect "cheatsheets/:permalink", :controller => "content", :action => "show"	
   map.connect "cheatsheets/:permalink.pdf", :controller => "binaries", :action => "pdf"
   map.connect "thumbnails/:permalink.:extension", :controller => "binaries", :action => "thumbnail"
   
+  #Categories and Contents
     map.connect "categories/:permalink", :controller => "content", :action => "articles_for_category"
+
+  # Portfolio Binary images
     map.connect "binaries/footer_logo/:id.:extension", :controller => "binaries", :action => "footer_logo"
-	map.connect "binaries/footer_logo/:id/over.:extension", :controller => "binaries", :action => "grey_footer_logo"	
-	
-	
-	map.connect "cheatsheets/:permalink", :controller => "content", :action => "show"	
+	map.connect "binaries/footer_logo/:id/over.:extension", :controller => "binaries", :action => "grey_footer_logo"		
 	map.connect "binaries/portfolio_image/:id.:extension", :controller => "binaries", :action => "portfolio_image"
-	map.connect "cheatsheets", :controller => "content", :action => "list_cheatsheets"
-	
+
   # Allow downloading Web Service WSDL as a file with an extension
   # instead of a file named 'wsdl'
   #map.connect ':controller/service.wsdl', :action => 'wsdl'

@@ -2,31 +2,29 @@
 ==================================== */
 b, strong, em { font-weight: bold; }
 
-.date { color: #BBBDBF; }
-
 /* approx 21px*/
 h1 {
-        font-size: 2.1em;
-        margin-top: 1em; 
-        font-weight:normal;
-		color: #29A4BD; 
+	font-size: 2.1em;
+	margin-top: 1em; 
+	font-weight:normal;
+	color: #29A4BD; 
 }
 
 /* approx 16px*/
 h2 {
-        font-size: 1.6em;
-        margin-bottom: 1em; 
+	font-size: 1.6em;
+	margin-bottom: 1em; 
 }
 
 /* approx 14px*/
 h3 {
-        font-size: 1.4em;
-        margin-bottom: 1.2em;
+	font-size: 1.4em;
+	margin-bottom: 1.2em;
 }
 
 /* approx 12px*/
 h4 {
-        font-size: 1.2em;
+	font-size: 1.2em;
 }
 
 /* approx 11px*/
@@ -37,26 +35,28 @@ p {
 	margin-bottom: 1em;
 }
 
+/* Classes
+==================================== */
+
 .blue_bold {
-  margin-top: 1em;
-  color: #29A4BD;
-  font-weight: bold;
+	margin-top: 1em;
+	color: #29A4BD;
+	font-weight: bold;
 }
+
+.date { color: #BBBDBF; }
+
 .nopadding {
 	margin:0;
 	padding:0;
 }
 /* Links
 ==================================== */
-a:link {
-  color: #29A4BD; 
-  
-}
-a:visited {
-  color:#555;
-}
+a:link { color: #29A4BD; }
+
+a:visited { color:#555; }
+
 a:hover {
-  /*background-color: #D1ECF9;*/
-  background-color: #29A4BD;
-  color: white;
+	background-color: #29A4BD;
+	color: white;
 }

@@ -1,10 +1,8 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html><head><title><%= @title %> - Dizzy</title>
-<%= stylesheet_link_tag "elements", :media => "all" %>
-<%= stylesheet_link_tag "typography", :media => "all" %>
-<%= stylesheet_link_tag "forms", :media => "all" %>
-<%= stylesheet_link_tag "lists", :media => "all" %>
+<%= core_front_end_stylesheets %>
 <%= javascript_include_tag :defaults %>
+<%= stylesheet_link_tag "portfolio", :media => :all %>
 </head>
 <body>	
 
@@ -16,9 +14,9 @@
 <div id="hierarchy">
 	<p>	<%= image_tag("f/small_icons/you-are-here.gif", :alt=>"You are here:") %>
 <a href="/">Home</a> &gt; <b>Portfolio</b></p></div>
-			<%= yield %>
 			
-
+			<%= yield %>
+<%= render :partial => "/layouts/footer" %>
 </div>
 </body>
 </html>

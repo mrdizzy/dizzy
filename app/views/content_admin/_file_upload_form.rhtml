@@ -1,6 +1,0 @@
-<div id="file_upload_form">
-<% form_for ( :binary, :url => { :controller => "content_admin", :action => "upload_file"}, :html =>{:multipart => true}) do |form| %>
-	<%= form.file_field :uploaded_data %>
-<%= submit_button %>
-<% end %>
-</div>

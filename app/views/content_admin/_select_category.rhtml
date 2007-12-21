@@ -1,3 +1,0 @@
-    <p><label for="category">Category</label>
-<%= collection_select(:article, :category_ids, Category.find(:all, :order => :name), :id,
-:name,{},{:multiple=>'',:name=>'article[category_ids][]'}) %></p>

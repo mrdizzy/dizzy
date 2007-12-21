@@ -1,8 +1,8 @@
-	<div id="footer" class="clearfix">
+<div id="footer" class="clearfix">
 	<% @random_companies = get_random_companies %>
-<table class="footer_logos">
-	<tr>	
-	<%= render(:partial => "/layouts/footer_logo", :collection => @random_companies) %>
-	</tr>
-</table>
+	<table class="footer_logos">
+		<tr>	
+		<%= render(:partial => "/layouts/footer_logo", :collection => @random_companies) %>
+		</tr>
+	</table>
 </div>

@@ -42,9 +42,6 @@ task :after_update do
 	# relink shared deployment database configuration
 	run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
 	
-	# relink other domains running rails applications
-	run "ln -s /home/dizzynew/rails_apps/casamiento/current/public #{release_path}/public/gay-wedding-invitations"
-	
 	# relink rails vendor
 	# run "ln -nfs #{shared_rails_dir} #{release_path}/vendor/rails "
 	

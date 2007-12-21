@@ -10,8 +10,7 @@
 class Category < ActiveRecord::Base
 	has_many :categories_contents
 	has_many :contents, :through => :categories_contents, :order => "date DESC"
-	
-	has_permalink :name
+
 	
 	validates_uniqueness_of :name
 	validates_presence_of :name
