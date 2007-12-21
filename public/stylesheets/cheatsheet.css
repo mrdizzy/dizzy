@@ -1,0 +1,39 @@
+/* Index */
+
+#cheatsheet p {
+	font-family: "Verdana",sans-serif;
+	font-size:1.3em;
+}
+
+#cheatsheet_image {
+	float:right;
+	text-align:center;	
+}
+#cheatsheet td { padding:0.5em;}
+
+/* Page */
+
+#cheatsheet .odd {
+	background-color: #D0ECF8;
+}
+#cheatsheet h2 {
+	border-bottom: 1px dashed #999;
+	font-weight:bold;
+	margin-top:1em;
+	text-align:center;
+}
+#cheatsheet h3 {
+	margin-top: 1em;
+  color: #29A4BD;
+  font-weight: bold;
+}
+#cheatsheet_title {
+	float:left;
+}
+#download_pdf {
+	padding-top:20px;
+	float:right;
+	}
+#content {
+	clear:both;
+}

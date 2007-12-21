@@ -1,0 +1,9 @@
+<% remote_form_for :category, :url => { :controller => :categories_admin, :action => :ajax_create, :id => @id } do |form| %>
+
+<%= error_messages_for :category %>
+
+<p><label for="category_name">Name:</label><br/>
+<%= form.text_field :name %></p>
+
+<%= submit_button %>
+<% end %>

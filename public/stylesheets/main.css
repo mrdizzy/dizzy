@@ -1,0 +1,111 @@
+body {  
+	font-family: "Trebuchet MS","Tahoma","Helvetica","Arial",sans-serif;
+	color: #434343;
+	background-color: #fff;
+	font-size: 62.5%;
+}
+tbody {
+	font-size: 1.1em;
+	line-height: 1.4em;
+}
+#page_container { 
+	width:850px;
+	margin: 0 auto;
+}
+* {
+ 	margin: 0;
+ 	padding: 0;
+	font-weight: normal;
+	font-style: normal;
+	border: none;
+} 
+
+/* Global reusable classes
+==================================== */
+.left {
+	float:left;
+}
+.right {
+	float:right;
+}
+.block {
+	display:block;
+}
+.clearfix {
+	clear:both;
+}
+
+/* Furniture
+======================*/
+.spiro {
+	display:block;
+	width:40px;
+	margin:0 auto;
+	margin-bottom: 1em;
+}
+
+img {
+	vertical-align:middle;
+}
+
+/* Hierarchy 
+========================*/
+#hierarchy {
+	margin-top: 1em;
+	margin-bottom:0;
+}
+
+/* Lists
+==================================== */
+ul { 
+  padding-left: 4em;
+  list-style-image:url(/images/f/bullets/pixels/diamond.png);
+  line-height: 1.6em;
+  margin-bottom:1em;
+
+}
+
+li.alt {
+	background-image:url("/images/f/backgrounds/spiral2.png");
+	background-repeat:no-repeat;
+	background-position: top right;
+}
+
+/* Directory structure lists
+==================================== */
+ul.directory  {
+	list-style-image:url(/images/f/small_icons/folder.png);
+	font-size:1.1em;
+}
+ul.directory ul, ul.directory ul ul, ul.directory ul ul ul  {
+	font-size:1em; }
+
+/* Categories list
+==================================== */
+ul.categories, #admin_links ul {
+	font-weight:bold;
+	line-height: 2em;
+	font-size:1.1em;
+}
+
+/* Tables
+==================================== */
+table { 
+	width: 100%;	
+}
+th {
+	font-weight:bold;
+}
+
+.sample_code table {
+	border:1px black dashed;
+}
+.sample_code table tr td:first-child {
+	text-align:center;
+	background-color:#29A4BD;
+	color:white;
+}
+.sample_code table tr.odd td:first-child {
+	background-color:grey;
+	color:white;
+}

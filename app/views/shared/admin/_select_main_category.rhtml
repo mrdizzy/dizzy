@@ -1,0 +1,4 @@
+    <p><label for="category">Category</label>
+    	<%= @content.class %>
+<%= collection_select(:content, :main_category, Category.find(:all, :order => :name), :id,
+:name,{},{:multiple=>'',:name=>'content[category_ids][]'}) %></p>

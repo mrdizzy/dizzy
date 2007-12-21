@@ -1,0 +1,17 @@
+
+
+/* Error pages 
+========================*/
+#error_container {
+	text-align:center;
+}
+#error_left {
+	float:left;
+	width:33%;
+		
+	text-align:right;	
+}
+#error_right {
+	width:65%;
+	float:right;
+	text-align

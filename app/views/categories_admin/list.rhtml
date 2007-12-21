@@ -1,0 +1,19 @@
+<h1><%= bigarrow %> Categories</h1>
+
+	<!-- LIST CATEGORIES -->
+<% form_remote_tag :url => { :action => "destroy"} do %>
+	<div id="categories">	
+	<% @categories.each do |name| %>
+		<p><span id="<%= name.id %>"><%= check_box_tag("categories[]", name.id, false, { :class => "checkbox" }) %><%= name.name %></span></p>
+	<% end %>
+	</div>
+	<%= submit_button %>
+<% end %>
+
+	<!-- ADD NEW CATEGORY -->
+	
+<h1>Add new category</h1>
+<% remote_form_for :category, :url => { :action => "create" } do |form| %>
+	<p><%= form.text_field :name %></p>
+	<%= submit_button %>
+<% end %>

@@ -1,0 +1,70 @@
+
+/* Welcome
+============= */
+#welcome_left {
+	float:left;
+	width:400px;	
+}
+#welcome_middle {
+	float:left;
+	width:173px;
+	border-left: 1px dashed #999;
+	border-right: 1px dashed #999;
+	padding-left:15px;
+	}
+#latest_container {
+	width:100%;
+	padding-left: 0.4em;
+}
+#welcome_right {
+	width:249px;
+	float:left;
+	
+}
+#recent {
+	width:100%;
+	border-top: 1px dashed #999;
+	
+}
+#quote {
+	width:248px;
+	border-top: 1px dashed #999;
+	text-align:center;
+	padding-top:10px;
+	padding-bottom:10px;	
+}
+#logo_pagination {
+	width:100%;
+	text-align:center;
+}
+#latest_logo {
+	width:100%;
+	vertical-align:middle;
+	text-align:center;
+	height:120px;
+}
+#logo_container {
+	height:120px;	
+}
+#first_half {
+	border-left: 1px dashed #999;
+	border-right: 1px dashed #999;
+	
+}
+.answer {
+	border-bottom: 1px dotted #999;
+	padding-top:7px;
+	padding-bottom:7px;
+}
+.inside {
+	padding-left:7px;
+	padding-right:4px;
+}
+
+
+#welcome_left a:visited, #welcome_right a:visited {
+	color: #29A4BD; 
+}
+#welcome_left a:hover, #welcome_right a:hover {
+	color: white;
+	}

@@ -1,0 +1,21 @@
+<%= javascript_include_tag :defaults %>
+<h1><%= bigarrow %> Editing <%= @cheatsheet.title %> cheatsheet</h1>
+
+	<!-- MAIN EDIT FORM -->
+
+<% form_for :cheatsheet, :url => {:controller => "cheatsheets_admin", :action => "update", :id => @cheatsheet}, :html => {:multipart => true} do |form| %>
+	<%= render :partial => "form", :object => form %>
+  	<%= submit_button %>
+<% end %>
+  
+  <!-- ADD NEW CATEGORY -->
+   <h2 class="blue_bold"><%= asterisk %> Options</h2>
+   
+  <div id="add_new_category">
+  <%= render :partial => "shared/admin/add_new_category_link", :object => @cheatsheet %>
+  </div>
+  
+  <div id="add_new_user">
+  <%= render :partial => "shared/admin/add_new_user_link" %>
+	</div>
+<%= link_to 'Back', :action => 'list' %>
