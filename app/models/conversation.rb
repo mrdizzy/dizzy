@@ -1,3 +1,13 @@
+# == Schema Information
+# Schema version: 6
+#
+# Table name: conversations
+#
+#  id      :integer(11)   not null, primary key
+#  subject :string(255)   
+#  type    :string(255)   
+#
+
 class Conversation < ActiveRecord::Base
 
 	has_many :tickets, :dependent => :destroy, :order => "date DESC" 

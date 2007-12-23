@@ -1,3 +1,18 @@
+# == Schema Information
+# Schema version: 6
+#
+# Table name: contents
+#
+#  id          :integer(11)   not null, primary key
+#  type        :string(255)   
+#  title       :string(255)   
+#  description :string(255)   
+#  user_id     :integer(11)   
+#  date        :datetime      
+#  content     :text          
+#  permalink   :string(255)   
+#
+
 class Content < ActiveRecord::Base
 	has_many :categories_contents, :dependent => :destroy
 	has_many :categories, :through => :categories_contents

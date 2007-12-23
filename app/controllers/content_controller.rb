@@ -50,4 +50,7 @@ class ContentController < ApplicationController
 			page.remove "add_comment"
 		end
 	end	
+
+
+
 end

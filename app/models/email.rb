@@ -1,3 +1,13 @@
+# == Schema Information
+# Schema version: 6
+#
+# Table name: emails
+#
+#  id        :integer(11)   not null, primary key
+#  email     :string(255)   
+#  person_id :integer(11)   
+#
+
 class Email < ActiveRecord::Base
 	belongs_to :person
 	has_many :recipients

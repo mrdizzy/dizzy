@@ -14,7 +14,8 @@
 <%= stylesheet_link_tag "welcome", :media => "all" %>
 
 <%= javascript_include_tag :defaults %>
-<%= javascript_include_tag "rollover" %>
+<%= javascript_include_tag "rollover" %> 
+
 <script type="text/javascript">
     window.onload = function() {
       new Rollover('footer', {suffixSeperator: '/'});
@@ -28,6 +29,7 @@
 		<div id="logo"><img alt="Slogan" src="/images/f/branding/slogan.png" /><img alt="Dizzy logo" src="/images/f/branding/logo.png" /></div>
 		<div id="right_logo"><img alt="Old -> New" src="/images/f/branding/cocktail_transform_static.png" /></div>
 	</div>
+
 	<%= render :partial => "/layouts/navigation" %>
 		<div id="content_container">
 			<div id="left_column">
@@ -41,6 +43,7 @@
 						</div>
 		</div>
 	<%= render :partial => "/layouts/footer" %>
+	
 </div>
 </body>
 </html>

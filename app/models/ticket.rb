@@ -1,3 +1,15 @@
+# == Schema Information
+# Schema version: 6
+#
+# Table name: tickets
+#
+#  id              :integer(11)   not null, primary key
+#  initial_report  :text          
+#  conversation_id :integer(11)   
+#  type            :string(255)   
+#  date            :datetime      
+#
+
 class Ticket < ActiveRecord::Base
 	has_many :recipients, :dependent => :destroy
 	has_many :from_recipients

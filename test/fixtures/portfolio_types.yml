@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 34
+# Schema version: 6
 #
 # Table name: portfolio_types
 #

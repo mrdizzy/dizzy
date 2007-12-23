@@ -1,3 +1,17 @@
+# == Schema Information
+# Schema version: 6
+#
+# Table name: binaries
+#
+#  id           :integer(11)   not null, primary key
+#  binary_data  :binary        
+#  type         :string(255)   
+#  content_type :string(255)   
+#  size         :integer(11)   
+#  filename     :string(255)   
+#  content_id   :integer(11)   
+#
+
 class Binary < ActiveRecord::Base
 	validates_presence_of :binary_data
 	validates_presence_of :content_type

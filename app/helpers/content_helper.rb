@@ -1,72 +1,174 @@
 module ContentHelper
+	include REXML	
 	
-	class ContentParser
-		 require 'rexml/document'
-		 include REXML
-		 require 'enumerator'
-	
-	@@TAGS = { "title" => "h1", "c" => "code", "subhead" => "h2", "minihead" => "h3", "r" => "ruby", "rnum" => "rubynum", "rh" => "rhtml", "rhnum"=> "rhtmlnum", "article" => "div", }
-	
-		 attr_accessor :xml
+	class Listener
 		
-		 def parse_doc		 	
-		 	doc = Document.new(@xml)
-		 	@@TAGS.each_pair do |key, value|	 	
-		 		doc.root.elements.each("//#{key}") { |element| element.name = value }
-	 		end
-		 	doc.root.elements.each("//sample_code") do |table|
-		 		parse_table(table,"sample_code")
-	 		end
-	 		doc.root.elements.each("//Table") do |table|
-		 		parse_table(table, nil)
-	 		end
-	 		doc.root.elements.each("//ruby") do |ruby|
-	 			code = Document.new(parse_coderay(ruby.text, :ruby, "none"))
-	 			ruby.replace_with(code)		
- 			end
- 			doc.root.elements.each("//rubynum") do |ruby|
-	 			code = Document.new(parse_coderay(ruby.text, :ruby, "inline"))	
-	 			ruby.replace_with(code)			
- 			end
-	 		doc		
-	     end
-	 
-	 	 def parse_table(table, css_class)
-	 	 	columns 	= table.attributes["aid:tcols"].to_i
-			cells		= []
-			counter		= 1
-			table.name = "table"
-			table.attributes["class"] = css_class
-	 	 	table.each { |cell| cells << cell }
-	 	 	cells.each_slice(columns) do |row|
-	 	 		counter = counter + 1
-	 	 		tr = Element.new("tr")
-	 	 		tr.attributes["class"] = "odd" if counter.odd?
-	 	 		table << tr
-	 	 		row.each do |cell|
-	 	 			cell.name = "td"	 	 		
-	 	 			tr << cell
-	 	 		end
-	 	 	end	
-	 	 end
-	 	 
-		def parse_coderay(text, language, line_numbers)	
-		 	text.gsub!(/&lt;/, '<')
-		 	text.gsub!(/&gt;/, '>')
-		 	text.gsub!(/&amp;/, '&')
-		 	text.gsub!(/&quot;/, '"')
+		TAGS = { "title" => "h1", "c" => "code", "subhead" => "h2", "minihead" => "h3",  "article" => "div"}	  
+		
+		TEXT_METHODS = { "r" => "1", "rnum" => "1", "rh" => "1", "rhnum" => "1"}	
+		TAG_METHODS = {"Table" => "1", "Cell" => "1", "directory_structure"=> 1, "sample_code"=>1	}	
+		@@TABLES = Array.new
+		@@RESULT = Array.new	  
+		@@STACK = []	
+		@@TEXT_METHODS_STACK = []	
+	  	
+	  	def results
+	  		@@RESULT
+  		end
+	  		
+		# Determine action
+		
+		def method_missing(method_name, *args)
+		
+			(name,attributes) = args
+			
+			case method_name
+				when :text
+					if @@TEXT_METHODS_STACK.last
+				 		@@RESULT << send(@@TEXT_METHODS_STACK.last.downcase, name)
+			 			@@TEXT_METHODS_STACK.pop
+		 			else
+		 				@@RESULT << REXML::Text.normalize(name)
+	 				end
+				 	
+				when :tag_start				
+					@@STACK << name					
+					if TAG_METHODS[name]
+						
+						@@RESULT << send(name.downcase, method_name, name, attributes) 			
+			 		elsif TAGS[name] 
+					 	@@RESULT << "<#{TAGS[name]}>"
+					 	@@TEXT_METHODS_STACK << name if TEXT_METHODS[name]
+					else
+						@@RESULT << "<#{name}>"
+						@@TEXT_METHODS_STACK << name if TEXT_METHODS[name]
+					end
+					
+				when :tag_end
+					if TAG_METHODS[name]					
+						@@RESULT << send(name.downcase, method_name, name, attributes) 
+					elsif TAGS[name] 
+						 @@RESULT << "</#{TAGS[name]}>"
+					else
+						@@RESULT << "</#{name}>"
+					end					
+				end							
+		end
+			# Text Nodes
+			
+		def r(text)			
+			code = parse_coderay(text, :ruby, "none")							
+		end
+		
+		def rhnum(text)
+			code = parse_coderay(text, :rhtml, "inline")					
+		end
+		
+		def rnum(text)
+			code = parse_coderay(text, :ruby, "inline")					
+		end		
+		
+		def rh(text)
+			code = parse_coderay(text, :ruby, "none")			
+		end
+		
+		def directory_structure(method_name,text,attributes)
+			case method_name
+			when :tag_start
+				"<ul class=\"directory\">"
+			when :tag_end
+				"</ul>"
+			end
+		end
+								
+			# Table Routines
+			
+		def sample_code(method_name,text,attributes)			
+			case method_name
+			when :tag_start
+				start_table_tag(attributes['aid:tcols'].to_i,"sample_code")
+			when :tag_end
+				end_table_tag
+			end
+		end			
+		
+		def table(method_name,text,attributes)			
+			case method_name
+			when :tag_start
+				start_table_tag(attributes['aid:tcols'].to_i,nil)
+			when :tag_end
+				end_table_tag
+			end
+		end
+		
+		def cell(method_name,text,attributes)
+			case method_name
+			when :tag_start
+				new_table_row?
+				decrement_table					
+				"<td>"			
+			when :tag_end
+				end_table_row?	
+				"</td>"
+			end	
+		end		
+		def start_table_tag(columns, css_class)
+				@@TABLES.push({ :columns => columns,  :column_counter => columns, :row_counter => 0 })	
+				if css_class
+					"<table class=\"#{css_class}\">"
+				else
+					"<table>"
+				end
+		end
+		
+		def end_table_tag
+			@@TABLES.pop
+			"</table>"
+		end	
+			
+		def decrement_table
+			@@TABLES.last[:column_counter] = @@TABLES.last[:column_counter] - 1			
+		end	
+		
+		def reset_table_column_counter
+			@@TABLES.last[:column_counter] = @@TABLES.last[:columns]
+		end
+		
+		def end_table_row?
+			if @@TABLES.last[:column_counter] == 0		
+				@@RESULT << "</tr>"
+				reset_table_column_counter	
+			end
+		end
+		
+		def new_table_row?
+			if @@TABLES.last[:column_counter] == @@TABLES.last[:columns]
+				@@TABLES.last[:row_counter] = @@TABLES.last[:row_counter] + 1
+				if @@TABLES.last[:row_counter].even?
+					@@RESULT << "<tr class=\"odd\">"
+				else
+					@@RESULT << "<tr>"
+				end
+			end
+		end
+		
+		# Syntax Highlighting
+		
+		def parse_coderay(text, language, line_numbers)		
 		 	if line_numbers == "inline"
-		   		CodeRay.scan(text, language).div( :line_numbers => :inline, :css => :class)	
+	 	  		CodeRay.scan(text, language).div( :line_numbers => :inline, :css => :class)	
 		   	else 
 		   		CodeRay.scan(text, language).div( :css => :class)	
-		   	end   	
-		end	
+	 	  	end   	
+		end			
+		
 	end
 	
-	def parse_cheatsheet_xml(xml)
-		@document = ContentParser.new
-		@document.xml = xml		
-		@document.parse_doc
+	def parse_cheatsheet_xml(xml)		
+		listener = Listener.new
+		parser = Parsers::StreamParser.new(xml, listener)
+		parser.parse
+		listener.results
 	end
 		
 	def prepare_comments(comments,result=Array.new,counter=0)

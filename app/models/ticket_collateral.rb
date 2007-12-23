@@ -1,3 +1,15 @@
+# == Schema Information
+# Schema version: 6
+#
+# Table name: ticket_collaterals
+#
+#  id           :integer(11)   not null, primary key
+#  name         :string(255)   
+#  body         :binary        
+#  ticket_id    :integer(11)   
+#  content_type :string(255)   
+#
+
 class TicketCollateral < ActiveRecord::Base
 		belongs_to :ticket
 	validates_presence_of :name, :body, :content_type
