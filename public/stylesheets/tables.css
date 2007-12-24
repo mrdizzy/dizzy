@@ -1,57 +1,57 @@
 /* Tables
 ==================================== */
-table { 
-	width: 100%;	
-}
-th {
-	font-weight:bold;
-}
+	table { 
+		width: 100%;	
+	}
+	th {
+		font-weight:bold;
+	}
 
 /* Sample code
 ==================================== */
-table.sample_code  {
-	border:1px black dashed;
-	border-collapse:collapse;
-}
-table.sample_code tr td:first-child {
-	text-align:center;
-	background-color:#29A4BD;
-	color:white;
-}
-table.sample_code tr.odd td:first-child {
-	background-color:grey;
-	color:white;
-}
-table.sample_code tr:first-child {
-	border-bottom:1px dashed black;
-}
+	table.sample_code  {
+		border:1px black dashed;
+		border-collapse:collapse;
+	}
+	table.sample_code tr td:first-child {
+		text-align:center;
+		background-color:#29A4BD;
+		color:white;
+	}
+	table.sample_code tr.odd td:first-child {
+		background-color:grey;
+		color:white;
+	}
+	table.sample_code tr:first-child {
+		border-bottom:1px dashed black;
+	}
 	
 /* Portfolio
 ========================= */
-table.portfolio_table {
-	border: 1px dotted #888;
-	border-collapse:collapse;	
-}
-td.standard {
-	border: 1px dotted #888;
-	vertical-align: middle;
-	text-align:center;
+
+	table.portfolio_table {
+		border-collapse:collapse;	
+		border: 1px dotted #888;
+	}
+	table.portfolio_table td {
+		vertical-align: middle;
+		text-align:center;border: 1px dotted #888;
 	}
 		
 /* Article links 
 ========================= */
-table.articles {
-	border-collapse: collapse;
-}
-table.articles td {
-	padding:0.5em;
-	border: 1px dotted #999;
-}
-table.articles td.content {
-	width: 50%;
-}
-tr.even {
-	background-image:url("/images/f/backgrounds/spiral2.png");
-	background-repeat:no-repeat;
-	background-position:top right;
-}
+	table.articles {
+		border-collapse: collapse;
+	}
+	table.articles td {
+		padding:0.5em;
+		border: 1px dotted #999;
+	}
+	table.articles td.content {
+		width: 50%;
+	}
+	tr.even {
+		background-image:url("/images/f/backgrounds/spiral2.png");
+		background-repeat:no-repeat;
+		background-position:top right;
+	}

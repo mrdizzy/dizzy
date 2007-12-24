@@ -33,9 +33,8 @@ module ContentHelper
 				 	
 				when :tag_start				
 					@@STACK << name					
-					if TAG_METHODS[name]
-						
-						@@RESULT << send(name.downcase, method_name, name, attributes) 			
+					if TAG_METHODS[name]						
+						@@RESULT << send(name.downcase, method_name, name, attributes)	
 			 		elsif TAGS[name] 
 					 	@@RESULT << "<#{TAGS[name]}>"
 					 	@@TEXT_METHODS_STACK << name if TEXT_METHODS[name]
@@ -101,17 +100,6 @@ module ContentHelper
 			end
 		end
 		
-		def cell(method_name,text,attributes)
-			case method_name
-			when :tag_start
-				new_table_row?
-				decrement_table					
-				"<td>"			
-			when :tag_end
-				end_table_row?	
-				"</td>"
-			end	
-		end		
 		def start_table_tag(columns, css_class)
 				@@TABLES.push({ :columns => columns,  :column_counter => columns, :row_counter => 0 })	
 				if css_class
@@ -125,7 +113,19 @@ module ContentHelper
 			@@TABLES.pop
 			"</table>"
 		end	
-			
+		
+		def cell(method_name,text,attributes)
+			case method_name
+			when :tag_start
+				new_table_row?
+				decrement_table					
+				"<td>"			
+			when :tag_end
+				end_table_row?	
+				"</td>"
+			end	
+		end		
+				
 		def decrement_table
 			@@TABLES.last[:column_counter] = @@TABLES.last[:column_counter] - 1			
 		end	

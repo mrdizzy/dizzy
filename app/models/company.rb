@@ -9,9 +9,9 @@
 #
 
 class Company < ActiveRecord::Base
-	has_many :portfolio_types
+	
 	has_many :portfolio_items, :dependent => :destroy
-
+	has_many :portfolio_types, :through => :portfolio_items
 	validates_presence_of :description, :name
 	validates_uniqueness_of :name
 	
