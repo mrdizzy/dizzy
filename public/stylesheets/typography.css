@@ -29,7 +29,8 @@ h4 {
 
 /* approx 11px*/
 p {
-	font-size: 1.1em;
+    font-family:"Verdana";
+	font-size: 1.4em;
 	line-height: 1.4em;
 	padding: 0;
 	margin-bottom: 1em;
@@ -37,7 +38,6 @@ p {
 
 /* Classes
 ==================================== */
-
 .blue_bold {
 	margin-top: 1em;
 	color: #29A4BD;

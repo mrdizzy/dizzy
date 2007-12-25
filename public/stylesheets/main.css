@@ -4,10 +4,7 @@ body {
 	background-color: #fff;
 	font-size: 62.5%;
 }
-tbody {
-	font-size: 1.1em;
-	line-height: 1.4em;
-}
+
 #page_container { 
 	width:850px;
 	margin: 0 auto;
@@ -35,6 +32,18 @@ tbody {
 	clear:both;
 }
 
+#right_column {
+	width: 640px;
+	border:0;
+	margin:0;
+}
+
+#left_column {
+	width:200px;
+	border:0;
+	border:1px solid black;
+	margin:0;
+}
 /* Furniture
 ======================*/
 .spiro {
@@ -86,26 +95,4 @@ ul.categories, #admin_links ul {
 	font-weight:bold;
 	line-height: 2em;
 	font-size:1.1em;
-}
-
-/* Tables
-==================================== */
-table { 
-	width: 100%;	
-}
-th {
-	font-weight:bold;
-}
-
-.sample_code table {
-	border:1px black dashed;
-}
-.sample_code table tr td:first-child {
-	text-align:center;
-	background-color:#29A4BD;
-	color:white;
-}
-.sample_code table tr.odd td:first-child {
-	background-color:grey;
-	color:white;
 }

@@ -1,11 +1,11 @@
-	<div id="navigation"><table style="width:100%; text-align:center; border-bottom: 1px dashed #999;">
-	
-			<tr>
-				<td><%= diamond %> <%= link_to "Portfolio", { :controller => :portfolio, :action => :show } %></td>
-				<td><%= diamond %> <span id="contact_us"> <%= link_to_remote "Contact us", :url => { :controller => :welcome, :action => :contact } %></span></td>
-				<td><%= diamond %> <%= link_to "Cheatsheets", { :controller => :cheatsheets, } %></td>
-				<td><%= diamond %> <a href="">Ruby on Rails</a></td>
-			</tr>
-		</table>
-	</div>
+<div id="navigation">
+	<table style="width:100%; text-align:center; border-bottom: 1px dashed #999;">
+		<tr>
+			<td><%= diamond %> <%= link_to "Portfolio", { :controller => :portfolio, :action => :show, :id => "1" } %></td>
+			<td><%= diamond %> <span id="contact_us"> <%= link_to_remote "Contact us", :url => { :controller => :welcome, :action => :contact } %></span></td>
+			<td><%= diamond %> <%= link_to "Cheatsheets", { :controller => :cheatsheets, } %></td>
+			<td><%= diamond %> <a href="">Ruby on Rails</a></td>
+		</tr>
+	</table>
+</div>
 	

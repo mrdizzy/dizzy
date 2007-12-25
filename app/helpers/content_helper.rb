@@ -1,4 +1,5 @@
 module ContentHelper
+
 	include REXML	
 	
 	class Listener
@@ -68,7 +69,7 @@ module ContentHelper
 		end		
 		
 		def rh(text)
-			code = parse_coderay(text, :ruby, "none")			
+			code = parse_coderay(text, :rhtml, "none")			
 		end
 		
 		def directory_structure(method_name,text,attributes)
@@ -117,9 +118,14 @@ module ContentHelper
 		def cell(method_name,text,attributes)
 			case method_name
 			when :tag_start
-				new_table_row?
-				decrement_table					
-				"<td>"			
+				if new_table_row?
+					decrement_table	
+					"<td class=\"first\">"
+				else
+					decrement_table	
+					"<td>"
+				end		
+					
 			when :tag_end
 				end_table_row?	
 				"</td>"
@@ -149,26 +155,41 @@ module ContentHelper
 				else
 					@@RESULT << "<tr>"
 				end
+				"new"
 			end
 		end
 		
 		# Syntax Highlighting
 		
 		def parse_coderay(text, language, line_numbers)		
+			result = "<pre class=\"CodeRay\">"
 		 	if line_numbers == "inline"
-	 	  		CodeRay.scan(text, language).div( :line_numbers => :inline, :css => :class)	
-		   	else 
-		   		CodeRay.scan(text, language).div( :css => :class)	
+	 	  		result = result + CodeRay.scan(text, language).div( :line_numbers => :inline, :css => :class)	
+		  	else 
+		   		result = result + CodeRay.scan(text, language).html	
 	 	  	end   	
+	 	  	result = result + "</pre>"
+	 	  	result
 		end			
 		
 	end
 	
-	def parse_cheatsheet_xml(xml)		
+	def parse_cheatsheet_xml(xml)
+		
+		# InDesign creates each separate line of code as a paragraph, we have to convert this into newlines
+		# to avoid double-spacing the code 
+		
+		xml = xml.gsub("</rh><rh>", "\n") 
+				
 		listener = Listener.new
 		parser = Parsers::StreamParser.new(xml, listener)
 		parser.parse
-		listener.results
+		xml = listener.results
+		xml = xml.to_s
+		xml = xml.gsub("<p><table", "<table")
+		xml = xml.gsub("</p></table>", "</table>")
+		xml
+		
 	end
 		
 	def prepare_comments(comments,result=Array.new,counter=0)

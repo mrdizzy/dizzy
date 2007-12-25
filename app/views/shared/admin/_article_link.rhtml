@@ -37,7 +37,7 @@
 		
 		<p><%= article_link.description %> </p>
 	<p class="center">
-		<%= link_to "edit", :controller => :cheatsheets_admin, :action => :edit, :id => article_link.id %> <%= diamond %> <%= link_to "delete", :controller => :cheatsheets_admin, :action => :destroy, :id => article_link.id %></p>
+		<%= link_to "edit", :controller => :cheatsheets_admin, :action => :edit, :id => article_link.id %> <%= diamond %> <%= link_to "delete", {:controller => :cheatsheets_admin, :action => :destroy, :id => article_link.id}, :method => "post" %></p>
 		</td>
 	<td>by<br/><b><%= article_link.user.name%></b></td>
 </tr>

@@ -1,5 +1,5 @@
 class CheatsheetsAdminController < ApplicationController
-	before_filter :authorize
+	#before_filter :authorize
 	
   def index
     list
@@ -21,11 +21,9 @@ class CheatsheetsAdminController < ApplicationController
   end
   
   def destroy
-  @cheatsheet = Cheatsheet.find(params[:id])
- # Cheatsheet.transaction do
-	#  @cheatsheet.categories.delete_all
-	  @cheatsheet.destroy
- # end
+	 @cheatsheet = Cheatsheet.find(params[:id])
+	 @cheatsheet.destroy
+
   end  	
   
   def update
@@ -52,7 +50,7 @@ class CheatsheetsAdminController < ApplicationController
       flash[:notice] = 'Cheatsheet was successfully updated.'
       redirect_to :action => "index"
     else
-      render :action => 'edit_cheatsheet'
+      render :action => 'edit'
     end
   end
   
@@ -71,9 +69,9 @@ class CheatsheetsAdminController < ApplicationController
   	 if @cheatsheet.valid?
   	 	@cheatsheet.save
       flash[:notice] = 'Cheatsheet was successfully created.'
-      redirect_to :action => 'list_cheatsheets'
+      redirect_to :action => 'list'
     else
-      render :action => 'new_cheatsheet'
+      render :action => 'new'
     end
   end
   
