@@ -1,12 +1,13 @@
 /* Tables
 ==================================== */
 	th 		{ font-weight:bold; }
-	tbody 	{ font-size:1.2em; }
+	table { width:100%; }
+	tr.odd { background-color:#E3F4FC;}
 
 /* Sample Code Table
 ==================================== */
 table.sample_code  {
-	width:600px;
+	width:620px;
 	border:1px dotted #888;
 	border-collapse:collapse;
 	table-layout: fixed;
@@ -23,6 +24,9 @@ table.sample_code tr.odd td.first {
 	background-color:#29A4BD;
 	color:white;
 	text-align:center;
+}
+table.sample_code tr.odd {
+	background-color:transparent;
 }
 		
 /* Portfolio

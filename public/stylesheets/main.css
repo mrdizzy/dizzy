@@ -33,15 +33,16 @@ body {
 }
 
 #right_column {
-	width: 640px;
+	width: 620px;
 	border:0;
 	margin:0;
+	padding:0;
 }
 
 #left_column {
-	width:200px;
+	width:175px;
 	border:0;
-	border:1px solid black;
+	padding:0;
 	margin:0;
 }
 /* Furniture

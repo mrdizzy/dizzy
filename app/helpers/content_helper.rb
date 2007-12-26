@@ -4,17 +4,27 @@ module ContentHelper
 	
 	class Listener
 		
-		TAGS = { "title" => "h1", "c" => "code", "subhead" => "h2", "minihead" => "h3",  "article" => "div"}	  
+		TAGS = { "title" => "h1", "c" => "code", "article" => "div"}	  
 		
 		TEXT_METHODS = { "r" => "1", "rnum" => "1", "rh" => "1", "rhnum" => "1"}	
-		TAG_METHODS = {"Table" => "1", "Cell" => "1", "directory_structure"=> 1, "sample_code"=>1	}	
+		TAG_METHODS = {"Table" => "1", "Cell" => "1", "directory_structure"=> 1, "sample_code"=>1, "minihead" => 1, "subhead" => 1	}	
 		@@TABLES = Array.new
 		@@RESULT = Array.new	  
 		@@STACK = []	
 		@@TEXT_METHODS_STACK = []	
+	  	@@counter = 0
 	  	
 	  	def results
-	  		@@RESULT
+	  		result = @@RESULT.to_s
+	  		TAG_METHODS.each_key do |key|
+				result = result.gsub("<#{key}", "")
+				result = result.gsub("</#{key}>", "")
+			end
+			TEXT_METHODS.each_key do |key|
+				result = result.gsub("<#{key}>", "")
+					result = result.gsub("</#{key}>", "")
+			end
+			result
   		end
 	  		
 		# Determine action
@@ -71,7 +81,7 @@ module ContentHelper
 		def rh(text)
 			code = parse_coderay(text, :rhtml, "none")			
 		end
-		
+			# List nodes
 		def directory_structure(method_name,text,attributes)
 			case method_name
 			when :tag_start
@@ -80,7 +90,42 @@ module ContentHelper
 				"</ul>"
 			end
 		end
-								
+			# Other nodes
+			
+		def minihead(method_name,text,attributes)
+			result = String.new
+			case method_name		
+			when :tag_start
+				@@counter = @@counter + 1
+				result = "</div>" unless @@counter == 1
+				if @@counter.even?
+					result = result + "<div id=\"method\" class=\"blue\"><h3>" 
+				else
+					result = result + "<div id=\"method\"><h3>"
+				end
+			when :tag_end
+				result = "</h3>"
+			end
+			result
+		end			
+		
+		def subhead(method_name,text,attributes)	
+			dresult = String.new	
+			case method_name		
+			when :tag_start
+				if @@counter > 0 and @@counter.even?
+					@@counter = 0
+					"</div><h2>"
+					
+				else
+					@@counter = 0
+					"<h2>"
+				end
+			when :tag_end
+				"</h2>"
+			end
+			
+		end
 			# Table Routines
 			
 		def sample_code(method_name,text,attributes)			
@@ -185,10 +230,7 @@ module ContentHelper
 		parser = Parsers::StreamParser.new(xml, listener)
 		parser.parse
 		xml = listener.results
-		xml = xml.to_s
-		xml = xml.gsub("<p><table", "<table")
-		xml = xml.gsub("</p></table>", "</table>")
-		xml
+		
 		
 	end
 		
