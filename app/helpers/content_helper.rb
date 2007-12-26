@@ -22,7 +22,7 @@ module ContentHelper
 			end
 			TEXT_METHODS.each_key do |key|
 				result = result.gsub("<#{key}>", "")
-					result = result.gsub("</#{key}>", "")
+				result = result.gsub("</#{key}>", "")
 			end
 			result
   		end
@@ -99,9 +99,9 @@ module ContentHelper
 				@@counter = @@counter + 1
 				result = "</div>" unless @@counter == 1
 				if @@counter.even?
-					result = result + "<div id=\"method\" class=\"blue\"><h3>" 
+					result += "<div id=\"method\" class=\"blue\"><h3>" 
 				else
-					result = result + "<div id=\"method\"><h3>"
+					result += "<div id=\"method\"><h3>"
 				end
 			when :tag_end
 				result = "</h3>"
@@ -208,12 +208,8 @@ module ContentHelper
 		
 		def parse_coderay(text, language, line_numbers)		
 			result = "<pre class=\"CodeRay\">"
-		 	if line_numbers == "inline"
-	 	  		result = result + CodeRay.scan(text, language).div( :line_numbers => :inline, :css => :class)	
-		  	else 
-		   		result = result + CodeRay.scan(text, language).html	
-	 	  	end   	
-	 	  	result = result + "</pre>"
+		 	result += CodeRay.scan(text, language).html	
+	 	   	result += "</pre>"
 	 	  	result
 		end			
 		
