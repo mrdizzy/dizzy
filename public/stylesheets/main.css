@@ -64,36 +64,3 @@ img {
 	margin-top: 1em;
 	margin-bottom:0;
 }
-
-/* Lists
-==================================== */
-ul { 
-  padding-left: 4em;
-  list-style-image:url(/images/f/bullets/pixels/diamond.png);
-  line-height: 1.6em;
-  margin-bottom:1em;
-
-}
-
-li.alt {
-	background-image:url("/images/f/backgrounds/spiral2.png");
-	background-repeat:no-repeat;
-	background-position: top right;
-}
-
-/* Directory structure lists
-==================================== */
-ul.directory  {
-	list-style-image:url(/images/f/small_icons/folder.png);
-	font-size:1.1em;
-}
-ul.directory ul, ul.directory ul ul, ul.directory ul ul ul  {
-	font-size:1em; }
-
-/* Categories list
-==================================== */
-ul.categories, #admin_links ul {
-	font-weight:bold;
-	line-height: 2em;
-	font-size:1.1em;
-}

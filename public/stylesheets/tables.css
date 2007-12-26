@@ -1,15 +1,17 @@
 /* Tables
 ==================================== */
+	table 	{ 
+		width:100%; 
+		border-collapse: collapse;
+	}
 	th 		{ font-weight:bold; }
-	table { width:100%; }
-	tr.odd { background-color:#F0F4FC;}
+	tr.odd 	{ background-color:#F0F4FC;}
 
 /* Sample Code Table
 ==================================== */
 table.sample_code  {
 	width:620px;
 	border:1px dotted #888;
-	border-collapse:collapse;
 	table-layout: fixed;
 }
 table.sample_code td.first {
@@ -32,19 +34,16 @@ table.sample_code tr.odd {
 /* Portfolio
 ========================= */
 table.portfolio_table {
-	border-collapse:collapse;	
 	border: 1px dashed #888;
 }
 table.portfolio_table td {
 	vertical-align: middle;
-	text-align:center;border: 1px dotted #888;
+	text-align:center;
+	border: 1px dotted #888;
 }
 	
 /* Article links 
 ========================= */
-table.articles {
-	border-collapse: collapse;
-}
 table.articles td {
 	padding:0.5em;
 	border: 1px dotted #999;

@@ -43,13 +43,15 @@ p {
 	color: #29A4BD;
 	font-weight: bold;
 }
-
-.date { color: #BBBDBF; }
-
+.date { 
+	font-size: 1.2em;
+	color: #BBBDBF; 
+}
 .nopadding {
 	margin:0;
 	padding:0;
 }
+
 /* Links
 ==================================== */
 a:link { color: #29A4BD; }

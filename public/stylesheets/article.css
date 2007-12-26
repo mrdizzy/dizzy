@@ -1,4 +1,3 @@
-
 /* Article Content
 ==================================== */
 #article p {
@@ -33,24 +32,3 @@
 #article ul li code {
 	color: #29A4BD; 
 }
-
-
-/* Article links 
-========================= */
-table.articles {
-	border-collapse: collapse;
-}
-table.articles td {
-	padding:0.5em;
-	border: 1px dotted #999;
-}
-table.articles td.content {
-	width: 50%;
-}
-tr.even {
-	background-image:url("/images/f/backgrounds/spiral2.png");
-	background-repeat:no-repeat;
-	background-position:top right;
-}
-
-

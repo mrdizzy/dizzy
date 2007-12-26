@@ -1,4 +1,3 @@
-
 /* Frontend Portfolio
 ==================================== */
 #column1 {
@@ -9,12 +8,3 @@
 	float:right;
 	width: 80%
 }
-table.portfolio_table {
-	border: 1px dotted #888;
-	border-collapse:collapse;	
-}
-td.standard {
-	border: 1px dotted #888;
-	vertical-align: middle;
-	text-align:center;
-	}

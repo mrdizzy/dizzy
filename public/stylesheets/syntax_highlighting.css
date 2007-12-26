@@ -1,9 +1,7 @@
 /* Syntax highlighting 
 ==================================== */
 
-pre, code {
-	font-family:"Courier New","Courier", monospace;
-}
+pre, code {	font-family:"Courier New","Courier", monospace; }
 
 pre {
 	padding:5px;
