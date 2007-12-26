@@ -2,7 +2,7 @@
 ==================================== */
 	th 		{ font-weight:bold; }
 	table { width:100%; }
-	tr.odd { background-color:#E3F4FC;}
+	tr.odd { background-color:#F0F4FC;}
 
 /* Sample Code Table
 ==================================== */
@@ -54,6 +54,6 @@ table.articles td.content {
 }
 tr.even {
 	background-image:url("/images/f/backgrounds/spiral2.png");
-	background-repeat:no-repeat;
+	background-repeat:repeat;
 	background-position:top right;
 }

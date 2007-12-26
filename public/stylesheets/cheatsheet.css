@@ -15,7 +15,7 @@
 	text-align:center;
 }
 #method.blue {
-	background-color:#E3F4FC;
+	background-color:#F0F4FC;
 }
 #cheatsheet h3 {
 	margin-top: 1em;
@@ -25,10 +25,6 @@
 #cheatsheet_title {
 	float:left;
 }
-#download_pdf {
-	padding-top:20px;
-	float:right;
-	}
 #content {
 	clear:both;
 }

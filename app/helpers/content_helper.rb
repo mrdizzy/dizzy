@@ -110,13 +110,12 @@ module ContentHelper
 		end			
 		
 		def subhead(method_name,text,attributes)	
-			dresult = String.new	
+				
 			case method_name		
 			when :tag_start
 				if @@counter > 0 and @@counter.even?
 					@@counter = 0
-					"</div><h2>"
-					
+					"</div><h2>"					
 				else
 					@@counter = 0
 					"<h2>"
@@ -204,15 +203,13 @@ module ContentHelper
 			end
 		end
 		
-		# Syntax Highlighting
-		
+		# Syntax Highlighting		
 		def parse_coderay(text, language, line_numbers)		
 			result = "<pre class=\"CodeRay\">"
 		 	result += CodeRay.scan(text, language).html	
 	 	   	result += "</pre>"
 	 	  	result
-		end			
-		
+		end					
 	end
 	
 	def parse_cheatsheet_xml(xml)
@@ -221,13 +218,11 @@ module ContentHelper
 		# to avoid double-spacing the code 
 		
 		xml = xml.gsub("</rh><rh>", "\n") 
-				
+			xml = xml.gsub("</r><r>", "\n") 	
 		listener = Listener.new
 		parser = Parsers::StreamParser.new(xml, listener)
 		parser.parse
-		xml = listener.results
-		
-		
+		xml = listener.results		
 	end
 		
 	def prepare_comments(comments,result=Array.new,counter=0)
@@ -245,5 +240,9 @@ module ContentHelper
 			result << "</div>"
 		end
 		result		
+	end
+
+	def pdf_thumbnail(content)
+		"<p class=\"center\">" + image_tag("/thumbnails/#{content.permalink}.png") + "</p>"
 	end
 end
