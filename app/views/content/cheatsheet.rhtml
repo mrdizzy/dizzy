@@ -5,8 +5,7 @@
 
 
 			<div id="content">
-			
-<%= parse_cheatsheet_xml(@content.content) %>
+
 <%= render(:partial => "content/related", :object => @content ) %>
 <%= render(:partial => "content/comments", :object => @content ) %>
 

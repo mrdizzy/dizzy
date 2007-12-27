@@ -22,7 +22,7 @@ class PortfolioItem < ActiveRecord::Base
 	validates_presence_of :data
 	belongs_to 	:portfolio_type
 	belongs_to	:company, :order => "portfolio_types.position"
-		
+	
 	def uploaded_data=(binary_data)
 		self.filename = binary_data.original_filename
 		self.content_type = binary_data.content_type.chomp

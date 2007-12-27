@@ -17,8 +17,10 @@ class Content < ActiveRecord::Base
 	has_many :categories_contents, :dependent => :destroy
 	has_many :categories, :through => :categories_contents
 	has_many :comments, :dependent => :destroy
+	has_many :sections, :dependent => :destroy
 	has_one :pdf, :dependent => :destroy
 	has_one :thumbnail, :dependent => :destroy	
+	
 		
 	belongs_to :user
 	validates_uniqueness_of :permalink

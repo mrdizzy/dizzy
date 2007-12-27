@@ -7,7 +7,7 @@ module ContentHelper
 		TAGS = { "title" => "h1", "c" => "code", "article" => "div"}	  
 		
 		TEXT_METHODS = { "r" => "1", "rnum" => "1", "rh" => "1", "rhnum" => "1"}	
-		TAG_METHODS = {"Table" => "1", "Cell" => "1", "directory_structure"=> 1, "sample_code"=>1, "minihead" => 1, "subhead" => 1	}	
+		TAG_METHODS = {"Table" => "1", "Cell" => "1", "sample_code"=>1, "minihead" => 1, "subhead" => 1	}	
 		@@TABLES = Array.new
 		@@RESULT = Array.new	  
 		@@STACK = []	
@@ -47,7 +47,12 @@ module ContentHelper
 					if TAG_METHODS[name]						
 						@@RESULT << send(name.downcase, method_name, name, attributes)	
 			 		elsif TAGS[name] 
-					 	@@RESULT << "<#{TAGS[name]}>"
+					 	@@RESULT << "<#{TAGS[name]}"
+					 	attributes.each_pair do |key,value|
+					
+					 		@@RESULT << " #{key}=\"#{value}\""
+				 		end
+				 		@@RESULT << ">"
 					 	@@TEXT_METHODS_STACK << name if TEXT_METHODS[name]
 					else
 						@@RESULT << "<#{name}>"
@@ -81,15 +86,7 @@ module ContentHelper
 		def rh(text)
 			code = parse_coderay(text, :rhtml, "none")			
 		end
-			# List nodes
-		def directory_structure(method_name,text,attributes)
-			case method_name
-			when :tag_start
-				"<ul class=\"directory\">"
-			when :tag_end
-				"</ul>"
-			end
-		end
+
 			# Other nodes
 			
 		def minihead(method_name,text,attributes)
@@ -218,7 +215,33 @@ module ContentHelper
 		# to avoid double-spacing the code 
 		
 		xml = xml.gsub("</rh><rh>", "\n") 
-			xml = xml.gsub("</r><r>", "\n") 	
+		xml = xml.gsub("</r><r>", "\n") 
+		
+		# Directory structures
+		xml = xml.gsub("</directory_structure><directory_structure>", "</li><li>")	
+		xml = xml.gsub("<directory_structure>", "<ul class=\"directory\"><li>")
+		xml = xml.gsub("</directory_structure>", "</li></ul>")
+		
+		#Ordered lists
+		xml = xml.gsub("</ol><ol>", "</li><li>")
+		xml = xml.gsub("<ol>", "<ol><li>")
+		xml = xml.gsub("</ol>", "</li></ol>")
+		
+		# Nested lists
+		xml = xml.gsub("</ul2><ul3>", "</li><boo><li>")
+		xml = xml.gsub("</ul3><ul3>", "</li><li>")
+		xml = xml.gsub("</ul3><ul>", "</li></bam></ul><li>")
+		xml = xml.gsub("</ul><ul2>", "</li><boo><li>")
+		xml = xml.gsub("</ul2><ul2>", "</li><li>")
+		xml = xml.gsub("</ul3><ul2>", "</li></bam><li>")
+		xml = xml.gsub("</ul2><ul>", "</li></bam><li>")
+		xml = xml.gsub("<ul>", "<ul><li>")
+			xml = xml.gsub("</ul>", "</li></ul>")
+		xml = xml.gsub("<boo>", "<ul>")
+			xml = xml.gsub("</bam>", "</ul>")
+		xml = xml.gsub("</ul2>", "</li></ul></ul>")
+		
+		puts xml
 		listener = Listener.new
 		parser = Parsers::StreamParser.new(xml, listener)
 		parser.parse

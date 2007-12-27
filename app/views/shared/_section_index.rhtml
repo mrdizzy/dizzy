@@ -1,0 +1,7 @@
+<div id="section_index">
+	<ul>		
+	<% @content.sections.each do |section| %>
+		<li><%= section.title %> - <%= section.summary %></li>
+	<% end %>
+	</ul>
+</div>

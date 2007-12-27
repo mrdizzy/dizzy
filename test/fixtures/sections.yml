@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+one:
+  id: 1
+  body: MyText
+  cheatsheet_id: 1
+  title: MyString
+  summary: MyString
+two:
+  id: 2
+  body: MyText
+  cheatsheet_id: 1
+  title: MyString
+  summary: MyString

@@ -14,6 +14,7 @@ ActionController::Routing::Routes.draw do |map|
 	map.connect '/', :controller => "welcome"
 	map.connect "ruby-on-rails", :controller => "content", :action => "list"
     map.connect "ruby-on-rails/:permalink", :controller => "content", :action => "show"
+    map.connect "ruby-on-rails/:article/:section", :controller => "sections", :action => "show"
   
   # Thumbnails and PDF files
   map.connect "thumbnails/:permalink.:extension", :controller => "binaries", :action => "thumbnail"

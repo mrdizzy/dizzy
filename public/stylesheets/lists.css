@@ -5,7 +5,17 @@ ul {
   list-style-image:url(/images/f/bullets/pixels/diamond.png);
   line-height: 1.6em;
   margin-bottom:1em;
+  font-size: 1.3em;
+}
 
+ul ul {
+	font-size:inherit;
+
+}
+
+ol {
+	font-family:"Verdana";
+	font-size:1.3em;
 }
 
 li.alt {

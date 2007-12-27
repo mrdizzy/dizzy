@@ -10,7 +10,7 @@ class BinariesController < ApplicationController
 	def portfolio_type 
 		@image_data = PortfolioType.find(params[:id])
 		@image = @image_data.header_binary
-		send_data(@image, :type => @image_data.header_content_type, :disposition => 'inline')		
+		send_data(@image, :type => @image_data.header_content_type, :disposition => 'inline')
 	end
 		
 	def footer_logo
@@ -34,6 +34,7 @@ class BinariesController < ApplicationController
 		content = Content.find_by_permalink(params[:permalink])
 		get(content.pdf.id)
 	end
+	
 	def get(id)
 		binary = Binary.find(id)
 		send_data(binary.binary_data, :type => binary.content_type, :disposition => 'inline')		

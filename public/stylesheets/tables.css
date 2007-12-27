@@ -30,6 +30,10 @@ table.sample_code tr.odd td.first {
 table.sample_code tr.odd {
 	background-color:transparent;
 }
+
+td p {
+	font-size:1em;
+}
 		
 /* Portfolio
 ========================= */
