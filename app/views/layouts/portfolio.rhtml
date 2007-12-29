@@ -1,21 +1,30 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html><head><title><%= @title %> - Dizzy</title>
-<%= core_front_end_stylesheets %>
-<%= javascript_include_tag :defaults %>
-<%= stylesheet_link_tag "portfolio", :media => :all %>
+<html>
+<head>
+	<title><%= @title %> - Dizzy</title>
+	<%= core_front_end_stylesheets %>
+	<%= stylesheet_link_tag "portfolio", :media => :all %>
+	
+	<%= javascript_include_tag :defaults %>
+	<%= javascript_include_tag "rollover" %>
 </head>
 <body>	
 
 	<div id="page_container">
-		<%= render :partial => "/layouts/header" %><
-		<%= render :partial => "/layouts/navigation" %><div id="content_container">
-		<div id="hierarchy">
-			<p>	<%= location_icon %>
-			<a href="/">Home</a> &gt; <b>Portfolio</b></p>
-		</div>
+		<%= render :partial => "/layouts/header" %>
+		<%= render :partial => "/layouts/navigation" %>
+		
+		<div id="content_container">
+			
+			<div id="hierarchy">
+				<p>	<%= location_icon %>
+				<a href="/">Home</a> &gt; <b>Portfolio</b></p>
+			</div>
 			
 			<%= yield %>
-		<%= render :partial => "/layouts/footer" %>
-</div>
+			
+			<%= render :partial => "/layouts/footer" %>
+			</div>
+	</div>
 </body>
 </html>

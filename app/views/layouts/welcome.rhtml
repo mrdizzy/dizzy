@@ -1,30 +1,34 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html><head><title><%= @title %> - Dizzy</title>
-<%= core_front_end_stylesheets %>
-<%= stylesheet_link_tag "polls", :media => "all" %>
-<%= stylesheet_link_tag "welcome", :media => "all" %>
-<%= javascript_include_tag :defaults %>
-<%= javascript_include_tag "rollover" %>
-<script type="text/javascript">
-    window.onload = function() {
-      new Rollover('footer', {suffixSeperator: '/'});
-    }    
-  </script>
+<html>
+<head>
+	<title><%= @title %> - Dizzy</title>
+	
+	<%= core_front_end_stylesheets %>
+	<%= stylesheet_link_tag "polls", :media => "all" %>
+	<%= stylesheet_link_tag "welcome", :media => "all" %>
+	
+	<%= javascript_include_tag :defaults %>
+	<%= javascript_include_tag "rollover" %>
+	
+	<script type="text/javascript">
+	    window.onload = function() {
+	      new Rollover('footer', {suffixSeperator: '/'});
+	    }    
+	</script>
 </head>
- <body>
+
+<body>
 
 	<div id="page_container">
-	<div id="top_container">
-		<div id="logo"><div id="slogan"><img alt="Slogan" src="/images/f/branding/slogan.png" /></div><img alt="Dizzy logo" src="/images/f/branding/logo.png" /></div>
-		<div id="right_logo"><img alt="Old -> New" src="/images/f/branding/cocktail_transform_static.png" /></div>
-	</div>
 	
+	<%= render :partial => "/layouts/header" %>
 	<%= render :partial => "/layouts/navigation" %>
 	
 		<div id="content_container">
 
 			<%= yield %>
 			<%= render :partial => "/layouts/footer" %>
-</div>
+		</div>
+		
 </body>
 </html>
