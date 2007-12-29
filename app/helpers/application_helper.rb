@@ -50,8 +50,7 @@ module ApplicationHelper
 	end
 	
 	def spiro
-		"<div class=\"spiro\">" + image_tag("f/branding/spirosmall.png", :size=> "29x29", :alt => "---") + 
-		"</div>"
+		"<div class=\"spiro\"> &nbsp;</div>"
 	end
 		
 	def submit_button

@@ -3,15 +3,15 @@
 <head>
 	<title>Ruby on Rails - <%= @title %> - Dizzy</title>
 	
-	<%= stylesheet_link_tag "article", :media => "all" %>
-	<%= stylesheet_link_tag "cheatsheet", :media => "all" %>
-	<%= stylesheet_link_tag "forms", :media => "all" %>
-	<%= stylesheet_link_tag "header_footer", :media => "all" %>
-	<%= stylesheet_link_tag "lists", :media => "all" %>
-	<%= stylesheet_link_tag "main", :media => "all" %>
-	<%= stylesheet_link_tag "syntax_highlighting", :media => "all" %>
-	<%= stylesheet_link_tag "tables", :media => "all" %>
-	<%= stylesheet_link_tag "typography", :media => "all" %>
+	<%= stylesheet_link_tag "article", 				:media => "all" %>
+	<%= stylesheet_link_tag "cheatsheet", 			:media => "all" %>
+	<%= stylesheet_link_tag "forms", 				:media => "all" %>
+	<%= stylesheet_link_tag "header_footer", 		:media => "all" %>
+	<%= stylesheet_link_tag "lists", 				:media => "all" %>
+	<%= stylesheet_link_tag "main", 				:media => "all" %>
+	<%= stylesheet_link_tag "syntax_highlighting", 	:media => "all" %>
+	<%= stylesheet_link_tag "tables", 				:media => "all" %>
+	<%= stylesheet_link_tag "typography", 			:media => "all" %>
 	
 	<%= javascript_include_tag :defaults %>
 	<%= javascript_include_tag "rollover" %> 
@@ -35,18 +35,18 @@
 		<div id="content_container">
 			<div id="left_column">
 				
+					<p><a href="/">Home</a> &gt; <a href="/ruby-on-rails">Ruby on Rails</a> &gt; <b><%= @main_category %></b></p>
+				
+				<%= yield %>
+			</div>
+			<div id="right_column">
+				
 				<%= yield :thumbnail %>
 				<%= render :partial => "/layouts/category_list", :object => @categories %>
 				<%= render :partial => "/layouts/search" %>
 				
 			</div>
-			<div id="right_column">
-				<div id="hierarchy">
-					<p>	<%= image_tag("f/small_icons/you-are-here.gif", :alt=>"You are here:") %>
-	<a href="/">Home</a> &gt; <a href="/ruby-on-rails">Ruby on Rails</a> &gt; <b><%= @title %></b></p>
-				</div>
-				<%= yield %>
-			</div>
+			
 		</div>
 		
 		<%= render :partial => "/layouts/footer" %>

@@ -1,20 +1,14 @@
-  <div id="article">
- <% @title = @content.title %>
- 
+<% @title = @content.title %>
+ <% @main_category = @content.main_category_name %>
 <h1><%= @content.title %></h1>
  
-<p><span class="date"><%= @content.date.to_s(:long) %></span> <%= image_tag("f/bullets/pixels/diamond.png") %>  <b>By <%= @content.user.name %></b></p>
-
 <h2><%= @content.description %></h2>
 
-<div class="spiro"><%= image_tag("f/branding/spiro.png", :size =>"40x41") %></div>
+<%= spiro %>
 
 <%= parse_cheatsheet_xml(@content.content) %>
 
-<!-- COMMENTS -->
 	<%= render (:partial => "content/related", :object => @content ) %>
-	
 	<%= render (:partial => "content/comments", :object => @content ) %>
-	
 	
 </div>

@@ -17,17 +17,21 @@ class Content < ActiveRecord::Base
 	has_many :categories_contents, :dependent => :destroy
 	has_many :categories, :through => :categories_contents
 	has_many :comments, :dependent => :destroy
-	has_many :sections, :dependent => :destroy
+	has_many :sections, :dependent => :destroy, :order => "'title' ASC"
 	has_one :pdf, :dependent => :destroy
 	has_one :thumbnail, :dependent => :destroy	
 	
-		
 	belongs_to :user
 	validates_uniqueness_of :permalink
 	
 	def related_article
 		related_article = CategoriesContent.find_by_category_id(self.main_category, :limit => 1, :order => "id DESC")
 		related_article.content
+	end
+	
+	def main_category_name 
+		main_category = CategoriesContent.find_by_content_id_and_main(self.id, 1)	
+		main_category.category.name unless main_category.nil?
 	end
 	
 	def main_category

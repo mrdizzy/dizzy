@@ -4,9 +4,7 @@ class ApplicationController < ActionController::Base
 	include ExceptionNotifiable
 	require_dependency 'content'	
 	require_dependency 'binary'
-	require_dependency 'ticket'
-	require_dependency 'conversation'
-	
+
 
  private
 	def authorize

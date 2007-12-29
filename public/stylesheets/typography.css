@@ -1,55 +1,81 @@
-/* Typography
+/* Headings
 ==================================== */
-b, strong, em { font-weight: bold; }
+b, em, strong {	font-weight:bold; }
 
-/* approx 21px*/
 h1 {
-	font-size: 2.1em;
-	margin-top: 1em; 
+	font-family:"Georgia";
 	font-weight:normal;
 	color: #29A4BD; 
+	font-size: 2.1667em; /* 26px */ 
+	line-height: 1.3846em; /* 36px */ 
+	margin-top: 0.6923em; 
+	margin-bottom: 0.6923em;
 }
 
-/* approx 16px*/
 h2 {
-	font-size: 1.6em;
-	margin-bottom: 1em; 
+	font-family:"Georgia";
+	font-size: 1.3333em; /* 16px */ 
+	line-height: 1.125em; /* 18px */ 
+	margin-top:1.125; 
+	margin-bottom: 1.125em;
 }
+	.articles h2 {
+		line-height:1.3;	
+	}
 
-/* approx 14px*/
 h3 {
-	font-size: 1.4em;
-	margin-bottom: 1.2em;
+	font-size: 1.25em; /* 15px */ 
+	line-height: 1.2em; /* 18px */ 
+	margin-top: 0.6em; 
+	margin-bottom: 0.6em;	
+	font-weight:bold;
+	font-family: "Georgia";
+	font-style:italic;
 }
-
+	#cheatsheet h3 {
+		font-family:"Trebuchet MS";	
+		color:black;	
+		font-style:italic;
+	}
 /* approx 12px*/
 h4 {
-	font-size: 1.2em;
+	/*font-size: 1.2em;*/
 }
 
-/* approx 11px*/
+/* Paragraphs
+==================================== */
 p {
     font-family:"Verdana";
-	font-size: 1.2em;
-	line-height: 1.4em;
-	padding: 0;
-	margin-bottom: 1em;
+	font-size: 1em; /* 12px */ 
+	line-height: 1.5em; /* 18px */ 
+	margin: 0 0 1.5em 0;
 }
 
 /* Classes
 ==================================== */
+.bigger {
+	font-size: 1.25em; /* 15px */ 
+	line-height: 1.2em; /* 18px */ 
+	margin-top: 0.6em; 
+	margin-bottom: 0.6em;	
+	font-family: "Verdana";
+	font-style:italic;
+	background-color:#f0fff0;
+}
+.black {
+	color:black;
+}
 .blue_bold {
-	margin-top: 1em;
 	color: #29A4BD;
 	font-weight: bold;
 }
 .date { 
-	font-size: 1.2em;
-	color: #BBBDBF; 
-}
-.nopadding {
-	margin:0;
-	padding:0;
+	color: #BBBDBF;
+	font-weight:normal; 
+	font-size: 0.8333em; /* 10px */
+  line-height: 1.8em; /* 18px */
+  margin-top: 1.8em; margin-bottom: 0em;
+  letter-spacing:0.2em;
 }
 
 /* Links

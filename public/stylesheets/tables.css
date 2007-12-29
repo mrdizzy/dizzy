@@ -9,54 +9,63 @@
 
 /* Sample Code Table
 ==================================== */
-table.sample_code  {
-	width:620px;
-	border:1px dotted #888;
-	table-layout: fixed;
-}
-table.sample_code td.first {
-	width:75px;
-}
-table.sample_code tr td.first {
-   background-color:#888;
-   color:white;
-   text-align:center;
-}
-table.sample_code tr.odd td.first {
-	background-color:#29A4BD;
-	color:white;
-	text-align:center;
-}
-table.sample_code tr.odd {
-	background-color:transparent;
-}
-
-td p {
-	font-size:1em;
-}
+	table.sample_code  {
+		width:610px;
+		border:1px dotted #888;
+		table-layout: fixed;
+	}
+	table.sample_code td {
+		padding:0.25em;
+	}
+	table.sample_code td.first {
+		width:75px;
+	}
+	table.sample_code tr td.first {
+	   background-color:#888;
+	   color:white;
+	   text-align:center;
+	}
+	table.sample_code tr.odd td.first {
+		background-color:#29A4BD;
+		color:white;
+		text-align:center;
+	}
+	table.sample_code tr.odd {
+		background-color:transparent;
+	}	
+	
+/* Cheatsheet Table
+========================= */
+	#cheatsheet td {
+		padding:0.7em;
+		border-bottom:1px solid #888;
+	}
+	#cheatsheet table.sample_code td {
+		padding:0.25em;
+	}
 		
 /* Portfolio
 ========================= */
-table.portfolio_table {
-	border: 1px dashed #888;
-}
-table.portfolio_table td {
-	vertical-align: middle;
-	text-align:center;
-	border: 1px dotted #888;
-}
+	table.portfolio_table {
+		border: 1px dashed #888;
+	}
+	table.portfolio_table td {
+		vertical-align: middle;
+		text-align:center;
+		border: 1px dotted #888;
+	}
 	
 /* Article links 
 ========================= */
-table.articles td {
-	padding:0.5em;
-	border: 1px dotted #999;
-}
-table.articles td.content {
-	width: 50%;
-}
-tr.even {
-	background-image:url("/images/f/backgrounds/spiral2.png");
-	background-repeat:repeat;
-	background-position:top right;
-}
+	table.articles td {
+		padding:0.5em;
+		border: 1px dotted #999;
+	}
+	table.articles td.content {
+		width: 50%;
+	}
+	tr.even {
+		background-image:url("/images/f/backgrounds/spiral2.png");
+		background-repeat:repeat;
+		background-position:top right;
+	}

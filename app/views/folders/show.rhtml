@@ -1,8 +1,0 @@
-<%= @folder.name %>
-<ul>
-<% @folder.children.each do |child| %>
-	<li><%= child.name %></li>
-<% end %>
-</ul>
-<%= link_to 'Edit', :action => 'edit', :id => @folder %> |
-<%= link_to 'Back', :action => 'list' %>

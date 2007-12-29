@@ -1,12 +1,15 @@
-<div id="section_index">
-	<ul>		
-	<% @section.content.sections.each do |section| %>
-		<% if section.permalink == @section.permalink %>
-			<li><b>&gt;&gt;<%= section.title %>&lt;&lt;</b> - <%= section.summary %></li>
-		<% else %>
-			<li><a href="<%= section.permalink %>"><%= section.title %></a> - <%= section.summary %></li>
-		<% end %>
-	<% end %>
-	</ul>
-</div>
+<% @title = @section.content.title %>
+<% @main_category = @section.content.main_category_name %>
+<h1><%= asterisk %> <%= @section.content.title %> Cheatsheet</h1>
+<h2><%= @section.content.description %></h2>
+
+<%= render(:partial => "shared/content/section_list", :object => @section.content.sections, :locals => { :current_article_permalink => @section.permalink} ) %>
+<% if @section.content.is_a?(Cheatsheet) %>
+	<div id="cheatsheet">
+<% else %>
+	<div id="article">
+<% end %>
+
 <%= parse_cheatsheet_xml(@section.body) %>
+
+</div>

@@ -1,22 +1,21 @@
 body {  
-	font-family: "Trebuchet MS","Tahoma","Helvetica","Arial",sans-serif;
+	font-family:"Verdana", sans-serif;
 	color: #434343;
 	background-color: #fff;
-	font-size: 62.5%;
+	font-size:12px;
 }
 
 #page_container { 
-	width:850px;
+	width:851px;
 	margin: 0 auto;
 }
 * {
- 	margin: 0;
- 	padding: 0;
+ 	margin:0;
+ 	padding:0;
+ 	border:0;
 	font-weight: normal;
 	font-style: normal;
-	border: none;
 } 
-
 /* Global reusable classes
 ==================================== */
 .left {
@@ -31,36 +30,35 @@ body {
 .clearfix {
 	clear:both;
 }
-
-#right_column {
-	width: 620px;
-	border:0;
-	margin:0;
-	padding:0;
-}
-
-#left_column {
-	width:175px;
-	border:0;
-	padding:0;
-	margin:0;
-}
-/* Furniture
-======================*/
 .spiro {
-	display:block;
-	width:40px;
+	background-image:url("/images/f/branding/spirosmall.png");
 	margin:0 auto;
-	margin-bottom: 1em;
+	background-position:center;
+	background-repeat:no-repeat;
+	width:29px;
+	font-size: 2.4167em; /* 29px */
+	line-height: 1.2414em; /* 36px */
+	margin-top: 0.6207em;
+	margin-bottom: 0.6207em;
 }
 
+.cheatsheet_thumbnail {
+  text-align:center;
+}
+
+/* Elements
+======================*/
 img {
 	vertical-align:middle;
-}
+	text-align:center;
 
-/* Hierarchy 
-========================*/
-#hierarchy {
-	margin-top: 1em;
-	margin-bottom:0;
+}
+#left_column {
+	width: 640px;
+	float:left;
+}
+#right_column {
+	width:200px;
+	float:right;
+
 }

@@ -3,7 +3,7 @@ module ContentHelper
 	include REXML	
 	
 	class Listener
-		
+		include ApplicationHelper
 		TAGS = { "title" => "h1", "c" => "code", "article" => "div"}	  
 		
 		TEXT_METHODS = { "r" => "1", "rnum" => "1", "rh" => "1", "rhnum" => "1"}	
@@ -98,7 +98,7 @@ module ContentHelper
 				if @@counter.even?
 					result += "<div id=\"method\" class=\"blue\"><h3>" 
 				else
-					result += "<div id=\"method\"><h3>"
+					result += "<div id=\"method\"><h3>"					
 				end
 			when :tag_end
 				result = "</h3>"
@@ -217,12 +217,7 @@ module ContentHelper
 		xml = xml.gsub("</rh><rh>", "\n") 
 		xml = xml.gsub("</r><r>", "\n") 
 		
-		# Directory structures
-		xml = xml.gsub("</directory_structure><directory_structure>", "</li><li>")	
-		xml = xml.gsub("<directory_structure>", "<ul class=\"directory\"><li>")
-		xml = xml.gsub("</directory_structure>", "</li></ul>")
-		
-		#Ordered lists
+			#Ordered lists
 		xml = xml.gsub("</ol><ol>", "</li><li>")
 		xml = xml.gsub("<ol>", "<ol><li>")
 		xml = xml.gsub("</ol>", "</li></ol>")
@@ -240,7 +235,7 @@ module ContentHelper
 		xml = xml.gsub("<boo>", "<ul>")
 			xml = xml.gsub("</bam>", "</ul>")
 		xml = xml.gsub("</ul2>", "</li></ul></ul>")
-		
+		xml = xml.gsub("</ul3>", "</li></ul></ul></ul>")
 		puts xml
 		listener = Listener.new
 		parser = Parsers::StreamParser.new(xml, listener)
@@ -266,6 +261,6 @@ module ContentHelper
 	end
 
 	def pdf_thumbnail(content)
-		"<p class=\"center\">" + image_tag("/thumbnails/#{content.permalink}.png") + "</p>"
+		"<div class=\"cheatsheet_thumbnail\">" + image_tag("/thumbnails/#{content.permalink}.png") + "</div>"
 	end
 end

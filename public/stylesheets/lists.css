@@ -1,21 +1,18 @@
 /* Lists
 ==================================== */
 ul { 
-  padding-left: 4em;
-  list-style-image:url(/images/f/bullets/pixels/diamond.png);
-  line-height: 1.6em;
-  margin-bottom:1em;
-  font-size: 1.3em;
+	padding-left: 3em;
+	list-style-image:url(/images/f/bullets/pixels/diamond.png);
+	font-size: 1em; /* 12px */ 
+	line-height: 1.5em; /* 18px */ 
+	margin: 0 0 1.5em 0;
 }
 
-ul ul {
-	font-size:inherit;
-
-}
+ul ul {	font-size:inherit; }
 
 ol {
 	font-family:"Verdana";
-	font-size:1.3em;
+
 }
 
 li.alt {
@@ -36,15 +33,14 @@ li.alt {
 ==================================== */
 ul.directory  {
 	list-style-image:url(/images/f/small_icons/folder.png);
-	font-size:1.1em;
+
 }
 ul.directory ul, ul.directory ul ul, ul.directory ul ul ul  {
-	font-size:1em; }
+}
 
 /* Categories list
 ==================================== */
 ul.categories, #admin_links ul {
 	font-weight:bold;
-	line-height: 2em;
-	font-size:1.1em;
+	line-height:1.5em;
 }
