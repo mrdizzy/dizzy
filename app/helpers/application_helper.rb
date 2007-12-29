@@ -28,7 +28,10 @@ module ApplicationHelper
 	end
 
 	# Graphics
-		
+	def location_icon 
+		image_tag("f/small_icons/you-are-here.gif", :alt => "You are here:", :size=> "25x24")
+	end
+	
 	def asterisk
 		image_tag("f/bullets/pixels/asterisk.png", :size=> "13x13", :alt => "*")
 	end
@@ -54,7 +57,7 @@ module ApplicationHelper
 	end
 		
 	def submit_button
-			submit_tag '', { :class => 'submit' } 
+		submit_tag '', { :class => 'submit' } 
 	end
 	
 	def visible?(input)
@@ -66,6 +69,10 @@ module ApplicationHelper
 	# Footer
 	def get_random_companies
 		@five_random_companies = Company.find(:all, :order => 'RAND()', :limit => 5)
+	end	
+	
+	# Random number
+	def random_number(higher=4)
+		(higher * rand).to_i
 	end
-
 end

@@ -25,17 +25,14 @@
 <body>	
 
 	<div id="page_container">
-		<div id="top_container">
-			<div id="logo"><img alt="Slogan" src="/images/f/branding/slogan.png" /><img alt="Dizzy logo" src="/images/f/branding/logo.png" /></div>
-			<div id="right_logo"><img alt="Old -> New" src="/images/f/branding/cocktail_transform_static.png" /></div>
-		</div>
-	
+		
+		<%= render :partial => "/layouts/header" %>
 		<%= render :partial => "/layouts/navigation" %>
 
 		<div id="content_container">
 			<div id="left_column">
 				
-					<p><a href="/">Home</a> &gt; <a href="/ruby-on-rails">Ruby on Rails</a> &gt; <b><%= @main_category %></b></p>
+					<p><%= location_icon %> <a href="/">Home</a> &gt; <a href="/ruby-on-rails">Ruby on Rails</a> &gt; <b><%= @main_category %></b></p>
 				
 				<%= yield %>
 			</div>
@@ -43,7 +40,6 @@
 				
 				<%= yield :thumbnail %>
 				<%= render :partial => "/layouts/category_list", :object => @categories %>
-				<%= render :partial => "/layouts/search" %>
 				
 			</div>
 			

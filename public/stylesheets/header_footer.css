@@ -1,24 +1,9 @@
-/* Footer
-==================================== */
-
-#footer a:hover, #latest_logo a:hover {
-	background-color:transparent;
-}
-.footer_logos {
-	background-image:url(/images/f/backgrounds/back.png);
-	background-position:right top;
-	background-repeat:no-repeat;
-	border-top:1px dashed #888888;
-	height:100px;
-	text-align:center;
-	width:100%;
-}
 
 /* Header
 ==================================== */
 #top_container {
-	width:100%;
-	height:100px;
+	width:850px;
+	height:105px;
 	border-left: 1px dashed #888;
 	border-right: 1px dashed #888;
 	border-bottom: 1px dashed #888;
@@ -31,15 +16,31 @@
 	float:left;
 }
 #logo { 
-	 text-align:left;
-	 width:48%;
+	padding-top:7px;
+	 text-align:center;
+	 width:150px;
 	 height:90px;
 	 margin: 0 auto;
 	 float:left;
 }
-#right_logo {
+#right_of_logo {
 	text-align:center;
-	width:50%;
-	height:90px;
+	width:600px;
+	height:105px;
 	float:right;
+}
+
+/* Footer
+==================================== */
+#footer a:hover, #latest_logo a:hover {
+	background-color:transparent;
+}
+.footer_logos {
+	background-image:url(/images/f/backgrounds/back.png);
+	background-position:right top;
+	background-repeat:no-repeat;
+	border-top:1px dashed #888888;
+	height:100px;
+	text-align:center;
+	width:100%;
 }
