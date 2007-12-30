@@ -1,33 +1,45 @@
 <!-- LEFT COLUMN -->
+<div id="welcome">
 <div id="first_half">
 	<div id="welcome_left">
 		<!-- Main article -->
-		<div class="inside"><h1><%= asterisk %> <%= link_to @main_article.title, { :controller => :content, :action => :show, :permalink => @main_article.permalink } %></h1>
-		<p><span class="date"><%= @main_article.date.to_s(:long) %> </span><%= diamond %> <b>by <%= @main_article.user.name %></b></p>
+		<div class="inside">
+			<h5><%= @main_article.main_category_name.upcase %></h5>
+			<h1><%= asterisk %> <%= @main_article.title %> </h1>
+			
+			<h4>POSTED <%= time_ago_in_words(@poll.created_at).upcase %> AGO</h4>
+			</p>
+				<%= spiro %>
+			
 		<h2><%= @main_article.description %></h2>
-		<%=spiro%>
-		<p><%= strip_tags(truncate(@main_article.content, 300)) %> . <%= link_to "More&gt;&gt;", { :controller => :content, :action => :show, :permalink => @main_article.permalink } %></p>
+	
+		<p><%= strip_tags(truncate(@main_article.content, 300)) %> . <%= link_to "More &raquo;", { :controller => :content, :action => :show, :permalink => @main_article.permalink } %></p>
 		</div>
 		<div id="recent">
-			<div class="inside"><h2 class="blue_bold"><%= asterisk %> Recent articles</h2>		
+			<div class="inside">		
 		<%= render (:partial => "recent_articles", :collection => @recent_articles ) %>
 		</div>
 		
 	</div>
 	</div>
 	<div id="welcome_middle">
-		<h2 class="blue_bold"><%= asterisk %> Latest cheatsheet</h2>	<p>
-			<span class="date"><%= @cheatsheet.date.to_s(:short) %> </span> <%= diamond %> <b>		<%= @cheatsheet.title %> </b>
-		</p><%= link_to(image_tag("/thumbnails/#{@cheatsheet.permalink}.png"), :controller => :content, :action => :show, :permalink => @cheatsheet.permalink) %><p><%= solid_arrow %> <span class="blue_bold"><%= @cheatsheet.description %></span></p>
+		
+		<h5>CHEATSHEETS</h5>
+					
+		<h3><a href=""><%= @cheatsheet.title %></a></h3>
+			<h4><%= time_ago_in_words(@cheatsheet.date).upcase %> AGO </h4>
+		<%= link_to(image_tag("/thumbnails/#{@cheatsheet.permalink}.png"), :controller => :content, :action => :show, :permalink => @cheatsheet.permalink) %>
+		
+		<h6><%= diamond %> <%= @cheatsheet.description %></h6>
+		
 		<%=spiro%>
-	
-				
+					
 		</div>
 	<!-- RIGHT COLUMN -->
 	<div id="welcome_right">	
 		<!-- Latest logos -->
 		<div id="latest_container">
-			<h2 class="blue_bold"><%= asterisk %> Our latest work</h2>
+			<h5>LATEST WORK</h4>
 			<div id="logo_container">
 				<div id="latest_logo"><%= link_to image_tag("/binaries/portfolio_image/#{@logos[0].id}"), :controller => :portfolio, :action => :show, :id => @logos[0].company_id %></div>
 			</div>
@@ -35,13 +47,11 @@
 		  		<%= render :partial => "logo_pagination" %>
 			</div>
 		</div>
-		<div id="quote">
-			<%= image_tag("quote.png") %>
-			</div>
 			<div class="inside">
 		<%= render (:partial => "/polls/poll_question") %>
          </div>
 		</div>
 
 <div class="clearfix">&nbsp;</div>
+</div>
 </div>

@@ -6,7 +6,7 @@ body {
 }
 
 #page_container { 
-	width:851px;
+	width:901px;
 	margin: 0 auto;
 }
 * {
@@ -37,9 +37,9 @@ body {
 	background-repeat:no-repeat;
 	width:29px;
 	font-size: 2.4167em; /* 29px */
-	line-height: 1.2414em; /* 36px */
-	margin-top: 0.6207em;
-	margin-bottom: 0.6207em;
+	line-height: 1em; /* 36px */
+	margin-top: 0.0;
+	margin-bottom: 0.32em;
 }
 
 .cheatsheet_thumbnail {
@@ -54,11 +54,10 @@ img {
 
 }
 #left_column {
-	width: 640px;
+	width: 740px;
 	float:left;
 }
 #right_column {
 	width:200px;
 	float:right;
-
 }

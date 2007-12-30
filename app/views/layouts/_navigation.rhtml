@@ -1,10 +1,13 @@
 <div id="navigation">
 	<table style="width:100%; text-align:center; border-bottom: 1px dashed #999;">
 		<tr>
-			<td><p class="nopadding"><%= diamond %> <%= link_to "Portfolio", { :controller => :portfolio, :action => :show, :id => "1" } %></p></td>
-			<td><p class="nopadding"><%= diamond %> <span id="contact_us"> <%= link_to_remote "Contact us", :url => { :controller => :welcome, :action => :contact } %></span></p></td>
-			<td><p class="nopadding"><%= diamond %> <%= link_to "Cheatsheets", { :controller => :cheatsheets, } %></p></td>
-			<td><p class="nopadding"><%= diamond %> <a href="/ruby-on-rails">Ruby on Rails</a></p></td>
+			<td><p> <%= link_to "Portfolio", { :controller => :portfolio, :action => :show, :id => "1" } %></p></td>
+			<td><p> | </p></td>
+			<td><p> <span id="CONTACT"> <%= link_to_remote "Contact", :url => { :controller => :welcome, :action => :contact } %></span></p></td>
+							<td><p> | </p></td>
+			<td><p> <%= link_to "Cheatsheet", { :controller => :cheatsheets, } %></p></td>
+							<td><p> | </p></td>
+			<td><p> <a href="/ruby-on-rails">Ruby on Rails</a></p></td>
 		</tr>
 	</table>
 </div>

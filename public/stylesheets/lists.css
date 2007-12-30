@@ -10,11 +10,6 @@ ul {
 
 ul ul {	font-size:inherit; }
 
-ol {
-	font-family:"Verdana";
-
-}
-
 li.alt {
 	background-image:url("/images/f/backgrounds/spiral2.png");
 	background-repeat:no-repeat;
@@ -33,14 +28,16 @@ li.alt {
 ==================================== */
 ul.directory  {
 	list-style-image:url(/images/f/small_icons/folder.png);
-
-}
-ul.directory ul, ul.directory ul ul, ul.directory ul ul ul  {
 }
 
 /* Categories list
 ==================================== */
 ul.categories, #admin_links ul {
 	font-weight:bold;
-	line-height:1.5em;
+	line-height:3em;
 }
+
+/* Cheatsheet section list
+==================================== */
+
+ul { margin-right:10px;}

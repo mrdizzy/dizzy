@@ -1,10 +1,10 @@
 <div id="poll">
-	<h3 class="blue_bold"><%= asterisk %> Poll</h3>	
-<p><span class="date"> <%= @poll.created_at.to_s(:long)  %></p>
+	<h5>POLL</h5>
 
 <!-- Name of poll -->	
-<p><%= solid_arrow %> <b><%= @poll.name %></b></p> 
+<h3><%= solid_arrow %> <%= @poll.name %></h3>
 
+<h4><%= time_ago_in_words(@poll.created_at).upcase %> AGO</h5>
 
 <!-- Display radio buttons for each voting option -->
 <% form_remote_tag :url => { :controller => "polls", :action => "vote" } do %>

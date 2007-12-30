@@ -1,4 +1,7 @@
-	<h3><b><%= link_to recent_articles.title, { :controller => :content, :action => :show, :permalink => recent_articles.permalink } %></b></h3>
-	<p><span class="date"><%= recent_articles.date.to_s(:long) %> </span><%= diamond %> <b>by <%= recent_articles.user.name %></b><br/>
+	<h5><%= recent_articles.main_category_name.upcase %></h5>
+
+	
+	<h3><%= link_to recent_articles.title, { :controller => :content, :action => :show, :permalink => recent_articles.permalink } %></h3>
+	<h4>POSTED <%= time_ago_in_words(recent_articles.date).upcase %> AGO</h4>
 	<%= recent_articles.description %></p>
 	

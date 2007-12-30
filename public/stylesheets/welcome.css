@@ -2,33 +2,27 @@
 ============= */
 #welcome_left {
 	float:left;
-	width:400px;	
+	width:475px;	
 }
 #welcome_middle {
 	float:left;
 	width:173px;
 	border-left: 1px dashed #999;
 	border-right: 1px dashed #999;
-	padding-left:15px;
+	padding-left:10px;
 }
 #latest_container {
 	width:100%;
 	padding-left: 0.4em;
+	border-bottom: 1px dashed #999;
 }
 #welcome_right {
-	width:249px;
+	width:224px;
 	float:left;
 }
 #recent {
 	width:100%;
 	border-top: 1px dashed #999;
-}
-#quote {
-	width:248px;
-	border-top: 1px dashed #999;
-	text-align:center;
-	padding-top:10px;
-	padding-bottom:10px;	
 }
 #logo_pagination {
 	width:100%;
@@ -50,10 +44,65 @@
 .inside {
 	padding-left:7px;
 	padding-right:4px;
+
 }
 #welcome_left a:visited, #welcome_right a:visited {
 	color: #29A4BD; 
 }
 #welcome_left a:hover, #welcome_right a:hover {
 	color: white;
+}
+
+/* Typography
+--------------------- */
+#welcome h1{
+	font-size: 2.1em; /* 30px */
+	line-height: 1.2em; /* 36px */
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+		color: #434343;
+}
+
+#welcome h2 {
+	font-family:"Trebuchet MS";	
+		color:black;	
+		font-style:italic;
+}
+#welcome h3, #poll h3 {
+	font-family: "Georgia",serif;
+	font-weight: normal;
+	font-style:normal;
+	font-size: 1.3em; /* 15px */ 
+	line-height: 1.3em; /* 18px */ 
+	margin-top: 0.6em; 
+	margin-bottom: 0.6em;	
+}
+#welcome h4 {
+		color: #BBBDBF;
+	font-weight:normal; 
+	font-size: 0.76em; /* 10px */
+  line-height: 1.8em; /* 18px */
+  margin-top: 0.6em; margin-bottom: 0.6em;
+  letter-spacing:0.2em;
+}
+
+#welcome h5 {
+	font-family:"arial black",helvetica,sans-serif;
+	 font-size: 0.75em; /* 10px */
+  line-height: 1.8em; /* 18px */
+  margin-top: 0.6em;
+  margin-bottom: 0em;
+ color: #29A4BD;
+  letter-spacing:0.2em;
+}
+#welcome h6 {
+	font-family:"Verdana",serif;
+	margin-right:0.5em;
+	font-weight:bold;
+		color: #BBBDBF;
+  font-size: 0.9em; /* 10px */
+  line-height: 1.2em; /* 18px */
+  margin-top: 0.7em;
+  margin-bottom: 0em;
+	
 }
