@@ -45,6 +45,7 @@ input.checkbox {
 }
 input.radio {
 	width: 2em;
+	border:0;
 }
 
 input.submit {

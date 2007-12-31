@@ -30,12 +30,8 @@ h2 {
 		margin-bottom: 0.5em;
 		border-bottom:1px dashed #000000;
 	}
-	#company_description h2 {
-		margin-top:1em;
-	}
-	.articles h2 {
-		line-height:1.3;	
-	}
+	#company_description h2 { margin-top:1em; }
+	.articles h2 { line-height:1.3; }
 
 h3 {
 	font-size: 1.25em; /* 15px */ 
@@ -46,23 +42,13 @@ h3 {
 	font-family: "Georgia";
 	font-style:italic;
 }
-	#cheatsheet h3 {
-		font-family:"Trebuchet MS";	
-	}
+	#cheatsheet h3 { font-family:"Trebuchet MS"; }
+	
 	#company_description h3 {
 		font-weight:normal;
 		margin-top:1.2em;
 		margin-bottom:1.2em;
 	}
-	h5 {
-	font-family:"arial black",helvetica,sans-serif;
-	font-size: 0.75em; /* 10px */
-	line-height: 1.8em; /* 18px */
-	margin-top: 0.6em;
-	margin-bottom: 0em;
-	color: #29A4BD;
-	letter-spacing:0.2em;
-}
 h4 {
 	color: #BBBDBF;
 	font-weight:normal; 
@@ -70,6 +56,26 @@ h4 {
 	line-height: 1.8em; /* 18px */
 	margin-top: 0.6em; margin-bottom: 0.6em;
 	letter-spacing:0.2em;
+}	
+/*h5 {
+	font-family:"arial black",helvetica,sans-serif;
+	font-size: 0.75em; 
+	line-height: 1.8em;
+	margin-top: 0.6em;
+	margin-bottom: 0em;
+	color: #29A4BD;
+	letter-spacing:0.2em;
+}*/
+
+h5 {
+	font-size: 1.15em; /* 15px */ 
+	line-height: 1.2em; /* 18px */ 
+	margin-top: 0.6em; 
+	margin-bottom: 0.6em;	
+	font-weight:bold;
+	font-family: "Georgia";
+	font-style:italic;
+	color: #29A4BD;
 }
 
 h6 {
@@ -82,6 +88,16 @@ h6 {
 	margin-top: 0.7em;
 	margin-bottom: 0em;	
 }
+
+	#comments h6 {
+		font-family:"Georgia";
+		font-weight:normal;
+		font-size: 1.3333em; /* 16px */ 
+		line-height: 1.125em; /* 18px */ 
+		margin-top:0em; 
+		margin-bottom: 0.6em;
+		color: #29A4BD;	
+	}
 /* Paragraphs
 ==================================== */
 p {
@@ -90,6 +106,13 @@ p {
 	line-height: 1.5em; /* 18px */ 
 	margin: 0 0 1.5em 0;
 }
+	#poll p {
+		margin-top:0.7em;
+		margin-bottom:0.7em;
+		font-size:0.8em;
+		font-weight:bold;
+		color: #29A4BD;	
+	}
 
 /* Classes
 ==================================== */

@@ -28,19 +28,10 @@
 	width:74%;
 }
 
-#comments h6 {
-	font-family:"Georgia";
-	font-weight:normal;
-	font-size: 1.3333em; /* 16px */ 
-	line-height: 1.125em; /* 18px */ 
-	margin-top:0em; 
-	margin-bottom: 0.6em;
-	color: #29A4BD;	
-}
 
 #comments .email {
 
 	font-weight:bold;
 	font-size:0.8em;
-}	
+
 }

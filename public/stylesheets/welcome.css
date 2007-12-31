@@ -56,11 +56,11 @@
 /* Typography
 --------------------- */
 #welcome h1{
-	font-size: 2.1em; /* 30px */
+	font-size: 2.2em; /* 30px */
 	line-height: 1.2em; /* 36px */
 	margin-top: 0.3em;
 	margin-bottom: 0.3em;
-	color: #434343;
+	color: #29A4BD;
 }
 #welcome h2 {
 	font-family:"Trebuchet MS";	

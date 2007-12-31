@@ -1,4 +1,4 @@
-	<h5><%= recent_articles.main_category_name.upcase %></h5>
+	<h5><%= asterisk %> <%= recent_articles.main_category_name %></h5>
 
 	
 	<h3><%= link_to recent_articles.title, { :controller => :content, :action => :show, :permalink => recent_articles.permalink } %></h3>

@@ -4,8 +4,8 @@
 	<div id="welcome_left">
 		<!-- Main article -->
 		<div class="inside">
-			<h5><%= @main_article.main_category_name.upcase %></h5>
-			<h1><%= asterisk %> <%= @main_article.title %> </h1>
+			<h5><%= asterisk %> <%= @main_article.main_category_name %></h5>
+			<h1><%= @main_article.title %> </h1>
 			
 			<h4>POSTED <%= time_ago_in_words(@poll.created_at).upcase %> AGO</h4>
 			</p>
@@ -24,7 +24,7 @@
 	</div>
 	<div id="welcome_middle">
 		
-		<h5>CHEATSHEETS</h5>
+		<h5><%= asterisk %> Cheatsheets</h5>
 					
 		<h3><a href=""><%= @cheatsheet.title %></a></h3>
 			<h4><%= time_ago_in_words(@cheatsheet.date).upcase %> AGO </h4>
@@ -39,7 +39,7 @@
 	<div id="welcome_right">	
 		<!-- Latest logos -->
 		<div id="latest_container">
-			<h5>LATEST WORK</h4>
+			<h5><%= asterisk %> Latest work</h4>
 			<div id="logo_container">
 				<div id="latest_logo"><%= link_to image_tag("/binaries/portfolio_image/#{@logos[0].id}"), :controller => :portfolio, :action => :show, :id => @logos[0].company_id %></div>
 			</div>
