@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
 			page.insert_html :after, "reply_#{params[:id]}", :partial => 'comment_form', :locals => { :comment => Comment.new, :id => params[:id] }
 			
 			page.visual_effect :toggle_blind, :comment_form
-			page.replace_html "reply_#{params[:id]}", "<span class=\"date\">Reply</span>"
+			page.replace_html "reply_#{params[:id]}", ""
 		end
 	end
 	
@@ -21,7 +21,8 @@ class CommentsController < ApplicationController
 	
 	def comment_form 		
 		render :update do |page|
-			page.insert_html :after, "add_comment", :partial => "main_comment_form", :locals => { :comment => Comment.new, :id => params[:id] }			
+			page.insert_html :after, "add_comment", :partial => "main_comment_form", :locals => { :comment => Comment.new, :id => params[:id] }	
+			page.visual_effect :toggle_blind, :main_comment_form		
 			page.remove "add_comment"
 		end
 	end	

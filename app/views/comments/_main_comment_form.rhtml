@@ -1,4 +1,5 @@
 <% @comment = comment %>
+	<div id="main_comment_form" style="display:none;">
 	<% form_for :comment, :url => { :action => "create_comment", :id => id } do |form| %>
 		<p><label for="comment_subject"><%= bigarrow %> Subject</label>
 		<%= form.text_field :subject %></p>
@@ -11,3 +12,4 @@
 		
 	  	<%= submit_button %>
 	<% end %>
+	</div>

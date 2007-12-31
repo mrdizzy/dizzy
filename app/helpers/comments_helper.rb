@@ -8,7 +8,7 @@ module CommentsHelper
 			else
 				result << "<div class=\"normal\" id=\"comment_#{comment.id}\">"
 			end
-			result << "<div class=\"comments_left\"><p><span class=\"date\">#{time_ago_in_words(comment.created_at).upcase} AGO</span></br> <b>#{comment.email}</b></div>" + 
+			result << "<div class=\"comments_left\"><p><span class=\"date\">#{time_ago_in_words(comment.created_at).upcase} AGO</span></br> <span class=\"email\">#{comment.email}</span></div>" + 
 			
 			"<div class=\"comments_right\"><h6>#{comment.subject}</h6><p>#{comment.body}</p></div>" + 
 			
