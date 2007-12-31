@@ -6,7 +6,7 @@
 	<label for="comment_email"><%= diamond %> Email</label>
 <%= form.text_field :email %><br/>
 		<label for="comment_content"><%= diamond %> Comment</label>
-<%= form.text_area :body %><br/>
+<%= form.text_area :body, :size=>"20x10" %><br/>
   <%= submit_button %>
 	<% end %>
 </div>

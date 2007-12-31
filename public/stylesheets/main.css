@@ -6,8 +6,11 @@ body {
 }
 
 #page_container { 
-	width:901px;
+	width:900px;
 	margin: 0 auto;
+}
+div {
+
 }
 * {
  	margin:0;
@@ -54,7 +57,7 @@ img {
 
 }
 #left_column {
-	width: 740px;
+	width: 700px;
 	float:left;
 }
 #right_column {

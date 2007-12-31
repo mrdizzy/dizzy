@@ -18,7 +18,18 @@ h2 {
 	line-height: 1.125em; /* 18px */ 
 	margin-top:1.125; 
 	margin-bottom: 1.125em;
+
 }
+	#cheatsheet h2 {
+		font-weight:bold;
+		color:#000000;
+		font-size: 1.5em; 
+		text-align:center;
+		line-height: 1em; 
+		margin-top: 0.5em; 
+		margin-bottom: 0.5em;
+		border-bottom:1px dashed #000000;
+	}
 	.articles h2 {
 		line-height:1.3;	
 	}
@@ -32,7 +43,38 @@ h3 {
 	font-family: "Georgia";
 	font-style:italic;
 }
+	#cheatsheet h3 {
+		font-family:"Trebuchet MS";
+		
+	}
+	h5 {
+	font-family:"arial black",helvetica,sans-serif;
+	font-size: 0.75em; /* 10px */
+	line-height: 1.8em; /* 18px */
+	margin-top: 0.6em;
+	margin-bottom: 0em;
+	color: #29A4BD;
+	letter-spacing:0.2em;
+}
+h4 {
+	color: #BBBDBF;
+	font-weight:normal; 
+	font-size: 0.76em; /* 10px */
+	line-height: 1.8em; /* 18px */
+	margin-top: 0.6em; margin-bottom: 0.6em;
+	letter-spacing:0.2em;
+}
 
+h6 {
+	font-family:"Verdana",serif;
+	margin-right:0.5em;
+	font-weight:bold;
+	color: #BBBDBF;
+	font-size: 0.9em; /* 10px */
+	line-height: 1.2em; /* 18px */
+	margin-top: 0.7em;
+	margin-bottom: 0em;	
+}
 /* Paragraphs
 ==================================== */
 p {
@@ -60,7 +102,7 @@ p {
 	color: #29A4BD;
 	font-weight: bold;
 }
-.blue {	color: #29A4BD; }
+
 .date { 
 	color: #BBBDBF;
 	font-weight:normal; 

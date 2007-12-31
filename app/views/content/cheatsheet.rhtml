@@ -4,8 +4,11 @@
 <h2><%= @content.description %></h2>
 
 <%= render(:partial => "shared/content/section_list", :object => @content.sections, :locals => { :current_article_permalink => nil} ) %>
+
+<%= spiro %>
+
 <%= render(:partial => "content/related", :object => @content ) %>
-<%= render(:partial => "content/comments", :object => @content ) %>
+<%= render(:partial => "comments/comments", :object => @content ) %>
 
 <% content_for :thumbnail do %>
 

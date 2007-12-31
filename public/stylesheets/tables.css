@@ -4,44 +4,42 @@
 		width:100%; 
 		border-collapse: collapse;
 	}
-	th 		{ font-weight:bold; }
-	tr.odd 	{ background-color:#F0F4FC;}
+		th 		{ font-weight:bold; }
+		tr.odd 	{ background-color:#F0F4FC;}
 
 /* Sample Code Table
 ==================================== */
 	table.sample_code  {
-		width:610px;
+		width:690px;
 		border:1px dotted #888;
 		table-layout: fixed;
 	}
-	table.sample_code td {
-		padding:0.25em;
-	}
-	table.sample_code td.first {
-		width:75px;
-	}
-	table.sample_code tr td.first {
-	   background-color:#888;
-	   color:white;
-	   text-align:center;
-	}
-	table.sample_code tr.odd td.first {
-		background-color:#29A4BD;
-		color:white;
-		text-align:center;
-	}
-	table.sample_code tr.odd {
-		background-color:transparent;
-	}	
+		table.sample_code td {
+			padding:0.25em;
+		}
+		table.sample_code td.first {
+			width:75px;
+		}
+		table.sample_code tr td.first {
+		   background-color:#888;
+		   color:white;
+		   text-align:center;
+		}
+		table.sample_code tr.odd td.first {
+			background-color:#29A4BD;
+			color:white;
+			text-align:center;
+		}
+		table.sample_code tr.odd {
+			background-color:transparent;
+		}	
+
 	
 /* Cheatsheet Table
 ========================= */
 	#cheatsheet td {
 		padding:0.7em;
 		border-bottom:1px solid #888;
-	}
-	#cheatsheet table.sample_code td {
-		padding:0.25em;
 	}
 		
 /* Portfolio

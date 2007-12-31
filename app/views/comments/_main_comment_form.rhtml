@@ -1,0 +1,13 @@
+<% @comment = comment %>
+	<% form_for :comment, :url => { :action => "create_comment", :id => id } do |form| %>
+		<p><label for="comment_subject"><%= bigarrow %> Subject</label>
+		<%= form.text_field :subject %></p>
+		
+		<p><label for="comment_email"><%= bigarrow %> Email</label>
+		<%= form.text_field :email %></p>
+		
+		<p><label for="comment_body"><%= bigarrow %> Comment</label>
+		<%= form.text_area :body, :size => "20x10" %></p>
+		
+	  	<%= submit_button %>
+	<% end %>

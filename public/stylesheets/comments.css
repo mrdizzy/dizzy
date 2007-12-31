@@ -1,4 +1,5 @@
 #comments .odd, #conversation .odd {
+	clear:both;
 	border: 1px dotted #888;
 	padding:5px;
 	margin:8px 0 8px 0;
@@ -6,8 +7,33 @@
 	background-image:url("/images/f/backgrounds/spiral2.png");
 }
 #comments .normal, #conversation .normal {
+	clear:both;
 	background-color:white;
 	border: 1px dotted #888;
 	padding:5px;
 	margin:8px 0 8px 0;
+}
+.reply_comment {
+	width:100%;
+	text-align:center;
+	clear:both;
+}
+
+.comments_left {
+	width:25%;
+	float:left;
+}
+.comments_right {
+	float:right;
+	width:74%;
+}
+
+#comments h6 {
+	font-family:"Georgia";
+	font-weight:normal;
+	font-size: 1.3333em; /* 16px */ 
+	line-height: 1.125em; /* 18px */ 
+	margin-top:0em; 
+	margin-bottom: 0.6em;
+	color: #29A4BD;	
 }

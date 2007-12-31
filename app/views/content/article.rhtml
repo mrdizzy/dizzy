@@ -7,8 +7,8 @@
 <%= spiro %>
 
 <%= parse_cheatsheet_xml(@content.content) %>
-
+<%= spiro %>
 	<%= render (:partial => "content/related", :object => @content ) %>
-	<%= render (:partial => "content/comments", :object => @content ) %>
+	<%= render (:partial => "comments/comments", :object => @content ) %>
 	
 </div>

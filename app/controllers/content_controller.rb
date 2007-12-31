@@ -1,4 +1,7 @@
 class ContentController < ApplicationController
+	
+	helper :comments
+	
 	def index
    		list
     render :action => 'list'
