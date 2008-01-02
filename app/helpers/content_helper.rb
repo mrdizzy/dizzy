@@ -222,7 +222,7 @@ module ContentHelper
 		xml = xml.gsub("<ol>", "<ol><li>")
 		xml = xml.gsub("</ol>", "</li></ol>")
 		
-		# Nested lists
+			# Nested lists
 		xml = xml.gsub("</ul2><ul3>", "</li><boo><li>")
 		xml = xml.gsub("</ul3><ul3>", "</li><li>")
 		xml = xml.gsub("</ul3><ul>", "</li></bam></ul><li>")
@@ -231,12 +231,12 @@ module ContentHelper
 		xml = xml.gsub("</ul3><ul2>", "</li></bam><li>")
 		xml = xml.gsub("</ul2><ul>", "</li></bam><li>")
 		xml = xml.gsub("<ul>", "<ul><li>")
-			xml = xml.gsub("</ul>", "</li></ul>")
+		xml = xml.gsub("</ul>", "</li></ul>")
 		xml = xml.gsub("<boo>", "<ul>")
-			xml = xml.gsub("</bam>", "</ul>")
+		xml = xml.gsub("</bam>", "</ul>")
 		xml = xml.gsub("</ul2>", "</li></ul></ul>")
 		xml = xml.gsub("</ul3>", "</li></ul></ul></ul>")
-		puts xml
+
 		listener = Listener.new
 		parser = Parsers::StreamParser.new(xml, listener)
 		parser.parse

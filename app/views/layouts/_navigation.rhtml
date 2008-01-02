@@ -1,14 +1,9 @@
 <div id="navigation">
-	<table style="width:100%; text-align:center; border-bottom: 1px dashed #999;">
-		<tr>
-			<td><p> <%= link_to "Portfolio", { :controller => :portfolio, :action => :show, :id => "1" } %></p></td>
-			<td><p> | </p></td>
-			<td><p> <span id="CONTACT"> <%= link_to_remote "Contact", :url => { :controller => :welcome, :action => :contact } %></span></p></td>
-							<td><p> | </p></td>
-			<td><p> <%= link_to "Cheatsheet", { :controller => :cheatsheets, } %></p></td>
-							<td><p> | </p></td>
-			<td><p> <a href="/ruby-on-rails">Ruby on Rails</a></p></td>
-		</tr>
-	</table>
+	<div class="nav_selected"><h2> <%= link_to "HOME", { :controller => :portfolio, :action => :show, :id => "1" } %></h2></div>
+			
+	<div class="nav_button"><h2><%= link_to_remote "CONTACT", :url => { :controller => :welcome, :action => :contact } %></h2></div>
+	<div class="nav_button"><h2> <%= link_to "SITEMAP ", { :controller => :cheatsheets, } %></h2></div>
+	<div class="nav_button"><h2> <a href="/ruby-on-rails">RUBY ON RAILS</a></h2></div>
+	<div class="nav_button"><h2> <a href="/ruby-on-rails">CHEATSHEETS</a></h2></div>
 </div>
 	

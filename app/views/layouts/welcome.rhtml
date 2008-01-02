@@ -5,8 +5,7 @@
 	
 	<%= core_front_end_stylesheets %>
 	<%= stylesheet_link_tag "polls", :media => "all" %>
-	<%= stylesheet_link_tag "welcome", :media => "all" %>
-	
+	<%= stylesheet_link_tag "welcome", :media => "all" %>	
 	<%= javascript_include_tag :defaults %>
 	<%= javascript_include_tag "rollover" %>
 	
@@ -20,9 +19,10 @@
 <body>
 
 	<div id="page_container">
-	
-	<%= render :partial => "/layouts/header" %>
+	<%= render :partial => "/layouts/header" %>		
 	<%= render :partial => "/layouts/navigation" %>
+
+
 	
 		<div id="content_container">
 

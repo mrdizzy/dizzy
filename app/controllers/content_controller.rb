@@ -12,7 +12,6 @@ class ContentController < ApplicationController
          :redirect_to => { :action => :list }
          
 	def list
-		puts "BOOO"
 		@content_pages, @contents = paginate :contents, :per_page => 10, :order => "'date' desc"
 	end
 	

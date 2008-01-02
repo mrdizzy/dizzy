@@ -54,7 +54,6 @@ div {
 img {
 	vertical-align:middle;
 	text-align:center;
-
 }
 #left_column {
 	width: 700px;
@@ -63,4 +62,25 @@ img {
 #right_column {
 	width:200px;
 	float:right;
+}
+#navigation {
+	height:2.5em;
+}
+.nav_button { 
+	width:172px;
+	border-bottom:1px solid #e1e1e1;
+	margin-top:0.2em;
+	margin-right:8px;
+	margin-bottom:0.4em;
+	float:left;
+	height:1.9em;
+}
+.nav_selected { 
+	width:172px;
+	border-bottom:1px solid #29A4BD;
+	margin-top:0.2em;
+	margin-right:8px;
+	margin-bottom:0.4em;
+	float:left;
+	height:1.9em;
 }

@@ -18,7 +18,7 @@
 	<% else %>
 	
 	<td class="content">
-		<h3 class="blue_bold"><%= asterisk %> <%= article_link.title %> Cheatsheet</h3>
+		<h3><%= asterisk %> <%= article_link.title %> Cheatsheet</h3>
 		
 		<div class="left"><br/><br/><br/><br/><br/>
 			<%= image_tag("f/small_icons/pdf.png") %>	
@@ -35,7 +35,7 @@
 		</td>
 		
 		<td><p><span class="date">POSTED <%= time_ago_in_words(article_link.date).upcase %> AGO</span>			<br/><%= posted_in(article_link.categories) %></p>
-			<p><%= article_link.description %> </p>
+			<h6><%= article_link.description %> </h6>
 		</td>
 		<td>by<br/><b><%= article_link.user.name%></b></td>
 

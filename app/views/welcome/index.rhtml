@@ -7,7 +7,7 @@
 			<h5><%= asterisk %> <%= @main_article.main_category_name %></h5>
 			<h1><%= @main_article.title %> </h1>
 			
-			<h4>POSTED <%= time_ago_in_words(@poll.created_at).upcase %> AGO</h4>
+			<h4>POSTED <%= time_ago_in_words(@main_article.date).upcase %> AGO</h4>
 			</p>
 				<%= spiro %>
 			
@@ -17,21 +17,18 @@
 		</div>
 		<div id="recent">
 			<div class="inside">		
-		<%= render (:partial => "recent_articles", :collection => @recent_articles ) %>
+		<%= render :partial => "recent_articles", :collection => @recent_articles %>
 		</div>
 		
 	</div>
 	</div>
 	<div id="welcome_middle">
 		
-		<h5><%= asterisk %> Cheatsheets</h5>
-					
-		<h3><a href=""><%= @cheatsheet.title %></a></h3>
-			<h4><%= time_ago_in_words(@cheatsheet.date).upcase %> AGO </h4>
-		<%= link_to(image_tag("/thumbnails/#{@cheatsheet.permalink}.png"), :controller => :content, :action => :show, :permalink => @cheatsheet.permalink) %>
+		<% categories = Category.find(:all, :order => "'name'")%>
+		<% categories.each do |category| %>
 		
-		<h6><%= diamond %> <%= @cheatsheet.description %></h6>
-		
+		<p><%= link_to category.name,{ :controller => :content, :permalink => category.permalink } %></a></p>
+		<% end %>
 		<%=spiro%>
 					
 		</div>
@@ -39,16 +36,25 @@
 	<div id="welcome_right">	
 		<!-- Latest logos -->
 		<div id="latest_container">
-			<h5><%= asterisk %> Latest work</h4>
+			<h5><%= asterisk %> Latest work</h5>
 			<div id="logo_container">
-				<div id="latest_logo"><%= link_to image_tag("/binaries/portfolio_image/#{@logos[0].id}"), :controller => :portfolio, :action => :show, :id => @logos[0].company_id %></div>
+				<div id="latest_logo"><%= link_to image_tag("/binaries/portfolio_image/#{@logos[0].id}.png"), :controller => :portfolio, :action => :show, :id => @logos[0].company_id %></div>
 			</div>
 			<div id="logo_pagination">
 		  		<%= render :partial => "logo_pagination" %>
 			</div>
 		</div>
 			<div class="inside">
-		<%= render (:partial => "/polls/poll_question") %>
+			
+		<h5><%= asterisk %> Cheatsheets</h5>
+					
+		<h3><%= link_to @cheatsheet.title, { :controller => :content, :action => :show, :permalink => @cheatsheet.permalink } %></a></h3>
+			<h4><%= time_ago_in_words(@cheatsheet.date).upcase %> AGO </h4>
+	
+		
+		<h6><%= diamond %> <%= @cheatsheet.description %></h6>
+		
+		<%=spiro%>
          </div>
 		</div>
 

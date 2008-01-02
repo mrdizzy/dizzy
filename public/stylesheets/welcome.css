@@ -2,27 +2,27 @@
 ============= */
 #welcome_left {
 	float:left;
-	width:475px;	
+	width:515px;	
 }
 #welcome_middle {
 	float:left;
-	width:173px;
-	border-left: 1px dashed #999;
-	border-right: 1px dashed #999;
+	width:155px;
+	border-left: 1px solid #e1e1e1;
+	border-right: 1px solid #e1e1e1;
 	padding-left:10px;
 }
 #latest_container {
 	width:100%;
 	padding-left: 0.4em;
-	border-bottom: 1px dashed #999;
+	border-bottom: 1px solid #e1e1e1;
 }
 #welcome_right {
-	width:224px;
+	width:200px;
 	float:left;
 }
 #recent {
 	width:100%;
-	border-top: 1px dashed #999;
+	border-top: 1px solid #e1e1e1;
 }
 #logo_pagination {
 	width:100%;
@@ -37,14 +37,10 @@
 #logo_container {
 	height:120px;	
 }
-#first_half {
-	border-left: 1px dashed #999;
-	border-right: 1px dashed #999;
-}
+
 .inside {
 	padding-left:7px;
 	padding-right:4px;
-
 }
 #welcome_left a:visited, #welcome_right a:visited {
 	color: #29A4BD; 
@@ -55,13 +51,7 @@
 
 /* Typography
 --------------------- */
-#welcome h1{
-	font-size: 2.2em; /* 30px */
-	line-height: 1.2em; /* 36px */
-	margin-top: 0.3em;
-	margin-bottom: 0.3em;
-	color: #29A4BD;
-}
+
 #welcome h2 {
 	font-family:"Trebuchet MS";	
 	color:black;	

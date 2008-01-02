@@ -1,7 +1,7 @@
 <h1><%= bigarrow %> Latest articles</h1>
 <table class="articles">
 
-	<%= render (:partial => "shared/content/article_link", :collection => @contents ) %>
+	<%= render :partial => "shared/content/article_link", :collection => @contents %>
 
 </table>
 <%= link_to 'Previous page', { :page => @content_pages.current.previous } if @content_pages.current.previous %>

@@ -24,7 +24,9 @@ module ApplicationHelper
 			result <<
 		 (link_to category.name, {:controller => :content, :action => :articles_for_category, :permalink => category.permalink })
 		end
-		"<span class=\"blue_bold\">Posted in</span> " + diamond + " " + result.to_sentence(:skip_last_comma => true)
+		result = result.to_sentence(:skip_last_comma => true, :connector => "AMPERSAND").upcase
+		result = result.gsub("AMPERSAND", "<span class=\"amp\">&amp;</span>")
+		"<span class=\"posted_in\">" + result + "</span>"
 	end
 
 	# Graphics
