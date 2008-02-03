@@ -1,5 +1,18 @@
-<ul>
+<h1><%= bigarrow %> Categories</h1>
+
+	<!-- LIST CATEGORIES -->
+	<div id="categories">	
 	<% @categories.each do |category| %>
-	<li><%= link_to category.name, category_path(category.permalink) %></li>
+		<p><span id="<%= category.id %>"><%= link_to category.name, category_path(category.permalink) %> <%= link_to_remote "delete", :url => category_path(category.id), :method => :delete %></span></p>
+	<% end %>
+	</div>
+	<%= submit_button %>
+
+	<!-- ADD NEW CATEGORY -->
+	
+<h1>Add new category</h1>
+<% remote_form_for :category, :url => categories_path do |form| %>
+	<p><%= form.text_field :name %></p>
+	<p><%= form.text_field :permalink %></p>
+	<%= submit_button %>
 <% end %>
-</ul>
