@@ -1,2 +1,9 @@
---- {}
-
+--- 
+comments_001: 
+  content_id: "2"
+  body: Here is my first ever comment.
+  subject: This is a test comment
+  id: "1"
+  parent_id: 
+  created_at: 2008-01-23 23:36:07
+  email: david.pettifer@dizzy.co.uk

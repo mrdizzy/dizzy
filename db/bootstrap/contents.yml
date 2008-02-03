@@ -374,13 +374,12 @@ contents_003:
   id: "3"
   description: How to tell Rails you want a column on an existing table to be used as the primary key--useful for changing an existing join table when migrating to <c>has_many :through</c>.
   content: |
-    
-    <p>Imagine you've got a table in your database, particularly a join table, that doesn't have its own primary key <c>:id</c> column. When you created the join table, you'll have used the <c>:id =&gt; false</c> option to prevent Rails from adding both the <c>:id</c> column and sending a primary key definition to your underlying database.</p>
-    <p>So what if you now want to add an <c>:id</c> column to this table and make it act as the primary key? The usual reason for doing this is when you start using <c>has_many xxx :through</c> and want to change an existing join table so that it becomes a model with its own data in its own right. You might think that to add the <c>:id</c> column it would be as simple as just naming it <c>:id</c> and defining its column type as an <c>:integer</c> via a migration:</p>
-    <r>add_column :books, :id, :integer</r>
-    <p>But this won't work! Whilst it adds the <c>:id</c> column to your database table, it doesn't automagically make the column become the primary key. You might be surprised at this: it is quite acceptable to assume that adding an <c>:id</c> column and making it <c>:integer</c> would be enough information to tell Rails to make it a primary key. Instead, we have to tell Rails explicitly, using the <c>:primary_key</c> column type:</p>
-    <r>add_column :books, :id, :primary_key</r>
-    <p>That's better! You can use this with the <c>change_column</c> in your migrations too. </p>
-    
+    
+    <p>Imagine you've got a table in your database, particularly a join table, that doesn't have its own primary key <c>:id</c> column. When you created the join table, you'll have used the <c>:id =&gt; false</c> option to prevent Rails from adding both the <c>:id</c> column and sending a primary key definition to your underlying database.</p>
+    <p>So what if you now want to add an <c>:id</c> column to this table and make it act as the primary key? The usual reason for doing this is when you start using <c>has_many xxx :through</c> and want to change an existing join table so that it becomes a model with its own data in its own right. You might think that to add the <c>:id</c> column it would be as simple as just naming it <c>:id</c> and defining its column type as an <c>:integer</c> via a migration:</p>
+    <r>add_column :books, :id, :integer</r>
+    <p>But this won't work! Whilst it adds the <c>:id</c> column to your database table, it doesn't automagically make the column become the primary key. You might be surprised at this: it is quite acceptable to assume that adding an <c>:id</c> column and making it <c>:integer</c> would be enough information to tell Rails to make it a primary key. Instead, we have to tell Rails explicitly, using the <c>:primary_key</c> column type:</p>
+    <r>add_column :books, :id, :primary_key</r>
+    <p>That's better! You can use this with the <c>change_column</c> in your migrations too. </p>
 
   user_id: "1"

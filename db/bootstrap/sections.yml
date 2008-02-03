@@ -1,0 +1,221 @@
+--- 
+sections_001: 
+  permalink: rails-migrations-methods
+  content_id: "1"
+  title: Methods
+  body: |-
+    <section>
+    		<subhead>Methods</subhead>
+    			
+    <method>
+    <minihead>add_column</minihead>
+    <p>Creates a new column on the specified table.</p>
+    <r>  add_column :table_name, :column_name, :column_type, { options }</r>
+    <p><c>:null => true</c> or <c>false</c> - if false, the underlying column has a not null constraint added by the database engine</p>
+    <p><c>:limit => size</c> - set a limit on the size of the field</p>
+    <p><c>:default => value</c> - set a default value for the column</p>
+    
+    </method>
+    <method_odd>
+    <minihead>add_index</minihead>
+    <p>Creates an index for the specified table, the name of which defaults to <c>table_column_index</c>.</p>
+    <r>  add_index :table_name, :column_name, :unique => true, :name =&gt; "chosen_index_name"</r>
+    </method_odd>
+    <method>
+    <minihead>change_column</minihead>
+    <p>Change the data type of the specified column</p>
+    <r>  change_column :table_name, :column_name, :new_type, { options as add_column }</r>
+    </method>
+    <method_odd>
+    <minihead>create_table</minihead> 
+    <p>Creates a table on the database. Creates a table called <c>:table_name</c> and makes the table object available to a block that can then add columns to it, following the same format as <c>add_column</c>.</p>
+    <r>  create_table :table_name, { options } do |t|
+        t.column :column_name, :column_type, :options
+      end</r>
+    <p><c>:force => true</c> - forces drop of an existing table of the same name before creation the new one</p>
+    <p><c>:temporary => true</c> - creates a temporary table, one that goes away when the application disconnects from the database</p> 
+    <p><c>:id => false</c> - defines a table with no primary key, for example when you need to define a join table</p>
+    <p><c>:primary_key => :new_primary_key_name</c> - overrides the default name of <c>:id</c> for the primary column, use this to specify the name of the column in the database that Rails will use to store the primary key</p>
+    <p><c>:options => ""</c> - lets you specify options to your underlying database, e.g. <c>"auto_increment = 10000"</c>. Will lose default <c>"ENGINE=InnoDB statement"</c>.</p>
+    
+    </method_odd>
+    
+    <method>
+    				<minihead>execute</minihead>
+    				<p>Takes a single string identifying a valid SQL command to execute directly</p>
+    				<r>  execute "alter table line_items add constraint fk_line_item_products foreign key (product_id) references products(id)"</r>
+    </method>
+    
+    <method_odd><minihead>IrreversibleMigration</minihead>
+    <p>Use in the <c>down</c> method of a migration file to raise an exception when the <c>up</c> methods of the same migration file can not be reversed, e.g. changing a column type from <c>:integer</c> to <c>:string</c>.</p>
+    <r>  raise ActiveRecord::IrreversibleMigration</r>
+    </method_odd>
+    <method>
+    <minihead>rename_table</minihead>
+    <p>Renames the specified table.</p>
+    <r>  rename_table :new_table_name, :old_table_name</r>
+    </method>
+    <method_odd>
+    <minihead>rename_column</minihead>
+    <p>Renames the <c>old_column_name</c> to <c>new_column_name</c></p>
+    <r>  rename_column :old_column_name, :new_column_name</r>
+    </method_odd>
+    <method>
+    <minihead>rename_table</minihead>
+    <p>Renames the specified table.</p>
+    <r>  rename_table :new_table_name, :old_table_name</r>
+    </method>
+    <method_odd>
+    <minihead>remove_index</minihead>
+    <p>Remove an index for the specified table.</p>
+    <r>  remove_index :table_name, :column_name</r>
+    </method_odd>
+    </section>
+  id: "1"
+  summary: interact with your database using migration methods
+sections_002: 
+  permalink: database-mapping
+  content_id: "1"
+  title: Database mapping
+  body: |-
+    
+    <section>
+    <subhead>Mapping</subhead>
+    
+    <Table xmlns:aid="http://ns.adobe.com/AdobeInDesign/4.0/" aid:table="table" aid:trows="9" aid:tcols="9">
+    
+    <Cell aid:table="cell"><b>Rails</b></Cell><Cell aid:table="cell"><b>db2</b></Cell><Cell aid:table="cell"><b>mysql</b></Cell><Cell aid:table="cell"><b>openbase</b></Cell><Cell aid:table="cell"><b>Oracle</b></Cell><Cell aid:table="cell"><b>postgresql</b></Cell><Cell aid:table="cell"><b>sqlite</b></Cell><Cell aid:table="cell"><b>sqlserver</b></Cell><Cell aid:table="cell"><b>Sybase</b></Cell>
+    
+    <Cell aid:table="cell"><c>:binary</c></Cell><Cell aid:table="cell">blob(32768)</Cell><Cell aid:table="cell">blob</Cell><Cell aid:table="cell">object</Cell><Cell aid:table="cell">blob</Cell><Cell aid:table="cell">bytea</Cell><Cell aid:table="cell">blob</Cell><Cell aid:table="cell">image</Cell><Cell aid:table="cell">image</Cell>
+    
+    <Cell aid:table="cell"><c>:boolean</c></Cell><Cell aid:table="cell">decimal(1)</Cell><Cell aid:table="cell">tinyint(1)</Cell><Cell aid:table="cell">boolean</Cell><Cell aid:table="cell">number(1)</Cell><Cell aid:table="cell">boolean</Cell><Cell aid:table="cell">boolean</Cell><Cell aid:table="cell">bit</Cell><Cell aid:table="cell">bit</Cell>
+    
+    <Cell aid:table="cell"><c>:date</c></Cell><Cell aid:table="cell">date</Cell><Cell aid:table="cell">date</Cell><Cell aid:table="cell">date</Cell><Cell aid:table="cell">date</Cell><Cell aid:table="cell">date</Cell><Cell aid:table="cell">date</Cell><Cell aid:table="cell">datetime</Cell><Cell aid:table="cell">datetime</Cell>
+    
+    <Cell aid:table="cell"><c>:datetime</c></Cell><Cell aid:table="cell">timestamp</Cell><Cell aid:table="cell">datetime</Cell><Cell aid:table="cell">datetime</Cell><Cell aid:table="cell">date</Cell><Cell aid:table="cell">timestamp</Cell><Cell aid:table="cell">datetime</Cell><Cell aid:table="cell">datetime</Cell><Cell aid:table="cell">datetime</Cell>
+    
+    <Cell aid:table="cell"><c>:decimal</c></Cell><Cell aid:table="cell">decimal</Cell><Cell aid:table="cell">decimal</Cell><Cell aid:table="cell">decimal</Cell><Cell aid:table="cell">decimal</Cell><Cell aid:table="cell">decimal</Cell><Cell aid:table="cell">decimal</Cell><Cell aid:table="cell">decimal</Cell><Cell aid:table="cell">decimal</Cell>
+    
+    <Cell aid:table="cell"><c>:float</c></Cell><Cell aid:table="cell">float</Cell><Cell aid:table="cell">float</Cell><Cell aid:table="cell">float</Cell><Cell aid:table="cell">number</Cell><Cell aid:table="cell">float</Cell><Cell aid:table="cell">float</Cell><Cell aid:table="cell">float(8)</Cell><Cell aid:table="cell">float(8)</Cell>
+    
+    <Cell aid:table="cell"><c>:integer</c></Cell><Cell aid:table="cell">int</Cell><Cell aid:table="cell">int(11)</Cell><Cell aid:table="cell">integer</Cell><Cell aid:table="cell">number(38)</Cell><Cell aid:table="cell">integer</Cell><Cell aid:table="cell">integer</Cell><Cell aid:table="cell">int</Cell><Cell aid:table="cell">int</Cell>
+    
+    <Cell aid:table="cell"><c>:string</c></Cell><Cell aid:table="cell">varchar(255)</Cell><Cell aid:table="cell">varchar(255)</Cell><Cell aid:table="cell">char(4096)</Cell><Cell aid:table="cell">varchar2(255)</Cell><Cell aid:table="cell">*</Cell><Cell aid:table="cell">varchar(255)</Cell><Cell aid:table="cell">varchar(255)</Cell><Cell aid:table="cell">varchar(255)</Cell>
+    
+    
+    <Cell aid:table="cell"><c>:text</c></Cell><Cell aid:table="cell">clob(32768)</Cell><Cell aid:table="cell">text</Cell><Cell aid:table="cell">text</Cell><Cell aid:table="cell">clob</Cell><Cell aid:table="cell">text</Cell><Cell aid:table="cell">text</Cell><Cell aid:table="cell">text</Cell><Cell aid:table="cell">text</Cell>
+    
+    
+    <Cell aid:table="cell"><c>:time</c></Cell><Cell aid:table="cell">time</Cell><Cell aid:table="cell">time</Cell><Cell aid:table="cell">time</Cell><Cell aid:table="cell">date</Cell><Cell aid:table="cell">time</Cell><Cell aid:table="cell">datetime</Cell><Cell aid:table="cell">datetime</Cell><Cell aid:table="cell">time</Cell>
+    
+    
+    <Cell aid:table="cell"><c>:timestamp</c></Cell><Cell aid:table="cell">timestamp</Cell><Cell aid:table="cell">datetime</Cell><Cell aid:table="cell">timestamp</Cell><Cell aid:table="cell">date</Cell><Cell aid:table="cell">timestamp</Cell><Cell aid:table="cell">datetime</Cell><Cell aid:table="cell">datetime</Cell><Cell aid:table="cell">timestamp</Cell>
+    
+    </Table>
+    </section>
+  id: "2"
+  summary: how migration column types map to your underlying database
+sections_003: 
+  permalink: example-migration-file
+  content_id: "1"
+  title: Example migration
+  body: |-
+    <section>
+    <subhead>db/migrate/example_001.rb</subhead>
+    <method>
+    <rnum>class CreateCustomers &lt; ActiveRecord::Migration
+    
+      def self.up
+        # Create "Customers" table
+        create_table :customers, :primary_key =&gt; :customer_id, :options =&gt; "auto_increment = 10000" do |t|
+          # Add columns to "Customers" table
+          t.column :customer_id, :integer
+          t.column :name,        :string,    :limit =&gt; 30, :null =&gt; false
+          t.column :age,         :integer
+          t.column :premium,     :boolean,   :default =&gt; 0
+          t.column :photo,       :binary,    :limit =&gt; 2.megabytes
+          t.column :thumbnail,   :binary,    :limit =&gt; 256.kilobytes
+          t.column :dob,         :date,      :null =&gt; false
+          t.column :created_at,  :timestamp
+          t.column :notes,       :text,      :default =&gt; "No notes recorded"
+        end
+        # Add "surname" column to "Customers" table 
+        add_column :customers, :surname,   :string,   :limit =&gt; 50
+        # Add "price" column to "Orders" table
+        add_column :orders,    :price,     :decimal,  :precision =&gt; 8, 
+    :scale =&gt; 2
+        # Create a record on the "Customers" table
+        Customer.create :name =&gt; "David", :surname =&gt; "Smith", :age =&gt; "32",
+    :premium =&gt; "1", :notes =&gt; "One of our top customers!"
+      end
+    
+      def self.down 
+        # Delete the "Customers" table
+        drop_table :customers
+      end
+    end</rnum>
+    </method>
+    </section>
+  id: "3"
+  summary: what a migration file looks like
+sections_004: 
+  permalink: rake-tasks
+  content_id: "1"
+  title: Rake tasks
+  body: |-
+    
+    <section>
+    <subhead>rake</subhead>
+    
+    <method>
+    <minihead>Generate migration</minihead>
+    <p><c>ruby script/generate migration your_chosen_migration_name</c></p>
+    </method>
+    
+    <method>
+    <minihead>run all unapplied migrations</minihead>
+    <p><c>rake db:migrate</c></p>
+    </method>
+    
+    <method>
+    <minihead>migrate database to specific version</minihead>
+    <p><c>rake db:migrate VERSION=18</c></p>
+    </method>
+    
+    <method>
+    <minihead>use your migrations to recreate the tables in the testing or production databases</minihead>
+    <p><c>rake db:migrate RAILS_ENV=production</c></p>
+    </method>
+    
+    <method>
+    <minihead>Create a <c>db/schema.rb</c> file that can be portably used against any database supported by ActiveRecord</minihead>
+    <p><c>rake db:schema:dump</c></p>
+    </method>
+    
+    <method>
+    <minihead>Load a schema.rb file into the database</minihead>
+    <p><c>rake db:schema:load</c></p>
+    </method>
+    
+    <method>
+    <minihead>Loads a schema.rb file into the database and then loads the initial database fixtures.</minihead>
+    <p><c>rake db:bootstrap</c></p>
+    </method>
+    
+    
+    
+    
+    </section>
+  id: "4"
+  summary: a list of built-in migration-related Rake tasks
+sections_005: 
+  permalink: directory-structure
+  content_id: "1"
+  title: Directory Structure
+  body: "   <section>\r\n\
+    <subhead>Directory structure</subhead>\r\n\
+    <directory_structure>\r\n <li> rails_root</li>\r\n  <directory_structure>\r\n   <li> db</li>\r\n    <directory_structure>\r\n     <li> schema.rb</li>\r\n    </directory_structure>\r\n    <directory_structure>\r\n     <li> migrate</li>\r\n      <directory_structure>\r\n       <li> 001_create_customers</li>\r\n       <li> 002_add_photo</li>\r\n       <li> 003_alter_surname</li>\r\n      </directory_structure>\r\n    </directory_structure>\r\n  </directory_structure>\r\n\
+    </directory_structure>\r\n\
+    </section>"
+  id: "5"
+  summary: where migration files go
