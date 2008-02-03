@@ -1,5 +1,6 @@
-<ul>
-<% @category.contents.each do |content| %>
-	<li><%= link_to content.title, content_path(@category.permalink, content.permalink) %></li>
-<% end %>
-</ul>
+<h1><%= @category.name %></h1>
+
+<table class="articles">
+	<%= render :partial => "shared/content/article_link", :collection => @category.contents %>
+
+</table>

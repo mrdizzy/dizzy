@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-	
+	helper :contents
 	def index 
 		@categories = Category.find(:all)
 	end
