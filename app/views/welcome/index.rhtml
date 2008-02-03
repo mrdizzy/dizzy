@@ -13,7 +13,7 @@
 			
 		<h2><%= @main_article.description %></h2>
 	
-		<p><%= strip_tags(truncate(@main_article.content, 300)) %> . <%= link_to "More &raquo;", { :controller => :content, :action => :show, :permalink => @main_article.permalink } %></p>
+		<p><%= strip_tags(truncate(@main_article.content, 300)) %> . <%= link_to "More &raquo;", content_path(@main_article.permalink) %></p>
 		</div>
 		<div id="recent">
 			<div class="inside">		
@@ -27,7 +27,7 @@
 		<% categories = Category.find(:all, :order => "'name'")%>
 		<% categories.each do |category| %>
 		
-		<p><%= link_to category.name,{ :controller => :content, :permalink => category.permalink } %></a></p>
+		<p><%= link_to category.name, category_path(category.permalink) %></a></p>
 		<% end %>
 		<%=spiro%>
 					
@@ -48,7 +48,7 @@
 			
 		<h5><%= asterisk %> Cheatsheets</h5>
 					
-		<h3><%= link_to @cheatsheet.title, { :controller => :content, :action => :show, :permalink => @cheatsheet.permalink } %></a></h3>
+		<h3><%= link_to @cheatsheet.title, content_path(@cheatsheet.permalink) %></a></h3>
 			<h4><%= time_ago_in_words(@cheatsheet.date).upcase %> AGO </h4>
 	
 		

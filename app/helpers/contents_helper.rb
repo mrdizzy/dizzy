@@ -1,4 +1,4 @@
-module ContentHelper
+module ContentsHelper
 
 	include REXML	
 	

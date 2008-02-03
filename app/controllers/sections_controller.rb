@@ -1,25 +1,15 @@
 class SectionsController < ApplicationController
 	layout "content"
-	helper :content
-  def index
-    list
-    render :action => 'list'
-  end
-
-  # GETs should be safe (see http://www.w3.org/2001/tag/doc/whenToUseGet.html)
-  verify :method => :post, :only => [ :destroy, :create, :update ],
-         :redirect_to => { :action => :list }
-
-  def list
-    @section_pages, @sections = paginate :sections, :per_page => 10
-  end
+	helper :contents
+	before_filter :load_category_and_content 	
 
   def show
-    @section = Section.find_by_permalink(params[:section])
+    @section = Section.find_by_content_id_and_permalink(@content.id, params[:id])
   end
 
   def new
     @section = Section.new
+    @section.content = Content.find_by_id(@content.id)
   end
 
   def create
@@ -49,5 +39,12 @@ class SectionsController < ApplicationController
   def destroy
     Section.find(params[:id]).destroy
     redirect_to :action => 'list'
+  end
+  
+  private
+ 
+  def load_category_and_content
+  	@category	= Category.find_by_permalink(params[:category_id])
+  	@content	= Content.find_by_permalink(params[:content_id])
   end
 end

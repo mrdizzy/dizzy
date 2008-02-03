@@ -2,6 +2,6 @@
 
 	<%	@categories = Category.find(:all, :order => :name) %>
 	<% @categories.each do |category| %>
-		<li><%= link_to category.name, { :controller => "content", :action => "articles_for_category", :permalink => category.permalink } %></li>
+		<li><%= link_to category.name, category_path(category.permalink) %></li>
 	<% end %>
 </ul>

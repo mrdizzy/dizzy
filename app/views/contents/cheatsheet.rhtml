@@ -1,5 +1,7 @@
 <% @title = @content.title %>
+
 <% @main_category = @content.main_category_name %>
+
 <h1><%= asterisk %> <%= @content.title %> Cheatsheet</h1>
 <h2><%= @content.description %></h2>
 
@@ -7,12 +9,12 @@
 
 <%= spiro %>
 
-<%= render(:partial => "content/related", :object => @content ) %>
+<%= render(:partial => "contents/related", :object => @content ) %>
 <%= render(:partial => "comments/comments", :object => @content ) %>
 
 <% content_for :thumbnail do %>
 
-	 <%= pdf_thumbnail(@content) %>
+	<%= pdf_thumbnail(@content) %>
 	<%= spiro %>
 
 <% end %>

@@ -1,23 +1,21 @@
-<div id="section">
-	
+<div id="section">	
 	<div id="section_container">
 		<div id="topmiddle"></div>
 		<div id="topleft"></div><div id="topright"></div>
 		
 		<div class="clearfix" id="section_list">
 		<ul>		
-			<% section_list.each do |section| %>
-				<% if section.permalink == current_article_permalink %>
-					<li><span class="bigger"><%= section.title %></span> - <%= section.summary %></li>
-				
-					<% else %>	
-					<li><%= link_to section.title, {:controller => "sections", :action => "show", :article => section.content.permalink, :section => section.permalink } %> - <%= section.summary %></li>
-				<% end %>
+		<% section_list.each do |section| %>
+			<% if section.permalink == current_article_permalink %>
+				<li><span class="bigger"><%= section.title %></span> - <%= section.summary %></li>
+			
+				<% else %>	
+				<li><%= link_to section.title, section_path(@content.main_category_permalink,@content.permalink, section.permalink) %> - <%= section.summary %></li>
 			<% end %>
+		<% end %>
 		</ul>
 		</div>		
 		<div id="bottomleft"></div><div id="bottomright"></div>
 		<div id="bottommiddle"></div>
 	</div>
-
 </div>

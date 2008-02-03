@@ -1,0 +1,5 @@
+<ul>
+<% @category.contents.each do |content| %>
+	<li><%= link_to content.title, content_path(@category.permalink, content.permalink) %></li>
+<% end %>
+</ul>

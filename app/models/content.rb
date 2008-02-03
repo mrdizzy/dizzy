@@ -39,6 +39,11 @@ class Content < ActiveRecord::Base
 		main_category.category_id unless main_category.nil?
 	end
 	
+	def main_category_permalink
+		main_category = CategoriesContent.find_by_content_id_and_main(self.id, 1)	
+		main_category.category.permalink unless main_category.nil?
+	end
+	
 	def subcategories
 		results = CategoriesContent.find_all_by_content_id_and_main(self.id, nil)
 		unless results.nil?

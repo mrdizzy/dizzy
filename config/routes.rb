@@ -12,9 +12,12 @@ ActionController::Routing::Routes.draw do |map|
   # You can have the root of your site routed by hooking up '' 
   # -- just remember to delete public/index.html.
 	map.connect '/', :controller => "welcome"
-	map.connect "ruby-on-rails", :controller => "content", :action => "list"
-    map.connect "ruby-on-rails/:permalink", :controller => "content", :action => "show"
-    map.connect "ruby-on-rails/:article/:section", :controller => "sections", :action => "show"
+  
+    map.resources "categories", :path_prefix => "/ruby_on_rails" do |ruby_on_rails|
+    	ruby_on_rails.resources :contents do |contents|
+    		contents.resources :sections
+    	end
+	end
   
   # Thumbnails and PDF files
   map.connect "thumbnails/:permalink.:extension", :controller => "binaries", :action => "thumbnail"
