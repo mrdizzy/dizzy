@@ -15,7 +15,7 @@
 		<%= link_to 'edit', edit_content_path(@category.permalink, article_link.id) %> <%= diamond %> <%= link_to 'delete', content_path(article_link.id), :method => "delete" %> </p>
 		<% end %>
 		</td>
-		<td><b><%= article_link.user.name%></b></td>
+		<td>by<br/><b><%= article_link.user.name%></b></td>
 
 	<!-- CHEATSHEET -->
 	
