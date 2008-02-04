@@ -1,9 +1,7 @@
 class CategoriesController < ApplicationController
 	helper :contents
 	layout :determine_layout
-	
-	caches_page :show
-	
+
 	def index 
 		@categories = Category.find(:all)
 		if administrator?
@@ -12,9 +10,8 @@ class CategoriesController < ApplicationController
 	end
 	
 	def show
-		@category = Category.find_by_permalink(params[:id])	
-		if administrator?
-			render(:template => "categories/admin_show")
+		unless read_fragment( :action => "show" ) || read_fragment( :action => "show", :part => "administrator" )
+			@category = Category.find_by_permalink(params[:id])	
 		end
 	end
 

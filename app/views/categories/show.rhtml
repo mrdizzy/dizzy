@@ -1,5 +1,16 @@
-<h1><%= @category.name %></h1>
 
-<table class="articles">
-	<%= render :partial => "shared/article_link", :collection => @category.contents %>
-</table>
+<% if administrator? %>
+	<% cache(:action => "show", :part => "administrator") do %>
+	<h1><%= @category.name %></h1>
+	<table class="articles">
+		<%= render :partial => "shared/article_link", :collection => @category.contents %>
+	</table>
+	<% end %>
+<% else %>
+<% cache do %>
+	<h1><%= @category.name %></h1>
+	<table class="articles">
+		<%= render :partial => "shared/article_link", :collection => @category.contents %>
+	</table>
+	<% end %>
+<% end %>
