@@ -48,4 +48,10 @@ class ContentsController < ApplicationController
       		render :action => 'new'
    		end
 	end
+	
+	def destroy
+		if Content.find(params[:id]).destroy
+			redirect_to categories_path
+		end
+	end
 end

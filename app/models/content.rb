@@ -21,13 +21,8 @@ class Content < ActiveRecord::Base
 	
 	validates_presence_of :content, :title,  :description, :date, :user_id, :permalink
     
-   # attr_writer :main_category
-    #attr_writer :subcategories
-    
 	belongs_to :user
 	validates_uniqueness_of :permalink	
-	
-	#after_create :main_category, :add_subcategories
 	
 	def related_article
 		related_article = CategoriesContent.find_by_category_id(self.main_category, :limit => 1, :order => "id DESC")
@@ -67,14 +62,12 @@ class Content < ActiveRecord::Base
 		end
 	end
 	
-	def main_category=(object_id)
-	
+	def main_category=(object_id)	
 		if (self.id)
 			current_main_category = CategoriesContent.find_by_content_id_and_main(self.id, 1)
 			CategoriesContent.delete(current_main_category.id) unless current_main_category.nil?
 		end
 		new_main_category = CategoriesContent.new(:content_id => self.id, :main => 1, :category_id => object_id)
-		puts new_main_category
 		self.categories_contents << new_main_category
 	end		
 end
