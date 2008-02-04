@@ -1,5 +1,4 @@
 class SectionsController < ApplicationController
-	layout "content"
 	helper :contents
 	before_filter :load_category_and_content 	
 

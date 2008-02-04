@@ -18,9 +18,10 @@ class Content < ActiveRecord::Base
 	has_many :categories, :through => :categories_contents
 	has_many :comments, :dependent => :destroy
 	has_many :sections, :dependent => :destroy, :order => "'title' ASC"
-	has_one :pdf, :dependent => :destroy
-	has_one :thumbnail, :dependent => :destroy	
+
 	
+	validates_presence_of :content, :title,  :description, :date, :user_id, :permalink
+
 	belongs_to :user
 	validates_uniqueness_of :permalink
 	
@@ -72,9 +73,10 @@ class Content < ActiveRecord::Base
 end
 
 class Article < Content
-	validates_presence_of :content, :title, :date, :user_id, :description, :permalink
+
 end
 
 class Cheatsheet < Content
-	validates_presence_of :title, :description, :content, :date, :user_id, :date, :permalink
+	has_one :pdf, :dependent => :destroy, :foreign_key => "content_id"
+	has_one :thumbnail, :dependent => :destroy, :foreign_key => "content_id"
 end

@@ -1,5 +1,6 @@
 class CheatsheetsController < ApplicationController
 	helper :contents
+	before_filter :load_category
 
   def index
     @category = Category.find_by_permalink(params[:category_id])		
@@ -8,6 +9,7 @@ class CheatsheetsController < ApplicationController
   
   def new
   	@cheatsheet = Cheatsheet.new
+  	@cheatsheet.main_category = @category.id
   	@pdf 		= Pdf.new
   	@thumbnail	= Thumbnail.new
   end
@@ -68,6 +70,10 @@ class CheatsheetsController < ApplicationController
   
   def edit
   	@cheatsheet =  Cheatsheet.find(params[:id])  
+  end
+  
+  def load_category
+  	@category = Category.find_by_permalink(params[:category_id])
   end
 
 end
