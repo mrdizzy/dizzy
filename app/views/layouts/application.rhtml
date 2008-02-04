@@ -27,7 +27,7 @@
 		<div id="content_container">
 			<div id="left_column">
 				
-					<p><%= location_icon %> <a href="/">Home</a> &gt; <a href="/ruby-on-rails">Ruby on Rails</a> &gt; <b><%= @main_category %></b></p>
+					<p><%= location_icon %> <a href="/">Home</a> &gt; <%= link_to "Ruby on Rails", latest_path %> &gt; <b><%= @main_category %></b></p>
 				
 				<%= yield %>
 			</div>

@@ -13,7 +13,7 @@
 			<% if administrator? %>
 			<p>
 
-		<%= link_to 'edit', edit_content_path(article_link.main_category_permalink, article_link.id) %> <%= diamond %> <%= link_to 'delete', content_path(@category.permalink,article_link.id), :method => "delete" %> </p>
+		<%= link_to 'edit', edit_content_path(article_link.main_category_permalink, article_link.id) %> <%= diamond %> <%= link_to 'delete', content_path(article_link.main_category_permalink,article_link.id), :method => "delete" %> </p>
 		<% end %>
 		</td>
 		<td>by<br/><b><%= article_link.user.name%></b></td>
@@ -42,8 +42,8 @@
 		<td><p><span class="date">POSTED <%= time_ago_in_words(article_link.date).upcase %> AGO</span>			<br/><%= posted_in(article_link.categories) %></p>
 			<h6><%= article_link.description %> </h6>
 				<% if administrator? %>
-			<p>
-		<%= link_to 'edit', edit_cheatsheet_path(article_link.main_category_permalink, article_link.id) %> <%= diamond %> <%= link_to 'delete', cheatsheet_path(article_link.id), :method => "delete" %> </p>
+			<p><%= link_to 'edit', edit_cheatsheet_path(article_link.main_category_permalink, article_link.id) %> <%= diamond %> <%= link_to 'delete', cheatsheet_path(article_link.main_category_permalink, article_link.id), :method => "delete" %> 
+		</p>
 		<% end %>
 		</td>
 		<td>by<br/><b><%= article_link.user.name%></b></td>

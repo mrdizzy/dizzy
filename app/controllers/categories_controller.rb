@@ -1,6 +1,5 @@
 class CategoriesController < ApplicationController
 	helper :contents
-	layout :determine_layout
 	
 	def show
 		unless read_fragment( :action => "show" ) || read_fragment( :action => "show", :part => "administrator" )

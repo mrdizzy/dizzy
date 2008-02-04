@@ -6,7 +6,7 @@ class AdministratorSessionsController < ApplicationController
 			administrator = User.authenticate(params[:username], params[:password])
 			if administrator
 				session[:administrator_id] = administrator.id
-				redirect_to(categories_path)
+				redirect_to latest_path
 			else
 			flash[:notice] = "Invalid user/password combination"
 				redirect_to(:action => "new")
