@@ -15,7 +15,7 @@ class SectionsController < ApplicationController
     @section = Section.new(params[:section])
     if @section.save
       flash[:notice] = 'Section was successfully created.'
-      redirect_to :action => 'list'
+      redirect_to :action => :show
     else
       render :action => 'new'
     end

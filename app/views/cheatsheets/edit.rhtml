@@ -1,6 +1,12 @@
 <%= javascript_include_tag :defaults %>
 <h1><%= bigarrow %> Editing <%= @cheatsheet.title %> cheatsheet</h1>
 
+<ul>
+<% @cheatsheet.sections.each do |section| %>
+	<li><%= link_to section.title, edit_section_path(@cheatsheet.main_category_permalink, @cheatsheet.permalink, section.id) %></li>
+<% end %>
+</ul>
+
 	<!-- MAIN EDIT FORM -->
 
 <% form_for :cheatsheet, :url => cheatsheet_path, :html => { :multipart => true, :method => :put } do |form| %>
