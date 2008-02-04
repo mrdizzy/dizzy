@@ -4,6 +4,10 @@ class ContentsController < ApplicationController
 	caches_page :show
 	cache_sweeper :content_sweeper, :only => [ :destroy, :update ]
 	
+	def index 
+		@latest = Content.latest
+	end
+	
 	def show 
 		@content 		= Content.find_by_permalink(params[:id])		
 		@comment 		= Comment.new				

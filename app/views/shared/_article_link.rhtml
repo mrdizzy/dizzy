@@ -4,7 +4,7 @@
 	
 	<% if article_link.is_a?(Article) %>
 		<td class="content">
-			<h2 class="blue_bold"><%= asterisk %> <%= link_to article_link.title, content_path(@category.permalink, article_link.permalink) %></h2>
+			<h2 class="blue_bold"><%= asterisk %> <%= link_to article_link.title, content_path(article_link.main_category_permalink, article_link.permalink) %></h2>
 			<p><%= article_link.description %></p>
 		</td>
 		<td>
@@ -13,7 +13,7 @@
 			<% if administrator? %>
 			<p>
 
-		<%= link_to 'edit', edit_content_path(@category.permalink, article_link.id) %> <%= diamond %> <%= link_to 'delete', content_path(@category.permalink,article_link.id), :method => "delete" %> </p>
+		<%= link_to 'edit', edit_content_path(article_link.main_category_permalink, article_link.id) %> <%= diamond %> <%= link_to 'delete', content_path(@category.permalink,article_link.id), :method => "delete" %> </p>
 		<% end %>
 		</td>
 		<td>by<br/><b><%= article_link.user.name%></b></td>
@@ -27,13 +27,13 @@
 		
 		<div class="left"><br/><br/><br/><br/><br/>
 			<%= image_tag("f/small_icons/pdf.png") %>	
-			<%= diamond %> <%= link_to "PDF", formatted_content_path(@category.permalink, article_link.permalink, "pdf") %> 
+			<%= diamond %> <%= link_to "PDF", formatted_content_path(article_link.main_category_permalink, article_link.permalink, "pdf") %> 
 		</div>
 		
 		<div class="right"><br/><br/><br/><br/><br/>
 			<%= image_tag("f/small_icons/html.png") %>
 			<%= diamond %> 
-			<%= link_to "HTML", content_path(@category.permalink, article_link.permalink) %> 
+			<%= link_to "HTML", content_path(article_link.main_category_permalink, article_link.permalink) %> 
 		</div>
 		
 		<%= pdf_thumbnail(article_link) %>
@@ -43,7 +43,7 @@
 			<h6><%= article_link.description %> </h6>
 				<% if administrator? %>
 			<p>
-		<%= link_to 'edit', edit_cheatsheet_path(@category.permalink, article_link.id) %> <%= diamond %> <%= link_to 'delete', cheatsheet_path(article_link.id), :method => "delete" %> </p>
+		<%= link_to 'edit', edit_cheatsheet_path(article_link.main_category_permalink, article_link.id) %> <%= diamond %> <%= link_to 'delete', cheatsheet_path(article_link.id), :method => "delete" %> </p>
 		<% end %>
 		</td>
 		<td>by<br/><b><%= article_link.user.name%></b></td>

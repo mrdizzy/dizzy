@@ -24,6 +24,10 @@ class Content < ActiveRecord::Base
 	belongs_to :user
 	validates_uniqueness_of :permalink	
 	
+	def self.latest
+		self.find(:all, :limit => 10, :order => "date DESC")	
+	end
+	
 	def related_article
 		related_article = CategoriesContent.find_by_category_id(self.main_category, :limit => 1, :order => "id DESC")
 		related_article.content
