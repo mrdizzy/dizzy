@@ -5,7 +5,7 @@
 <h1><%= asterisk %> <%= @content.title %> Cheatsheet</h1>
 <h2><%= @content.description %></h2>
 
-<%= render(:partial => "shared/content/section_list", :object => @content.sections, :locals => { :current_article_permalink => nil} ) %>
+<%= render(:partial => "shared/section_list", :object => @content.sections, :locals => { :current_article_permalink => nil} ) %>
 
 <%= spiro %>
 

@@ -1,5 +1,7 @@
+<% cache do %>
 <h1><%= @category.name %></h1>
 
 <table class="articles">
 	<%= render :partial => "shared/article_link", :collection => @category.contents %>
 </table>
+<% end %>

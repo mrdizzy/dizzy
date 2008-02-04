@@ -3,7 +3,8 @@
 <h1><%= asterisk %> <%= @section.content.title %> Cheatsheet</h1>
 <h2><%= @section.content.description %></h2>
 
-<%= render(:partial => "shared/content/section_list", :object => @section.content.sections, :locals => { :current_article_permalink => @section.permalink} ) %>
+<%= render(:partial => "shared/section_list", :object => @section.content.sections, :locals => { :current_article_permalink => @section.permalink} ) %>
+
 <% if @section.content.is_a?(Cheatsheet) %>
 	<div id="cheatsheet">
 <% else %>

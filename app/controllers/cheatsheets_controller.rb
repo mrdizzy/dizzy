@@ -1,7 +1,8 @@
 class CheatsheetsController < ApplicationController
 	helper :contents
 	before_filter :load_category
-
+	cache_sweeper :content_sweeper, :only => [ :destroy, :update ]
+	
   def index
     @category = Category.find_by_permalink(params[:category_id])		
     @cheatsheets = @category.cheatsheets
@@ -49,7 +50,7 @@ class CheatsheetsController < ApplicationController
   
   def create
   	@cheatsheet = Cheatsheet.new(params[:cheatsheet])
-  	
+  	@cheatsheet.user_id = session[:administrator_id]
   	unless params[:pdf][:uploaded_data].blank?
   		@pdf = Pdf.new(params[:pdf])
 	     @cheatsheet.pdf = @pdf
@@ -71,6 +72,8 @@ class CheatsheetsController < ApplicationController
   def edit
   	@cheatsheet =  Cheatsheet.find(params[:id])  
   end
+  
+  private
   
   def load_category
   	@category = Category.find_by_permalink(params[:category_id])

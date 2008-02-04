@@ -2,6 +2,8 @@ class CategoriesController < ApplicationController
 	helper :contents
 	layout :determine_layout
 	
+	caches_page :show
+	
 	def index 
 		@categories = Category.find(:all)
 		if administrator?
@@ -11,6 +13,9 @@ class CategoriesController < ApplicationController
 	
 	def show
 		@category = Category.find_by_permalink(params[:id])	
+		if administrator?
+			render(:template => "categories/admin_show")
+		end
 	end
 
 	def create

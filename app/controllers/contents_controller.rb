@@ -1,7 +1,9 @@
 class ContentsController < ApplicationController
 	
-	helper :comments	
-
+	helper :comments		
+	caches_page :show
+	cache_sweeper :content_sweeper, :only => [ :destroy, :update ]
+	
 	def show 
 		@content 		= Content.find_by_permalink(params[:id])		
 		@comment 		= Comment.new				
