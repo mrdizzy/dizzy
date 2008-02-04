@@ -1,0 +1,13 @@
+<div id="admin_links">
+	<h2 class="blue_bold"><%= asterisk %> Options</h2>
+<ul>
+	<li><%= link_to 'Articles', :controller => "content_admin", :action => "list" %></li>
+	<ul>
+		<li><%= link_to "New", :controller => "content_admin", :action => "new" %></li>
+	</ul>
+	<li><%= link_to 'Categories', :controller => "categories_admin" %></li>
+	<li><%= link_to 'Portfolio', :controller => "company_admin", :action => "list" %></li>
+	<li><%= link_to 'Cheatsheets', :controller => "cheatsheets_admin" %></li>
+</ul>
+
+</div>
