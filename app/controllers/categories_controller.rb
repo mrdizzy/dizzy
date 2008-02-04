@@ -1,13 +1,6 @@
 class CategoriesController < ApplicationController
 	helper :contents
 	layout :determine_layout
-
-	def index 
-		@categories = Category.find(:all)
-		if administrator?
-			render(:template => "categories/admin_index")
-		end
-	end
 	
 	def show
 		unless read_fragment( :action => "show" ) || read_fragment( :action => "show", :part => "administrator" )
@@ -42,23 +35,5 @@ class CategoriesController < ApplicationController
   			page.replace_html :add_new_category, :partial => "shared/admin/add_new_category"
   		end
   	end
-  
-  	def ajax_create
-  		@category = Category.new(params[:category])  	
-  		@content = Content.find(params[:id]) if params[:id]
-	  	if @category.save 
-	  		@content.categories << @category if params[:id]
-			render :update do |page|
-				page.replace_html :select_main_category, :partial => 'shared/admin/select_main_category'
-				page.replace_html :select_subcategory, :partial => 'shared/admin/select_subcategory'			
-				page.visual_effect :highlight, :select_main_category, :duration => 1.5, :endcolor => "'#ffffff'", :startcolor => "'#D1ECF9'"
-				page.visual_effect :highlight, :select_subcategory, :duration => 1.5, :endcolor => "'#ffffff'", :startcolor => "'#D1ECF9'"			
-				page.replace_html :add_new_category, :partial => 'shared/admin/add_new_category_link', :object => @content
-			end
-	    else  		
-	    	render :update do |page|
-				page.replace_html :add_new_category, :partial => 'shared/admin/add_new_category'
-			end			
-	    end  	
-	end  
+  	
 end
