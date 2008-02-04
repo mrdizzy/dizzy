@@ -1,11 +1,10 @@
 class CheatsheetsController < ApplicationController
 	helper :contents
 
-	def index
-		@category = Category.find_by_permalink(params[:category_id])		
-		@cheatsheets = @category.cheatsheets
-		
-	end
+  def index
+    @category = Category.find_by_permalink(params[:category_id])		
+    @cheatsheets = @category.cheatsheets
+  end
   
   def new
   	@cheatsheet = Cheatsheet.new

@@ -1,2 +1,0 @@
-<p><label for="select_subcategory"><%= diamond %> Subcategories</label>
-	<%= collection_select(:content, :subcategories, Category.find(:all, :order => :name), :id, :name, {}, {:multiple=> :true}) %></p>
