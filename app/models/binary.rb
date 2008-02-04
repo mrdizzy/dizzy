@@ -13,10 +13,7 @@
 #
 
 class Binary < ActiveRecord::Base
-	validates_presence_of :binary_data
-	validates_presence_of :content_type
-	validates_presence_of :size
-	validates_presence_of :filename
+	validates_presence_of :binary_data, :content_type, :size, :filename, :content_id
 	
 	def uploaded_data=(binary_data)
 		self.filename = binary_data.original_filename

@@ -15,4 +15,5 @@
 class Comment < ActiveRecord::Base
 	belongs_to :content
 	acts_as_tree :order => :subject
+	validates_presence_of :content_id, :email, :body, :subject
 end

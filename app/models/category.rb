@@ -13,8 +13,6 @@ class Category < ActiveRecord::Base
 	has_many :contents, :through => :categories_contents, :order => "date DESC"
 	has_many :cheatsheets, :through => :categories_contents, :source => "content", :order => "date DESC", :conditions => "contents.type = 'Cheatsheet'"
 	
-	validates_uniqueness_of :name
-	validates_presence_of :name
-	validates_presence_of :permalink
-	validates_uniqueness_of :permalink
+	validates_presence_of :name, :permalink
+	validates_uniqueness_of :permalink, :name
 end

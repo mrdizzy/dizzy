@@ -2,10 +2,6 @@ class ContentsController < ApplicationController
 	
 	helper :comments	
 
- 	def index
-		@content_pages, @contents = paginate :contents, :per_page => 10, :order => "'date' desc"
-	end
-	
 	def show 
 		@content 		= Content.find_by_permalink(params[:id])		
 		@comment 		= Comment.new				
@@ -27,6 +23,9 @@ class ContentsController < ApplicationController
     	@article = Article.find(params[:id])    
   	end
   	
+  	def new
+  		@article = Article.new
+  	end
 
   def update
     @article = Article.find(params[:id])
@@ -38,4 +37,15 @@ class ContentsController < ApplicationController
     end
   end  	
 	
+	def create
+		@article = Article.new(params[:article])
+		@article.user_id = session[:administrator_id]
+		if @article.valid?
+  	 		@article.save
+      		flash[:notice] = 'Cheatsheet was successfully created.'
+      		redirect_to :action => 'list'
+    	else
+      		render :action => 'new'
+   		end
+	end
 end
