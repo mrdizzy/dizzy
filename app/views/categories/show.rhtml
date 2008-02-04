@@ -1,6 +1,6 @@
 <h1><%= @category.name %></h1>
 
 <table class="articles">
-	<%= render :partial => "shared/content/article_link", :collection => @category.contents %>
+	<%= render :partial => "shared/article_link", :collection => @category.contents %>
 
 </table>

@@ -24,16 +24,6 @@ class BinariesController < ApplicationController
 		@image = @image_data.data
 		send_data(@image, :type => @image_data.content_type, :disposition => 'inline')	
 	end
-
-	def thumbnail
-		content = Content.find_by_permalink(params[:permalink])
-		get(content.thumbnail.id)
-	end
-	
-	def pdf 
-		content = Content.find_by_permalink(params[:permalink])
-		get(content.pdf.id)
-	end
 	
 	def get(id)
 		binary = Binary.find(id)

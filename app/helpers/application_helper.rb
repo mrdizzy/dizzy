@@ -21,10 +21,9 @@ module ApplicationHelper
 	def posted_in(categories)
 		result = []		
 		categories.each do |category|
-			result <<
-		 (link_to category.name, {:controller => :content, :action => :articles_for_category, :permalink => category.permalink })
+			result << (link_to category.name.upcase, category_path(category.permalink))
 		end
-		result = result.to_sentence(:skip_last_comma => true, :connector => "AMPERSAND").upcase
+		result = result.to_sentence(:skip_last_comma => true, :connector => "AMPERSAND")
 		result = result.gsub("AMPERSAND", "<span class=\"amp\">&amp;</span>")
 		"<span class=\"posted_in\">" + result + "</span>"
 	end
@@ -77,4 +76,13 @@ module ApplicationHelper
 	def random_number(higher=4)
 		(higher * rand).to_i
 	end
+	
+
+	def administrator?
+		if session[:administrator_id]
+			true
+		else
+			false
+		end
+	end	
 end

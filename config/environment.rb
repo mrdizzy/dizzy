@@ -62,3 +62,10 @@ end
 ExceptionNotifier.exception_recipients = %w(david.pettifer@googlemail.com)
 ExceptionNotifier.sender_address = %("Application Error" <errors@dizzy.co.uk>)
 ExceptionNotifier.email_prefix = "[Dizzy] "
+
+
+# Add new mime types for use in respond_to blocks:
+# Mime::Type.register "text/richtext", :rtf
+# Mime::Type.register "application/x-mobile", :mobile
+Mime::Type.register "application/pdf", :pdf
+Mime::Type.register "image/png", :png

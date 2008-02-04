@@ -12,9 +12,9 @@
 #  email           :string(255)   
 #
 
-require 'digest/sha1'
-
 class User < ActiveRecord::Base
+
+require 'digest/sha1'
 	validates_presence_of :name
 	validates_uniqueness_of :name
 	attr_accessor :password_confirmation

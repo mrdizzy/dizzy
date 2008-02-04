@@ -1,7 +1,12 @@
 class CategoriesController < ApplicationController
 	helper :contents
+	layout :determine_layout
+	
 	def index 
 		@categories = Category.find(:all)
+		if administrator?
+			render(:template => "categories/admin_index")
+		end
 	end
 	
 	def show

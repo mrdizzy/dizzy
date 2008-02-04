@@ -1,0 +1,11 @@
+<% form_tag( administrator_sessions_path, :method => "post" ) do %>
+    
+	<p><label for="administrator_username">Username</label><br/>
+	<%= text_field_tag 'username' %></p>
+
+	<p><label for="administrator_password">Password</label><br/>
+	<%= password_field_tag 'password' %></p>
+	
+	<p><%= submit_tag %></p>
+
+<% end %>
