@@ -1,0 +1,187 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<title>Ruby on Rails - Rails Migrations 7 - Dizzy</title>
+	
+	<link href="/stylesheets/main.css?1201129169" media="all" rel="Stylesheet" type="text/css" /><link href="/stylesheets/header_footer.css?1201129169" media="all" rel="Stylesheet" type="text/css" /><link href="/stylesheets/typography.css?1201129169" media="all" rel="Stylesheet" type="text/css" /><link href="/stylesheets/forms.css?1201129169" media="all" rel="Stylesheet" type="text/css" /><link href="/stylesheets/lists.css?1201129169" media="all" rel="Stylesheet" type="text/css" /><link href="/stylesheets/tables.css?1201129169" media="all" rel="Stylesheet" type="text/css" />
+	<link href="/stylesheets/cheatsheet.css?1201129169" media="all" rel="Stylesheet" type="text/css" />
+	<link href="/stylesheets/syntax_highlighting.css?1201129169" media="all" rel="Stylesheet" type="text/css" />
+	<link href="/stylesheets/comments.css?1201129169" media="all" rel="Stylesheet" type="text/css" />
+	
+	<script src="/javascripts/prototype.js?1201129168" type="text/javascript"></script>
+<script src="/javascripts/effects.js?1201129168" type="text/javascript"></script>
+<script src="/javascripts/dragdrop.js?1201129168" type="text/javascript"></script>
+<script src="/javascripts/controls.js?1201129168" type="text/javascript"></script>
+<script src="/javascripts/application.js?1201129168" type="text/javascript"></script>
+	<script src="/javascripts/rollover.js?1201129168" type="text/javascript"></script> 
+	
+	<script type="text/javascript">
+	    window.onload = function() {
+	      new Rollover('footer', {suffixSeperator: '/'});
+	    }    
+	</script>
+</head>
+<body>	
+
+	<div id="page_container">
+		
+		<div id="top_container">
+	<div id="logo">
+		<img alt="Dizzy logo" height="84" src="/images/f/branding/header/logo.png?1201129165" width="85" />	
+	</div>
+	<div id="right_of_logo">
+		<img alt="Making business beautiful" height="32" src="/images/f/branding/header/slogan_new.png?1201129165" width="182" />	
+		<img alt="Makeover" src="/images/f/branding/header/2.png?1201129165" />
+	</div>
+</div>
+		<div id="navigation">
+	<div class="nav_selected"><h2><a href="/portfolio/show/1">HOME</a></h2></div>		
+	<div class="nav_button"><h2><a href="#" onclick="new Ajax.Request('/welcome/contact', {asynchronous:true, evalScripts:true}); return false;">CONTACT</a></h2></div>
+	<div class="nav_button"><h2><a href="/ruby_on_rails/categories/action-mailer/cheatsheets">SITEMAP </a></h2></div>
+	<div class="nav_button"><h2><a href="/ruby-on-rails">RUBY ON RAILS</a></h2></div>
+	<div class="nav_button"><h2><a href="/ruby-on-rails">CHEATSHEETS</a></h2></div>
+</div>
+	
+
+		<div id="content_container">
+			<div id="left_column">
+				
+					<p><img alt="You are here:" height="24" src="/images/f/small_icons/you-are-here.gif?1201129163" width="25" /> <a href="/">Home</a> &gt; <a href="/ruby_on_rails/latest">Ruby on Rails</a> &gt; <b>Migrations</b></p>
+				
+				
+
+
+
+<h1><img alt="*" height="13" src="/images/f/bullets/pixels/asterisk.png?1201129166" width="13" /> Rails Migrations 7 Cheatsheet</h1>
+<h2>Up and down methods, rake tasks, database mapping, loading fixtures, example migration file, all packed onto one A4 page for an easy at-a-glance reference</h2>
+
+<div id="section">	
+	<div id="section_container">
+		<div id="topmiddle"></div>
+		<div id="topleft"></div><div id="topright"></div>
+		
+		<div class="clearfix" id="section_list">
+		<ul>		
+		
+				
+				<li><a href="/ruby_on_rails/categories/migrations/contents/rails-migrations/sections/database-mapping">Database mapping</a> - how migration column types map to your underlying database</li>
+			
+		
+				
+				<li><a href="/ruby_on_rails/categories/migrations/contents/rails-migrations/sections/directory-structure">Directory Structure</a> - where migration files go</li>
+			
+		
+				
+				<li><a href="/ruby_on_rails/categories/migrations/contents/rails-migrations/sections/example-migration-file">Example migration</a> - what a migration file looks like</li>
+			
+		
+				
+				<li><a href="/ruby_on_rails/categories/migrations/contents/rails-migrations/sections/rails-migrations-methods">Methods</a> - interact with your database using migration methods</li>
+			
+		
+				
+				<li><a href="/ruby_on_rails/categories/migrations/contents/rails-migrations/sections/rake-tasks">Rake tasks</a> - a list of built-in migration-related Rake tasks</li>
+			
+		
+		</ul>
+		</div>		
+		<div id="bottomleft"></div><div id="bottomright"></div>
+		<div id="bottommiddle"></div>
+	</div>
+</div>
+
+<div class="spiro"> &nbsp;</div>
+
+<div id="related">
+<h3 class="blue_bold"><img alt="*" height="13" src="/images/f/bullets/pixels/asterisk.png?1201129166" width="13" /> Related</h3>
+	<p><img alt="*" height="5" src="/images/f/bullets/pixels/diamond.png?1201129166" width="5" /> <a href="/ruby_on_rails/categories/migrations/contents/rails-migrations">Rails Migrations 7</a></p>
+</div>
+<div id="comments">
+	<h3 class="blue_bold"><img alt="*" height="13" src="/images/f/bullets/pixels/asterisk.png?1201129166" width="13" /> Comments</h3>
+	
+	<div id="add_comment">
+		<p><img alt="*" height="5" src="/images/f/bullets/pixels/diamond.png?1201129166" width="5" /> <a href="#" onclick="new Ajax.Request('/comments/comment_form/1', {asynchronous:true, evalScripts:true}); return false;">Add new comment</a></p>
+	</div>
+	
+	
+
+	
+
+</div>
+
+
+			</div>
+			<div id="right_column">
+				
+				
+
+	<div class="cheatsheet_thumbnail"><img alt="Rails-migrations" src="/ruby_on_rails/categories/migrations/contents/rails-migrations.png?1202163760" /></div>
+	<div class="spiro"> &nbsp;</div>
+
+
+				
+<ul class="categories">
+	
+	
+		<li><a href="/ruby_on_rails/categories/action-mailer">Action Mailer</a></li>
+	
+		<li><a href="/ruby_on_rails/categories/active-record">Active Record</a></li>
+	
+		<li><a href="/ruby_on_rails/categories/ajax">AJAX</a></li>
+	
+		<li><a href="/ruby_on_rails/categories/beginners">Beginners</a></li>
+	
+		<li><a href="/ruby_on_rails/categories/capistrano">Capistrano</a></li>
+	
+		<li><a href="/ruby_on_rails/categories/cheatsheets">Cheatsheets</a></li>
+	
+		<li><a href="/ruby_on_rails/categories/controllers">Controllers</a></li>
+	
+		<li><a href="/ruby_on_rails/categories/data-structures">Data Structures</a></li>
+	
+		<li><a href="/ruby_on_rails/categories/file-handling">File handling</a></li>
+	
+		<li><a href="/ruby_on_rails/categories/generators">Generators</a></li>
+	
+		<li><a href="/ruby_on_rails/categories/migrations">Migrations</a></li>
+	
+		<li><a href="/ruby_on_rails/categories/models">Models</a></li>
+	
+		<li><a href="/ruby_on_rails/categories/plugins">Plugins</a></li>
+	
+		<li><a href="/ruby_on_rails/categories/rest">REST</a></li>
+	
+		<li><a href="/ruby_on_rails/categories/routing-and-urls">Routing and URLs</a></li>
+	
+		<li><a href="/ruby_on_rails/categories/scaffolding">Scaffolding</a></li>
+	
+		<li><a href="/ruby_on_rails/categories/testing">Testing</a></li>
+	
+		<li><a href="/ruby_on_rails/categories/time-and-dates">Time and Dates</a></li>
+	
+</ul>
+
+				
+			</div>
+			
+		</div>
+		
+		
+<div id="footer" class="clearfix">
+	
+	<table class="footer_logos">
+		<tr>	
+		<td><a href="/portfolio/show/5"><img alt="5" src="/binaries/footer_logo/5.png?1202152356" /></a></td>
+<td><div id="poo"><img alt="*" height="13" src="/images/f/bullets/other/diamond.png?1201129166" width="13" /></div></td><td><a href="/portfolio/show/2"><img alt="2" src="/binaries/footer_logo/2.png?1202151741" /></a></td>
+<td><div id="poo"><img alt="*" height="13" src="/images/f/bullets/other/diamond.png?1201129166" width="13" /></div></td><td><a href="/portfolio/show/15"><img alt="15" src="/binaries/footer_logo/15.png?1202151740" /></a></td>
+<td><div id="poo"><img alt="*" height="13" src="/images/f/bullets/other/diamond.png?1201129166" width="13" /></div></td><td><a href="/portfolio/show/11"><img alt="11" src="/binaries/footer_logo/11.png?1202151742" /></a></td>
+<td><div id="poo"><img alt="*" height="13" src="/images/f/bullets/other/diamond.png?1201129166" width="13" /></div></td><td><a href="/portfolio/show/6"><img alt="6" src="/binaries/footer_logo/6.png?1202152530" /></a></td>
+<td><div id="poo"><img alt="*" height="13" src="/images/f/bullets/other/diamond.png?1201129166" width="13" /></div></td>
+		</tr>
+	</table>
+</div>
+
+	
+	</div>
+</body>
+</html>
