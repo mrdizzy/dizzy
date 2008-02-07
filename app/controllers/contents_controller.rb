@@ -1,8 +1,8 @@
 class ContentsController < ApplicationController
 	
-	helper :comments		
-	caches_page :show
-	cache_sweeper :content_sweeper, :only => [ :destroy, :update ]
+	helper 			:comments		
+	caches_page 	:show
+	cache_sweeper 	:content_sweeper, :only => [ :destroy, :update ]
 	
 	def index 
 		@latest = Content.recent

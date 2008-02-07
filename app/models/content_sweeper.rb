@@ -5,6 +5,7 @@ class ContentSweeper < ActionController::Caching::Sweeper
 	def after_save(record)
 		expire_content_page(record)
 		expire_category_page(record)
+		expire_welcome_page(record)
 	end
 	
 	private
@@ -21,5 +22,9 @@ class ContentSweeper < ActionController::Caching::Sweeper
 			expire_fragment(:controller => "categories", :action => "show", :id =>category.permalink)
 			expire_fragment(:controller => "categories", :action => "show", :part => "administrator", :id => category.permalink)
 		end
+	end
+	
+	def expire_welcome_page(record)
+		expire_page(:controller => "welcome", :action => "index")
 	end
 end
