@@ -23,8 +23,12 @@ class Content < ActiveRecord::Base
     
 	belongs_to :user
 	validates_uniqueness_of :permalink	
-	
+
 	def self.latest
+		self.find(:first, :order => "date DESC")	
+	end
+	
+	def self.recent
 		self.find(:all, :limit => 10, :order => "date DESC")	
 	end
 	

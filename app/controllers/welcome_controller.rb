@@ -2,10 +2,10 @@ class WelcomeController < ApplicationController
 
 	def index
 		paginate_logos
-		
-		@main_article = @recent_articles.shift
-		@poll = Poll.find(:first, :order => "'id' desc")
-		@cheatsheet = Cheatsheet.find(:first, :order => "'id' desc")
+		@recent_articles 	= Article.recent
+		@main_article 		= @recent_articles.shift
+		@poll 				= Poll.find(:first, :order => "'id' desc")
+		@cheatsheet 		= Cheatsheet.latest
 	end
 	
 	def next_logo
@@ -27,7 +27,6 @@ class WelcomeController < ApplicationController
 			page.replace_html :contact_us, "<b>Contact us</b>"
 		end
 	end
-	
 	
 	private
 	

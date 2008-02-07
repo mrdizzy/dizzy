@@ -23,7 +23,7 @@ role :db,  "www21.a2hosting.com", :primary => true
 
 set :svn_username, "dizzynew_david"	
 set :svn_password, "world1" 
-
+	
 # SSH OPTIONS
 #=============================================================================
 ssh_options[:port] = 7822 

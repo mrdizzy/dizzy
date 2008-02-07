@@ -5,7 +5,7 @@ class ContentsController < ApplicationController
 	cache_sweeper :content_sweeper, :only => [ :destroy, :update ]
 	
 	def index 
-		@latest = Content.latest
+		@latest = Content.recent
 	end
 	
 	def show 
