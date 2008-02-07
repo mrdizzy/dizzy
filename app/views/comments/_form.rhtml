@@ -7,4 +7,6 @@
 <label for="comment_content"><%= diamond %> Comment</label>
 <%= form.text_area :body, :size=>"20x10" %><br/>
  	
+<%= form.hidden_field :content_id %>
+
 <%= submit_button %>
