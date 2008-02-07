@@ -6,7 +6,7 @@ body {
 }
 
 #page_container { 
-	width:900px;
+	width:975px;
 	margin: 0 auto;
 }
 div {
@@ -83,4 +83,8 @@ img {
 	margin-bottom:0.4em;
 	float:left;
 	height:1.9em;
+}
+a:hover .nav_button {
+	border-bottom:1px solid #29A4BD;
+	color: #29A4BD;
 }

@@ -27,18 +27,22 @@ h2 {
 	margin-top:1.125; 
 	margin-bottom: 1.125em;
 }
-	#navigation h2 a {
+	#navigation h2 {
 		font-weight:normal;
 		text-decoration:none;
 		margin-top:0.2em;
 		margin-bottom:0.1em;
 		letter-spacing:-0.08em;
-		font-size: 0.6em; /* 15px */ 
+		font-size: 0.75em; /* 15px */ 
 		font-family: "Arial Black";
 		color: #e1e1e1;		
 	}
-	#navigation .nav_selected h2 a {
+	#navigation .nav_selected h2 {
 		color: #29A4BD;
+	}
+
+	#navigation .nav_button h2 a:hover {
+		color:#29A4BD;
 	}
 	#cheatsheet h2 {
 		font-weight:bold;
@@ -62,9 +66,13 @@ h3 {
 	font-family: "Georgia";
 	font-style:italic;
 	letter-spacing:-0.03em;
-	
 }
-	#cheatsheet h3 { font-family:"Trebuchet MS"; color:black; letter-spacing:0em; font-size:1.3em;}
+	#cheatsheet h3 { 
+		font-family:"Trebuchet MS"; 
+		color:black; 
+		letter-spacing:0em; 
+		font-size:1.3em;
+	}
 	
 	#company_description h3 {
 		font-weight:normal;
@@ -151,6 +159,12 @@ p {
 
 /* Classes
 ==================================== */
+.amp { 
+	color:#434343;
+	font-size:1.3em;
+	font-family:"Georgia";
+	font-style:italic;
+}
 .bigger {
 	font-size: 1.25em; /* 15px */ 
 	line-height: 1.2em; /* 18px */ 
@@ -184,14 +198,13 @@ p {
 	font-family: "Arial Black";
 	color: #29A4BD;
 }
-.amp { 
-	color:#434343;
-	font-size:1.3em;
-	font-family:"Georgia";
-	font-style:italic;
-}
+
 /* Links
 ==================================== */
 a:link { color: #29A4BD; }
 
 a:visited { color:#006A8C; }
+
+#navigation a:hover { 
+	color:#006A8C;
+}
