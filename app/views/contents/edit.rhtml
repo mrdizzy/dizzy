@@ -1,8 +1,9 @@
 <h1><%= bigarrow %> Editing article "<%= @article.title %>"</h1>
 
-<% form_for :article, :url => content_path(@article.main_category_permalink, @article.id),  :html => { :name => "edit_form", :method => "put" } do |form| %>
+<% form_for :article, :url => content_path, :html => { :name => "edit_form", :method => "put" } do |form| %>
 	
 <%= render :partial => "form", :object => form %>
 
 <%= submit_button %>
- <% end %>
+
+<% end %>

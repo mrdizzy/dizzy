@@ -11,17 +11,28 @@ ActionController::Routing::Routes.draw do |map|
 
   # You can have the root of your site routed by hooking up '' 
   # -- just remember to delete public/index.html.
-    map.latest 'ruby_on_rails/latest', :controller => "contents", :action => "index"
+  
+    map.latest 'ruby_on_rails/latest', :controller => "contents", :action => "index"    
     map.login 'login', :controller => "administrator_sessions", :action => "new"
 	map.connect '/', :controller => "welcome"
+    
     map.resources :administrator_sessions
+    
     map.resources "categories", :path_prefix => "/ruby_on_rails" do |ruby_on_rails|
     	ruby_on_rails.resources :cheatsheets
     	ruby_on_rails.resources :contents do |contents|
     		contents.resources :sections
     	end    	
 	end
- 
+	
+	map.resources "contents", :name_prefix => "main_" do |contents|
+		contents.resources :comments do |comments|
+			comments.resources :child_comments, :controller => "comments"
+		end
+	end
+	
+	#map.resources :child_comments, :path_prefix => "/comments/:parent_comment_id", :controller => "comments"
+	
   # Portfolio Binary images
     map.connect "binaries/footer_logo/:id.:extension", :controller => "binaries", :action => "footer_logo"
 	map.connect "binaries/footer_logo/:id/over.:extension", :controller => "binaries", :action => "grey_footer_logo"		

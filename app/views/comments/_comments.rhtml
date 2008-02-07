@@ -1,16 +1,19 @@
 <div id="comments">
+	
 	<h3 class="blue_bold"><%= asterisk %> Comments</h3>
 	
 	<div id="add_comment">
-		<p><%= diamond %> <%= link_to_remote("Add new comment",{ :url => { :action => "comment_form", :id => comments.id, :controller => "comments"} }) %></p>
+		<p><%= diamond %> <%= link_to_remote "Add new comment", :url => new_comment_path(@content.id), :method => :get %></p>
 	</div>
 	
 	<%= prepare_comments(comments.comments) %>
 
 	<% unless comments.comments.empty? %>
+	
 	<div id="add_comment">
-		<p><%= diamond %> <%= link_to_remote("Add new comment",{ :url => { :action => "comment_form", :id => comments.id, :controller => "comments"} }) %></p>
+		<p><%= diamond %> </p>
 	</div>
+
 <% end %>
 
 </div>

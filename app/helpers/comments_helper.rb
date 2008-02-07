@@ -12,7 +12,7 @@ module CommentsHelper
 			
 			"<div class=\"comments_right\"><h6>#{comment.subject}</h6><p>#{comment.body}</p></div>" + 
 			
-			"<div class=\"reply_comment\" id=\"reply_#{comment.id}\">" + link_to_remote("Reply to this comment",{ :url => { :controller => "comments", :action => "reply", :id => comment.id} })  + "</div>"
+			"<div class=\"reply_comment\" id=\"reply_#{comment.id}\">" + link_to_remote("Reply to this comment", :url => new_child_comment_path(:content_id => comment.content.id, :comment_id => comment.id), :method => :get)  + "</div>"
 						
 				prepare_comments(comment.children,result,counter) unless comment.children.empty?
 						

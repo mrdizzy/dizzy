@@ -1,63 +1,72 @@
 <!-- LEFT COLUMN -->
+
 <div id="welcome">
-<div id="first_half">
-	<div id="welcome_left">
+	<div id="first_half">
+		<div id="welcome_left">
 		<!-- Main article -->
-		<div class="inside">
-			<h5><%= asterisk %> <%= @main_article.main_category_name %></h5>
-			<h1><%= @main_article.title %> </h1>
+			<div class="inside">
+				<h5><%= asterisk %> <%= @main_article.main_category_name %></h5>
+				<h1><%= @main_article.title %> </h1>
 			
-			<h4>POSTED <%= time_ago_in_words(@main_article.date).upcase %> AGO</h4>
-			</p>
+				<h4>POSTED <%= time_ago_in_words(@main_article.date).upcase %> AGO</h4>
+				
 				<%= spiro %>
 			
-		<h2><%= @main_article.description %></h2>
+				<h2><%= @main_article.description %></h2>
 	
-		<p><%= strip_tags(truncate(@main_article.content, 300)) %> . <%= link_to "More &raquo;", content_path(@main_article.main_category_permalink, @main_article.permalink) %></p>
+				<p><%= strip_tags(truncate(@main_article.content, 300)) %> . <%= link_to "More &raquo;", content_path(@main_article.main_category_permalink, @main_article.permalink) %></p>
+			</div>
+			<div id="recent">
+				<div class="inside">		
+					<%= render :partial => "recent_article", :collection => @recent_articles %>
+				</div>		
+			</div>
 		</div>
-		<div id="recent">
-			<div class="inside">		
-		<%= render :partial => "recent_articles", :collection => @recent_articles %>
-		</div>
+	
+		<div id="welcome_middle">
 		
-	</div>
-	</div>
-	<div id="welcome_middle">
-		
-		<% categories = Category.find(:all, :order => "'name'")%>
-		<% categories.each do |category| %>
-		
-		<p><%= link_to category.name, category_path(category.permalink) %></a></p>
-		<% end %>
-		<%=spiro%>
+			<% categories = Category.find(:all, :order => "'name'")%>
+			
+			<% categories.each do |category| %>
+				<p><%= link_to category.name, category_path(category.permalink) %></a></p>
+			<% end %>
+			
+			<%= spiro %>
 					
 		</div>
+		
 	<!-- RIGHT COLUMN -->
-	<div id="welcome_right">	
-		<!-- Latest logos -->
-		<div id="latest_container">
+	
+		<div id="welcome_right">	
+			
+			<!-- Latest logos -->
+			<div id="latest_container">
+			
 			<h5><%= asterisk %> Latest work</h5>
+			
 			<div id="logo_container">
 				<div id="latest_logo"><%= link_to image_tag("/binaries/portfolio_image/#{@logos[0].id}.png"), :controller => :portfolio, :action => :show, :id => @logos[0].company_id %></div>
 			</div>
+			
 			<div id="logo_pagination">
 		  		<%= render :partial => "logo_pagination" %>
 			</div>
-		</div>
-			<div class="inside">
-			
-		<h5><%= asterisk %> Cheatsheets</h5>
-					
-		<h3><%= link_to @cheatsheet.title, content_path(@cheatsheet.main_category_permalink, @cheatsheet.permalink) %></a></h3>
-			<h4><%= time_ago_in_words(@cheatsheet.date).upcase %> AGO </h4>
-	
 		
-		<h6><%= diamond %> <%= @cheatsheet.description %></h6>
+		</div>
+		
+		<div class="inside">
+			
+			<h5><%= asterisk %> Cheatsheets</h5>
+						
+			<h3><%= link_to @cheatsheet.title, content_path(@cheatsheet.main_category_permalink, @cheatsheet.permalink) %></a></h3>
+			
+			<h4><%= time_ago_in_words(@cheatsheet.date).upcase %> AGO </h4>
+			
+			<h6><%= diamond %> <%= @cheatsheet.description %></h6>
 		
 		<%=spiro%>
-         </div>
-		</div>
-
-<div class="clearfix">&nbsp;</div>
-</div>
+		
+        </div>
+	</div>
+	<div class="clearfix">&nbsp;</div>
 </div>
