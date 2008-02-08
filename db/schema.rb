@@ -2,7 +2,7 @@
 # migrations feature of ActiveRecord to incrementally modify your database, and
 # then regenerate this schema definition.
 
-ActiveRecord::Schema.define(:version => 12) do
+ActiveRecord::Schema.define(:version => 9) do
 
   create_table "addresses", :force => true do |t|
   end
@@ -16,8 +16,6 @@ ActiveRecord::Schema.define(:version => 12) do
     t.column "content_id",   :integer
   end
 
-  add_index "binaries", ["content_id"], :name => "fk_content_binaries"
-
   create_table "categories", :force => true do |t|
     t.column "name",      :string
     t.column "permalink", :string
@@ -29,9 +27,6 @@ ActiveRecord::Schema.define(:version => 12) do
     t.column "main",        :boolean
   end
 
-  add_index "categories_contents", ["content_id"], :name => "fk_content_categories_contents"
-  add_index "categories_contents", ["category_id"], :name => "fk_category_categories_contents"
-
   create_table "comments", :force => true do |t|
     t.column "body",       :text
     t.column "subject",    :string
@@ -40,8 +35,6 @@ ActiveRecord::Schema.define(:version => 12) do
     t.column "content_id", :integer
     t.column "created_at", :datetime
   end
-
-  add_index "comments", ["content_id"], :name => "fk_content_comments"
 
   create_table "companies", :force => true do |t|
     t.column "name",        :string, :limit => 40
@@ -57,8 +50,6 @@ ActiveRecord::Schema.define(:version => 12) do
     t.column "content",     :text
     t.column "permalink",   :string
   end
-
-  add_index "contents", ["user_id"], :name => "fk_user_contents"
 
   create_table "conversations", :force => true do |t|
     t.column "subject", :string
