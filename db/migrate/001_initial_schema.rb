@@ -1,11 +1,12 @@
 class InitialSchema < ActiveRecord::Migration
   def self.up
   
+  
     create_table "addresses", :force => true do |t|
     end
   
     create_table "binaries", :force => true do |t|
-      t.column "binary_data",  :binary, :limit => 2.megabytes
+      t.column "binary_data",  :binary
       t.column "type",         :string
       t.column "content_type", :string
       t.column "size",         :integer
@@ -18,13 +19,14 @@ class InitialSchema < ActiveRecord::Migration
       t.column "permalink", :string
     end
   
-    create_table "categories_contents", :id => false, :force => true do |t|
+    create_table "categories_contents", :force => true do |t|
       t.column "category_id", :integer
       t.column "content_id",  :integer
+      t.column "main",        :boolean
     end
   
     create_table "comments", :force => true do |t|
-      t.column "body",       :string
+      t.column "body",       :text
       t.column "subject",    :string
       t.column "email",      :string
       t.column "parent_id",  :integer
@@ -114,6 +116,14 @@ class InitialSchema < ActiveRecord::Migration
       t.column "type",      :string
     end
   
+    create_table "sections", :force => true do |t|
+      t.column "body",       :text
+      t.column "content_id", :integer
+      t.column "title",      :string
+      t.column "summary",    :string
+      t.column "permalink",  :string
+    end
+  
     create_table "sessions", :force => true do |t|
       t.column "session_id", :string
       t.column "data",       :text
@@ -150,7 +160,8 @@ class InitialSchema < ActiveRecord::Migration
       t.column "poll_id", :integer
       t.column "option",  :string
       t.column "total",   :integer
-    end  
+    end
+  
   end
 
   def self.down
@@ -172,6 +183,7 @@ class InitialSchema < ActiveRecord::Migration
     drop_table :portfolio_items
     drop_table :portfolio_types
     drop_table :recipients
+    drop_table :sections
     drop_table :sessions
     drop_table :ticket_collaterals
     drop_table :tickets
