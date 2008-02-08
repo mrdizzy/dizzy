@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(:version => 12) do
   add_index "categories_contents", ["category_id"], :name => "fk_category_categories_contents"
 
   create_table "comments", :force => true do |t|
-    t.column "body",       :string
+    t.column "body",       :text
     t.column "subject",    :string
     t.column "email",      :string
     t.column "parent_id",  :integer
