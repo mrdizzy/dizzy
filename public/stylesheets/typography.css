@@ -117,14 +117,14 @@ h6 {
 	margin-bottom: 0em;	
 }
 	#comments h6 {
+		color:#29A4BD;
 		font-family:"Georgia";
+		font-size:1.6em;
 		font-weight:normal;
-		font-size: 1.6em; /* 16px */ 
 		letter-spacing:-0.035em;
-		line-height: 1.125em; /* 18px */ 
-		margin-top:0em; 
-		margin-bottom: 0.6em;
-		color: #29A4BD;	
+		line-height:1.125em;
+		margin-bottom:0.6em;
+		margin-top:0em;
 	}
 	.articles h6 {
 		font-size:1.2em;
