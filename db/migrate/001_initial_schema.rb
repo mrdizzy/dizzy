@@ -2,9 +2,6 @@ class InitialSchema < ActiveRecord::Migration
   def self.up
   
   
-    create_table "addresses", :force => true do |t|
-    end
-  
     create_table "binaries", :force => true do |t|
       t.column "binary_data",  :binary
       t.column "type",         :string
@@ -13,6 +10,8 @@ class InitialSchema < ActiveRecord::Migration
       t.column "filename",     :string
       t.column "content_id",   :integer
     end
+  
+    add_index "binaries", ["content_id"], :name => "fk_content_binaries"
   
     create_table "categories", :force => true do |t|
       t.column "name",      :string
@@ -25,6 +24,9 @@ class InitialSchema < ActiveRecord::Migration
       t.column "main",        :boolean
     end
   
+    add_index "categories_contents", ["content_id"], :name => "fk_content_categories_contents"
+    add_index "categories_contents", ["category_id"], :name => "fk_category_categories_contents"
+  
     create_table "comments", :force => true do |t|
       t.column "body",       :text
       t.column "subject",    :string
@@ -33,6 +35,8 @@ class InitialSchema < ActiveRecord::Migration
       t.column "content_id", :integer
       t.column "created_at", :datetime
     end
+  
+    add_index "comments", ["content_id"], :name => "fk_content_comments"
   
     create_table "companies", :force => true do |t|
       t.column "name",        :string, :limit => 40
@@ -49,38 +53,11 @@ class InitialSchema < ActiveRecord::Migration
       t.column "permalink",   :string
     end
   
+    add_index "contents", ["user_id"], :name => "fk_user_contents"
+  
     create_table "conversations", :force => true do |t|
       t.column "subject", :string
       t.column "type",    :string
-    end
-  
-    create_table "conversations_people", :id => false, :force => true do |t|
-      t.column "conversation_id", :integer
-      t.column "person_id",       :integer
-    end
-  
-    create_table "email_bodies", :force => true do |t|
-      t.column "body", :text
-    end
-  
-    create_table "emails", :force => true do |t|
-      t.column "email",     :string
-      t.column "person_id", :integer
-    end
-  
-    create_table "folders", :force => true do |t|
-      t.column "name",      :string
-      t.column "parent_id", :integer
-    end
-  
-    create_table "people", :force => true do |t|
-      t.column "firstname",      :string
-      t.column "surname",        :string
-      t.column "person_type_id", :integer
-    end
-  
-    create_table "person_types", :force => true do |t|
-      t.column "description", :string
     end
   
     create_table "polls", :force => true do |t|
@@ -110,12 +87,6 @@ class InitialSchema < ActiveRecord::Migration
       t.column "visible",             :boolean,               :default => true
     end
   
-    create_table "recipients", :force => true do |t|
-      t.column "email_id",  :integer
-      t.column "ticket_id", :integer
-      t.column "type",      :string
-    end
-  
     create_table "sections", :force => true do |t|
       t.column "body",       :text
       t.column "content_id", :integer
@@ -132,20 +103,6 @@ class InitialSchema < ActiveRecord::Migration
   
     add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
     add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
-  
-    create_table "ticket_collaterals", :force => true do |t|
-      t.column "name",         :string
-      t.column "body",         :binary
-      t.column "ticket_id",    :integer
-      t.column "content_type", :string
-    end
-  
-    create_table "tickets", :force => true do |t|
-      t.column "initial_report",  :text
-      t.column "conversation_id", :integer
-      t.column "type",            :string
-      t.column "date",            :datetime
-    end
   
     create_table "users", :force => true do |t|
       t.column "name",            :string
@@ -165,7 +122,6 @@ class InitialSchema < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :addresses
     drop_table :binaries
     drop_table :categories
     drop_table :categories_contents
@@ -173,20 +129,11 @@ class InitialSchema < ActiveRecord::Migration
     drop_table :companies
     drop_table :contents
     drop_table :conversations
-    drop_table :conversations_people
-    drop_table :email_bodies
-    drop_table :emails
-    drop_table :folders
-    drop_table :people
-    drop_table :person_types
     drop_table :polls
     drop_table :portfolio_items
     drop_table :portfolio_types
-    drop_table :recipients
     drop_table :sections
     drop_table :sessions
-    drop_table :ticket_collaterals
-    drop_table :tickets
     drop_table :users
     drop_table :votes
   end

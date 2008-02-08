@@ -1,8 +1,8 @@
 class CommentsController < ApplicationController
 	
 	def new
-		@comment = Comment.new
-		@comment.content_id = params[:content_id]
+		@comment 				= Comment.new
+		@comment.content_id 	= params[:content_id]
 		
 		respond_to do |wants|
 		 	wants.html
@@ -16,10 +16,8 @@ class CommentsController < ApplicationController
 	
 	def create		
 		if params[:comment_id]	
-			comment = Comment.find(params[:comment_id])
-			
-			comment.children.create(params[:comment])
-			
+			comment 	= Comment.find(params[:comment_id])			
+			comment.children.create(params[:comment])			
 		else
 			@content 	= Content.find(params[:content_id])		
 			@content.comments.create(params[:comment])
