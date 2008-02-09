@@ -8,7 +8,9 @@
 /* Page 
 ======================*/
 #method.blue {
-	background-color:#F0F4FC;
+	background-color:#D8EEF9;
+	padding:5px;
+	margin-top:10px;
 }
 #cheatsheet_title {
 	float:left;

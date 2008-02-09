@@ -223,7 +223,7 @@ sections_006:
   permalink: select-helper-methods
   content_id: "4"
   title: Select Helpers
-  body: |-
+  body: |
     <section>
     <subhead>Input field helpers</subhead>
     <p>All of these helpers take an <c>{html_options}</c> hash which will be converted to HTML attributes. E.g. passing <c>:class =&gt; "bold"</c> will add a <c>class="bold"</c> attribute to the HTML tag.</p>
@@ -275,6 +275,56 @@ sections_006:
     &lt;input type="hidden" name="post[validated]" value="no"&gt;</rh></Cell>
     </sample_code>
     
-    </section>
+    
+    <minihead>password_field</minihead>
+    
+    <r>password_field(:object_name, :method, {html_options})</r>
+    <sample_code aid:trows="2" aid:tcols="2">
+    	<Cell>Code:</Cell><Cell><rh>&lt;%= password_field(:login, :pass, :size => 20, :class =&gt; "password_input") %&gt;</rh></Cell>
+    	<Cell>Output:</Cell><Cell><rh>&lt;input type="password" id="login_pass" name="login[pass]" value="#{@login.pass}" size="20" class="password_input"&gt;</rh></Cell>
+    </sample_code>
+    
+    
+    
+    <minihead>hidden_field</minihead>
+    
+    <r>hidden_field(:object_name, :method, {html_options})</r>
+    <sample_code aid:trows="2" aid:tcols="2">
+    	<Cell>Code:</Cell><Cell><rh>&lt;%= hidden_field(:customer, :barcode) %&gt;</rh></Cell>
+    	<Cell>Output:</Cell><Cell><rh>&lt;input type="hidden" id="customer_barcode" name="customer[barcode]" value="#{@customer.barcode}" /&gt;</rh></Cell>
+    </sample_code>
+    
+    </section>
+
   id: "6"
   summary: Yeah, select helpers
+sections_007: 
+  permalink: form-parameters
+  content_id: "4"
+  title: Params
+  body: |
+    
+    
+    <section>
+    <subhead>params[] </subhead>
+    
+    <p>When a form is submitted to a Rails application, it parses the raw data and constructs a special hash called <c>params</c> for us to access that data. Simple key/value pairs in the form are converted into key/value pairs in the params hash. However, if a form field contains square brackets <c>[]</c>, Rails will create nested hashes as follows: </p>
+    
+    <Table aid:trows="5" aid:tcols="2">
+    	<Cell><h3>Form input</h3></Cell>
+    	<Cell><h3>params hash</h3></Cell>
+    	<Cell><r>id=3245</r></Cell>
+    	<Cell><r>{:id =&gt; &quot;3245&quot;}</r></Cell>
+    	<Cell><r>customer[name]=Miranda</r></Cell>
+    	<Cell><r>{:customer =&gt; {:name =&gt; &quot;Miranda}}</r></Cell>
+    	<Cell><r>customer[dob][year]=1979</r></Cell>
+    	<Cell><r>{:customer =&gt; {:age =&gt; {:year =&gt; &quot;1979&quot;}}}</r></Cell>
+    	<Cell><r>customer[dob][month]=Jan</r></Cell>
+    	<Cell><r>{:customer =&gt; {:dob =&gt; {:month =&gt; &quot;Jan&quot;}}}</r></Cell>
+    </Table> 
+    
+    <p>So to find the value of <c>id</c> we would use <c>params[:id]</c>. To find the value of the <c>customer[name]</c> we would use <c>params[:customer][:name]</c>.</p>
+    </section>
+
+  id: "7"
+  summary: How form parameters get passed into the params[] hash
