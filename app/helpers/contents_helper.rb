@@ -4,7 +4,7 @@ module ContentsHelper
 	
 	class Listener
 		include ApplicationHelper
-		TAGS = { "title" => "h1", "c" => "code", "article" => "div"}	  
+		TAGS = { "title" => "h1", "c" => "code", "article" => "div", "cheatsheet" => "div" }	  
 		
 		TEXT_METHODS = { "r" => "1", "rnum" => "1", "rh" => "1", "rhnum" => "1"}	
 		TAG_METHODS = {"Table" => "1", "Cell" => "1", "sample_code"=>1, "minihead" => 1, "subhead" => 1	}	
@@ -13,6 +13,7 @@ module ContentsHelper
 		@@STACK = []	
 		@@TEXT_METHODS_STACK = []	
 	  	@@counter = 0
+	  	@@open_div = 0
 	  	
 	  	def results
 	  		result = @@RESULT.to_s
@@ -24,6 +25,7 @@ module ContentsHelper
 				result = result.gsub("<#{key}>", "")
 				result = result.gsub("</#{key}>", "")
 			end
+			 result += "</div>" if @@open_div > 0 
 			result
   		end
 	  		
@@ -94,7 +96,13 @@ module ContentsHelper
 			case method_name		
 			when :tag_start
 				@@counter = @@counter + 1
+				
+				
 				result = "</div>" unless @@counter == 1
+				@@open_div = @@open_div + 1 if @@counter == 1 
+				@@open_div = @@open_div - 1 unless @@counter == 1
+				@@open_div = @@open_div + 1 unless @@counter == 1
+				
 				if @@counter.even?
 					result += "<div id=\"method\" class=\"blue\"><h3>" 
 				else
@@ -240,7 +248,8 @@ module ContentsHelper
 		listener = Listener.new
 		parser = Parsers::StreamParser.new(xml, listener)
 		parser.parse
-		xml = listener.results		
+		xml = listener.results	
+
 	end
 	
 	def pdf_thumbnail(content)
