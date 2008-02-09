@@ -1,4 +1,49 @@
 --- 
+sections_008: 
+  permalink: form_for_fields_for_helpers_builders
+  content_id: "4"
+  title: form_for and fields_for
+  body: |-
+    
+    
+    <section>
+    
+    <subhead>form builders that wrap model objects</subhead>
+    
+    <minihead>form_for</minihead>
+    
+    <p>This helper is used to wrap a Rails model object. You assign an @instance_variable in your controller, passing it an instance of an ActiveRecord model object. You then pass @instance_variable to the <b>form_for</b> helper. It will then map your model object&apos;s methods/attributes to the <c>&lt;input&gt;</c> fields in your form, automatically filling in their values if they exist. Because you specify your model object at the form level, it creates a scope for that model object around all the <c>&lt;input&gt;</c> fields within the <c>form_for</c> block, which means you do not have to repeat the name of the model object for every tag. E.g. <c>text_field :person, :name</c> becomes <c>form.text_field :name</c> as the model <c>Person</c> has already been assigned in the <b>form_for</b> tag. </p>
+    
+    <r>  form_for(:object, @object_instance, {options}) </r>
+    
+    <sample_code aid:trows="2" aid:tcols="2">
+    	<Cell><p>Code</p></Cell>
+    	<Cell><rh>&lt;% form_for (:person, @person, :url =&gt; { :action =&gt; &apos;update&apos;, :id =&gt; 1 }, :html =&gt; { :multipart =&gt; :true}) do  |form|%&gt;  </rh>
+    <rh>  Name:    &lt;%= form.text_field  :title, :size =&gt; 30 %&gt; </rh><rh>  Notes:   &lt;%= form.text_area  :content, :size =&gt; &quot;10x20&quot; %&gt; </rh><rh>  Photo:   &lt;%= form.file_field   :photo_data %&gt; </rh><rh>  &lt;%= submit_tag &quot;Update&quot; %&gt; </rh>
+    <rh>&lt;% end %&gt;</rh></Cell>
+    
+    	<Cell><p>Output</p></Cell>
+    	<Cell><rh>&lt;form action=&quot;/user/update/1&quot; enctype=&quot;multipart/form-data&quot; method=&quot;post&quot;&gt;  </rh>
+    <rh> Name:  &lt;input id=&quot;person_title&quot; name=&quot;person[title]&quot; size=&quot;30&quot; type=&quot;text&quot; /&gt; </rh><rh> Notes: &lt;textarea cols=&quot;10&quot; id=&quot;person_content&quot; name=&quot;person[content]&quot; rows=&quot;20&quot;&gt;&lt;/textarea&gt; </rh><rh> Photo: &lt;input id=&quot;person_photo_data&quot; name=&quot;person[photo_data]&quot; type=&quot;file&quot; /&gt; </rh><rh>  &lt;input name=&quot;commit&quot; type=&quot;submit&quot; value=&quot;Update&quot; /&gt; </rh>
+    <rh>&lt;/form&gt;</rh>
+    </Cell>
+    </sample_code>
+    
+    <minihead>fields_for </minihead>
+    
+    <p>Creates a scope around a specific model object like <b>form_for</b>, but doesn&apos;t create any <c>&lt;form&gt;</c> tags. This makes <c>fields_for</c> suitable for handling multiple model objects in a single form.  </p>
+    
+    <r>  fields_for(:object, @object_instance) </r>
+    
+    <sample_code aid:trows="2" aid:tcols="2">
+    	<Cell><p>Code</p></Cell>
+    	<Cell><rh>&lt;% fields_for :phone, @phone do |phone_fields| %&gt;  </rh><rh>    Home:   &lt;%= phone_fields.text_field :home %&gt; </rh><rh>    Work:   &lt;%= phone_fields.text_field :work %&gt; </rh><rh>    Cell:   &lt;%= phone_fields.text_field :cell %&gt;   </rh><rh>&lt;% end %&gt;</rh></Cell>
+    <Cell><p>Output</p></Cell>
+    <Cell><rh>Home: &lt;input id=&quot;phone_home&quot; name=&quot;phone[home]&quot; type=&quot;text&quot; /&gt; </rh><rh>Work: &lt;input id=&quot;phone_work&quot; name=&quot;phone[work]&quot; type=&quot;text&quot; /&gt; </rh><rh>Cell: &lt;input id=&quot;phone_cell&quot; name=&quot;phone[cell]&quot; type=&quot;text&quot; /&gt;</rh></Cell></sample_code> 
+    
+    </section>
+  id: "8"
+  summary: form builders that wrap model objects
 sections_001: 
   permalink: rails-migrations-methods
   content_id: "1"
@@ -318,7 +363,7 @@ sections_007:
     	<Cell><r>customer[name]=Miranda</r></Cell>
     	<Cell><r>{:customer =&gt; {:name =&gt; &quot;Miranda}}</r></Cell>
     	<Cell><r>customer[dob][year]=1979</r></Cell>
-    	<Cell><r>{:customer =&gt; {:age =&gt; {:year =&gt; &quot;1979&quot;}}}</r></Cell>
+    	<Cell><r>{:customer =&gt; {:dob =&gt; {:year =&gt; &quot;1979&quot;}}}</r></Cell>
     	<Cell><r>customer[dob][month]=Jan</r></Cell>
     	<Cell><r>{:customer =&gt; {:dob =&gt; {:month =&gt; &quot;Jan&quot;}}}</r></Cell>
     </Table> 

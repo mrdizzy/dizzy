@@ -15,7 +15,7 @@ class SectionsController < ApplicationController
     @section = Section.new(params[:section])
     if @section.save
       flash[:notice] = 'Section was successfully created.'
-      redirect_to :action => :show
+      redirect_to section_path(:content_id => @content.permalink, :id => @section.permalink)
     else
       render :action => 'new'
     end
