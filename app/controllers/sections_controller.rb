@@ -29,7 +29,7 @@ class SectionsController < ApplicationController
     @section = Section.find(params[:id])
     if @section.update_attributes(params[:section])
       flash[:notice] = 'Section was successfully updated.'
-      redirect_to :action => 'show', :id => @section
+      redirect_to section_path(:content_id => @content.permalink, :id => @section.permalink)
     else
       render :action => 'edit'
     end

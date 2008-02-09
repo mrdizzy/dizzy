@@ -19,7 +19,7 @@ class Content < ActiveRecord::Base
 	has_many :comments, :dependent => :destroy
 	has_many :sections, :dependent => :destroy, :order => "'title' ASC"
 	
-	validates_presence_of :content, :title,  :description, :date, :user_id, :permalink
+	validates_presence_of :title,  :description, :date, :user_id, :permalink
     
 	belongs_to :user
 	validates_uniqueness_of :permalink	
@@ -81,6 +81,7 @@ class Content < ActiveRecord::Base
 end
 
 class Article < Content
+	validates_presence_of :content
 end
 
 class Cheatsheet < Content
