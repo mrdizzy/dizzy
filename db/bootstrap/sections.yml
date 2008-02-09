@@ -219,3 +219,62 @@ sections_005:
     </section>"
   id: "5"
   summary: where migration files go
+sections_006: 
+  permalink: select-helper-methods
+  content_id: "4"
+  title: Select Helpers
+  body: |-
+    <section>
+    <subhead>Input field helpers</subhead>
+    <p>All of these helpers take an <c>{html_options}</c> hash which will be converted to HTML attributes. E.g. passing <c>:class =&gt; "bold"</c> will add a <c>class="bold"</c> attribute to the HTML tag.</p>
+    
+    <minihead>text_field</minihead>
+    <rh>text_field(:object_name, :method, {html_options})</rh>
+    <sample_code aid:trows="2" aid:tcols="2">
+    	<Cell>Code:</Cell><Cell><rh>&lt;%= text_field(:post, :title, :size =&gt; 20, :class =&gt; "blue") %&gt;</rh></Cell>
+    	<Cell>Output:</Cell><Cell><rh>&lt;input type="text" id="post_title" name="post[title]" size="20" value="#{@post.title}" class="blue" /&gt;</rh></Cell>
+    </sample_code>
+    
+    <minihead>text_area</minihead>
+    <r>text_area(:object_name, :method, {html_options})</r>
+    <sample_code aid:trows="2" aid:tcols="2">
+    	<Cell>Code:</Cell><Cell><rh>&lt;%= text_area(:post, :comment, :size => "20x10", :class => "area") %&gt;</rh></Cell>
+    	<Cell>Output:</Cell><Cell><rh>&lt;textarea cols="20" rows="10" id="post_comment" name="post[comment]" class="area"&gt;#{@post.comment}&lt;/textarea&gt;</rh></Cell>
+    </sample_code>
+    
+    <minihead>file_field</minihead>
+    <p>Returns a file upload tag. Make sure that your form is using multipart =&gt; true</p>
+    <r>file_field(:object_name, :method, {html_options})</r>
+    <sample_code aid:trows="2" aid:tcols="2">
+    	<Cell>Code:</Cell><Cell><rh>&lt;%= file_field(:post, :attachment, :class =&gt; "file_input") %&gt;</rh></Cell>
+    	<Cell>Output:</Cell><Cell><rh>&lt;input type="file" id="post_attachment" name="post[attachment]" class="file_input"&gt;</rh></Cell>
+    </sample_code>
+    
+    
+    <minihead>radio_button</minihead>
+    
+    <p>Returns an <c>&lt;input type="radio"&gt;</c> HTML tag. If the value returned by <c>:method</c> is the same as <c>tag_value,</c> then the radio button will be selected.</p>
+    
+    <r> radio_button(:object_name, :method, "tag_value", {html_options})</r>
+    <sample_code aid:trows="2" aid:tcols="2">
+    	<Cell>Code:</Cell><Cell><rh>&lt;%= radio_button(:post, :category, "ruby") %&gt;
+    &lt;%= radio_button(:post, :category, "python") %&gt;</rh></Cell>
+    	<Cell>Output:</Cell><Cell><rh>&lt;input type="radio" id="post_category" name="post[category]" value="ruby"&gt;
+    &lt;input type="radio" id="post_category" name="post[category]" value="python"&gt;</rh></Cell>
+    </sample_code>
+    
+    
+    <minihead>check_box</minihead>
+    <p>Returns an <c>&lt;input type="checkbox"&gt;</c> HTML tag. If the value returned by <c>:method</c> is above zero, then the checkbox will be checked. <c>checked_value</c> defaults to <c>1</c> while <c>unchecked_value</c> defaults to <c>0</c>.  Because HTML standards say that unchecked checkboxes don't post anything, a hidden field with the same name as the checkbox is automatically created to contain the <c>unchecked_value</c> as a workaround. </p>
+    
+    <r>check_box(:object_name, :method, {html_options}, "checked_value", "unchecked_value")</r>
+    <sample_code aid:trows="2" aid:tcols="2">
+    	<Cell>Code:</Cell><Cell><rh>&lt;%= checkbox(:post, :validated, {}, "yes", "no") %&gt;
+    &lt;%= radio_button(:post, :category, "python") %&gt;</rh></Cell>
+    	<Cell>Output:</Cell><Cell><rh>&lt;input type="checkbox" id="post_validated" name="post[validated]" value="yes" /&gt;
+    &lt;input type="hidden" name="post[validated]" value="no"&gt;</rh></Cell>
+    </sample_code>
+    
+    </section>
+  id: "6"
+  summary: Yeah, select helpers

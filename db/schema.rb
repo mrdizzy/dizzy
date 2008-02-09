@@ -5,7 +5,7 @@
 ActiveRecord::Schema.define(:version => 2) do
 
   create_table "binaries", :force => true do |t|
-    t.column "binary_data",  :binary
+    t.column "binary_data",  :binary, :limit => 2.megabytes
     t.column "type",         :string
     t.column "content_type", :string
     t.column "size",         :integer

@@ -1,4 +1,46 @@
 --- 
+comments_006: 
+  content_id: "1"
+  body: Want to be a legend, a big star overnight!!!! Tell me when. I can't answer your questions...
+  subject: Suffer in silence
+  id: "6"
+  parent_id: "5"
+  created_at: 2008-02-08 19:20:24
+  email: suffer@insilence.com
+comments_007: 
+  content_id: "1"
+  body: I can't answer that. I can't answer!!!!
+  subject: When will I, will I be famous
+  id: "7"
+  parent_id: 
+  created_at: 2008-02-08 19:21:21
+  email: brose@bros.com
+comments_008: 
+  content_id: "1"
+  body: Yes, I agree, she really was a beautiful person.
+  subject: I agree
+  id: "8"
+  parent_id: "4"
+  created_at: 2008-02-08 19:21:50
+  email: yes@yes.com
+comments_009: 
+  content_id: "1"
+  body: |-
+    
+    Re. the above, yes it is terrible that people in genuine need, depressed and/or physically ill should be put through the mill when they are least able to cope. Unfortunately you are spot on with your point about "people out there claiming money that they shouldn't get" and reducing the benefit available for those in real need. I am aware of a couple of HIV+ guys (one getting Incap, the other on DLA) who are physically fit, no mobility problems, not depressed, but they are milking the system for all they can get. They receive, on top of the above benfits, council tax & housing benefit, and live in (very comfortable) council property. They have been on two (sex) holidays abroad in the last six months and are enthusiastic members of the barebacking/sleaze and drugs scene. As a result they are often carrying/being treated for other STDs, and so are wasting NHS resources as well. One of them gave up work last year, not through ill health, but because he could not be arsed to do it any longer, and had worked out that if he ditched all his living expenses and claimed benefit he would be better off financially. These two are the sort of people responsible for causing the reviews of benefit entitlement to come about; and also draining the system of money that could be spent on those in desperate need. Shame on them, in the name of all those whose benefits they are devaluing.
+  subject: "RE: Never been loved"
+  id: "9"
+  parent_id: "5"
+  created_at: 2008-02-08 20:35:14
+  email: jennifer@smith.com
+comments_010: 
+  content_id: "2"
+  body: I really appreciate that. Cheers.
+  subject: Thanks for that
+  id: "10"
+  parent_id: "1"
+  created_at: 2008-02-08 20:53:25
+  email: i@really.appreciate.com
 comments_001: 
   content_id: "2"
   body: Here is my first ever comment.

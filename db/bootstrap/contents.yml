@@ -7,210 +7,210 @@ contents_001:
   id: "1"
   description: Up and down methods, rake tasks, database mapping, loading fixtures, example migration file, all packed onto one A4 page for an easy at-a-glance reference
   content: |
-    <cheatsheet>
-       <section>
-    <subhead>Directory structure</subhead>
-    <directory_structure>
-     <li> rails_root</li>
-      <directory_structure>
-       <li> db</li>
-        <directory_structure>
-         <li> schema.rb</li>
-        </directory_structure>
-        <directory_structure>
-         <li> migrate</li>
-          <directory_structure>
-           <li> 001_create_customers</li>
-           <li> 002_add_photo</li>
-           <li> 003_alter_surname</li>
-          </directory_structure>
-        </directory_structure>
-      </directory_structure>
-    </directory_structure>
-    </section>
-    
-    	<section>
-    		<subhead>Methods</subhead>
-    			
-    <method>
-    <minihead>add_column</minihead>
-    <p>Creates a new column on the specified table.</p>
-    <r>  add_column :table_name, :column_name, :column_type, { options }</r>
-    <p><c>:null => true</c> or <c>false</c> - if false, the underlying column has a not null constraint added by the database engine</p>
-    <p><c>:limit => size</c> - set a limit on the size of the field</p>
-    <p><c>:default => value</c> - set a default value for the column</p>
-    
-    </method>
-    <method_odd>
-    <minihead>add_index</minihead>
-    <p>Creates an index for the specified table, the name of which defaults to <c>table_column_index</c>.</p>
-    <r>  add_index :table_name, :column_name, :unique => true, :name =&gt; "chosen_index_name"</r>
-    </method_odd>
-    <method>
-    <minihead>change_column</minihead>
-    <p>Change the data type of the specified column</p>
-    <r>  change_column :table_name, :column_name, :new_type, { options as add_column }</r>
-    </method>
-    <method_odd>
-    <minihead>create_table</minihead> 
-    <p>Creates a table on the database. Creates a table called <c>:table_name</c> and makes the table object available to a block that can then add columns to it, following the same format as <c>add_column</c>.</p>
-    <r>  create_table :table_name, { options } do |t|
-        t.column :column_name, :column_type, :options
-      end</r>
-    <p><c>:force => true</c> - forces drop of an existing table of the same name before creation the new one</p>
-    <p><c>:temporary => true</c> - creates a temporary table, one that goes away when the application disconnects from the database</p> 
-    <p><c>:id => false</c> - defines a table with no primary key, for example when you need to define a join table</p>
-    <p><c>:primary_key => :new_primary_key_name</c> - overrides the default name of <c>:id</c> for the primary column, use this to specify the name of the column in the database that Rails will use to store the primary key</p>
-    <p><c>:options => ""</c> - lets you specify options to your underlying database, e.g. <c>"auto_increment = 10000"</c>. Will lose default <c>"ENGINE=InnoDB statement"</c>.</p>
-    
-    </method_odd>
-    
-    <method>
-    				<minihead>execute</minihead>
-    				<p>Takes a single string identifying a valid SQL command to execute directly</p>
-    				<r>  execute "alter table line_items add constraint fk_line_item_products foreign key (product_id) references products(id)"</r>
-    </method>
-    
-    <method_odd><minihead>IrreversibleMigration</minihead>
-    <p>Use in the <c>down</c> method of a migration file to raise an exception when the <c>up</c> methods of the same migration file can not be reversed, e.g. changing a column type from <c>:integer</c> to <c>:string</c>.</p>
-    <r>  raise ActiveRecord::IrreversibleMigration</r>
-    </method_odd>
-    <method>
-    <minihead>rename_table</minihead>
-    <p>Renames the specified table.</p>
-    <r>  rename_table :new_table_name, :old_table_name</r>
-    </method>
-    <method_odd>
-    <minihead>rename_column</minihead>
-    <p>Renames the <c>old_column_name</c> to <c>new_column_name</c></p>
-    <r>  rename_column :old_column_name, :new_column_name</r>
-    </method_odd>
-    <method>
-    <minihead>rename_table</minihead>
-    <p>Renames the specified table.</p>
-    <r>  rename_table :new_table_name, :old_table_name</r>
-    </method>
-    <method_odd>
-    <minihead>remove_index</minihead>
-    <p>Remove an index for the specified table.</p>
-    <r>  remove_index :table_name, :column_name</r>
-    </method_odd>
-    </section>
-    
-    <section>
-    <subhead>Mapping</subhead>
-    
-    <Table xmlns:aid="http://ns.adobe.com/AdobeInDesign/4.0/" aid:table="table" aid:trows="9" aid:tcols="9">
-    
-    <Cell aid:table="cell"><b>Rails</b></Cell><Cell aid:table="cell"><b>db2</b></Cell><Cell aid:table="cell"><b>mysql</b></Cell><Cell aid:table="cell"><b>openbase</b></Cell><Cell aid:table="cell"><b>Oracle</b></Cell><Cell aid:table="cell"><b>postgresql</b></Cell><Cell aid:table="cell"><b>sqlite</b></Cell><Cell aid:table="cell"><b>sqlserver</b></Cell><Cell aid:table="cell"><b>Sybase</b></Cell>
-    
-    <Cell aid:table="cell"><c>:binary</c></Cell><Cell aid:table="cell">blob(32768)</Cell><Cell aid:table="cell">blob</Cell><Cell aid:table="cell">object</Cell><Cell aid:table="cell">blob</Cell><Cell aid:table="cell">bytea</Cell><Cell aid:table="cell">blob</Cell><Cell aid:table="cell">image</Cell><Cell aid:table="cell">image</Cell>
-    
-    <Cell aid:table="cell"><c>:boolean</c></Cell><Cell aid:table="cell">decimal(1)</Cell><Cell aid:table="cell">tinyint(1)</Cell><Cell aid:table="cell">boolean</Cell><Cell aid:table="cell">number(1)</Cell><Cell aid:table="cell">boolean</Cell><Cell aid:table="cell">boolean</Cell><Cell aid:table="cell">bit</Cell><Cell aid:table="cell">bit</Cell>
-    
-    <Cell aid:table="cell"><c>:date</c></Cell><Cell aid:table="cell">date</Cell><Cell aid:table="cell">date</Cell><Cell aid:table="cell">date</Cell><Cell aid:table="cell">date</Cell><Cell aid:table="cell">date</Cell><Cell aid:table="cell">date</Cell><Cell aid:table="cell">datetime</Cell><Cell aid:table="cell">datetime</Cell>
-    
-    <Cell aid:table="cell"><c>:datetime</c></Cell><Cell aid:table="cell">timestamp</Cell><Cell aid:table="cell">datetime</Cell><Cell aid:table="cell">datetime</Cell><Cell aid:table="cell">date</Cell><Cell aid:table="cell">timestamp</Cell><Cell aid:table="cell">datetime</Cell><Cell aid:table="cell">datetime</Cell><Cell aid:table="cell">datetime</Cell>
-    
-    <Cell aid:table="cell"><c>:decimal</c></Cell><Cell aid:table="cell">decimal</Cell><Cell aid:table="cell">decimal</Cell><Cell aid:table="cell">decimal</Cell><Cell aid:table="cell">decimal</Cell><Cell aid:table="cell">decimal</Cell><Cell aid:table="cell">decimal</Cell><Cell aid:table="cell">decimal</Cell><Cell aid:table="cell">decimal</Cell>
-    
-    <Cell aid:table="cell"><c>:float</c></Cell><Cell aid:table="cell">float</Cell><Cell aid:table="cell">float</Cell><Cell aid:table="cell">float</Cell><Cell aid:table="cell">number</Cell><Cell aid:table="cell">float</Cell><Cell aid:table="cell">float</Cell><Cell aid:table="cell">float(8)</Cell><Cell aid:table="cell">float(8)</Cell>
-    
-    <Cell aid:table="cell"><c>:integer</c></Cell><Cell aid:table="cell">int</Cell><Cell aid:table="cell">int(11)</Cell><Cell aid:table="cell">integer</Cell><Cell aid:table="cell">number(38)</Cell><Cell aid:table="cell">integer</Cell><Cell aid:table="cell">integer</Cell><Cell aid:table="cell">int</Cell><Cell aid:table="cell">int</Cell>
-    
-    <Cell aid:table="cell"><c>:string</c></Cell><Cell aid:table="cell">varchar(255)</Cell><Cell aid:table="cell">varchar(255)</Cell><Cell aid:table="cell">char(4096)</Cell><Cell aid:table="cell">varchar2(255)</Cell><Cell aid:table="cell">*</Cell><Cell aid:table="cell">varchar(255)</Cell><Cell aid:table="cell">varchar(255)</Cell><Cell aid:table="cell">varchar(255)</Cell>
-    
-    
-    <Cell aid:table="cell"><c>:text</c></Cell><Cell aid:table="cell">clob(32768)</Cell><Cell aid:table="cell">text</Cell><Cell aid:table="cell">text</Cell><Cell aid:table="cell">clob</Cell><Cell aid:table="cell">text</Cell><Cell aid:table="cell">text</Cell><Cell aid:table="cell">text</Cell><Cell aid:table="cell">text</Cell>
-    
-    
-    <Cell aid:table="cell"><c>:time</c></Cell><Cell aid:table="cell">time</Cell><Cell aid:table="cell">time</Cell><Cell aid:table="cell">time</Cell><Cell aid:table="cell">date</Cell><Cell aid:table="cell">time</Cell><Cell aid:table="cell">datetime</Cell><Cell aid:table="cell">datetime</Cell><Cell aid:table="cell">time</Cell>
-    
-    
-    <Cell aid:table="cell"><c>:timestamp</c></Cell><Cell aid:table="cell">timestamp</Cell><Cell aid:table="cell">datetime</Cell><Cell aid:table="cell">timestamp</Cell><Cell aid:table="cell">date</Cell><Cell aid:table="cell">timestamp</Cell><Cell aid:table="cell">datetime</Cell><Cell aid:table="cell">datetime</Cell><Cell aid:table="cell">timestamp</Cell>
-    
-    </Table>
-    </section>
-    <section>
-    <subhead>db/migrate/example_001.rb</subhead>
-    <method>
-    <rnum>class CreateCustomers &lt; ActiveRecord::Migration
-    
-      def self.up
-        # Create "Customers" table
-        create_table :customers, :primary_key =&gt; :customer_id, :options =&gt; "auto_increment = 10000" do |t|
-          # Add columns to "Customers" table
-          t.column :customer_id, :integer
-          t.column :name,        :string,    :limit =&gt; 30, :null =&gt; false
-          t.column :age,         :integer
-          t.column :premium,     :boolean,   :default =&gt; 0
-          t.column :photo,       :binary,    :limit =&gt; 2.megabytes
-          t.column :thumbnail,   :binary,    :limit =&gt; 256.kilobytes
-          t.column :dob,         :date,      :null =&gt; false
-          t.column :created_at,  :timestamp
-          t.column :notes,       :text,      :default =&gt; "No notes recorded"
-        end
-        # Add "surname" column to "Customers" table 
-        add_column :customers, :surname,   :string,   :limit =&gt; 50
-        # Add "price" column to "Orders" table
-        add_column :orders,    :price,     :decimal,  :precision =&gt; 8, 
-    :scale =&gt; 2
-        # Create a record on the "Customers" table
-        Customer.create :name =&gt; "David", :surname =&gt; "Smith", :age =&gt; "32",
-    :premium =&gt; "1", :notes =&gt; "One of our top customers!"
-      end
-    
-      def self.down 
-        # Delete the "Customers" table
-        drop_table :customers
-      end
-    end</rnum>
-    </method>
-    </section>
-    
-    <section>
-    <subhead>rake</subhead>
-    
-    <method>
-    <minihead>Generate migration</minihead>
-    <p><c>ruby script/generate migration your_chosen_migration_name</c></p>
-    </method>
-    
-    <method>
-    <minihead>run all unapplied migrations</minihead>
-    <p><c>rake db:migrate</c></p>
-    </method>
-    
-    <method>
-    <minihead>migrate database to specific version</minihead>
-    <p><c>rake db:migrate VERSION=18</c></p>
-    </method>
-    
-    <method>
-    <minihead>use your migrations to recreate the tables in the testing or production databases</minihead>
-    <p><c>rake db:migrate RAILS_ENV=production</c></p>
-    </method>
-    
-    <method>
-    <minihead>Create a <c>db/schema.rb</c> file that can be portably used against any database supported by ActiveRecord</minihead>
-    <p><c>rake db:schema:dump</c></p>
-    </method>
-    
-    <method>
-    <minihead>Load a schema.rb file into the database</minihead>
-    <p><c>rake db:schema:load</c></p>
-    </method>
-    
-    <method>
-    <minihead>Loads a schema.rb file into the database and then loads the initial database fixtures.</minihead>
-    <p><c>rake db:bootstrap</c></p>
-    </method>
-    
-    
-    
-    
-    </section>
-    </cheatsheet>
+    <cheatsheet>
+       <section>
+    <subhead>Directory structure</subhead>
+    <directory_structure>
+     <li> rails_root</li>
+      <directory_structure>
+       <li> db</li>
+        <directory_structure>
+         <li> schema.rb</li>
+        </directory_structure>
+        <directory_structure>
+         <li> migrate</li>
+          <directory_structure>
+           <li> 001_create_customers</li>
+           <li> 002_add_photo</li>
+           <li> 003_alter_surname</li>
+          </directory_structure>
+        </directory_structure>
+      </directory_structure>
+    </directory_structure>
+    </section>
+    
+    	<section>
+    		<subhead>Methods</subhead>
+    			
+    <method>
+    <minihead>add_column</minihead>
+    <p>Creates a new column on the specified table.</p>
+    <r>  add_column :table_name, :column_name, :column_type, { options }</r>
+    <p><c>:null => true</c> or <c>false</c> - if false, the underlying column has a not null constraint added by the database engine</p>
+    <p><c>:limit => size</c> - set a limit on the size of the field</p>
+    <p><c>:default => value</c> - set a default value for the column</p>
+    
+    </method>
+    <method_odd>
+    <minihead>add_index</minihead>
+    <p>Creates an index for the specified table, the name of which defaults to <c>table_column_index</c>.</p>
+    <r>  add_index :table_name, :column_name, :unique => true, :name =&gt; "chosen_index_name"</r>
+    </method_odd>
+    <method>
+    <minihead>change_column</minihead>
+    <p>Change the data type of the specified column</p>
+    <r>  change_column :table_name, :column_name, :new_type, { options as add_column }</r>
+    </method>
+    <method_odd>
+    <minihead>create_table</minihead> 
+    <p>Creates a table on the database. Creates a table called <c>:table_name</c> and makes the table object available to a block that can then add columns to it, following the same format as <c>add_column</c>.</p>
+    <r>  create_table :table_name, { options } do |t|
+        t.column :column_name, :column_type, :options
+      end</r>
+    <p><c>:force => true</c> - forces drop of an existing table of the same name before creation the new one</p>
+    <p><c>:temporary => true</c> - creates a temporary table, one that goes away when the application disconnects from the database</p> 
+    <p><c>:id => false</c> - defines a table with no primary key, for example when you need to define a join table</p>
+    <p><c>:primary_key => :new_primary_key_name</c> - overrides the default name of <c>:id</c> for the primary column, use this to specify the name of the column in the database that Rails will use to store the primary key</p>
+    <p><c>:options => ""</c> - lets you specify options to your underlying database, e.g. <c>"auto_increment = 10000"</c>. Will lose default <c>"ENGINE=InnoDB statement"</c>.</p>
+    
+    </method_odd>
+    
+    <method>
+    				<minihead>execute</minihead>
+    				<p>Takes a single string identifying a valid SQL command to execute directly</p>
+    				<r>  execute "alter table line_items add constraint fk_line_item_products foreign key (product_id) references products(id)"</r>
+    </method>
+    
+    <method_odd><minihead>IrreversibleMigration</minihead>
+    <p>Use in the <c>down</c> method of a migration file to raise an exception when the <c>up</c> methods of the same migration file can not be reversed, e.g. changing a column type from <c>:integer</c> to <c>:string</c>.</p>
+    <r>  raise ActiveRecord::IrreversibleMigration</r>
+    </method_odd>
+    <method>
+    <minihead>rename_table</minihead>
+    <p>Renames the specified table.</p>
+    <r>  rename_table :new_table_name, :old_table_name</r>
+    </method>
+    <method_odd>
+    <minihead>rename_column</minihead>
+    <p>Renames the <c>old_column_name</c> to <c>new_column_name</c></p>
+    <r>  rename_column :old_column_name, :new_column_name</r>
+    </method_odd>
+    <method>
+    <minihead>rename_table</minihead>
+    <p>Renames the specified table.</p>
+    <r>  rename_table :new_table_name, :old_table_name</r>
+    </method>
+    <method_odd>
+    <minihead>remove_index</minihead>
+    <p>Remove an index for the specified table.</p>
+    <r>  remove_index :table_name, :column_name</r>
+    </method_odd>
+    </section>
+    
+    <section>
+    <subhead>Mapping</subhead>
+    
+    <Table xmlns:aid="http://ns.adobe.com/AdobeInDesign/4.0/" aid:table="table" aid:trows="9" aid:tcols="9">
+    
+    <Cell aid:table="cell"><b>Rails</b></Cell><Cell aid:table="cell"><b>db2</b></Cell><Cell aid:table="cell"><b>mysql</b></Cell><Cell aid:table="cell"><b>openbase</b></Cell><Cell aid:table="cell"><b>Oracle</b></Cell><Cell aid:table="cell"><b>postgresql</b></Cell><Cell aid:table="cell"><b>sqlite</b></Cell><Cell aid:table="cell"><b>sqlserver</b></Cell><Cell aid:table="cell"><b>Sybase</b></Cell>
+    
+    <Cell aid:table="cell"><c>:binary</c></Cell><Cell aid:table="cell">blob(32768)</Cell><Cell aid:table="cell">blob</Cell><Cell aid:table="cell">object</Cell><Cell aid:table="cell">blob</Cell><Cell aid:table="cell">bytea</Cell><Cell aid:table="cell">blob</Cell><Cell aid:table="cell">image</Cell><Cell aid:table="cell">image</Cell>
+    
+    <Cell aid:table="cell"><c>:boolean</c></Cell><Cell aid:table="cell">decimal(1)</Cell><Cell aid:table="cell">tinyint(1)</Cell><Cell aid:table="cell">boolean</Cell><Cell aid:table="cell">number(1)</Cell><Cell aid:table="cell">boolean</Cell><Cell aid:table="cell">boolean</Cell><Cell aid:table="cell">bit</Cell><Cell aid:table="cell">bit</Cell>
+    
+    <Cell aid:table="cell"><c>:date</c></Cell><Cell aid:table="cell">date</Cell><Cell aid:table="cell">date</Cell><Cell aid:table="cell">date</Cell><Cell aid:table="cell">date</Cell><Cell aid:table="cell">date</Cell><Cell aid:table="cell">date</Cell><Cell aid:table="cell">datetime</Cell><Cell aid:table="cell">datetime</Cell>
+    
+    <Cell aid:table="cell"><c>:datetime</c></Cell><Cell aid:table="cell">timestamp</Cell><Cell aid:table="cell">datetime</Cell><Cell aid:table="cell">datetime</Cell><Cell aid:table="cell">date</Cell><Cell aid:table="cell">timestamp</Cell><Cell aid:table="cell">datetime</Cell><Cell aid:table="cell">datetime</Cell><Cell aid:table="cell">datetime</Cell>
+    
+    <Cell aid:table="cell"><c>:decimal</c></Cell><Cell aid:table="cell">decimal</Cell><Cell aid:table="cell">decimal</Cell><Cell aid:table="cell">decimal</Cell><Cell aid:table="cell">decimal</Cell><Cell aid:table="cell">decimal</Cell><Cell aid:table="cell">decimal</Cell><Cell aid:table="cell">decimal</Cell><Cell aid:table="cell">decimal</Cell>
+    
+    <Cell aid:table="cell"><c>:float</c></Cell><Cell aid:table="cell">float</Cell><Cell aid:table="cell">float</Cell><Cell aid:table="cell">float</Cell><Cell aid:table="cell">number</Cell><Cell aid:table="cell">float</Cell><Cell aid:table="cell">float</Cell><Cell aid:table="cell">float(8)</Cell><Cell aid:table="cell">float(8)</Cell>
+    
+    <Cell aid:table="cell"><c>:integer</c></Cell><Cell aid:table="cell">int</Cell><Cell aid:table="cell">int(11)</Cell><Cell aid:table="cell">integer</Cell><Cell aid:table="cell">number(38)</Cell><Cell aid:table="cell">integer</Cell><Cell aid:table="cell">integer</Cell><Cell aid:table="cell">int</Cell><Cell aid:table="cell">int</Cell>
+    
+    <Cell aid:table="cell"><c>:string</c></Cell><Cell aid:table="cell">varchar(255)</Cell><Cell aid:table="cell">varchar(255)</Cell><Cell aid:table="cell">char(4096)</Cell><Cell aid:table="cell">varchar2(255)</Cell><Cell aid:table="cell">*</Cell><Cell aid:table="cell">varchar(255)</Cell><Cell aid:table="cell">varchar(255)</Cell><Cell aid:table="cell">varchar(255)</Cell>
+    
+    
+    <Cell aid:table="cell"><c>:text</c></Cell><Cell aid:table="cell">clob(32768)</Cell><Cell aid:table="cell">text</Cell><Cell aid:table="cell">text</Cell><Cell aid:table="cell">clob</Cell><Cell aid:table="cell">text</Cell><Cell aid:table="cell">text</Cell><Cell aid:table="cell">text</Cell><Cell aid:table="cell">text</Cell>
+    
+    
+    <Cell aid:table="cell"><c>:time</c></Cell><Cell aid:table="cell">time</Cell><Cell aid:table="cell">time</Cell><Cell aid:table="cell">time</Cell><Cell aid:table="cell">date</Cell><Cell aid:table="cell">time</Cell><Cell aid:table="cell">datetime</Cell><Cell aid:table="cell">datetime</Cell><Cell aid:table="cell">time</Cell>
+    
+    
+    <Cell aid:table="cell"><c>:timestamp</c></Cell><Cell aid:table="cell">timestamp</Cell><Cell aid:table="cell">datetime</Cell><Cell aid:table="cell">timestamp</Cell><Cell aid:table="cell">date</Cell><Cell aid:table="cell">timestamp</Cell><Cell aid:table="cell">datetime</Cell><Cell aid:table="cell">datetime</Cell><Cell aid:table="cell">timestamp</Cell>
+    
+    </Table>
+    </section>
+    <section>
+    <subhead>db/migrate/example_001.rb</subhead>
+    <method>
+    <rnum>class CreateCustomers &lt; ActiveRecord::Migration
+    
+      def self.up
+        # Create "Customers" table
+        create_table :customers, :primary_key =&gt; :customer_id, :options =&gt; "auto_increment = 10000" do |t|
+          # Add columns to "Customers" table
+          t.column :customer_id, :integer
+          t.column :name,        :string,    :limit =&gt; 30, :null =&gt; false
+          t.column :age,         :integer
+          t.column :premium,     :boolean,   :default =&gt; 0
+          t.column :photo,       :binary,    :limit =&gt; 2.megabytes
+          t.column :thumbnail,   :binary,    :limit =&gt; 256.kilobytes
+          t.column :dob,         :date,      :null =&gt; false
+          t.column :created_at,  :timestamp
+          t.column :notes,       :text,      :default =&gt; "No notes recorded"
+        end
+        # Add "surname" column to "Customers" table 
+        add_column :customers, :surname,   :string,   :limit =&gt; 50
+        # Add "price" column to "Orders" table
+        add_column :orders,    :price,     :decimal,  :precision =&gt; 8, 
+    :scale =&gt; 2
+        # Create a record on the "Customers" table
+        Customer.create :name =&gt; "David", :surname =&gt; "Smith", :age =&gt; "32",
+    :premium =&gt; "1", :notes =&gt; "One of our top customers!"
+      end
+    
+      def self.down 
+        # Delete the "Customers" table
+        drop_table :customers
+      end
+    end</rnum>
+    </method>
+    </section>
+    
+    <section>
+    <subhead>rake</subhead>
+    
+    <method>
+    <minihead>Generate migration</minihead>
+    <p><c>ruby script/generate migration your_chosen_migration_name</c></p>
+    </method>
+    
+    <method>
+    <minihead>run all unapplied migrations</minihead>
+    <p><c>rake db:migrate</c></p>
+    </method>
+    
+    <method>
+    <minihead>migrate database to specific version</minihead>
+    <p><c>rake db:migrate VERSION=18</c></p>
+    </method>
+    
+    <method>
+    <minihead>use your migrations to recreate the tables in the testing or production databases</minihead>
+    <p><c>rake db:migrate RAILS_ENV=production</c></p>
+    </method>
+    
+    <method>
+    <minihead>Create a <c>db/schema.rb</c> file that can be portably used against any database supported by ActiveRecord</minihead>
+    <p><c>rake db:schema:dump</c></p>
+    </method>
+    
+    <method>
+    <minihead>Load a schema.rb file into the database</minihead>
+    <p><c>rake db:schema:load</c></p>
+    </method>
+    
+    <method>
+    <minihead>Loads a schema.rb file into the database and then loads the initial database fixtures.</minihead>
+    <p><c>rake db:bootstrap</c></p>
+    </method>
+    
+    
+    
+    
+    </section>
+    </cheatsheet>
 
   user_id: "1"
 contents_002: 
@@ -382,4 +382,14 @@ contents_003:
     <r>add_column :books, :id, :primary_key</r>
     <p>That's better! You can use this with the <c>change_column</c> in your migrations too. </p>
 
+  user_id: "1"
+contents_004: 
+  permalink: form-helpers
+  title: Form Helpers
+  date: 2008-02-09 14:04:00
+  type: Cheatsheet
+  id: "4"
+  description: Form helpers.
+  content: "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n\
+    <Root><Main><subhead>Cheatsheet | FORM HELPERS</subhead></Main><Main><subhead>Select field helpers </subhead></Main><Main><p>These helpers are very useful when creating dropdown selection menus using the HTML <c>&lt;select&gt;</c> and <c>&lt;option&gt; </c>tags. </p><minihead>collection_select </minihead><p>Takes an array of ActiveRecord objects as returned by ActiveRecord&apos;s<c> find </c>method, and builds a <c>&lt;select&gt;</c> list from the attributes/methods which you specify. </p><r> collection_select(:object, :method, [collection], :option_key_method, :option_value_method, {options}, {html_options}) </r><p><sample_code xmlns:aid=\"http://ns.adobe.com/AdobeInDesign/4.0/\" aid:table=\"table\" aid:trows=\"2\" aid:tcols=\"2\"><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"23.244824147615248\"><p>Code:</p></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"250.7158057736445\"><r>@users = User.find(:all, :order =&gt; &quot;name&quot;) </r><r>collection_select(:user, :id, @users, :id, :name, {}, :class =&gt; &quot;red&quot;)</r></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"23.244824147615248\"><p>Output:</p></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"250.7158057736445\"><rh>&lt;select id=&quot;user_id&quot; name=&quot;user[id]&quot; class=&quot;red&quot;&gt; </rh><rh>&lt;option value=&quot;#{@user.id}&quot;&gt;#{@user.name}&lt;/option&gt;&lt;/select&gt;</rh></Cell></sample_code> </p><ul><c>[collection] </c>- an array of ActiveRecord model objects. For example, if you have a model called <c>User</c> and you call <c>@users = User.find(:all)</c>, then <c>@users</c> will contain an array of <c>User</c> objects.  </ul><ul><c>option_key_method </c>-<c> </c>the name of a method which, when calledon a child object of a member of <c>[collection]</c> returns a value to be used as the value attribute for its <c>&lt;option&gt;</c> tag </ul><ul><c>option_value_method </c>-<c> </c>the name of a method which, when called on a child object of a member of <c>[collection]</c> returns a value to be used as the contents of its <c>&lt;option&gt;</c> tag </ul><minihead>option_groups_from_collection_for_select </minihead><p>Returns a string of HTML <c>&lt;option&gt;</c> tags, similar to <b>options_from_collection_for_select</b>, but groups them by <c>&lt;optgroup&gt;</c> tags based on the object relationships of the arguments. </p><r> option_groups_from_collection_for_select([collection], :group_method, :group_label_method, :option_key_method, :option_value_method, :selected_key) </r><p><sample_code xmlns:aid=\"http://ns.adobe.com/AdobeInDesign/4.0/\" aid:table=\"table\" aid:trows=\"2\" aid:tcols=\"2\"><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"24.52174803231071\"><p>Code:</p></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"251.09967454013918\"><r>option_groups_from_collection_for_select(@authors, :books, :name, :id, :title, 3)</r></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"24.52174803231071\"><p>Output:</p></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"251.09967454013918\"><rh>&lt;optgroup label=&quot;J K Rowling&quot;&gt; </rh><rh>    &lt;option_ value=&quot;1&quot;&gt;Harry Potter: Order of the Phoenix&lt;/option&gt; </rh><rh>    &lt;option value=&quot;4&quot;&gt;Harry Potter: The Deathly Hallows&lt;/option&gt; </rh><rh>&lt;/optgroup&gt; </rh><rh>&lt;optgroup label=&quot;Douglas Coupland&quot;&gt; </rh><rh>    &lt;option value=&quot;3&quot; selected=&quot;selected&quot;&gt;Generation X&lt;/option&gt; </rh><rh>    &lt;option value=&quot;12&quot;&gt;Girlfriend In A Coma&lt;/option&gt; </rh><rh>    &lt;option value=&quot;5&quot;&gt;Shampoo Planet&lt;/option&gt; </rh><rh>&lt;/optgroup&gt;</rh></Cell></sample_code> </p><ul><c>[collection] </c>- as<b> collection_select  </b></ul><ul><c>group_method </c>- the name of a method which, when called on a member of <c>[collection]</c> returns an array of child objects representing the <c>&lt;option&gt;</c> tags </ul><ul><c>group_label_method </c>- the name of a method which, when called on a member of <c>[collection]</c> returns a string to be used as the label attribute for its <c>&lt;optgroup&gt;</c> tag </ul><ul><c>option_key_method </c>- as<b> collection_select  </b></ul><ul><c>option_value_method </c>- as<b> collection_select </b> </ul><ul><c>selected_key </c>-<c> </c>a value equal to the value attribute for one of the <c>&lt;option&gt;</c> tags, which will have the select attribute set. Corresponds to the return value of one of the calls to <c>option_key_method</c>. If <c>nil</c>, no selection is made.  </ul><minihead>options_for_select </minihead><p>Returns a string of HTML <c>&lt;option&gt;</c> tags. </p><r> options_for_select([{choices}], [selected]) </r><p><sample_code xmlns:aid=\"http://ns.adobe.com/AdobeInDesign/4.0/\" aid:table=\"table\" aid:trows=\"2\" aid:tcols=\"2\"><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"22.86095538112056\"><p>Code:</p></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"251.09967454013918\"><r>options_for_select( {&quot;Mary&quot; =&gt; &quot;\xC3\x82\xC2\xA32&quot;, &quot;Lucy&quot; =&gt; &quot;\xC3\x82\xC2\xA34&quot; ,&quot;Anne&quot; =&gt; &quot;\xC3\x82\xC2\xA36&quot;}, [&quot;\xC3\x82\xC2\xA34&quot;, &quot;\xC3\x82\xC2\xA36&quot;])</r></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"22.86095538112056\"><p>Output:</p></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"251.09967454013918\"><rh>&lt;option value=&quot;\xC3\x82\xC2\xA32&quot;&gt;Mary&lt;/option&gt; </rh><rh>&lt;option value=&quot;\xC3\x82\xC2\xA34&quot; selected=&quot;selected&quot;&gt;Lucy&lt;/option&gt;  </rh><rh>&lt;option value=&quot;\xC3\x82\xC2\xA36&quot; selected=&quot;selected&quot;&gt;Anne&lt;/option&gt;</rh></Cell></sample_code> </p><ul><c>[{choices}]</c> can be any enumerable object: an array of strings, hashes, results of database queries: </ul><ul2>Array of strings. Each string will be used as both the value and option choice </ul2><ul2>Hash. The keys will be used as the display text and the values as the <c>&lt;option&gt;</c> tag keys as shown in the code example above. The main reason against using a hash is that you cannot control the order of the entries in the generated list (hashes are not ordered). </ul2><ul2>Array of arrays. If each element in the choices array is itself an array, then the selection will use the first value as display text and the last value as the key:  <c>options_for_select([[&apos;Andy&apos;, 1],[&apos;Bert&apos;, 2],[&apos;David&apos;, 3]]) </c></ul2><ul><c>selected </c>can be a string, or in the case of a multiple select form, an array of strings, containing the values you wish to be selected by appending <c>selected=&quot;selected&quot;.  </c></ul><minihead>options_from_collection_for_select </minihead><p>Returns a string of HTML <c>&lt;option&gt;</c> tags from a collection of ActiveRecord objects. Returns only the <c>&lt;option&gt;</c> tags, see <c>collection_select</c> above for a more complete solution. </p><r> options_from_collection_for_select([collection], :value_method, :text_method, [selected]) </r><p><sample_code xmlns:aid=\"http://ns.adobe.com/AdobeInDesign/4.0/\" aid:table=\"table\" aid:trows=\"2\" aid:tcols=\"2\"><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"28.60307086659438\"><p>Code:</p></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"245.35755905466533\"><r>options_from_collection_for_select(@authors, :id, :name)</r></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"28.60307086659438\"><p>Output:</p></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"245.35755905466533\"><rh>&lt;option value=&quot;#{@author.id}&quot;&gt;#{@author.name}&lt;/option&gt;</rh></Cell></sample_code> </p><ul><c>[selected] </c>can be an ActiveRecord object, or in the case of a multiple select form, an array of objects, containing the values you wish to be selected by appending <c>selected=&quot;selected&quot;</c>.  </ul><minihead>select </minihead><p>Creates an HTML <c>&lt;select&gt; </c>drop down menu.  </p><r> select(:object_name, :method, [choices], Q{options}, P{html_options}) </r><p><sample_code xmlns:aid=\"http://ns.adobe.com/AdobeInDesign/4.0/\" aid:table=\"table\" aid:trows=\"2\" aid:tcols=\"2\"><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"28.60307086659438\"><p>Code:</p></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"245.35755905466533\"><r>@people = Person.find(:all).collect { |p| [p.name, p.id] ) </r><r>select(:post, :person_id, @people, {:include_blank =&gt; true})</r></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"28.60307086659438\"><p>Output:</p></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"245.35755905466533\"><rh>&lt;select name=&quot;post[person_id]&quot;&gt; </rh><rh> &lt;option value=&quot;&quot;&gt;&lt;/option&gt; </rh><rh> &lt;option value=&quot;1&quot; selected=&quot;selected&quot;&gt;David&lt;/option&gt; </rh><rh> &lt;option value=&quot;2&quot;&gt;Sam&lt;/option&gt;&lt;/select&gt;</rh></Cell></sample_code> </p><ul><c>[choices] </c>- as<b> options_for_select  </b></ul><subhead>Basic field helpers </subhead><p>All of these helpers take an P{html_options}<c> </c>hash which will be converted to HTML attributes. E.g. passing<c> :class =&gt; &quot;bold&quot;</c> will add a <c>class=&quot;bold&quot; </c>attribute to the HTML tag. </p><minihead>text_field </minihead><p>Returns an <c>&lt;input type=&quot;text&quot;&gt; </c>HTML tag. </p><r> text_field(:object_name, :method, P{html_options}) </r><p><sample_code xmlns:aid=\"http://ns.adobe.com/AdobeInDesign/4.0/\" aid:table=\"table\" aid:trows=\"2\" aid:tcols=\"2\"><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"30.322640169936168\"><p>Code:</p></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"216.31909211352837\"><r>text_field( :post, :title, :size =&gt; 20, :class =&gt; &quot;blue&quot; )</r></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"30.322640169936168\"><p>Output:</p></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"216.31909211352837\"><rh>&lt;input type=&quot;text&quot; id=&quot;post_title&quot; name=&quot;post[title]&quot; size=&quot;20&quot; value=&quot;#{@post.title}&quot; class=&quot;blue&quot; /&gt;</rh></Cell></sample_code> </p><minihead>text_area </minihead><p>Returns opening and closing tags for an <c>&lt;textarea&gt;</c> HTML tag. </p><r> text_area(:object_name, :method, P{html_options}) </r><p><sample_code xmlns:aid=\"http://ns.adobe.com/AdobeInDesign/4.0/\" aid:table=\"table\" aid:trows=\"2\" aid:tcols=\"2\"><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"28.60307086659438\"><p>Code:</p></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"218.03866141687016\"><r>text_area(:post, :comment, :size =&gt; &quot;20x10&quot;, :class =&gt; &quot;area&quot; )</r></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"28.60307086659438\"><p>Output:</p></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"218.03866141687016\"><rh>&lt;textarea cols=&quot;20&quot; rows=&quot;10&quot; id=&quot;post_comment&quot; name=&quot;post[comment]&quot; class=&quot;area&quot;&gt;#{@post.comment}&lt;/textarea&gt;</rh></Cell></sample_code> </p><minihead>file_field </minihead><p>Returns a file upload tag. Make sure your form is using <c>multipart =&gt; true</c> </p><r>  file_field(:object_name, :method, P{html_options}) </r><p><sample_code xmlns:aid=\"http://ns.adobe.com/AdobeInDesign/4.0/\" aid:table=\"table\" aid:trows=\"2\" aid:tcols=\"2\"><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"28.60307086659438\"><p>Code:</p></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"218.03866141687016\"><r>file_field(:post, :attachment, :class =&gt; &quot;file_input&quot;)</r></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"28.60307086659438\"><p>Output:</p></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"218.03866141687016\"><rh>&lt;input type=&quot;file&quot; id=&quot;post_attachment&quot; name=&quot;post[attachment]&quot; class=&quot;file_input&quot;&gt;</rh></Cell></sample_code> </p><minihead>radio_button </minihead><p>Returns an <c>&lt;input type=&quot;radio&quot;&gt;</c> HTML tag. If the value returned by <c>:method</c> is the same as <c>tag_value</c>, then the radio button will be selected. </p><r>  radio_button(:object_name, :method, &quot;tag_value&quot;, P{html_options}) </r><p><sample_code xmlns:aid=\"http://ns.adobe.com/AdobeInDesign/4.0/\" aid:table=\"table\" aid:trows=\"2\" aid:tcols=\"2\"><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"28.60307086659438\"><p>Code:</p></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"218.03866141687016\"><r>radio_button(:post, :category, &quot;ruby&quot;) </r><r>radio_button(:post, :category, &quot;python&quot;)</r></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"28.60307086659438\"><p>Output:</p></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"218.03866141687016\"><rh>&lt;input type=&quot;radio&quot; id=&quot;post_category&quot; name=&quot;post[category]&quot; value=&quot;ruby&quot;&gt; </rh><rh>&lt;input type=&quot;radio&quot; id=&quot;post_category&quot; name=&quot;post[category]&quot; value=&quot;python&quot;&gt;</rh></Cell></sample_code> </p><minihead>check_box </minihead><p>Returns an <c>&lt;input type=&quot;checkbox&quot;&gt; </c>HTML tag. If the value returned by <c>:method </c>is above zero, then the checkbox will be checked.<c> checked_value</c> defaults to <c>1 </c>while <c>unchecked_value</c> defaults to <c>0</c>.  Because HTML standards say that unchecked checkboxes don&apos;t post anything, a hidden field with the same name as the checkbox is automatically created to contain the<c> unchecked_value</c> as a workaround.  </p><r>  check_box(:object_name, :method, P{html_options}, &quot;checked_value&quot;, &quot;unchecked_value&quot;) </r><p><sample_code xmlns:aid=\"http://ns.adobe.com/AdobeInDesign/4.0/\" aid:table=\"table\" aid:trows=\"2\" aid:tcols=\"2\"><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"28.60307086659438\"><p>Code:</p></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"219.60952755860245\"><r>checkbox(:post, :validated, {}, &quot;yes&quot;, &quot;no&quot;)</r></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"28.60307086659438\"><p>Output:</p></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"219.60952755860245\"><rh>&lt;input type=&quot;checkbox&quot; id=&quot;post_validated&quot; name=&quot;post[validated]&quot; value=&quot;yes&quot; /&gt; </rh><rh>&lt;input type=&quot;hidden&quot; name=&quot;post[validated]&quot; value=&quot;no&quot;&gt;</rh></Cell></sample_code> </p><minihead>password_field </minihead><p>Returns an <c>&lt;input type=&quot;password&quot;&gt; </c>HTML tag.  </p><r>  password_field(:object_name, :method, P{html_options}) </r><p><sample_code xmlns:aid=\"http://ns.adobe.com/AdobeInDesign/4.0/\" aid:table=\"table\" aid:trows=\"2\" aid:tcols=\"2\"><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"28.60307086659438\"><p>Code:</p></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"216.44417322789388\"><r>password_field(:login, :pass, :size =&gt; 20, :class =&gt; &quot;password_input&quot;)</r></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"28.60307086659438\"><p>Output:</p></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"216.44417322789388\"><rh>&lt;input type=&quot;password&quot; id=&quot;login_pass&quot; name=&quot;login[pass]&quot; value=&quot;#{@login.pass}&quot; size=&quot;20&quot; class=&quot;password_input&quot; /&gt;</rh></Cell></sample_code> </p><minihead>hidden_field </minihead><p>Returns an <c>&lt;input type=&quot;hidden&quot;&gt; </c>HTML tag. </p><r>  hidden_field(:object_name, :method, P{html_options}) </r><p><sample_code xmlns:aid=\"http://ns.adobe.com/AdobeInDesign/4.0/\" aid:table=\"table\" aid:trows=\"2\" aid:tcols=\"2\"><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"28.60307086659438\"><p>Code:</p></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"216.44417322789388\"><r>password_field(:signup, :pass_confirm)</r></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"28.60307086659438\"><p>Output:</p></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"216.44417322789388\"><rh>&lt;input type=&quot;hidden&quot; id=&quot;signup_pass_confirm&quot; name=&quot;signup[pass_confirm]&quot; value=&quot;#{@signup.pass_confirm}&quot; /&gt;</rh></Cell></sample_code> </p><subhead>params[] </subhead><p>P{html_options} - a hash of key/value pairs which will be converted to attributes on the HTML tag.  E.g. <c>{ :class =&gt; &quot;blue&quot;, :style=&quot;font:courier&quot; }</c> would become <c>class=&quot;blue&quot; style=&quot;font:courier&quot;</c> within the HTML tag.  </p><p>O[collection] Q{options} </p><subhead>time and country </subhead><minihead>country_options_for_select </minihead><p>Returns a string of HTML <c>&lt;option&gt;</c> tags listing most countries in the world. Only the <c>&lt;option&gt;</c> tags are returned. </p><r>  country_options_for_select<sample_code xmlns:aid=\"http://ns.adobe.com/AdobeInDesign/4.0/\" aid:table=\"table\" aid:trows=\"2\" aid:tcols=\"2\"><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"28.60307086659438\"><p>Code:</p></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"239.05440944836627\"><r>country_options_for_select(&quot;United Kingdom&quot;, [&quot;<c>France</c>&quot;, &quot;United States&quot;, &quot;Canada&quot;])</r></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"28.60307086659438\"><p>Output:</p></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"239.05440944836627\"><rh>&lt;option value=&quot;France&quot;&gt;France&lt;/option&gt; </rh><rh>&lt;option value=&quot;United States&quot;&gt;United States&lt;/option&gt; </rh><rh>&lt;option value=&quot;Canada&quot;&gt;Canada&lt;/option&gt; </rh><rh>&lt;option value=&quot;&quot;&gt;-------------&lt;/option&gt; </rh><rh>&lt;option value=&quot;Afghanistan&quot;&gt;Afghanistan&lt;/option&gt; </rh><rh>&lt;option value=&quot;Albania&quot;&gt;Albania&lt;/option&gt; </rh><rh>.. </rh><rh>&lt;option value=&quot;Zimbabwe&quot;&gt;Zimbabwe&lt;/option&gt;</rh></Cell></sample_code> </r><p><c>selected</c> - can be <c>nil</c>, or can be set to the name of the country whose <c>&lt;option&gt;</c> tag you would like to have the <c>selected=&quot;selected&quot;</c> attribute appended.  </p><p>Rpriority_countries<c> </c>- an array of strings containing a subset of countries to be listed first at the top of the dropdown list.  </p><minihead>country_select </minihead><p>As country_options_for_select, but wraps the HTML &lt;option&gt; tags with a HTML &lt;select&gt;<c> </c>tag for the given :object and :method. If the value of :method matches a country name, then the &lt;option&gt; tag for that country will be selected.  </p><r>  country_select(:object, :method, R[priority_countries],     Q{options}, P{html_options}) </r><p><sample_code xmlns:aid=\"http://ns.adobe.com/AdobeInDesign/4.0/\" aid:table=\"table\" aid:trows=\"2\" aid:tcols=\"2\"><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"28.60307086659438\"><p>Code:</p></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"239.05440944836627\"><r>country_select(:user, :country, [&quot;France&quot;, &quot;United States&quot;, &quot;Canada&quot;], {}, :class =&gt; &quot;select_country&quot;)</r></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"28.60307086659438\"><p>Output:</p></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"239.05440944836627\"><rh>&lt;select id=&quot;user_country&quot; name=&quot;user[country]&quot;&gt; </rh><rh>&lt;option value=&quot;France&quot;&gt;France&lt;/option&gt; </rh><rh>&lt;option value=&quot;United States&quot;&gt;United States&lt;/option&gt; </rh><rh>&lt;option value=&quot;Canada&quot;&gt;Canada&lt;/option&gt; </rh><rh>&lt;option value=&quot;&quot;&gt;-------------&lt;/option&gt; </rh><rh>&lt;option value=&quot;Afghanistan&quot;&gt;Afghanistan&lt;/option&gt; </rh><rh>.. </rh><rh>&lt;option value=&quot;Zimbabwe&quot;&gt;Zimbabwe&lt;/option&gt;</rh></Cell></sample_code> </p><p>Rpriority_countries<c> </c>- as<b> country_options_for_select </b>  </p><minihead>time_zone_options_for_select </minihead><p>Returns a string of <c>&lt;option&gt;</c> tags for most time zones in the world. Only the <c>&lt;option&gt;</c> tags are returned. This helper defaults to using the <c>TimeZone</c> class that ships with Rails to obtain a list of available time zones and format them to create the <c>&lt;option&gt;</c> tags.    </p><p>  time_zone_options_for_select(&quot;selected&quot;, h[priority_zones], model) </p><p><sample_code xmlns:aid=\"http://ns.adobe.com/AdobeInDesign/4.0/\" aid:table=\"table\" aid:trows=\"2\" aid:tcols=\"2\"><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"28.60307086659438\"><p>Code:</p></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"239.05440944836627\"><r>time_zone_options_for_select(&quot;Arizona&quot;, TimeZone.us_zones)</r></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"28.60307086659438\"><p>Output:</p></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"239.05440944836627\"><rh>&lt;option value=&quot;Hawaii&quot;&gt;(GMT-10:00) Hawaii&lt;/option&gt; </rh><rh>&lt;option value=&quot;Alaska&quot;&gt;(GMT-09:00) Alaska&lt;/option&gt; </rh><rh>&lt;option value=&quot;Pacific Time (US &amp;amp; Canada)&quot;&gt;(GMT-08:00) Pacific Time (US &amp;amp; Canada)&lt;/option&gt; </rh><rh>&lt;option value=&quot;Arizona&quot; selected=&quot;selected&quot;&gt;(GMT-07:00) Arizona&lt;/option&gt; </rh><rh>.. </rh><rh>&lt;option value=&quot;Nuku&#8217;alofa&quot;&gt;(GMT+13:00) Nuku&#8217;alofa&lt;/option&gt;</rh></Cell></sample_code> </p><p>priority_zones<c> </c>- an array containing a list of <c>TimeZone</c> objects that you wish to be listed above the rest of the list. Calling <c>TimeZone.us_zones</c> will provide an array of US <c>TimeZone</c> objects which is a convenient way to prioritise the US time zones.  </p><p><c>selected</c> - this string can be <c>nil</c>, or can be set to the name of the city you would like to have the <c>selected=&quot;selected&quot;</c> attribute appended. To see a list of valid city names, you can call <b>time_zone_options_for_select</b><c> </c>without parameters and view the resulting values for the <c>&lt;option&gt;</c> tags, or call <c>TimeZone.all.each { |city| puts city.name } </c>from the Rails console.<c> </c></p><p><c>model</c> - this is an object that the helper uses to obtain a list of available time zones. It defaults to using the <c>TimeZone</c> class that ships with Rails. You can change this to any object that responds to <c>all</c> and returns an array of objects that represent time zones.  </p><minihead> time_zone_select </minihead><p>As <b>time_zone_options_for_select</b>, but wraps the HTML <c>&lt;option&gt;</c> tags with a HTML <c>&lt;select&gt; </c>tag for the given <c>:object</c> and <c>:method</c>. </p><r>time_zone_select(:object, :method, h[priority_zones],         Q{options}, P{html_options}) </r><p><sample_code xmlns:aid=\"http://ns.adobe.com/AdobeInDesign/4.0/\" aid:table=\"table\" aid:trows=\"2\" aid:tcols=\"2\"><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"28.60307086659438\"><p>Code:</p></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"239.05440944836627\"><r>time_zone_select(:user, :time_zone, TimeZone.us_zones, { :include_blank =&gt; &quot;Please select your time zone&quot; }, :class =&gt; &quot;time_select&quot;)</r></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"28.60307086659438\"><p>Output:</p></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"239.05440944836627\"><rh>&lt;select class=&quot;time_select&quot; id=&quot;user_time_zone&quot; name=&quot;user[time_zone]&quot;&gt; </rh><rh>&lt;option value=&quot;Hawaii&quot;&gt;(GMT-10:00) Hawaii&lt;/option&gt; </rh><rh>&lt;option value=&quot;Alaska&quot;&gt;(GMT-09:00) Alaska&lt;/option&gt; </rh><rh>&lt;option value=&quot;Pacific Time (US &amp;amp; Canada)&quot;&gt;(GMT-08:00) Pacific Time (US &amp;amp; Canada)&lt;/option&gt; </rh><rh>&lt;option value=&quot;Arizona&quot;&gt;(GMT-07:00) Arizona&lt;/option&gt; </rh><rh>.. </rh><rh>&lt;option value=&quot;Nuku&#8217;alofa&quot;&gt;(GMT+13:00) Nuku&#8217;alofa&lt;/option&gt; </rh><rh>&lt;/select&gt;</rh></Cell></sample_code> </p><p>priority_zones - as<b> time_zone_options_for_select  </b></p><p><c>options</c> - a hash.  </p><subhead>form builders </subhead><minihead>form_for </minihead><p>This helper is used to wrap a Rails model object. You assign an @instance_variable in your controller, passing it an instance of an ActiveRecord model object. You then pass @instance_variable to the <b>form_for</b> helper. It will then map your model object&apos;s methods/attributes to the <c>&lt;input&gt;</c> fields in your form, automatically filling in their values if they exist. Because you specify your model object at the form level, it creates a scope for that model object around all the <c>&lt;input&gt;</c> fields within the <c>form_for</c> block, which means you do not have to repeat the name of the model object for every tag. E.g. <c>text_field :person, :name</c> becomes <c>form.text_field :name</c> as the model <c>Person</c> has already been assigned in the <b>form_for</b> tag. </p><r>  form_for(:object, @object_instance, {options}) </r><p><sample_code xmlns:aid=\"http://ns.adobe.com/AdobeInDesign/4.0/\" aid:table=\"table\" aid:trows=\"2\" aid:tcols=\"2\"><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"21.83741012650698\"><p>Code</p></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"243.14684184199683\"><rh>&lt;% form_for (:person, @person, :url =&gt; { :action =&gt; &apos;update&apos;, :id =&gt; 1 }, :html =&gt; { :multipart =&gt; :true}) do  |form|%&gt;  </rh><rh>  Name:    &lt;%= form.text_field  :title, :size =&gt; 30 %&gt; </rh><rh>  Notes:   &lt;%= form.text_area  :content, :size =&gt; &quot;10x20&quot; %&gt; </rh><rh>  Photo:   &lt;%= form.file_field   :photo_data %&gt; </rh><rh>  &lt;%= submit_tag &quot;Update&quot; %&gt; </rh><rh>&lt;% end %&gt;</rh></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"21.83741012650698\"><p>Output</p></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"243.14684184199683\"><rh>&lt;form action=&quot;/user/update/1&quot; enctype=&quot;multipart/form-data&quot; method=&quot;post&quot;&gt;  </rh><rh> Name:  &lt;input id=&quot;person_title&quot; name=&quot;person[title]&quot; size=&quot;30&quot; type=&quot;text&quot; /&gt; </rh><rh> Notes: &lt;textarea cols=&quot;10&quot; id=&quot;person_content&quot; name=&quot;person[content]&quot; rows=&quot;20&quot;&gt;&lt;/textarea&gt; </rh><rh> Photo: &lt;input id=&quot;person_photo_data&quot; name=&quot;person[photo_data]&quot; type=&quot;file&quot; /&gt; </rh><rh>  &lt;input name=&quot;commit&quot; type=&quot;submit&quot; value=&quot;Update&quot; /&gt; </rh><rh>&lt;/form&gt;</rh></Cell></sample_code> </p><p><c>{options}</c> is a hash which can take two parameters:  </p><c>{url}</c> - this can be a string containing the URL to submit the form, as used in the HTML <c>action</c> attribute, or it can itself be a hash in the same format you use with <c>url_for</c> in which case Rails will construct the form URL for you.  <c>{html}</c> - as html_options <minihead>fields_for </minihead><p>Creates a scope around a specific model object like <b>form_for</b>, but doesn&apos;t create any <c>&lt;form&gt;</c> tags. This makes <c>fields_for</c> suitable for handling multiple model objects in a single form.  </p><r>  fields_for(:object, @object_instance) </r><p><sample_code xmlns:aid=\"http://ns.adobe.com/AdobeInDesign/4.0/\" aid:table=\"table\" aid:trows=\"2\" aid:tcols=\"2\"><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"21.83741012650698\"><p>Code</p></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"243.14684184199683\"><rh>&lt;% fields_for :phone, @phone do |phone_fields| %&gt;  </rh><rh>    Home:   &lt;%= phone_fields.text_field :home %&gt; </rh><rh>    Work:   &lt;%= phone_fields.text_field :work %&gt; </rh><rh>    Cell:   &lt;%= phone_fields.text_field :cell %&gt;   </rh><rh>&lt;% end %&gt;</rh></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"21.83741012650698\"><p>Output</p></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"243.14684184199683\"><rh>Home: &lt;input id=&quot;phone_home&quot; name=&quot;phone[home]&quot; type=&quot;text&quot; /&gt; </rh><rh>Work: &lt;input id=&quot;phone_work&quot; name=&quot;phone[work]&quot; type=&quot;text&quot; /&gt; </rh><rh>Cell: &lt;input id=&quot;phone_cell&quot; name=&quot;phone[cell]&quot; type=&quot;text&quot; /&gt;</rh></Cell></sample_code> </p><subhead>params[] </subhead><p>When a form is submitted to a Rails application, it parses the raw data and constructs a special hash called <c>params</c> for us to access that data. Simple key/value pairs in the form are converted into key/value pairs in the params hash. However, if a form field contains square brackets <c>[]</c>, Rails will create nested hashes as follows: </p><p><Table xmlns:aid=\"http://ns.adobe.com/AdobeInDesign/4.0/\" aid:table=\"table\" aid:trows=\"5\" aid:tcols=\"2\"><Cell aid:table=\"cell\" aid:theader=\"\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"90.82877165390543\"><p>Form input</p></Cell><Cell aid:table=\"cell\" aid:theader=\"\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"164.10036220436243\"><p>params hash</p></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"90.82877165390543\"><r>id=3245</r></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"164.10036220436243\"><r>{:id =&gt; &quot;3245&quot;}</r></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"90.82877165390543\"><r>customer[name]=Miranda</r></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"164.10036220436243\"><r>{:customer =&gt; {:name =&gt; &quot;Miranda}}</r></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"90.82877165390543\"><r>customer[dob][year]=1979</r></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"164.10036220436243\"><r>{:customer =&gt; {:age =&gt; {:year =&gt; &quot;1979&quot;}}}</r></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"90.82877165390543\"><r>customer[dob][month]=Jan</r></Cell><Cell aid:table=\"cell\" aid:crows=\"1\" aid:ccols=\"1\" aid:ccolwidth=\"164.10036220436243\"><r>{:customer =&gt; {:dob =&gt; {:month =&gt; &quot;Jan&quot;}}}</r></Cell></Table> </p><p>So to find the value of <c>id</c> we would use <c>params[:id]</c>. To find the value of the <c>customer[name]</c> we would use <c>params[:customer][:name]</c>.</p></Main></Root>\r\n"
   user_id: "1"
