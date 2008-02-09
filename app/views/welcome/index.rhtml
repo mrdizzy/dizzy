@@ -6,7 +6,7 @@
 		<!-- Main article -->
 			<div class="inside">
 				<h5><%= asterisk %> <%= @main_article.main_category_name %></h5>
-				<h1><%= @main_article.title %> </h1>
+				<h1><span class="big_quote">&ldquo;</span><%= @main_article.title %> </h1>
 			
 				<h4>POSTED <%= time_ago_in_words(@main_article.date).upcase %> AGO</h4>
 				

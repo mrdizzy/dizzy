@@ -64,27 +64,14 @@ img {
 	float:right;
 }
 #navigation {
-	height:2.5em;
+	height:45px;
+	border-bottom:1px dotted #B2B1B1;
+	margin-bottom:3px;
 }
 .nav_button { 
-	width:172px;
-	border-bottom:1px solid #e1e1e1;
+	width:20%;
 	margin-top:0.2em;
-	margin-right:8px;
+	margin-right:0;
 	margin-bottom:0.4em;
 	float:left;
-	height:1.9em;
-}
-.nav_selected { 
-	width:172px;
-	border-bottom:1px solid #29A4BD;
-	margin-top:0.2em;
-	margin-right:8px;
-	margin-bottom:0.4em;
-	float:left;
-	height:1.9em;
-}
-a:hover .nav_button {
-	border-bottom:1px solid #29A4BD;
-	color: #29A4BD;
 }

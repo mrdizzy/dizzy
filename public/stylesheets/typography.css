@@ -32,7 +32,7 @@ h2 {
 		text-decoration:none;
 		margin-top:0.2em;
 		margin-bottom:0.1em;
-		letter-spacing:-0.08em;
+		letter-spacing:0em;
 		font-size: 0.75em; /* 15px */ 
 		font-family: "Arial Black";
 		color: #e1e1e1;		
@@ -102,7 +102,8 @@ h5 {
 		font-size:1.4em;
 		letter-spacing:-0.05em;
 		line-height:1.5em;
-		border-bottom:1px dotted #e1e1e1;
+		margin-top:0;
+		border-bottom:1px dotted #B2B1B1;
 	}
 
 h6 {
@@ -151,11 +152,11 @@ p {
 		color: #29A4BD;	
 	}
 	#welcome_middle p {
-		font-size:0.9em;
+		font-size:1em;
 		line-height:2em;
 		margin-top:0.5em;
 		margin-bottom:0.5em;
-		letter-spacing:-0.05em;
+		letter-spacing:0em;
 	}
 
 /* Classes
@@ -199,7 +200,11 @@ p {
 	font-family: "Arial Black";
 	color: #29A4BD;
 }
+.big_quote {
 
+	font-style:italic;
+
+}
 /* Links
 ==================================== */
 a:link { color: #29A4BD; }

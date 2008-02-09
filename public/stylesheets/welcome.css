@@ -2,19 +2,19 @@
 ============= */
 #welcome_left {
 	float:left;
-	width:515px;	
+	width:575px;	
 }
 #welcome_middle {
 	float:left;
-	width:155px;
-	border-left: 1px solid #e1e1e1;
-	border-right: 1px solid #e1e1e1;
+	width:180px;
+	border-left: 1px dotted #B2B1B1;
+	border-right: 1px dotted #B2B1B1;
 	padding-left:10px;
 }
 #latest_container {
 	width:100%;
 	padding-left: 0.4em;
-	border-bottom: 1px solid #e1e1e1;
+	border-bottom: 1px dotted #B2B1B1;
 }
 #welcome_right {
 	width:200px;
@@ -22,7 +22,7 @@
 }
 #recent {
 	width:100%;
-	border-top: 1px solid #e1e1e1;
+	border-top: 1px dotted #B2B1B1;
 }
 #logo_pagination {
 	width:100%;
