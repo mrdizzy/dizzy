@@ -16,7 +16,7 @@
 
 	<div class="cheatsheet_thumbnail">
 		
-		<%= link_to image_tag(formatted_content_path(:id => @content.permalink, :format => "png")), formatted_content_path(:id => @content.permalink, :format => "pdf") %>
+		<%= pdf_thumbnail(@content) %>
 		
 		<p><%= link_to image_tag ("f/small_icons/pdf_sheet.png"), formatted_content_path(:id => @content.permalink, :format => "pdf") %> 
 		   <%= link_to "PDF version", formatted_content_path(:id => @content.permalink, :format => "pdf") %></p>
