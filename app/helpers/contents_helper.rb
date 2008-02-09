@@ -243,7 +243,4 @@ module ContentsHelper
 		xml = listener.results		
 	end
 
-	def pdf_thumbnail(content)
-		"<div class=\"cheatsheet_thumbnail\">" + image_tag(formatted_content_path(content.main_category_permalink,content.permalink,"png")) + "</div>"
-	end
 end

@@ -7,13 +7,8 @@
 	<%= stylesheet_link_tag "polls", :media => "all" %>
 	<%= stylesheet_link_tag "welcome", :media => "all" %>	
 	<%= javascript_include_tag :defaults %>
-	<%= javascript_include_tag "rollover" %>
 	
-	<script type="text/javascript">
-	    window.onload = function() {
-	      new Rollover('footer', {suffixSeperator: '/'});
-	    }    
-	</script>
+	<%= render :partial => "/layouts/rollover_config" %>		
 </head>
 
 <body>
