@@ -5,7 +5,6 @@ sections_008:
   title: form_for and fields_for
   body: |-
     
-    
     <section>
     
     <subhead>form builders that wrap model objects</subhead>
@@ -265,9 +264,9 @@ sections_005:
   id: "5"
   summary: where migration files go
 sections_006: 
-  permalink: select-helper-methods
+  permalink: model-form-input-field-helpers
   content_id: "4"
-  title: Select Helpers
+  title: Model-based input fields
   body: |
     <section>
     <subhead>Input field helpers</subhead>
@@ -342,13 +341,12 @@ sections_006:
     </section>
 
   id: "6"
-  summary: Yeah, select helpers
+  summary: create HTML <code>&lt;input&gt;</code> fields that work with your models
 sections_007: 
   permalink: form-parameters
   content_id: "4"
   title: Params
   body: |
-    
     
     <section>
     <subhead>params[] </subhead>
@@ -372,4 +370,4 @@ sections_007:
     </section>
 
   id: "7"
-  summary: How form parameters get passed into the params[] hash
+  summary: How form parameters get passed into the <code>params[]</code> hash

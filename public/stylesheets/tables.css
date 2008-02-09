@@ -41,6 +41,10 @@
 		padding:0.7em;
 		border-bottom:1px solid #888;
 	}
+	
+	#cheatsheet table {
+		margin-bottom:1.5em;
+	}
 		
 /* Portfolio
 ========================= */
