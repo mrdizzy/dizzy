@@ -6,7 +6,11 @@
 <h2><%= @content.description %></h2>
 
 <%= render(:partial => "shared/section_list", :object => @content.sections, :locals => { :current_article_permalink => nil} ) %>
+<div id="cheatsheet">
+<% sections = @content.sections.collect { |section| section.body } %>
+	<%=  parse_cheatsheet_xml(sections.to_s)%>
 
+</div>
 <%= spiro %>
 
 <%= render(:partial => "contents/related", :object => @content ) %>

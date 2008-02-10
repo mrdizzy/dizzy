@@ -33,8 +33,7 @@ class CheatsheetsController < ApplicationController
 	end
 	unless params[:thumbnail][:uploaded_data].blank?
 		if @cheatsheet.thumbnail	 	
-			@cheatsheet.thumbnail.update_attributes(params[:thumbnail])
-  	 		
+			@cheatsheet.thumbnail.update_attributes(params[:thumbnail])  	 		
 		else 
 			@cheatsheet.thumbnail = Thumbnail.new(params[:thumbnail])
 		end
@@ -42,7 +41,7 @@ class CheatsheetsController < ApplicationController
 
     if @cheatsheet.valid? && @cheatsheet.pdf.valid? && @cheatsheet.thumbnail.valid? && @cheatsheet.categories.all?(&:valid?)
       flash[:notice] = 'Cheatsheet was successfully updated.'
-      redirect_to :action => "index"
+      redirect_to contents_path(:id => @cheatsheet.permalink)
     else
       render :action => 'edit'
     end

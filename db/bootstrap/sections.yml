@@ -43,6 +43,99 @@ sections_008:
     </section>
   id: "8"
   summary: form builders that wrap model objects
+sections_009: 
+  permalink: select-menu-helpers
+  content_id: "4"
+  title: Select helpers
+  body: "<section>\r\n\
+    \r\n\
+    <subhead>Select field helpers </subhead>\r\n\
+    \r\n\
+    <p>These helpers are very useful when creating dropdown selection menus using the HTML <c>&lt;select&gt;</c> and <c>&lt;option&gt; </c>tags. </p>\r\n\
+    \r\n\
+    <minihead>collection_select </minihead><p>Takes an array of ActiveRecord objects as returned by ActiveRecord&apos;s<c> find </c>method, and builds a <c>&lt;select&gt;</c> list from the attributes/methods which you specify. </p>\r\n\
+    \r\n\
+    <r> collection_select(:object, :method, [collection], :option_key_method, :option_value_method, {options}, {html_options}) </r>\r\n\
+    \r\n\
+    <sample_code aid:trows=\"2\" aid:tcols=\"2\">\r\n\
+    \t<Cell><p>Code:</p></Cell>\r\n\
+    \t<Cell><r>@users = User.find(:all, :order =&gt; &quot;name&quot;) </r><r>collection_select(:user, :id, @users, :id, :name, {}, :class =&gt; &quot;red&quot;)</r></Cell>\r\n\
+    \r\n\
+    \t<Cell><p>Output:</p></Cell>\r\n\
+    \t<Cell><rh>&lt;select id=&quot;user_id&quot; name=&quot;user[id]&quot; class=&quot;red&quot;&gt; </rh><rh>&lt;option value=&quot;#{@user.id}&quot;&gt;#{@user.name}&lt;/option&gt;&lt;/select&gt;</rh></Cell>\r\n\
+    </sample_code> \r\n\
+    \r\n\
+    <ul><c>[collection] </c>- an array of ActiveRecord model objects. For example, if you have a model called <c>User</c> and you call <c>@users = User.find(:all)</c>, then <c>@users</c> will contain an array of <c>User</c> objects.  </ul><ul><c>option_key_method </c>-<c> </c>the name of a method which, when calledon a child object of a member of <c>[collection]</c> returns a value to be used as the value attribute for its <c>&lt;option&gt;</c> tag </ul><ul><c>option_value_method </c>-<c> </c>the name of a method which, when called on a child object of a member of <c>[collection]</c> returns a value to be used as the contents of its <c>&lt;option&gt;</c> tag </ul>\r\n\
+    \r\n\
+    \r\n\
+    <minihead>option_groups_from_collection_for_select </minihead>\r\n\
+    \r\n\
+    <p>Returns a string of HTML <c>&lt;option&gt;</c> tags, similar to <b>options_from_collection_for_select</b>, but groups them by <c>&lt;optgroup&gt;</c> tags based on the object relationships of the arguments. </p>\r\n\
+    \r\n\
+    <r> option_groups_from_collection_for_select([collection], :group_method, :group_label_method, :option_key_method, :option_value_method, :selected_key) </r>\r\n\
+    \r\n\
+    <sample_code aid:trows=\"2\" aid:tcols=\"2\">\r\n\
+    \t<Cell><p>Code:</p></Cell>\r\n\
+    \t<Cell><r>option_groups_from_collection_for_select(@authors, :books, :name, :id, :title, 3)</r></Cell>\r\n\
+    \r\n\
+    \t<Cell><p>Output:</p></Cell>\r\n\
+    \t<Cell><rh>&lt;optgroup label=&quot;J K Rowling&quot;&gt; </rh><rh>    &lt;option_ value=&quot;1&quot;&gt;Harry Potter: Order of the Phoenix&lt;/option&gt; </rh><rh>    &lt;option value=&quot;4&quot;&gt;Harry Potter: The Deathly Hallows&lt;/option&gt; </rh><rh>&lt;/optgroup&gt; </rh><rh>&lt;optgroup label=&quot;Douglas Coupland&quot;&gt; </rh><rh>    &lt;option value=&quot;3&quot; selected=&quot;selected&quot;&gt;Generation X&lt;/option&gt; </rh><rh>    &lt;option value=&quot;12&quot;&gt;Girlfriend In A Coma&lt;/option&gt; </rh><rh>    &lt;option value=&quot;5&quot;&gt;Shampoo Planet&lt;/option&gt; </rh><rh>&lt;/optgroup&gt;</rh></Cell>\r\n\
+    </sample_code> \r\n\
+    \r\n\
+    \t<ul><c>[collection] </c>- as<b> collection_select  </b></ul><ul><c>group_method </c>- the name of a method which, when called on a member of <c>[collection]</c> returns an array of child objects representing the <c>&lt;option&gt;</c> tags </ul><ul><c>group_label_method </c>- the name of a method which, when called on a member of <c>[collection]</c> returns a string to be used as the label attribute for its <c>&lt;optgroup&gt;</c> tag </ul><ul><c>option_key_method </c>- as<b> collection_select  </b></ul><ul><c>option_value_method </c>- as<b> collection_select </b> </ul><ul><c>selected_key </c>-<c> </c>a value equal to the value attribute for one of the <c>&lt;option&gt;</c> tags, which will have the select attribute set. Corresponds to the return value of one of the calls to <c>option_key_method</c>. If <c>nil</c>, no selection is made.  </ul>\r\n\
+    \r\n\
+    \r\n\
+    <minihead>options_for_select </minihead>\r\n\
+    \r\n\
+    <p>Returns a string of HTML <c>&lt;option&gt;</c> tags. </p>\r\n\
+    \r\n\
+    <r>options_for_select([{choices}], [selected]) </r>\r\n\
+    \r\n\
+    <sample_code aid:trows=\"2\" aid:tcols=\"2\">\r\n\
+    \t<Cell><p>Code:</p></Cell>\r\n\
+    \t<Cell><r>options_for_select( {&quot;Mary&quot; =&gt; &quot;\xC2\xA32&quot;, &quot;Lucy&quot; =&gt; &quot;\xC3\x82\xC2\xA34&quot; ,&quot;Anne&quot; =&gt; &quot;\xC2\xA36&quot;}, [&quot;\xC2\xA34&quot;, &quot;\xC3\x82\xC2\xA36&quot;])</r></Cell>\r\n\
+    \t\r\n\
+    \t<Cell><p>Output:</p></Cell>\r\n\
+    \t<Cell><rh>&lt;option value=&quot;\xC3\x82\xC2\xA32&quot;&gt;Mary&lt;/option&gt; </rh><rh>&lt;option value=&quot;\xC3\x82\xC2\xA34&quot; selected=&quot;selected&quot;&gt;Lucy&lt;/option&gt;  </rh><rh>&lt;option value=&quot;\xC3\x82\xC2\xA36&quot; selected=&quot;selected&quot;&gt;Anne&lt;/option&gt;</rh></Cell>\r\n\
+    </sample_code> \r\n\
+    \r\n\
+    <ul><c>[{choices}]</c> can be any enumerable object: an array of strings, hashes, results of database queries: </ul><ul2>Array of strings. Each string will be used as both the value and option choice </ul2><ul2>Hash. The keys will be used as the display text and the values as the <c>&lt;option&gt;</c> tag keys as shown in the code example above. The main reason against using a hash is that you cannot control the order of the entries in the generated list (hashes are not ordered). </ul2><ul2>Array of arrays. If each element in the choices array is itself an array, then the selection will use the first value as display text and the last value as the key:  <c>options_for_select([[&apos;Andy&apos;, 1],[&apos;Bert&apos;, 2],[&apos;David&apos;, 3]]) </c></ul2><ul><c>selected </c>can be a string, or in the case of a multiple select form, an array of strings, containing the values you wish to be selected by appending <c>selected=&quot;selected&quot;.  </c></ul>\r\n\
+    \r\n\
+    \r\n\
+    <minihead>options_from_collection_for_select </minihead>\r\n\
+    \r\n\
+    <p>Returns a string of HTML <c>&lt;option&gt;</c> tags from a collection of ActiveRecord objects. Returns only the <c>&lt;option&gt;</c> tags, see <c>collection_select</c> above for a more complete solution. </p>\r\n\
+    \r\n\
+    <r> options_from_collection_for_select([collection], :value_method, :text_method, [selected]) </r>\r\n\
+    \r\n\
+    <sample_code aid:trows=\"2\" aid:tcols=\"2\">\r\n\
+    \t<Cell><p>Code:</p></Cell>\r\n\
+    \t<Cell><r>options_from_collection_for_select(@authors, :id, :name)</r></Cell>\r\n\
+    \r\n\
+    \t<Cell><p>Output:</p></Cell>\r\n\
+    \t<Cell><rh>&lt;option value=&quot;#{@author.id}&quot;&gt;#{@author.name}&lt;/option&gt;</rh></Cell>\r\n\
+    </sample_code> \r\n\
+    \r\n\
+    <ul><c>[selected] </c>can be an ActiveRecord object, or in the case of a multiple select form, an array of objects, containing the values you wish to be selected by appending <c>selected=&quot;selected&quot;</c>.  </ul>\r\n\
+    \r\n\
+    <minihead>select </minihead>\r\n\
+    \r\n\
+    <p>Creates an HTML <c>&lt;select&gt; </c>drop down menu.  </p>\r\n\
+    \r\n\
+    <r> select(:object_name, :method, [choices], {options}, {html_options}) </r>\r\n\
+    \r\n\
+    <sample_code aid:trows=\"2\" aid:tcols=\"2\">\r\n\
+    \t<Cell><p>Code:</p></Cell>\r\n\
+    \t<Cell><r>@people = Person.find(:all).collect { |p| [p.name, p.id] ) </r><r>select(:post, :person_id, @people, {:include_blank =&gt; true})</r></Cell>\r\n\
+    \r\n\
+    \t<Cell><p>Output:</p></Cell>\r\n\
+    \t<Cell><rh>&lt;select name=&quot;post[person_id]&quot;&gt; </rh><rh> &lt;option value=&quot;&quot;&gt;&lt;/option&gt; </rh><rh> &lt;option value=&quot;1&quot; selected=&quot;selected&quot;&gt;David&lt;/option&gt; </rh><rh> &lt;option value=&quot;2&quot;&gt;Sam&lt;/option&gt;&lt;/select&gt;</rh></Cell>\r\n\
+    </sample_code> \r\n\
+    \r\n\
+    <ul><c>[choices] </c>- as<b> options_for_select  </b></ul>\r\n\
+    </section>"
+  id: "9"
+  summary: helpers that build drop-down &lt;select&gt; forms
 sections_001: 
   permalink: rails-migrations-methods
   content_id: "1"

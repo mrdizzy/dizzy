@@ -389,6 +389,6 @@ contents_004:
   date: 2008-02-09 14:04:00
   type: Cheatsheet
   id: "4"
-  description: Form helpers.
+  description: Using form_for and fields_for to wrap model objects, accessing the params[] hash, building drop-down select menus, you'll find it all here&hellip;
   content: ""
   user_id: "1"
