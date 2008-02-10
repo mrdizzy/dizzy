@@ -11,7 +11,6 @@
 ==================================== */
 	table.sample_code  {
 		width:690px;
-		border:1px dotted #888;
 		table-layout: fixed;
 	}
 		table.sample_code td {
@@ -21,27 +20,26 @@
 			width:75px;
 		}
 		table.sample_code tr td.first {
-		   background-color:#888;
-		   color:white;
+		   background-color:#888;		 
 		   text-align:center;
+		   color:white;
 		}
 		table.sample_code tr.odd td.first {
 			background-color:#29A4BD;
-			color:white;
+			color:white;			
 			text-align:center;
 		}
 		table.sample_code tr.odd {
 			background-color:transparent;
 		}	
-
 	
 /* Cheatsheet Table
 ========================= */
 	#cheatsheet td {
-		padding:0.7em;
-		border-bottom:1px solid #888;
+		border:1px dashed black;
 	}
-	
+	#cheatsheet tr {
+	}
 	#cheatsheet table {
 		margin-bottom:1.5em;
 	}
