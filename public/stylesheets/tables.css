@@ -15,6 +15,7 @@
 	}
 		table.sample_code td {
 			padding:0.25em;
+			border:1px dashed black;
 		}
 		table.sample_code td.first {
 			width:75px;
@@ -32,11 +33,14 @@
 		table.sample_code tr.odd {
 			background-color:transparent;
 		}	
+	#cheatsheet table.sample_code td { 
+		border:1px dashed black;
+	}
 	
 /* Cheatsheet Table
 ========================= */
 	#cheatsheet td {
-		border:1px dashed black;
+		border-bottom:1px solid grey;
 	}
 	#cheatsheet tr {
 	}
