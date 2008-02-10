@@ -118,7 +118,7 @@ module ContentsHelper
 				
 			case method_name		
 			when :tag_start
-				if @@counter > 0 and @@counter.even?
+				if @@counter > 0 
 					@@counter = 0
 					"</div><h2>"					
 				else
