@@ -3,57 +3,43 @@ sections_008:
   permalink: form_for_fields_for_helpers_builders
   content_id: "4"
   title: form_for and fields_for
-  body: |-
-    
-    <section>
-    
-    <subhead>form builders that wrap model objects</subhead>
-    
-    <minihead>form_for</minihead>
-    
-    <p>This helper is used to wrap a Rails model object. You assign an @instance_variable in your controller, passing it an instance of an ActiveRecord model object. You then pass @instance_variable to the <b>form_for</b> helper. It will then map your model object&apos;s methods/attributes to the <c>&lt;input&gt;</c> fields in your form, automatically filling in their values if they exist. Because you specify your model object at the form level, it creates a scope for that model object around all the <c>&lt;input&gt;</c> fields within the <c>form_for</c> block, which means you do not have to repeat the name of the model object for every tag. E.g. <c>text_field :person, :name</c> becomes <c>form.text_field :name</c> as the model <c>Person</c> has already been assigned in the <b>form_for</b> tag. </p>
-    
-    <r>  form_for(:object, @object_instance, {options}) </r>
-    
-    <sample_code aid:trows="2" aid:tcols="2">
-    	<Cell><p>Code</p></Cell>
-    	<Cell><rh>&lt;% form_for (:person, @person, :url =&gt; { :action =&gt; &apos;update&apos;, :id =&gt; 1 }, :html =&gt; { :multipart =&gt; :true}) do  |form|%&gt;  </rh>
-    <rh>  Name:    &lt;%= form.text_field  :title, :size =&gt; 30 %&gt; </rh><rh>  Notes:   &lt;%= form.text_area  :content, :size =&gt; &quot;10x20&quot; %&gt; </rh><rh>  Photo:   &lt;%= form.file_field   :photo_data %&gt; </rh><rh>  &lt;%= submit_tag &quot;Update&quot; %&gt; </rh>
-    <rh>&lt;% end %&gt;</rh></Cell>
-    
-    	<Cell><p>Output</p></Cell>
-    	<Cell><rh>&lt;form action=&quot;/user/update/1&quot; enctype=&quot;multipart/form-data&quot; method=&quot;post&quot;&gt;  </rh>
-    <rh> Name:  &lt;input id=&quot;person_title&quot; name=&quot;person[title]&quot; size=&quot;30&quot; type=&quot;text&quot; /&gt; </rh><rh> Notes: &lt;textarea cols=&quot;10&quot; id=&quot;person_content&quot; name=&quot;person[content]&quot; rows=&quot;20&quot;&gt;&lt;/textarea&gt; </rh><rh> Photo: &lt;input id=&quot;person_photo_data&quot; name=&quot;person[photo_data]&quot; type=&quot;file&quot; /&gt; </rh><rh>  &lt;input name=&quot;commit&quot; type=&quot;submit&quot; value=&quot;Update&quot; /&gt; </rh>
-    <rh>&lt;/form&gt;</rh>
-    </Cell>
-    </sample_code>
-    
-    <minihead>fields_for </minihead>
-    
-    <p>Creates a scope around a specific model object like <b>form_for</b>, but doesn&apos;t create any <c>&lt;form&gt;</c> tags. This makes <c>fields_for</c> suitable for handling multiple model objects in a single form.  </p>
-    
-    <r>  fields_for(:object, @object_instance) </r>
-    
-    <sample_code aid:trows="2" aid:tcols="2">
-    	<Cell><p>Code</p></Cell>
-    	<Cell><rh>&lt;% fields_for :phone, @phone do |phone_fields| %&gt;  </rh><rh>    Home:   &lt;%= phone_fields.text_field :home %&gt; </rh><rh>    Work:   &lt;%= phone_fields.text_field :work %&gt; </rh><rh>    Cell:   &lt;%= phone_fields.text_field :cell %&gt;   </rh><rh>&lt;% end %&gt;</rh></Cell>
-    <Cell><p>Output</p></Cell>
-    <Cell><rh>Home: &lt;input id=&quot;phone_home&quot; name=&quot;phone[home]&quot; type=&quot;text&quot; /&gt; </rh><rh>Work: &lt;input id=&quot;phone_work&quot; name=&quot;phone[work]&quot; type=&quot;text&quot; /&gt; </rh><rh>Cell: &lt;input id=&quot;phone_cell&quot; name=&quot;phone[cell]&quot; type=&quot;text&quot; /&gt;</rh></Cell></sample_code> 
-    
-    </section>
+  body: "<subhead>form builders that wrap model objects</subhead>\r\n\
+    \r\n\
+    <minihead>form_for</minihead>\r\n\
+    \r\n\
+    <r>  form_for(:object, @object_instance, {options}) </r>\r\n\
+    \r\n\
+    <sample_code aid:trows=\"2\" aid:tcols=\"2\">\r\n\
+    \t<Cell><p>Code</p></Cell>\r\n\
+    \t<Cell><rh>&lt;% form_for (:person, @person, :url =&gt; { :action =&gt; &apos;update&apos;, :id =&gt; 1 }, :html =&gt; { :multipart =&gt; :true}) do  |form|%&gt;  </rh>\r\n\
+    <rh>  Name:    &lt;%= form.text_field  :title, :size =&gt; 30 %&gt; </rh><rh>  Notes:   &lt;%= form.text_area  :content, :size =&gt; &quot;10x20&quot; %&gt; </rh><rh>  Photo:   &lt;%= form.file_field   :photo_data %&gt; </rh><rh>  &lt;%= submit_tag &quot;Update&quot; %&gt; </rh>\r\n\
+    <rh>&lt;% end %&gt;</rh></Cell>\r\n\
+    \r\n\
+    \t<Cell><p>Output</p></Cell>\r\n\
+    \t<Cell><rh>&lt;form action=&quot;/user/update/1&quot; enctype=&quot;multipart/form-data&quot; method=&quot;post&quot;&gt;  </rh>\r\n\
+    <rh> Name:  &lt;input id=&quot;person_title&quot; name=&quot;person[title]&quot; size=&quot;30&quot; type=&quot;text&quot; /&gt; </rh><rh> Notes: &lt;textarea cols=&quot;10&quot; id=&quot;person_content&quot; name=&quot;person[content]&quot; rows=&quot;20&quot;&gt;&lt;/textarea&gt; </rh><rh> Photo: &lt;input id=&quot;person_photo_data&quot; name=&quot;person[photo_data]&quot; type=&quot;file&quot; /&gt; </rh><rh>  &lt;input name=&quot;commit&quot; type=&quot;submit&quot; value=&quot;Update&quot; /&gt; </rh>\r\n\
+    <rh>&lt;/form&gt;</rh>\r\n\
+    </Cell>\r\n\
+    </sample_code>\r\n\
+    \r\n\
+    <minihead>fields_for </minihead>\r\n\
+    \r\n\
+    <r>  fields_for(:object, @object_instance) </r>\r\n\
+    \r\n\
+    <sample_code aid:trows=\"2\" aid:tcols=\"2\">\r\n\
+    \t<Cell><p>Code</p></Cell>\r\n\
+    \t<Cell><rh>&lt;% fields_for :phone, @phone do |phone_fields| %&gt;  </rh><rh>    Home:   &lt;%= phone_fields.text_field :home %&gt; </rh><rh>    Work:   &lt;%= phone_fields.text_field :work %&gt; </rh><rh>    Cell:   &lt;%= phone_fields.text_field :cell %&gt;   </rh><rh>&lt;% end %&gt;</rh></Cell>\r\n\
+    <Cell><p>Output</p></Cell>\r\n\
+    <Cell><rh>Home: &lt;input id=&quot;phone_home&quot; name=&quot;phone[home]&quot; type=&quot;text&quot; /&gt; </rh><rh>Work: &lt;input id=&quot;phone_work&quot; name=&quot;phone[work]&quot; type=&quot;text&quot; /&gt; </rh><rh>Cell: &lt;input id=&quot;phone_cell&quot; name=&quot;phone[cell]&quot; type=&quot;text&quot; /&gt;</rh></Cell></sample_code> "
   id: "8"
   summary: form builders that wrap model objects
 sections_009: 
   permalink: select-menu-helpers
   content_id: "4"
   title: Select helpers
-  body: "<section>\r\n\
+  body: "<subhead>Select field helpers </subhead>\r\n\
     \r\n\
-    <subhead>Select field helpers </subhead>\r\n\
-    \r\n\
-    <p>These helpers are very useful when creating dropdown selection menus using the HTML <c>&lt;select&gt;</c> and <c>&lt;option&gt; </c>tags. </p>\r\n\
-    \r\n\
-    <minihead>collection_select </minihead><p>Takes an array of ActiveRecord objects as returned by ActiveRecord&apos;s<c> find </c>method, and builds a <c>&lt;select&gt;</c> list from the attributes/methods which you specify. </p>\r\n\
+    <minihead>collection_select </minihead>\r\n\
     \r\n\
     <r> collection_select(:object, :method, [collection], :option_key_method, :option_value_method, {options}, {html_options}) </r>\r\n\
     \r\n\
@@ -65,12 +51,7 @@ sections_009:
     \t<Cell><rh>&lt;select id=&quot;user_id&quot; name=&quot;user[id]&quot; class=&quot;red&quot;&gt; </rh><rh>&lt;option value=&quot;#{@user.id}&quot;&gt;#{@user.name}&lt;/option&gt;&lt;/select&gt;</rh></Cell>\r\n\
     </sample_code> \r\n\
     \r\n\
-    <ul><c>[collection] </c>- an array of ActiveRecord model objects. For example, if you have a model called <c>User</c> and you call <c>@users = User.find(:all)</c>, then <c>@users</c> will contain an array of <c>User</c> objects.  </ul><ul><c>option_key_method </c>-<c> </c>the name of a method which, when calledon a child object of a member of <c>[collection]</c> returns a value to be used as the value attribute for its <c>&lt;option&gt;</c> tag </ul><ul><c>option_value_method </c>-<c> </c>the name of a method which, when called on a child object of a member of <c>[collection]</c> returns a value to be used as the contents of its <c>&lt;option&gt;</c> tag </ul>\r\n\
-    \r\n\
-    \r\n\
     <minihead>option_groups_from_collection_for_select </minihead>\r\n\
-    \r\n\
-    <p>Returns a string of HTML <c>&lt;option&gt;</c> tags, similar to <b>options_from_collection_for_select</b>, but groups them by <c>&lt;optgroup&gt;</c> tags based on the object relationships of the arguments. </p>\r\n\
     \r\n\
     <r> option_groups_from_collection_for_select([collection], :group_method, :group_label_method, :option_key_method, :option_value_method, :selected_key) </r>\r\n\
     \r\n\
@@ -82,12 +63,7 @@ sections_009:
     \t<Cell><rh>&lt;optgroup label=&quot;J K Rowling&quot;&gt; </rh><rh>    &lt;option_ value=&quot;1&quot;&gt;Harry Potter: Order of the Phoenix&lt;/option&gt; </rh><rh>    &lt;option value=&quot;4&quot;&gt;Harry Potter: The Deathly Hallows&lt;/option&gt; </rh><rh>&lt;/optgroup&gt; </rh><rh>&lt;optgroup label=&quot;Douglas Coupland&quot;&gt; </rh><rh>    &lt;option value=&quot;3&quot; selected=&quot;selected&quot;&gt;Generation X&lt;/option&gt; </rh><rh>    &lt;option value=&quot;12&quot;&gt;Girlfriend In A Coma&lt;/option&gt; </rh><rh>    &lt;option value=&quot;5&quot;&gt;Shampoo Planet&lt;/option&gt; </rh><rh>&lt;/optgroup&gt;</rh></Cell>\r\n\
     </sample_code> \r\n\
     \r\n\
-    \t<ul><c>[collection] </c>- as<b> collection_select  </b></ul><ul><c>group_method </c>- the name of a method which, when called on a member of <c>[collection]</c> returns an array of child objects representing the <c>&lt;option&gt;</c> tags </ul><ul><c>group_label_method </c>- the name of a method which, when called on a member of <c>[collection]</c> returns a string to be used as the label attribute for its <c>&lt;optgroup&gt;</c> tag </ul><ul><c>option_key_method </c>- as<b> collection_select  </b></ul><ul><c>option_value_method </c>- as<b> collection_select </b> </ul><ul><c>selected_key </c>-<c> </c>a value equal to the value attribute for one of the <c>&lt;option&gt;</c> tags, which will have the select attribute set. Corresponds to the return value of one of the calls to <c>option_key_method</c>. If <c>nil</c>, no selection is made.  </ul>\r\n\
-    \r\n\
-    \r\n\
     <minihead>options_for_select </minihead>\r\n\
-    \r\n\
-    <p>Returns a string of HTML <c>&lt;option&gt;</c> tags. </p>\r\n\
     \r\n\
     <r>options_for_select([{choices}], [selected]) </r>\r\n\
     \r\n\
@@ -99,12 +75,7 @@ sections_009:
     \t<Cell><rh>&lt;option value=&quot;\xC3\x82\xC2\xA32&quot;&gt;Mary&lt;/option&gt; </rh><rh>&lt;option value=&quot;\xC3\x82\xC2\xA34&quot; selected=&quot;selected&quot;&gt;Lucy&lt;/option&gt;  </rh><rh>&lt;option value=&quot;\xC3\x82\xC2\xA36&quot; selected=&quot;selected&quot;&gt;Anne&lt;/option&gt;</rh></Cell>\r\n\
     </sample_code> \r\n\
     \r\n\
-    <ul><c>[{choices}]</c> can be any enumerable object: an array of strings, hashes, results of database queries: </ul><ul2>Array of strings. Each string will be used as both the value and option choice </ul2><ul2>Hash. The keys will be used as the display text and the values as the <c>&lt;option&gt;</c> tag keys as shown in the code example above. The main reason against using a hash is that you cannot control the order of the entries in the generated list (hashes are not ordered). </ul2><ul2>Array of arrays. If each element in the choices array is itself an array, then the selection will use the first value as display text and the last value as the key:  <c>options_for_select([[&apos;Andy&apos;, 1],[&apos;Bert&apos;, 2],[&apos;David&apos;, 3]]) </c></ul2><ul><c>selected </c>can be a string, or in the case of a multiple select form, an array of strings, containing the values you wish to be selected by appending <c>selected=&quot;selected&quot;.  </c></ul>\r\n\
-    \r\n\
-    \r\n\
     <minihead>options_from_collection_for_select </minihead>\r\n\
-    \r\n\
-    <p>Returns a string of HTML <c>&lt;option&gt;</c> tags from a collection of ActiveRecord objects. Returns only the <c>&lt;option&gt;</c> tags, see <c>collection_select</c> above for a more complete solution. </p>\r\n\
     \r\n\
     <r> options_from_collection_for_select([collection], :value_method, :text_method, [selected]) </r>\r\n\
     \r\n\
@@ -116,11 +87,7 @@ sections_009:
     \t<Cell><rh>&lt;option value=&quot;#{@author.id}&quot;&gt;#{@author.name}&lt;/option&gt;</rh></Cell>\r\n\
     </sample_code> \r\n\
     \r\n\
-    <ul><c>[selected] </c>can be an ActiveRecord object, or in the case of a multiple select form, an array of objects, containing the values you wish to be selected by appending <c>selected=&quot;selected&quot;</c>.  </ul>\r\n\
-    \r\n\
     <minihead>select </minihead>\r\n\
-    \r\n\
-    <p>Creates an HTML <c>&lt;select&gt; </c>drop down menu.  </p>\r\n\
     \r\n\
     <r> select(:object_name, :method, [choices], {options}, {html_options}) </r>\r\n\
     \r\n\
@@ -130,10 +97,7 @@ sections_009:
     \r\n\
     \t<Cell><p>Output:</p></Cell>\r\n\
     \t<Cell><rh>&lt;select name=&quot;post[person_id]&quot;&gt; </rh><rh> &lt;option value=&quot;&quot;&gt;&lt;/option&gt; </rh><rh> &lt;option value=&quot;1&quot; selected=&quot;selected&quot;&gt;David&lt;/option&gt; </rh><rh> &lt;option value=&quot;2&quot;&gt;Sam&lt;/option&gt;&lt;/select&gt;</rh></Cell>\r\n\
-    </sample_code> \r\n\
-    \r\n\
-    <ul><c>[choices] </c>- as<b> options_for_select  </b></ul>\r\n\
-    </section>"
+    </sample_code> "
   id: "9"
   summary: helpers that build drop-down &lt;select&gt; forms
 sections_001: 
@@ -360,8 +324,7 @@ sections_006:
   permalink: model-form-input-field-helpers
   content_id: "4"
   title: Model-based input fields
-  body: |
-    <section>
+  body: |-
     <subhead>Input field helpers</subhead>
     <p>All of these helpers take an <c>{html_options}</c> hash which will be converted to HTML attributes. E.g. passing <c>:class =&gt; "bold"</c> will add a <c>class="bold"</c> attribute to the HTML tag.</p>
     
@@ -429,19 +392,14 @@ sections_006:
     <sample_code aid:trows="2" aid:tcols="2">
     	<Cell>Code:</Cell><Cell><rh>&lt;%= hidden_field(:customer, :barcode) %&gt;</rh></Cell>
     	<Cell>Output:</Cell><Cell><rh>&lt;input type="hidden" id="customer_barcode" name="customer[barcode]" value="#{@customer.barcode}" /&gt;</rh></Cell>
-    </sample_code>
-    
-    </section>
-
+    </sample_code>
   id: "6"
   summary: create HTML <code>&lt;input&gt;</code> fields that work with your models
 sections_007: 
   permalink: form-parameters
   content_id: "4"
   title: Params
-  body: |
-    
-    <section>
+  body: |-
     <subhead>params[] </subhead>
     
     <p>When a form is submitted to a Rails application, it parses the raw data and constructs a special hash called <c>params</c> for us to access that data. Simple key/value pairs in the form are converted into key/value pairs in the params hash. However, if a form field contains square brackets <c>[]</c>, Rails will create nested hashes as follows: </p>
@@ -459,8 +417,6 @@ sections_007:
     	<Cell><r>{:customer =&gt; {:dob =&gt; {:month =&gt; &quot;Jan&quot;}}}</r></Cell>
     </Table> 
     
-    <p>So to find the value of <c>id</c> we would use <c>params[:id]</c>. To find the value of the <c>customer[name]</c> we would use <c>params[:customer][:name]</c>.</p>
-    </section>
-
+    <p>So to find the value of <c>id</c> we would use <c>params[:id]</c>. To find the value of the <c>customer[name]</c> we would use <c>params[:customer][:name]</c>.</p>
   id: "7"
   summary: How form parameters get passed into the <code>params[]</code> hash

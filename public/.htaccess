@@ -5,6 +5,10 @@ Options +FollowSymLinks +ExecCGI
 
 RewriteEngine on
 
+Redirect 301 /articles/rails-migrations http:/dizzy.co.uk/ruby_on_rails/categories/migrations/contents/rails-migrations
+Redirect 301 /cheatsheets/rails-migrations.pdf http:/dizzy.co.uk/ruby_on_rails/categories/migrations/contents/rails-migrations.pdf
+Redirect 301 /articles/beginning-file-uploads http:/dizzy.co.uk/ruby_on_rails/categories/file-handling/contents/beginning-file-uploads
+
 # Display maintenance page if it exists
 RewriteCond %{REQUEST_URI} ^/images(.*)$ [OR]
 RewriteCond %{REQUEST_URI} ^/stylesheets/(.*)$ [OR]
