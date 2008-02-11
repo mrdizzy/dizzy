@@ -3,6 +3,7 @@ class SectionsController < ApplicationController
 	before_filter :load_category_and_content 	
 
   def show
+  	load "#{RAILS_ROOT}/app/helpers/contents_helper.rb"
     @section = Section.find_by_content_id_and_permalink(@content.id, params[:id])
   end
 
