@@ -69,3 +69,5 @@ ExceptionNotifier.email_prefix = "[Dizzy] "
 # Mime::Type.register "application/x-mobile", :mobile
 Mime::Type.register "application/pdf", :pdf
 Mime::Type.register "image/png", :png
+
+require 'caching_patch'
