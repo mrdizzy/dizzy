@@ -16,6 +16,7 @@ module ContentsHelper
 	  	@@open_div = 0
 	  	
 	  	def results
+	  		result = nil
 	  		result = @@RESULT.to_s
 	  		TAG_METHODS.each_key do |key|
 				result = result.gsub("<#{key}", "")
@@ -249,7 +250,8 @@ module ContentsHelper
 		parser = Parsers::StreamParser.new(xml, listener)
 		parser.parse
 		xml = listener.results	
-
+		puts "xml"
+		xml
 	end
 	
 	def pdf_thumbnail(content)

@@ -1,7 +1,7 @@
 class ContentsController < ApplicationController
 	
 	helper 			:comments		
-	caches_page 	:show
+	caches_page 	:show, :index
 	cache_sweeper 	:content_sweeper, :only => [ :destroy, :update ]
 	
 	def index 
@@ -9,6 +9,7 @@ class ContentsController < ApplicationController
 	end
 	
 	def show 
+		load "#{RAILS_ROOT}/app/helpers/contents_helper.rb"
 		@content 		= Content.find_by_permalink(params[:id])		
 		@comment 		= Comment.new				
 		@categories 	= Category.find(:all, :order => :name)
