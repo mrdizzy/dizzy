@@ -533,7 +533,7 @@ def parse_coderay(text, language, line_numbers)
 		
 			table = $1
 			table = table.split("\n")
-			result = table.collect { |b| ("<tr><td>" + b + "</tr></td>").gsub(/\t{1,5}|\s{4,10}/, "</td><td>") }
+			result = table.collect { |b| ("<tr><td>" + b + "</td></tr>").gsub(/\s{2,30}/, "</td><td>") }
 			result = "<table>\n" + result.to_s + "</table>"
 			
 		}

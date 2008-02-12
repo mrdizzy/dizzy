@@ -41,6 +41,7 @@
 ========================= */
 	#cheatsheet td {
 		border-bottom:1px solid grey;
+		line-height:3em;
 	}
 	#cheatsheet tr {
 	}

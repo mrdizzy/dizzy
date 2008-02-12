@@ -1,6 +1,8 @@
 --- 
 binaries_001: 
   content_type: application/pdf
+  content_id: "1"
+  size: "553647"
   binary_data: !binary |
     JVBERi0xLjQNJeLjz9MNCjQgMCBvYmogPDwvTGluZWFyaXplZCAxL0wgNTUz
     NjQ3L08gNi9FIDUyMjIzMi9OIDEvVCA1NTM1MjEvSCBbIDM1NTYgNDIzXT4+
@@ -12307,13 +12309,13 @@ binaries_001:
     NTEgMDAwMDAgbg0KdHJhaWxlcg0KPDwvU2l6ZSA0Pj4NCnN0YXJ0eHJlZg0K
     MTE2DQolJUVPRg0K
 
-  content_id: "1"
-  size: "553647"
   type: Pdf
   id: "1"
   filename: rails-migrations.pdf
 binaries_002: 
   content_type: image/png
+  content_id: "1"
+  size: "6876"
   binary_data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAJ0AAADoCAMAAADCFxaWAAAABGdBTUEAAK/I
     NwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAADA
@@ -12469,8 +12471,6 @@ binaries_002:
     +Z3LDwV36filhuv+UHQArNS4/FB4rnsBdMDgT4TnosaViPp1XP8nad/FdzvE
     WEv0cO52fpK4c0rW/wowAOSjd8TDQlSzAAAAAElFTkSuQmCC
 
-  content_id: "1"
-  size: "6876"
   type: Thumbnail
   id: "2"
   filename: rails-migrations.png
