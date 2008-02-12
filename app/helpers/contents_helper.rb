@@ -231,6 +231,7 @@ def parse_coderay(text, language, line_numbers)
 		text = transform_hrules( text, rs )
 		text = transform_lists( text, rs )
 		text = transform_code_blocks( text, rs )
+		text = transform_table_blocks( text, rs )
 		text = transform_block_quotes( text, rs )
 		text = transform_auto_links( text, rs )
 		text = hide_html_blocks( text, rs )
@@ -521,7 +522,39 @@ def parse_coderay(text, language, line_numbers)
 			%{<li>%s</li>\n} % item
 		}
 	end
-
+	
+	TableBlockRegexp = %r{
+		table:\n(.*?\n\n)
+	}mx
+	
+	def transform_table_blocks(str,rs)
+		
+		str.gsub( TableBlockRegexp ) { |block| 
+		
+			table = $1
+			table = table.split("\n")
+			result = table.collect { |b| ("<tr><td>" + b + "</tr></td>").gsub(/\t{1,5}|\s{4,10}/, "</td><td>") }
+			result = "<table>\n" + result.to_s + "</table>"
+			
+		}
+	end
+	#TableBlockRegexp = %r{
+	#			table:\n(\|.*?\|)\n\n
+	#		}mx
+	
+	#def transform_table_blocks(str,rs)
+		
+	#	str.gsub( TableBlockRegexp ) { |block| 
+	#		table = $1
+			
+			
+	#	table = table.split("\n")
+	#	result = table.collect { |b| b.gsub(/^\|(.*)\|$/, '<tr><td>\1</td></tr>' + "\n").gsub(/\|/, "</td><td>") }
+	#	result = "<table>\n" + result.to_s + "</table>"
+	#	}
+		
+		
+	#end
 
 	# Pattern for matching codeblocks
 	CodeBlockRegexp = %r{
@@ -542,7 +575,7 @@ def parse_coderay(text, language, line_numbers)
 		@log.debug " Transforming code blocks"
 
 		str.gsub( CodeBlockRegexp ) {|block|
-		language = $1
+			language = $1
 			codeblock = $2
 			remainder = $3
 			
@@ -554,6 +587,10 @@ def parse_coderay(text, language, line_numbers)
 		}
 	end
 
+
+   def transform_tables
+   	
+   end
 
 	# Pattern for matching Markdown blockquote blocks
 	BlockQuoteRegexp = %r{
