@@ -1,38 +1,6 @@
 module ContentsHelper
 
 require 'coderay.rb'
-test_markup =  <<-EOF
-
-# Methods 
-## add_column
-
-Creates a new column on the specified table.
-
-ruby:
-	add_column :table_name, :column_name, :column_type, { options }
-
-## add_index
-
-Creates an index for the specified table, the name of which defaults to *table_column_index*
-
-ruby:
-	add_index :table_name, :column_name, :unique => true, :name => "chosen_index_name"
-	add_group :norman, :column_name, :unique => true
-	melanie_sykes :bloater
-
-## change_column
-
-Change the data type of the specified column
-
-ruby:
-	change_column :table_name, :column_name, :new_type, { options as add_column
-
-### bogus
-
-
-end	
-	
-EOF
 
 
 require 'digest/md5'
@@ -530,13 +498,18 @@ def parse_coderay(text, language, line_numbers)
 	def transform_table_blocks(str,rs)
 		
 		str.gsub( TableBlockRegexp ) { |block| 
-		
+			counter = 0		
 			table = $1
 			table = table.split("\n")
-			result = table.collect { |b| ("<tr><td>" + b + "</td></tr>").gsub(/\s{2,30}/, "</td><td>") }
+			result = table.collect do |b| 
+				counter = counter + 1
+			    
+				("<tr class=\"#{counter.even?}\"><td>" + b + "</td></tr>").gsub(/\s{2,30}/, "</td><td>")
+			end
 			result = "<table>\n" + result.to_s + "</table>"
 			
 		}
+
 	end
 	#TableBlockRegexp = %r{
 	#			table:\n(\|.*?\|)\n\n
@@ -588,9 +561,6 @@ def parse_coderay(text, language, line_numbers)
 	end
 
 
-   def transform_tables
-   	
-   end
 
 	# Pattern for matching Markdown blockquote blocks
 	BlockQuoteRegexp = %r{

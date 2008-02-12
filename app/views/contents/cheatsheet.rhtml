@@ -8,7 +8,8 @@
 <%= render(:partial => "shared/section_list", :object => @content.sections, :locals => { :current_article_permalink => nil} ) %>
 <div id="cheatsheet">
 <% sections = @content.sections.collect { |section| section.body } %>
-	<%=  parse_cheatsheet_xml(sections.to_s)%>
+<% result = sections.join("\n") %>
+	<%=  parse_cheatsheet_xml(result) %>
 
 </div>
 <%= spiro %>

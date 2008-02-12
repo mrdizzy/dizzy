@@ -4,8 +4,8 @@
 		width:100%; 
 		border-collapse: collapse;
 	}
-		th 		{ font-weight:bold; }
-		tr.odd 	{ background-color:#F0F4FC;}
+	th 		{ font-weight:bold; }
+	tr.true 	{ background-color:#F0F4FC;}
 
 /* Sample Code Table
 ==================================== */
