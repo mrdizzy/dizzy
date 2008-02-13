@@ -490,7 +490,7 @@ def parse_coderay(text, language, line_numbers)
 	end
 
 	TableBlockRegexp = %r{
-				\n\ntable:\n(.*?)\n\n
+				table:\n(.*?)\n\n
 			}mx
 	
 	def transform_table_blocks(str,rs)
