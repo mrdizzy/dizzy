@@ -11,10 +11,17 @@
 			
 				<% else %>	
 				<li><%= link_to section.title, section_path(@content.main_category_permalink,@content.permalink, section.permalink) %> - <%= section.summary %></li>
+				
 			<% end %>
 		<% end %>
 		</ul>
-		</div>		
+		<div class="center">
+			<% if current_page?(:controller => "sections", :action => "show" ) %>
+		<%= asterisk %> <%= link_to "View all on one page", content_path(@content.main_category_permalink,@content.permalink)%>
+		<% end %>
+	</div>
+	
+	</div>		
 		<div id="bottomleft"></div><div id="bottomright"></div>
 		<div id="bottommiddle"></div>
 	</div>

@@ -201,10 +201,9 @@ p {
 	color: #29A4BD;
 }
 .big_quote {
-
 	font-style:italic;
-
 }
+.center { text-align:center;}
 /* Links
 ==================================== */
 a:link { color: #29A4BD; }

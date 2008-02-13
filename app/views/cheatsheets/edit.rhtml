@@ -5,7 +5,10 @@
 <% @cheatsheet.sections.each do |section| %>
 	<li><%= link_to section.title, edit_section_path(@cheatsheet.main_category_permalink, @cheatsheet.permalink, section.id) %></li>
 <% end %>
+
 </ul>
+
+<p><%= asterisk %> <%= link_to "Add new section", new_section_path(@cheatsheet.main_category_permalink, @cheatsheet.permalink)%></p>
 
 	<!-- MAIN EDIT FORM -->
 
