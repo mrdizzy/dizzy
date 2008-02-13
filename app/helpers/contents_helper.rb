@@ -1,46 +1,12 @@
 module ContentsHelper
 
 require 'coderay.rb'
-test_markup =  <<-EOF
-
-# Methods 
-## add_column
-
-Creates a new column on the specified table.
-
-ruby:
-	add_column :table_name, :column_name, :column_type, { options }
-
-## add_index
-
-Creates an index for the specified table, the name of which defaults to *table_column_index*
-
-ruby:
-	add_index :table_name, :column_name, :unique => true, :name => "chosen_index_name"
-	add_group :norman, :column_name, :unique => true
-	melanie_sykes :bloater
-
-## change_column
-
-Change the data type of the specified column
-
-ruby:
-	change_column :table_name, :column_name, :new_type, { options as add_column
-
-### bogus
-
-
-end	
-	
-EOF
 
 
 require 'digest/md5'
 require 'logger'
 require 'strscan'
 		
-		
-
 ### BlueCloth is a Ruby implementation of Markdown, a text-to-HTML conversion
 ### tool.
 class BlueCloth < String
@@ -540,15 +506,12 @@ def parse_coderay(text, language, line_numbers)
 			end
 			result = "<table>\n" + result.to_s + "</table>"
 			
-		}
-
-		
-		
+		}		
 	end
 
 	# Pattern for matching codeblocks
 	CodeBlockRegexp = %r{
-		(?:\n\n|\A)(rhtml:\n|ruby:\n)				# $1 = language
+		(?:\n\n|\A)(rhtml:\n|ruby:\n|plain:\n)				# $1 = language
 		(									# $2 = the code block
 		  (?:
 			(?:[ ]{#{TabWidth}} | \t)		# a tab or tab-width of spaces
@@ -571,16 +534,19 @@ def parse_coderay(text, language, line_numbers)
 			
 			codeblock = parse_coderay(codeblock, :ruby, "none")	if language =~ /ruby/
 			codeblock = parse_coderay(codeblock, :rhtml, "none")	if language =~ /rhtml/
+			
 			# Generate the codeblock
+			if language =~ /plain/
+				%{\n\n%s\n\n\n%s} %
+				[  "<pre>" + encode_code(codeblock,rs).rstrip + "</pre>", remainder ]
+			else
 			%{\n\n%s\n\n\n%s} %
 				[  codeblock.rstrip, remainder ]
+			end
 		}
 	end
 
 
-   def transform_tables
-   	
-   end
 
 	# Pattern for matching Markdown blockquote blocks
 	BlockQuoteRegexp = %r{
