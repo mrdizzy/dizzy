@@ -150,6 +150,7 @@ end
       web-accessible again.
     DESC
     task :enable, :roles => :web, :except => { :no_release => true } do
+    	run "cd #{deploy_to}/current && mongrel_rails stop"
       run "cd #{deploy_to}/current && mongrel_rails start -p 3012 -e production -d"
     end
   end

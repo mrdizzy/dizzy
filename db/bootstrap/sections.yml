@@ -33,6 +33,44 @@ sections_008:
     <Cell><rh>Home: &lt;input id=&quot;phone_home&quot; name=&quot;phone[home]&quot; type=&quot;text&quot; /&gt; </rh><rh>Work: &lt;input id=&quot;phone_work&quot; name=&quot;phone[work]&quot; type=&quot;text&quot; /&gt; </rh><rh>Cell: &lt;input id=&quot;phone_cell&quot; name=&quot;phone[cell]&quot; type=&quot;text&quot; /&gt;</rh></Cell></sample_code> "
   id: "8"
   summary: form builders that wrap model objects
+sections_010: 
+  permalink: permalink
+  content_id: "5"
+  title: Paragraphs and Line Breaks
+  body: "### Paragraphs and Line Breaks\r\n\
+    \r\n\
+    A paragraph is simply one or more consecutive lines of text, separated by one or more blank lines. (A blank line is any line that looks like a blank line \xE2\x80\x94 a line containing nothing but spaces or tabs is considered blank.) Normal paragraphs should not be indented with spaces or tabs.\r\n\
+    \r\n\
+    A paragraph will become wrapped in `<p></p>` tags during conversion.\r\n\
+    \r\n\
+    ### Headers\r\n\
+    \r\n\
+    table:\r\n\
+    `This is an H1`<br/>`=============`   `<h1>This is an H1</h1>`\r\n\
+    `This is an H2`<br/>`-------------`   `<h2>This is an H2</h2>`\r\n\
+    `# This is also an H1`                `<h1>This is also an H1</h1>`\r\n\
+    `## This is also an H2`               `<h2>This is also an H2</h2>`\r\n\
+    `### This is an H3`                   `<h3>This is an H3</h3>`\r\n\
+    \r\n\
+    Pre-formatted code blocks are used for writing about programming or markup source code. Rather than forming normal paragraphs, the lines of a code block are interpreted literally. Markdown wraps a code block in both `<pre>` and `<code>` tags.\r\n\
+    \r\n\
+    ### Code Blocks\r\n\
+    \r\n\
+    To produce a code block in Markdown, simply indent every line of the block by at least 4 spaces or 1 tab.\r\n\
+    \r\n\
+    <table>\r\n\
+    <tr><td><b>Input</b></td><td><b>Output</b></td></tr>\r\n  <tr>\r\n    <td><pre>This is a normal paragraph.\r\n    \r\n        @array  = [1,2,3,4,5]\r\n        $string = \"James Brown\"\r\n        @array.each { |array| array + 3 }</pre>\r\n\
+    </td>\r\n\
+    <td>\r\n\
+    <pre>&lt;p&gt;This is a normal paragraph.&lt;/p&gt;\r\n\
+    \r\n        &lt;pre&gt;@array  = [1,2,3,4,5]\r\n        $string = \"James Brown\"\r\n        @array.each { |array| array + 3 }&lt;/code&gt;&lt;/pre&gt;\r\n\
+    </td>\r\n\
+    </tr>\r\n\
+    </table>\r\n\
+    \r\n\
+    To produce a code block in Markdown, simply indent every line of the block by at least 4 spaces or 1 tab. For example, given this input:"
+  id: "10"
+  summary: Syntax
 sections_009: 
   permalink: select-menu-helpers
   content_id: "4"
@@ -100,122 +138,64 @@ sections_009:
     </sample_code> "
   id: "9"
   summary: helpers that build drop-down &lt;select&gt; forms
+sections_011: 
+  permalink: summary
+  content_id: "5"
+  title: Test new section
+  body: Testing the consequences of a new section.
+  id: "11"
+  summary: test summary
 sections_001: 
   permalink: rails-migrations-methods
   content_id: "1"
   title: Methods
-  body: |-
-    <section>
-    		<subhead>Methods</subhead>
-    			
-    <method>
-    <minihead>add_column</minihead>
-    <p>Creates a new column on the specified table.</p>
-    <r>  add_column :table_name, :column_name, :column_type, { options }</r>
-    <p><c>:null => true</c> or <c>false</c> - if false, the underlying column has a not null constraint added by the database engine</p>
-    <p><c>:limit => size</c> - set a limit on the size of the field</p>
-    <p><c>:default => value</c> - set a default value for the column</p>
-    
-    </method>
-    <method_odd>
-    <minihead>add_index</minihead>
-    <p>Creates an index for the specified table, the name of which defaults to <c>table_column_index</c>.</p>
-    <r>  add_index :table_name, :column_name, :unique => true, :name =&gt; "chosen_index_name"</r>
-    </method_odd>
-    <method>
-    <minihead>change_column</minihead>
-    <p>Change the data type of the specified column</p>
-    <r>  change_column :table_name, :column_name, :new_type, { options as add_column }</r>
-    </method>
-    <method_odd>
-    <minihead>create_table</minihead> 
-    <p>Creates a table on the database. Creates a table called <c>:table_name</c> and makes the table object available to a block that can then add columns to it, following the same format as <c>add_column</c>.</p>
-    <r>  create_table :table_name, { options } do |t|
-        t.column :column_name, :column_type, :options
-      end</r>
-    <p><c>:force => true</c> - forces drop of an existing table of the same name before creation the new one</p>
-    <p><c>:temporary => true</c> - creates a temporary table, one that goes away when the application disconnects from the database</p> 
-    <p><c>:id => false</c> - defines a table with no primary key, for example when you need to define a join table</p>
-    <p><c>:primary_key => :new_primary_key_name</c> - overrides the default name of <c>:id</c> for the primary column, use this to specify the name of the column in the database that Rails will use to store the primary key</p>
-    <p><c>:options => ""</c> - lets you specify options to your underlying database, e.g. <c>"auto_increment = 10000"</c>. Will lose default <c>"ENGINE=InnoDB statement"</c>.</p>
-    
-    </method_odd>
-    
-    <method>
-    				<minihead>execute</minihead>
-    				<p>Takes a single string identifying a valid SQL command to execute directly</p>
-    				<r>  execute "alter table line_items add constraint fk_line_item_products foreign key (product_id) references products(id)"</r>
-    </method>
-    
-    <method_odd><minihead>IrreversibleMigration</minihead>
-    <p>Use in the <c>down</c> method of a migration file to raise an exception when the <c>up</c> methods of the same migration file can not be reversed, e.g. changing a column type from <c>:integer</c> to <c>:string</c>.</p>
-    <r>  raise ActiveRecord::IrreversibleMigration</r>
-    </method_odd>
-    <method>
-    <minihead>rename_table</minihead>
-    <p>Renames the specified table.</p>
-    <r>  rename_table :new_table_name, :old_table_name</r>
-    </method>
-    <method_odd>
-    <minihead>rename_column</minihead>
-    <p>Renames the <c>old_column_name</c> to <c>new_column_name</c></p>
-    <r>  rename_column :old_column_name, :new_column_name</r>
-    </method_odd>
-    <method>
-    <minihead>rename_table</minihead>
-    <p>Renames the specified table.</p>
-    <r>  rename_table :new_table_name, :old_table_name</r>
-    </method>
-    <method_odd>
-    <minihead>remove_index</minihead>
-    <p>Remove an index for the specified table.</p>
-    <r>  remove_index :table_name, :column_name</r>
-    </method_odd>
-    </section>
+  body: ""
   id: "1"
   summary: interact with your database using migration methods
 sections_002: 
   permalink: database-mapping
   content_id: "1"
   title: Database mapping
-  body: "Mapping\r\n\
-    -------\r\n\
-    \r\n\
-    table:\r\n\
-    Rails      db2\t\t     mysql\t       openbase     Oracle\r\n\
-    :binary    blob(32678)   blob\t\t   object\t   \tblob\r\n\
-    :boolean   decimal(1)    tinyint(1)\t   boolean\t    number(10)\r\n\
-    :date      date\t\t     date\t\t   date\t\t    date\r\n\
-    :datetime  timestamp     datetime\t   datetime\t    date\r\n\
-    :decimal   decimal       decimal       decimal\t    decimal\r\n\
-    :float\t   float         float\t       float\t    number\r\n\
-    :integer   int\t\t     int(11)       integer\t    number(38)\r\n\
-    :string    varchar(255)  varchar(255)  char(4096)   varchar2(255)\r\n\
-    \r\n\
-    table:\r\n\
-    Rails      postgresql  sqlite        sqlserver     Sybase\r\n\
-    :binary    bytea       blob          image         image\r\n\
-    :boolean   boolean     boolean       bit           bit\r\n\
-    :date      date        date          datetime      datetime\r\n\
-    :datetime  timestamp   datetime      datetime      datetime\r\n\
-    :decimal   decimal     decimal       decimal       decimal\r\n\
-    :float     float       float         float(8)      float(8)\r\n\
-    :integer   integer     integer       int           int\r\n\
-    :string    \\*          varchar(255)  varchar(255)  varchar(255)\r\n\
-    \r\n"
+  body: |
+    Mapping
+    -------
+    
+    table:
+    *Rails*      *db2*		     *mysql*	       *openbase*     *Oracle*
+    `:binary`    blob(32678)   blob		   object	   	blob
+    `:boolean`   decimal(1)    tinyint(1)	   boolean	    number(10)
+    `:date`      date		     date		   date		    date
+    `:datetime`  timestamp     datetime	   datetime	    date
+    `:decimal`   decimal       decimal       decimal	    decimal
+    `:float`	   float         float	       float	    number
+    `:integer`   int		     int(11)       integer	    number(38)
+    `:string`    varchar(255)  varchar(255)  char(4096)   varchar2(255)
+    
+    table:
+    *Rails*      *postgresql*  *sqlite*        *sqlserver*     *Sybase*
+    `:binary`    bytea       blob          image         image
+    `:boolean`   boolean     boolean       bit           bit
+    `:date`      date        date          datetime      datetime
+    `:datetime`  timestamp   datetime      datetime      datetime
+    `:decimal`   decimal     decimal       decimal       decimal
+    `:float`     float       float         float(8)      float(8)
+    `:integer`   integer     integer       int           int
+    `:string`    \*          varchar(255)  varchar(255)  varchar(255)
+    
+
   id: "2"
   summary: how migration column types map to your underlying database
 sections_003: 
   permalink: example-migration-file
   content_id: "1"
   title: Example migration
-  body: |-
+  body: |
     ### db/migrate/example_001.rb
     
     ruby:
         class CreateCustomers < ActiveRecord::Migration
     
-          def self.up
+        def self.up
             # Create "Customers" table
             create_table :customers, :primary_key => :customer_id, :options => "auto_increment = 10000" do |t|
               # Add columns to "Customers" table
@@ -241,7 +221,8 @@ sections_003:
           # Delete the "Customers" table
             drop_table :customers
           end
-        end
+        end
+
   id: "3"
   summary: what a migration file looks like
 sections_004: 
