@@ -131,14 +131,16 @@ end
     DESC
     task :disable, :roles => :web, :except => { :no_release => true } do
       require 'erb'
-      on_rollback { run "rm #{shared_path}/system/maintenance.html" }
-      reason = ENV['REASON']
+      
+      reason   = ENV['REASON']
       deadline = ENV['UNTIL']
 
       template = File.read(File.join(File.dirname(__FILE__), "maintenance.rhtml"))
-      result = ERB.new(template).result(binding)
+      result   = ERB.new(template).result(binding)
 
-      put result, "#{shared_path}/system/maintenance.html", :mode => 0644
+      put result, "#{shared_path}/maintenance.html", :mode => 0644
+      run "cd #{deploy_to}/current && mongrel_rails stop"
+      run "cd #{deploy_to}/current && mongrel_rails start -S config/mongrel.conf -p 3012 -e production -r #{deploy_to}/shared -d"
     end
 
     desc <<-DESC
@@ -148,7 +150,7 @@ end
       web-accessible again.
     DESC
     task :enable, :roles => :web, :except => { :no_release => true } do
-      run "rm #{shared_path}/system/maintenance.html"
+      run "cd #{deploy_to}/current && mongrel_rails start -p 3012 -e production -d"
     end
   end
  end
