@@ -105,12 +105,12 @@ namespace :deploy do
 	send(run_method, "cd #{deploy_to}/current && rake db:remigrate RAILS_ENV=production")
 end
 	task :start do
-send(run_method, "cd #{deploy_to}/current && mongrel_rails cluster::start")
+ run "cd #{deploy_to}/current && mongrel_rails start -S config/mongrel.conf -p 3012 -e production -r #{deploy_to}/shared -d"
 end
 
 desc "Restart the mongrel cluster"
 	task :restart, :roles => :app do
-	send(run_method, "cd #{deploy_to}/current && mongrel_rails cluster::restart")
+	send(run_method, "cd #{deploy_to}/current && mongrel_rails restart")
 end
  namespace :web do
     desc <<-DESC

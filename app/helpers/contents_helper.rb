@@ -32,7 +32,6 @@ def parse_coderay(text, language, line_numbers)
 		end
 	end
 
-
 	# Release Version
 	Version = '0.0.3'
 
@@ -44,7 +43,6 @@ def parse_coderay(text, language, line_numbers)
 
 	# SVN URL
 	SvnUrl = %q$URL: svn+ssh://svn.faeriemud.org/usr/local/svn/BlueCloth/trunk/lib/bluecloth.rb $
-
 
 	# Rendering state struct. Keeps track of URLs, titles, and HTML blocks
 	# midway through a render. I prefer this to the globals of the Perl version
@@ -68,7 +66,6 @@ def parse_coderay(text, language, line_numbers)
 			:re  => Regexp::new( '\\\\' + Regexp::escape(char) ),
 		}
 	}
-
 
 	#################################################################
 	###	I N S T A N C E   M E T H O D S
@@ -94,7 +91,6 @@ def parse_coderay(text, language, line_numbers)
 		@log.debug "String is: %p" % self
 	end
 
-
 	######
 	public
 	######
@@ -107,7 +103,6 @@ def parse_coderay(text, language, line_numbers)
 	# RedCloth-compatibility accessor. Line-folding is part of Markdown syntax,
 	# so this isn't used by anything.
 	attr_accessor :fold_lines
-
 
 	### Render Markdown-formatted text in this string object as HTML and return
 	### it. The parameter is for compatibility with RedCloth, and is currently
@@ -124,7 +119,7 @@ def parse_coderay(text, language, line_numbers)
 		# Make a copy of the string with normalized line endings, tabs turned to
 		# spaces, and a couple of guaranteed newlines at the end
 		text = self.gsub( /\r\n?/, "\n" ).detab
-		text += "\n\n"
+		text += "\n\n\n"
 		@log.debug "Normalized line-endings: %p" % text
 
 		# Filter HTML if we're asked to do so
@@ -161,8 +156,7 @@ def parse_coderay(text, language, line_numbers)
 		@log.debug "After unescaping special characters: %p" % text
 
 		return text
-	end
-	
+	end	
 
 	### Convert tabs in +str+ to spaces.
 	def detab( tabwidth=TabWidth )
@@ -170,7 +164,6 @@ def parse_coderay(text, language, line_numbers)
 		copy.detab!( tabwidth )
 		return copy
 	end
-
 
 	### Convert tabs to spaces in place and return self if any were converted.
 	def detab!( tabwidth=TabWidth )
@@ -181,7 +174,6 @@ def parse_coderay(text, language, line_numbers)
 		}.join("\n")
 		self.replace( newstr )
 	end
-
 
 	#######
 	#private
@@ -194,14 +186,16 @@ def parse_coderay(text, language, line_numbers)
 
 		@log.debug "Applying block transforms to:\n  %p" % str
 		text = transform_headers( str, rs )
-		text = transform_hrules( text, rs )
+	
 		text = transform_lists( text, rs )
 		text = transform_code_blocks( text, rs )
 	
 		text = transform_block_quotes( text, rs )
-		text = transform_auto_links( text, rs )
+		text = transform_auto_links( text, rs )	
+
 		text = hide_html_blocks( text, rs )
-	text = transform_table_blocks( text, rs )
+		text = transform_table_blocks( text, rs )
+		text = transform_long_table_blocks( text, rs )
 		text = form_paragraphs( text, rs )
 
 		@log.debug "Done with block transforms:\n  %p" % text
@@ -308,7 +302,6 @@ def parse_coderay(text, language, line_numbers)
 		return rval
 	end
 
-
 	# Link defs are in the form: ^[id]: url "optional title"
 	LinkRegex = %r{
 		^[ ]*\[(.+)\]:		# id = $1
@@ -342,7 +335,6 @@ def parse_coderay(text, language, line_numbers)
 			""
 		}
 	end
-
 
 	### Escape special characters in the given +str+
 	def escape_special_chars( str )
@@ -386,7 +378,6 @@ def parse_coderay(text, language, line_numbers)
 		return str
 	end
 
-
 	### Return a copy of the given +str+ with any backslashed special character
 	### in it replaced with MD5 placeholders.
 	def encode_backslash_escapes( str )
@@ -400,16 +391,6 @@ def parse_coderay(text, language, line_numbers)
 
 		return text
 	end
-
-
-	### Transform any Markdown-style horizontal rules in a copy of the specified
-	### +str+ and return it.
-	def transform_hrules( str, rs )
-		@log.debug " Transforming horizontal rules"
-		str.gsub( /^( ?[\-\*_] ?){3,}$/, "\n<hr#{EmptyElementSuffix}\n" )
-	end
-
-
 
 	# Patterns to match and transform lists
 	ListMarkerOl = %r{\d+\.}
@@ -453,7 +434,6 @@ def parse_coderay(text, language, line_numbers)
 		}
 	end
 
-
 	# Pattern for transforming list items
 	ListItemRegexp = %r{
 		(\n)?							# leading line = $1
@@ -487,6 +467,31 @@ def parse_coderay(text, language, line_numbers)
 
 			%{<li>%s</li>\n} % item
 		}
+	end
+
+	LongTableBlockRegexp = %r{
+				^\(Tab\.\d\s(.*?)\)\n\n(.*?)\n\n\n
+			}mx
+	
+	def transform_long_table_blocks(str,rs)
+		
+		str.gsub( LongTableBlockRegexp ) { |block| 
+			
+			table_name 		= $1
+			table_contents 	= $2
+			result = String.new
+			table_contents = table_contents.split(/\n\n^(?!\s\s)/)
+			counter = 0	
+			table_contents.each do |row|
+					
+				counter = counter + 1
+				cells 	= row.split(/-{3,200}/)
+				result += "<tr class=\"#{counter.even?}\">"
+				cells.each { |cell| result += "<td>\n#{cell}\n</td>" }
+				result += "</tr>"
+			end
+			result = "<table>" + result + "</table>"
+		}		
 	end
 
 	TableBlockRegexp = %r{
@@ -546,8 +551,6 @@ def parse_coderay(text, language, line_numbers)
 		}
 	end
 
-
-
 	# Pattern for matching Markdown blockquote blocks
 	BlockQuoteRegexp = %r{
 		  (?:
@@ -580,7 +583,6 @@ def parse_coderay(text, language, line_numbers)
 		}
 	end
 
-
 	AutoAnchorURLRegexp = /<((https?|ftp):[^'">\s]+)>/
 	AutoAnchorEmailRegexp = %r{
 		<
@@ -601,7 +603,6 @@ def parse_coderay(text, language, line_numbers)
 			encode_email_address( unescape_special_chars($1) )
 		}
 	end
-
 
 	# Encoder functions to turn characters of an email address into encoded
 	# entities.
@@ -635,12 +636,11 @@ def parse_coderay(text, language, line_numbers)
 		return %{<a href="%s">%s</a>} % [ rval, rval.sub(/.+?:/, '') ]
 	end
 
-
 	# Regex for matching Setext-style headers
 	SetextHeaderRegexp = %r{
 		(.+)			# The title text ($1)
 		\n
-		([\-=])+		# Match a line of = or -. Save only one in $2.
+		([\=])+		# Match a line of = or -. Save only one in $2.
 		[ ]*\n+
 	   }x
 
@@ -675,8 +675,7 @@ def parse_coderay(text, language, line_numbers)
 				case hdrchar
 				when '='
 					%[<h1>#{title}</h1>\n\n]
-				when '-'
-					%[<h2>#{title}</h2>\n\n]
+	
 				else
 					title
 				end
@@ -691,7 +690,6 @@ def parse_coderay(text, language, line_numbers)
 				%{<h%d>%s</h%d>\n\n} % [ level, title, level ]
 			}
 	end
-
 
 	### Wrap all remaining paragraph-looking text in a copy of +str+ inside <p>
 	### tags and return it.
@@ -718,7 +716,6 @@ def parse_coderay(text, language, line_numbers)
 		@log.debug " Formed paragraphs: %p" % rval
 		return rval
 	end
-
 
 	# Pattern to match the linkid part of an anchor tag for reference-style
 	# links.
@@ -843,7 +840,6 @@ def parse_coderay(text, language, line_numbers)
 		return text
 	end
 
-
 	# Pattern to match strong emphasis in Markdown text
 	CodeRegexp = %r{ (\*\*) (\S|\S.+?\S) \1 }x
 
@@ -859,7 +855,6 @@ def parse_coderay(text, language, line_numbers)
 			gsub( CodeRegexp, %{<code>\\2</code>} ).
 			gsub( ItalicRegexp, %{<em>\\2</em>} )
 	end
-
 	
 	### Transform backticked spans into <code> spans.
 	def transform_code_spans( str, rs )
@@ -916,7 +911,6 @@ def parse_coderay(text, language, line_numbers)
 		return text
 	end
 
-
 	# Next, handle inline images:  ![alt text](url "optional title")
 	# Don't forget: encode * and _
 	InlineImageRegexp = %r{
@@ -934,7 +928,6 @@ def parse_coderay(text, language, line_numbers)
 		  \)
 		)
 	  }xs #"
-
 
 	# Reference-style images
 	ReferenceImageRegexp = %r{
@@ -1000,7 +993,6 @@ def parse_coderay(text, language, line_numbers)
 			}
 	end
 
-
 	# Regexp to match special characters in a code block
 	CodeEscapeRegexp = %r{( \* | _ | \{ | \} | \[ | \] | \\ )}x
 
@@ -1026,7 +1018,6 @@ def parse_coderay(text, language, line_numbers)
 			gsub( /\*/, EscapeTable['*'][:md5] ).
 			gsub( /_/,  EscapeTable['_'][:md5] )
 	end
-
 
 	# Matching constructs for tokenizing X/HTML
 	HTMLCommentRegexp  = %r{ <! ( -- .*? -- \s* )+ > }mx
@@ -1108,13 +1099,11 @@ def parse_coderay(text, language, line_numbers)
 		return tokens
 	end
 
-
 	### Return a copy of +str+ with angle brackets and ampersands HTML-encoded.
 	def encode_html( str )
 		str.gsub( /&(?!#?[x]?(?:[0-9a-f]+|\w+);)/i, "&amp;" ).
 			gsub( %r{<(?![a-z/?\$!])}i, "&lt;" )
 	end
-
 	
 	### Return one level of line-leading tabs or spaces from a copy of +str+ and
 	### return it.
@@ -1125,11 +1114,10 @@ def parse_coderay(text, language, line_numbers)
 end # class BlueCloth
 
 	def parse_cheatsheet_xml(content)
-result = BlueCloth.new(content).to_html
-result
-end
+		result = BlueCloth.new(content).to_html
+		result
+	end
 
-	
 	def pdf_thumbnail(content)
 		link_to image_tag(formatted_content_path(:category_id => content.main_category_permalink, :id => content.permalink, :format => "png")), formatted_content_path(:category_id => content.main_category_permalink, :id => content.permalink, :format => "pdf")
 	end

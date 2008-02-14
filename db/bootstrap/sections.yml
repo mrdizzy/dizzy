@@ -142,14 +142,123 @@ sections_011:
   permalink: summary
   content_id: "5"
   title: Test new section
-  body: Testing the consequences of a new section.
+  body: |
+    So here is my pretty in pink document. I am just outlining various details. 
+    So today, we're going to talk about bullshit. 
+    
+    (Tab.1 Regular Expressions)
+    
+    product(force_reload=false)
+    ----------------------------------
+      Return the *associated* product (or nil if no associated product exists). The result is cached, and the database will not be queried againn when this association is subsequently used unless true is passed as a parameter. 
+    
+      Most commonly this method is called as if it were a simple attribute of (say) a line item object
+    
+    product=obj
+    ----------------------------------
+      *Associate* this line item with the given product, setting the product_id column in this line item to the product's primary key. If the product has not been saved, it will be when the line item is saved, and the keys will be linked at that time. 
+    
+    build_product(attributes={})
+    ------------------------------------
+      Don't be so `silly` norman.
+    
+    create_product(attributes={})
+    -----------------------------------
+      Build a new product object, link this line item to it, and save the product.
+    
+    
+
   id: "11"
   summary: test summary
 sections_001: 
   permalink: rails-migrations-methods
   content_id: "1"
   title: Methods
-  body: ""
+  body: |
+    ## Methods
+    
+    ### add_column
+    
+    Creates a new column on the specified table.
+    
+    ruby:
+        add_column :table_name, :column_name, :column_type, { options }
+    
+    + :null => true or false - if false, the underlying column has a not null constraint added by the database engine
+    + :limit => size - set a limit on the size of the field
+    + :default => value - set a default value for the column
+    
+    ### add_index
+    
+    Creates an index for the specified table, the name of which defaults to table_column_index.
+    
+    ruby:
+        add_index :table_name, :column_name, :unique => true, :name => "chosen_index_name"
+    
+    ### change_column
+    
+    Change the data type of the specified column
+    
+    ruby:
+        change_column :table_name, :column_name, :new_type, { options as add_column }
+    
+    ### create_table
+    
+    Creates a table on the database. Creates a table called :table_name and makes the table object available to a block that can then add columns to it, following the same format as add_column.
+    ruby:
+        create_table :table_name, { options } do |t|
+          t.column :column_name, :column_type, :options
+        end
+    
+    + :force => true - forces drop of an existing table of the same name before creation the new one
+    + :temporary => true - creates a temporary table, one that goes away when the application disconnects from the database
+    + :id => false - defines a table with no primary key, for example when you need to define a join table
+    + :primary_key => :new_primary_key_name - overrides the default name of :id for the primary column, use this to specify the name of the column in the database that Rails will use to store the primary key
+    + :options => "" - lets you specify options to your underlying database, e.g. "auto_increment = 10000". Will lose default "ENGINE=InnoDB statement".
+    
+    ### execute
+    
+    Takes a single string identifying a valid SQL command to execute directly
+    
+    ruby:
+        execute "alter table line_items add constraint fk_line_item_products foreign key (product_id) references products(id)"
+    
+    ### IrreversibleMigration
+    
+    Use in the down method of a migration file to raise an exception when the up methods of the same migration file can not be reversed, e.g. changing a column type from :integer to :string.
+    
+    ruby:
+        raise ActiveRecord::IrreversibleMigration
+    
+    ### rename_table
+    
+    Renames the specified table.
+    
+    ruby:
+        rename_table :new_table_name, :old_table_name
+    
+    ### rename_column
+    
+    Renames the old_column_name to new_column_name
+    
+    ruby:
+        rename_column :old_column_name, :new_column_name
+    
+    ### rename_table
+    
+    Renames the specified table.
+    
+    ruby:
+        rename_table :new_table_name, :old_table_name
+    
+    ### remove_index
+    
+    Remove an index for the specified table.
+    
+    ruby:
+        remove_index :table_name, :column_name
+    
+
   id: "1"
   summary: interact with your database using migration methods
 sections_002: 
@@ -157,30 +266,29 @@ sections_002:
   content_id: "1"
   title: Database mapping
   body: |
-    Mapping
-    -------
+    ## Database Mapping
     
     table:
-    *Rails*      *db2*		     *mysql*	       *openbase*     *Oracle*
-    `:binary`    blob(32678)   blob		   object	   	blob
-    `:boolean`   decimal(1)    tinyint(1)	   boolean	    number(10)
-    `:date`      date		     date		   date		    date
-    `:datetime`  timestamp     datetime	   datetime	    date
-    `:decimal`   decimal       decimal       decimal	    decimal
-    `:float`	   float         float	       float	    number
-    `:integer`   int		     int(11)       integer	    number(38)
-    `:string`    varchar(255)  varchar(255)  char(4096)   varchar2(255)
+    *Rails*      *db2*	   *mysql*	   *openbase*   *Oracle*
+    `:binary`    blob(32678)   blob		   object	 blob
+    `:boolean`   decimal(1)    tinyint(1)	   boolean	 number(10)
+    `:date`      date	   date		   date		 date
+    `:datetime`  timestamp     datetime	   datetime	 date
+    `:decimal`   decimal       decimal         decimal	 decimal
+    `:float`     float         float	   float	 number
+    `:integer`   int	   int(11)         integer	 number(38)
+    `:string`    varchar(255)  varchar(255)    char(4096)    varchar2(255)
     
     table:
-    *Rails*      *postgresql*  *sqlite*        *sqlserver*     *Sybase*
-    `:binary`    bytea       blob          image         image
-    `:boolean`   boolean     boolean       bit           bit
-    `:date`      date        date          datetime      datetime
-    `:datetime`  timestamp   datetime      datetime      datetime
-    `:decimal`   decimal     decimal       decimal       decimal
-    `:float`     float       float         float(8)      float(8)
-    `:integer`   integer     integer       int           int
-    `:string`    \*          varchar(255)  varchar(255)  varchar(255)
+    *Rails*      *postgresql*  *sqlite*      *sqlserver*     *Sybase*
+    `:binary`    bytea         blob          image           image
+    `:boolean`   boolean       boolean       bit             bit
+    `:date`      date          date          datetime        datetime
+    `:datetime`  timestamp     datetime      datetime        datetime
+    `:decimal`   decimal       decimal       decimal         decimal
+    `:float`     float         float         float(8)        float(8)
+    `:integer`   integer       integer       int             int
+    `:string`    \*            varchar(255)  varchar(255)    varchar(255)
     
 
   id: "2"
@@ -190,7 +298,7 @@ sections_003:
   content_id: "1"
   title: Example migration
   body: |
-    ### db/migrate/example_001.rb
+    ## Example migration file
     
     ruby:
         class CreateCustomers < ActiveRecord::Migration
@@ -230,16 +338,37 @@ sections_004:
   content_id: "1"
   title: Rake tasks
   body: |-
-    ###rake
+    ## Rake tasks
     
-    table:
-    Generate migration              ruby script/generate migration your_chosen_migration_name
-    run all unapplied migrations    rake db:migrate
-    migrate database to specific version    rake db:migrate VERSION=18
-    use your migrations to recreate the tables in the testing or production databases              rake db:migrate RAILS_ENV=production
-    Create a `db/schema.rb` file that can be portably used against any database supported by ActiveRecord         rake db:schema:dump
-    Load a schema.rb file into the database       rake db:schema:load
-    Loads a schema.rb file into the database and then loads the initial database fixtures.         rake db:bootstrap
+    (Tab.1 Rake Tasks)
+    
+    Generate migration              
+    -----------------------------------------
+      `ruby script/generate migration your_chosen_migration_name`
+    
+    run all unapplied migrations    
+    -----------------------------------------
+      `rake db:migrate`
+    
+    migrate database to specific version    
+    -----------------------------------------
+     `rake db:migrate VERSION=18`
+    
+    use your migrations to recreate the tables in the testing or production databases
+    ---------------------------------------------------------------------------------
+      `rake db:migrate RAILS_ENV=production`
+    
+    Create a `db/schema.rb` file that can be portably used against any database supported by ActiveRecord
+    -------------------------
+      `rake db:schema:dump`
+    
+    Load a `schema.rb` file into the database
+    -----------------------------------------
+      `rake db:schema:load`
+    
+    Loads a `schema.rb` file into the database and then loads the initial database fixtures.
+    -----------------------------------------
+      `rake db:bootstrap`
   id: "4"
   summary: a list of built-in migration-related Rake tasks
 sections_005: 
@@ -247,15 +376,15 @@ sections_005:
   content_id: "1"
   title: Directory Structure
   body: |-
-    ### Directory structure
+    ## Directory structure
     
     + rails_root
-    ++ db
-    + schema.rb
-    + migrate
-    + 001_create_customers
-    + 002_add_photo
-    + 003_alter_surname
+        + db
+            + schema.rb
+            + migrate
+                + 001_create_customers
+                + 002_add_photo
+                + 003_alter_surname
   id: "5"
   summary: where migration files go
 sections_006: 
