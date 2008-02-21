@@ -2,7 +2,7 @@ set :application, "dizzy"
 set :repository,  "http://dizzy.googlecode.com/svn/trunk"
 set :use_sudo, false
 set :user, "dizzynew"   
-set :password, "ruhegochelupraju"
+set :password, "hefAf2Gu"
 
 # If you aren't deploying to /u/apps/#{application} on the target
 # servers (which is the default), you can specify the actual location
@@ -32,7 +32,7 @@ ssh_options[:port] = 7822
 # =============================================================================
 set :database_adapter, "mysql"
 set :database_username, "dizzynew"
-set :database_password, "ruhegochelupraju"
+set :database_password, "hefAf2Gu"
 set :database_hostname, "localhost"
 
 # =============================================================================
@@ -105,7 +105,7 @@ namespace :deploy do
 	send(run_method, "cd #{deploy_to}/current && rake db:remigrate RAILS_ENV=production")
 end
 	task :start do
- run "cd #{deploy_to}/current && mongrel_rails start -S config/mongrel.conf -p 3012 -e production -r #{deploy_to}/shared -d"
+ run "cd #{deploy_to}/current && mongrel_rails start -p 3012 -e production -d"
 end
 
 desc "Restart the mongrel cluster"

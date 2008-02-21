@@ -1,6 +1,6 @@
 <div id="comment_form" style="display:none;">
 
-	<% form_for :comment, :url => comments_path do |form| %>
+	<% remote_form_for :comment, :url => comments_path, :before => "Element.show('spinner')", :complete => "Element.hide('spinner')" do |form| %>
 	
 		<%= render :partial => "form", :object => form %>
 		

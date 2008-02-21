@@ -4,31 +4,6 @@
 
 ActiveRecord::Schema.define(:version => 2) do
 
-  create_table "binaries", :force => true do |t|
-    t.column "binary_data",  :binary
-    t.column "type",         :string
-    t.column "content_type", :string
-    t.column "size",         :integer
-    t.column "filename",     :string
-    t.column "content_id",   :integer
-  end
-
-  add_index "binaries", ["content_id"], :name => "fk_content_binaries"
-
-  create_table "categories", :force => true do |t|
-    t.column "name",      :string
-    t.column "permalink", :string
-  end
-
-  create_table "categories_contents", :force => true do |t|
-    t.column "category_id", :integer
-    t.column "content_id",  :integer
-    t.column "main",        :boolean
-  end
-
-  add_index "categories_contents", ["content_id"], :name => "fk_content_categories_contents"
-  add_index "categories_contents", ["category_id"], :name => "fk_category_categories_contents"
-
   create_table "comments", :force => true do |t|
     t.column "body",       :text
     t.column "subject",    :string
@@ -65,28 +40,6 @@ ActiveRecord::Schema.define(:version => 2) do
   create_table "polls", :force => true do |t|
     t.column "name",       :string
     t.column "created_at", :datetime
-  end
-
-  create_table "portfolio_items", :force => true do |t|
-    t.column "portfolio_type_id", :integer
-    t.column "company_id",        :integer
-    t.column "content_type",      :string
-    t.column "filename",          :string
-    t.column "size",              :integer
-    t.column "data",              :binary
-  end
-
-  add_index "portfolio_items", ["portfolio_type_id"], :name => "portfolio_type_id"
-  add_index "portfolio_items", ["company_id"], :name => "company_id"
-
-  create_table "portfolio_types", :force => true do |t|
-    t.column "description",         :string,  :limit => 40
-    t.column "column_space",        :integer
-    t.column "position",            :integer
-    t.column "header_binary",       :binary
-    t.column "header_filename",     :string
-    t.column "header_content_type", :string
-    t.column "visible",             :boolean,               :default => true
   end
 
   create_table "sections", :force => true do |t|

@@ -1,2 +1,2 @@
-page.insert_html :after, "add_comment", :partial => 'comment_form'
+page.replace_html "add_comment", :partial => 'comment_form'
 page.visual_effect :toggle_blind, :comment_form

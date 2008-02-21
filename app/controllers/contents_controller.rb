@@ -38,7 +38,9 @@ class ContentsController < ApplicationController
     @article = Article.find(params[:id])
     if @article.update_attributes(params[:article])
       flash[:notice] = 'Article was successfully updated.'
-      redirect_to categories_path
+      puts @article.main_category_permalink
+      puts @article.permalink
+      redirect_to content_path(:category_id => @article.main_category_permalink, :id => @article.permalink)
     else
       render :action => 'edit'
     end
@@ -50,7 +52,7 @@ class ContentsController < ApplicationController
 		if @article.valid?
   	 		@article.save
       		flash[:notice] = 'Cheatsheet was successfully created.'
-      		redirect_to :action => 'list'
+      		redirect_to contents_path
     	else
       		render :action => 'new'
    		end
