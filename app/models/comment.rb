@@ -16,4 +16,8 @@ class Comment < ActiveRecord::Base
 	belongs_to :content
 	acts_as_tree :order => :subject
 	validates_presence_of :email, :body, :subject
+	
+	def self.new_comments
+		self.find_all_by_new(true)
+	end
 end

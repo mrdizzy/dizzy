@@ -11,10 +11,14 @@ module CommentsHelper
 			end
 			result << "<div class=\"comments_left\"><p><span class=\"date\">#{time_ago_in_words(comment.created_at).upcase} AGO</span></br> <span class=\"email\">#{comment.email}</span></div>" + 
 			
-			"<div class=\"comments_right\"><h6>#{comment.subject}</h6><p>#{comment.body}</p></div>" + 
+			"<div class=\"comments_right\"><h6>#{comment.subject}</h6><p>#{comment.body}</p></div>" 
+			if administrator?
+				result << link_to_remote("Delete", :url => comment_path(:content_id => comment.content.id, :id => comment.id), :method => :delete) 
+			end
 			
+			result << 
 			"<div class=\"reply_comment\" id=\"reply_#{comment.id}\">" + link_to_remote("Reply to this comment", :url => new_child_comment_path(:content_id => comment.content.id, :comment_id => comment.id), :method => :get)  + "</div>"
-						
+				
 				prepare_comments(comment.children,result,false,counter) unless comment.children.empty?
 						
 				result << "</div>" if comment.children

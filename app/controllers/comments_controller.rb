@@ -1,11 +1,18 @@
 class CommentsController < ApplicationController
 	
+	def index
+		if administrator?
+			@latest = Content.recent
+		else 
+			redirect_to login_path
+		end
+	end
+	
 	def new
 		@comment 				= Comment.new
 		@comment.content_id 	= params[:content_id]
 		
 		respond_to do |wants|
-
 		 	if params[:comment_id]
 		 		wants.js { render :action => 'new_child.rjs' }	
 	 		else
@@ -14,6 +21,13 @@ class CommentsController < ApplicationController
 	 	end
 	end
 	
+	def destroy
+		@comment = Comment.find(params[:id])
+ 	 	@comment.destroy
+ 	 	respond_to do |wants|
+ 	 		wants.js
+ 	 	end
+	end
 	
 	def create			
 		respond_to do |wants|
