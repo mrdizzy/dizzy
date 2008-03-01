@@ -2,7 +2,7 @@ set :application, "dizzy"
 set :repository,  "http://dizzy.googlecode.com/svn/trunk"
 set :use_sudo, false
 set :user, "dizzynew"   
-set :password, "hefAf2Gu"
+set :password, "beaslewig175"
 
 # If you aren't deploying to /u/apps/#{application} on the target
 # servers (which is the default), you can specify the actual location
@@ -32,7 +32,7 @@ ssh_options[:port] = 7822
 # =============================================================================
 set :database_adapter, "mysql"
 set :database_username, "dizzynew"
-set :database_password, "hefAf2Gu"
+set :database_password, "beaslewig175"
 set :database_hostname, "localhost"
 
 # =============================================================================
