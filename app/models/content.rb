@@ -82,6 +82,18 @@ end
 
 class Article < Content
 	validates_presence_of :content
+	
+	before_save :parse_content
+	
+	def parse_content
+		self.content.gsub!("<%", "&lt;%")
+		self.content.gsub!("%>", "%&gt;")
+	end
+	
+	def parsed_content
+		self.content.gsub!("&lt;%","<%")
+		self.content.gsub!("%&gt;","%>")
+	end
 end
 
 class Cheatsheet < Content

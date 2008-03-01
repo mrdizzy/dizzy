@@ -15,7 +15,167 @@ contents_002:
   type: Article
   id: "2"
   description: Learn how to upload files to the database, then retrieve and display them
-  content: "<%= moulin_rouge %> And the conquest of <%= landacine %> "
+  content: |-
+    In this tutorial, I'll create a simple application to upload photos through a simple HTML form, and store them in the database, then render and display them on demand. The steps we'll go through are as follows:
+    
+    + *Create a model.* We'll use this model for the photographs, and we'll call it "Photo"
+    + *Create a migration.* Use a database migration to create a table in the database to hold the photographs
+    + *Handle the upload.* In the view, we'll create a template containing a HTML multi-part form and a corresponding action that will allow users to upload their photograph files
+    + *Render the image from the database.* Once you've got the images in the database, how do you pull them out and display them again? That's what I'll show you...
+    
+    ### Building the foundations
+    
+    First things first: let's create the photograph model from the command line:
+    
+    ruby:
+        ruby script/generate model photo
+    
+    The next step is in the controller. Let's create a **photo_admin controller** to take care of uploading, editing and deleting photos:
+    
+    ruby:
+        ruby script/generate controller photo_admin
+    
+    We'll also use Rails' scaffolding generator to create some basic actions and views that we can edit and work with: 
+    
+    ruby:
+        ruby script/generate scaffold photo photo_admin
+    
+    You might be asked by the generator script if it's okay to overwrite some of the existing controller files. Seeing as we haven't edited them even once, you can safely answer yes. 
+    
+    Using migrations, we'll create a simple table containing fields to hold a description of the image, along with a binary field that will hold the binary image data itself. Open the **001_create_photos.rb** migration in the ** db/migrate** directory, and edit it as follows: 
+    
+    ruby:
+        class CreatePhotos < ActiveRecord::Migration 
+            def self.up create_table :photos do |t| 
+                t.column :description, :string 
+                t.column :content_type, :string 
+                t.column :filename, :string 
+                t.column :binary_data, :binary 
+            end 
+        end
+    
+    We can then run the migration from the command line:
+    
+    ruby:
+        rake db:migrate
+    
+    If all has gone well, you should now have a table named **photos** in your database with all the fields you need to hold your image data! The next step is in the controller. Let's create a **photo_admin controller** to take care of uploading, editing and deleting photos:
+    
+    ruby:
+        ruby script/generate controller photo_admin
+    
+    We'll also use Rails' scaffolding generator to create some basic actions and views that we can edit and work with:
+    
+    ruby:
+        ruby script/generate scaffold photo photo_admin
+    
+    You might be asked by the generator script if it's okay to overwrite some of the existing controller files. Seeing as we haven't edited them even once, you can safely answer yes. 
+    
+    ### Creating a new photo
+    
+    Excellent! Now we have the foundations laid, it's time to handle uploading a new photograph to the database. As it happens, Rails' scaffolding generator has already created the new and create actions in the **photo_admin controller** we just generated, so we don't even need to touch it yet! Instead we'll concentrate on the view for the new action.
+    
+    To start with, we need to create a multipart form in the **new.rhtml** view template. This allows the browser to send image files (or any other kind of files) to the server. Let's change the existing **form_tag** helper to a **form_for** helper that will wrap our **photo** model object:
+    
+    rhtml:
+        &lt;% form_for(:photo, @photo, :url => {:action=>'create'}, :html=> {:multipart=>true}) do |form| %&gt;
+    
+    Notice the **:multipart => true** option at the end of the tag. It's always good to use the brackets and braces for clarity when using **form_for** with a multipart option. So many errors will happen if the form isn't rendered correctly using **:multipart => true**, so it's a time saver to always make sure you get that bit right from the beginning!
+    
+    Next, let's remove the scaffolded entry for **&lt;%= render :partial => 'form' %&gt;** and instead add two form fields: one to handle the uploading of the photo, and the other to type in a description of the photo. 
+    
+    rhtml:
+        &lt;%= form.file_field :image_file %&gt; 
+        &lt;%= form.text_field :description %&gt;
+    
+    To create a field in the form which allows users to browse for and upload their files, we use Rails' specific file_field helper. It takes the same options as the **text_field**, the object assigned to the template (in this case, form) and the method for accessing a specific attribute (in this case **image_file**) Have you spotted the first anomaly yet? No? Well let's see: we've used :description in the text_field to enter our photo's description, and that's great, because we have a corresponding description field in our database table. But we've used image_file to upload our image data, and there's no corresponding **image_file** field in our photos table. So what's going on? 
+    
+    It turns out that when uploading a file, you don't get receive just one string, such as the binary image data, but a more complex object containing not just the file's binary data but its filename and content-type (such as **image/jpg** or image/gif**). These are all stored together in :image_file, so what we'll need to do is extract the data and assign it the correct model attributes. The best place to do that is in the photo model, in app/models/photo.rb
+    
+    ruby:
+    	class Photo < ActiveRecord::Base 
+        def image_file=(input_data) 
+            self.filename = input_data.original_filename 
+            self.content_type = input_data.content_type.chomp 
+            self.binary_data = input_data.read 
+        end 
+    end
+    
+    Here, we take the contents of image_file and we use three methods to extract the data and assign it to the model attributes that match our database table: the methods are original_filename, content_type and read. 
+    
+    + *original_filename* gives you surprisingly enough the original filename of the file
+    + *content_type provides* you with the content-type of the data, such as whether it is an image/gif or an audio/wav which is useful for validation 
+    + *read* lets you actually get at the binary data 
+    
+    The chomp method at the end of content_type simply removes any extraneous newline characters, to make it neater. 
+    
+    Now, if you go to yourapp/photo_admin/new you should be able to upload a file. Try a small one at first (under 10k would be good) You'll know if it works because you'll be returned to the /photo_admin/list action, and you'll see the details of your file, along with a lot of gibberish under the binary column. That's because Rails is rendering your binary image data as text. Instead, we want a way to get the binary image data back out of the database and display it as an actual image... 
+    
+    ### Rendering an image stored in the database
+    
+    To do this, we'll create a new action in our photo_admin controller. We'll call it code_image: 
+    
+    ruby:
+    	def code_image 
+    	end
+    
+    In this action, we'll get the id (primary key) of the image file we want to display, we'll pull it out of the database and then we'll send it to the browser and tell it to render it correctly. Let's expand:
+    
+    ruby:
+    	def code_image 
+        	@image_data = Photo.find(params[:id]) 
+        	@image = @image_data.binary_data 
+        	send_data (@image, :type => @image_data.content_type, :filename => @image_data.filename, :disposition => 'inline') 
+    	end
+    
+    Easy! In the above action we have: 
+    
+    + taken the id of the Photo from the params supplied by the form, and retrieved it from the database into the @image_data object
+    + extracted the binary data out of the binary_data field
+    + used Rails' send_data method to render the binary image to the browser
+    
+    The send_data method can take several options: 
+    
+    + :filename - suggests a filename for the browser to use
+    + :type - specifies an HTTP content type. Defaults to application/octet-stream. We've used the existing content_type information that was stored in the database when we saved the image
+    + :disposition - specifies whether the file will be shown inline or downloaded. Valid values are inline and attachment (default). We want the image displayed in the browser, so we've used inline.
+    + :status - specifies the status code to send with the response. Defaults to 200 OK. We don't really need to worry about this today.
+    
+    Test it out: go to yourapp/photo_admin/code_image/1 (or whatever the id is of the image you want to display - make sure it is in the database!). If all is well, your image should be rendered in the browser. 
+    
+    ### Displaying the image inline
+    
+    Let's change the show.rhtml view for the photo_admin controller, so that instead of displaying a lot of gibberish, we can display the image itself under the "binary" column. If we open the show.rhtml view we should see the following: 
+    
+    rhtml:
+    	&lt;% for column in Photo.content_columns %&gt;
+        	&lt;%= column.human_name %&gt;
+        	&lt;%=h @photo.send(column.name) %&gt;
+    	&lt;% end %&gt;
+    
+    This code simply gets all of the column names from the database and their content and displays them automatically. This is fine for the text-based fields, but not for the binary image field. So we'll use an if condition to display the binary_data column differently:
+    
+    rhtml:
+        &lt;% for column in Photo.content_columns %&gt; 
+            &lt;%= column.human_name %&gt;
+            &lt;% if column.name == "binary_data" %&gt;
+                &lt;%= image_tag("/photo_admin/code_image/#{@photo.id}", :alt => "Image") %&gt;
+            &lt;% else %&gt;
+                &lt;%=h @photo.send(column.name) %&gt;
+            &lt;% end %&gt;
+        &lt;% end %&gt;
+    
+    Try it! Go to **yourapp/photo_admin/show/1** (or whatever the image id is you want to display) and your image should be displayed. In the above code, we're doing the following: 
+    
+    + looping through each column, and checking to see if the name of the column (column.name) is set to binary_data
+    + if it is, then we use the image_tag command to render an image. The URL of the image is simply the action that we just created in the photo_admin controller to encode and render the image: photo_admin/code_image/id where id is the "id" of the image, in this case stored in the @photo.id instance variable
+    + if the column name isn't binary_data, we just display the standard content of the column as text
+    
+    So now you have the code_image method in your photo_admin controller, whenever you want to encode and render an image inline, you just call photo_admin/code_image/id as the image URL. Simple! 
+    
+    # Troubleshooting Tips
+    
+    If you're getting NoMethod or other strange errors when uploading a file, try viewing the HTML of the new form after it has been rendered by your browser and before submitting it. Then you can make sure Rails is rendering the form correctly with the multipart entry. If you don't see multipart in the &lt;form&gt; tag, then that's your problem.
   user_id: "1"
 contents_003: 
   permalink: how-to-add-an-id-column-to-an-existing-table-and-make-it-the-primary-key
