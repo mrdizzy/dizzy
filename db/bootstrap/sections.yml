@@ -170,6 +170,29 @@ sections_011:
 
   id: "11"
   summary: test summary
+sections_012: 
+  permalink: character-representations
+  content_id: "5"
+  title: Character Representations
+  body: |
+    ## Character representations
+    
+    table:
+    \a        Alert (bell), \x07.
+    \b        Backspace, \x08, supported only in character class.
+    \e        ESC character, \x1B.
+    \n        Newline, \x0A.
+    \r        Carriage return, \x0D.
+    \f        Form feed, \x0C.
+    \t        Horizontal tab, \x09.
+    \v        Vertical tab, \x0B.
+    \0octal   Character specified by a two-digit octal code.
+    \xhex     Character specified by a two-digit hexadecimal code.
+    \cchar    Named control character.
+    
+
+  id: "12"
+  summary: none
 sections_001: 
   permalink: rails-migrations-methods
   content_id: "1"
@@ -261,6 +284,27 @@ sections_001:
 
   id: "1"
   summary: interact with your database using migration methods
+sections_013: 
+  permalink: character-classes
+  content_id: "5"
+  title: Character classses
+  body: |
+    ## Character classes
+    
+    table:
+    *Class*     *Meaning*
+    [...]       A single character listed, or contained within a listed range
+    [^...]      A single character not listed, and not contained within a listed range
+    . 			Any character, except a line terminator (unless single-line mode, s)
+    \w          Word character
+    \W          Nonword character
+    \d          Digit
+    \D          Nondigit
+    \s          Whitespace character, [ \f\n\r\t\v]
+    \S          Nonwhitespace character, [^ \f\n\r\t\v]
+
+  id: "13"
+  summary: Character classes
 sections_002: 
   permalink: database-mapping
   content_id: "1"
@@ -293,6 +337,48 @@ sections_002:
 
   id: "2"
   summary: how migration column types map to your underlying database
+sections_014: 
+  permalink: regex-instance-methods
+  content_id: "5"
+  title: Instance Methods
+  body: |
+    ## Instance methods
+    
+    (Tab.1 Instance Methods)
+    
+    `string =~ regexp`
+    `=> fixnum or nil`
+    ---------------------------------
+      Match the regexp, and return the position that the match starts, or `nil`
+    
+    `regexp === string => boolean`
+    ---------------------------------
+      Return `true` if the regexp matches the string. Used in case when statements
+    
+    `gsub(pattern, replacement) => new_string`
+    `gsub(pattern) {|match| block } => new_string`
+    ---------------------------------------------
+      Return a copy of string with all occurrences of pattern replaced with replacement, or the value of the block. Otherwise, behaves as `Regexp#sub`
+    
+    `gsub!(pattern, replacement) => string or nil`
+    `gsub!(pattern) {|match| block } => string or nil`
+    --------------------------------------------------
+      Perform the substitutions of `String#gsub` in place, returning `string` or returning `nil` if no substitutions were performed
+    
+    `index(regexp [, offset]) => fixnum or nil`
+    ----------------------------------------------
+      Return the index of the first match by `regexp` or `nil` if not found. Optionally, offset specifies the position in the string to begin the search.
+    
+    `match(pattern) => matchdata or nil`
+    ----------------------------------------------
+      Apply a regex pattern or `Regexp` object to the string, returning a `MatchData` object, or returning `nil` if there was no match.
+    
+    `rindex(regexp [, fixnum]) => fixnum or nil`
+    ----------------------------------------------
+      Return the index of the first match by regexp or `nil` if not found. Optionally, offset specifies the position in the string to end the search; characters to the right of this point will not be considered.
+
+  id: "14"
+  summary: Instance Methods
 sections_003: 
   permalink: example-migration-file
   content_id: "1"
