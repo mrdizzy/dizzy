@@ -15,7 +15,7 @@ contents_002:
   type: Article
   id: "2"
   description: Learn how to upload files to the database, then retrieve and display them
-  content: ""
+  content: "<%= moulin_rouge %> And the conquest of <%= landacine %> "
   user_id: "1"
 contents_003: 
   permalink: how-to-add-an-id-column-to-an-existing-table-and-make-it-the-primary-key
