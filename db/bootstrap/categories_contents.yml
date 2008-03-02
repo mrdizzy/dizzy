@@ -1,31 +1,19 @@
 --- 
 categories_contents_001: 
-  content_id: "1"
-  id: "223"
-  category_id: "10"
-  main: 
+  content_id: "3"
+  category_id: "1"
 categories_contents_002: 
-  content_id: "1"
-  id: "224"
-  category_id: "1"
-  main: "1"
-categories_contents_003: 
   content_id: "3"
-  id: "227"
   category_id: "10"
-  main: 
-categories_contents_004: 
-  content_id: "3"
-  id: "228"
-  category_id: "1"
-  main: "1"
-categories_contents_005: 
+categories_contents_003: 
   content_id: "2"
-  id: "289"
   category_id: "3"
-  main: 
-categories_contents_006: 
+categories_contents_004: 
   content_id: "2"
-  id: "290"
   category_id: "9"
-  main: "1"
+categories_contents_005: 
+  content_id: "1"
+  category_id: "1"
+categories_contents_006: 
+  content_id: "1"
+  category_id: "18"

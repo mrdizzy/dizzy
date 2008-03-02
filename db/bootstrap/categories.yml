@@ -59,6 +59,10 @@ categories_006:
   permalink: controllers
   name: Controllers
   id: "6"
+categories_018: 
+  permalink: cheatsheets
+  name: Cheatsheets
+  id: "18"
 categories_007: 
   permalink: models
   name: Models

@@ -1,6 +1,7 @@
 class InitialSchema < ActiveRecord::Migration
   def self.up
   
+  
     create_table "binaries", :force => true do |t|
       t.column "binary_data",  :binary, :limit => 2.megabytes
       t.column "type",         :string
@@ -17,10 +18,9 @@ class InitialSchema < ActiveRecord::Migration
       t.column "permalink", :string
     end
   
-    create_table "categories_contents", :force => true do |t|
+    create_table "categories_contents", :force => true, :id => false do |t|
       t.column "category_id", :integer
       t.column "content_id",  :integer
-      t.column "main",        :boolean
     end
   
     add_index "categories_contents", ["content_id"], :name => "fk_content_categories_contents"
@@ -33,6 +33,7 @@ class InitialSchema < ActiveRecord::Migration
       t.column "parent_id",  :integer
       t.column "content_id", :integer
       t.column "created_at", :datetime
+      t.column "new",        :boolean,  :default => true
     end
   
     add_index "comments", ["content_id"], :name => "fk_content_comments"
@@ -50,6 +51,7 @@ class InitialSchema < ActiveRecord::Migration
       t.column "date",        :datetime
       t.column "content",     :text
       t.column "permalink",   :string
+      t.column "version_id",  :integer
     end
   
     add_index "contents", ["user_id"], :name => "fk_user_contents"
@@ -94,6 +96,8 @@ class InitialSchema < ActiveRecord::Migration
       t.column "permalink",  :string
     end
   
+    add_index "sections", ["content_id"], :name => "fk_content_sections"
+  
     create_table "sessions", :force => true do |t|
       t.column "session_id", :string
       t.column "data",       :text
@@ -110,6 +114,10 @@ class InitialSchema < ActiveRecord::Migration
       t.column "firstname",       :string
       t.column "surname",         :string
       t.column "email",           :string
+    end
+  
+    create_table "versions", :force => true do |t|
+      t.column "version_number", :string
     end
   
     create_table "votes", :force => true do |t|
@@ -134,6 +142,7 @@ class InitialSchema < ActiveRecord::Migration
     drop_table :sections
     drop_table :sessions
     drop_table :users
+    drop_table :versions
     drop_table :votes
   end
 end

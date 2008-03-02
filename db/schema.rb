@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(:version => 3) do
     t.column "permalink", :string
   end
 
-  create_table "categories_contents", :force => true do |t|
+  create_table "categories_contents", :id => false, :force => true do |t|
     t.column "category_id", :integer
     t.column "content_id",  :integer
   end
