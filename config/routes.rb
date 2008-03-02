@@ -19,7 +19,8 @@ ActionController::Routing::Routes.draw do |map|
     map.connect '/articles/beginning-file-uploads', :controller => 'redirect', :url => '/ruby_on_rails/categories/file-handling/contents/beginning-file-uploads'
 
     
-    map.latest 'ruby_on_rails/latest', :controller => "contents", :action => "index"    
+    map.latest 'ruby_on_rails/latest', :controller => "contents", :action => "index"
+    map.cheats 'ruby_on_rails/cheatsheets', :controller => "categories", :action => "show", :id => "cheatsheets"    
     map.login 'login', :controller => "administrator_sessions", :action => "new"
 	map.connect '/', :controller => "welcome"
     
@@ -37,6 +38,7 @@ ActionController::Routing::Routes.draw do |map|
 			comments.resources :child_comments, :controller => "comments"
 		end
 	end
+	
 	
 	#map.resources :child_comments, :path_prefix => "/comments/:parent_comment_id", :controller => "comments"
 	

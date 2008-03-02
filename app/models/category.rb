@@ -9,10 +9,8 @@
 #
 
 class Category < ActiveRecord::Base
-	has_many :categories_contents
-	has_many :contents, :through => :categories_contents, :order => "date DESC"
-	has_many :cheatsheets, :through => :categories_contents, :source => "content", :order => "date DESC", :conditions => "contents.type = 'Cheatsheet'"
-	
+	has_and_belongs_to_many :contents, :order => "date DESC"
+	#has_many :cheatsheets, :through => :categories_contents, :source => "content", :order => "date DESC", :conditions => "contents.type = 'Cheatsheet'"
 	validates_presence_of :name, :permalink
 	validates_uniqueness_of :permalink, :name
 end

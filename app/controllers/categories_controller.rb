@@ -3,8 +3,9 @@ class CategoriesController < ApplicationController
 	
 	def show
 		unless (read_fragment( :action => "show" ) && administrator? == false) || (read_fragment( :action => "show", :part => "administrator" ) && administrator? == true)
+				
 			@category = Category.find_by_permalink(params[:id])	
-			puts @category.name	
+			
 		end
 	end
 

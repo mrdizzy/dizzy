@@ -15,11 +15,11 @@ module ApplicationHelper
 	# Links
     
     def article_link(object)
-    	link_to object.title, content_path(object.main_category_permalink, object.permalink)
+    	link_to object.title, content_path(object.main_category.permalink, object.permalink)
     end
 
 	def posted_in(categories)
-		result = []		
+		result = []	
 		categories.each do |category|
 			result << (link_to category.name.upcase, category_path(category.permalink))
 		end

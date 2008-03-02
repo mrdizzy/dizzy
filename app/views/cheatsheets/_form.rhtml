@@ -20,12 +20,12 @@
 <p><label for="article_date"><%= diamond %> Date</label>
 <%= form.datetime_select :date %></p>
 
-<div id="select_main_category">
-	<p><label for="cheatsheet_maincategory"><%= diamond %> Main category </label>
-	<%= form.collection_select(:main_category, Category.find(:all, :order => :name), :id, :name, {}, { :name => 'cheatsheet[main_category]'} ) %></p>
-</div>
+<p><label for="article_version_number"><%= diamond %> Version</label>
+<%= form.collection_select(:version_id, Version.find(:all, :order => :version_number), :id, :version_number) %> <i>or add new version</i>
+<%= form.text_field :new_version %></p>
+
 
 <div id="select_subcategory">	
 	<p><label for="cheatsheet_subcategories"><%= diamond %> Subcategories</label>
-	<%= form.collection_select(:subcategories, Category.find(:all, :order => :name), :id, :name, {}, {:multiple=> :true}) %></p>
+	<%= form.collection_select(:category_ids, Category.find(:all, :order => :name), :id, :name, {}, {:multiple=> :true}) %></p>
 </div>

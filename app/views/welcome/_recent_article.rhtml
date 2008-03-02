@@ -1,6 +1,6 @@
-	<h5><%= asterisk %> <%= recent_article.main_category_name %></h5>
+	<h5><%= asterisk %> <%= recent_article.main_category.name %></h5>
 
-	<h3><%= link_to recent_article.title, content_path(recent_article.main_category_permalink,recent_article.permalink) %></h3>
+	<h3><%= link_to recent_article.title, content_path(recent_article.main_category.permalink,recent_article.permalink) %></h3>
 	
 	<h4>POSTED <%= time_ago_in_words(recent_article.date).upcase %> AGO</h4>
 	

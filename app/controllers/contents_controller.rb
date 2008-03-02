@@ -10,7 +10,7 @@ class ContentsController < ApplicationController
 	
 	def show 
 		load "#{RAILS_ROOT}/app/helpers/contents_helper.rb"
-		@content 		= Content.find_by_permalink(params[:id])		
+		@content 		= Content.find_by_permalink(params[:id], :include => [:comments, :sections])		
 		@comment 		= Comment.new				
 		@categories 	= Category.find(:all, :order => :name)
 		respond_to do |wants|
@@ -38,9 +38,8 @@ class ContentsController < ApplicationController
     @article = Article.find(params[:id])
     if @article.update_attributes(params[:article])
       flash[:notice] = 'Article was successfully updated.'
-      puts @article.main_category_permalink
-      puts @article.permalink
-      redirect_to content_path(:category_id => @article.main_category_permalink, :id => @article.permalink)
+
+      redirect_to content_path(:category_id => @article.main_category.permalink, :id => @article.permalink)
     else
       render :action => 'edit'
     end

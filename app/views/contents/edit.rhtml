@@ -1,7 +1,7 @@
 <h1><%= bigarrow %> Editing article "<%= @article.title %>"</h1>
 
 <% form_for :article, :url => content_path, :html => { :name => "edit_form", :method => "put" } do |form| %>
-	
+
 <%= render :partial => "form", :object => form %>
 
 <%= submit_button %>

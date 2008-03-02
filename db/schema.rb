@@ -2,7 +2,7 @@
 # migrations feature of ActiveRecord to incrementally modify your database, and
 # then regenerate this schema definition.
 
-ActiveRecord::Schema.define(:version => 2) do
+ActiveRecord::Schema.define(:version => 3) do
 
   create_table "binaries", :force => true do |t|
     t.column "binary_data",  :binary
@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(:version => 2) do
   create_table "categories_contents", :force => true do |t|
     t.column "category_id", :integer
     t.column "content_id",  :integer
-    t.column "main",        :boolean
   end
 
   add_index "categories_contents", ["content_id"], :name => "fk_content_categories_contents"
@@ -36,7 +35,7 @@ ActiveRecord::Schema.define(:version => 2) do
     t.column "parent_id",  :integer
     t.column "content_id", :integer
     t.column "created_at", :datetime
-    t.column "new",        :boolean, :default => true
+    t.column "new",        :boolean,  :default => true
   end
 
   add_index "comments", ["content_id"], :name => "fk_content_comments"
@@ -54,6 +53,7 @@ ActiveRecord::Schema.define(:version => 2) do
     t.column "date",        :datetime
     t.column "content",     :text
     t.column "permalink",   :string
+    t.column "version_id",  :integer
   end
 
   add_index "contents", ["user_id"], :name => "fk_user_contents"
@@ -98,6 +98,8 @@ ActiveRecord::Schema.define(:version => 2) do
     t.column "permalink",  :string
   end
 
+  add_index "sections", ["content_id"], :name => "fk_content_sections"
+
   create_table "sessions", :force => true do |t|
     t.column "session_id", :string
     t.column "data",       :text
@@ -114,6 +116,10 @@ ActiveRecord::Schema.define(:version => 2) do
     t.column "firstname",       :string
     t.column "surname",         :string
     t.column "email",           :string
+  end
+
+  create_table "versions", :force => true do |t|
+    t.column "version_number", :string
   end
 
   create_table "votes", :force => true do |t|
