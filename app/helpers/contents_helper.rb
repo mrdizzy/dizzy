@@ -12,7 +12,7 @@ require 'strscan'
 	end
 
 	def pdf_thumbnail(content)
-		link_to image_tag(formatted_content_path(:category_id => content.main_category.permalink, :id => content.permalink, :format => "png")), formatted_cheatsheet_path(content.permalink, "pdf")
+		link_to image_tag(formatted_content_path(:id => content.permalink, :format => "png")), formatted_cheatsheet_path(content.permalink, "pdf")
 	end
 
 end
