@@ -1,7 +1,7 @@
 class ContentsController < ApplicationController
 	
 	helper 			:comments		
-	caches_page 	:show, :index
+	caches_page 	:show
 	cache_sweeper 	:content_sweeper, :only => [ :destroy, :update ]
 	
 	def index 

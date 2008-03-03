@@ -1,7 +1,5 @@
 class WelcomeController < ApplicationController
 
-	caches_page :index
-
 	def index
 		paginate_logos
 		@recent_articles 	= Article.recent
