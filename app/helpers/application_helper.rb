@@ -15,7 +15,7 @@ module ApplicationHelper
 	# Links
     
     def article_link(object)
-    	link_to object.title, content_path(object.main_category.permalink, object.permalink)
+    	link_to object.title, content_path(object.permalink)
     end
 
 	def posted_in(categories)

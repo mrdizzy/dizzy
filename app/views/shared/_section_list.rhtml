@@ -10,14 +10,14 @@
 				<li><span class="bigger"><%= section.title %></span> - <%= section.summary %></li>
 			
 				<% else %>	
-				<li><%= link_to section.title, section_path(@content.main_category.permalink,@content.permalink, section.permalink) %> - <%= section.summary %></li>
+				<li><%= link_to section.title, section_path(@content.permalink, section.permalink) %> - <%= section.summary %></li>
 				
 			<% end %>
 		<% end %>
 		</ul>
 		<div class="center">
 			<% if current_page?(:controller => "sections", :action => "show" ) %>
-		<%= asterisk %> <%= link_to "View all on one page", content_path(@content.main_category.permalink,@content.permalink)%>
+		<%= asterisk %> <%= link_to "View all on one page", content_path(@content.permalink)%>
 		<% end %>
 	</div>
 	

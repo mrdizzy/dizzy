@@ -2,10 +2,7 @@ class CategoriesController < ApplicationController
 	helper :contents
 	
 	def show
-			
 			@category = Category.find_by_permalink(params[:id])	
-			
-		end
 	end
 
 	def create

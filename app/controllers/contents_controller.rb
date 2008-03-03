@@ -9,8 +9,8 @@ class ContentsController < ApplicationController
 	end
 	
 	def show 
-		load "#{RAILS_ROOT}/app/helpers/contents_helper.rb"
-		@content 		= Content.find_by_permalink(params[:id], :include => [:comments, :sections])		
+		#load "#{RAILS_ROOT}/app/helpers/contents_helper.rb"
+		@content 		= Content.find_by_permalink(params[:id])		
 		@comment 		= Comment.new				
 		@categories 	= Category.find(:all, :order => :name)
 		respond_to do |wants|
@@ -58,8 +58,7 @@ class ContentsController < ApplicationController
 	end
 	
 	def destroy
-		if Content.find(params[:id]).destroy
-			redirect_to categories_path
-		end
+		@content = Content.find(params[:id])
+		@content.destroy
 	end
 end

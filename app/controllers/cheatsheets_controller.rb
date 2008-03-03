@@ -10,7 +10,6 @@ class CheatsheetsController < ApplicationController
   
   def new
   	@cheatsheet = Cheatsheet.new
-  	@cheatsheet.main_category = @category.id
   	@pdf 		= Pdf.new
   	@thumbnail	= Thumbnail.new
   end

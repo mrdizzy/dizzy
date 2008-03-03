@@ -31,11 +31,10 @@ ActionController::Routing::Routes.draw do |map|
     # RESTful routes 
     map.resources :administrator_sessions
     
-    map.resources "categories", :path_prefix => "/ruby_on_rails" do |ruby_on_rails|
-    	ruby_on_rails.resources :cheatsheets
-    	ruby_on_rails.resources :contents do |contents|
-    		contents.resources :sections
-    	end    	
+    map.resources "categories", :path_prefix => "/ruby_on_rails"
+    map.resources :cheatsheets
+    map.resources :contents, :path_prefix => "/ruby_on_rails" do |contents|
+    	contents.resources :sections
 	end
 	
 	map.resources "contents", :name_prefix => "main_" do |contents|
