@@ -1,6 +1,6 @@
 <h1>Editing section</h1>
 
-<% form_tag section_path(@section.content.main_category_permalink, @section.content.permalink, @section.id), :method => :put  do %>
+<% form_tag section_path(@section.content.main_category.permalink, @section.content.permalink, @section.id), :method => :put  do %>
   <%= render :partial => 'form' %>
   <%= submit_button %>
 <% end %>
