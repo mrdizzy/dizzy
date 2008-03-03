@@ -22,7 +22,6 @@ ActionController::Routing::Routes.draw do |map|
 
     # Named routes
     map.latest 'ruby_on_rails/latest', :controller => "contents", :action => "index"
-    map.cheats 'ruby_on_rails/cheatsheets', :controller => "categories", :action => "show", :id => "cheatsheets"    
     map.login 'login', :controller => "administrator_sessions", :action => "new"
 	map.connect '/', :controller => "welcome"
     
@@ -31,19 +30,17 @@ ActionController::Routing::Routes.draw do |map|
     # RESTful routes 
     map.resources :administrator_sessions
     
-    map.resources "categories", :path_prefix => "/ruby_on_rails"
-    map.resources :cheatsheets
-    map.resources :contents, :path_prefix => "/ruby_on_rails" do |contents|
-    	contents.resources :sections
+    map.resources :categories, :path_prefix => "/ruby_on_rails"
+    map.resources :cheatsheets, :path_prefix => "/ruby_on_rails" do |contents|
+		contents.resources :sections
 	end
+    map.resources :contents, :path_prefix => "/ruby_on_rails"
 	
-	map.resources "contents", :name_prefix => "main_" do |contents|
+	map.resources :contents, :name_prefix => "main_" do |contents|
 		contents.resources :comments do |comments|
 			comments.resources :child_comments, :controller => "comments"
 		end
 	end
-	
-	
 	
   # Portfolio Binary images
     map.connect "binaries/footer_logo/:id.:extension", :controller => "binaries", :action => "footer_logo"

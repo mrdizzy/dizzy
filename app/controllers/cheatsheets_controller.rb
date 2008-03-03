@@ -1,11 +1,9 @@
-class CheatsheetsController < ApplicationController
+class CheatsheetsController < ContentsController
 	helper :contents
-	before_filter :load_category
 	cache_sweeper :content_sweeper, :only => [ :destroy, :update ]
 	
-  def index
-    @category = Category.find_by_permalink(params[:category_id])		
-    @cheatsheets = @category.cheatsheets
+  def index	
+    @cheatsheets = Cheatsheet.find(:all)
   end
   
   def new
@@ -40,7 +38,7 @@ class CheatsheetsController < ApplicationController
 
     if @cheatsheet.valid? && @cheatsheet.pdf.valid? && @cheatsheet.thumbnail.valid? && @cheatsheet.categories.all?(&:valid?)
       flash[:notice] = 'Cheatsheet was successfully updated.'
-      redirect_to contents_path(:id => @cheatsheet.permalink)
+      redirect_to cheatsheet_path(@cheatsheet.permalink)
     else
       render :action => 'edit'
     end
@@ -69,12 +67,6 @@ class CheatsheetsController < ApplicationController
   
   def edit
   	@cheatsheet =  Cheatsheet.find(params[:id])  
-  end
-  
-  private
-  
-  def load_category
-  	@category = Category.find_by_permalink(params[:category_id])
   end
 
 end

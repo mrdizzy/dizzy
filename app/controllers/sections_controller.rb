@@ -45,6 +45,6 @@ class SectionsController < ApplicationController
  
   def load_category_and_content
   	@category	= Category.find_by_permalink(params[:category_id])
-  	@content	= Content.find_by_permalink(params[:content_id])
+  	@content	= Content.find_by_permalink(params[:cheatsheet_id])
   end
 end

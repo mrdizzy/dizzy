@@ -17,7 +17,7 @@
 		</ul>
 		<div class="center">
 			<% if current_page?(:controller => "sections", :action => "show" ) %>
-		<%= asterisk %> <%= link_to "View all on one page", content_path(@content.permalink)%>
+		<%= asterisk %> <%= link_to "View all on one page", cheatsheet_path(@content.permalink)%>
 		<% end %>
 	</div>
 	

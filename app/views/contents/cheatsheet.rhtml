@@ -22,7 +22,7 @@
 		
 		<%= pdf_thumbnail(@content) %>
 		
-		<p><%= link_to image_tag ("f/small_icons/pdf_sheet.png"), formatted_content_path(:id => @content.permalink, :format => "pdf") %> 
-		   <%= link_to "PDF version", formatted_content_path(:id => @content.permalink, :format => "pdf") %></p>
+		<p><%= link_to image_tag ("f/small_icons/pdf_sheet.png"), formatted_cheatsheet_path(:format => :pdf) %> 
+		   <%= link_to "PDF version", formatted_cheatsheet_path(:format => :pdf) %></p>
 	</div>
 <% end %>
