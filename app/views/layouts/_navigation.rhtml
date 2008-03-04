@@ -35,5 +35,5 @@
 	
 	
 	<!-- CONTACT -->
-	<div class="nav_button"><a href=""><%= image_tag("f/nav/contact.png") %></a></div>
+	<div class="nav_button"><%= link_to_remote image_tag("f/nav/contact.png"), :url => new_conversation_path, :method => :get %></div>
 </div>

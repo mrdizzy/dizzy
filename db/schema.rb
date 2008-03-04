@@ -60,7 +60,10 @@ ActiveRecord::Schema.define(:version => 4) do
 
   create_table "conversations", :force => true do |t|
     t.column "subject", :string
-    t.column "type",    :string
+    t.column "email", :string
+    t.column "name", :string
+    t.column "created_at", :datetime
+    t.column "body", :text
   end
 
   create_table "polls", :force => true do |t|
