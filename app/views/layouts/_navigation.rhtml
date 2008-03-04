@@ -35,5 +35,7 @@
 	
 	
 	<!-- CONTACT -->
-	<div class="nav_button"><%= link_to_remote image_tag("f/nav/contact.png"), :url => new_conversation_path, :method => :get %></div>
+	<div class="nav_button"><%= link_to_remote image_tag("f/nav/contact.png"), :url => new_conversation_path, :method => :get, :before => "Element.show('contact_spinner')", :complete => "Element.hide('contact_spinner')" %><div id="contact_spinner" style="display:none;">
+		<img alt="Spinner" src="/images/f/spinner.gif" />
+	</div></div>
 </div>
