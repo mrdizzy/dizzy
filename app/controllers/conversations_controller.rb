@@ -9,10 +9,15 @@ class ConversationsController < ApplicationController
   	end
 
 	def create
-		if Conversation.create(params[:conversation])
+		@conversation = Conversation.new(params[:conversation])
+		if @conversation.save
 			respond_to do |wants|
 				wants.js			
-			end			
+			end
+		else
+			respond_to do |wants|
+				wants.js { render :action => "new.rjs"}
+			end		
 		end		
 	end
 	

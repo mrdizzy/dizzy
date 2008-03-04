@@ -1,6 +1,7 @@
-<div id="contact_form" style="display:none;">
-
 <% remote_form_for :conversation, :url => conversations_path, :before => "Element.show('spinner')", :complete => "Element.hide('spinner')" do |form| %>
+
+<%= error_messages_for :conversation, { :header_tag => "h3", :header_message => "Sorry, you made some mistakes.", :message => "Please check the following fields:" }%>
+	
 
 	<label for="conversation_subject"><%= diamond %> Subject</label>
 	<%= form.text_field :subject %><br/>
@@ -20,4 +21,3 @@
 	<div id="spinner" class="left" style="display:none;">
 		<img alt="Spinner" src="/images/f/spinner.gif" />
 	</div>
-</div>
