@@ -15,6 +15,7 @@
 
 class Content < ActiveRecord::Base
 	has_and_belongs_to_many :categories
+	has_and_belongs_to_many :related_articles, :class_name => "Content", :foreign_key => "related_id"
 	has_many :comments, :dependent => :destroy
 	has_many :sections, :dependent => :destroy, :order => "'title' ASC"
 	belongs_to :version
@@ -43,9 +44,6 @@ class Content < ActiveRecord::Base
 		self.find(:all, :limit => 10, :order => "date DESC")	
 	end
 	
-	def related_article
-		self
-	end
 end
 
 class Article < Content

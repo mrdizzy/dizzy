@@ -36,7 +36,7 @@ class CheatsheetsController < ContentsController
 		end
 	end
 
-    if @cheatsheet.valid? && @cheatsheet.pdf.valid? && @cheatsheet.thumbnail.valid? && @cheatsheet.categories.all?(&:valid?)
+    if @cheatsheet.valid? && @cheatsheet.pdf.valid? && @cheatsheet.thumbnail.valid? && @cheatsheet.categories.all?(&:valid?) && @cheatsheet.related_articles.all?(&:valid?)
       flash[:notice] = 'Cheatsheet was successfully updated.'
       redirect_to cheatsheet_path(@cheatsheet.permalink)
     else

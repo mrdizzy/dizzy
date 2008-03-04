@@ -29,7 +29,14 @@
 				
 				<%= yield :thumbnail %>
 				<%= render :partial => "/layouts/category_list", :object => @categories %>
-				
+				<% unless @content.nil? %>
+				<p><%= spiro %></p>
+					<div id="blurb">
+						<h4><%= solid_arrow %> RELATED ARTICLE</h4>
+						<h2><%= asterisk %> <%= @content.related_articles.first.title %></h2> 
+						<p><%= @content.related_articles.first.description %></p>
+					</div>
+				<% end %>
 			</div>
 			
 		</div>

@@ -17,7 +17,9 @@
 <%= form.collection_select(:version_id, Version.find(:all, :order => :version_number), :id, :version_number) %> <i>or add new version</i>
 <%= form.text_field :new_version %></p>
 
-<div id="select_subcategory">
-	<p><label for="select_subcategory"><%= diamond %> Subcategories</label>
+	<p><label for="categories"><%= diamond %> Categories</label>
 	<%= form.collection_select("category_ids", Category.find(:all, :order => :name), :id, :name, {}, :multiple=> :true, :name=>'article[category_ids][]') %></p>
-</div>
+
+
+	<p><label for="related_articles"><%= diamond %> Related articles</label>
+	<%= form.collection_select("related_article_ids", Content.find(:all, :order => :title), :id, :title, {}, :multiple=> :true, :name=>'article[related_article_ids][]') %></p>

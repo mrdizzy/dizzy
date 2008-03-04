@@ -70,3 +70,12 @@
 	height:9px;
 	float:left;		
 }
+
+/* Related
+======================*/
+
+#blurb {
+	border: 1px dashed #878787;
+	padding:0 7px 0px 7px;
+	width:100%;
+}

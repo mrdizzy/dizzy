@@ -25,7 +25,9 @@
 <%= form.text_field :new_version %></p>
 
 
-<div id="select_subcategory">	
-	<p><label for="cheatsheet_subcategories"><%= diamond %> Subcategories</label>
-	<%= form.collection_select(:category_ids, Category.find(:all, :order => :name), :id, :name, {}, {:multiple=> :true}) %></p>
-</div>
+	<p><label for="categories"><%= diamond %> Categories</label>
+	<%= form.collection_select("category_ids", Category.find(:all, :order => :name), :id, :name, {}, :multiple=> :true, :name=>'cheatsheet[category_ids][]') %></p>
+
+
+	<p><label for="related_articles"><%= diamond %> Related articles</label>
+	<%= form.collection_select("related_article_ids", Content.find(:all, :order => :title), :id, :title, {}, :multiple=> :true, :name=>'cheatsheet[related_article_ids][]') %></p>

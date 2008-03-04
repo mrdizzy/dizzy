@@ -27,6 +27,16 @@ h2 {
 	margin-top:1.125; 
 	margin-bottom: 1.125em;
 }
+	#blurb h2 {
+		font-family:"Georgia";
+		font-size:1.4em;	
+		margin-bottom:0.5em;	
+	}
+	#welcome h2 {
+		font-family:"Trebuchet MS";	
+		color:black;	
+		font-style:italic;
+	}
 	#navigation h2 {
 		font-weight:normal;
 		text-decoration:none;
@@ -67,6 +77,16 @@ h3 {
 	font-style:italic;
 	letter-spacing:-0.03em;
 }
+
+	#welcome h3, #poll h3 {
+		font-family: "Georgia",serif;
+		font-weight: normal;
+		font-style:normal;
+		font-size: 1.3em; /* 15px */ 
+		line-height: 1.3em; /* 18px */ 
+		margin-top: 0.6em; 
+		margin-bottom: 0.6em;	
+	}
 	#cheatsheet h3 { 
 		font-family:"Trebuchet MS"; 
 		color:black; 
@@ -87,6 +107,14 @@ h4 {
 	margin-top: 0.6em; margin-bottom: 0.6em;
 	letter-spacing:0.2em;
 }	
+	#blurb h4 {
+		color: #29A4BD;
+		font-weight:normal; 
+		font-size: 0.76em; /* 10px */
+		line-height: 1.8em; /* 18px */
+		margin-top: 0.6em; margin-bottom: 0.8em;
+		letter-spacing:0.2em;
+	}	
 
 h5 {
 	font-size: 1.15em; /* 15px */ 
@@ -158,6 +186,11 @@ p {
 		margin-bottom:0.5em;
 		letter-spacing:0em;
 	}
+	#blurb p {		
+		font-size:1.2em;
+		font-style:italic;
+		font-family:"Trebuchet MS";
+	}
 
 /* Classes
 ==================================== */
@@ -187,7 +220,7 @@ p {
 	color: #29A4BD;	
 }
 .date { 
-	color: #BBBDBF;
+	color: #878787;
 	font-weight:normal; 
 	font-size: 0.8333em; /* 10px */
 	line-height: 1.8em; /* 18px */

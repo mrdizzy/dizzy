@@ -48,21 +48,3 @@
 #welcome_left a:hover, #welcome_right a:hover {
 	color: white;
 }
-
-/* Typography
---------------------- */
-
-#welcome h2 {
-	font-family:"Trebuchet MS";	
-	color:black;	
-	font-style:italic;
-}
-#welcome h3, #poll h3 {
-	font-family: "Georgia",serif;
-	font-weight: normal;
-	font-style:normal;
-	font-size: 1.3em; /* 15px */ 
-	line-height: 1.3em; /* 18px */ 
-	margin-top: 0.6em; 
-	margin-bottom: 0.6em;	
-}
