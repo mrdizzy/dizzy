@@ -1,81 +1,81 @@
 /* Index
 ======================*/
-#cheatsheet_image {
-	float:right;
-	text-align:center;	
-}
+	#cheatsheet_image {
+		float:right;
+		text-align:center;	
+	}
 
 /* Page 
 ======================*/
-#method.blue {
-	background-color:#D8EEF9;
-	padding:5px;
-	margin-top:10px;
-}
-#cheatsheet_title {
-	float:left;
-}
-#content {
-	clear:both;
-}
+	#method.blue {
+		background-color:#D8EEF9;
+		padding:5px;
+		margin-top:10px;
+	}
+	#cheatsheet_title {
+		float:left;
+	}
+	#content {
+		clear:both;
+	}
 
 /* Sections
 ======================*/
-
-#section_container {
-	width:600px;
-}	
-#section_list {
-	clear:both;
-	border-bottom:1px solid transparent;
-	border-left:1px solid #BBBDBF;
-	border-right:1px solid #BBBDBF;
-}
-#topright {
-	background-image:url("/images/f/boxes/topright.png");
-	width:9px;
-	height:9px;
-	float:right;
-}	
-#topleft {
-	background-image:url("/images/f/boxes/topleft.png");
-	width:9px;
-	height:9px;
-	float:left;		
-}
-#topmiddle {
-	background-color:#BBBDBF;
-	margin-left:9px;
-	margin-right:9px;
-	height:1px;
-	width:582px;
-}
-#bottommiddle {
-	background-color:#BBBDBF;
-	width:582px;
-	margin-left:9px;
-	margin-right:9px;
-	margin-top:8px;
-	height:1px;
-}
-#bottomright {
-	background-image:url("/images/f/boxes/bottomright.png");
-	width:9px;
-	height:9px;
-	float:right;
-}	
-#bottomleft {
-	background-image:url("/images/f/boxes/bottomleft.png");
-	width:9px;
-	height:9px;
-	float:left;		
-}
+	
+	#section_container {
+		width:600px;
+	}	
+	#section_list {
+		clear:both;
+		border-bottom:1px solid transparent;
+		border-left:1px solid #BBBDBF;
+		border-right:1px solid #BBBDBF;
+	}
+	#topright {
+		background-image:url("/images/f/boxes/topright.png");
+		width:9px;
+		height:9px;
+		float:right;
+	}	
+	#topleft {
+		background-image:url("/images/f/boxes/topleft.png");
+		width:9px;
+		height:9px;
+		float:left;		
+	}
+	#topmiddle {
+		background-color:#BBBDBF;
+		margin-left:9px;
+		margin-right:9px;
+		height:1px;
+		width:582px;
+	}
+	#bottommiddle {
+		background-color:#BBBDBF;
+		width:582px;
+		margin-left:9px;
+		margin-right:9px;
+		margin-top:8px;
+		height:1px;
+	}
+	#bottomright {
+		background-image:url("/images/f/boxes/bottomright.png");
+		width:9px;
+		height:9px;
+		float:right;
+	}	
+	#bottomleft {
+		background-image:url("/images/f/boxes/bottomleft.png");
+		width:9px;
+		height:9px;
+		float:left;		
+	}
 
 /* Related
 ======================*/
-
-#blurb {
-	border: 1px dashed #878787;
-	padding:0 7px 0px 7px;
-	width:100%;
-}
+	
+	#blurb {
+		border: 1px dashed #878787;
+		padding:0 7px 0px 7px;
+		width:100%;
+	}
