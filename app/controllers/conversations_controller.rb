@@ -1,13 +1,4 @@
 class ConversationsController < ApplicationController
-	
-	
-	def show 
-	
-	end
-	
-	def edit
-      
-  	end
   	
   	def new
   		@conversation		= Conversation.new
@@ -17,21 +8,12 @@ class ConversationsController < ApplicationController
 	 	end
   	end
 
-  def update
-  
-  end  	
-	
 	def create
-
 		if Conversation.create(params[:conversation])
 			respond_to do |wants|
 				wants.js			
 			end			
-		end	
-	
+		end		
 	end
 	
-	def destroy
-		
-	end
 end
