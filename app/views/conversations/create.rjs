@@ -1,2 +1,2 @@
 page.replace_html "contact_form", "<h3 class=\"blue_text\">" +  asterisk + "Thank you, your message has been sent</h3>"
-page.visual_effect :highlight, :contact_form, { :duration => 1, :startcolor => "'#C4DCEA'" }
+page.visual_effect :highlight, :contact_form, { :duration => 2, :startcolor => "'#D0E3ED'" }
