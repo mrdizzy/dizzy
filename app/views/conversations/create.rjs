@@ -1,0 +1,1 @@
+page.replace_html "contact_form", "<h3 class=\"blue_text\">" +  asterisk + "Thank you, your message has been sent</h3>"

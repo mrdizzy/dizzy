@@ -22,6 +22,12 @@ class ConversationsController < ApplicationController
   end  	
 	
 	def create
+
+		if Conversation.create(params[:conversation])
+			respond_to do |wants|
+				wants.js			
+			end			
+		end	
 	
 	end
 	
