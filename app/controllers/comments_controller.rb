@@ -30,23 +30,26 @@ class CommentsController < ApplicationController
 	end
 	
 	def create			
-		respond_to do |wants|
-			
+		@comment = Comment.new(params[:comment])
+		
+		respond_to do |wants|	
 			if params[:comment_id]	
-				@content 	= Comment.find(params[:comment_id])			
-				if @content.children.create(params[:comment])	
+				@content 	= Comment.find(params[:comment_id])	
+				@content.children << @comment			
+				if @content.save!
 					@comment = @content.children.last
 					wants.js { render :action => "create_child.rjs"}
 				else
 					wants.js { render :action => "new_child.rjs"}
 				end		
 			else
-				@content 	= Content.find(params[:content_id])					
-				if @content.comments.create(params[:comment])
+				@content 	= Content.find(params[:content_id])	
+				@content.comments << @comment			
+				if @content.save
 					@comment = @content.comments.last
 					wants.js
 				else
-					wants.js { rend :action => "new_child.rjs"}
+					wants.js { render :action => "new.rjs"}
 				end
 			end			
 		end					

@@ -1,4 +1,4 @@
-	<h5><%= asterisk %> <%= recent_articles.main_category_name %></h5>
+	<span class="posted_in"><%= asterisk %> <%= recent_articles.main_category_name.upcase %></span>
 
 	<h3><%= link_to recent_articles.title, content_path(recent_articles.permalink) %></h3>
 	

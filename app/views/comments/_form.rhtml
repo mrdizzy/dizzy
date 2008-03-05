@@ -1,6 +1,11 @@
+<%= error_messages_for :comment, :object => form, :header_tag => "h3" %>
+
 <label for="comment_subject"><%= diamond %> Subject</label>
 <%= form.text_field :subject %><br/>
-		
+
+<label for="comment_name"><%= diamond %> Name</label>
+<%= form.text_field :name %><br/>
+	
 <label for="comment_email"><%= diamond %> Email</label>
 <%= form.text_field :email %><br/>
 	
@@ -12,5 +17,5 @@
 <%= submit_button %>	
 
 <div id="spinner" class="left" style="display:none;">
-<img alt="Spinner" src="/images/f/spinner.gif" />
+	<img alt="Spinner" src="/images/f/spinner.gif" />
 </div>

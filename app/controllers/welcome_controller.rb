@@ -1,8 +1,8 @@
 class WelcomeController < ApplicationController
-
+	helper :contents
 	def index
 		paginate_logos
-		@recent_articles 	= Article.recent
+		@recent_articles 	= Content.recent
 		@main_article 		= @recent_articles.shift
 		@poll 				= Poll.find(:first, :order => "'id' desc")
 		@cheatsheet 		= Cheatsheet.latest

@@ -1,28 +1,42 @@
 /* Welcome
 ============= */
+#welcome_header {
+	padding-top:1em;
+}
+#welcome {
+	clear:both;
+}
 #welcome_left {
 	float:left;
-	width:575px;	
+	width:202px;	
 }
 #welcome_middle {
 	float:left;
-	width:180px;
-	border-left: 1px dotted #B2B1B1;
-	border-right: 1px dotted #B2B1B1;
+	width:552px;
+	
 	padding-left:10px;
 }
 #latest_container {
 	width:100%;
 	padding-left: 0.4em;
-	border-bottom: 1px dotted #B2B1B1;
 }
 #welcome_right {
 	width:200px;
 	float:left;
 }
+#welcome_title {
+	width:40%;
+	float:left;
+	padding-bottom:2em;
+	text-align:center;
+}
+#welcome_quote {
+	width:60%;
+	text-align:center;
+	float:left;
+}
 #recent {
 	width:100%;
-	border-top: 1px dotted #B2B1B1;
 }
 #logo_pagination {
 	width:100%;

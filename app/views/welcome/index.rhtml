@@ -1,37 +1,36 @@
 <!-- LEFT COLUMN -->
-
+<div id="welcome_header">
+	<div id="welcome_title">
+		<%= image_tag("welcome.png")%>
+	</div>
+	<div id="welcome_quote">
+		<%= image_tag("quote.png")%>
+	</div>
+</div>
 <div id="welcome">
 	<div id="first_half">
 		<div id="welcome_left">
 		<!-- Main article -->
 			<div class="inside">
-				<h5><%= asterisk %> <%= @main_article.main_category.name %></h5>
-				<h1><span class="big_quote">&ldquo;</span><%= @main_article.title %> </h1>
+				<span class="posted_in"><%= solid_arrow %> <%= @main_article.main_category.name.upcase %></span>
+				<h1><%= asterisk %> <%= @main_article.title %> </h1>
 			
 				<h4>POSTED <%= time_ago_in_words(@main_article.date).upcase %> AGO</h4>
 				
-				<%= spiro %>
+		
 			
 				<h2><%= @main_article.description %></h2>
-	
+		<%= spiro %>
 				<p><%= strip_tags(truncate(@main_article.content, 300)) %> . <%= link_to "More &raquo;", content_path(@main_article.permalink) %></p>
-			</div>
-			<div id="recent">
-				<div class="inside">		
-					<%= render :partial => "recent_article", :collection => @recent_articles %>
-				</div>		
-			</div>
+			</div>	<%= spiro %>
+			
 		</div>
 	
 		<div id="welcome_middle">
-		
-			<% categories = Category.find(:all, :order => "'name'")%>
-			
-			<% categories.each do |category| %>
-				<p><%= link_to category.name, category_path(category.permalink) %></a></p>
-			<% end %>
-			
-			<%= spiro %>
+			<p><span class="posted_in"><%= solid_arrow %> LATEST ARTICLES </span></p>
+				<table class="articles">	
+						<%= render :partial => "shared/article_link", :collection => @recent_articles %>
+				</table>	
 					
 		</div>
 		
@@ -42,7 +41,7 @@
 			<!-- Latest logos -->
 			<div id="latest_container">
 			
-			<h5><%= asterisk %> Latest work</h5>
+			<span class="posted_in"><%= solid_arrow %> LATEST WORK</span>
 			
 			<div id="logo_container">
 				<div id="latest_logo"><%= link_to image_tag("/binaries/portfolio_image/#{@logos[0].id}.png"), :controller => :portfolio, :action => :show, :id => @logos[0].company_id %></div>
@@ -53,10 +52,10 @@
 			</div>
 		
 		</div>
-		
+		<%= spiro %>
 		<div class="inside">
 			
-			<h5><%= asterisk %> Cheatsheets</h5>
+			<span class="posted_in"><%= asterisk %> CHEATSHEETS</span>
 						
 			<h3><%= link_to @cheatsheet.title, cheatsheet_path(@cheatsheet.permalink) %></a></h3>
 			

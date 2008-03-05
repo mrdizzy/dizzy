@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(:version => 4) do
     t.column "body",       :text
     t.column "subject",    :string
     t.column "email",      :string
+    t.column "name",	   :string
     t.column "parent_id",  :integer
     t.column "content_id", :integer
     t.column "created_at", :datetime
