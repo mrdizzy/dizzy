@@ -70,6 +70,18 @@
 		height:9px;
 		float:left;		
 	}
+/* PDF Thumbnail 
+======================*/
+.pdf_thumbnail {
+
+	text-align:center;
+	float:right;
+	width:100px;
+}
+.thumbnail {
+	float:left;
+	width:160px;
+}
 
 /* Related
 ======================*/

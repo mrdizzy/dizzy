@@ -27,17 +27,21 @@
 		<h3><%= asterisk %> <%= article_link.title %> Cheatsheet <%= article_link.version.version_number %></h3>
 		
 		<div class="left"><br/><br/><br/><br/><br/>
-			<%= image_tag("f/small_icons/pdf.png") %>	
-			<%= diamond %> <%= link_to "PDF", formatted_content_path(article_link.permalink, "pdf") %> 
+			
 		</div>
-		
-		<div class="right"><br/><br/><br/><br/><br/>
+		<div class="thumbnail"><%= pdf_thumbnail(article_link) %></div>
+		<div class="pdf_thumbnail"><br/><br/><br/><br/><br/>
+			<p>
 			<%= image_tag("f/small_icons/html.png") %>
 			<%= diamond %> 
-			<%= link_to "HTML", cheatsheet_path(article_link.permalink) %> 
+			<%= link_to "HTML", cheatsheet_path(article_link.permalink) %> </p>
+			<p>
+			<%= image_tag("f/small_icons/pdf.png") %>	
+			<%= diamond %> <%= link_to "PDF", formatted_content_path(article_link.permalink, "pdf") %> 
+			</p>
 		</div>
 		
-		<%= pdf_thumbnail(article_link) %>
+		
 		</td>
 		
 		<td><p><span class="date">POSTED <%= time_ago_in_words(article_link.date).upcase %> AGO</span>			<br/><%= posted_in(article_link.categories) %></p>
