@@ -26,11 +26,9 @@
 	<td class="content">
 		<h3><%= asterisk %> <%= article_link.title %> Cheatsheet <%= article_link.version.version_number %></h3>
 		
-		<div class="left"><br/><br/><br/><br/><br/>
-			
-		</div>
+
 		<div class="thumbnail"><%= pdf_thumbnail(article_link) %></div>
-		<div class="pdf_thumbnail"><br/><br/><br/><br/><br/>
+	<br/><br/><br/><br/><br/>
 			<p>
 			<%= image_tag("f/small_icons/html.png") %>
 			<%= diamond %> 
@@ -39,7 +37,8 @@
 			<%= image_tag("f/small_icons/pdf.png") %>	
 			<%= diamond %> <%= link_to "PDF", formatted_content_path(article_link.permalink, "pdf") %> 
 			</p>
-		</div>
+		
+		
 		
 		
 		</td>

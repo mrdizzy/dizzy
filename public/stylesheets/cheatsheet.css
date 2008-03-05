@@ -72,15 +72,11 @@
 	}
 /* PDF Thumbnail 
 ======================*/
-.pdf_thumbnail {
 
-	text-align:center;
-	float:right;
-	width:100px;
-}
 .thumbnail {
 	float:left;
-	width:160px;
+	text-align:center;
+	width:200px;
 }
 
 /* Related
