@@ -1,6 +1,9 @@
 /* Syntax highlighting 
 ==================================== */
 pre {
+	margin-bottom: 1.5em;
+}
+pre.CodeRay {
 	background-color:transparent;
 	font-family:"Courier New","Courier", monospace; 
 	word-wrap: break-word;       /* Internet Explorer 5.5+ */
@@ -8,12 +11,13 @@ pre {
 	white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
 	white-space: -pre-wrap;      /* Opera 4-6 */
 	white-space: -o-pre-wrap;    /* Opera 7 */
-	font-size: 1em; /* 12px */ line-height: 1.5em; /* 18px */ margin: 0 0 1.5em 0;
+	font-size: 1em; /* 12px */ line-height: 1.5em; /* 18px */ margin: 0 0 0 0;
 }
+
 code { 
 	color:#29A4BD; 
 	font-family:"Courier New","Courier", monospace; 
-	font-size: 1em; /* 12px */ line-height: 1.5em; /* 18px */ margin: 0 0 1.5em 0;
+	font-size: 1em; /* 12px */ line-height: 1.5em; /* 18px */ margin: 0 0 0 0;
 }
 
 /*

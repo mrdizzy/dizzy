@@ -180,12 +180,15 @@ def parse_coderay(text, language, line_numbers)
 		text = transform_lists( text, rs )
 		text = transform_code_blocks( text, rs )
 	
-		text = transform_block_quotes( text, rs )
-		text = transform_auto_links( text, rs )	
+		#text = transform_block_quotes( text, rs )
+		
+		#text = transform_auto_links( text, rs )	
 
 		text = hide_html_blocks( text, rs )
+	
 		text = transform_table_blocks( text, rs )
 		text = transform_long_table_blocks( text, rs )
+
 		text = form_paragraphs( text, rs )
 
 		@log.debug "Done with block transforms:\n  %p" % text
@@ -269,7 +272,7 @@ def parse_coderay(text, language, line_numbers)
 	### tokens.
 	def hide_html_blocks( str, rs )
 		@log.debug "Hiding HTML blocks in %p" % str
-		
+	
 		# Tokenizer proc to pass to gsub
 		tokenize = lambda {|match|
 			key = Digest::MD5::hexdigest( match )
@@ -279,7 +282,7 @@ def parse_coderay(text, language, line_numbers)
 		}
 
 		rval = str.dup
-
+		
 		@log.debug "Finding blocks with the strict regex..."
 		rval.gsub!( StrictBlockRegex, &tokenize )
 
@@ -529,10 +532,11 @@ def parse_coderay(text, language, line_numbers)
 			
 			codeblock = parse_coderay(codeblock, :ruby, "none")	if language =~ /ruby/
 			codeblock = parse_coderay(codeblock, :rhtml, "none")	if language =~ /rhtml/
-			
-			# Generate the codeblock
+			codeblock = "<div>" + codeblock.rstrip + "</div>" if language =~ /ruby/ or language =~ /rhtml/
+
+			 # Generate the codeblock
 			if language =~ /plain/
-				%{\n\n%s\n\n\n%s} %
+				%{\n\n%s\n\n%s} %
 				[  "<pre>" + encode_code(codeblock,rs).rstrip + "</pre>", remainder ]
 			else
 			%{\n\n%s\n\n\n%s} %
@@ -570,6 +574,7 @@ def parse_coderay(text, language, line_numbers)
 				gsub( PreChunk ) {|m| m.gsub(/^#{indent}/o, '') }
 			@log.debug "Blockquoted chunk is: %p" % quoted
 			quoted
+			
 		}
 	end
 
