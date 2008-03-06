@@ -2,7 +2,7 @@
 # migrations feature of ActiveRecord to incrementally modify your database, and
 # then regenerate this schema definition.
 
-ActiveRecord::Schema.define(:version => 4) do
+ActiveRecord::Schema.define(:version => 5) do
 
   create_table "binaries", :force => true do |t|
     t.column "binary_data",  :binary
@@ -32,11 +32,11 @@ ActiveRecord::Schema.define(:version => 4) do
     t.column "body",       :text
     t.column "subject",    :string
     t.column "email",      :string
-    t.column "name",	   :string
     t.column "parent_id",  :integer
     t.column "content_id", :integer
     t.column "created_at", :datetime
     t.column "new",        :boolean,  :default => true
+    t.column "name",       :string
   end
 
   add_index "comments", ["content_id"], :name => "fk_content_comments"
@@ -59,12 +59,17 @@ ActiveRecord::Schema.define(:version => 4) do
 
   add_index "contents", ["user_id"], :name => "fk_user_contents"
 
+  create_table "contents_contents", :id => false, :force => true do |t|
+    t.column "content_id", :integer
+    t.column "related_id", :integer
+  end
+
   create_table "conversations", :force => true do |t|
-    t.column "subject", :string
-    t.column "email", :string
-    t.column "name", :string
+    t.column "subject",    :string
+    t.column "name",       :string
     t.column "created_at", :datetime
-    t.column "body", :text
+    t.column "email",      :string
+    t.column "body",       :text
   end
 
   create_table "polls", :force => true do |t|
@@ -92,11 +97,6 @@ ActiveRecord::Schema.define(:version => 4) do
     t.column "header_filename",     :string
     t.column "header_content_type", :string
     t.column "visible",             :boolean,               :default => true
-  end
-
-  create_table "contents_contents", :id => false, :force => true do |t|
-    t.column "content_id", :integer
-    t.column "related_id", :integer
   end
 
   create_table "sections", :force => true do |t|
