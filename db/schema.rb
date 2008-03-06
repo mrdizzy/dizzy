@@ -64,6 +64,9 @@ ActiveRecord::Schema.define(:version => 5) do
     t.column "related_id", :integer
   end
 
+  add_index "contents_contents", ["related_id"], :name => "fk_secondary_content_contents"
+  add_index "contents_contents", ["content_id"], :name => "fk_main_content_contents"
+
   create_table "conversations", :force => true do |t|
     t.column "subject",    :string
     t.column "name",       :string

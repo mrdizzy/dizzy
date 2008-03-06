@@ -3,7 +3,7 @@ class InitialSchema < ActiveRecord::Migration
   
   
     create_table "binaries", :force => true do |t|
-      t.column "binary_data",  :binary, :limit => 2.megabytes
+      t.column "binary_data",  :binary
       t.column "type",         :string
       t.column "content_type", :string
       t.column "size",         :integer
@@ -18,7 +18,7 @@ class InitialSchema < ActiveRecord::Migration
       t.column "permalink", :string
     end
   
-    create_table "categories_contents", :force => true, :id => false do |t|
+    create_table "categories_contents", :id => false, :force => true do |t|
       t.column "category_id", :integer
       t.column "content_id",  :integer
     end
@@ -34,6 +34,7 @@ class InitialSchema < ActiveRecord::Migration
       t.column "content_id", :integer
       t.column "created_at", :datetime
       t.column "new",        :boolean,  :default => true
+      t.column "name",       :string
     end
   
     add_index "comments", ["content_id"], :name => "fk_content_comments"
@@ -56,9 +57,20 @@ class InitialSchema < ActiveRecord::Migration
   
     add_index "contents", ["user_id"], :name => "fk_user_contents"
   
+    create_table "contents_contents", :id => false, :force => true do |t|
+      t.column "content_id", :integer
+      t.column "related_id", :integer
+    end
+  
+    add_index "contents_contents", ["related_id"], :name => "fk_secondary_content_contents"
+    add_index "contents_contents", ["content_id"], :name => "fk_main_content_contents"
+  
     create_table "conversations", :force => true do |t|
-      t.column "subject", :string
-      t.column "type",    :string
+      t.column "subject",    :string
+      t.column "name",       :string
+      t.column "created_at", :datetime
+      t.column "email",      :string
+      t.column "body",       :text
     end
   
     create_table "polls", :force => true do |t|
@@ -135,6 +147,7 @@ class InitialSchema < ActiveRecord::Migration
     drop_table :comments
     drop_table :companies
     drop_table :contents
+    drop_table :contents_contents
     drop_table :conversations
     drop_table :polls
     drop_table :portfolio_items
