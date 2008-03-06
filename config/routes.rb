@@ -18,14 +18,10 @@ ActionController::Routing::Routes.draw do |map|
     map.connect '/articles/rails-migrations', :controller => 'redirect', :url => '/ruby_on_rails/categories/migrations/contents/rails-migrations'
     map.connect '/articles/beginning-file-uploads', :controller => 'redirect', :url => '/ruby_on_rails/categories/file-handling/contents/beginning-file-uploads'
 
-
-
     # Named routes
     map.latest 'ruby_on_rails/latest', :controller => "contents", :action => "index"
     map.login 'login', :controller => "administrator_sessions", :action => "new"
-	map.connect '/', :controller => "welcome"
-    
-    
+	map.connect '/', :controller => "welcome"    
     
     # RESTful routes 
     map.resources :administrator_sessions

@@ -2,7 +2,8 @@ class ContentsController < ApplicationController
 	
 	helper 			:comments		
 	caches_page 	:show
-	cache_sweeper 	:content_sweeper, :only => [ :destroy, :update ]
+	caches_page		:show, :index
+	cache_sweeper 	:content_sweeper, :only => [ :destroy, :update, :create ]
 	
 	def index 
 		@latest = Content.recent
@@ -51,7 +52,7 @@ class ContentsController < ApplicationController
 		if @article.valid?
   	 		@article.save
       		flash[:notice] = 'Successfully created.'
-      		redirect_to contents_path
+      		redirect_to latest_path
     	else
       		render :action => 'new'
    		end
