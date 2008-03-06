@@ -34,7 +34,7 @@
 					<div id="blurb">
 						<h4><%= solid_arrow %> RELATED ARTICLE</h4>
 						<h2><%= asterisk %> <%= @content.related_articles.first.title %></h2> 
-						<p><%= @content.related_articles.first.description %></p>
+						<p><%= @content.related_articles.first.description %> <%= solid_arrow %> <%= link_to "More", content_path(@content.related_articles.first.permalink) %> </p>
 					</div>
 				<% end %>
 			</div>
