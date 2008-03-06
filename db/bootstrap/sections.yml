@@ -125,41 +125,41 @@ sections_003:
   content_id: "1"
   title: Example migration
   body: |
-    ## Example migration file
-    
-    ruby:
-        class CreateCustomers < ActiveRecord::Migration
-    
-        def self.up
-            # Create "Customers" table
-            create_table :customers, :primary_key => :customer_id, :options => "auto_increment = 10000" do |t|
-              # Add columns to "Customers" table
-              t.column :customer_id, :integer
-              t.column :name,        :string,    :limit => 30, :null => false
-              t.column :age,         :integer
-              t.column :premium,     :boolean,   :default => 0
-              t.column :photo,       :binary,    :limit => 2.megabytes
-              t.column :thumbnail,   :binary,    :limit => 256.kilobytes
-              t.column :dob,         :date,      :null => false
-              t.column :created_at,  :timestamp
-              t.column :notes,       :text,      :default => "No notes recorded"
-          end
-          # Add "surname" column to "Customers" table 
-          add_column :customers, :surname,   :string,   :limit => 50
-          # Add "price" column to "Orders" table
-          add_column :orders,    :price,     :decimal,  :precision => 8, :scale => 2
-          # Create a record on the "Customers" table
-          Customer.create :name => "David", :surname => "Smith", :age => "32", :premium => "1", :notes => "One of our top customers!"
-        end
-    
-        def self.down 
-          # Delete the "Customers" table
-            drop_table :customers
-          end
-        end
+    ## Example migration file
+    
+    ruby:
+        class CreateCustomers < ActiveRecord::Migration
+    
+        def self.up
+            # Create "Customers" table
+            create_table :customers, :primary_key => :customer_id, :options => "auto_increment = 10000" do |t|
+              # Add columns to "Customers" table
+              t.column :customer_id, :integer
+              t.column :name,        :string,    :limit => 30, :null => false
+              t.column :age,         :integer
+              t.column :premium,     :boolean,   :default => 0
+              t.column :photo,       :binary,    :limit => 2.megabytes
+              t.column :thumbnail,   :binary,    :limit => 256.kilobytes
+              t.column :dob,         :date,      :null => false
+              t.column :created_at,  :timestamp
+              t.column :notes,       :text,      :default => "No notes recorded"
+          end
+          # Add "surname" column to "Customers" table 
+          add_column :customers, :surname,   :string,   :limit => 50
+          # Add "price" column to "Orders" table
+          add_column :orders,    :price,     :decimal,  :precision => 8, :scale => 2
+          # Create a record on the "Customers" table
+          Customer.create :name => "David", :surname => "Smith", :age => "32", :premium => "1", :notes => "One of our top customers!"
+        end
+    
+        def self.down 
+          # Delete the "Customers" table
+            drop_table :customers
+          end
+        end
 
   id: "3"
-  summary: what a migration file looks like
+  summary: What a migration file looks like
 sections_004: 
   permalink: rake-tasks
   content_id: "1"
@@ -214,3 +214,10 @@ sections_005:
                 + 003_alter_surname
   id: "5"
   summary: where migration files go
+sections_006: 
+  permalink: test-section-link
+  content_id: "1"
+  title: Test section
+  body: Testing a new section.
+  id: "6"
+  summary: testing a new section

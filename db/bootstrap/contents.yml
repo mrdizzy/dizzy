@@ -10,7 +10,7 @@ contents_001:
   content: ""
   user_id: "1"
 contents_002: 
-  permalink: beginning-file-uploads
+  permalink: store-file-uploads-in-database
   title: Beginning File Uploads to the Database
   date: 2007-07-02 23:36:00
   type: Article
@@ -180,21 +180,59 @@ contents_002:
     If you're getting NoMethod or other strange errors when uploading a file, try viewing the HTML of the new form after it has been rendered by your browser and before submitting it. Then you can make sure Rails is rendering the form correctly with the `multipart` entry. If you don't see `multipart` in the `<form>` tag, then that's your problem.
   user_id: "1"
 contents_003: 
-  permalink: how-to-add-an-id-column-to-an-existing-table-and-make-it-the-primary-key
-  title: How to add an id column to an existing table and make it the primary key
-  date: 2007-12-05 22:32:00
+  permalink: auto-migrations
+  title: Auto migrations
+  date: 2008-03-03 22:42:00
   type: Article
-  id: "3"
+  id: "6"
   version_id: "1"
-  description: How to tell Rails you want a column on an existing table to be used as the primary key--useful for changing an existing join table when migrating to has_many :through.
-  content: "Imagine you've got a table in your database, particularly a join table, that doesn't have its own primary key `:id` column. When you created the join table, you'll have used the `:id => false` option to prevent Rails from adding both the `:id` column and sending a primary key definition to your underlying database.\r\n\
-    \r\n\
-    So what if you now want to add an `:id` column to this table and make it act as the primary key? The usual reason for doing this is when you start using `has_many xxx :through` and want to change an existing join table so that it becomes a model with its own data in its own right. You might think that to add the `:id` column it would be as simple as just naming it `:id` and defining its column type as an `:integer` via a migration:\r\n\
-    \r\n\
-    ruby:\r\n    add_column :books, :id, :integer\r\n    \r\n\
-    But this won't work! Whilst it adds the `:id` column to your database table, it doesn't automagically make the column become the primary key. You might be surprised at this: it is quite acceptable to assume that adding an `:id` column and making it `:integer` would be enough information to tell Rails to make it a primary key. Instead, we have to tell Rails explicitly, using the `:primary_key` column type:\r\n\
-    \r\n\
-    ruby:\r\n    add_column :books, :id, :primary_key\r\n\
-    \r\n\
-    That's better! You can use this with the `change_column` in your migrations too. "
+  description: A brilliant plugin that makes changing your database schema even easier and faster.
+  content: |
+    Auto migrations is a [plugin] [1] that will make changing your database even quicker and easier than using normal migrations. It's intended to be used in the early stages of your application development, when your database schema is fluid and constantly being changed. 
+    
+    ### schema.rb
+    
+    If you look in the `db` directory of your Rails application, you should find a file named `schema.rb`. This is a little bit like a consolidated migrations file, and contains the migrations syntax we have come to love and know so well:
+    
+    ruby:
+        create_table "users", :force => true do |t|
+          t.column "name",            :string
+          t.column "hashed_password", :string
+          t.column "salt",            :string
+          t.column "firstname",       :string
+          t.column "surname",         :string
+          t.column "email",           :string
+        end
+    
+        create_table "companies", :force => true do |t|
+          t.column "name",        :string, :limit => 40
+          t.column "description", :string
+        end
+    
+    The auto migrations plugin enables you to edit your `schema.rb` file directly, and then run `rake db:auto:migrations` to have the changes applied automatically. That's right: there's no need to generate and edit migrations files, just edit `schema.rb` and the plugin will detect the changes you've made as soon as you run `rake db:auto:migrations`.
+    
+    ### Example
+    
+    In the above example, we have a `companies` table in our `schema.rb` file:
+    
+    ruby:
+        create_table "companies", :force => true do |t|
+          t.column "name",        :string, :limit => 40
+          t.column "description", :string
+        end
+    
+    Let's imagine that we want to add a new column--a string labelled `email` with a `limit` of 60 characters--to the `companies` table. We just edit `schema.rb` and insert an extra `t.column` line:
+    
+    ruby:
+        create_table "companies", :force => true do |t|
+          t.column "name",        :string, :limit => 40
+          t.column "description", :string
+          t.column "email",       :string, :limit => 60
+        end
+    
+    Now, when we run `rake db:auto:migrations`, the email column will be added! Now is that magic, or is that magic? It works if you delete columns too. Just delete the line. 
+    
+    
+      [1]: http://plugins.require.errtheblog.com/browser/auto_migrations        "Google"
+
   user_id: "1"
