@@ -1,1 +1,1 @@
-page.replace_html "comment_form", :partial => 'single_comment'
+page.replace_html "reply_form_#{params[:comment_id]}", :partial => 'single_comment'
