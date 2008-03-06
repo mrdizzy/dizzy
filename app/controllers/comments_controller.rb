@@ -36,7 +36,7 @@ class CommentsController < ApplicationController
 			if params[:comment_id]	
 				@content 	= Comment.find(params[:comment_id])	
 				@content.children << @comment			
-				if @content.save!
+				if @content.save
 					@comment = @content.children.last
 					wants.js { render :action => "create_child.rjs"}
 				else
