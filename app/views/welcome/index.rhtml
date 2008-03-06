@@ -1,4 +1,4 @@
-<!-- LEFT COLUMN -->
+<!-- WELCOME HEADER -->
 <div id="welcome_header">
 	<div id="welcome_title">
 		<%= image_tag("welcome.png")%>
@@ -7,31 +7,35 @@
 		<%= image_tag("quote.png")%>
 	</div>
 </div>
+
+<!-- LEFT COLUMN -->
+
 <div id="welcome">
 	<div id="first_half">
 		<div id="welcome_left">
-		<!-- Main article -->
+
+			<!-- Main article -->
 			<div class="inside">
 				<span class="posted_in"><%= solid_arrow %> <%= @main_article.main_category.name.upcase %></span>
 				<h1><%= asterisk %> <%= @main_article.title %> </h1>
 			
-				<h4>POSTED <%= time_ago_in_words(@main_article.date).upcase %> AGO</h4>
-				
-		
+				<h4>POSTED <%= time_ago_in_words(@main_article.date).upcase %> AGO</h4>	
 			
 				<h2><%= @main_article.description %></h2>
-		<%= spiro %>
+				<%= spiro %>
 				<p><%= strip_tags(truncate(@main_article.content, 300)) %> . <%= link_to "More &raquo;", content_path(@main_article.permalink) %></p>
-			</div>	<%= spiro %>
+			</div>	
+			
+			<%= spiro %>
 			
 		</div>
 	
+		<!-- Middle column  -->
 		<div id="welcome_middle">
 			<p><span class="posted_in"><%= solid_arrow %> LATEST ARTICLES </span></p>
-				<table class="articles">	
-						<%= render :partial => "shared/article_link", :collection => @recent_articles %>
-				</table>	
-					
+			<table class="articles">	
+				<%= render :partial => "shared/article_link", :collection => @recent_articles %>
+			</table>	
 		</div>
 		
 	<!-- RIGHT COLUMN -->
@@ -52,7 +56,9 @@
 			</div>
 		
 		</div>
+		
 		<%= spiro %>
+		
 		<div class="inside">
 			
 			<span class="posted_in"><%= asterisk %> CHEATSHEETS</span>

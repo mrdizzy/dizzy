@@ -9,9 +9,7 @@ body {
 	width:				975px;
 	margin: 			0 auto;
 }
-div {
 
-}
 * {
  	margin:			0;
  	padding:		0;
@@ -47,11 +45,6 @@ div {
 
 .cheatsheet_thumbnail {
   text-align:center;
-}
-
-.fieldWithErrors {
-	padding:	2px;
-	border:		2px solid #29A4BD;
 }
 
 /* Elements

@@ -14,17 +14,15 @@
 
 <body>
 
-	<div id="page_container">
+<div id="page_container">
 	<%= render :partial => "/layouts/header" %>		
 	<%= render :partial => "/layouts/navigation" %>
-
-
 	
-		<div id="content_container">
-
-			<%= yield %>
-			<%= render :partial => "/layouts/footer" %>
-		</div>
+	<div id="content_container">
+		<%= yield %>
+		<%= render :partial => "/layouts/footer" %>
+	</div>
+</div>
 		
 </body>
 </html>
