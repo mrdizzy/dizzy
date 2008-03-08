@@ -1,16 +1,16 @@
-# == Schema Information
-# Schema version: 6
-#
-# Table name: categories_contents
-#
-#  category_id :integer(11)   
-#  content_id  :integer(11)   
-#  main        :boolean(1)    
-#  id          :integer(11)   not null, primary key
-#
-
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-one:
-  id: 1
-two:
-  id: 2
+--- 
+categories_contents_00004: 
+  content_id: "1"
+  category_id: "18"
+categories_contents_00005: 
+  content_id: "6"
+  category_id: "1"
+categories_contents_00001: 
+  content_id: "2"
+  category_id: "3"
+categories_contents_00002: 
+  content_id: "2"
+  category_id: "9"
+categories_contents_00003: 
+  content_id: "1"
+  category_id: "1"

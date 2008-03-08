@@ -1,0 +1,15 @@
+--- 
+conversations_00001: 
+  name: Hooper
+  body: Message here.
+  subject: Emily
+  id: "18"
+  email: hooper@hooper.com
+  created_at: 2008-03-04 22:43:12
+conversations_00002: 
+  name: David Pettifer
+  body: Message goes here!
+  subject: Doesn't work
+  id: "19"
+  email: david.pettifer@dizzy.co.uk
+  created_at: 2008-03-06 10:03:59

@@ -6,6 +6,7 @@ require 'logger'
 require 'strscan'
 		
 	def parse_cheatsheet_xml(content)
+		load 'markup.rb'
 		result = BlueCloth.new(content).to_html
 		result
 	end

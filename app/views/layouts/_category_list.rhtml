@@ -1,12 +1,24 @@
-<% cache "category_list" do %>
-<ul class="categories">
+<ul id="category_list" class="categories">
 	<%	@categories = Category.find(:all, :order => :name) %>
 	<% @categories.each do |category| %>
 		<% if category.permalink == "cheatsheets" %>
-			<li><%= link_to "Cheatsheets", cheatsheets_path %></li>
+			<li id="category_<%= category.id %>"><%= link_to "Cheatsheets", cheatsheets_path %></li>
 		<% else %>
-			<li><%= link_to category.name, category_path(category.permalink) %></li>
+			<li id="category_<%= category.id %>"><%= link_to category.name, category_path(category.permalink) %></li>
 		<% end %>
 	<% end %>
 </ul>
+
+
+<% if administrator? %>
+	<div id="new_category_form">
+	<% remote_form_for :category, :url => categories_path do |form| %>
+		<label for="category[name]"><%= diamond %> Name</label>
+		<%= form.text_field :name, :size => 20 %><br/>
+		
+		<label for="category[permalink]"><%= diamond %> Permalink</label>
+		<%= form.text_field :permalink, :size => 20 %><br/>
+		<%= submit_button %>
+	<% end %>
+	</div>
 <% end %>

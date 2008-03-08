@@ -1,9 +1,8 @@
 class CategoriesController < ApplicationController
 	helper :contents
 
-	
 	def show
-			@category = Category.find_by_permalink(params[:id])	
+		@category = Category.find_by_permalink(params[:id])	
 	end
 
 	def create
@@ -12,7 +11,10 @@ class CategoriesController < ApplicationController
 		 	if @category.save
 		 		wants.html
 		 		wants.js	
-		 	end
+	 		else 
+	 			wants.html { redirect_to new_category_path }
+	 			wants.js { render :action => :new}
+	 		end
 	 	end
 	end	
 
@@ -21,17 +23,9 @@ class CategoriesController < ApplicationController
  	 	respond_to do |wants|
 	 	 	if @category.destroy
 				wants.html
-				wants.js
+				wants.js 
 			end
 		end
  	end
-	
-  	def new
-  		@category = Category.new
-  		@id = params[:id]
-  		render :update do |page|
-  			page.replace_html :add_new_category, :partial => "shared/admin/add_new_category"
-  		end
-  	end
   	
 end

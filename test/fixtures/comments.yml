@@ -1,19 +1,2 @@
-# == Schema Information
-# Schema version: 6
-#
-# Table name: comments
-#
-#  id         :integer(11)   not null, primary key
-#  body       :string(255)   
-#  subject    :string(255)   
-#  email      :string(255)   
-#  parent_id  :integer(11)   
-#  content_id :integer(11)   
-#  created_at :datetime      
-#
+--- {}
 
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-one:
-  id: 1
-two:
-  id: 2

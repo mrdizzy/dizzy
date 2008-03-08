@@ -509,7 +509,7 @@ def parse_coderay(text, language, line_numbers)
 
 	# Pattern for matching codeblocks
 	CodeBlockRegexp = %r{
-		(?:\n\n|\A)(rhtml:\n|ruby:\n|plain:\n)				# $1 = language
+		(?:\n|\A)(rhtml:\n|ruby:\n|plain:\n)				# $1 = language
 		(									# $2 = the code block
 		  (?:
 			(?:[ ]{#{TabWidth}} | \t)		# a tab or tab-width of spaces

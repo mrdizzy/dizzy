@@ -1,1 +1,1 @@
-page.replace_html @category.id.to_s, "<del>#{@category.name}</del>"
+page.replace_html "category_#{@category.id}," "<del>#{@category.name}</del>"
