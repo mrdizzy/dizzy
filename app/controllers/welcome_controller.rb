@@ -1,7 +1,6 @@
 class WelcomeController < ApplicationController
 	helper :contents
 	
-	caches_page :index
 	
 	def index
 		paginate_logos
