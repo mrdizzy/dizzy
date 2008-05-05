@@ -8,7 +8,7 @@ class PortfolioTypesController < ApplicationController
 	end
 	
 	def index
-  @portfolio_type_pages, @portfolio_types = paginate :portfolio_types, :per_page => 10, :order => 'position'
+  		@portfolio_type_pages, @portfolio_types = paginate :portfolio_types, :per_page => 10, :order => 'position'
   end
 
   def new
