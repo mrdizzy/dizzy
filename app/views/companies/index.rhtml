@@ -1,9 +1,12 @@
 <h1><%= bigarrow %> Companies</h1>
 <table class="articles">
 	<% for company in @companies %>
-	 <tr>
+	 <tr id="company_<%= company.id %>">
 	 	<td>
-	<%= diamond %> <%= link_to company.name, :action => 'edit', :id => company %>
-	</td><td><%= company.description %></td>
+			<%= diamond %> <%= link_to company.name, :action => 'edit', :id => company %>
+		</td>
+		<td><%= company.description %></td>
+		<td><%= link_to_remote "X", :url => company_path(company), :method => :delete %></td>
+	</tr>
 	<% end %>
 </table>

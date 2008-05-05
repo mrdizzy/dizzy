@@ -63,8 +63,11 @@ class CompaniesController < ApplicationController
  	end
 
 	def destroy
-		Company.find(params[:id]).destroy
-	    redirect_to companies_path
+		@company = Company.find(params[:id])
+		@company.destroy
+		respond_to do |wants|
+			wants.js
+		end
 	end
 	
 end
