@@ -2,22 +2,75 @@ class CompanyAdminController < ApplicationController
 		
 	cache_sweeper :portfolio_item_sweeper
 		
-  	def index
-    	list
-    	render :action => 'list'
-  	end
-
-  # GETs should be safe (see http://www.w3.org/2001/tag/doc/whenToUseGet.html)
-  	verify :method => :post, :only => [ :destroy, :create, :update ],
-    	:redirect_to => { :action => :list }
-
-	def list
-		@company_pages, @companies = paginate :companies, :per_page => 20, :order => :name
+	def index
+		@companies = Company.find(:all)
 	end  
 	  
 	def show
 		@company = Company.find(params[:id])
 	end    
+	
+  	def edit
+  		@company = Company.find(params[:id] )
+   		@designs = PortfolioType.find(:all, :order => :description)
+   	end	
+
+ 	def new
+    	@company 	= Company.new
+    	@designs	= PortfolioType.find(:all, :order => :description)
+    	@company.portfolio_items.build
+  	end
+
+	def create    
+	  	@designs	= PortfolioType.find(:all)
+		@company 	= Company.new(params[:company]) 
+		
+		params[:portfolio_items].each_value do |item| 
+		  	unless item[:uploaded_data].blank?
+		  		@company.portfolio_items.build(item)
+		  	end
+		end 	  		
+		
+		if @company.save 	  		
+			redirect_to :action => 'index'  	  			
+	  	else
+	  		render :action => 'new' 
+	  	end
+	end
+
+	def update
+		@company = Company.find(params[:id])
+		@company.attributes = params[:company]
+		unless params[:portfolio_items].nil?
+			@company.portfolio_items.each do |item| 
+				if params[:portfolio_items][item.id.to_s] && !params[:portfolio_items][item.id.to_s][:uploaded_data].blank?
+					item.attributes = params[:portfolio_items][item.id.to_s]  
+				end
+			end
+		end
+		unless params[:new_portfolio_items].blank?
+			params[:new_portfolio_items].each_value do |item| 
+			  	unless item[:uploaded_data].blank?
+			  		@company.portfolio_items.build(item)
+			  	end
+			end 	  
+		end
+		
+		if @company.valid? && @company.portfolio_items.all?(&:valid?)  
+  			@company.save!
+  			@company.portfolio_items.each(&:save!) 
+ 			redirect_to :action => 'edit', :id => @company  
+		else    
+			@designs = PortfolioType.find(:all)
+			render :action => 'edit'  
+		end 	 
+ 	end
+
+	def destroy
+		Company.find(params[:id]).destroy
+	    redirect_to :action => 'list'
+	end
+
 	
 	def remove_item
 		render :update do |page|
@@ -59,65 +112,5 @@ page.replace :add_item_link, :partial => 'add_item_link', :locals => { :index =>
 		end
 	end
 	 
-  	def new
-    	@company 	= Company.new
-    	@designs	= PortfolioType.find(:all, :order => :description)
-    	@company.portfolio_items.build
-  	end
-
-	def create    
-	  	@designs	= PortfolioType.find(:all)
-		@company 	= Company.new(params[:company]) 
-		
-		params[:portfolio_items].each_value do |item| 
-		  	unless item[:uploaded_data].blank?
-		  		@company.portfolio_items.build(item)
-		  	end
-		end 	  		
-		
-		if @company.save 	  		
-			redirect_to :action => 'index'  	  			
-	  	else
-	  		render :action => 'new' 
-	  	end
-	end
-
-  	def edit
-  		@company = Company.find(params[:id] )
-   		@designs = PortfolioType.find(:all, :order => :description)
-   	end
-
-	def update
-		@company = Company.find(params[:id])
-		@company.attributes = params[:company]
-		unless params[:portfolio_items].nil?
-			@company.portfolio_items.each do |item| 
-				if params[:portfolio_items][item.id.to_s] && !params[:portfolio_items][item.id.to_s][:uploaded_data].blank?
-					item.attributes = params[:portfolio_items][item.id.to_s]  
-				end
-			end
-		end
-		unless params[:new_portfolio_items].blank?
-			params[:new_portfolio_items].each_value do |item| 
-			  	unless item[:uploaded_data].blank?
-			  		@company.portfolio_items.build(item)
-			  	end
-			end 	  
-		end
-		
-		if @company.valid? && @company.portfolio_items.all?(&:valid?)  
-  			@company.save!
-  			@company.portfolio_items.each(&:save!) 
- 			redirect_to :action => 'edit', :id => @company  
-		else    
-			@designs = PortfolioType.find(:all)
-			render :action => 'edit'  
-		end 	 
- 	end
-
-	def destroy
-		Company.find(params[:id]).destroy
-	    redirect_to :action => 'list'
-	end
-
+ 
 end

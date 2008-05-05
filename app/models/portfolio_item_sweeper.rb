@@ -3,11 +3,11 @@ class PortfolioItemSweeper < ActionController::Caching::Sweeper
   observe PortfolioItem
 
   def after_save(record)
-    expire_page(:controller => "binaries", :action=> "portfolio_image", :id => record.id, :extension => "png")
+    expire_page hash_for_formatted_portfolio_path(record.id, :png)
   end
 
   def after_destroy(record)
-        expire_page(:controller => "binaries", :action=> "portfolio_image", :id => record.id, :extension => "png")
+    expire_page hash_for_formatted_portfolio_path(record.id, :png)
   end
 
 end

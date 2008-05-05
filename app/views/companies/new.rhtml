@@ -1,0 +1,14 @@
+<h1>New company</h1>
+<%= javascript_include_tag 'prototype' %>
+<%= start_form_tag  ( {:action => 'create' }, :multipart => true)   %>
+  <%= render :partial => 'form' %>
+  
+  <div id="items">
+  <% @company.portfolio_items.each_with_index do |item, index| %> 
+   	<%= render :partial => 'item_fields', :locals => { :item => item, :index => index, :designs => @designs } %>
+  <% end %>
+   </div>
+   	<%= render :partial => 'add_item_link', :locals => { :index => @company.portfolio_items.size } %>
+ 
+ 	<%= submit_button %>
+<%= end_form_tag %>

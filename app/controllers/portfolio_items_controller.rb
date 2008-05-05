@@ -1,5 +1,7 @@
 class PortfolioItemsController < ApplicationController
 	
+	caches_page :show
+	
 	def show
 		@portfolio_item = PortfolioItem.find(params[:id])
 		respond_to do |wants|
