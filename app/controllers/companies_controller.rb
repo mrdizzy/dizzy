@@ -5,10 +5,6 @@ class CompaniesController < ApplicationController
 	def index
 		@companies = Company.find(:all, :order => :name)
 	end  
-	  
-	def show
-		@company = Company.find(params[:id])
-	end    
 	
   	def edit
   		@company = Company.find(params[:id] )
