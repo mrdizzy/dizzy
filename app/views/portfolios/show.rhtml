@@ -1,0 +1,23 @@
+<div id="column1">
+	
+	<div id="company_description">
+		<%= render :partial => "company_description" %>
+	</div>
+	
+	<div id="portfolio_list">
+		<% @companies.each do |company| %>
+			<p><%= link_to_remote company.name, { :url => portfolio_path(company.id), :method => :get}  %></p>
+		<% end %>		
+		
+		<%= link_to_remote "&laquo; Previous", :url => { :action => "portfolio_list", :page => @company_pages.current.previous} if @company_pages.current.previous %>
+		<%= link_to_remote "Next &raquo;", :url => { :action => "portfolio_list", :page => @company_pages.current.next} if @company_pages.current.next %>
+	</div>
+	
+	<div id="next">
+	</div>
+		
+</div>
+
+<div id="logos">
+	<%=	portfolio_table %>
+</div>
