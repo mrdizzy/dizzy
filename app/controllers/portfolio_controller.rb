@@ -1,5 +1,5 @@
 class PortfolioController < ApplicationController
-	
+
 	def portfolio_list
 		@company_pages, @companies = paginate :companies, :per_page => 8, :order => :name
 		render :update do |page|
@@ -14,7 +14,7 @@ class PortfolioController < ApplicationController
     	
     	respond_to do |wants|
     		wants.html
-    		wants.js
+    		wants.rjs
     	end
 	end  
 end
