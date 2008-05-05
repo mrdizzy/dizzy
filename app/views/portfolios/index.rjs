@@ -1,0 +1,1 @@
+page.replace_html :portfolio_list, :partial => "company_list"
