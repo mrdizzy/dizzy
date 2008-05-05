@@ -1,0 +1,2 @@
+page.replace_html :logos, portfolio_table				
+page.replace_html :company_description, :partial => "company_description"	
