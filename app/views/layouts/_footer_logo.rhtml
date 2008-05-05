@@ -1,2 +1,2 @@
-<td><%= link_to image_tag("/binaries/footer_logo/#{footer_logo.id}.png"), :controller=> :portfolio, :action => :show, :id => footer_logo.id %></td>
+<td><%= link_to image_tag("/binaries/footer_logo/#{footer_logo.id}.png"), portfolio_path(footer_logo.id) %></td>
 <td></td>
