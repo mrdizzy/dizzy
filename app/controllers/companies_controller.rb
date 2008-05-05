@@ -3,7 +3,7 @@ class CompaniesController < ApplicationController
 	cache_sweeper :portfolio_item_sweeper
 		
 	def index
-		@companies = Company.find(:all)
+		@companies = Company.find(:all, :order => :name)
 	end  
 	  
 	def show
@@ -25,7 +25,7 @@ class CompaniesController < ApplicationController
 	  	@designs	= PortfolioType.find(:all)
 		@company 	= Company.new(params[:company]) 
 		
-		params[:portfolio_items].each_value do |item| 
+		params[:new_portfolio_items].each_value do |item| 
 		  	unless item[:uploaded_data].blank?
 		  		@company.portfolio_items.build(item)
 		  	end

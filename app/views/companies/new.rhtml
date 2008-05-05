@@ -10,13 +10,13 @@
 	<p><label for="company_description">Description</label><br/>
 	<%= text_field 'company', 'description'  %></p>
 	
-	<div id="items">
+	<div id="new_items">
 		<% @company.portfolio_items.each_with_index do |item, index| %> 
-	   		<%= render :partial => 'portfolio_items/item_fields', :locals => { :item => item, :index => index, :designs => @designs } %>
+	   		<%= render :partial => 'portfolio_items/new', :locals => { :portfolio_item => item, :index => index } %>
 	  	<% end %>
 	</div>
-
-   	<%= render :partial => 'portfolio_items/add_item_link', :locals => { :index => @company.portfolio_items.size } %>
+	
+   	<%= render :partial => 'portfolio_items/new_link', :locals => { :index => @company.portfolio_items.size } %>
  
  	<%= submit_button %>
  	

@@ -1,14 +1,12 @@
 <div id="new_portfolio_item_form_<%= index %>">
 	
-<h1><%= bigarrow %> Add new</h1>
-	
 <% fields_for "new_portfolio_items[#{index}]", portfolio_item do |f| %>  
 	
-	<p><label for="new_portfolio_items_uploaded_data[#{index}]">Choose file</label>
+	<p><label for="new_portfolio_items_uploaded_data[<%= index %>]">Choose file</label>
 	<%= f.file_field :uploaded_data %></p>
 	
-	<p><label for="new_portfolio_items_portfolio_type_id[#{index}]">Choose type</label>
-	<%= f.collection_select :portfolio_type_id, designs, :id, :description %></p>  
+	<p><label for="new_portfolio_items_portfolio_type_id[<%= index %>]">Choose type</label>
+	<%= f.collection_select :portfolio_type_id, @designs, :id, :description %></p>  
 	
 <% end %>
 </div>
