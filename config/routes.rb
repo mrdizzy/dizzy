@@ -41,6 +41,9 @@ ActionController::Routing::Routes.draw do |map|
 		end
 	end
 	
+	map.resources :portfolio_items
+	map.resources :portfolio_types
+	
   # Portfolio Binary images
     map.connect "binaries/footer_logo/:id.:extension", :controller => "binaries", :action => "footer_logo"
 	map.connect "binaries/footer_logo/:id/over.:extension", :controller => "binaries", :action => "grey_footer_logo"		
