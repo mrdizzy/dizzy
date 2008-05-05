@@ -1,9 +1,10 @@
 class PortfoliosController < ApplicationController
 	
-	def portfolio_list
+	def index
 		@company_pages, @companies = paginate :companies, :per_page => 8, :order => :name
-		render :update do |page|
-			page.replace_html :portfolio_list, :partial => "portfolio_list"
+		respond_to do |wants|
+			wants.html
+			wants.js
 		end
 	end
 	
