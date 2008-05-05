@@ -1,4 +1,4 @@
-module PortfolioHelper
+module PortfoliosHelper
 	
 	def portfolio_table	
 		

@@ -43,11 +43,11 @@ ActionController::Routing::Routes.draw do |map|
 	
 	map.resources :portfolio_items
 	map.resources :portfolio_types
+	map.resources :portfolios
 	
   # Portfolio Binary images
     map.connect "binaries/footer_logo/:id.:extension", :controller => "binaries", :action => "footer_logo"
 	map.connect "binaries/footer_logo/:id/over.:extension", :controller => "binaries", :action => "grey_footer_logo"		
-	map.connect "binaries/portfolio_image/:id.:extension", :controller => "binaries", :action => "portfolio_image"
 
   # Allow downloading Web Service WSDL as a file with an extension
   # instead of a file named 'wsdl'

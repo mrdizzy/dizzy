@@ -6,7 +6,7 @@
 	
 	<div id="portfolio_list">
 		<% @companies.each do |company| %>
-			<p><%= link_to_remote company.name, :url => { :action => "show_ajax", :id => company.id } %></p>
+			<p><%= link_to_remote company.name, :url => portfolio_path(company.id)  %></p>
 		<% end %>		
 		
 		<%= link_to_remote "&laquo; Previous", :url => { :action => "portfolio_list", :page => @company_pages.current.previous} if @company_pages.current.previous %>
