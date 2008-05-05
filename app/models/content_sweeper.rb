@@ -1,6 +1,6 @@
 class ContentSweeper < ActionController::Caching::Sweeper
 	
-	observe Content
+	observe Content, Section
 	
 	def after_save(record)
 		expire_content_page(record)
@@ -17,9 +17,17 @@ class ContentSweeper < ActionController::Caching::Sweeper
 	private
 	
 	def expire_content_page(record)
-		expire_page hash_for_content_path(:id => record.permalink)
-		expire_page hash_for_formatted_content_path(:id => record.permalink, :format => :png)
-		expire_page hash_for_formatted_content_path(:id => record.permalink, :format => :pdf)	
+		content = record.is_a?(Content) ? record : record.content
+		if content.is_a?(Cheatsheet)			
+			expire_page hash_for_cheatsheet_path(:id => content.permalink)
+			content.sections.each do |section|
+				expire_page hash_for_section_path(:cheatsheet_id => content.permalink, :id => section.permalink)
+			end	
+		end
+		expire_page hash_for_content_path(:id => content.permalink)
+		expire_page hash_for_formatted_content_path(:id => content.permalink, :format => :png)
+		expire_page hash_for_formatted_content_path(:id => content.permalink, :format => :pdf)	
+		
 	end
 	
 	def expire_latest_page(record)

@@ -1,6 +1,4 @@
 class CheatsheetsController < ContentsController
-	helper :contents
-	cache_sweeper :content_sweeper, :only => [ :destroy, :update ]
 	
   def index	
     @cheatsheets = Cheatsheet.find(:all)

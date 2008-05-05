@@ -2,11 +2,14 @@ class ContentsController < ApplicationController
 	
 	helper 			:comments		
 	caches_page 	:show
-	caches_page		:show
 	cache_sweeper 	:content_sweeper, :only => [ :destroy, :update, :create ]
 	
 	def index 
 		@latest = Content.recent
+		respond_to do |wants|
+			wants.html
+			wants.rss { render :action => "index.rxml", :layout => false  }
+		end
 	end
 	
 	def show 

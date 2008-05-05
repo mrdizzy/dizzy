@@ -24,7 +24,7 @@
 	<% else %>
 	
 	<td class="content">
-		<h3><%= asterisk %> <%= article_link.title %> Cheatsheet <%= article_link.version.version_number %></h3>
+		<h3><%= asterisk %> <%= article_link.title %> <%= article_link.version.version_number %></h3>
 		
 
 		<div class="thumbnail"><%= pdf_thumbnail(article_link) %></div>
@@ -37,9 +37,6 @@
 			<%= image_tag("f/small_icons/pdf.png") %>	
 			<%= diamond %> <%= link_to "PDF", formatted_content_path(article_link.permalink, "pdf") %> 
 			</p>
-		
-		
-		
 		
 		</td>
 		

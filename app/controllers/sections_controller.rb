@@ -1,9 +1,10 @@
 class SectionsController < ApplicationController
 	helper :contents
-	before_filter :load_category_and_content 	
+	before_filter :load_content 	
+	caches_page :show
+	cache_sweeper 	:content_sweeper, :only => [ :destroy, :update, :create ]
 
   def show
-  	load "#{RAILS_ROOT}/app/helpers/contents_helper.rb"
     @section = Section.find_by_content_id_and_permalink(@content.id, params[:id])
   end
 
@@ -43,8 +44,7 @@ class SectionsController < ApplicationController
   
   private
  
-  def load_category_and_content
-  	@category	= Category.find_by_permalink(params[:category_id])
+  def load_content
   	@content	= Content.find_by_permalink(params[:cheatsheet_id])
   end
 end

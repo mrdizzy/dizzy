@@ -1,7 +1,6 @@
 class WelcomeController < ApplicationController
 	helper :contents
 	
-	
 	def index
 		paginate_logos
 		@recent_articles 	= Content.recent

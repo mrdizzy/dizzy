@@ -1,6 +1,6 @@
 <% @title = @section.content.title %>
 <% @main_category = @section.content.main_category.name %>
-<h1><%= asterisk %> <%= @section.content.title %> Cheatsheet</h1>
+<h1><%= asterisk %> <%= @section.content.title %></h1>
 <h2><%= @section.content.description %></h2>
 
 <%= render(:partial => "shared/section_list", :object => @section.content.sections, :locals => { :current_article_permalink => @section.permalink} ) %>

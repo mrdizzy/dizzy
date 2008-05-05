@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
 	
+	cache_sweeper 	:comment_sweeper, :only => [ :destroy, :update, :create ]	
+	
 	def index
 		if administrator?
 			@latest = Content.recent

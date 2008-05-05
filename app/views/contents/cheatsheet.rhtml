@@ -2,7 +2,7 @@
 
 <% @main_category = @content.main_category.name %>
 
-<h1><%= asterisk %> <%= @content.title %> Cheatsheet</h1>
+<h1><%= asterisk %> <%= @content.title %></h1>
 <h2><%= @content.description %></h2>
 
 <%= render(:partial => "shared/section_list", :object => @content.sections, :locals => { :current_article_permalink => nil} ) %>
@@ -21,7 +21,7 @@
 		
 		<%= pdf_thumbnail(@content) %>
 		
-		<p><%= link_to image_tag ("f/small_icons/pdf_sheet.png"), formatted_cheatsheet_path(:format => :pdf) %> 
+		<p><%= link_to image_tag("f/small_icons/pdf_sheet.png"), formatted_cheatsheet_path(:format => :pdf) %> 
 		   <%= link_to "PDF version", formatted_cheatsheet_path(:format => :pdf) %></p>
 	</div>
 <% end %>

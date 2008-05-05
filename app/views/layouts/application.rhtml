@@ -9,7 +9,7 @@
 	<%= stylesheet_link_tag "comments", 	:media => "all" %>
 	
 	<%= javascript_include_tag :defaults %>
-	<%= render :partial => "/layouts/rollover_config" %>	
+
 </head>
 <body>	
 
@@ -30,12 +30,14 @@
 				<%= yield :thumbnail %>
 				<%= render :partial => "/layouts/category_list", :object => @categories %>
 				<% unless @content.nil? %>
-				<p><%= spiro %></p>
-					<div id="blurb">
-						<h4><%= solid_arrow %> RELATED ARTICLE</h4>
-						<h2><%= asterisk %> <%= @content.related_articles.first.title %></h2> 
-						<p><%= @content.related_articles.first.description %> <%= solid_arrow %> <%= link_to "More", content_path(@content.related_articles.first.permalink) %> </p>
-					</div>
+					<% @content.related_articles.each do |related| %>
+						<p><%= spiro %></p>
+						<div id="blurb">
+							<h4><%= solid_arrow %> RELATED ARTICLE</h4>
+							<h2><%= asterisk %> <%= related.title %></h2> 
+							<p><%= related.description %> <%= solid_arrow %> <%= link_to "More", content_path(related.permalink) %> </p>
+						</div>
+					<% end %>
 				<% end %>
 			</div>
 			

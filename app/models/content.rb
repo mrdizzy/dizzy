@@ -51,6 +51,7 @@ class Article < Content
 	
 	before_save :parse_content
 	
+	
 	def parse_content
 		self.content.gsub!("<%", "&lt;%")
 		self.content.gsub!("%>", "%&gt;")
@@ -67,4 +68,8 @@ end
 class Cheatsheet < Content
 	has_one :pdf, :dependent => :destroy, :foreign_key => "content_id"
 	has_one :thumbnail, :dependent => :destroy, :foreign_key => "content_id"
+	
+	def title
+		super + " Cheatsheet"
+	end
 end
