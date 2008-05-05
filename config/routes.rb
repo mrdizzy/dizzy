@@ -41,6 +41,7 @@ ActionController::Routing::Routes.draw do |map|
 		end
 	end
 	
+	map.resources :companies
 	map.resources :portfolio_items
 	map.resources :portfolio_types
 	map.resources :portfolios

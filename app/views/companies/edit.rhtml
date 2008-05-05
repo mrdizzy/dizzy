@@ -1,30 +1,40 @@
-<h1><%= bigarrow %> <%= @company.name %></h1>
-<% form_for(:company, @company, :url =>{:action => :update, :id => @company }, :html =>{:multipart => true}) do |form| %>
+<h1><%= asterisk %> <%= @company.name %></h1>
+
+<% form_for :company, :url => company_path(@company.id), :html =>{:multipart => true, :method => :put}  do |form| %>
+	
 	<%= error_messages_for :company %>
-	<p><label for="company_name">Company</label>
+	
+	<p><label for="company_name">Company</label>		
  	<%= form.text_field :name %></p>
+ 	
  	<p><label for="company_description">Description</label>
   	<%= form.text_field :description %></p>  	  
+  	
   	<div id="existing_items">
+  	
   	<% @company.portfolio_items.each do |@portfolio_item| %>  
+	
 		<div id="portfolio_item_container_<%= @portfolio_item.id %>" class="portfolio_item_header">
-  	<%= diamond %> <img src="/binaries/portfolio_type/<%= @portfolio_item.portfolio_type.id %>" alt="<%= @portfolio_item.portfolio_type.description %>" />
+  			<%= diamond %> <%= image_tag(formatted_portfolio_type_path(@portfolio_item.portfolio_type.id, :png), :alt => "#{@portfolio_item.portfolio_type.description}") %>
+  			
   			<div id="portfolio_item_<%= @portfolio_item.id %>" class="portfolio_item">
-  			<ul>
-  			<% for message in @portfolio_item.errors.full_messages %>  
-  				<li><%= message %></li>
-  			<% end %>
-  			</ul>
-  			<p>
-  			<img src="/binaries/portfolio_image/<%= @portfolio_item.id -%>.png" /> </p>
-  			<p>
- 		<%= link_to_remote 'edit', :url => { :action => 'edit_image', :id => @portfolio_item.id } %> <%= diamond %> <%= link_to_remote 'delete', :url => { :action => 'delete_image', :id => @portfolio_item.id } %> 
- 			</p>
+	  			<ul>
+	  			<% for message in @portfolio_item.errors.full_messages %>  
+	  				<li><%= message %></li>
+	  			<% end %>
+	  			</ul>
+	  			
+	  			<p><%= image_tag(formatted_portfolio_item_path(@portfolio_item.id, :png)) unless @portfolio_item.id.nil? %></p>
+  			
+  				<p>
+ 					<%= link_to_remote 'edit', :url => edit_portfolio_item_path(@portfolio_item.id), :method => :get %> <%= diamond %> <%= link_to_remote 'delete', :url =>  portfolio_item_path(@portfolio_item.id), :method => :delete %> 
+ 				</p>
  			</div>
  		</div>
   	<% end %>
   	</div>
+  	
   	<div id="new_items"></div>
-  	<%= render :partial => 'add_extra_link', :locals => { :index => 1 } %>
+  	<%= render :partial => "portfolio_items/new_link", :locals => { :index => 1 } %>
   	<%= submit_button %>
 <% end %>

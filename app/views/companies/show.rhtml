@@ -1,16 +1,10 @@
-<% for column in Company.content_columns %>
-<p>
-  <b><%= column.human_name %>:</b> 
+<h1><%= asterisk %> <%= @company.name %></h1>
 
-</p>
-<% end %>
-
+<table>
 <% for column in @company.portfolio_items %>
-<p>
-<%= column.id %>
-<%= column.portfolio_type.description %>
-<img src="/portfolio_admin/code_image/<%= column.id %>">
-</p>
+<tr>
+	<td><%= column.portfolio_type.description %></td>
+	<td><%= image_tag formatted_portfolio_item_path(column.id, :png) %></td>
+</tr>
 <% end %>
-<%= link_to 'Edit', :action => 'edit', :id => @company %> |
-<%= link_to 'Back', :action => 'list' %>
+</table>
