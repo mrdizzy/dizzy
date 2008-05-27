@@ -48,7 +48,7 @@
 			<span class="posted_in"><%= solid_arrow %> LATEST WORK</span>
 			
 			<div id="logo_container">
-				<div id="latest_logo"><%= link_to image_tag("/binaries/portfolio_image/#{@logos[0].id}.png"), :controller => :portfolio, :action => :show, :id => @logos[0].company_id %></div>
+				<div id="latest_logo"><%= link_to image_tag("/binaries/portfolio_image/#{@logos[0].id}.png"), portfolio_path(@logos[0].company_id) %></div>
 			</div>
 			
 			<div id="logo_pagination">
