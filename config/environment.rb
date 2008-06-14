@@ -21,11 +21,11 @@ Rails::Initializer.run do |config|
 
   config.action_mailer.delivery_method = :smtp 
   config.action_mailer.smtp_settings = {
-	:address => "www21.a2hosting.com" ,
-	:domain => "dizzy.co.uk" ,
+	:address => "www21.a2hosting.com",
+	:domain => "dizzy.co.uk",
 	:authentication => :login,
-	:user_name => "dizzynew" ,
-	:password => "ruhegochelupraju"
+	:user_name => "dizzynew",
+	:password => "beaslewig175"
   }
   # Use the database for sessions instead of the file system
   # (create the session table with 'rake create_sessions_table')
@@ -62,7 +62,6 @@ end
 ExceptionNotifier.exception_recipients = %w(david.pettifer@googlemail.com)
 ExceptionNotifier.sender_address = %("Application Error" <errors@dizzy.co.uk>)
 ExceptionNotifier.email_prefix = "[Dizzy] "
-
 
 # Add new mime types for use in respond_to blocks:
 # Mime::Type.register "text/richtext", :rtf

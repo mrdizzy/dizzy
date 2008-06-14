@@ -36,11 +36,12 @@ class CommentsController < ApplicationController
 		
 		respond_to do |wants|	
 			if params[:comment_id]	
-				@content 	= Comment.find(params[:comment_id])	
-				@content.children << @comment			
-				if @content.save
-					@comment = @content.children.last
+				@parent_comment 	= Comment.find(params[:comment_id])	
+				@parent_comment.children << @comment			
+				if @parent_comment.save
+					@comment = @parent_comment.children.last
 					wants.js { render :action => "create_child.rjs"}
+					CommentMailer.deliver_response(@parent_comment)				
 				else
 					wants.js { render :action => "new_child.rjs"}
 				end		
@@ -54,7 +55,8 @@ class CommentsController < ApplicationController
 					wants.js { render :action => "new.rjs"}
 				end
 			end			
-		end					
+		end	
+						
 	end
 
 end

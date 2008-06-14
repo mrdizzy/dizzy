@@ -1,0 +1,12 @@
+Dear <%= @parent_comment.name %>, 
+
+Someone has just replied to your comment at dizzy.co.uk.
+
+Subject: <%= @parent_comment.subject %>
+
+From: <%= @parent_comment.children.last.name %>
+
+Email: <%= @parent_comment.children.last.email %>
+
+Comment: <%= @parent_comment.children.last.body %>
+
