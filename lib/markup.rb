@@ -1,5 +1,5 @@
-
 class BlueCloth < String
+
 def parse_coderay(text, language, line_numbers)		
 			result = "<pre class=\"CodeRay\">"
 		 	result += CodeRay.scan(text, language).html	
@@ -118,30 +118,29 @@ def parse_coderay(text, language, line_numbers)
 			text.gsub!( ">", "&gt;" )
 			@log.debug "Filtered HTML: %p" % text
 		end
-
-		# Simplify blank lines
+	# Simplify blank lines
 		text.gsub!( /^ +$/, '' )
 		@log.debug "Tabs -> spaces/blank lines stripped: %p" % text
 
-		# Replace HTML blocks with placeholders
+	# Replace HTML blocks with placeholders
 		text = hide_html_blocks( text, rs )
 		@log.debug "Hid HTML blocks: %p" % text
 		@log.debug "Render state: %p" % rs
 
-		# Strip link definitions, store in render state
+	# Strip link definitions, store in render state
 		text = strip_link_definitions( text, rs )
 		@log.debug "Stripped link definitions: %p" % text
 		@log.debug "Render state: %p" % rs
 
-		# Escape meta-characters
+	# Escape meta-characters
 		text = escape_special_chars( text )
 		@log.debug "Escaped special characters: %p" % text
 
-		# Transform block-level constructs
+	# Transform block-level constructs
 		text = apply_block_transforms( text, rs )
 		@log.debug "After block-level transforms: %p" % text
 
-		# Now swap back in all the escaped characters
+	# Now swap back in all the escaped characters
 		text = unescape_special_chars( text )
 		@log.debug "After unescaping special characters: %p" % text
 
@@ -176,25 +175,22 @@ def parse_coderay(text, language, line_numbers)
 
 		@log.debug "Applying block transforms to:\n  %p" % str
 		text = transform_headers( str, rs )
-	
-		text = transform_lists( text, rs )
-		text = transform_code_blocks( text, rs )
-	
-		#text = transform_block_quotes( text, rs )
 		
+		#text = transform_block_quotes( text, rs )		
 		#text = transform_auto_links( text, rs )	
-
-		text = hide_html_blocks( text, rs )
-	
+		
 		text = transform_table_blocks( text, rs )
 		text = transform_long_table_blocks( text, rs )
-
+	
+		text = transform_code_blocks( text, rs )
+		text = transform_lists( text, rs )
+		text = hide_html_blocks( text, rs )
+		
 		text = form_paragraphs( text, rs )
 
 		@log.debug "Done with block transforms:\n  %p" % text
 		return text
 	end
-
 
 	### Apply Markdown span transforms to a copy of the specified +str+ with the
 	### given render state +rs+ and return it.
@@ -217,7 +213,7 @@ def parse_coderay(text, language, line_numbers)
 
 	# The list of tags which are considered block-level constructs and an
 	# alternation pattern suitable for use in regexps made from the list
-	StrictBlockTags = %w[ p div h[1-6] blockquote pre table dl ol ul script noscript
+	StrictBlockTags = %w[ p div h[1-6] blockquote pre td dl ol ul script noscript
 		form fieldset iframe math ins del ]
 	StrictTagPattern = StrictBlockTags.join('|')
 
@@ -401,7 +397,7 @@ def parse_coderay(text, language, line_numbers)
 			  \z						# Either EOF
 			|							#  or
 			  \n{2,}					# Blank line...
-			  (?=\S)					# ...followed by non-space
+			  
 			  (?![ ]*					# ...but not another item
 				(#{ListMarkerAny})
 			   [ ]+)
@@ -417,6 +413,7 @@ def parse_coderay(text, language, line_numbers)
 			@log.debug "  Found list %p" % list
 			bullet = $1
 			list_type = (ListMarkerUl.match(bullet) ? "ul" : "ol")
+			list = list + "\n"
 			list.gsub!( /\n{2,}/, "\n\n\n" )
 
 			%{<%s>\n%s</%s>\n} % [
@@ -447,7 +444,7 @@ def parse_coderay(text, language, line_numbers)
 		str.gsub( ListItemRegexp ) {|line|
 			@log.debug "  Found item line %p" % line
 			leading_line, item = $1, $4
-
+			
 			if leading_line or /\n{2,}/.match( item )
 				@log.debug "   Found leading line or item has a blank"
 				item = apply_block_transforms( outdent(item), rs )
@@ -480,7 +477,14 @@ def parse_coderay(text, language, line_numbers)
 				counter = counter + 1
 				cells 	= row.split(/-{3,200}/)
 				result += "<tr class=\"#{counter.even?}\">"
-				cells.each { |cell| result += "<td>\n#{cell}\n</td>" }
+				cells.each do |cell|
+					new_rs = RenderState::new( {}, {}, {} )
+					cell = transform_lists(cell,new_rs)
+					cell = transform_code_blocks( cell, new_rs )
+					cell = hide_html_blocks( cell, new_rs )	
+					cell = form_paragraphs(cell,new_rs)
+					 result += "<td>\n#{cell}\n</td>" 
+				end
 				result += "</tr>"
 			end
 			result = "<table>" + result + "</table>"
@@ -493,23 +497,22 @@ def parse_coderay(text, language, line_numbers)
 	
 	def transform_table_blocks(str,rs)
 		
-				str.gsub( TableBlockRegexp ) { |block| 
+		str.gsub( TableBlockRegexp ) { |block| 
 			counter = 0		
 			table = $1
 			table = table.split("\n")
 			result = table.collect do |b| 
 				counter = counter + 1
-			    
+					    
 				("<tr class=\"#{counter.even?}\"><td>" + b + "</td></tr>").gsub(/\s{2,30}/, "</td><td>")
 			end
-			result = "<table>\n" + result.to_s + "</table>"
-			
+			result = "<table>\n" + result.to_s + "</table>"	
 		}		
 	end
 
 	# Pattern for matching codeblocks
 	CodeBlockRegexp = %r{
-		(?:\n|\A)(rhtml:\n|ruby:\n|plain:\n)				# $1 = language
+		(?:\n|\A|\n\s\s)(rhtml:\n|ruby:\n|plain:\n)				# $1 = language
 		(									# $2 = the code block
 		  (?:
 			(?:[ ]{#{TabWidth}} | \t)		# a tab or tab-width of spaces
@@ -523,13 +526,14 @@ def parse_coderay(text, language, line_numbers)
 	### Transform Markdown-style codeblocks in a copy of the specified +str+ and
 	### return it.
 	def transform_code_blocks( str, rs )
+str = str + "\n"
 		@log.debug " Transforming code blocks"
 
 		str.gsub( CodeBlockRegexp ) {|block|
 			language = $1
 			codeblock = $2
 			remainder = $3
-			
+		
 			codeblock = parse_coderay(codeblock, :ruby, "none")	if language =~ /ruby/
 			codeblock = parse_coderay(codeblock, :rhtml, "none")	if language =~ /rhtml/
 			codeblock = "<div>" + codeblock.rstrip + "</div>" if language =~ /ruby/ or language =~ /rhtml/
