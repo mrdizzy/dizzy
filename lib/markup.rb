@@ -840,10 +840,10 @@ str = str + "\n"
 	end
 
 	# Pattern to match strong emphasis in Markdown text
-	CodeRegexp = %r{ (\*\*) (\S|\S.+?\S) \1 }x
+	ItalicRegexp = %r{ (\*\*) (\S|\S.+?\S) \1 }x
 
 	# Pattern to match normal emphasis in Markdown text
-	ItalicRegexp = %r{ (\*) (\S|\S.+?\S) \1 }x
+	BoldRegexp = %r{ (\*) (\S|\S.+?\S) \1 }x
 
 	### Transform italic- and bold-encoded text in a copy of the specified +str+
 	### and return it.
@@ -851,8 +851,8 @@ str = str + "\n"
 		@log.debug " Transforming italic and bold"
 
 		str.
-			gsub( CodeRegexp, %{<code>\\2</code>} ).
-			gsub( ItalicRegexp, %{<em>\\2</em>} )
+			gsub( ItalicRegexp, %{<i>\\2</i>} ).
+			gsub( BoldRegexp, %{<em>\\2</em>} )
 	end
 	
 	### Transform backticked spans into <code> spans.
