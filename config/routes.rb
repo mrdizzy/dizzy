@@ -27,13 +27,13 @@ ActionController::Routing::Routes.draw do |map|
     
     # RESTful routes 
     map.resources :administrator_sessions
-    map.resources :conversations
-    
+    map.resources :conversations    
     map.resources :categories, :path_prefix => "/ruby_on_rails"
+    map.resources :contents, :path_prefix => "/ruby_on_rails"
+    
     map.resources :cheatsheets, :path_prefix => "/ruby_on_rails" do |contents|
 		contents.resources :sections
 	end
-    map.resources :contents, :path_prefix => "/ruby_on_rails"
 	
 	map.resources :contents, :name_prefix => "main_" do |contents|
 		contents.resources :comments do |comments|
@@ -41,6 +41,7 @@ ActionController::Routing::Routes.draw do |map|
 		end
 	end
 	
+	map.resources :comments, :name_prefix => "main_"
 	map.resources :companies
 	map.resources :portfolio_items
 	map.resources :portfolio_types
