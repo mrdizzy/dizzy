@@ -18,7 +18,7 @@ class CommentMailerTest < Test::Unit::TestCase
 
   def test_thanks
     @expected.subject = 'CommentMailer#thanks'
-    @expected.body    = read_fixture('thanks')
+    @expected.body    = read_fixture('response')
     @expected.date    = Time.now
 
     assert_equal @expected.encoded, CommentMailer.create_thanks(@expected.date).encoded
