@@ -23,6 +23,7 @@ ActionController::Routing::Routes.draw do |map|
     # Named routes
     map.latest 'ruby_on_rails/latest', :controller => "contents", :action => "index"
     map.login 'login', :controller => "administrator_sessions", :action => "new"
+    map.logout 'logout', :controller => "administrator_sessions", :action => "destroy"    
 	map.connect '/', :controller => "welcome"    
     
     # RESTful routes 
