@@ -1,15 +1,28 @@
 --- 
 conversations_001: 
-  name: Hooper
-  body: Message here.
-  subject: Emily
-  id: "18"
-  email: hooper@hooper.com
-  created_at: 2008-03-04 22:43:12
+  name: wilfredo crespo
+  body: |-
+    Hello, I was looking around the site and I was just wondering what is it exactly that you guys do? is it just a blog? But by the same token, I see a column for "Latest Work". Thanks!
+    
+    ~wilfredo
+  subject: work
+  id: "1"
+  email: khaosduke@gmail.com
+  created_at: 2008-04-02 12:31:18
 conversations_002: 
-  name: David Pettifer
-  body: Message goes here!
-  subject: Doesn't work
-  id: "19"
-  email: david.pettifer@dizzy.co.uk
-  created_at: 2008-03-06 10:03:59
+  name: Chris
+  body: |-
+    Hi,
+    
+    These CheatSheets on your website are really very COOL thing. Thay are really very very helpful!!!
+    I have a question: Will you make such CHeatSheets for Rails 2.1 ??
+    
+    Thank you very much for you answer in advance.
+    
+    Best regards,
+    
+    Chris K.
+  subject: CheatSheet
+  id: "2"
+  email: krzyczak@gmail.com
+  created_at: 2008-04-25 19:10:55

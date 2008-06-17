@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 6
+# Schema version: 4
 #
 # Table name: contents
 #
@@ -11,6 +11,7 @@
 #  date        :datetime      
 #  content     :text          
 #  permalink   :string(255)   
+#  version_id  :integer(11)   
 #
 
 class Content < ActiveRecord::Base

@@ -55,8 +55,7 @@ class CommentsController < ApplicationController
 					wants.js { render :action => "new.rjs"}
 				end
 			end			
-		end	
-						
+		end							
 	end
 
 end

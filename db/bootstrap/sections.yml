@@ -1,4 +1,217 @@
 --- 
+sections_008: 
+  permalink: form-for-fields-for
+  content_id: "8"
+  title: form_for, fields_for
+  body: |
+    ## form_for and fields_for
+    
+    ### form_for
+    
+    rhtml:
+        # Input
+        <% form_for (:person, @person, :url => { :action => 'update', :id => 1 }, :html => { :multipart => :true}) do  |form|%> 
+          Name:    <%= form.text_field  :title, :size => 30 %>
+          Notes:   <%= form.text_area  :content, :size => "10x20" %>
+          Photo:   <%= form.file_field   :photo_data %>
+          <%= submit_tag "Update" %>
+        <% end %>
+        
+        # Output
+        <form action="/user/update/1" enctype="multipart/form-data" method="post"> 
+          Name:  <input id="person_title" name="person[title]" size="30" type="text" />
+          Notes: <textarea cols="10" id="person_content" name="person[content]" rows="20"></textarea>
+          Photo: <input id="person_photo_data" name="person[photo_data]" type="file" />
+          <input name="commit" type="submit" value="Update" />
+        </form>
+    
+    ### fields_for
+    
+    rhtml:
+        # Input
+        <% fields_for :phone, @phone do |phone_fields| %> 
+          Home:   <%= phone_fields.text_field :home %>
+          Work:   <%= phone_fields.text_field :work %>
+          Cell:   <%= phone_fields.text_field :cell %>  
+        <% end %> 
+    
+        # Output
+        Home: <input id="phone_home" name="phone[home]" type="text" />
+        Work: <input id="phone_work" name="phone[work]" type="text" />
+        Cell: <input id="phone_cell" name="phone[cell]" type="text" /> 
+
+  id: "8"
+  summary: form helpers to wrap model objects
+sections_010: 
+  permalink: input-fields
+  content_id: "8"
+  title: input field helpers
+  body: |-
+    ## Input fields
+    
+    ### text_field
+    
+    rhtml:
+        # Input
+        <%= text_field(:post, :title, :size => 20, :class => "blue" ) %>
+    
+        # Output
+        <input type="text" id="post_title" name="post[title]" size="20" value="#{post.title}" class="blue" />
+    
+    ### text_area
+    
+    rhtml:
+        # Input
+        <%= text_area(:post, :comment, :size => "20x10", :class => "area" ) %>
+    
+        # Output
+        <textarea cols="20" rows="10" id="post_comment" name="post[comment]" class="area">#{@post.comment}</textarea> 
+    
+    ### file_field
+    
+    rhtml:
+        # Input
+        <%= file_field(:post, :attachment, :class => "file_input")  %>
+    
+        # Output
+        <input type="file" id="post_attachment" name="post[attachment]" class="file_input"> 
+    
+    ### radio_button
+    
+    rhtml:
+        # Input
+        <%= radio_button(:post, :category, "ruby") %>
+        <%= radio_button(:post, :category, "python") %>
+    
+        # Output
+        <input type="radio" id="post_category" name="post[category]" value="ruby">
+        <input type="radio" id="post_category" name="post[category]" value="python">
+    
+    ### check_box    
+    
+    rhtml:
+        # Input
+        <%= check_box(:post, :validated, {}, "yes", "no") %>
+        
+        # Ouput
+        <input type="checkbox" id="post_validated" name="post[validated]" value="yes" />
+        <input type="hidden" name="post[validated]" value="no">
+    
+    ### password_field
+    
+    rhtml:
+        # Input
+        <%= password_field(:login, :pass, :size => 20, :class => "password_input") %>
+    
+        # Output
+        <input type="password" id="login_pass" name="login[pass]" value="#{@login.pass}" size="20" class="password_input" /> 
+    
+    ### hidden_field
+    
+    rhtml:
+        # Input
+        hidden_field(:signup, :pass_confirm)
+        
+        # Output
+        <input type="hidden" id="signup_pass_confirm" name="signup[pass_confirm]" value="#{@signup.pass_confirm}" />
+  id: "10"
+  summary: standard input fields, such as text fields and check boxes
+sections_009: 
+  permalink: form-tag
+  content_id: "8"
+  title: form_tag helpers
+  body: |
+    ## form_tag helpers
+    
+    For forms which do not have a corresponding model. Syntax is identical to form helpers, but the first argument is the name of the field, not the model:
+    
+    rhtml:
+        # Input
+        <%= file_field_tag(:avatar, :accept => "image/png,image/gif") %>
+    
+        # Output
+        <input accept="image/png,image/gif,image/jpeg" id="avatar" name="avatar" type="file" /> 
+    
+    (Tab.1 form_tag methods)
+    
+    `check_box_tag`
+    ------------------
+    `field_set_tag`
+    ------------------
+    `file_field_tag`
+    ------------------
+    
+    `form_tag`
+    ------------------
+    `hidden_field_tag`
+    ------------------
+    `image_submit_tag`
+    ------------------
+    
+    `password_field_tag`
+    ------------------
+    `radio_button_tag`
+    ------------------
+    `select_tag`
+    ------------------
+    
+    `submit_tag`
+    ------------------
+    `text_area_tag`
+    ------------------
+    `text_field_tag`
+    
+    
+
+  id: "9"
+  summary: helpers for form fields that do not have a corresponding model
+sections_011: 
+  permalink: select-helpers
+  content_id: "8"
+  title: select
+  body: "## select\r\n\
+    \r\n\
+    ### collection_select\r\n\
+    \r\n\
+    rhtml:\r\n    # Input\r\n    <%= collection_select(:user, :id, User.find(:all, :order => \"name\"), :id, :name, {}, :class => \"red\") %>\r\n\
+    \r\n    # Output\r\n    <select id=\"user_id\" name=\"user[id]\" class=\"red\">\r\n      <option value=\"1\">David</option>\r\n    </select>\r\n\
+    \r\n\
+    ### option_groups_from_collection_for_select\r\n\
+    \r\n\
+    rhtml:\r\n    # Input\r\n    <%= option_groups_from_collection_for_select(Author.find(:all), :books, :name, :id, :title, 3) %>\r\n\
+    \r\n    # Output\r\n    <optgroup label=\"J K Rowling\">\r\n      <option_ value=\"1\">Order of the Phoenix</option>\r\n      <option value=\"4\">The Deathly Hallows</option>\r\n    </optgroup>\r\n    <optgroup label=\"Douglas Coupland\">\r\n      <option value=\"3\" selected=\"selected\">Generation X</option>\r\n      <option value=\"12\">Girlfriend In A Coma</option>\r\n      <option value=\"5\">Shampoo Planet</option>\r\n    </optgroup> \r\n\
+    \r\n\
+    ### options_for_select\r\n\
+    \r\n\
+    rhtml:\r\n    # Input\r\n    <%= options_for_select( {\"Mary\" => \"\xC2\xA32\", \"Lucy\" => \"\xC2\xA34\" ,\"Anne\" => \"\xC2\xA36\"}, [\"\xC2\xA34\", \"\xC2\xA36\"]) %>\r\n\
+    \r\n    # Output\r\n    <option value=\"\xC2\xA32\">Mary</option>\r\n    <option value=\"\xC2\xA34\" selected=\"selected\">Lucy</option> \r\n    <option value=\"\xC2\xA36\" selected=\"selected\">Anne</option>\r\n\
+    \r\n\
+    ### options_from_collection_for_select\r\n\
+    \r\n\
+    rhtml:\r\n    # Input\r\n    <%= options_from_collection_for_select(Author.find(:all), :id, :name) %>\r\n\
+    \r\n    # Output\r\n    <option value=\"#{@author.id}\">#{@author.name}</option> \r\n    \r\n\
+    ### select\r\n\
+    \r\n\
+    rhtml:\r\n    # Input\r\n    <%= select(:post, :person_id, Person.find(:all).collect { |p| [p.name, p.id] }, {:include_blank => true}) %>\r\n\
+    \r\n    # Output\r\n    <select name=\"post[person_id]\">\r\n      <option value=\"\"></option>\r\n      <option value=\"1\" selected=\"selected\">David</option>\r\n       <option value=\"2\">Sam</option>\r\n    </select> "
+  id: "11"
+  summary: helpers to create drop-down select lists
+sections_012: 
+  permalink: time-zone-select
+  content_id: "8"
+  title: time_zone_select
+  body: "## time_zone_select\r\n\
+    \r\n\
+    ### time_zone_options_for_select\r\n\
+    \r\n\
+    rhtml:\r\n    # Input\r\n    <%= time_zone_options_for_select (\"Arizona\", TimeZone.us_zones) %>\r\n\
+    \r\n    # Output\r\n    <option value=\"Hawaii\">(GMT-10:00) Hawaii</option>\r\n    <option value=\"Alaska\">(GMT-09:00) Alaska</option>\r\n    <option value=\"Pacific Time (US &amp; Canada)\">(GMT-08:00) Pacific Time (US &amp; Canada)</option>\r\n    <option value=\"Arizona\" selected=\"selected\">(GMT-07:00) Arizona</option>\r\n    ..\r\n    <option value=\"Nuku\xE2\x80\x99alofa\">(GMT+13:00) Nuku\xE2\x80\x99alofa</option>\r\n\
+    \r\n\
+    ## time_zone_select\r\n\
+    \r\n\
+    rhtml:\r\n    # Input\r\n    <%= time_zone_select(:user, :zone, TimeZone.us_zones, { :include_blank => \"Please select your time zone\" }, :class => \"time_select\") %>\r\n    \r\n    # Output\r\n    <select class=\"time_select\" id=\"user_zone\" name=\"user[zone]\">\r\n      <option value=\"Hawaii\">(GMT-10:00) Hawaii</option>\r\n      <option value=\"Alaska\">(GMT-09:00) Alaska</option>\r\n      <option value=\"Pacific Time (US &amp; Canada)\">(GMT-08:00) Pacific Time (US &amp; Canada)</option>\r\n      <option value=\"Arizona\">(GMT-07:00) Arizona</option>\r\n      ..\r\n      <option value=\"Nuku\xE2\x80\x99alofa\">(GMT+13:00) Nuku\xE2\x80\x99alofa</option>\r\n    </select> "
+  id: "12"
+  summary: provides a list of time zones in a drop-down list
 sections_001: 
   permalink: rails-migrations-methods
   content_id: "1"
@@ -89,6 +302,27 @@ sections_001:
 
   id: "1"
   summary: interact with your database using migration methods
+sections_013: 
+  permalink: action-mailer-configuration-options
+  content_id: "11"
+  title: Configuration options
+  body: |
+    ## Configuration options
+    
+    (Tab.1 Configuration options)
+    
+    *smtp_settings* = **hash**
+    ----------------------------------
+     + `:local_settings` - can be one of the following...
+        + `:plain`
+        + `:colour`
+        + `:monochrome`
+    
+    
+    
+
+  id: "13"
+  summary: configure ActionMailer to behave how you desire
 sections_002: 
   permalink: database-mapping
   content_id: "1"
@@ -124,7 +358,7 @@ sections_003:
   permalink: example-migration-file
   content_id: "1"
   title: Example migration
-  body: |
+  body: |-
     ## Example migration file
     
     ruby:
@@ -157,7 +391,6 @@ sections_003:
             drop_table :customers
           end
         end
-
   id: "3"
   summary: What a migration file looks like
 sections_004: 
@@ -221,3 +454,46 @@ sections_006:
   body: Testing a new section.
   id: "6"
   summary: testing a new section
+sections_007: 
+  permalink: country-select
+  content_id: "8"
+  title: country_select
+  body: |
+    ## country_select
+    
+    ### country_options_for_select
+    
+    rhtml:
+        # Input
+        <%= country_options_for_select("United Kingdom", ["France", "United States", "Canada"]) %>
+    
+        # Output
+        <option value="France">France</option>
+        <option value="United States">United States</option>
+        <option value="Canada">Canada</option>
+        <option value="">-------------</option>
+        <option value="Afghanistan">Afghanistan</option>
+        <option value="Albania">Albania</option>
+        ..
+        <option value="Zimbabwe">Zimbabwe</option> 
+    
+    ### country_select  
+    
+    rhtml:
+        # Input
+        <%= country_select(:user, :country, ["France", "United States", "Canada"], {}, :class => "select_country") %>
+    
+        # Output
+        <select id="user_country" name="user[country]">
+          <option value="France">France</option>
+          <option value="United States">United States</option>
+          <option value="Canada">Canada</option>
+          <option value="">-------------</option>
+          <option value="Afghanistan">Afghanistan</option> 
+          ..
+          <option value="Zimbabwe">Zimbabwe</option> 
+        </select>
+    
+
+  id: "7"
+  summary: creates a drop-down select list of most countries in the world

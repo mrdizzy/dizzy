@@ -1,3 +1,13 @@
+# == Schema Information
+# Schema version: 4
+#
+# Table name: polls
+#
+#  id         :integer(11)   not null, primary key
+#  name       :string(255)   
+#  created_at :datetime      
+#
+
 --- 
 polls_00001: 
   name: How long have you used Ruby on Rails?

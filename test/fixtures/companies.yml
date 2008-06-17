@@ -1,3 +1,13 @@
+# == Schema Information
+# Schema version: 4
+#
+# Table name: companies
+#
+#  id          :integer(11)   not null, primary key
+#  name        :string(40)    
+#  description :string(255)   
+#
+
 --- 
 companies_00006: 
   name: Silver

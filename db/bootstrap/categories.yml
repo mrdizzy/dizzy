@@ -1,4 +1,8 @@
 --- 
+categories_020: 
+  permalink: helpers
+  name: Helpers
+  id: "20"
 categories_009: 
   permalink: file-handling
   name: File handling
@@ -67,6 +71,10 @@ categories_007:
   permalink: models
   name: Models
   id: "7"
+categories_019: 
+  permalink: forms
+  name: Forms
+  id: "19"
 categories_008: 
   permalink: ajax
   name: AJAX

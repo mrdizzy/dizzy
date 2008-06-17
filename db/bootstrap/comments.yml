@@ -1,2 +1,29 @@
---- {}
-
+--- 
+comments_001: 
+  name: Malandra Burrows
+  new: "1"
+  content_id: "6"
+  body: |-
+    That was an absolutely fantastic tutorial.
+    
+    Thank you so much!!!!
+    
+    Love, Malandra xxx
+  subject: A great new tutorial
+  id: "2"
+  parent_id: 
+  created_at: 2008-06-16 21:17:46
+  email: malandra@burrows.com
+comments_002: 
+  name: Gary Cooley
+  new: "1"
+  content_id: "6"
+  body: |-
+    That's no problem at all Malandra.
+    
+    Cheers and hugs.
+  subject: No problem!
+  id: "3"
+  parent_id: "2"
+  created_at: 2008-06-16 21:23:28
+  email: gary@cooley.com
