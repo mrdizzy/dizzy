@@ -31,9 +31,21 @@ class CommentsControllerTest < Test::Unit::TestCase
   	get :create, :comment => { :subject => "Hello", :body => "This is a comment", :name => "Malandra Mysogynist", :email => 'malandra@dutyfree.com', :content_id => 6 }, :comment_id => "2" 
   	
   	assert_template("create_child.rjs")
-
+  	
+  		# Email sent to author of parent comment
   	assert_equal num_deliveries+1, ActionMailer::Base.deliveries.size
   	
   end
+  
+ def test_create_main_comment
+  	
+  	num_deliveries = ActionMailer::Base.deliveries.size
+  	get :create, :comment => { :subject => "Hello", :body => "This is a comment", :name => "Malandra Mysogynist", :email => 'malandra@dutyfree.com' }, :content_id => 6
+  	
+  	assert_template("create.rjs")
+  		# No email sent
+  	assert_equal num_deliveries, ActionMailer::Base.deliveries.size
+  	
+  end  
   	
 end

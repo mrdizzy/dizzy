@@ -7,4 +7,14 @@ class CommentTest < Test::Unit::TestCase
   def test_truth
     assert true
   end
+  
+  def test_comment
+  	comment = comments(:bad_comment)
+  end
+  
+  def test_blank_comment
+  	comment = Comment.new
+  	assert !comment.valid?
+  end
+  
 end
