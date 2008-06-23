@@ -71,7 +71,7 @@ class CommentsControllerTest < Test::Unit::TestCase
   	assert_template("new_child.rjs") 
 	end  
 
-  def test_destroy_comment
+  def test_destroy_comment_logged_in
   	delete :destroy, :id => "1"
   	assert_template("destroy.rjs")
   	assert_response :success

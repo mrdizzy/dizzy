@@ -14,12 +14,18 @@ module CommentsHelper
 			
 			result << "<div class=\"comments_left\"><p><span class=\"date\">#{time_ago_in_words(comment.created_at).upcase} AGO</span></br> <span class=\"email\">#{comment.name}</span></div>" + 
 			
-			"<div class=\"comments_right\"><h6>#{comment.subject}</h6><p>#{comment.body}</p></div>" 
+			"<div class=\"comments_right\"><h6>#{comment.subject}</h6>" 
 			
-			if administrator?
-				result << link_to_remote("Delete", :url => comment_path(:content_id => comment.content.id, :id => comment.id), :method => :delete)
+			if administrator?  
+				result << "<p>" + link_to(comment.content.title, :url => content_path(comment.content.id)) + "</p>"
 			end
 			
+			result << "<p>#{comment.body}</p></div>" 
+			
+			if administrator?
+				result << "<p>" + link_to_remote("Delete", :url => comment_path(:content_id => comment.content.id, :id => comment.id), :method => :delete) + "</p>"
+			end
+						
 			result << 
 			"<div class=\"reply_comment\" id=\"reply_#{comment.id}\">" + link_to_remote("Reply to this comment", :url => new_child_comment_path(:content_id => comment.content.id, :comment_id => comment.id), :method => :get)  + "</div><div id=\"reply_form_#{comment.id}\"></div>"
 				
