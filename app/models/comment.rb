@@ -20,6 +20,6 @@ class Comment < ActiveRecord::Base
 	validates_presence_of :name, :email, :body, :subject, :content_id
 	
 	def self.new_comments
-		self.find_all_by_new(true)
+		self.find_all_by_new(true, :order => "'created_at' DESC")
 	end
 end

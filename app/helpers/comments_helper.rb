@@ -17,7 +17,7 @@ module CommentsHelper
 			"<div class=\"comments_right\"><h6>#{comment.subject}</h6>" 
 			
 			if administrator?  
-				result << "<p>" + link_to(comment.content.title, :url => content_path(comment.content.id)) + "</p>"
+				result << "<p>" + link_to(comment.content.title, content_path(:id => comment.content.permalink)) + "</p>"
 			end
 			
 			result << "<p>#{comment.body}</p></div>" 
