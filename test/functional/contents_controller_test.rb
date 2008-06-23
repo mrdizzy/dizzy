@@ -8,6 +8,7 @@ class ContentsControllerTest < Test::Unit::TestCase
 	
 	fixtures :contents
 	fixtures :users
+	fixtures :versions
 
   def setup
     @controller = ContentsController.new
@@ -27,29 +28,29 @@ class ContentsControllerTest < Test::Unit::TestCase
     assert_select "form[action=\"#{categories_path}\"]", { :count => 1}
   end
   
-  def test_index_should_not_display_new_category_form_when_administrator_not_logged_in
-    get :index
-    assert_select "form[action=\"#{categories_path}\"]", false, "There should be no new category form"
+ def test_index_should_not_display_new_category_form_when_administrator_not_logged_in
+   get :index
+   assert_select "form[action=\"#{categories_path}\"]", false, "There should be no new category form"
+ end
+ 
+ def test_index_should_enable_editing_of_article_when_administrator_logged_in
+ 	get :index, {}, { :administrator_id => users(:mr_dizzy).id }
+   assert_select 'a', { :count => 3, :text => "edit"}
+   assert_select 'a', { :count => 3, :text => "delete"}
+ 	assert_response :success
+ end
+ 
+ def test_index_should_not_enable_editing_of_article_when_administrator_not_logged_in
+ 	get :index
+   assert_select "a", {:count => 0, :text => "edit"}
+   assert_select "a", {:count => 0, :text => "delete"}
+ 	assert_response :success
+ end
+ 
+ def test_index_should_show_add_new_category_form_when_admin_logged_in
+  get :index, {}, { :administrator_id => users(:mr_dizzy).id }
+     assert_select "form"
+     assert_response :success
   end
-  
-  def test_index_should_enable_editing_of_article_when_administrator_logged_in
-  	get :index, {}, { :administrator_id => users(:mr_dizzy).id }
-    assert_select 'a', { :count => 3, :text => "edit"}
-    assert_select 'a', { :count => 3, :text => "delete"}
-  	assert_response :success
-  end
-  
-  def test_index_should_not_enable_editing_of_article_when_administrator_not_logged_in
-  	get :index
-    assert_select "a", {:count => 0, :text => "edit"}
-    assert_select "a", {:count => 0, :text => "delete"}
-  	assert_response :success
-  end
-  
-  def test_index_should_show_add_new_category_form_when_admin_logged_in
-   get :index, {}, { :administrator_id => users(:mr_dizzy).id }
-      assert_select "form"
-      assert_response :success
-   end
-  	
+ 	
 end

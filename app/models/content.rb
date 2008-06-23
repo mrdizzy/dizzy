@@ -50,8 +50,7 @@ end
 class Article < Content
 	validates_presence_of :content
 	
-	before_save :parse_content
-	
+	before_save :parse_content	
 	
 	def parse_content
 		self.content.gsub!("<%", "&lt;%")
