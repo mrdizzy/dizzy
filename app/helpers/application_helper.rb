@@ -82,6 +82,27 @@ module ApplicationHelper
 		(higher * rand).to_i
 	end
 	
+	# Category List
+	
+	def category_list
+		
+		result = "<ul id=\"category_list\" class=\"categories\">"
+		@categories = Category.find(:all, :order => :name)
+		@categories.each do |category|
+			if category.permalink == "cheatsheets"
+					result << "<li id=\"category_#{category.id}\">" +
+					link_to("Cheatsheets", cheatsheets_path) +
+					"</li>"
+			else
+				result << "<li id=\"category_#{category.id}\">" +
+				link_to (category.name, category_path(category.permalink)) +
+				"</li>"
+			end
+		end
+		result << "</ul>"
+		result
+	end
+	
 	# Administration
 
 	def administrator?
