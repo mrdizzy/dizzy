@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(:version => 1) do
   create_table "companies", :force => true do |t|
     t.column "name",        :string, :limit => 40
     t.column "description", :string
+    t.column "visible", 	:boolean, :default => false
   end
 
   create_table "contents", :force => true do |t|

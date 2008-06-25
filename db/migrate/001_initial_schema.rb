@@ -3,7 +3,7 @@ class InitialSchema < ActiveRecord::Migration
   
   
     create_table "binaries", :force => true do |t|
-      t.column "binary_data",  :binary, :limit => 2.megabytes
+      t.column "binary_data",  :binary
       t.column "type",         :string
       t.column "content_type", :string
       t.column "size",         :integer
@@ -42,6 +42,7 @@ class InitialSchema < ActiveRecord::Migration
     create_table "companies", :force => true do |t|
       t.column "name",        :string, :limit => 40
       t.column "description", :string
+      t.column "visible", 	:boolean, :default => false
     end
   
     create_table "contents", :force => true do |t|

@@ -1,77 +1,85 @@
-<!-- WELCOME HEADER -->
-<div id="welcome_header">
-	<div id="welcome_title">
-		<%= image_tag("welcome.png")%>
-	</div>
-	<div id="welcome_quote">
-		<%= image_tag("quote.png")%>
-	</div>
-</div>
-
-<!-- LEFT COLUMN -->
-
 <div id="welcome">
-	<div id="first_half">
-		<div id="welcome_left">
-
-			<!-- Main article -->
-			<div class="inside">
-				<span class="posted_in"><%= solid_arrow %> <%= @main_article.main_category.name.upcase %></span>
-				<h1><%= asterisk %> <%= @main_article.title %> </h1>
-			
-				<h4>POSTED <%= time_ago_in_words(@main_article.date).upcase %> AGO</h4>	
-			
-				<h2><%= @main_article.description %></h2>
-				<%= spiro %>
-				<p><%= strip_tags(truncate(@main_article.content, 300)) %> . <%= link_to "More &raquo;", content_path(@main_article.permalink) %></p>
-			</div>	
-			
-			<%= spiro %>
-			
-		</div>
 	
-		<!-- Middle column  -->
-		<div id="welcome_middle">
-			<p><span class="posted_in"><%= solid_arrow %> LATEST ARTICLES </span></p>
-			<table class="articles">	
-				<%= render :partial => "shared/article_link", :collection => @recent_articles %>
-			</table>	
-		</div>
+	<div id="second_half">		
+        
+    	<!-- Latest logos -->
+    	
+		<div id="latest_container">
 		
-	<!-- RIGHT COLUMN -->
-	
-		<div id="welcome_right">	
-			
-			<!-- Latest logos -->
-			<div id="latest_container">
-			
 			<span class="posted_in"><%= solid_arrow %> LATEST WORK</span>
-			
-			<div id="logo_container">
-				<div id="latest_logo"><%= link_to image_tag(formatted_portfolio_item_path(:id => @logos[0].id, :format => :png)), portfolio_path(@logos[0].company_id) %></div>
-			</div>
-			
-			<div id="logo_pagination">
-		  		<%= render :partial => "logo_pagination" %>
-			</div>
 		
+			
+				<div id="latest_logo"><%= link_to image_tag(formatted_portfolio_item_path(:id => @logos[0].id, :format => :png)), portfolio_path(@logos[0].company_id) %></div>
+		
+		
+			<div id="logo_pagination">
+	  			<%= render :partial => "logo_pagination" %>
+			</div>
 		</div>
 		
-		<%= spiro %>
-		
-		<div class="inside">
-			
-			<span class="posted_in"><%= asterisk %> CHEATSHEETS</span>
-						
-			<h3><%= link_to @cheatsheet.title, cheatsheet_path(@cheatsheet.permalink) %></a></h3>
-			
-			<h4><%= time_ago_in_words(@cheatsheet.date).upcase %> AGO </h4>
-			
-			<h6><%= diamond %> <%= @cheatsheet.description %></h6>
-		
-		<%=spiro%>
-		
-        </div>
+		<ul id="category_list" class="categories">
+			<%	@categories = Category.find(:all, :order => :name) %>
+			<% @categories.each do |category| %>
+				<% if category.permalink == "cheatsheets" %>
+					<li id="category_<%= category.id %>"><%= link_to "Cheatsheets", cheatsheets_path %></li>
+				<% else %>
+					<li id="category_<%= category.id %>"><%= link_to category.name, category_path(category.permalink) %></li>
+				<% end %>
+			<% end %>
+		</ul>
+
 	</div>
-	<div class="clearfix">&nbsp;</div>
+	
+	<div id="first_half">
+	
+		<div id="welcome_left">
+			
+			<span class="posted_in">
+			 	<%= solid_arrow %> <%= link_to(@recent_articles[4].main_category.name.upcase, content_path(@recent_articles[4].permalink)) %>
+			</span>
+			<h1><%= @recent_articles[4].title %></h1>
+			<span class="date">POSTED <%= time_ago_in_words(@recent_articles[4].date).upcase %> AGO</span>
+			<p><%= truncate(@recent_articles[4].description, 300)%></p>
+	
+			<span class="posted_in">
+			 	<%= solid_arrow %> <%= link_to(@recent_articles[1].main_category.name.upcase, content_path(@recent_articles[1].permalink)) %>
+			</span>
+			<h3><%= @recent_articles[1].title %></h3>
+			<span class="date">POSTED <%= time_ago_in_words(@recent_articles[1].date).upcase %> AGO</span>
+			<p><%= @recent_articles[1].description %></p>
+		
+			<span class="posted_in">
+			 	<%= solid_arrow %> <%= link_to(@recent_articles[2].main_category.name.upcase, content_path(@recent_articles[2].permalink)) %>
+			</span>
+			<h3><%= @recent_articles[2].title %></h3>
+			<span class="date">POSTED <%= time_ago_in_words(@recent_articles[2].date).upcase %> AGO</span>
+			<p><%= @recent_articles[2].description %></p>
+		</div>
+	
+		<div id="welcome_right">			
+			
+			<span class="posted_in">
+			 	<%= solid_arrow %> <%= link_to(@recent_articles[3].main_category.name.upcase, content_path(@recent_articles[3].permalink)) %>
+			</span>
+			<h2><%= @recent_articles[3].title %></h2>
+			<span class="date">POSTED <%= time_ago_in_words(@recent_articles[3].date).upcase %> AGO</span>
+			<p><%= @recent_articles[3].description %></p>
+			
+			<span class="posted_in">
+			 	<%= solid_arrow %> <%= link_to(@recent_articles[0].main_category.name.upcase, content_path(@recent_articles[0].permalink)) %>
+			</span>
+			<h2><%= @recent_articles[0].title %></h2>
+			<span class="date">POSTED <%= time_ago_in_words(@recent_articles[0].date).upcase %> AGO</span>
+			<p><%= @recent_articles[0].description %></p>
+		
+		
+			<span class="posted_in">
+			 	<%= solid_arrow %> <%= link_to(@recent_articles[5].main_category.name.upcase, content_path(@recent_articles[5].permalink)) %>
+			</span>
+			<h2><%= @recent_articles[5].title %></h2>
+			<span class="date">POSTED <%= time_ago_in_words(@recent_articles[5].date).upcase %> AGO</span>
+			<p><%= @recent_articles[5].description %></p>
+		</div>
+	
+	</div>
 </div>

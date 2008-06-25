@@ -16,7 +16,7 @@
 		#welcome h1 {
 			margin-top:0.2em;
 			margin-bottom:0.2em;
-			font-size:2.7em;		
+			font-size:3.5em;		
 			line-height:1.2em;		
 		}
 		#company_description h1 {
@@ -28,6 +28,7 @@
 		line-height: 1.125em; /* 18px */ 
 		margin-top:1.125; 
 		margin-bottom: 1.125em;
+		letter-spacing:-0.05em;
 	}
 	
 		#blurb h2 {
@@ -36,9 +37,11 @@
 			margin-bottom:0.5em;	
 		}
 		#welcome h2 {
-			font-family:"Trebuchet MS";	
-				
-			font-style:italic;
+			font-family:"Georgia";
+			font-size: 1.6em; /* 16px */ 
+			line-height: 1.125em; /* 18px */ 
+			margin-top:0.6em;
+			margin-bottom:0.6em; 
 		}
 		#navigation h2 {
 			font-weight:normal;
@@ -75,23 +78,19 @@
 		line-height: 1.2em; /* 18px */ 
 		margin-top: 0.6em; 
 		margin-bottom: 0.6em;	
-		font-weight:bold;
 		font-family: "Georgia";
 		font-style:italic;
 		letter-spacing:-0.03em;
 	}
+		#welcome h3 {
+			font-size:2.2em;
+			font-style:normal;
+			font-family: "Georgia";
+		}
 		#errorExplanation h3 {
 			color: #29A4BD;	
 		}
-		#welcome h3, #poll h3 {
-			font-family: "Georgia",serif;
-			font-weight: normal;
-			font-style:normal;
-			font-size: 1.3em; /* 15px */ 
-			line-height: 1.3em; /* 18px */ 
-			margin-top: 0.6em; 
-			margin-bottom: 0.6em;	
-		}
+
 		#cheatsheet h3 { 
 			font-family:"Trebuchet MS"; 
 			color:black; 
@@ -175,7 +174,11 @@
 	    font-family:"Verdana";
 		font-size: 1em; /* 12px */ 
 		line-height: 1.5em; /* 18px */ 
-		margin: 0 0 1.5em 0;
+		margin: 0.6em 0 1.5em 0;
+	}
+	#welcome p {
+		padding-bottom:1em;
+		border-bottom: 1px dotted  #CCCCCC;
 	}
 		#poll p {
 			margin-top:0.7em;
@@ -223,7 +226,8 @@
 		font-weight:normal; 
 		font-size: 0.8333em; /* 10px */
 		line-height: 1.8em; /* 18px */
-		margin-top: 1.8em; margin-bottom: 0em;
+		margin-top: 1.8em; 
+		margin-bottom: 0.6em;
 		letter-spacing:0.2em;
 	}
 	.posted_in {

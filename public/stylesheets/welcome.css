@@ -1,58 +1,35 @@
 /* Welcome
 ============= */
-#welcome_header {
-	padding-top:1em;
-}
 
-#welcome_title {
-	width:40%;
-	float:left;
-	padding-bottom:2em;
-	text-align:center;
-}
-#welcome_quote {
-	width:60%;
-	text-align:center;
-	float:left;
-}
 #welcome {
 	clear:both;
 }
-#welcome_left {
-	float:left;
-	width:202px;	
+#first_half {
+	width:730px;
 }
-#welcome_middle {
-	float:left;
-	width:552px;
+	#welcome_left {
+		float:left;
+		width:394px;
+		padding-right:10px;
+		border-right:1px dotted #CCCCCC;
+	}
+	#welcome_right {
+		width:310px;		
+		float:right;
+	}
+#second_half {
+	width:220px;
+	border-left:1px dotted #CCCCCC;
 	padding-left:10px;
-}
-#latest_container {
-	width:100%;
-	padding-left: 0.4em;
-}
-#welcome_right {
-	width:200px;
-	float:left;
-}
-#recent {
-	width:100%;
-}
+	float:right;
+}	
 #logo_pagination {
 	width:100%;
 	text-align:center;
 }
 #latest_logo {
 	width:100%;
-	vertical-align:middle;
 	text-align:center;
-	height:120px;
-}
-#logo_container {
-	height:120px;	
-}
-
-.inside {
-	padding-left:7px;
-	padding-right:4px;
+	padding-top:10px;
+	padding-bottom:5px;
 }
