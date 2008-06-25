@@ -33,7 +33,7 @@
 	padding-top:10px;
 	padding-bottom:5px;
 }
-#category_list a {
+#category_list a, #logo_pagination a {
 	text-decoration:underline;
 }
 #more_button {
