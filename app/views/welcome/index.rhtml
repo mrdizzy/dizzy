@@ -7,10 +7,8 @@
 		<div id="latest_container">
 		
 			<span class="posted_in"><%= solid_arrow %> LATEST WORK</span>
-		
 			
 				<div id="latest_logo"><%= link_to image_tag(formatted_portfolio_item_path(:id => @logos[0].id, :format => :png)), portfolio_path(@logos[0].company_id) %></div>
-		
 		
 			<div id="logo_pagination">
 	  			<%= render :partial => "logo_pagination" %>
@@ -38,10 +36,9 @@
 			 	<%= solid_arrow %> <%= link_to(@recent_articles[4].main_category.name.upcase, content_path(@recent_articles[4].permalink)) %>
 			</span>
 			<h1><%= @recent_articles[4].title %></h1>
-<div id="more_button"><div class="more"><div class="arrow"><%= diamond %></div><span class="read"><%= link_to("MORE &raquo;", content_path(@recent_articles[3].permalink)) %></span></div></div>	<span class="date">POSTED <%= time_ago_in_words(@recent_articles[4].date).upcase %> AGO</span>
+<div id="more_button"><div class="more"><div class="arrow"><%= diamond %></div><span class="read"><%= link_to("MORE &raquo;", content_path(@recent_articles[4].permalink)) %></span></div></div>	<span class="date">POSTED <%= time_ago_in_words(@recent_articles[4].date).upcase %> AGO</span>
 				
-			<p>	<%= truncate(@recent_articles[4].description, 300)%></p>
-			
+			<p>	<%= truncate(@recent_articles[4].description, 300)%></p>	
 				
 	
 			<span class="posted_in">
