@@ -33,6 +33,9 @@
 	padding-top:10px;
 	padding-bottom:5px;
 }
+#category_list a {
+	text-decoration:underline;
+}
 #more_button {
 float:left;
 margin-right:10px;

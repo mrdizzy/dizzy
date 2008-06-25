@@ -239,7 +239,7 @@
 	.read a {
 		letter-spacing:0.2em;
 		font-family:"Helvetica";
-		font-size: 0.8em; /* 15px */ 
+		font-size: 0.75em; /* 15px */ 
 		color: #29A4BD;
 		text-decoration: none;
 	}
