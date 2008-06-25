@@ -2,7 +2,7 @@
 # migrations feature of ActiveRecord to incrementally modify your database, and
 # then regenerate this schema definition.
 
-ActiveRecord::Schema.define(:version => 1) do
+ActiveRecord::Schema.define(:version => 5) do
 
   create_table "binaries", :force => true do |t|
     t.column "binary_data",  :binary
@@ -42,9 +42,9 @@ ActiveRecord::Schema.define(:version => 1) do
   add_index "comments", ["content_id"], :name => "fk_content_comments"
 
   create_table "companies", :force => true do |t|
-    t.column "name",        :string, :limit => 40
+    t.column "name",        :string,  :limit => 40
     t.column "description", :string
-    t.column "visible", 	:boolean, :default => false
+    t.column "visible",     :boolean,               :default => false
   end
 
   create_table "contents", :force => true do |t|

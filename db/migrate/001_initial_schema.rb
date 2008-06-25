@@ -1,6 +1,5 @@
 class InitialSchema < ActiveRecord::Migration
-  def self.up
-  
+  def self.up 
   
     create_table "binaries", :force => true do |t|
       t.column "binary_data",  :binary

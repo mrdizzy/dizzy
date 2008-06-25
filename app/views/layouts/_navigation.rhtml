@@ -26,10 +26,10 @@
 	
 	<!-- PORTFOLIO -->
 	<div class="nav_button">
-		<% if current_page?(:controller => 'portfolio', :action => "show") %>
+		<% if current_page?(:controller => 'portfolios', :action => "show") %>
 			<%= image_tag("f/nav/portfolio_over.png") %>
 		<% else %>
-			<%= link_to image_tag("f/nav/portfolio.png"), "/portfolio/show/1" %>
+			<%= link_to image_tag("f/nav/portfolio.png"), "/portfolios/1" %>
 		<% end %>
 	</div>
 	
