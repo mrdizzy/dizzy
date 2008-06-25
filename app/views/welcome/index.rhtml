@@ -38,21 +38,30 @@
 			 	<%= solid_arrow %> <%= link_to(@recent_articles[4].main_category.name.upcase, content_path(@recent_articles[4].permalink)) %>
 			</span>
 			<h1><%= @recent_articles[4].title %></h1>
-			<span class="date">POSTED <%= time_ago_in_words(@recent_articles[4].date).upcase %> AGO</span>
-			<p><%= truncate(@recent_articles[4].description, 300)%></p>
+<div id="more_button"><div class="more"><div class="arrow"><%= diamond %></div><span class="read"><%= link_to("MORE &raquo;", content_path(@recent_articles[3].permalink)) %></span></div></div>	<span class="date">POSTED <%= time_ago_in_words(@recent_articles[4].date).upcase %> AGO</span>
+				
+			<p>	<%= truncate(@recent_articles[4].description, 300)%>	
+				
+				
+		
+				
+				</p>
+			
+				
 	
 			<span class="posted_in">
 			 	<%= solid_arrow %> <%= link_to(@recent_articles[1].main_category.name.upcase, content_path(@recent_articles[1].permalink)) %>
 			</span>
 			<h3><%= @recent_articles[1].title %></h3>
-			<span class="date">POSTED <%= time_ago_in_words(@recent_articles[1].date).upcase %> AGO</span>
+		
+<div id="more_button"><div class="more"><div class="arrow"><%= diamond %></div><span class="posted_in"><%= link_to("read&raquo;", content_path(@recent_articles[1].permalink)) %></span></div></div>	<span class="date">POSTED <%= time_ago_in_words(@recent_articles[1].date).upcase %> AGO</span>
 			<p><%= @recent_articles[1].description %></p>
 		
 			<span class="posted_in">
 			 	<%= solid_arrow %> <%= link_to(@recent_articles[2].main_category.name.upcase, content_path(@recent_articles[2].permalink)) %>
 			</span>
 			<h3><%= @recent_articles[2].title %></h3>
-			<span class="date">POSTED <%= time_ago_in_words(@recent_articles[2].date).upcase %> AGO</span>
+			<div id="more_button"><div class="more"><div class="arrow"><%= diamond %></div><span class="posted_in"><%= link_to("read&raquo;", content_path(@recent_articles[2].permalink)) %></span></div></div>	<span class="date">POSTED <%= time_ago_in_words(@recent_articles[2].date).upcase %> AGO</span>
 			<p><%= @recent_articles[2].description %></p>
 		</div>
 	
@@ -64,6 +73,7 @@
 			<h2><%= @recent_articles[3].title %></h2>
 			<span class="date">POSTED <%= time_ago_in_words(@recent_articles[3].date).upcase %> AGO</span>
 			<p><%= @recent_articles[3].description %></p>
+			
 			
 			<span class="posted_in">
 			 	<%= solid_arrow %> <%= link_to(@recent_articles[0].main_category.name.upcase, content_path(@recent_articles[0].permalink)) %>

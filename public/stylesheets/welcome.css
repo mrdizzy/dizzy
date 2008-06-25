@@ -33,3 +33,20 @@
 	padding-top:10px;
 	padding-bottom:5px;
 }
+#more_button {
+float:left;
+margin-right:10px;
+}
+.more {
+	border:1px solid #CCCCCC;
+	width:80px;
+	float:left;
+	text-align:center;
+	height:18px;
+}
+.arrow {
+	float:left;
+	border-right:1px solid #CCCCCC;
+	width:20px;
+	height:18px;
+}
