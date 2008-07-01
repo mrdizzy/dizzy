@@ -17,14 +17,17 @@
 		
 		<%= render :partial => "/layouts/header" %>
 		<%= render :partial => "/layouts/navigation" %>
+		
 		<div id="contact_form" style="display:none;"></div>
+		
 		<div id="content_container">
 			<div id="left_column">
 				
-					<p><%= location_icon %> <a href="/">Home</a> <%= image_tag("f/bullets/arrows/solidarrow.png") %> <%= link_to "Ruby on Rails", latest_path %> <%= image_tag("f/bullets/arrows/solidarrow.png") %> <b><%=  @main_category %></b></p>
+				<p><%= location_icon %> <a href="/">Home</a> <%= image_tag("f/bullets/arrows/solidarrow.png") %> <%= link_to "Ruby on Rails", latest_path %> <%= image_tag("f/bullets/arrows/solidarrow.png") %> <b><%=  @main_category %></b></p>
 				
 				<%= yield %>
 			</div>
+			
 			<div id="right_column">
 				
 				<%= yield :thumbnail %>

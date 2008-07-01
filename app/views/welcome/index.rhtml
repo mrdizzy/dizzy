@@ -3,7 +3,9 @@
 	<div id="second_half">		
         
     	<!-- LOGOS -->
-    	
+    			<p > <%= solid_arrow %>	 <%= image_tag("f/small_icons/feed-icon-small.png")%> <span class="posted_in">
+			<%= link_to("RSS FEED", "") %>
+			</span></p>
 		<div id="latest_container">
 		
 			<span class="posted_in"><%= solid_arrow %> LATEST WORK</span>
@@ -48,7 +50,9 @@
 			<h3><%= @recent_articles[1].title %></h3>
 		<div id="more_button"><div class="more"><div class="arrow"><%= diamond %></div><span class="read"><%= link_to("MORE &raquo;", content_path(@recent_articles[1].permalink)) %></span></div></div>		<span class="date">POSTED <%= time_ago_in_words(@recent_articles[1].date).upcase %> AGO</span>
 			<p><%= @recent_articles[1].description %></p>
-		
+	
+			
+			
 			<span class="posted_in">
 			 	<%= solid_arrow %> <%= link_to(@recent_articles[2].main_category.name.upcase, category_path(@recent_articles[2].main_category.permalink)) %>
 			</span>
@@ -58,6 +62,7 @@
 		</div>
 	
 		<div id="welcome_right">			
+		
 			
 			<span class="posted_in">
 			 	<%= solid_arrow %> <%= link_to(@recent_articles[3].main_category.name.upcase, category_path(@recent_articles[3].main_category.permalink)) %>
@@ -65,8 +70,7 @@
 			<h2><%= @recent_articles[3].title %> </h2>
 			<div id="more_button"><div class="more"><div class="arrow"><%= diamond %></div><span class="read"><%= link_to("MORE &raquo;", content_path(@recent_articles[3].permalink)) %></span></div></div>	<span class="date">POSTED <%= time_ago_in_words(@recent_articles[3].date).upcase %> AGO</span>
 			<p><%= @recent_articles[3].description %></p>
-			
-			
+		
 			<span class="posted_in">
 			 	<%= solid_arrow %> <%= link_to(@recent_articles[0].main_category.name.upcase, category_path(@recent_articles[0].main_category.permalink)) %>
 			</span>
