@@ -22,7 +22,7 @@ class PortfolioItemTest < Test::Unit::TestCase
   def test_portfolio_item_must_belong_to_valid_company
   	portfolio_item = portfolio_items(:heavenly_logo)
   	portfolio_item.portfolio_type_id = 2
-  	portfolio_item.company_id = 981	
+  	portfolio_item.company_id = 88232
   	assert !portfolio_item.valid?, portfolio_item.errors.full_messages
   end
   

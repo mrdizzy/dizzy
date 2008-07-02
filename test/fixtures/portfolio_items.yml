@@ -1,7 +1,7 @@
 ---
 heavenly_grey_logo: 
   content_type: image/png
-  size: "123"
+  size: "5000"
   portfolio_type_id: "6"
   id: "93"
   filename: heavenlysmallgreylogo.png
@@ -55,7 +55,7 @@ heavenly_grey_logo:
 
 heavenly_slip: 
   content_type: image/png
-  size: "123"
+  size: "5000"
   portfolio_type_id: "8"
   id: "45"
   filename: heavenlyslip.png
@@ -131,7 +131,7 @@ heavenly_slip:
 
 heavenly_header: 
   content_type: image/png
-  size: "123"
+  size: "5000"
   portfolio_type_id: "7"
   id: "12"
   filename: heavenlyheader.png
@@ -174,7 +174,7 @@ heavenly_header:
 
 heavenly_letterhead: 
   content_type: image/png
-  size: "123"
+  size: "5000"
   portfolio_type_id: "3"
   id: "34"
   filename: heavenlyletterhead.png
@@ -369,7 +369,7 @@ heavenly_letterhead:
 
 heavenly_logo: 
   content_type: image/png
-  size: "123"
+  size: "5000"
   portfolio_type_id: "4"
   id: "1"
   filename: heavenlylogo.png
@@ -434,7 +434,7 @@ heavenly_logo:
 
 heavenly_colour_logo: 
   content_type: image/png
-  size: "123"
+  size: "5000"
   portfolio_type_id: "5"
   id: "92"
   filename: heavenlysmallcolourlogo.png
@@ -496,7 +496,7 @@ heavenly_colour_logo:
 
 heavenly_cards: 
   content_type: image/png
-  size: "123"
+  size: "5000"
   portfolio_type_id: "1"
   id: "23"
   filename: heavenlycard.png

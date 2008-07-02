@@ -1,7 +1,8 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
-class Pdf < Test::Unit::TestCase
-
+class PdfTest < Test::Unit::TestCase
+  fixtures :binaries
+  
   def test_cheatsheet_content_type_should_be_valid
   	pdf = binaries(:rails_migrations_pdf)
   	assert pdf.valid?, pdf.errors.full_messages

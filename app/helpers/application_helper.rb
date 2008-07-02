@@ -95,7 +95,7 @@ module ApplicationHelper
 					"</li>"
 			else
 				result << "<li id=\"category_#{category.id}\">" +
-				link_to (category.name, category_path(category.permalink)) +
+				link_to(category.name, category_path(category.permalink)) +
 				"</li>"
 			end
 		end
