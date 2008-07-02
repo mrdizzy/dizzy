@@ -11,10 +11,15 @@ class PortfolioItemTest < Test::Unit::TestCase
   
   def test_portfolio_item_must_be_between_1k_and_100k
   	portfolio_item = portfolio_items(:heavenly_logo)
+  	
   	portfolio_item.size = 150.kilobytes
   	assert !portfolio_item.valid?, portfolio_item.errors.full_messages
+  	assert_equal "must be between 1kb and 100kb", portfolio_item.errors.on(:size)
+  	
   	portfolio_item.size = 800.bytes
   	assert !portfolio_item.valid?, portfolio_item.errors.full_messages
+  	assert_equal "must be between 1kb and 100kb", portfolio_item.errors.on(:size)
+  	
   	portfolio_item.size = 100.kilobytes
   	assert portfolio_item.valid?, portfolio_item.errors.full_messages
   end
@@ -24,6 +29,7 @@ class PortfolioItemTest < Test::Unit::TestCase
   	portfolio_item.portfolio_type_id = 2
   	portfolio_item.company_id = 88232
   	assert !portfolio_item.valid?, portfolio_item.errors.full_messages
+  	assert_equal "must exist in the database", portfolio_item.errors.on(:company_id)
   end
   
   def test_portfolio_item_must_be_destroyed_upon_company_deletion
@@ -43,10 +49,14 @@ class PortfolioItemTest < Test::Unit::TestCase
 													:data				=> portfolio_items(:heavenly_logo).data)
 													
 	assert !existing_portfolio_type.save,  existing_portfolio_type.errors.full_messages
+	assert_equal "must not be a duplicate", existing_portfolio_type.errors.on(:portfolio_type_id)
   end    
   
   def test_portfolio_type_id_parent_must_exist
-  	flunk
+  	portfolio_item = portfolio_items(:heavenly_logo)
+  	portfolio_item.portfolio_type_id = 323
+  	assert !portfolio_item.valid?
+  	assert_equal "must exist in the database", portfolio_item.errors.on(:portfolio_type_id)
   end
   
   def test_content_type_must_be_valid
@@ -62,6 +72,7 @@ class PortfolioItemTest < Test::Unit::TestCase
 												:data				=> portfolio_items(:heavenly_logo).data)
 														
 		assert !valid_content_type.valid?,  valid_content_type.errors.full_messages
+		assert_equal "must be a PNG or GIF file", valid_content_type.errors.on(:content_type)
 	end
 	
 	good.each do |content_type|

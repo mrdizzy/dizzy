@@ -13,11 +13,11 @@
 #
 
 class PortfolioItem < ActiveRecord::Base
-	validates_uniqueness_of :portfolio_type_id, :scope => 'company_id'
+	validates_uniqueness_of :portfolio_type_id, :scope => 'company_id', :message => "must not be a duplicate"
 	validates_format_of :content_type,
 						:with => /(gif|png)$/i,
-						:message => "-- you can only upload PNG or GIF files"
-	validates_inclusion_of		:size, :in => 1.kilobyte..100.kilobytes,:message => "file must be between 1kb and 100kb"
+						:message => "must be a PNG or GIF file"
+	validates_inclusion_of		:size, :in => 1.kilobyte..100.kilobytes,:message => "must be between 1kb and 100kb"
 	validates_presence_of :filename
 	validates_presence_of :content_type
 	validates_presence_of :data
@@ -34,7 +34,10 @@ class PortfolioItem < ActiveRecord::Base
 	
 	def validate
 		if company.nil?
-			errors.add(:company, "no such company id")
+			errors.add(:company_id, "must exist in the database")
+		end
+		if portfolio_type.nil?
+			errors.add(:portfolio_type_id, "must exist in the database")
 		end
 	end
 end
