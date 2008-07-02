@@ -17,6 +17,7 @@ class PortfolioItem < ActiveRecord::Base
 	validates_format_of :content_type,
 						:with => /(gif|png)$/i,
 						:message => "-- you can only upload PNG or GIF files"
+	validates_inclusion_of		:size, :in => 1.kilobyte..100.kilobytes,:message => "file must be between 1kb and 100kb"
 	validates_presence_of :filename
 	validates_presence_of :content_type
 	validates_presence_of :data
@@ -27,5 +28,6 @@ class PortfolioItem < ActiveRecord::Base
 		self.filename = binary_data.original_filename
 		self.content_type = binary_data.content_type.chomp
 		self.data = binary_data.read
+		self.size = binary_data.size
 	end
 end
