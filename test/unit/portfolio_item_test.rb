@@ -12,18 +12,18 @@ class PortfolioItemTest < Test::Unit::TestCase
   def test_portfolio_item_must_be_between_1k_and_100k
   	portfolio_item = portfolio_items(:heavenly_logo)
   	portfolio_item.size = 150.kilobytes
-  	assert !portfolio_item.save, portfolio_item.errors.full_messages
+  	assert !portfolio_item.valid?, portfolio_item.errors.full_messages
   	portfolio_item.size = 800.bytes
-  	assert !portfolio_item.save, portfolio_item.errors.full_messages
+  	assert !portfolio_item.valid?, portfolio_item.errors.full_messages
   	portfolio_item.size = 100.kilobytes
-  	assert portfolio_item.save, portfolio_item.errors.full_messages
+  	assert portfolio_item.valid?, portfolio_item.errors.full_messages
   end
   
   def test_portfolio_item_must_belong_to_valid_company
   	portfolio_item = portfolio_items(:heavenly_logo)
   	portfolio_item.portfolio_type_id = 2
   	portfolio_item.company_id = 981	
-  	assert !portfolio_item.save, portfolio_item.errors.full_messages
+  	assert !portfolio_item.valid?, portfolio_item.errors.full_messages
   end
   
   def test_portfolio_item_must_be_destroyed_upon_company_deletion
