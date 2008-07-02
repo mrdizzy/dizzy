@@ -10,22 +10,22 @@ class PortfolioTypeTest < Test::Unit::TestCase
 
 	def test_unique_position
 		product = PortfolioType.new(:description =>		"Business card",
-																:column_space => "3",
-																	:position => "1")
+										:column_space => "3",
+										:position => "1")
 		assert !product.save
 	end    	
 		
-		def test_unique_description
+	def test_unique_description
 		product = PortfolioType.new(:description =>		"Letterhead",
-																:column_space => "2",
-																	:position => "2")
+										:column_space => "2",
+										:position => "2")
 		assert !product.save
 	end    		
 	
-		def test_column_space
+	def test_column_space
 		product = PortfolioType.new(:description =>		"Business card",
-																:column_space => "5",
-																:position => "2")
+										:column_space => "5",
+										:position => "2")
 		assert !product.save
 	end    
 end

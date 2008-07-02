@@ -13,7 +13,7 @@
 #
 
 --- 
-binaries_00001: 
+rails_migrations_pdf: 
   content_type: application/pdf
   content_id: "1"
   size: "553647"
@@ -1478,8 +1478,8 @@ binaries_00001:
 
   type: Pdf
   id: "1"
-  filename: rails-migrations.pdf
-binaries_00002: 
+  filename: rails-migrations.png
+rails_migrations_png: 
   content_type: image/png
   content_id: "1"
   size: "6876"

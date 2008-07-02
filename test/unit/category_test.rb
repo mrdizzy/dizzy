@@ -8,7 +8,7 @@ class CategoryTest < Test::Unit::TestCase
     assert true
   end
   
-  def test_should_fail_invalid_with_empty_attributes
+  def test_should_fail_with_empty_attributes
 	category = Category.new
 	assert !category.valid?
 	assert category.errors.invalid?(:name)
@@ -26,7 +26,7 @@ class CategoryTest < Test::Unit::TestCase
   	end
   	
   def test_should_fail_permalink_with_bad_characters
-  	bad_permalinks = ["underscore_not_valid", "&no-!weird-%characters)$", "no spaces", "NO-CAPITALS"]
+  	bad_permalinks = ["underscore_not_valid", "&no-!weird-%#\"/'characters)$", "no spaces", "NO-CAPITALS"]
   	bad_permalinks.each do |permalink|
   		category = Category.new(:name => "New Category", :permalink => permalink)
   		assert !category.valid?, "Permalink #{permalink} should be invalid"

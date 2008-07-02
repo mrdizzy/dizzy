@@ -8,10 +8,10 @@ class CompanyTest < Test::Unit::TestCase
     assert true
   end
   
-def test_invalid_with_empty_attributes
-	company = Company.new
-	assert !company.valid?
-	assert company.errors.invalid?(:name)
-	assert company.errors.invalid?(:description)
-end     
+	def test_invalid_with_empty_attributes
+		company = Company.new
+		assert !company.valid?
+		assert company.errors.invalid?(:name)
+		assert company.errors.invalid?(:description)
+	end     
 end

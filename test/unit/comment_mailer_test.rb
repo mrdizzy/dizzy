@@ -16,10 +16,9 @@ class CommentMailerTest < Test::Unit::TestCase
     @expected = TMail::Mail.new
     @expected.set_content_type "text", "plain", { "charset" => CHARSET }
     @expected.mime_version = '1.0'
-    
   end
 
-  def test_response
+  def test_response_to_parent
   	comment = comments(:parent_comment)
   	subject = "#{comment.name}: a reply to your comment at dizzy.co.uk..."
   	
@@ -30,7 +29,6 @@ class CommentMailerTest < Test::Unit::TestCase
 	assert_match /Email: #{comment.children.last.email}/, response.body
 	assert_match /Comment: #{comment.children.last.body}/, response.body
 	assert_equal "#{comment.email}", response.to[0]
-	puts response
   end
 
   private
