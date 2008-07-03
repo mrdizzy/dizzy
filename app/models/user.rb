@@ -17,8 +17,11 @@ class User < ActiveRecord::Base
 require 'digest/sha1'
 	validates_presence_of :name
 	validates_format_of	:name, :with => /^[a-z0-9_]+$/, :message => "can only contain letters, numbers and underscores"
+	validates_format_of :surname, :with => /^[a-z'-]+$/i, :message => "can only contain letters, apostrophes and hypens"
+	validates_format_of :firstname, :with => /^[a-z'-]+$/i, :message => "can only contain letters, apostrophes and hypens"
 	validates_uniqueness_of :name
 	validates_confirmation_of :password
+	validates_format_of :email, :with => /^[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i, :message => "must be a valid address"
 	
 	def validate
 		errors.add_to_base("Missing password" ) if hashed_password.blank?

@@ -35,8 +35,9 @@ class ContentsControllerTest < Test::Unit::TestCase
  
  def test_index_should_enable_editing_of_article_when_administrator_logged_in
  	get :index, {}, { :administrator_id => users(:mr_dizzy).id }
-   assert_select 'a', { :count => 3, :text => "edit"}
-   assert_select 'a', { :count => 3, :text => "delete"}
+ 	content = Content.find(:all)
+   assert_select 'a', { :count => content.size, :text => "edit"}
+   assert_select 'a', { :count => content.size, :text => "delete"}
  	assert_response :success
  end
  
