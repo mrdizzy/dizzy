@@ -14,6 +14,7 @@
 
 class Binary < ActiveRecord::Base
 	validates_presence_of :binary_data, :content_type, :size, :filename, :content_id
+	belongs_to :content
 	
 	def validate
 		if content.nil?
@@ -30,15 +31,11 @@ class Binary < ActiveRecord::Base
 end
 
 class Thumbnail < Binary
-	validates_inclusion_of :size, :in => 1.kilobyte..40.kilobytes, :message => "must be between 1k and 40k"
-	
-	belongs_to :content
+	validates_inclusion_of :size, :in => 1.kilobyte..40.kilobytes, :message => "must be between 1k and 40k" 
 	validates_format_of :content_type, :with => /image\/png/, :message => "must be a PNG image file"
-	validates_length_of :size, :maximum => 100000
 end
 
 class Pdf < Binary
-	belongs_to :content
 	validates_inclusion_of :size, :in => 1.kilobyte..700.kilobytes, :message => "must be between 1k and 700k"
 	validates_format_of :content_type, :with => /application\/pdf/, :message => "must be a PDF file"
 end

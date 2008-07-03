@@ -1,5 +1,21 @@
+# == Schema Information
+# Schema version: 4
+#
+# Table name: contents
+#
+#  id          :integer(11)   not null, primary key
+#  type        :string(255)   
+#  title       :string(255)   
+#  description :string(255)   
+#  user_id     :integer(11)   
+#  date        :datetime      
+#  content     :text          
+#  permalink   :string(255)   
+#  version_id  :integer(11)   
+#
+
 --- 
-contents_007: 
+form_helpers_article: 
   permalink: debugging-form-helpers-with-the-console
   title: Quickly debugging form helpers
   date: 2008-04-09 06:34:00
@@ -42,7 +58,7 @@ contents_007:
     As you can see, this is a really good way to get a feel for Rails' helpers, as you can see the results of your code instantly.\r\n\
     \r\n    \r\n    "
   user_id: "1"
-contents_008: 
+action_mailer_cheatsheet: 
   permalink: action-mailer
   title: Action Mailer
   date: 2008-06-16 00:15:00
@@ -52,7 +68,7 @@ contents_008:
   description: Send and receive emails using the Action Mailer framework.
   content: 
   user_id: "1"
-contents_001: 
+rails_migrations_cheatsheet: 
   permalink: rails-migrations
   title: Rails Migrations
   date: 2007-07-02 23:36:00
@@ -62,7 +78,7 @@ contents_001:
   description: Up and down methods, rake tasks, database mapping, loading fixtures, example migration file, all packed onto one A4 page for an easy at-a-glance reference
   content: ""
   user_id: "1"
-contents_002: 
+file_uploads_article: 
   permalink: store-file-uploads-in-database
   title: Beginning File Uploads to the Database
   date: 2007-07-02 23:36:00
@@ -638,7 +654,7 @@ contents_003:
 
 
   user_id: "1"
-contents_004: 
+sexy_migrations_article: 
   permalink: rails-2-sexy-migrations
   title: "New in Rails 2.0: Sexy Migrations"
   date: 2008-03-06 15:18:00
@@ -803,7 +819,7 @@ contents_004:
 
       [1]: http://errtheblog.com/post/2381 "Sexy Migrations plugin"
   user_id: "1"
-contents_005: 
+form_helpers_cheatsheet: 
   permalink: form-helpers
   title: Form Helpers
   date: 2008-03-08 17:28:00

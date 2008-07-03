@@ -17,7 +17,8 @@ mr_dizzy:
   salt: "355554500.241006543591796"
   name: mr_dizzy
   hashed_password: 4dde9351ce465af1716a54c7412366cddb377525
-  firstname: 
+  firstname: David
   id: "1"
-  surname: 
-  email: 
+  surname: Pettifer
+  email: david.pettifer@dizzy.co.uk
+

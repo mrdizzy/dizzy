@@ -3,13 +3,13 @@ require File.dirname(__FILE__) + '/../test_helper'
 class PortfolioItemTest < Test::Unit::TestCase
   fixtures :portfolio_items
   fixtures :companies
+  fixtures :portfolio_types
 
   # Replace this with your real tests.
   def test_truth
     assert true
   end
-  
-  def test_portfolio_item_must_be_between_1k_and_100k
+    def test_portfolio_item_must_be_between_1k_and_100k
   	portfolio_item = portfolio_items(:heavenly_logo)
   	
   	portfolio_item.size = 150.kilobytes
@@ -48,10 +48,10 @@ class PortfolioItemTest < Test::Unit::TestCase
 													:filename 			=> "colourlogo.png",
 													:data				=> portfolio_items(:heavenly_logo).data)
 													
-	assert !existing_portfolio_type.save,  existing_portfolio_type.errors.full_messages
+	assert !existing_portfolio_type.valid?,  existing_portfolio_type.errors.full_messages
 	assert_equal "must not be a duplicate", existing_portfolio_type.errors.on(:portfolio_type_id)
   end    
-  
+
   def test_portfolio_type_id_parent_must_exist
   	portfolio_item = portfolio_items(:heavenly_logo)
   	portfolio_item.portfolio_type_id = 323

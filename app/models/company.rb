@@ -6,6 +6,7 @@
 #  id          :integer(11)   not null, primary key
 #  name        :string(40)    
 #  description :string(255)   
+#  visible     :boolean(1)    
 #
 
 class Company < ActiveRecord::Base

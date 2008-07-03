@@ -1,3 +1,17 @@
+# == Schema Information
+# Schema version: 4
+#
+# Table name: portfolio_items
+#
+#  id                :integer(11)   not null, primary key
+#  portfolio_type_id :integer(11)   
+#  company_id        :integer(11)   
+#  content_type      :string(255)   
+#  filename          :string(255)   
+#  size              :integer(11)   
+#  data              :binary        
+#
+
 ---
 heavenly_grey_logo: 
   content_type: image/png

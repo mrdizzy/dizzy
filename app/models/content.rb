@@ -22,7 +22,7 @@ class Content < ActiveRecord::Base
 	belongs_to :version
 	belongs_to :user
 	
-	validates_presence_of :title, :description, :date, :user_id, :permalink
+	validates_presence_of :title, :description, :date, :user_id, :permalink, :version_id 
 	validates_uniqueness_of :permalink	
 	
 	before_save :create_new_version
@@ -48,8 +48,7 @@ class Content < ActiveRecord::Base
 end
 
 class Article < Content
-	validates_presence_of :content
-	
+	validates_presence_of :content	
 	before_save :parse_content	
 	
 	def parse_content
@@ -70,6 +69,7 @@ class Cheatsheet < Content
 	has_one :thumbnail, :dependent => :destroy, :foreign_key => "content_id"
 	
 	def title
-		super + " Cheatsheet"
+		result = super 
+		result + " Cheatsheet" if result
 	end
 end

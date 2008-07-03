@@ -16,8 +16,8 @@ class User < ActiveRecord::Base
 
 require 'digest/sha1'
 	validates_presence_of :name
+	validates_format_of	:name, :with => /^[a-z0-9_]+$/, :message => "can only contain letters, numbers and underscores"
 	validates_uniqueness_of :name
-	attr_accessor :password_confirmation
 	validates_confirmation_of :password
 	
 	def validate
