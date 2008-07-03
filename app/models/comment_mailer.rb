@@ -7,4 +7,12 @@ class CommentMailer < ActionMailer::Base
     from       'david.pettifer@dizzy.co.uk'
   end  
   
+  def notification(comment)
+  	subject "A new comment has been received"
+  	body		:comment => comment
+  	recipients "david.pettifer@dizzy.co.uk"
+  	from	"david.pettifer@dizzy.co.uk"
+  	
+  end
+  
 end

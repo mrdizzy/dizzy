@@ -5,7 +5,6 @@ class WelcomeController < ApplicationController
 		paginate_logos
 		@recent_articles 	= Content.recent
 		@main_article 		= @recent_articles.shift
-		@poll 				= Poll.find(:first, :order => "'id' desc")
 		@cheatsheet 		= Cheatsheet.latest
 	end
 	
