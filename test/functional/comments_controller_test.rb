@@ -41,7 +41,7 @@ class CommentsControllerTest < Test::Unit::TestCase
   	get :create, :comment => { :subject => "Hello", :body => "This is a comment", :name => "Malandra Mysogynist", :email => 'malandra@dutyfree.com' }, :content_id => 6
   	
   	assert_template("create.rjs")
-  		# No email sent
+  		# Email sent to myself
   	assert_equal num_deliveries+1, ActionMailer::Base.deliveries.size
   end  
   
