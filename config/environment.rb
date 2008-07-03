@@ -10,7 +10,7 @@ require File.join(File.dirname(__FILE__), 'boot')
 
 Rails::Initializer.run do |config|
   # Skip frameworks you're not going to use
-  # config.frameworks -= [ :action_web_service, :action_mailer ]
+   config.frameworks -= [ :action_web_service ]
 
   # Add additional load paths for your own custom dirs
   # config.load_paths += %W( #{RAILS_ROOT}/app/services )
@@ -18,6 +18,10 @@ Rails::Initializer.run do |config|
   # Force all environments to use the same logger level 
   # (by default production uses :info, the others :debug)
   # config.log_level = :debug
+
+  # Use the database for sessions instead of the file system
+  # (create the session table with 'rake create_sessions_table')
+   config.action_controller.session_store = :active_record_store
 
   config.action_mailer.delivery_method = :smtp 
   config.action_mailer.smtp_settings = {
@@ -27,9 +31,8 @@ Rails::Initializer.run do |config|
 	:user_name => "dizzynew",
 	:password => "beaslewig175"
   }
-  # Use the database for sessions instead of the file system
-  # (create the session table with 'rake create_sessions_table')
-   config.action_controller.session_store = :active_record_store
+  
+FROM_EMAIL = "david.pettifer@dizzy.co.uk"
 
   # Enable page/fragment caching by setting a file-based store
   # (remember to create the caching directory and make it readable to the application)

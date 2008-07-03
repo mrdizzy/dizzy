@@ -20,7 +20,6 @@ class CommentMailerTest < Test::Unit::TestCase
 
   def test_response_to_parent
   	comment = comments(:parent_comment)
-  	subject = "#{comment.name}: a reply to your comment at dizzy.co.uk..."
   	
 	response = CommentMailer.create_response(comment)
 	assert_equal "#{comment.name}: a reply to your comment at dizzy.co.uk...", response.subject
@@ -29,7 +28,15 @@ class CommentMailerTest < Test::Unit::TestCase
 	assert_match /Email: #{comment.children.last.email}/, response.body
 	assert_match /Comment: #{comment.children.last.body}/, response.body
 	assert_equal "#{comment.email}", response.to[0]
+	assert_equal FROM_EMAIL, response.from[0]
   end
+
+	def test_notification
+		comment = comments(:parent_comment)
+		response = CommentMailer.create_notification(comment)
+		assert_equal comment.subject, response.subject
+		assert_equal FROM_EMAIL, response.from[0]
+	end
 
   private
     def read_fixture(action)
