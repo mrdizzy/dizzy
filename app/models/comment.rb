@@ -25,10 +25,17 @@ class Comment < ActiveRecord::Base
 	end
 	
 	def validate
+		# Check comment has valid parent if it is a child
 		if parent_id
 			if parent.nil?
 				errors.add(:parent_id, "must exist in the database")
 			end
 		end
+		
+		# Check comment is linked to a valid article
+		if content.nil?
+			errors.add(:content_id, "must exist in the database")
+		end
+		
 	end
 end

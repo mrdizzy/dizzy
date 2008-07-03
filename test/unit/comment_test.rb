@@ -45,4 +45,11 @@ class CommentTest < Test::Unit::TestCase
   	comment = comments(:child_comment)
   	assert comment.valid?, comment.errors.full_messages
   end
+  
+  def should_pass_without_linked_article
+  	comment = comments(:parent_comment)
+  	comment.content_id = 23232
+  	assert !comment.valid?, comment.errors.full_messages
+  	assert_equal "must exist in the database", comment.errors.on(:content_id)
+  end
 end
