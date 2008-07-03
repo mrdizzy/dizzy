@@ -38,7 +38,7 @@ class Content < ActiveRecord::Base
 	end
 
 	def self.latest
-		self.find(:first, :order => "date DESC")	
+		self.find(:first, :order => "date ASC")	
 	end
 	
 	def self.recent
