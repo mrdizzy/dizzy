@@ -1,3 +1,0 @@
-page.replace_html "contact_form", :partial => 'form'
-page.replace_html :contact_icon, image_tag("f/nav/contact_over.png")
-page.visual_effect :toggle_blind, :contact_form unless current_page?(:action => "create")
