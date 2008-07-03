@@ -31,11 +31,19 @@ class ContentsController < ApplicationController
 	end
 	
 	def edit
-    	@article = Article.find(params[:id])    
+    	if administrator? 
+    		@article = Article.find(params[:id]) 
+    	else 
+    		redirect_to login_path  
+    	end
   	end
   	
   	def new
-  		@article = Article.new
+  		if administrator?
+  			@article = Article.new
+  		else
+  			redirect_to login_path
+  		end
   	end
 
   def update

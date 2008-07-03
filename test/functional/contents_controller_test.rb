@@ -21,19 +21,24 @@ class ContentsControllerTest < Test::Unit::TestCase
     assert true
   end
   
-  # HTML
+  # Index - category form
   
-  def test_index_should_display_new_category_form_when_administrator_logged_in
+  def test_index_should_display_new_category_form_when_administrator
     get :index, {}, { :administrator_id => users(:mr_dizzy).id }
     assert_select "form[action=\"#{categories_path}\"]", { :count => 1}
+    assert_response :success
   end
   
- def test_index_should_not_display_new_category_form_when_administrator_not_logged_in
+ def test_index_should_not_display_new_category_form_when_not_administrator
    get :index
    assert_select "form[action=\"#{categories_path}\"]", false, "There should be no new category form"
+   assert_response :success
+   
  end
  
- def test_index_should_enable_editing_of_article_when_administrator_logged_in
+ # Index - edit/delete links
+ 
+ def test_index_should_enable_editing_of_article_when_administrator
  	get :index, {}, { :administrator_id => users(:mr_dizzy).id }
  	content = Content.find(:all)
    assert_select 'a', { :count => content.size, :text => "edit"}
@@ -41,17 +46,48 @@ class ContentsControllerTest < Test::Unit::TestCase
  	assert_response :success
  end
  
- def test_index_should_not_enable_editing_of_article_when_administrator_not_logged_in
+ def test_index_should_not_enable_editing_of_article_when_not_administrator
  	get :index
    assert_select "a", {:count => 0, :text => "edit"}
    assert_select "a", {:count => 0, :text => "delete"}
  	assert_response :success
  end
  
- def test_index_should_show_add_new_category_form_when_admin_logged_in
+ #  Add category form
+ 
+ def test_index_should_show_new_category_form_when_administrator
   get :index, {}, { :administrator_id => users(:mr_dizzy).id }
      assert_select "form"
      assert_response :success
   end
+ 	
+ 	def test_should_show_no_category_form_when_not_administrator
+	 	get :show, :id => "rails-migrations"
+	 
+ 	end
+ 	
+ 	# New
+ 	
+ 	def test_should_show_new_form_when_administrator
+ 		get :new, {}, { :administrator_id => users(:mr_dizzy).id }
+ 		assert_response :success
+ 	end
+ 	
+ 	def test_should_fail_new_form_when_not_administrator
+ 		get :new
+ 		assert_redirected_to login_path
+ 	end
+ 	
+ 	# Edit
+ 	
+ 	def test_should_show_edit_form_when_administrator
+ 		get :edit, {:id => 10}, { :administrator_id => users(:mr_dizzy).id }
+ 		assert_response :success
+ 	end
+ 	
+ 	def test_should_fail_edit_form_when_not_administrator
+ 		get :edit, :id => 10
+ 		assert_redirected_to login_path
+ 	end
  	
 end

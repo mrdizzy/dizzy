@@ -7,7 +7,7 @@ def prepare_comments(comments,result=Array.new, init=true, counter=0)
 		next if comment.parent_id && init	
 			
 		if counter.even?
-		result << "<div class=\"odd\" id=\"comment_#{comment.id}\">"
+			result << "<div class=\"odd\" id=\"comment_#{comment.id}\">"
 		else
 			result << "<div class=\"normal\" id=\"comment_#{comment.id}\">"
 		end
