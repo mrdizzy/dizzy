@@ -23,4 +23,12 @@ class Comment < ActiveRecord::Base
 	def self.new_comments
 		self.find_all_by_new(true, :order => "'created_at' DESC")
 	end
+	
+	def validate
+		if parent_id
+			if parent.nil?
+				errors.add(:parent_id, "must exist in the database")
+			end
+		end
+	end
 end

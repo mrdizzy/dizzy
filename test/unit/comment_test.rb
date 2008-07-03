@@ -27,12 +27,22 @@ class CommentTest < Test::Unit::TestCase
   def test_should_pass_valid_email
   	comment = comments(:parent_comment)
   	
-  	good_addresses = %w{ melinda@dizzy.co.uk jamie@dizzy.com louise.smith@germany.de mr_lewis@lewis.co.uk  david.pettifer@dizzy.co.uk jamie.han@motif-switcher.com }
+  	good_addresses = %w{ melinda@dizzy.co.uk jamie@dizzy.com louise.smith@germany.de mr_lewis@lewis.co.uk david.pettifer@dizzy.co.uk jamie.han@motif-switcher.com }
   	good_addresses.each do |address|
   		comment.email = address
   		assert comment.valid?, comment.errors.full_messages
-
   	end
   end
   
+  def test_should_fail_with_invalid_parent
+  	comment = comments(:child_comment)
+  	comment.parent_id = 13434
+  	assert !comment.valid?, comment.errors.full_messages
+  	assert_equal "must exist in the database", comment.errors.on(:parent_id)
+  end
+  
+  def should_pass_with_valid_parent
+  	comment = comments(:child_comment)
+  	assert comment.valid?, comment.errors.full_messages
+  end
 end
