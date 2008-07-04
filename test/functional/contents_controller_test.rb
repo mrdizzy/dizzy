@@ -8,7 +8,9 @@ class ContentsControllerTest < Test::Unit::TestCase
 	
 	fixtures :contents
 	fixtures :users
+	fixtures :categories
 	fixtures :versions
+	fixtures :categories_contents
 	fixtures :comments
 
   def setup
@@ -84,6 +86,14 @@ class ContentsControllerTest < Test::Unit::TestCase
  	def test_should_show_edit_form_when_administrator
  		get :edit, {:id => 10}, { :administrator_id => users(:mr_dizzy).id }
  		assert_response :success
+ 		assert_select "form" do
+ 			assert_select "select#article_style" do
+ 				STYLES.each do |style|
+ 					assert_select "option", { :count => 1, :text => style}
+ 					assert_select "option[value=#{style}]"
+ 				end
+ 			end
+ 		end
  	end
  	
  	def test_should_fail_edit_form_when_not_administrator
