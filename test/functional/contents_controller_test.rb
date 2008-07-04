@@ -95,10 +95,25 @@ class ContentsControllerTest < Test::Unit::TestCase
  		get :show, { :id => "rails-migrations" }
  		comments = Comment.find_all_by_content_id(1)
 		comments.each do |comment|
-			assert_select "div#comment_#{comment.id}"
-		
-		end
-	
+			assert_select "div#comment_#{comment.id}" do 
+				assert_select "h6", comment.subject
+				assert_select "span", { :count => 0, :text => comment.email }
+				assert_select "p", comment.body
+			end		
+		end	
+ 		assert_response :success
+ 	end
+ 	
+ 	def test_should_show_comments_administrator
+ 		get :show, { :id => "rails-migrations" }, { :administrator_id => users(:mr_dizzy).id }
+ 		comments = Comment.find_all_by_content_id(1)
+		comments.each do |comment|
+			assert_select "div#comment_#{comment.id}" do 
+				assert_select "h6", comment.subject
+				assert_select "span", { :count => 1, :text => comment.email }
+				assert_select "p", comment.body
+			end		
+		end	
  		assert_response :success
  	end
  	
