@@ -12,7 +12,7 @@ def prepare_comments(comments,result=Array.new, init=true, counter=0)
 			result << "<div class=\"normal\" id=\"comment_#{comment.id}\">"
 		end
 		
-		result << "<div class=\"comments_left\"><p><span class=\"date\">#{time_ago_in_words(comment.created_at).upcase} AGO</span><br/> <span class=\"email\">#{comment.name}</span>" 
+		result << "<div class=\"comments_left\"><p><span class=\"date\">#{time_ago_in_words(comment.created_at).upcase} AGO</span><br/> <span class=\"email\">#{comment.name}</span></p>" 
 		
 		if administrator? 
 			result << "<br/><span class=\"email\">#{comment.email}</span>" 

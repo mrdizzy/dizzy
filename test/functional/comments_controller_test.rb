@@ -81,9 +81,14 @@ class CommentsControllerTest < Test::Unit::TestCase
   # Destroy
 
   def test_destroy_comment_logged_in
-  	delete :destroy, :id => "1"
+  	delete :destroy, { :id => "1" }, { :administrator_id => users(:mr_dizzy).name }
   	assert_template("destroy.rjs")
   	assert_response :success
+  end
+  
+    def test_destroy_comment_logged_in
+  	delete :destroy, { :id => "1" }
+  	  assert_redirected_to login_path
   end
 
 end

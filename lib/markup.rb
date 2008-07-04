@@ -214,7 +214,7 @@ def parse_coderay(text, language, line_numbers)
 	# The list of tags which are considered block-level constructs and an
 	# alternation pattern suitable for use in regexps made from the list
 	StrictBlockTags = %w[ p div h[1-6] blockquote pre td dl ol ul script noscript
-		form fieldset iframe math ins del ]
+		form fieldset iframe math ins del table ]
 	StrictTagPattern = StrictBlockTags.join('|')
 
 	LooseBlockTags = StrictBlockTags - %w[ins del]
@@ -500,13 +500,19 @@ def parse_coderay(text, language, line_numbers)
 		str.gsub( TableBlockRegexp ) { |block| 
 			counter = 0		
 			table = $1
+			result = ""
 			table = table.split("\n")
-			result = table.collect do |b| 
+			table.each do |row| 
 				counter = counter + 1
-					    
-				("<tr class=\"#{counter.even?}\"><td>" + b + "</td></tr>").gsub(/\s{2,30}/, "</td><td>")
+				cells = row.split(/\s{2,30}/)
+				result += "<tr class=\"#{counter.even?}\">"
+				cells.each do |cell|
+					cell = form_paragraphs(cell,rs)
+					result += "<td>\n#{cell}\n</td>"
+				end
+				result += "</tr>"
 			end
-			result = "<table>\n" + result.to_s + "</table>"	
+			result = "<table>" + result + "</table>"	
 		}		
 	end
 
@@ -688,6 +694,10 @@ str = str + "\n"
 				level = hdrchars.length
 				%{<h%d>%s</h%d>\n\n} % [ level, title, level ]
 			}
+	end
+
+	def unhasify_table_blocks(str, rs)
+
 	end
 
 	### Wrap all remaining paragraph-looking text in a copy of +str+ inside <p>

@@ -24,11 +24,15 @@ class CommentsController < ApplicationController
 	end
 	
 	def destroy
-		@comment = Comment.find(params[:id])
- 	 	@comment.destroy
- 	 	respond_to do |wants|
- 	 		wants.js
-	 	end
+		if administrator?
+			@comment = Comment.find(params[:id])
+	 	 	@comment.destroy
+	 	 	respond_to do |wants|
+	 	 		wants.js
+		 	end
+		else
+			redirect_to login_path
+		end
 	end
 	
 	def create			

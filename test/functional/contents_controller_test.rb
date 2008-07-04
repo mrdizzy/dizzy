@@ -9,6 +9,7 @@ class ContentsControllerTest < Test::Unit::TestCase
 	fixtures :contents
 	fixtures :users
 	fixtures :versions
+	fixtures :comments
 
   def setup
     @controller = ContentsController.new
@@ -88,6 +89,17 @@ class ContentsControllerTest < Test::Unit::TestCase
  	def test_should_fail_edit_form_when_not_administrator
  		get :edit, :id => 10
  		assert_redirected_to login_path
+ 	end
+ 	
+ 	def test_should_show_comments
+ 		get :show, { :id => "rails-migrations" }
+ 		comments = Comment.find_all_by_content_id(1)
+		comments.each do |comment|
+			assert_select "div#comment_#{comment.id}"
+		
+		end
+	
+ 		assert_response :success
  	end
  	
 end
