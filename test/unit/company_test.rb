@@ -23,4 +23,10 @@ class CompanyTest < Test::Unit::TestCase
 		assert !company.valid?, "Company should not be valid as no header graphic"
 		assert_equal "Company must have a header graphic", company.errors.on_base
 	end
+	
+	def test_should_succeed_if_valid_header
+		company = companies(:heavenly)
+		company.name = "Benefits Agency PLC"
+		assert company.valid?, company.errors.full_messages
+	end	
 end

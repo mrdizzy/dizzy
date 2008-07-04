@@ -9,6 +9,9 @@ class PortfolioItemTest < Test::Unit::TestCase
   def test_truth
     assert true
   end
+  
+  # Validations
+  
     def test_portfolio_item_must_be_between_1k_and_100k
   	portfolio_item = portfolio_items(:heavenly_logo)
   	
@@ -24,13 +27,36 @@ class PortfolioItemTest < Test::Unit::TestCase
   	assert portfolio_item.valid?, portfolio_item.errors.full_messages
   end
   
-  def test_portfolio_item_must_belong_to_valid_company
-  	portfolio_item = portfolio_items(:heavenly_logo)
-  	portfolio_item.portfolio_type_id = 2
-  	portfolio_item.company_id = 88232
-  	assert !portfolio_item.valid?, portfolio_item.errors.full_messages
-  	assert_equal "must exist in the database", portfolio_item.errors.on(:company_id)
-  end
+  def test_content_type_must_be_valid
+  	bad 	= %w(image/jpg image/jpeg audio/wav image/tiff image/pngg image/giff image/png/audio)
+  	
+  	bad.each do |content_type| 
+		valid_content_type = PortfolioItem.new(	:portfolio_type_id	=> "2",
+												:company_id 		=> "1",
+												:content_type 		=> content_type,
+												:filename 			=> "letterhead.png",
+												:size 				=> "3644",
+												:data				=> portfolio_items(:heavenly_logo).data)
+														
+		assert !valid_content_type.valid?,  valid_content_type.errors.full_messages
+		assert_equal "must be a PNG or GIF file", valid_content_type.errors.on(:content_type)
+	end
+	
+	good	= %w(image/png image/x-png image/gif)
+	
+	good.each do |content_type|
+		valid_content_type = PortfolioItem.new( :portfolio_type_id	=> "2",
+												:company_id 		=> "1",
+												:content_type 		=> content_type,
+												:filename 			=> "letterhead.png",
+												:size 				=> "3644",
+												:data				=> portfolio_items(:heavenly_logo).data)
+  		assert valid_content_type.valid?, valid_content_type.errors.full_messages
+  	end
+  end    
+  
+  
+  # Associations
   
   def test_portfolio_item_must_be_destroyed_upon_company_deletion
   	portfolio_items = PortfolioItem.find_all_by_company_id(1)  
@@ -59,30 +85,4 @@ class PortfolioItemTest < Test::Unit::TestCase
   	assert_equal "must exist in the database", portfolio_item.errors.on(:portfolio_type_id)
   end
   
-  def test_content_type_must_be_valid
-  	bad 	= %w(image/jpg image/jpeg audio/wav image/tiff image/pngg image/giff image/png/audio)
-  	good	= %w(image/png image/x-png image/gif)
-  	
-  	bad.each do |content_type| 
-		valid_content_type = PortfolioItem.new(	:portfolio_type_id	=> "2",
-												:company_id 		=> "1",
-												:content_type 		=> content_type,
-												:filename 			=> "letterhead.png",
-												:size 				=> "3644",
-												:data				=> portfolio_items(:heavenly_logo).data)
-														
-		assert !valid_content_type.valid?,  valid_content_type.errors.full_messages
-		assert_equal "must be a PNG or GIF file", valid_content_type.errors.on(:content_type)
-	end
-	
-	good.each do |content_type|
-		valid_content_type = PortfolioItem.new( :portfolio_type_id	=> "2",
-												:company_id 		=> "1",
-												:content_type 		=> content_type,
-												:filename 			=> "letterhead.png",
-												:size 				=> "3644",
-												:data				=> portfolio_items(:heavenly_logo).data)
-  		assert valid_content_type.valid?, valid_content_type.errors.full_messages
-  	end
-  end    
 end

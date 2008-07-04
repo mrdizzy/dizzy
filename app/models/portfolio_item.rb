@@ -31,10 +31,7 @@ class PortfolioItem < ActiveRecord::Base
 		self.size = binary_data.size
 	end
 	
-	def validate
-		#if company.nil?
-		#	errors.add(:company_id, "must exist in the database")
-		#end
+	def validate	
 		if portfolio_type.nil?
 			errors.add(:portfolio_type_id, "must exist in the database")
 		end

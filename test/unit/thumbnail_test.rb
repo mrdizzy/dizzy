@@ -20,16 +20,4 @@ class BinaryTest < Test::Unit::TestCase
   	assert !png.valid?
   end
   
-  def test_thumbnail_content_type
-  	flunk
-  end
-
-  def test_binary_content_id 
-  	flunk
-  end
-
-  def test_binary_filename
-  	flunk
-  end
-  
 end
