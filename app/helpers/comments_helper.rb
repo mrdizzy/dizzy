@@ -3,7 +3,7 @@ module CommentsHelper
 def prepare_comments(comments,result=Array.new, init=true, counter=0)
 	counter = counter + 1
 	comments.each do |comment|	
-		
+		result << "\n\n"
 		next if comment.parent_id && init	
 			
 		if counter.even?

@@ -14,10 +14,10 @@
 #  name       :string(255)   
 #
 --- 
-parent_comment: 
+great_grandmother: 
   name: Malandra Burrows
   new: "1"
-  content_id: "2"
+  content_id: "1"
   body: |-
     That was an absolutely fantastic tutorial.
     
@@ -31,20 +31,8 @@ parent_comment:
   parent_id: 
   created_at: 2008-06-16 21:17:46
   email: malandra@burrows.com
-child_comment: 
-  name: Gary Cooley
-  new: "1"
-  content_id: "2"
-  body: |-
-    That's no problem at all Malandra.
-    
-    Cheers and hugs.
-  subject: No problem!
-  id: "5"
-  parent_id: "1"
-  created_at: 2008-06-16 21:23:28
-  email: gary@cooley.com
-rails_comment: 
+  
+grandmother: 
   name: Gary Cooley
   new: "1"
   content_id: "1"
@@ -54,40 +42,31 @@ rails_comment:
     Cheers and hugs.
   subject: No problem!
   id: "2"
-  parent_id:
+  parent_id: "1"
   created_at: 2008-06-16 21:23:28
-  email: gary@cooley.com  
-rails_child_comment: 
+  email: david.jason@cooley.com
+mother: 
+  name: Gary Cooley
+  new: "1"
+  content_id: "1"
+  body: |-
+    That's no problem at all Malandra.
+    
+    Cheers and hugs.
+  subject: No problem!
+  id: "3"
+  parent_id: "2"
+  created_at: 2008-06-16 21:23:28
+  email: jennifer.saunders@cooley.com  
+daughter: 
   name: David Cooley
   new: "1"
   content_id: "1"
   body: |-
     Oh wow, superb, thank you so much.
   subject: No problem!
-  id: "6"
-  parent_id: "2"
-  created_at: 2008-06-16 22:23:28
-  email: david@cooley.com    
-bad_comment:
-  name: "David Pettifer"
-  new: "1"
-  content_id: "1"
-  body: Don't worry about it
-  subject: Test comment
-  id: "3"
-  parent_id:
-  created_at: 2008-06-16 21:33:28
-  email: belindra@dizzy.com
-invalid_child: 
-  name: "David Pettifer"
-  new:
-  content_id: "1"
-  body: |-
-    That's no problem at all Malandra.
-    
-    Cheers and hugs.
-  subject: 
   id: "4"
-  parent_id: "1"
-  created_at: 
-  email: gary@cooley.com  
+  parent_id: "3"
+  created_at: 2008-06-16 22:23:28
+  email: david@cooley.com
+  

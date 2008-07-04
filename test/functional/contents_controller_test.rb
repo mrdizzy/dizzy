@@ -91,14 +91,15 @@ class ContentsControllerTest < Test::Unit::TestCase
  		assert_redirected_to login_path
  	end
  	
- 	def test_should_show_comments
+ 	def test_should_show_comments_without_administrator
  		get :show, { :id => "rails-migrations" }
  		comments = Comment.find_all_by_content_id(1)
 		comments.each do |comment|
 			assert_select "div#comment_#{comment.id}" do 
-				assert_select "h6", comment.subject
-				assert_select "span", { :count => 0, :text => comment.email }
-				assert_select "p", comment.body
+				assert_select "h6", comment.subject, "No subject found"
+					# Do not show comment email 
+				assert_select "span", { :count => 0, :text => comment.email }, "No email found"
+				assert_select "p", comment.body, "No body found"
 			end		
 		end	
  		assert_response :success
@@ -109,9 +110,9 @@ class ContentsControllerTest < Test::Unit::TestCase
  		comments = Comment.find_all_by_content_id(1)
 		comments.each do |comment|
 			assert_select "div#comment_#{comment.id}" do 
-				assert_select "h6", comment.subject
-				assert_select "span", { :count => 1, :text => comment.email }
-				assert_select "p", comment.body
+				assert_select "h6", comment.subject, "No comment subject found"
+				assert_select "span.email", { :count => 1, :text => comment.email }
+				assert_select "p", comment.body, "No body found"
 			end		
 		end	
  		assert_response :success

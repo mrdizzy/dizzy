@@ -41,7 +41,7 @@ class CommentsControllerTest < Test::Unit::TestCase
   	get :create, :comment => { :subject => "Hello", :body => "This is a comment", :name => "Malandra Mysogynist", :email => 'malandra@dutyfree.com' }, :content_id => 6
   	
   	assert_template("create.rjs")
-  		# Email sent to myself
+  		# Email sent to self
   	assert_equal num_deliveries+1, ActionMailer::Base.deliveries.size
   end  
   
@@ -50,43 +50,42 @@ class CommentsControllerTest < Test::Unit::TestCase
   	assert_template("new.rjs")
   end
   
+  def test_fail_invalid_main_comment
+  	get :new, :comment => { :name => "Melissa" }, :content_id => 1
+  	assert_template("new.rjs") 
+	end    
+  
   # Child comments
   
-  def test_new_child_comment
+  def test_succeed_new_child_comment_form
   	get :new, :content_id => 6, :comment_id => "2"
   	assert_template("new_child.rjs")
   	end
 
-  def test_invalid_child_comment
-  	get :new, :comment => comments(:invalid_child), :content_id => 6, :comment_id => 2
+  def test_fail_create_invalid_child_comment
+  	get :new, :comment => { :body => "Here is a comment" }, :content_id => 1, :comment_id => 2
   	assert_template("new_child.rjs") 
 	end    	
-  	
-  def test_invalid_main_comment
-  	get :new, :comment => comments(:bad_comment), :content_id => 6
-  	assert_template("new.rjs") 
-	end  
 
-  def test_create_child_comment
+  def test_succeed_create_valid_child_comment
   	num_deliveries = ActionMailer::Base.deliveries.size
-  	get :create, :comment => { :subject => "Hello", :body => "This is a comment", :name => "Malandra Mysogynist", :email => 'malandra@dutyfree.com', :content_id => 6 }, :comment_id => "2" 
+  	get :create, :comment => { :subject => "Hello", :body => "This is a comment", :name => "Malandra Mysogynist", :email => 'malandra@dutyfree.com', :content_id => 1 }, :comment_id => "2" 
   	
   	assert_template("create_child.rjs")
   	
-  		# Email sent to author of parent comment
-  		# and to myself
+  		# Email sent to author of parent comment and self
   	assert_equal num_deliveries+2, ActionMailer::Base.deliveries.size
   end
 
   # Destroy
 
-  def test_destroy_comment_logged_in
+  def test_succeed_destroy_comment_with_administrator
   	delete :destroy, { :id => "1" }, { :administrator_id => users(:mr_dizzy).name }
   	assert_template("destroy.rjs")
   	assert_response :success
   end
   
-    def test_destroy_comment_logged_in
+    def test_fail_destroy_comment_without_administrator
   	delete :destroy, { :id => "1" }
   	  assert_redirected_to login_path
   end
