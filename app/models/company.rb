@@ -23,11 +23,9 @@ class Company < ActiveRecord::Base
   		
   		# Make sure that company has a header graphic
   		
-  		header = portfolio_items.collect { |item| item if item.portfolio_type_id == 7}
-  		portfolio_items.each do |item|
-  			puts item.portfolio_type_id
-  		end
-  		if header[0].nil?
+  		header = portfolio_items.collect { |item| item if item.portfolio_type_id == 7}.compact
+
+  		if header.first.nil?
   			errors.add_to_base "Company must have a header graphic"
   		end
   		
