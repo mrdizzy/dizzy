@@ -2,7 +2,7 @@
 # migrations feature of ActiveRecord to incrementally modify your database, and
 # then regenerate this schema definition.
 
-ActiveRecord::Schema.define(:version => 7) do
+ActiveRecord::Schema.define(:version => 5) do
 
   create_table "binaries", :force => true do |t|
     t.column "binary_data",  :binary
@@ -10,7 +10,7 @@ ActiveRecord::Schema.define(:version => 7) do
     t.column "content_type", :string
     t.column "size",         :integer
     t.column "filename",     :string
-    t.column "content_id",   :integer, :null => false
+    t.column "content_id",   :integer
   end
 
   add_index "binaries", ["content_id"], :name => "fk_content_binaries"
@@ -21,8 +21,8 @@ ActiveRecord::Schema.define(:version => 7) do
   end
 
   create_table "categories_contents", :id => false, :force => true do |t|
-    t.column "category_id", :integer, :null => false
-    t.column "content_id",  :integer, :null => false
+    t.column "category_id", :integer
+    t.column "content_id",  :integer
   end
 
   add_index "categories_contents", ["content_id"], :name => "fk_content_categories_contents"
@@ -33,14 +33,13 @@ ActiveRecord::Schema.define(:version => 7) do
     t.column "subject",    :string
     t.column "email",      :string
     t.column "parent_id",  :integer
-    t.column "content_id", :integer,                    :null => false
+    t.column "content_id", :integer
     t.column "created_at", :datetime
     t.column "new",        :boolean,  :default => true
     t.column "name",       :string
   end
 
   add_index "comments", ["content_id"], :name => "fk_content_comments"
-  add_index "comments", ["parent_id"], :name => "fk_comment_comments"
 
   create_table "companies", :force => true do |t|
     t.column "name",        :string,  :limit => 40
@@ -62,8 +61,8 @@ ActiveRecord::Schema.define(:version => 7) do
   add_index "contents", ["user_id"], :name => "fk_user_contents"
 
   create_table "contents_contents", :id => false, :force => true do |t|
-    t.column "content_id", :integer, :null => false
-    t.column "related_id", :integer, :null => false
+    t.column "content_id", :integer
+    t.column "related_id", :integer
   end
 
   add_index "contents_contents", ["related_id"], :name => "fk_secondary_content_contents"
@@ -83,8 +82,8 @@ ActiveRecord::Schema.define(:version => 7) do
   end
 
   create_table "portfolio_items", :force => true do |t|
-    t.column "portfolio_type_id", :integer, :null => false
-    t.column "company_id",        :integer, :null => false
+    t.column "portfolio_type_id", :integer
+    t.column "company_id",        :integer
     t.column "content_type",      :string
     t.column "filename",          :string
     t.column "size",              :integer
@@ -106,7 +105,7 @@ ActiveRecord::Schema.define(:version => 7) do
 
   create_table "sections", :force => true do |t|
     t.column "body",       :text
-    t.column "content_id", :integer, :null => false
+    t.column "content_id", :integer
     t.column "title",      :string
     t.column "summary",    :string
     t.column "permalink",  :string
