@@ -27,8 +27,7 @@ class CompaniesController < ApplicationController
 		  	end
 		end 	  		
 		
-		if @company.valid? && @company.portfolio_items.all?(&:valid?)  
-			@company.save!  		
+		if @company.save		
 			redirect_to :action => 'index'  	  			
 	  	else
 	  		render :action => 'new' 

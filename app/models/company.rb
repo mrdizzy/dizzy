@@ -21,9 +21,11 @@ class Company < ActiveRecord::Base
     		errors.add_to_base "Portfolio items must all be of a different type"
   		end
   		
-  		header = portfolio_items.collect { |item| item if item.portfolio_type_id == 7 }
-
-  		if header.empty?
+  		# Make sure that company has a header graphic
+  		
+  		header = portfolio_items.collect { |item| item if item.portfolio_type_id == 7}
+  		
+  		if header[0].nil?
   			errors.add_to_base "Company must have a header graphic"
   		end
 	end 
