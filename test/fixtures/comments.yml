@@ -57,7 +57,7 @@ rails_comment:
   parent_id:
   created_at: 2008-06-16 21:23:28
   email: gary@cooley.com  
-rails_child_omment: 
+rails_child_comment: 
   name: David Cooley
   new: "1"
   content_id: "1"
@@ -69,9 +69,9 @@ rails_child_omment:
   created_at: 2008-06-16 22:23:28
   email: david@cooley.com    
 bad_comment:
-  name:
+  name: "David Pettifer"
   new: "1"
-  content_id:
+  content_id: "1"
   body: Don't worry about it
   subject: Test comment
   id: "3"
@@ -79,9 +79,9 @@ bad_comment:
   created_at: 2008-06-16 21:33:28
   email: belindra@dizzy.com
 invalid_child: 
-  name: 
+  name: "David Pettifer"
   new:
-  content_id:
+  content_id: "1"
   body: |-
     That's no problem at all Malandra.
     
