@@ -14,7 +14,7 @@
 #
 
 --- 
-portfolio_types_00001: 
+cards: 
   visible: "1"
   column_space: "1"
   id: "1"
@@ -32,7 +32,7 @@ portfolio_types_00001:
     jyBDihxJsuSFBAA7
 
   position: "2"
-portfolio_types_00002: 
+leaflet: 
   visible: "1"
   column_space: "2"
   id: "2"
@@ -47,7 +47,7 @@ portfolio_types_00002:
     TgKKBU2CRJxWBxuSL6qrrK2ur7AMCQA7
 
   position: "5"
-portfolio_types_00003: 
+letterhead: 
   visible: "1"
   column_space: "1"
   id: "3"
@@ -64,7 +64,7 @@ portfolio_types_00003:
     CQA7
 
   position: "3"
-portfolio_types_00004: 
+logo: 
   visible: "1"
   column_space: "1"
   id: "4"
@@ -78,7 +78,7 @@ portfolio_types_00004:
     EHZIXys4zBru9wBcUDjBCTEuORozHwoxJ4YMMAFOTIoMAwWAhZCGCQA7
 
   position: "1"
-portfolio_types_00005: 
+colour_logo: 
   visible: 
   column_space: "1"
   id: "5"
@@ -87,7 +87,7 @@ portfolio_types_00005:
   header_filename: 
   header_binary: 
   position: "100"
-portfolio_types_00006: 
+grey_logo: 
   visible: 
   column_space: "1"
   id: "6"
@@ -96,7 +96,7 @@ portfolio_types_00006:
   header_filename: 
   header_binary: 
   position: "101"
-portfolio_types_00007: 
+header: 
   visible: 
   column_space: "1"
   id: "7"
@@ -105,7 +105,7 @@ portfolio_types_00007:
   header_filename: 
   header_binary: 
   position: "102"
-portfolio_types_00008: 
+slip: 
   visible: "1"
   column_space: "1"
   id: "8"

@@ -23,11 +23,12 @@ class CompaniesController < ApplicationController
 		
 		params[:new_portfolio_items].each_value do |item| 
 		  	unless item[:uploaded_data].blank?
-		  		@company.portfolio_items.build(item)
+		  		@company.portfolio_items.build(item) 
 		  	end
 		end 	  		
 		
-		if @company.save 	  		
+		if @company.valid? && @company.portfolio_items.all?(&:valid?)  
+			@company.save!  		
 			redirect_to :action => 'index'  	  			
 	  	else
 	  		render :action => 'new' 

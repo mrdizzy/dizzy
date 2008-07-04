@@ -21,7 +21,6 @@ class PortfolioItem < ActiveRecord::Base
 	validates_presence_of :filename
 	validates_presence_of :content_type
 	validates_presence_of :data
-	validates_associated :company
 	belongs_to 	:portfolio_type
 	belongs_to	:company, :order => "portfolio_types.position"
 	
@@ -33,9 +32,9 @@ class PortfolioItem < ActiveRecord::Base
 	end
 	
 	def validate
-		if company.nil?
-			errors.add(:company_id, "must exist in the database")
-		end
+		#if company.nil?
+		#	errors.add(:company_id, "must exist in the database")
+		#end
 		if portfolio_type.nil?
 			errors.add(:portfolio_type_id, "must exist in the database")
 		end

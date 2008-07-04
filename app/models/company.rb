@@ -20,5 +20,11 @@ class Company < ActiveRecord::Base
   		if portfolio_items.map(&:portfolio_type_id) != portfolio_items.map(&:portfolio_type_id).uniq
     		errors.add_to_base "Portfolio items must all be of a different type"
   		end
+  		
+  		header = portfolio_items.collect { |item| item if item.portfolio_type_id == 7 }
+
+  		if header.empty?
+  			errors.add_to_base "Company must have a header graphic"
+  		end
 	end 
 end
