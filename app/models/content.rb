@@ -17,12 +17,13 @@
 class Content < ActiveRecord::Base
 	has_and_belongs_to_many :categories
 	has_and_belongs_to_many :related_articles, :class_name => "Content", :foreign_key => "related_id"
-	has_many :comments, :dependent => :destroy, :order => "'created_at' DESC"
-	has_many :sections, :dependent => :destroy, :order => "'title' ASC"
-	belongs_to :version
-	belongs_to :user
+	has_many 				:comments, :dependent => :destroy, :order => "'created_at' DESC"
+	has_many 				:sections, :dependent => :destroy, :order => "'title' ASC"
+	belongs_to 				:version
+	belongs_to 				:user
 	
-	validates_presence_of :title, :description, :date, :user_id, :permalink, :version_id 
+	validates_format_of		:permalink, :with => /^[a-z0-9-]+$/
+	validates_presence_of 	:title, :description, :date, :user_id, :permalink, :version_id 
 	validates_uniqueness_of :permalink	
 	
 	before_save :create_new_version
@@ -58,9 +59,10 @@ class Content < ActiveRecord::Base
 end
 
 class Article < Content
-	validates_presence_of :content	
-	before_save :parse_content
-	validates_inclusion_of :style, :in => STYLES
+	validates_presence_of 	:content	
+	before_save 			:parse_content
+	validates_presence_of	:style
+	validates_inclusion_of 	:style, :in => STYLES
 	
 	def parse_content
 		self.content.gsub!("<%", "&lt;%")

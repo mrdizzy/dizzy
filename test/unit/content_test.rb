@@ -44,13 +44,14 @@ class ContentTest < Test::Unit::TestCase
   end
   
     def test_should_fail_duplicate_permalinks
-  	duplicate = contents(:file_uploads_article)
+  	duplicate 			= contents(:file_uploads_article)
   	duplicate.permalink = "debugging-form-helpers-with-the-console"
-  	assert duplicate.errors.invalid?(:permalink)
+	duplicate.valid?
+  	assert duplicate.errors.invalid?(:permalink), "Article should not be valid"
   end
   
-  
   # Body
+  
     def test_fail_when_empty_body
   	@form_helpers.content = ""
   	assert !@form_helpers.valid?, "Article should not be valid"

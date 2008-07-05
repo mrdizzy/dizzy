@@ -24,30 +24,35 @@ class ContentsControllerTest < Test::Unit::TestCase
     assert true
   end
   
-  # Index - category form
+  # Index
   
   def test_index_administrator
     get :index, {}, { :administrator_id => users(:mr_dizzy).id }
+	assert_response :success
+    	# Categories form 
     assert_select "form[action=\"#{categories_path}\"]", { :count => 1}
+    	# Articles
     content = Content.find(:all, :order => "date DESC")
-
     assert_select "table.articles" do 
 	    content.each do |article|
     		assert_select "td", /#{article.title}/
     	end
 	   assert_select 'a', { :count => content.size, :text => "edit"}
 	   assert_select 'a', { :count => content.size, :text => "delete"}
-
 	end
-    assert_response :success
   end
   
  def test_index_not_administrator
    get :index
    assert_select "form[action=\"#{categories_path}\"]", false, "There should be no new category form"
-    recent = Content.find(:all, :order => "date DESC")
-   assert_select "a", {:count => 0, :text => "edit"}
-   assert_select "a", {:count => 0, :text => "delete"}
+ content = Content.find(:all, :order => "date DESC")
+    assert_select "table.articles" do 
+	    content.each do |article|
+    		assert_select "td", /#{article.title}/
+    	end
+	   assert_select "a", {:count => 0, :text => "edit"}
+	   assert_select "a", {:count => 0, :text => "delete"}
+   end
    assert_response :success
    
  end
@@ -83,6 +88,8 @@ class ContentsControllerTest < Test::Unit::TestCase
  		get :edit, :id => 10
  		assert_redirected_to login_path
  	end
+ 	
+ 	# Show
  	
  	def test_should_show_comments_without_administrator
  		get :show, { :id => "rails-migrations" }
