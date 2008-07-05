@@ -19,9 +19,8 @@ class ContentTest < Test::Unit::TestCase
   
   def test_should_fail_without_category
   	@form_helpers.categories.destroy_all
-  	assert !@form_helpers.valid?, "Should be invalid without associate categories"
-  	puts @form_helpers.errors.full_messages
-  	assert "Please select at least one category", @form_helpers.errors.on_base
+  	assert !@form_helpers.valid?, "Should be invalid without associated categories"
+  	assert "must exist", @form_helpers.errors.invalid?(:categories)
   end
   
   # Empty attributes
@@ -41,7 +40,7 @@ class ContentTest < Test::Unit::TestCase
   	bad_permalinks = ["underscore_not_valid", "&no-!weird-%#\"/'characters)$", "no spaces", "NO-CAPITALS"]
   	bad_permalinks.each do |permalink|
   		@form_helpers.permalink = permalink
-  		assert !@form_helpers.valid?, "Permalink #{permalink} should be invalid"
+  		assert "is invalid", @form_helpers.errors.invalid?(:permalink)
   	 end
   end 
   
@@ -49,7 +48,6 @@ class ContentTest < Test::Unit::TestCase
   	good_permalinks = ["valid-category-name", "rails-2-and-jeffrey", "wembley"]
   	good_permalinks.each do |permalink|
   		@form_helpers.permalink = permalink
-  		@form_helpers.valid?
   		assert @form_helpers.valid?, "Permalink #{permalink} should be valid"
   	 end
   end
@@ -65,14 +63,14 @@ class ContentTest < Test::Unit::TestCase
   
     def test_fail_when_empty_body
   	@form_helpers.content = ""
-  	assert !@form_helpers.valid?, "Article should not be valid"
+  	assert "can't be empty", @form_helpers.errors.invalid?(:content)
   end
   
   # Title
   
   def test_fail_when_empty_title
  	@form_helpers.title = ""
- 	assert !@form_helpers.valid?, "Article should not be valid"
+ 	assert "can't be empty", @form_helpers.errors.invalid?(:title)
   end
   
 end
