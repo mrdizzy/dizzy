@@ -8,17 +8,19 @@ class ArticleTest < Test::Unit::TestCase
     assert true
   end
   
+  def setup
+  	@form_helpers = contents(:form_helpers_article)
+  end
+  
   # Style
     
   def test_fail_when_empty_style
-  	article = contents(:form_helpers_article)
-  	article.style = ""
-  	assert !article.valid?, "Article should not be valid"
+  	@form_helpers.style = ""
+  	assert !@form_helpers.valid?, "Article should not be valid"
   end
   
-  def test_succeed_when_valid_style
-  	article = contents(:form_helpers_article)
-  	assert article.valid?, article.errors.full_messages
+  def test_succeed_when_valid
+  	assert @form_helpers.valid?, @form_helpers.errors.full_messages
   end
-  
+    
 end

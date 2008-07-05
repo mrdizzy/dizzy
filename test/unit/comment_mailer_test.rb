@@ -19,7 +19,7 @@ class CommentMailerTest < Test::Unit::TestCase
   end
 
   def test_response_to_parent
-  	comment = comments(:parent_comment)
+  	comment = comments(:grandmother)
   	
 	response = CommentMailer.create_response(comment)
 	assert_equal "#{comment.name}: a reply to your comment at dizzy.co.uk...", response.subject
@@ -32,7 +32,7 @@ class CommentMailerTest < Test::Unit::TestCase
   end
 
 	def test_notification
-		comment = comments(:parent_comment)
+		comment = comments(:grandmother)
 		response = CommentMailer.create_notification(comment)
 		assert_equal comment.subject, response.subject
 		assert_equal FROM_EMAIL, response.from[0]

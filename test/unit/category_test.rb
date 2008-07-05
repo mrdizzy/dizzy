@@ -15,6 +15,8 @@ class CategoryTest < Test::Unit::TestCase
 	assert category.errors.invalid?(:permalink)
   end
 
+	# Permalinks
+
   def test_should_fail_duplicate_permalinks
   	duplicate = Category.new(:name => "Melanie", :permalink => "plugins")
   	assert !duplicate.valid?, "Category permalink should be invalid"
