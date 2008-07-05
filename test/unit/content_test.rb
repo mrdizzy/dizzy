@@ -4,6 +4,7 @@ class ContentTest < Test::Unit::TestCase
   fixtures :contents
   fixtures :categories
   fixtures :comments
+  fixtures :categories_contents
 
   # Replace this with your real tests.
   def test_truth
@@ -12,6 +13,14 @@ class ContentTest < Test::Unit::TestCase
    
   def setup
   	@form_helpers = contents(:form_helpers_article)
+  end
+  
+  # Must have category
+  
+  def test_should_fail_without_category
+  	@form_helpers.categories.destroy_all
+  	assert !@form_helpers.valid?, "Should be invalid without associate categories"
+  	assert "Please select at least one category", @form_helpers.errors.on_base
   end
   
   # Empty attributes
@@ -39,6 +48,7 @@ class ContentTest < Test::Unit::TestCase
   	good_permalinks = ["valid-category-name", "rails-2-and-jeffrey", "wembley"]
   	good_permalinks.each do |permalink|
   		@form_helpers.permalink = permalink
+  		@form_helpers.valid?
   		assert @form_helpers.valid?, "Permalink #{permalink} should be valid"
   	 end
   end

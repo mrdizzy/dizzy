@@ -22,10 +22,11 @@ class Content < ActiveRecord::Base
 	belongs_to 				:version
 	belongs_to 				:user
 	
+	validates_presence_of 	:categories, :message => "must exist"
 	validates_format_of		:permalink, :with => /^[a-z0-9-]+$/
 	validates_presence_of 	:title, :description, :date, :user_id, :permalink, :version_id 
 	validates_uniqueness_of :permalink	
-	
+
 	before_save :create_new_version
 	
 	attr_accessor :new_version
