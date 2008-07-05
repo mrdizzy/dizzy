@@ -20,6 +20,7 @@ class ContentTest < Test::Unit::TestCase
   def test_should_fail_without_category
   	@form_helpers.categories.destroy_all
   	assert !@form_helpers.valid?, "Should be invalid without associate categories"
+  	puts @form_helpers.errors.full_messages
   	assert "Please select at least one category", @form_helpers.errors.on_base
   end
   

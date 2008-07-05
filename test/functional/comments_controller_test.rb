@@ -38,7 +38,7 @@ class CommentsControllerTest < Test::Unit::TestCase
   
  def test_create_main_comment
   	num_deliveries = ActionMailer::Base.deliveries.size
-  	get :create, :comment => { :subject => "Hello", :body => "This is a comment", :name => "Malandra Mysogynist", :email => 'malandra@dutyfree.com' }, :content_id => 6
+  	get :create, :comment => { :subject => "Hello", :body => "This is a comment", :name => "Malandra Mysogynist", :email => 'malandra@dutyfree.com' }, :content_id => 10
   	
   	assert_template("create.rjs")
   		# Email sent to self
@@ -46,30 +46,30 @@ class CommentsControllerTest < Test::Unit::TestCase
   end  
   
   def test_new_main_comment 	
-  	get :new, :content_id => 6
+  	get :new, :content_id => 10
   	assert_template("new.rjs")
   end
   
   def test_fail_invalid_main_comment
-  	get :new, :comment => { :name => "Melissa" }, :content_id => 1
+  	get :new, :comment => { :name => "Melissa" }, :content_id => 10
   	assert_template("new.rjs") 
 	end    
   
   # Child comments
   
   def test_succeed_new_child_comment_form
-  	get :new, :content_id => 6, :comment_id => "2"
+  	get :new, :content_id => 10, :comment_id => "2"
   	assert_template("new_child.rjs")
   	end
 
   def test_fail_create_invalid_child_comment
-  	get :new, :comment => { :body => "Here is a comment" }, :content_id => 1, :comment_id => 2
+  	get :new, :comment => { :body => "Here is a comment" }, :content_id => 10, :comment_id => 2
   	assert_template("new_child.rjs") 
 	end    	
 
   def test_succeed_create_valid_child_comment
   	num_deliveries = ActionMailer::Base.deliveries.size
-  	get :create, :comment => { :subject => "Hello", :body => "This is a comment", :name => "Malandra Mysogynist", :email => 'malandra@dutyfree.com', :content_id => 1 }, :comment_id => "2" 
+  	get :create, :comment => { :subject => "Hello", :body => "This is a comment", :name => "Malandra Mysogynist", :email => 'malandra@dutyfree.com', :content_id => 10 }, :comment_id => "2" 
   	
   	assert_template("create_child.rjs")
   	
