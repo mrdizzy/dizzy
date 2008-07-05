@@ -42,14 +42,25 @@ class Content < ActiveRecord::Base
 	end
 	
 	def self.recent
-		self.find(:all, :limit => 10, :order => "date DESC")	
+		self.find(:all, :order => "date DESC")
+	end
+	
+	def self.recent_snippets
+		self.find_all_by_style("SNIPPET", :limit => 10, :order => "date DESC")	
+	end
+	
+	def self.recent_tutorials
+		tutorials = self.find_all_by_style("TUTORIAL", :limit => 10, :order => "date DESC")	
+		cheatsheets = Cheatsheet.find(:all, :limit => 10, :order => "date DESC")	
+		tutorials + cheatsheets
 	end
 	
 end
 
 class Article < Content
 	validates_presence_of :content	
-	before_save :parse_content	
+	before_save :parse_content
+	validates_inclusion_of :style, :in => STYLES
 	
 	def parse_content
 		self.content.gsub!("<%", "&lt;%")

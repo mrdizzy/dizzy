@@ -26,49 +26,32 @@ class ContentsControllerTest < Test::Unit::TestCase
   
   # Index - category form
   
-  def test_index_should_display_new_category_form_when_administrator
+  def test_index_administrator
     get :index, {}, { :administrator_id => users(:mr_dizzy).id }
     assert_select "form[action=\"#{categories_path}\"]", { :count => 1}
+    content = Content.find(:all, :order => "date DESC")
+
+    assert_select "table.articles" do 
+	    content.each do |article|
+    		assert_select "td", /#{article.title}/
+    	end
+	   assert_select 'a', { :count => content.size, :text => "edit"}
+	   assert_select 'a', { :count => content.size, :text => "delete"}
+
+	end
     assert_response :success
   end
   
- def test_index_should_not_display_new_category_form_when_not_administrator
+ def test_index_not_administrator
    get :index
    assert_select "form[action=\"#{categories_path}\"]", false, "There should be no new category form"
+    recent = Content.find(:all, :order => "date DESC")
+   assert_select "a", {:count => 0, :text => "edit"}
+   assert_select "a", {:count => 0, :text => "delete"}
    assert_response :success
    
  end
  
- # Index - edit/delete links
- 
- def test_index_should_enable_editing_of_article_when_administrator
- 	get :index, {}, { :administrator_id => users(:mr_dizzy).id }
- 	content = Content.find(:all)
-   assert_select 'a', { :count => content.size, :text => "edit"}
-   assert_select 'a', { :count => content.size, :text => "delete"}
- 	assert_response :success
- end
- 
- def test_index_should_not_enable_editing_of_article_when_not_administrator
- 	get :index
-   assert_select "a", {:count => 0, :text => "edit"}
-   assert_select "a", {:count => 0, :text => "delete"}
- 	assert_response :success
- end
- 
- #  Add category form
- 
- def test_index_should_show_new_category_form_when_administrator
-  get :index, {}, { :administrator_id => users(:mr_dizzy).id }
-     assert_select "form"
-     assert_response :success
-  end
- 	
- 	def test_should_show_no_category_form_when_not_administrator
-	 	get :show, :id => "rails-migrations"
-	 
- 	end
- 	
  	# New
  	
  	def test_should_show_new_form_when_administrator

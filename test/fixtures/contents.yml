@@ -20,6 +20,7 @@ form_helpers_article:
   title: Quickly debugging form helpers
   date: 2008-04-09 06:34:00
   type: Article
+  style: SNIPPET
   id: "10"
   version_id: "1"
   description: Sometimes you want to quickly see the output of helper methods, and constantly clicking refresh in your browser then viewing the page source can be tiresome. Instead, use the Rails console to check helpers are doing what you want them to.
@@ -83,6 +84,7 @@ file_uploads_article:
   title: Beginning File Uploads to the Database
   date: 2007-07-02 23:36:00
   type: Article
+  style: TUTORIAL
   id: "2"
   version_id: "1"
   description: Learn how to upload files to the database, then retrieve and display them
@@ -412,6 +414,7 @@ contents_003:
   title: Auto migrations
   date: 2008-03-03 22:42:00
   type: Article
+  style: SNIPPET
   id: "6"
   version_id: "1"
   description: A brilliant plugin that makes changing your database schema even easier and faster.
@@ -658,6 +661,7 @@ sexy_migrations_article:
   permalink: rails-2-sexy-migrations
   title: "New in Rails 2.0: Sexy Migrations"
   date: 2008-03-06 15:18:00
+  style: SNIPPET
   type: Article
   id: "7"
   version_id: "1"

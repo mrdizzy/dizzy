@@ -71,5 +71,9 @@ ExceptionNotifier.email_prefix = "[Dizzy] "
 Mime::Type.register "application/pdf", :pdf
 Mime::Type.register "image/png", :png
 
+# STYLES
+
+STYLES = %w{ TUTORIAL SNIPPET ARTICLE }
+
 require 'caching_patch'
 require 'markup'
