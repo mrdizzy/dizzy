@@ -1,4 +1,4 @@
-class ChangeStyleOfExistingArticles < ActiveRecord::Migration
+class ChangeStyle < ActiveRecord::Migration
   def self.up
   	articles = Article.find(:all)
   	article.each do |article|

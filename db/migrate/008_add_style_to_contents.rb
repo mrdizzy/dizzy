@@ -1,6 +1,6 @@
 class AddStyleToContents < ActiveRecord::Migration
+  
   def self.up
-  	
   	add_column :contents, :style, :string
   end
 
