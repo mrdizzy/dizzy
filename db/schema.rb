@@ -2,7 +2,7 @@
 # migrations feature of ActiveRecord to incrementally modify your database, and
 # then regenerate this schema definition.
 
-ActiveRecord::Schema.define(:version => 7) do
+ActiveRecord::Schema.define(:version => 9) do
 
   create_table "binaries", :force => true do |t|
     t.column "binary_data",  :binary
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(:version => 7) do
     t.column "content",     :text
     t.column "permalink",   :string
     t.column "version_id",  :integer
+    t.column "style",       :string
   end
 
   add_index "contents", ["user_id"], :name => "fk_user_contents"
