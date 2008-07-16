@@ -9,11 +9,10 @@ class CategoriesController < ApplicationController
 	 	@category = Category.new(params[:category])
 	 	respond_to do |wants|
 		 	if @category.save
-		 		wants.html
-		 		wants.js { render :action => :create}	
+		 		wants.js { puts "NO" }
 	 		else 
 	 			wants.html { redirect_to new_category_path }
-	 			wants.js { render :action => :new}
+	 			wants.js { puts render :action => :new}
 	 		end
 	 	end
 	end	
