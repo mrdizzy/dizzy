@@ -1,4 +1,4 @@
-<%= error_messages_for :comment, :object => form, :header_tag => "h3" %>
+<%= error_messages_for :comment, :header_tag => "h3" %>
 
 <label for="comment_subject"><%= diamond %> Subject</label>
 <%= form.text_field :subject %><br/>
@@ -11,8 +11,6 @@
 	
 <label for="comment_content"><%= diamond %> Comment</label>
 <%= form.text_area :body, :size=>"20x10" %><br/>
- 	
-<%= form.hidden_field :content_id %>
 
 <div id="submit_button_<%=params[:comment_id] %>">
 	<%= submit_button %>	

@@ -5,7 +5,7 @@
 	<%= prepare_comments(comments.comments) %>
 	
 	<div id="add_comment">
-		<p><%= diamond %> <%= link_to_remote "Add new comment", :url => new_comment_path(@content.id), :method => :get %></p>
+		<p><%= diamond %> <%= link_to_remote "Add new comment", :url => new_content_comment_path(@content.id), :method => :get %></p>
 	</div>
 
 </div>

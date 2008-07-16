@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 9) do
+ActiveRecord::Schema.define(:version => 11) do
 
   create_table "binaries", :force => true do |t|
     t.binary  "binary_data"
@@ -85,11 +85,6 @@ ActiveRecord::Schema.define(:version => 9) do
     t.text     "body"
   end
 
-  create_table "polls", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-  end
-
   create_table "portfolio_items", :force => true do |t|
     t.integer "portfolio_type_id", :default => 0, :null => false
     t.integer "company_id",        :default => 0, :null => false
@@ -122,15 +117,6 @@ ActiveRecord::Schema.define(:version => 9) do
 
   add_index "sections", ["content_id"], :name => "fk_content_sections"
 
-  create_table "sessions", :force => true do |t|
-    t.string   "session_id"
-    t.text     "data"
-    t.datetime "updated_at"
-  end
-
-  add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
-  add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
-
   create_table "users", :force => true do |t|
     t.string "name"
     t.string "hashed_password"
@@ -142,12 +128,6 @@ ActiveRecord::Schema.define(:version => 9) do
 
   create_table "versions", :force => true do |t|
     t.string "version_number"
-  end
-
-  create_table "votes", :force => true do |t|
-    t.integer "poll_id"
-    t.string  "option"
-    t.integer "total"
   end
 
 end

@@ -10,7 +10,7 @@
 				<li><span class="bigger"><%= section.title %></span> - <%= section.summary %></li>
 			
 				<% else %>	
-				<li><%= link_to section.title, section_path(@content.permalink, section.permalink) %> - <%= section.summary %></li>
+				<li><%= link_to section.title, cheatsheet_section_path(@content.permalink, section.permalink) %> - <%= section.summary %></li>
 				
 			<% end %>
 		<% end %>

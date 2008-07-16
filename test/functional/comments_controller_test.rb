@@ -38,7 +38,7 @@ class CommentsControllerTest < Test::Unit::TestCase
   
  def test_create_main_comment
   	num_deliveries = ActionMailer::Base.deliveries.size
-  	get :create, :comment => { :subject => "Hello", :body => "This is a comment", :name => "Malandra Mysogynist", :email => 'malandra@dutyfree.com' }, :content_id => 10
+  	xhr(:get, :create, :comment => { :subject => "Hello", :body => "This is a comment", :name => "Malandra Mysogynist", :email => 'malandra@dutyfree.com' }, :content_id => 10)
   	
   	assert_template("create.rjs")
   		# Email sent to self

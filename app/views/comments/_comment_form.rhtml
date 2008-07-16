@@ -1,6 +1,6 @@
 <div id="comment_form" style="display:none;">
 
-	<% remote_form_for :comment, :url => comments_path, :before => "Element.show('spinner_#{params[:comment_id]}');Element.hide('submit_button_#{params[:comment_id]}')", :complete => "Element.hide('spinner_#{params[:comment_id]}')" do |form| %>
+	<% remote_form_for :comment, :url => content_comments_path, :before => "Element.show('spinner_#{params[:comment_id]}');Element.hide('submit_button_#{params[:comment_id]}')", :complete => "Element.hide('spinner_#{params[:comment_id]}')" do |form| %>
 	
 		<%= render :partial => "form", :object => form %>
 		
