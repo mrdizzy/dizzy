@@ -7,6 +7,10 @@ categories_009:
   permalink: file-handling
   name: File handling
   id: "9"
+categories_021: 
+  permalink: xml
+  name: XML
+  id: "21"
 categories_010: 
   permalink: active-record
   name: Active Record

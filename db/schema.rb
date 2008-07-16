@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 11) do
+ActiveRecord::Schema.define(:version => 12) do
 
   create_table "binaries", :force => true do |t|
     t.binary  "binary_data"
@@ -76,14 +76,6 @@ ActiveRecord::Schema.define(:version => 11) do
 
   add_index "contents_contents", ["related_id"], :name => "fk_secondary_content_contents"
   add_index "contents_contents", ["content_id"], :name => "fk_main_content_contents"
-
-  create_table "conversations", :force => true do |t|
-    t.string   "subject"
-    t.string   "name"
-    t.datetime "created_at"
-    t.string   "email"
-    t.text     "body"
-  end
 
   create_table "portfolio_items", :force => true do |t|
     t.integer "portfolio_type_id", :default => 0, :null => false
