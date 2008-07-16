@@ -54,8 +54,8 @@ class CategoriesControllerTest < Test::Unit::TestCase
   end
   
   def test_javascript_should_succeed_on_create_with_valid_parameters
-  	xml_http_request :post, :create, :category => { :name => "Computing Hardware", :permalink => "computing-hardware" }
-    assert_select_rjs :insert_html, :bottom, "category_list"
+  	xml_http_request :post, :create, :category => { :name => "Jennifer Hardware", :permalink => "jennifer-hardware" }
+   assert_select_rjs :insert_html, :bottom, "category_list"
     category_id = assigns(:category).id
     assert_select "li#category_#{category_id}"
   	assert_response :success

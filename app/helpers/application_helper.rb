@@ -85,8 +85,8 @@ module ApplicationHelper
 	# Category List
 	
 	def category_list
-		
-		result = "<ul id=\"category_list\" class=\"categories\">"
+		result = "<div id=\"category_list\">" +
+		"<ul id=\"category_lists\" class=\"categories\">"
 		@categories = Category.find(:all, :order => :name)
 		@categories.each do |category|
 			if category.permalink == "cheatsheets"
@@ -100,6 +100,7 @@ module ApplicationHelper
 			end
 		end
 		result << "</ul>"
+		result << "</div>"
 		result
 	end
 	

@@ -10,7 +10,7 @@ class CategoriesController < ApplicationController
 	 	respond_to do |wants|
 		 	if @category.save
 		 		wants.html
-		 		wants.js	
+		 		wants.js { render :action => :create}	
 	 		else 
 	 			wants.html { redirect_to new_category_path }
 	 			wants.js { render :action => :new}
