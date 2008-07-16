@@ -1,34 +1,34 @@
 --- 
 categories_contents_008: 
-  content_id: "8"
-  category_id: "19"
-categories_contents_009: 
   content_id: "9"
   category_id: "10"
-categories_contents_010: 
+categories_contents_009: 
   content_id: "10"
   category_id: "20"
-categories_contents_011: 
-  content_id: "11"
-  category_id: "2"
-categories_contents_001: 
+categories_contents_010: 
   content_id: "2"
   category_id: "3"
-categories_contents_002: 
+categories_contents_011: 
+  content_id: "12"
+  category_id: "3"
+categories_contents_001: 
   content_id: "2"
-  category_id: "9"
+  category_id: "0"
+categories_contents_002: 
+  content_id: "1"
+  category_id: "1"
 categories_contents_003: 
   content_id: "1"
-  category_id: "1"
-categories_contents_004: 
-  content_id: "1"
   category_id: "18"
-categories_contents_005: 
+categories_contents_004: 
   content_id: "6"
   category_id: "1"
-categories_contents_006: 
+categories_contents_005: 
   content_id: "7"
   category_id: "1"
-categories_contents_007: 
+categories_contents_006: 
   content_id: "8"
   category_id: "18"
+categories_contents_007: 
+  content_id: "8"
+  category_id: "19"

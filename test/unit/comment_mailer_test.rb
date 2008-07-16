@@ -4,7 +4,7 @@ class CommentMailerTest < Test::Unit::TestCase
   FIXTURES_PATH = File.dirname(__FILE__) + '/../fixtures'
   CHARSET = "utf-8"
 
-  fixtures :comments
+  fixtures :contents, :categories, :categories_contents, :comments
 
   include ActionMailer::Quoting
 

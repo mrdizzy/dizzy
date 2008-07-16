@@ -42,16 +42,23 @@ contents_007:
     As you can see, this is a really good way to get a feel for Rails' helpers, as you can see the results of your code instantly.\r\n\
     \r\n    \r\n    "
   user_id: "1"
+  style: SNIPPET
 contents_008: 
-  permalink: action-mailer
-  title: Action Mailer
-  date: 2008-06-16 00:15:00
-  type: Cheatsheet
-  id: "11"
+  permalink: test-your-regular-expressions-online
+  title: Test your regular expressions online
+  date: 2008-07-04 15:50:00
+  type: Article
+  id: "12"
   version_id: "1"
-  description: Send and receive emails using the Action Mailer framework.
-  content: 
+  description: Regular expressions can be one of the trickiest aspects of programming to manage. This little tool will help you test out your code quickly and easily...
+  content: |-
+    If you're anything like me, the need to write a regular expression may induce a mild sense of dread within you. Wouldn't it be good to see if your regexes are matching what you expect as you write them? Let me introduce you to [Rubular][1]. Rubular is a brilliant little Web site that will let you type your regular expression into one field, the text you want to match in the other field, and it'll then show you whether your text is being matched or not in real-time via a sexy AJAX interface.
+    
+    Give it a try!
+    
+    [1]: http://rubular.com/ "Rubular"
   user_id: "1"
+  style: SNIPPET
 contents_001: 
   permalink: rails-migrations
   title: Rails Migrations
@@ -62,6 +69,7 @@ contents_001:
   description: Up and down methods, rake tasks, database mapping, loading fixtures, example migration file, all packed onto one A4 page for an easy at-a-glance reference
   content: ""
   user_id: "1"
+  style: 
 contents_002: 
   permalink: store-file-uploads-in-database
   title: Beginning File Uploads to the Database
@@ -232,6 +240,7 @@ contents_002:
     
     If you're getting NoMethod or other strange errors when uploading a file, try viewing the HTML of the new form after it has been rendered by your browser and before submitting it. Then you can make sure Rails is rendering the form correctly with the `multipart` entry. If you don't see `multipart` in the `<form>` tag, then that's your problem.
   user_id: "1"
+  style: SNIPPET
 contents_003: 
   permalink: auto-migrations
   title: Auto migrations
@@ -361,6 +370,7 @@ contents_003:
       [1]: http://errtheblog.com/posts/65-automatically "auto_migrations plugin"
 
   user_id: "1"
+  style: SNIPPET
 contents_004: 
   permalink: rails-2-sexy-migrations
   title: "New in Rails 2.0: Sexy Migrations"
@@ -449,6 +459,7 @@ contents_004:
     
       [1]: http://errtheblog.com/post/2381 "Sexy Migrations plugin"
   user_id: "1"
+  style: SNIPPET
 contents_005: 
   permalink: form-helpers
   title: Form Helpers
@@ -459,6 +470,7 @@ contents_005:
   description: Create forms, check boxes, radio buttons, select lists and more using Rails' built-in form helpers.
   content: 
   user_id: "1"
+  style: 
 contents_006: 
   permalink: self-referential-table-joins
   title: Self-referential table joins
@@ -524,3 +536,4 @@ contents_006:
     
     I won't go into any further details, as drop-down lists for HABTM are a completely separate article, but don't worry--it's one I'll be writing about soon (check the right-hand side to see our very own related articles, as I might already have written it!)
   user_id: "1"
+  style: SNIPPET

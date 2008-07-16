@@ -217,112 +217,91 @@ sections_001:
   content_id: "1"
   title: Methods
   body: |
-    ## Methods
-    
-    ### add_column
-    
-    Creates a new column on the specified table.
-    
-    ruby:
-        add_column :table_name, :column_name, :column_type, { options }
-    
-    + :null => true or false - if false, the underlying column has a not null constraint added by the database engine
-    + :limit => size - set a limit on the size of the field
-    + :default => value - set a default value for the column
-    
-    ### add_index
-    
-    Creates an index for the specified table, the name of which defaults to table_column_index.
-    
-    ruby:
-        add_index :table_name, :column_name, :unique => true, :name => "chosen_index_name"
-    
-    ### change_column
-    
-    Change the data type of the specified column
-    
-    ruby:
-        change_column :table_name, :column_name, :new_type, { options as add_column }
-    
-    ### create_table
-    
-    Creates a table on the database. Creates a table called :table_name and makes the table object available to a block that can then add columns to it, following the same format as add_column.
-    ruby:
-        create_table :table_name, { options } do |t|
-          t.column :column_name, :column_type, :options
-        end
-    
-    + :force => true - forces drop of an existing table of the same name before creation the new one
-    + :temporary => true - creates a temporary table, one that goes away when the application disconnects from the database
-    + :id => false - defines a table with no primary key, for example when you need to define a join table
-    + :primary_key => :new_primary_key_name - overrides the default name of :id for the primary column, use this to specify the name of the column in the database that Rails will use to store the primary key
-    + :options => "" - lets you specify options to your underlying database, e.g. "auto_increment = 10000". Will lose default "ENGINE=InnoDB statement".
-    
-    ### execute
-    
-    Takes a single string identifying a valid SQL command to execute directly
-    
-    ruby:
-        execute "alter table line_items add constraint fk_line_item_products foreign key (product_id) references products(id)"
-    
-    ### IrreversibleMigration
-    
-    Use in the down method of a migration file to raise an exception when the up methods of the same migration file can not be reversed, e.g. changing a column type from :integer to :string.
-    
-    ruby:
-        raise ActiveRecord::IrreversibleMigration
-    
-    ### rename_table
-    
-    Renames the specified table.
-    
-    ruby:
-        rename_table :new_table_name, :old_table_name
-    
-    ### rename_column
-    
-    Renames the old_column_name to new_column_name
-    
-    ruby:
-        rename_column :old_column_name, :new_column_name
-    
-    ### rename_table
-    
-    Renames the specified table.
-    
-    ruby:
-        rename_table :new_table_name, :old_table_name
-    
-    ### remove_index
-    
-    Remove an index for the specified table.
-    
-    ruby:
-        remove_index :table_name, :column_name
+    ## Methods
+    
+    ### add_column
+    
+    Creates a new column on the specified table.
+    
+    ruby:
+        add_column :table_name, :column_name, :column_type, { options }
+    
+    + `:null => true` or `false` - if `false`, the underlying column has a `NOT NULL` constraint added by the database engine
+    + `:limit => size` - set a `limit` on the `size` of the field
+    + `:default => value` - set a default `value` for the column
+    
+    ### add_index
+    
+    Creates an index for the specified table, the name of which defaults to `table_column_index`
+    
+    ruby:
+        add_index :table_name, :column_name, :unique => true, :name => "chosen_index_name"
+    
+    ### change_column
+    
+    Change the data type of the specified column
+    
+    ruby:
+        change_column :table_name, :column_name, :new_type, { options as add_column }
+    
+    ### create_table
+    
+    Creates a table on the database. Creates a table called `:table_name` and makes the table object available to a block that can then add columns to it, following the same format as `add_column`.
+    ruby:
+        create_table :table_name, { options } do |t|
+          t.column :column_name, :column_type, :options
+        end
+    
+    + `:force => true` - forces drop of an existing table of the same name before creation the new one
+    + `:temporary => true` - creates a temporary table, one that goes away when the application disconnects from the database
+    + `:id => false` - defines a table with no primary key, for example when you need to define a join table
+    + `:primary_key => :new_primary_key_name` - overrides the default name of `id` for the primary column, use this to specify the name of the column in the database that Rails will use to store the primary key
+    + `:options => ""` - lets you specify options to your underlying database, e.g. `"auto_increment = 10000"`. Will lose default `"ENGINE=InnoDB statement"`.
+    
+    ### execute
+    
+    Takes a single string identifying a valid SQL command to execute directly
+    
+    ruby:
+        execute "alter table line_items add constraint fk_line_item_products foreign key (product_id) references products(id)"
+    
+    ### IrreversibleMigration
+    
+    Use in the down method of a migration file to raise an exception when the `up` methods of the same migration file can not be reversed, e.g. changing a column type from `:integer` to `:string`
+    
+    ruby:
+        raise ActiveRecord::IrreversibleMigration
+    
+    ### rename_table
+    
+    Renames the specified table.
+    
+    ruby:
+        rename_table :new_table_name, :old_table_name
+    
+    ### rename_column
+    
+    Renames the old_column_name to new_column_name
+    
+    ruby:
+        rename_column :old_column_name, :new_column_name
+    
+    ### rename_table
+    
+    Renames the specified table.
+    
+    ruby:
+        rename_table :new_table_name, :old_table_name
+    
+    ### remove_index
+    
+    Remove an index for the specified table.
+    
+    ruby:
+        remove_index :table_name, :column_name
 
   id: "1"
   summary: interact with your database using migration methods
-sections_013: 
-  permalink: action-mailer-configuration-options
-  content_id: "11"
-  title: Configuration options
-  body: |
-    ## Configuration options
-    
-    (Tab.1 Configuration options)
-    
-    *smtp_settings* = **hash**
-    ----------------------------------
-     + `:local_settings` - can be one of the following...
-        + `:plain`
-        + `:colour`
-        + `:monochrome`
-    
-    
-    
-
-  id: "13"
-  summary: configure ActionMailer to behave how you desire
 sections_002: 
   permalink: database-mapping
   content_id: "1"

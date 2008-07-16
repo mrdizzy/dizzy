@@ -1,29 +1,196 @@
 --- 
-comments_001: 
-  name: Malandra Burrows
+comments_017: 
+  name: vinay
   new: "1"
-  content_id: "6"
+  content_id: "8"
+  body: thanks for this nice article....
+  subject: Thanks
+  id: "19"
+  parent_id: 
+  created_at: 2008-07-14 04:51:28
+  email: vinayji@ymail.com
+comments_006: 
+  name: Joe Lewis
+  new: "1"
+  content_id: "1"
+  body: "Thank you for the organized approach to looking at migrations - much appreciated. One small item - I noticed in the PDF version, the rename_column item uses rename_table in the code example (rename_table :old_column_name, :new_column_name). "
+  subject: Very nice - one small bug
+  id: "6"
+  parent_id: 
+  created_at: 2008-05-02 16:13:48
+  email: joelewis@gmial.com
+comments_018: 
+  name: Dougle
+  new: "1"
+  content_id: "1"
+  body: What about drops for migrating down
+  subject: Drops?
+  id: "20"
+  parent_id: 
+  created_at: 2008-07-15 07:19:35
+  email: daniel-craig@hotmail.co.uk
+comments_007: 
+  name: nobody
+  new: "1"
+  content_id: "7"
+  body: Do you have any plans to update the migration cheatsheet with this new information?  I think it is a great resource, but it would be even better if it included the new Rails 2.0 migration conventions.
+  subject: update migrations cheatsheet?
+  id: "7"
+  parent_id: 
+  created_at: 2008-05-07 10:47:58
+  email: nobody@nowhere.com
+comments_008: 
+  name: Robert Green
+  new: "1"
+  content_id: "2"
+  body: Fantastic article.  I used this in conjunction with rmagick and lightbox to get a rich photo handling UI.  Worked very well!
+  subject: Excellent article!
+  id: "8"
+  parent_id: 
+  created_at: 2008-06-20 12:22:03
+  email: rbgrn@rbgrn.net
+comments_009: 
+  name: Brad
+  new: "1"
+  content_id: "2"
+  body: Thanks, this is just what I needed!
+  subject: Very Helpful
+  id: "9"
+  parent_id: 
+  created_at: 2008-06-22 22:45:22
+  email: smithbm@masters.edu
+comments_010: 
+  name: Graeme
+  new: "1"
+  content_id: "2"
+  body: Such an elegant and quick solution!!!  Thankyou
+  subject: Elegant
+  id: "10"
+  parent_id: 
+  created_at: 2008-06-29 09:48:16
+  email: graeme@privacy.net
+comments_011: 
+  name: Jorge Barbosa
+  new: "1"
+  content_id: "2"
+  body: Thanks for your help!
+  subject: Very nice!
+  id: "11"
+  parent_id: 
+  created_at: 2008-06-29 21:49:12
+  email: redhat.lesi@gmail.com
+comments_012: 
+  name: Jorge Barbosa
+  new: "1"
+  content_id: "2"
+  body: How can I validate  the presence of image_file?
+  subject: Help me please!
+  id: "14"
+  parent_id: 
+  created_at: 2008-07-03 12:59:23
+  email: redhat.lesi@gmail.com
+comments_001: 
+  name: Wonderful
+  new: "1"
+  content_id: "7"
+  body: "Very useful tutorials. Hope more wonderful stuff. "
+  subject: Wonderful
+  id: "1"
+  parent_id: 
+  created_at: 2008-03-11 12:12:03
+  email: sddlzz@163.com
+comments_013: 
+  name: Jorge Barbosa
+  new: "1"
+  content_id: "2"
+  body: |+
+    When I not fill the field  image_file appear this error:
+    undefined method `original_filename'
+    
+    And I put "validate_presence_of: image_file" in my "model"
+    
+    What is a problem?
+    
+  subject: Error
+  id: "15"
+  parent_id: 
+  created_at: 2008-07-03 13:13:19
+  email: redhat.lesi@gmail.com
+comments_002: 
+  name: peter
+  new: "1"
+  content_id: "2"
   body: |-
-    That was an absolutely fantastic tutorial.
-    
-    Thank you so much!!!!
-    
-    Love, Malandra xxx
-  subject: A great new tutorial
+    how do you limit the image size in your example?
+    I mean if you use attachment_fu or something else you can easily 
+    limit the image file size as well.
+    I am using the same idea as yours, but did not get the file size problem right.
+  subject: upload image
   id: "2"
   parent_id: 
-  created_at: 2008-06-16 21:17:46
-  email: malandra@burrows.com
-comments_002: 
-  name: Gary Cooley
+  created_at: 2008-03-24 22:41:35
+  email: zhangpeng715@hotmail.com
+comments_014: 
+  name: Eric
+  new: "1"
+  content_id: "2"
+  body: This is just what I was looking for.  I didn't want to be limited by the popular attachment plugins out there.  Thanks for writing this up!
+  subject: Wonderful!
+  id: "16"
+  parent_id: 
+  created_at: 2008-07-03 23:36:31
+  email: eleeconsulting@yahoo.com
+comments_003: 
+  name: Tomomi
+  new: "1"
+  content_id: "1"
+  body: Very Beneficial resource code.
+  subject: Very Beneficial
+  id: "3"
+  parent_id: 
+  created_at: 2008-04-03 04:06:51
+  email: tomomikyoko@gmail.com
+comments_015: 
+  name: Cwelle
+  new: "1"
+  content_id: "1"
+  body: Very nice, buy one type is missing. It's :text. Representing TEXT in mysql.
+  subject: Very nice, buy one type is missing
+  id: "17"
+  parent_id: 
+  created_at: 2008-07-04 14:46:49
+  email: cvetkovicbojan@gmail.com
+comments_004: 
+  name: len
   new: "1"
   content_id: "6"
-  body: |-
-    That's no problem at all Malandra.
+  body: |+
+    This is perfect!  Just what I was needing right now! You are my hero.
     
-    Cheers and hugs.
-  subject: No problem!
-  id: "3"
-  parent_id: "2"
-  created_at: 2008-06-16 21:23:28
-  email: gary@cooley.com
+  subject: Fantastic!
+  id: "4"
+  parent_id: 
+  created_at: 2008-04-12 12:27:37
+  email: len@lenwhite.com
+comments_016: 
+  name: Jagannathan Sundaram
+  new: "1"
+  content_id: "9"
+  body: |-
+    Hello,
+           very interesting and very useful lessons. i learn lots of thinks from this codes. Also add lessons for controller and model part.
+  subject: About Controllers
+  id: "18"
+  parent_id: 
+  created_at: 2008-07-11 11:29:21
+  email: rcjagan@yahoo.co.in
+comments_005: 
+  name: tom
+  new: "1"
+  content_id: "1"
+  body: beneficial
+  subject: migrate
+  id: "5"
+  parent_id: 
+  created_at: 2008-04-23 23:05:22
+  email: tuwatu@gmail.com

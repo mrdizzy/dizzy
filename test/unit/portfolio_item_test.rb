@@ -1,9 +1,9 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
 class PortfolioItemTest < Test::Unit::TestCase
-  fixtures :portfolio_items
-  fixtures :companies
-  fixtures :portfolio_types
+	  fixtures :companies
+	  fixtures :portfolio_types
+      fixtures :portfolio_items
 
   # Replace this with your real tests.
   def test_truth

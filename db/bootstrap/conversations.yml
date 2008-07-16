@@ -26,3 +26,13 @@ conversations_002:
   id: "2"
   email: krzyczak@gmail.com
   created_at: 2008-04-25 19:10:55
+conversations_003: 
+  name: Sonia Hamilton
+  body: |-
+    Hi, I was wondering what tool you used to author your cheatsheets. I'm learning a new package and would like to write a cheatsheet, (which I'm later going to publish), and I would like to make it look nice.
+    
+    Thanks, Sonia.
+  subject: tool used to write cheatsheets?
+  id: "3"
+  email: sonia@snowfrog.net
+  created_at: 2008-06-15 21:34:03

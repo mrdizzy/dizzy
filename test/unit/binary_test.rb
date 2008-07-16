@@ -1,8 +1,7 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
 class BinaryTest < Test::Unit::TestCase
-	fixtures :binaries
-	fixtures :contents
+	fixtures :contents, :categories, :categories_contents, :binaries
 
   def test_binaries_should_be_destroyed_when_content_deleted
   	binary = binaries(:rails_migrations_pdf)
