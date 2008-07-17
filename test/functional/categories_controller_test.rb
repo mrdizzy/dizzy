@@ -24,32 +24,16 @@ class CategoriesControllerTest < Test::Unit::TestCase
   def test_should_succeed_on_show_with_valid_permalink
   	get :show, :id => categories(:plugins).permalink
   	assert_response :success
+  	assert_select "h1", { :count => 1, :text => categories(:plugins).name }
+  	assert_template("show")
   end
-  
-  def test_html_should_succeed_on_destroy_with_valid_id
-  	delete :destroy, :id => categories(:plugins).id
-  	assert_response :success
-  end
-  
-  def test_html_should_succeed_on_create_with_valid_parameters
-  	post :create, :category => { :name => "Computing Hardware", :permalink => "computing-hardware" }
-  	assert_response :success
-  end
-  
-  def test_html_should_fail_on_create_with_existing_name
-  	post :create, :category => { :name => categories(:plugins).name, :permalink => "permalink-here" }
-    assert_redirected_to new_category_path
-  end
- 
-  def test_html_should_fail_on_create_with_existing_permalink
-  	post :create, :category => { :name => "Brand new name", :permalink => categories(:plugins).permalink }
-    assert_redirected_to new_category_path
-  end
-  
+    
   # RJS
   
   def test_javascript_should_succeed_on_destroy_with_valid_id
   	xml_http_request :delete, :destroy, :id => categories(:plugins).id
+  	puts @response.body
+  	assert_select_rjs :replace_html, "category_#{categories(:plugins).id}", "<del>#{categories(:plugins).name}</del>"
   	assert_response :success
   end
   

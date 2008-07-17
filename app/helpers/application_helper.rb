@@ -94,8 +94,11 @@ module ApplicationHelper
 					"</li>"
 			else
 				result << "<li id=\"category_#{category.id}\">" +
-				link_to(category.name, category_path(category.permalink)) +
-				"</li>"
+				link_to(category.name, category_path(category.permalink))
+				if administrator?
+					result << "|" + link_to_remote("delete", { :url => category_path(category.id), :method => :delete})
+				end
+				result << "</li>"
 			end
 		end
 		result << "</ul>"
