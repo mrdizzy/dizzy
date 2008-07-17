@@ -7,10 +7,14 @@ class CategoriesController < ApplicationController
 
 	def create
 	 	@category = Category.new(params[:category])
-	 	respond_to do |format|
-		 	puts "------------------------"
-		 		format.js { render :action => :create }
-
+	 	respond_to do |wants|
+		 	if @category.save
+		 		wants.html
+		 		wants.js
+	 		else 
+	 			wants.html { redirect_to new_category_path }
+	 			wants.js { render :action => :new}
+	 		end
 	 	end
 	end	
 
