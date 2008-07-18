@@ -12,6 +12,8 @@ class CategoriesControllerTest < Test::Unit::TestCase
     @controller = CategoriesController.new
     @request    = ActionController::TestRequest.new
     @response   = ActionController::TestResponse.new
+    
+    @main_category = categories(:plugins)
   end
 
   # Replace this with your real tests.
@@ -22,7 +24,7 @@ class CategoriesControllerTest < Test::Unit::TestCase
   # HTML
   
   def test_should_succeed_on_show_with_valid_permalink
-  	get :show, :id => categories(:plugins).permalink
+  	get :show, :id => @main_category.permalink
   	assert_response :success
   	assert_select "h1", { :count => 1, :text => categories(:plugins).name }
   	assert_template("show")
@@ -31,9 +33,9 @@ class CategoriesControllerTest < Test::Unit::TestCase
   # RJS
   
   def test_javascript_should_succeed_on_destroy_with_valid_id
-  	xml_http_request :delete, :destroy, :id => categories(:plugins).id
-  	puts @response.body
-  	assert_select_rjs :replace_html, "category_#{categories(:plugins).id}", "<del>#{categories(:plugins).name}</del>"
+  	xml_http_request :delete, :destroy, :id => @main_category.id
+  	assert_select_rjs :replace_html, "category_#{@main_category.id}", "<del>#{@main_category.name}</del>"
+  	assert_template("destroy")
   	assert_response :success
   end
   
@@ -42,12 +44,14 @@ class CategoriesControllerTest < Test::Unit::TestCase
    assert_select_rjs :insert_html, :bottom, "category_list", :partial => "category_link"
     category_id = assigns(:category).id
     assert_select "li#category_#{category_id}"
+    assert_template("create")
   	assert_response :success
   end
   
   def test_javascript_should_fail_on_create_with_invalid_parameters
   	xml_http_request :post, :create, :category => { :name => "Plugins", :permalink => "plugins" }
    	assert_select_rjs :replace_html, "new_category_form"
+   	assert_template("new")
     assert_response :success
   end
 
