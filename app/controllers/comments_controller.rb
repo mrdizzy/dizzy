@@ -2,6 +2,8 @@ class CommentsController < ApplicationController
 	
 	cache_sweeper 	:comment_sweeper, :only => [ :destroy, :update, :create ]	
 	
+	# TODO: If administrator logged in, then create comments from administrator rather than external user 
+	
 	def index
 		if administrator?
 			@latest = Content.recent

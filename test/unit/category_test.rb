@@ -35,7 +35,7 @@ class CategoryTest < Test::Unit::TestCase
   		category = Category.new(:name => "New Category", :permalink => permalink)
   	 	assert category.valid?  	 
 	end
-  endw
+  end
 
   def test_should_fail_on_create_with_duplicate_name
   	duplicate = Category.new(:name => "Plugins", :permalink => "abc-def-ghi")
