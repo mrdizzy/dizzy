@@ -11,6 +11,7 @@ class CommentTest < Test::Unit::TestCase
   def test_should_fail_blank_comment
   	comment = Comment.new
   	assert !comment.valid?, comment.errors.full_messages
+  	assert comment.errors.count, 5
   end
   
   def test_should_fail_invalid_email

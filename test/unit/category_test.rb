@@ -19,21 +19,7 @@ class CategoryTest < Test::Unit::TestCase
 	assert_equal category.errors.count, 2
   end
 
-  def test_should_fail_duplicate_permalinks
-  	duplicate = Category.new(:name => "Melanie", :permalink => "plugins")
-  	assert !duplicate.valid?, "Category permalink should be invalid"
-  	assert_equal duplicate.errors[:permalink], "has already been taken"
-  	assert_nil duplicate.errors[:name]
-  end
-  
-  def test_should_fail_duplicate_name
-  	duplicate = Category.new(:name => "Plugins", :permalink => "abc-def-ghi")
-  	assert !duplicate.valid?, "Category name should be invalid"
-  	assert_equal duplicate.errors[:name], "has already been taken"
-  	assert_nil duplicate.errors[:category]
-  	end
-  	
-  def test_should_fail_on_create_with_bad_permalink
+  def test_should_fail_on_create_with_invalid_permalink
   	bad_permalinks = ["underscore_not_valid", "&no-!weird-%#\"/'characters)$", "no spaces", "NO-CAPITALS"]
   	bad_permalinks.each do |permalink|
   		category = Category.new(:name => "New Category", :permalink => permalink)
@@ -49,6 +35,20 @@ class CategoryTest < Test::Unit::TestCase
   		category = Category.new(:name => "New Category", :permalink => permalink)
   	 	assert category.valid?  	 
 	end
-  end
+  endw
+
+  def test_should_fail_on_create_with_duplicate_name
+  	duplicate = Category.new(:name => "Plugins", :permalink => "abc-def-ghi")
+  	assert !duplicate.valid?, "Category name should be invalid"
+  	assert_equal duplicate.errors[:name], "has already been taken"
+  	assert_nil duplicate.errors[:category]
+  	end
+
+  def test_should_fail_on_create_with_duplicate_permalink
+  	duplicate = Category.new(:name => "Melanie", :permalink => "plugins")
+  	assert !duplicate.valid?, "Category permalink should be invalid"
+  	assert_equal duplicate.errors[:permalink], "has already been taken"
+  	assert_nil duplicate.errors[:name]
+  end 	  
   
 end
