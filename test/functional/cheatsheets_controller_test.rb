@@ -130,10 +130,8 @@ class CheatsheetsControllerTest < Test::Unit::TestCase
  						:pdf => { :uploaded_data => fixture_file_upload("letterhead.png", "application/pdf") } 
  					}, { :administrator_id => users(:mr_dizzy).id }
  		
- 		assert_equal 0, assigns(:cheatsheet).errors.size, assigns(:cheatsheet).errors.full_messages
- 		
- 		assert_equal 0, assigns(:cheatsheet).pdf.errors.size, assigns(:cheatsheet).pdf.errors.full_messages 
- 		
+ 		assert_equal 0, assigns(:cheatsheet).errors.size, assigns(:cheatsheet).errors.full_messages 		
+ 		assert_equal 0, assigns(:cheatsheet).pdf.errors.size, assigns(:cheatsheet).pdf.errors.full_messages  		
  		assert_equal 0, assigns(:cheatsheet).thumbnail.errors.size, assigns(:cheatsheet).thumbnail.errors.full_messages
  		assert_response :redirect
 		assert_redirected_to cheatsheet_path("action-two-mailer")
