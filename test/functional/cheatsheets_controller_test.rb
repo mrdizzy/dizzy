@@ -38,9 +38,11 @@ class CheatsheetsControllerTest < Test::Unit::TestCase
  										  :version_id => "1",
  										  :description => "Action Mailer cheatsheet",
  										  :new_version => "" },
- 						:pdf => { :uploaded_data => fixture_file_upload("letterhead.png", "image/pdf") } 
+ 						:pdf => { :uploaded_data => fixture_file_upload("letterhead.png", "application/pdf") } 
  					}, { :administrator_id => users(:mr_dizzy).id }
- 					
+ 		
+ 		assert_equal 0, assigns(:cheatsheet).errors.size, assigns(:cheatsheet).errors.full_messages	
+ 		
  		assert_response :redirect
 		assert_redirected_to cheatsheets_path
  	end
