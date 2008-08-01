@@ -5,9 +5,13 @@ class CheatsheetsController < ContentsController
   end
   
   def new
-  	@cheatsheet = Cheatsheet.new
-  	@pdf 		= Pdf.new
-  	@thumbnail	= Thumbnail.new
+  	if administrator?
+		@cheatsheet = Cheatsheet.new
+	  	@pdf 		= Pdf.new
+  		@thumbnail	= Thumbnail.new
+	else 
+		redirect_to login_path
+	end
   end
   
   def destroy
@@ -44,6 +48,7 @@ class CheatsheetsController < ContentsController
   
   def create
   	@cheatsheet = Cheatsheet.new(params[:cheatsheet])
+  	
   	@cheatsheet.user_id = session[:administrator_id]
   	unless params[:pdf][:uploaded_data].blank?
   		@pdf = Pdf.new(params[:pdf])
@@ -57,14 +62,18 @@ class CheatsheetsController < ContentsController
   	 if @cheatsheet.valid?
   	 	@cheatsheet.save
       flash[:notice] = 'Cheatsheet was successfully created.'
-      redirect_to :action => 'list'
+      redirect_to cheatsheets_path
     else
       render :action => 'new'
     end
   end
   
   def edit
-  	@cheatsheet =  Cheatsheet.find(params[:id])  
+  	if administrator?
+  		@cheatsheet =  Cheatsheet.find(params[:id]) 
+  	else 
+  		redirect_to login_path
+  	end 
   end
 
 end

@@ -1,14 +1,16 @@
 <%= javascript_include_tag :defaults %>
 <h1><%= bigarrow %> Editing <%= @cheatsheet.title %> cheatsheet</h1>
 
+<%= error_messages_for :cheatsheet %>
+<%= @cheatsheet.errors.full_messages %>
 <ul>
 <% @cheatsheet.sections.each do |section| %>
-	<li><%= link_to section.title, edit_section_path(@cheatsheet.permalink, section.id) %></li>
+	<li><%= link_to section.title, edit_cheatsection_path(@cheatsheet.permalink, section.id) %></li>
 <% end %>
 
 </ul>
 
-<p><%= asterisk %> <%= link_to "Add new section", new_section_path(@cheatsheet.permalink)%></p>
+<p><%= asterisk %> <%= link_to "Add new section", new_cheatsheet_section_path(@cheatsheet.permalink)%></p>
 
 	<!-- MAIN EDIT FORM -->
 
