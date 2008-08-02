@@ -11,4 +11,6 @@
 class Version < ActiveRecord::Base
 	has_many :contents
 	validates_presence_of :version_number
+	validates_numericality_of :version_number
+	validates_uniqueness_of :version_number
 end
