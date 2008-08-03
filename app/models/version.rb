@@ -9,6 +9,8 @@
 
 
 class Version < ActiveRecord::Base
+	
+	# TODO Create foreign keys in database
 	has_many :contents
 	validates_presence_of :version_number
 	validates_numericality_of :version_number

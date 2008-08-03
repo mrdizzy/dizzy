@@ -16,17 +16,11 @@ class Binary < ActiveRecord::Base
 	validates_presence_of :binary_data, :content_type, :size, :filename, :content_id
 	belongs_to :content
 	
-	def validate
-		if content.nil?
-			errors.add(:content_id, "must belong to a valid article")
-		end
-	end
-	
 	def uploaded_data=(binary_data)
-		self.filename = binary_data.original_filename
-		self.content_type = binary_data.content_type.chomp
-		self.binary_data = binary_data.read
-		self.size	= binary_data.size
+			self.filename 		= binary_data.original_filename
+			self.content_type 	= binary_data.content_type.chomp
+			self.binary_data 	= binary_data.read
+			self.size			= binary_data.size
 	end
 end
 

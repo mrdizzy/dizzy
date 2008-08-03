@@ -28,9 +28,6 @@ class CommentsController < ApplicationController
 		if administrator?
 			@comment = Comment.find(params[:id])
 	 	 	@comment.destroy
-	 	 	respond_to do |wants|
-	 	 		wants.js
-		 	end
 		else
 			redirect_to login_path
 		end

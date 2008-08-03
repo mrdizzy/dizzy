@@ -31,6 +31,7 @@ class CheatsheetsController < ContentsController
 		end
 	end
 	unless params[:thumbnail][:uploaded_data].blank?
+	
 		if @cheatsheet.thumbnail	 	
 			@cheatsheet.thumbnail.update_attributes(params[:thumbnail])  	 		
 		else 
@@ -52,7 +53,10 @@ class CheatsheetsController < ContentsController
   	@cheatsheet.user_id = session[:administrator_id]
   	unless params[:pdf][:uploaded_data].blank?
   		@pdf = Pdf.new(params[:pdf])
+  		@pdf.valid?
+  		
 	     @cheatsheet.pdf = @pdf
+	     puts @pdf.errors.full_messages
   	end
   	unless params[:thumbnail][:uploaded_data].blank?
   		@thumbnail = Thumbnail.new(params[:thumbnail])

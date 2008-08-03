@@ -25,7 +25,7 @@ class CheatsheetsControllerTest < Test::Unit::TestCase
     assert true
   end
  	
- 	def test_should_create_on_valid_attributes
+ 	def test_should_succed_on_create_with_valid_attributes
  		post :create, { :thumbnail 	=> 	{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png") },
  						:cheatsheet =>	{ :permalink => "action-two-mailer",
  										  "date(li)" => "2008",
@@ -60,14 +60,13 @@ class CheatsheetsControllerTest < Test::Unit::TestCase
  										  :version_id => "1",
  										  :description => "Action Mailer cheatsheet",
  										  :new_version => "" },
- 						:pdf => { :uploaded_data => fixture_file_upload("letterhead.png", "image/pdf") } 
+ 						:pdf => { :uploaded_data => fixture_file_upload("letterhead.png", "application/pdf") } 
  					}, { :administrator_id => users(:mr_dizzy).id }
  					
  		assert assigns(:cheatsheet).errors.on(:thumbnail)
  		assert_response :success
 		assert_template "new"
  	end 	
- 
  
  	def test_should_fail_on_create_without_pdf
  		post :create, { :thumbnail 	=> 	{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png")  },
@@ -139,4 +138,27 @@ class CheatsheetsControllerTest < Test::Unit::TestCase
 		assert_redirected_to cheatsheet_path("action-two-mailer")
  	end
  	
+ 	def test_should_fail_on_update_with_valid_attributes
+ 		post :update, { :id => "11", 
+ 						:thumbnail => { :uploaded_data => "" },
+ 						:cheatsheet =>	{ :permalink => "action-two-mailer^%",
+ 										  "date(li)" => "2008",
+ 										  "date(2i)" => "8",
+ 										  "date(3i)" => "1",
+ 										  "date(4i)" => "14",
+ 										  "date(5i)" => "24",
+ 										  :title => "ActionMailer",
+ 										  :category_ids => ["2"],
+ 										  :version_id => "1",
+ 										  :description => "Action Mailer cheatsheet",
+ 										  :new_version => "" },
+ 						:pdf => { :uploaded_data => fixture_file_upload("letterhead.png", "image/png") } 
+ 					}, { :administrator_id => users(:mr_dizzy).id }
+
+ 		assert_equal 2, assigns(:cheatsheet).errors.size, assigns(:cheatsheet).errors.full_messages
+ 		assert_equal "is invalid", assigns(:cheatsheet).errors.on(:permalink)
+ 		assert_equal "is invalid", assigns(:cheatsheet).errors.on(:pdf)
+ 		assert_response :success
+		assert_template "edit"
+ 	end
 end

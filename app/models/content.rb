@@ -82,7 +82,7 @@ class Cheatsheet < Content
 	has_one :pdf, :dependent => :destroy, :foreign_key => "content_id"
 	has_one :thumbnail, :dependent => :destroy, :foreign_key => "content_id"
 	validates_presence_of :pdf, :thumbnail
-	validates_associated :pdf, :thumbnail, :related_articles, :categories
+	validates_associated :pdf, :thumbnail
 	
 	def title
 		result = super 

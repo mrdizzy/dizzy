@@ -40,19 +40,19 @@ class CommentsControllerTest < Test::Unit::TestCase
   	num_deliveries = ActionMailer::Base.deliveries.size
   	xhr(:get, :create, :comment => { :subject => "Hello", :body => "This is a comment", :name => "Malandra Mysogynist", :email => 'malandra@dutyfree.com' }, :content_id => 10)
   	
-  	assert_template("create.rjs")
+  	assert_template("create")
   		# Email sent to self
   	assert_equal num_deliveries+1, ActionMailer::Base.deliveries.size
   end  
   
   def test_new_main_comment 	
-  	get :new, :content_id => 10
-  	assert_template("new.rjs")
+  	xhr(:get, :new, :content_id => 10)
+  	assert_template("new")
   end
   
   def test_fail_invalid_main_comment
-  	get :new, :comment => { :name => "Melissa" }, :content_id => 10
-  	assert_template("new.rjs") 
+  	xhr(:get, :new, :comment => { :name => "Melissa" }, :content_id => 10)
+  	assert_template("new") 
 	end    
   
   # Child comments
@@ -80,8 +80,9 @@ class CommentsControllerTest < Test::Unit::TestCase
   # Destroy
 
   def test_succeed_destroy_comment_with_administrator
-  	delete :destroy, { :id => "1" }, { :administrator_id => users(:mr_dizzy).name }
-  	assert_template("destroy.rjs")
+  	xhr(:delete, :destroy, { :id => "1" }, { :administrator_id => users(:mr_dizzy).name })
+  	assert_template("destroy")
+  	assert_select_rjs
   	assert_response :success
   end
   
