@@ -11,11 +11,18 @@ class BinaryTest < Test::Unit::TestCase
  	assert_equal 0, binaries.size, "Binaries should have been destroyed"
   end
   
-  def test_binary_must_have_valid_content_id
+  def test_binary_should_fail_on_invalid_content_id
   	binary = binaries(:rails_migrations_pdf)
   	binary.content_id = 342
   	assert !binary.valid?, "Binary should be invalid"
-  	assert_equal "must belong to a valid article", binary.errors.on(:content_id)
+  	assert_equal "does not exist", binary.errors.on(:content)
+  end
+
+  def test_binary_should_fail_on_null_content_id
+  	binary = binaries(:rails_migrations_pdf)
+  	binary.content_id = nil
+  	assert !binary.valid?, "Binary should be invalid"
+  	assert_equal "does not exist", binary.errors.on(:content)
   end
   
 end

@@ -54,9 +54,7 @@ class CheatsheetsController < ContentsController
   	unless params[:pdf][:uploaded_data].blank?
   		@pdf = Pdf.new(params[:pdf])
   		@pdf.valid?
-  		
-	     @cheatsheet.pdf = @pdf
-	     puts @pdf.errors.full_messages
+	    @cheatsheet.pdf = @pdf
   	end
   	unless params[:thumbnail][:uploaded_data].blank?
   		@thumbnail = Thumbnail.new(params[:thumbnail])

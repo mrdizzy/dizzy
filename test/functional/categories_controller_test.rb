@@ -52,7 +52,7 @@ class CategoriesControllerTest < Test::Unit::TestCase
   		# Permalink and name
   	xml_http_request :post, :create, :category => { :name => "Plugins", :permalink => "plugins" }
    	assert_select_rjs :replace_html, "new_category_form"
-   	assert_equal assigns(:category)
+   	assert assigns(:category)
    	assert_template("new")
     assert_response :success
     

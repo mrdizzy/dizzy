@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
 class ArticleTest < Test::Unit::TestCase
-	fixtures :users, :contents, :categories, :categories_contents
+	fixtures :users, :contents, :categories, :categories_contents, :versions
   
   # Replace this with your real tests.
   def test_truth

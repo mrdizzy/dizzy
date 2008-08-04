@@ -21,6 +21,8 @@ class Content < ActiveRecord::Base
 	has_many 				:sections, :dependent => :destroy, :order => "'title' ASC"
 	belongs_to 				:version
 	belongs_to 				:user
+	validates_existence_of	:version
+	validates_existence_of  :user
 	
 	validates_presence_of 	:categories, :message => "must exist"
 	validates_format_of		:permalink, :with => /^[a-z0-9-]+$/

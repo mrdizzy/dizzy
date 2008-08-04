@@ -49,7 +49,7 @@ class ContentsController < ApplicationController
   def update
     @article = Article.find(params[:id])
     if @article.update_attributes(params[:article])
-    	puts @article.to_yaml
+
       flash[:notice] = 'Successfully updated.'
       redirect_to content_path(@article.permalink)
     else
