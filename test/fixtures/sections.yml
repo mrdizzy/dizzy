@@ -12,7 +12,7 @@
 #
 
 --- 
-sections_00001: 
+rails_migrations_methods: 
   permalink: rails-migrations-methods
   content_id: "1"
   title: Methods
@@ -102,7 +102,7 @@ sections_00001:
 
   id: "1"
   summary: interact with your database using migration methods
-sections_00002: 
+database_mapping: 
   permalink: database-mapping
   content_id: "1"
   title: Database mapping
@@ -133,7 +133,7 @@ sections_00002:
 
   id: "2"
   summary: how migration column types map to your underlying database
-sections_00003: 
+example_migration_file: 
   permalink: example-migration-file
   content_id: "1"
   title: Example migration
@@ -173,7 +173,7 @@ sections_00003:
 
   id: "3"
   summary: What a migration file looks like
-sections_00004: 
+rake_tasks: 
   permalink: rake-tasks
   content_id: "1"
   title: Rake tasks
@@ -211,7 +211,7 @@ sections_00004:
       `rake db:bootstrap`
   id: "4"
   summary: a list of built-in migration-related Rake tasks
-sections_00005: 
+directory_structure: 
   permalink: directory-structure
   content_id: "1"
   title: Directory Structure
@@ -227,10 +227,4 @@ sections_00005:
                 + 003_alter_surname
   id: "5"
   summary: where migration files go
-sections_00006: 
-  permalink: test-section-link
-  content_id: "1"
-  title: Test section
-  body: Testing a new section.
-  id: "6"
-  summary: testing a new section
+  

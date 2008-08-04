@@ -13,6 +13,7 @@
 
 class Section < ActiveRecord::Base
 	belongs_to :content
+	validates_presence_of :title, :summary, :permalink
 	validates_existence_of :content
 	validates_uniqueness_of :permalink
 end

@@ -59,6 +59,17 @@ contents_008:
     [1]: http://rubular.com/ "Rubular"
   user_id: "1"
   style: SNIPPET
+contents_009: 
+  permalink: action-mailer
+  title: Action Mailer
+  date: 2008-08-01 15:57:00
+  type: Cheatsheet
+  id: "13"
+  version_id: "3"
+  description: Description
+  content: 
+  user_id: "1"
+  style: 
 contents_001: 
   permalink: rails-migrations
   title: Rails Migrations
