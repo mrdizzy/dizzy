@@ -21,7 +21,7 @@ class ContentSweeper < ActionController::Caching::Sweeper
 		if content.is_a?(Cheatsheet)			
 			expire_page hash_for_cheatsheet_path(:id => content.permalink)
 			content.sections.each do |section|
-				expire_page hash_for_section_path(:cheatsheet_id => content.permalink, :id => section.permalink)
+				expire_page hash_for_cheatsheet_section_path(:cheatsheet_id => content.permalink, :id => section.permalink)
 			end	
 		end
 		expire_page hash_for_content_path(:id => content.permalink)
