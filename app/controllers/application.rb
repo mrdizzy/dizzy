@@ -4,7 +4,6 @@ class ApplicationController < ActionController::Base
 	include ExceptionNotifiable
 	require_dependency 'content'	
 	require_dependency 'binary'
-	local_addresses.clear
 
  private
  
