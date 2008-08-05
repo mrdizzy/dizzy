@@ -1,7 +1,7 @@
 <%= error_messages_for 'section' %>
 
 <p><label for="section_content_id"><%= diamond %> Parent</label>
-<%= form.collection_select 'content_id', Content.find(:all), :id, :title %>
+<%= form.collection_select 'content_id', Content.find(:all), :id, :title %></p>
 
 <p><label for="section_title"><%= diamond %> Title</label>
 <%= form.text_field 'title'  %></p>

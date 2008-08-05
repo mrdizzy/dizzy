@@ -39,7 +39,7 @@ class SectionsController < ApplicationController
 
   def destroy
     Section.find(params[:id]).destroy
-    redirect_to :action => 'list'
+    redirect_to edit_cheatsheet_path(@content)
   end
   
   private

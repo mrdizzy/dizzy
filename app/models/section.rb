@@ -16,4 +16,5 @@ class Section < ActiveRecord::Base
 	validates_presence_of :title, :summary, :permalink
 	validates_existence_of :content
 	validates_uniqueness_of :permalink
+	validates_format_of		:permalink, :with => /^[a-z0-9-]+$/, :allow_blank => true
 end
