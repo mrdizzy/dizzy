@@ -85,4 +85,12 @@ class SectionsControllerTest < Test::Unit::TestCase
     assert_equal "can't be blank", assigns(:section).errors.on(:summary)
    end  
 
+  def test_should_succeed_on_destroy_with_valid_parameters
+  	sections = Section.find(:all)
+  	size_before_delete = sections.size
+  	delete :destroy, { :cheatsheet_id => "rails-migrations", :id => "1" }
+  	assert_redirected_to edit_cheatsheet_path(1)
+  	assert_equal size_before_delete - 1, Section.find(:all).size
+  end
+
 end
