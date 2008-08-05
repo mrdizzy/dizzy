@@ -33,8 +33,18 @@ class SectionsControllerTest < Test::Unit::TestCase
   
   def test_should_succeed_on_new
   	get :new, :cheatsheet_id => "rails-migrations"
+  	
+  	assert_select "form[action=/ruby_on_rails/cheatsheets/rails-migrations/sections]"
   	assert_response :success
   	assert_template "new"
+  end
+  
+  def test_should_succeed_on_edit
+  	get :edit, :cheatsheet_id => "rails-migrations", :id => "1"
+
+	assert_select "form[action=/ruby_on_rails/cheatsheets/rails-migrations/sections/1]"
+	assert_response :success
+	assert_template "edit"
   end
 
   def test_should_succeed_on_create_with_valid_parameters
@@ -63,7 +73,6 @@ class SectionsControllerTest < Test::Unit::TestCase
   	assert_equal "does not exist", assigns(:section).errors.on(:content)
   	assert_template "new"
   end
-
 
   def test_should_fail_on_create_with_empty_parameters
   	post :create, { :section => 	{ :content_id => "" },
