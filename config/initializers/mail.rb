@@ -7,3 +7,5 @@ ActionMailer::Base.smtp_settings = {
 }
 
 FROM_EMAIL = "david.pettifer@dizzy.co.uk"
+
+ExceptionNotifier.exception_recipients = %w(david.pettifer@googlemail.com)
