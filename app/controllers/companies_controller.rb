@@ -4,7 +4,6 @@ class CompaniesController < ApplicationController
 		
 	def index
 		@companies = Company.find(:all, :order => :name)
-		melanie_path
 	end  
 	
   	def edit
