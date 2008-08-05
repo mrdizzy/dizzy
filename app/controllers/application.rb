@@ -29,4 +29,8 @@ class ApplicationController < ActionController::Base
 	  		"application"
 	  	end
 	end
+	
+	 def local_request?
+    return false
+  end
 end
