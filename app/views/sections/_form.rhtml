@@ -1,19 +1,17 @@
 <%= error_messages_for 'section' %>
 
-<!--[form:section]-->
 <p><label for="section_content_id"><%= diamond %> Parent</label>
-<%= collection_select 'section', 'content_id', Content.find(:all), :id, :title %>
+<%= form.collection_select 'content_id', Content.find(:all), :id, :title %>
 
 <p><label for="section_title"><%= diamond %> Title</label>
-<%= text_field 'section', 'title'  %></p>
+<%= form.text_field 'title'  %></p>
 
 <p><label for="section_summary"><%= diamond %> Summary</label>
-<%= text_field 'section', 'summary'  %></p>
+<%= form.text_field 'summary'  %></p>
 
 <p><label for="section_permalink"><%= diamond %> Permalink</label>
-<%= text_field 'section', 'permalink'  %></p>
+<%= form.text_field 'permalink'  %></p>
 
 <p><label for="section_body"><%= diamond %> Body</label>
-<%= text_area 'section', 'body', :size => "150x40"  %></p>
+<%= form.text_area 'body', :size => "150x40"  %></p>
 
-<!--[eoform:section]-->
