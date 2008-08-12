@@ -51,4 +51,11 @@ class CategoryTest < Test::Unit::TestCase
   	assert_nil duplicate.errors[:name]
   end 	  
   
+  def test_should_remove_association_when_destroyed
+  	category = categories(:migrations)
+  	assert_equal 4, category.contents.size
+  	category.destroy
+  	assert_equal 0, category.contents.size
+  end
+  
 end

@@ -92,7 +92,6 @@ module TableHelper
 			@result
 		end
 		
-		
 		def peek_next(index)
 			if @cells[index+1]
 				next_cell = @cells[index+1]

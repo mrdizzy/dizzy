@@ -2,7 +2,8 @@
 # Likewise, all the methods added will be available for all controllers.
 class ApplicationController < ActionController::Base
 	include ExceptionNotifiable
-	require_dependency 'content'	
+	
+	require_dependency 'content'
 	require_dependency 'binary'
 
  private
@@ -30,7 +31,4 @@ class ApplicationController < ActionController::Base
 	  	end
 	end
 	
-	 def local_request?
-    return false
-  end
 end

@@ -1,5 +1,7 @@
 class ContentSweeper < ActionController::Caching::Sweeper
 	
+	# TODO Make sweeper regenerate content pages upon category modification
+	
 	observe Content, Section
 	
 	def after_save(record)

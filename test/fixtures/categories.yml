@@ -53,7 +53,7 @@ categories_00012:
   permalink: capistrano
   name: Capistrano
   id: "12"
-categories_00001: 
+migrations: 
   permalink: migrations
   name: Migrations
   id: "1"
