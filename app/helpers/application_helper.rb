@@ -70,7 +70,7 @@ module ApplicationHelper
 		submit_tag '', { :class => 'submit' } 
 	end
 
-	# Footer
+	# Footert
 	
 	def get_random_companies
 		@five_random_companies = Company.find(:all, :order => 'RAND()', :limit => 5)
