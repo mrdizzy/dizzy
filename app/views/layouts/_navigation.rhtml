@@ -11,13 +11,19 @@
 	
 	
 	<!-- CHEATSHEETS -->
-	<div class="nav_button"><a href=""><%= link_to image_tag("f/nav/cheats.png"), cheatsheets_path %></a></div>	
+	<div class="nav_button">
+		<% if current_page?(:controller => "cheatsheets", :action => "index") %>
+			<%= image_tag("f/nav/cheats_over.png") %>
+		<% else %>
+			<%= link_to image_tag("f/nav/cheats.png"), cheatsheets_path %>
+		<% end %>
+	</div>	
 	
 	
 	<!-- RUBY ON RAILS -->
 	<div class="nav_button">
-		<% if current_page?(:controller => "contents", :action => "show") or current_page?(:controller => "contents", :action => "index") or current_page?(:controller => "categories", :action => "show") or current_page?(:controller => "sections", :action => "show") %> 
-			<div id="no_nav"><%= image_tag("f/nav/rails_over.png") %></div>
+		<% if current_page?(:controller => "contents", :action => "show") or current_page?(:controller => "contents", :action => "index") or current_page?(:controller => "categories", :action => "show") or current_page?(:controller => "sections", :action => "show") or current_page?(:controller => "cheatsheets") && !current_page?(:controller => "cheatsheets", :action => "index") %> 
+			<%= image_tag("f/nav/rails_over.png") %>
 		<% else %>
 			<%= link_to image_tag("f/nav/rails.png"), latest_path %>
 		<% end %> 
@@ -35,7 +41,14 @@
 	
 	
 	<!-- CONTACT -->
-	<div id="contact_icon" class="nav_button"><%= link_to_remote image_tag("f/nav/contact.png"), :url => "/", :method => :get, :before => "Element.show('contact_spinner')", :complete => "Element.hide('contact_spinner')" %><div id="contact_spinner" style="display:none;">
-		<img alt="Spinner" src="/images/f/spinner.gif" />
-	</div></div>
+	<div id="contact_icon" class="nav_button">
+		<%= link_to_function image_tag("f/nav/contact.png"), :before => "Element.show('contact_spinner')", :complete => "Element.hide('contact_spinner')" do |page| 
+		page['contact_form'].show
+		end %>
+		<div id="contact_spinner" style="display:none;"><img alt="Spinner" src="/images/f/spinner.gif" /></div>
+	</div>
+
+</div>
+<div id="contact_form" style="display:none;">
+	
 </div>
