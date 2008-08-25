@@ -1,217 +1,248 @@
 --- 
-sections_008: 
-  permalink: form-for-fields-for
+sections_020: 
+  permalink: params-parsing-form-data
   content_id: "8"
-  title: form_for, fields_for
+  title: Parsing form data
   body: |
-    ## form_for and fields_for
+    ## Parsing form data
     
-    ### form_for
+    When a form is submitted to a Rails application, the parameters are automatically translated by Rails into the `params` object which is accessible as a hash structure. 
+    
+    + Key/value pairs of your form's input fields are stored simply as key/value pairs in the params hash, such as the id which is extracted by routing from the URL:
+    
+    table:
+    `/customers/1`              id=1	           `{ :id => "1" }`
+    `/customers/1?color=red`    id=1&color=red       `{ :id => "1", :color => "red" }`
+    
+    
+    + Square brackets [] are used to build more complex, nested structures:
+    
+    table:
+    `text_field :user, :name`	          user[name]=David	`{ :user => { :name => "David" }`
+    `text_field "user[address]", :city`	  user[address][city]=London	 `{ :user => { :address => { :city => "London" }}}`
+    `text_field "user[address]", :street`	  user[address][street]=Road	`{ :user => { :address => { :street => "Road" }}}`
+    
+    
+    + Using empty square brackets `[]` after the name of a model object, such as `address[]`, will insert the `id` of the record you are editing into the input field, useful for editing multiple records on one form:
+    
+    table:
+    `text_field "address[]", :country`               address[4][country]=England               `{ :address => { 4 => { :country => "England" }}}`
+    `text_field "address[]", :town`                  address[4][town]=London            `{ :address => { 4 => { :town => "London" }}}`
+    
+    
+    + If the record is new and has no id, then upon submitting the form, Rails will convert the fields into an array of hashes in order of appearance:
+    
+    (Tab.1 Array of Hashes)
+    
+     
+      ruby:
+        text_field "address[]", :country 
+        text_field "address[]", :town
+        text_field "address[]", :country
+        text_field "address[]", :town
+    --------------------------------------------
+      ruby:
+        { :address => [
+            { :country => "England", :town => "London" },
+            { :country => "Australia", :town => "Sydney" }
+          ]
+        }
+    
+    
+
+  id: "31"
+  summary: how Rails parses incoming form data
+sections_019: 
+  permalink: form-for
+  content_id: "8"
+  title: form_for
+  body: |
+    ## form_for
+    
+    `form_for` is used to easily manipulate HTML forms which are based upon ActiveRecord model objects:
     
     rhtml:
-        # Input
-        <% form_for (:person, @person, :url => { :action => 'update', :id => 1 }, :html => { :multipart => :true}) do  |form|%> 
-          Name:    <%= form.text_field  :title, :size => 30 %>
-          Notes:   <%= form.text_area  :content, :size => "10x20" %>
-          Photo:   <%= form.file_field   :photo_data %>
-          <%= submit_tag "Update" %>
+        <%= form_for(:customer, @customer, :url => { :controller => "customers", :action => "create" }, :html => { :multipart => true, :method => :put }) do |f| %>
+          <%= f.text_field :age %> 
+          <%= text_field "customer", :age %>
+          <%= submit_tag %>
         <% end %>
-        
-        # Output
-        <form action="/user/update/1" enctype="multipart/form-data" method="post"> 
-          Name:  <input id="person_title" name="person[title]" size="30" type="text" />
-          Notes: <textarea cols="10" id="person_content" name="person[content]" rows="20"></textarea>
-          Photo: <input id="person_photo_data" name="person[photo_data]" type="file" />
-          <input name="commit" type="submit" value="Update" />
-        </form>
     
-    ### fields_for
+    ### Parameters
     
-    rhtml:
-        # Input
-        <% fields_for :phone, @phone do |phone_fields| %> 
-          Home:   <%= phone_fields.text_field :home %>
-          Work:   <%= phone_fields.text_field :work %>
-          Cell:   <%= phone_fields.text_field :cell %>  
-        <% end %> 
+    table:
+    `:customer` required        :symbol or "string"       The name of the model object for all the fields in the form. All input fields will be prefixed with this. Rails will also look for an `@instance_variable` with the same name which should contain an instance of an existing or new ActiveRecord model object
+    `@customer` optional	     ActiveRecord model object	     If the `@instance_variable` containing the model object is named differently, you can pass a variable containing the actual model object here
+    `:url` optional	           "string" or {hash}	     The URL to post the form to. Can take an explicit url as a string, or a hash in the same format as `url_for`
+    `:html` optional	    {hash}	  A {hash} of HTML attributes which will be added to the HTML `<form>` tag.
+    `:method` optional	    :symbol	   Pass as part of the {hash} of HTML attributes. Can be `:put`, `:post`, `:get` or `:delete`
     
-        # Output
-        Home: <input id="phone_home" name="phone[home]" type="text" />
-        Work: <input id="phone_work" name="phone[work]" type="text" />
-        Cell: <input id="phone_cell" name="phone[cell]" type="text" /> 
 
-  id: "8"
-  summary: form helpers to wrap model objects
-sections_010: 
-  permalink: input-fields
-  content_id: "8"
-  title: input field helpers
-  body: |-
-    ## Input fields
-    
-    ### text_field
-    
-    rhtml:
-        # Input
-        <%= text_field(:post, :title, :size => 20, :class => "blue" ) %>
-    
-        # Output
-        <input type="text" id="post_title" name="post[title]" size="20" value="#{post.title}" class="blue" />
-    
-    ### text_area
-    
-    rhtml:
-        # Input
-        <%= text_area(:post, :comment, :size => "20x10", :class => "area" ) %>
-    
-        # Output
-        <textarea cols="20" rows="10" id="post_comment" name="post[comment]" class="area">#{@post.comment}</textarea> 
-    
-    ### file_field
-    
-    rhtml:
-        # Input
-        <%= file_field(:post, :attachment, :class => "file_input")  %>
-    
-        # Output
-        <input type="file" id="post_attachment" name="post[attachment]" class="file_input"> 
-    
-    ### radio_button
-    
-    rhtml:
-        # Input
-        <%= radio_button(:post, :category, "ruby") %>
-        <%= radio_button(:post, :category, "python") %>
-    
-        # Output
-        <input type="radio" id="post_category" name="post[category]" value="ruby">
-        <input type="radio" id="post_category" name="post[category]" value="python">
-    
-    ### check_box    
-    
-    rhtml:
-        # Input
-        <%= check_box(:post, :validated, {}, "yes", "no") %>
-        
-        # Ouput
-        <input type="checkbox" id="post_validated" name="post[validated]" value="yes" />
-        <input type="hidden" name="post[validated]" value="no">
-    
-    ### password_field
-    
-    rhtml:
-        # Input
-        <%= password_field(:login, :pass, :size => 20, :class => "password_input") %>
-    
-        # Output
-        <input type="password" id="login_pass" name="login[pass]" value="#{@login.pass}" size="20" class="password_input" /> 
-    
-    ### hidden_field
-    
-    rhtml:
-        # Input
-        hidden_field(:signup, :pass_confirm)
-        
-        # Output
-        <input type="hidden" id="signup_pass_confirm" name="signup[pass_confirm]" value="#{@signup.pass_confirm}" />
-  id: "10"
-  summary: standard input fields, such as text fields and check boxes
-sections_009: 
-  permalink: form-tag
-  content_id: "8"
-  title: form_tag helpers
+  id: "30"
+  summary: wrap ActiveRecord model objects in a form
+sections_008: 
+  permalink: delivering-email
+  content_id: "13"
+  title: Delivering email
   body: |
-    ## form_tag helpers
+    ## Delivering mail
     
-    For forms which do not have a corresponding model. Syntax is identical to form helpers, but the first argument is the name of the field, not the model:
+    Once a mailer action and template are defined, you can `deliver` your message or `create` and save it for delivery later by calling the mailer class and prefixing your chosen class method with `deliver_` or `create_`
     
-    rhtml:
-        # Input
-        <%= file_field_tag(:avatar, :accept => "image/png,image/gif") %>
+    ### Send mail
     
-        # Output
-        <input accept="image/png,image/gif,image/jpeg" id="avatar" name="avatar" type="file" /> 
+    ruby:
+        Notifier.deliver_signup_notification(customer)
     
-    (Tab.1 form_tag methods)
+    ### Create mail
     
-    `check_box_tag`
-    ------------------
-    `field_set_tag`
-    ------------------
-    `file_field_tag`
-    ------------------
+    ruby:
+        mail = Notifier.create_signup_notification(customer)
+        Notifier.deliver(mail)
     
-    `form_tag`
-    ------------------
-    `hidden_field_tag`
-    ------------------
-    `image_submit_tag`
-    ------------------
+    You can pass the mailer model any variables you need to use in the generation of the email. In the example above we have passed it a variable named `customer` which could be an instance of an ActiveRecord `Customer` model. We can then access our customer's details in the mailer model.
+
+  id: "14"
+  summary: deliver emails or create and save them for future delivery
+sections_010: 
+  permalink: mailer-views
+  content_id: "13"
+  title: Views & Templates
+  body: |
+    ## Views & Templates
     
-    `password_field_tag`
-    ------------------
-    `radio_button_tag`
-    ------------------
-    `select_tag`
-    ------------------
+    Like ActionController, each mailer class has a corresponding view directory in which each method of the class looks for a template with its own name. For example...
     
-    `submit_tag`
-    ------------------
-    `text_area_tag`
-    ------------------
-    `text_field_tag`
-    
+    table:
+    *Mailer model*    *Class method*           *Corresponding template*
+    `Notifier`        `signup_notification`    `app/views/notifier/signup_notification.erb`
+    `Notifier`          `despatch_alert`         `app/views/notifier/despatch_alert.erb`
+    `MailingList`       `welcome_message`        `app/views/mailing_list/welcome_message.erb`
     
 
-  id: "9"
-  summary: helpers for form fields that do not have a corresponding model
+  id: "16"
+  summary: each mailer has a corresponding view
+sections_009: 
+  permalink: how-to-send-multipart-messages
+  content_id: "13"
+  title: Multipart messages
+  body: |-
+    ## Multipart messages
+    
+    There are two ways to send multipart email messages, explicity by manually defining each part, and implicitly by letting ActionMailer do the donkey work.
+    
+    ### Explicitly
+     
+    You can explicitly define multipart messages using the part method...
+    
+    ruby:
+        part "text/plain" do |p|
+            p.body = render_message("signup-as-plain", :account => recipient)
+            p.transfer_encoding = "base64"
+        end
+      
+        part :content_type => "text/html", :body => render_message("signup-as-html", :account => recipient)
+    
+    ### Implicitly
+    
+    ActionMailer will automatically detect and use multipart templates, where each template is named after the name of the method, followed by the content type. Each such detected template will be added as a separate part to the message. For example:
+    
+    plain:
+        signup_notification.text.plain.erb
+        signup_notification.text.html.erb
+        signup_notification.text.xml.builder
+    
+    Each would be rendered and added as a separate part to the message with the corresponding content type. The same body hash is passed to each template.
+  id: "15"
+  summary: how to send multipart messages
 sections_011: 
-  permalink: select-helpers
-  content_id: "8"
-  title: select
-  body: "## select\r\n\
-    \r\n\
-    ### collection_select\r\n\
-    \r\n\
-    rhtml:\r\n    # Input\r\n    <%= collection_select(:user, :id, User.find(:all, :order => \"name\"), :id, :name, {}, :class => \"red\") %>\r\n\
-    \r\n    # Output\r\n    <select id=\"user_id\" name=\"user[id]\" class=\"red\">\r\n      <option value=\"1\">David</option>\r\n    </select>\r\n\
-    \r\n\
-    ### option_groups_from_collection_for_select\r\n\
-    \r\n\
-    rhtml:\r\n    # Input\r\n    <%= option_groups_from_collection_for_select(Author.find(:all), :books, :name, :id, :title, 3) %>\r\n\
-    \r\n    # Output\r\n    <optgroup label=\"J K Rowling\">\r\n      <option_ value=\"1\">Order of the Phoenix</option>\r\n      <option value=\"4\">The Deathly Hallows</option>\r\n    </optgroup>\r\n    <optgroup label=\"Douglas Coupland\">\r\n      <option value=\"3\" selected=\"selected\">Generation X</option>\r\n      <option value=\"12\">Girlfriend In A Coma</option>\r\n      <option value=\"5\">Shampoo Planet</option>\r\n    </optgroup> \r\n\
-    \r\n\
-    ### options_for_select\r\n\
-    \r\n\
-    rhtml:\r\n    # Input\r\n    <%= options_for_select( {\"Mary\" => \"\xC2\xA32\", \"Lucy\" => \"\xC2\xA34\" ,\"Anne\" => \"\xC2\xA36\"}, [\"\xC2\xA34\", \"\xC2\xA36\"]) %>\r\n\
-    \r\n    # Output\r\n    <option value=\"\xC2\xA32\">Mary</option>\r\n    <option value=\"\xC2\xA34\" selected=\"selected\">Lucy</option> \r\n    <option value=\"\xC2\xA36\" selected=\"selected\">Anne</option>\r\n\
-    \r\n\
-    ### options_from_collection_for_select\r\n\
-    \r\n\
-    rhtml:\r\n    # Input\r\n    <%= options_from_collection_for_select(Author.find(:all), :id, :name) %>\r\n\
-    \r\n    # Output\r\n    <option value=\"#{@author.id}\">#{@author.name}</option> \r\n    \r\n\
-    ### select\r\n\
-    \r\n\
-    rhtml:\r\n    # Input\r\n    <%= select(:post, :person_id, Person.find(:all).collect { |p| [p.name, p.id] }, {:include_blank => true}) %>\r\n\
-    \r\n    # Output\r\n    <select name=\"post[person_id]\">\r\n      <option value=\"\"></option>\r\n      <option value=\"1\" selected=\"selected\">David</option>\r\n       <option value=\"2\">Sam</option>\r\n    </select> "
-  id: "11"
-  summary: helpers to create drop-down select lists
+  permalink: mailer-configuration-methods
+  content_id: "13"
+  title: Mailer Configuration Methods
+  body: |
+    ## Mailer Configuration Methods
+    
+    (Tab.1 Configuration Methods)
+    
+    *recipients* = [array] or "string"	
+    ----------------------------------------------------------
+    A string containing the email of address of the recipient, or an array of strings containing email addresses of multiple recipients. Will use the email's `To:` header.
+    
+    *sent_on* = Time object	 
+    ----------------------------------------------------------
+    A `Time` object which will be used to set the `Date:` header of the email. If not specified, then the current time and date will be used.
+    
+    *subject* = "string"	
+    ----------------------------------------------------------
+    The subject line to be used to set the email's `Subject:` header.
+    
+    *from* = [array] or "string"	 
+    ----------------------------------------------------------
+    A string containing the email address to appear on the `From:` line of the email being created, or a array of strings containing multiple email addresses in the same format as recipients.
+    
+    *body* = {hash}	
+    ----------------------------------------------------------
+    The body method sets instance variables to be available in the view template. For example, to make the variables order and name accessible as `@order` and `@name` respectively in your view template, use...
+    
+      ruby:
+        body :order => order, :name => name
+    
+    *attachment* = {hash} or block	  
+    ----------------------------------------------------------
+    Enables you to add attachments to your email message.
+    
+      ruby:
+        attachment :content_type => "image/jpeg", :body => File.read("an-image.jpg")
+          attachment "application/pdf" do |a| 
+            a.body = generate_your_pdf_here()
+          end
+    
+    *bcc* = [array] or "string"	
+    ----------------------------------------------------------
+    Blind carbon copy recipients in the same format as `recipients`.
+    
+    *cc* = [array] or "string"
+    ----------------------------------------------------------
+    Carbon copy recipients in the same format as `recipients`
+    
+    *content_type* = "string"	 
+    ----------------------------------------------------------
+    Set the content type of the message. Defaults to `text/plain`
+    
+    *headers* = {hash}	
+    ----------------------------------------------------------
+    A hash containing name/value pairs to be converted into abitrary header lines. For example...
+    
+      ruby:
+        headers "X-Mail-Count" => 107370
+    
+    *mime_version* = "string"	
+    ----------------------------------------------------------
+    The mime version for the message. Defaults to `1.0`
+    
+    *charset* = "string"	
+    ----------------------------------------------------------
+    The charset for the body and to encode the subject. Defaults to `UTF-8`
+    
+    *implicit_parts_order* = [array]	
+    ----------------------------------------------------------
+    When an email is built implicitly, this variable controls how the parts are ordered. Defaults to `["text/html", "text/enriched", "text/plain"]`. Items that appear first in the array have higher priority in the receiving mail client and appear last in the mime encoded message.
+
+  id: "17"
+  summary: use in your mailer model to define an email
 sections_012: 
-  permalink: time-zone-select
-  content_id: "8"
-  title: time_zone_select
-  body: "## time_zone_select\r\n\
-    \r\n\
-    ### time_zone_options_for_select\r\n\
-    \r\n\
-    rhtml:\r\n    # Input\r\n    <%= time_zone_options_for_select (\"Arizona\", TimeZone.us_zones) %>\r\n\
-    \r\n    # Output\r\n    <option value=\"Hawaii\">(GMT-10:00) Hawaii</option>\r\n    <option value=\"Alaska\">(GMT-09:00) Alaska</option>\r\n    <option value=\"Pacific Time (US &amp; Canada)\">(GMT-08:00) Pacific Time (US &amp; Canada)</option>\r\n    <option value=\"Arizona\" selected=\"selected\">(GMT-07:00) Arizona</option>\r\n    ..\r\n    <option value=\"Nuku\xE2\x80\x99alofa\">(GMT+13:00) Nuku\xE2\x80\x99alofa</option>\r\n\
-    \r\n\
-    ## time_zone_select\r\n\
-    \r\n\
-    rhtml:\r\n    # Input\r\n    <%= time_zone_select(:user, :zone, TimeZone.us_zones, { :include_blank => \"Please select your time zone\" }, :class => \"time_select\") %>\r\n    \r\n    # Output\r\n    <select class=\"time_select\" id=\"user_zone\" name=\"user[zone]\">\r\n      <option value=\"Hawaii\">(GMT-10:00) Hawaii</option>\r\n      <option value=\"Alaska\">(GMT-09:00) Alaska</option>\r\n      <option value=\"Pacific Time (US &amp; Canada)\">(GMT-08:00) Pacific Time (US &amp; Canada)</option>\r\n      <option value=\"Arizona\">(GMT-07:00) Arizona</option>\r\n      ..\r\n      <option value=\"Nuku\xE2\x80\x99alofa\">(GMT+13:00) Nuku\xE2\x80\x99alofa</option>\r\n    </select> "
-  id: "12"
-  summary: provides a list of time zones in a drop-down list
+  permalink: mailer-url-generation
+  content_id: "13"
+  title: URL Generation
+  body: |-
+    ## URLs
+    
+    If your view includes URLs from the application, you need to use `url_for` in the mailer class method instead of in the view template. You can pass the result to the view via the `body` method. Unlike controllers from ActionPack, the mailer instance doesn't have any context about the incoming request. 
+    
+    ruby:
+        body :home_page => url_for(:host => "dizzy.co.uk", :controller => "welcome", :action => "index")
+  id: "23"
+  summary: generate URLs to be used in your mailer view template
 sections_001: 
   permalink: rails-migrations-methods
   content_id: "1"
@@ -302,6 +333,74 @@ sections_001:
 
   id: "1"
   summary: interact with your database using migration methods
+sections_013: 
+  permalink: configuring-action-mailer
+  content_id: "13"
+  title: ActionMailer Configuration
+  body: |
+    ## ActionMailer::Base Configuration Methods
+    
+    ActionMailer is configured by acessing configuration methods at the class level, for example, `ActionMailer::Base.template_root = "/my/templates"`. These methods allow you to define the overall settings to be used by your application whenever it invokes ActionMailer. Define these settings in your `config/environment.rb` file using `config.action_mailer.method_name_here`. If you require different settings for each of your Rails' environments, define settings separately via `config/environments`.
+    
+    (Tab.1 Configuration Methods)
+    
+    *smtp_settings* = {hash}
+    --------------------------------------------------
+      `:address` - the address of the SMTP server you will be using to send email. Defaults to `localhost`
+    
+      `:port` - the port number of the SMTP server you will be using. Defaults to `25`
+    
+      `:domain` - if you need to specify a `HELO` domain, you can do it here
+    
+      `:user_name` - if your mail server requires authentication, set the username in this variable
+    
+      `:password` - if your mail server requires authentication, set the password in this variable
+    
+      `:authentication` - if your mail server requires authentication, you need to specify the authentication type here. This is a symbol, and one of `:plain`,       `:login`, or `:cram_md5`
+    
+    *sendmail_settings* = {hash}
+    --------------------------------------------------
+    `:location` - the location of the sendmail executable, defaults to `/usr/sbin/sendmail`
+    `:arguments` - the command line arguments for sendmail
+    
+    *raise_delivery_errors* = true or false
+    --------------------------------------------------
+    Whether or not errors should be raised if the email fails to be delivered.
+    
+    *delivery_method* = :smtp, :sendmail or :test
+    --------------------------------------------------
+    Defines a delivery method, defaults to `:smtp`
+    
+    *perform_deliveries* = true or false
+    --------------------------------------------------
+    Determines whether deliver_* methods are actually carried out. By default they are, but this can be turned off to help functional testing.
+    
+    *template_root* = "/path"
+    --------------------------------------------------
+    The root from which template references will be made
+    
+    *logger* 
+    --------------------------------------------------
+    Used for generation information on the mailing run if available. Can be set to `nil` for no logging. Compatible with Ruby's own Logger and Log4r loggers.
+    
+    *default_charset* = "string"
+    --------------------------------------------------
+    the default charset used for the body and to encode the subject. Defaults to `UTF-8`. You can also pick a different charset from inside a mailer method by setting charset
+    
+    *default_mime_version* = "string"
+    --------------------------------------------------
+    The default mime version used for the message. Defaults to `1.0`. You can also pick a different value from inside a mailer method by setting `mime_version`
+    
+    *default_implicit_parts_order* = [array]
+    --------------------------------------------------
+    When an email is built implicitly, this variable controls how the parts are ordered. Defaults to `["text/html", "text/enriched", "text/plain"]`. Items that appear first in the array have higher priority in the receiving mail client and appear last in the mime encoded message. You can also pick a different value from inside a mailer method by setting `implicit_parts_order`
+    
+    *default_content_type* = "string"
+    --------------------------------------------------
+    The default content type used for the main part of the message. Defaults to `text/plain`. You can also pick a different value from inside a mailer method by setting `content_type`
+
+  id: "24"
+  summary: configure Action Mailer
 sections_002: 
   permalink: database-mapping
   content_id: "1"
@@ -333,6 +432,65 @@ sections_002:
 
   id: "2"
   summary: how migration column types map to your underlying database
+sections_014: 
+  permalink: example-form-for
+  content_id: "8"
+  title: Example
+  body: |
+    ## Example
+    
+    ### Controller
+    
+    ruby:
+        def new
+          @customer = Customer.new
+          3.times do 
+            @customer.addresses.build	
+          end
+        end
+    
+    ### View
+    
+    rhtml:
+        <% form_for(@customer) do |f| %>
+          <%= f.text_field :name %>
+          <%= f.text_field :email %>
+          <% @customer.addresses.each do |address| %>
+            <% fields_for "customer[addresses][]", address do |fields| %>
+              <%= fields.text_field :number %>
+        	  <%= fields.text_field :street %>
+          <% end %>
+        <% end %>
+    
+    ### HTML
+    
+    rhtml:
+        <form id="new_customer" class="new_customer" method="post" action="/customers">
+        <input type="text" size="30" name="customer[name]"/>
+        <input type="text" size="30" name="customer[email]"/>
+        <input type="text" size="30" name="customer[addresses][][number]"/>
+        <input type="text" size="30" name="customer[addresses][][street]"/>
+        <input type="text" size="30" name="customer[addresses][][number]"/>
+        <input type="text" size="30" name="customer[addresses][][street]"/>
+        <input type="text" size="30" name="customer[addresses][][number]"/>
+        <input type="text" size="30" name="customer[addresses][][street]"/>
+        <input type="submit" value="Create" name="commit"/>
+        </form>
+    
+    ### params[]
+    
+    ruby:
+        params = {
+          "customer" => { "name"=>"David Pettifer",
+                          "email"=>"david.p@dizzy.co.uk",
+                          "addresses"=> [
+                            { "number"=>"31", "street"=>"High" },
+                            { "number"=>"22", "street"=>"Brook" },
+                            { "number"=>"16", "street"=>"Kents" }  ]
+                       } }
+
+  id: "25"
+  summary: controller, view, HTML and params[]
 sections_003: 
   permalink: example-migration-file
   content_id: "1"
@@ -372,6 +530,16 @@ sections_003:
         end
   id: "3"
   summary: What a migration file looks like
+sections_015: 
+  permalink: fields-for
+  content_id: "8"
+  title: fields_for
+  body: |-
+    ##fields_for
+    
+    `fields_for` creates a scope around a specific model object like `form_for`, but doesn't create the form tags themselves, making `fields_for` suitable for specifying additional model objects in the same form. See the example.
+  id: "26"
+  summary: creates a scope around fields
 sections_004: 
   permalink: rake-tasks
   content_id: "1"
@@ -410,6 +578,35 @@ sections_004:
       `rake db:bootstrap`
   id: "4"
   summary: a list of built-in migration-related Rake tasks
+sections_016: 
+  permalink: multipart-form
+  content_id: "8"
+  title: Multipart form
+  body: |
+    ## Multipart form
+    
+    ### View
+    
+    rhtml:
+        <% form_for(@customer, :html => { :multipart => true }) do |f| %>
+          <%= f.file_field :image_file %>
+        <%= submit_tag %>
+        <% end %>
+    
+    ### Model
+    
+    ruby:
+        class Customer < ActiveRecord::Base
+          def image_file      =(uploaded_data)
+            self.filename     = uploaded_data.original_filename
+            self.image_data   = uploaded_data.read
+            self.size     	  = uploaded_data.size
+            self.content_type = uploaded_data.content_type	
+          end
+        end
+
+  id: "27"
+  summary: model and view of multipart form
 sections_005: 
   permalink: directory-structure
   content_id: "1"
@@ -426,6 +623,26 @@ sections_005:
                 + 003_alter_surname
   id: "5"
   summary: where migration files go
+sections_017: 
+  permalink: input-field-helpers
+  content_id: "8"
+  title: Input field helpers
+  body: |
+    ## Input field helpers
+    
+    ruby:
+        f.error_messages_for
+        f.check_box :terms, { :class => 'check' }, "yes", "no"
+        f.file_field :image
+        f.hidden_field :id
+        f.label :customer, "Text for label"
+        f.password_field :password
+        f.radio_button :language, "French"
+        f.text_area :comment, :size => "20x30", :disabled => "disabled"
+        f.text_field :age, :size => "20", :class => "age_box"
+
+  id: "28"
+  summary: check boxes, text fields, radio buttons
 sections_006: 
   permalink: test-section-link
   content_id: "1"
@@ -433,46 +650,52 @@ sections_006:
   body: Testing a new section.
   id: "6"
   summary: testing a new section
-sections_007: 
-  permalink: country-select
+sections_018: 
+  permalink: restful-form-for
   content_id: "8"
-  title: country_select
+  title: RESTful form_for
   body: |
-    ## country_select
+    ## RESTful form_for
     
-    ### country_options_for_select
+    When standard routes are used in a RESTful context, Rails will reflect upon the object passed to it and  automatically build a form with the relevant RESTful URL depending on whether the form is wrapping a new record (create) or an existing record (update). Nested routes will require you to be more verbose. Standard routes	
     
-    rhtml:
-        # Input
-        <%= country_options_for_select("United Kingdom", ["France", "United States", "Canada"]) %>
-    
-        # Output
-        <option value="France">France</option>
-        <option value="United States">United States</option>
-        <option value="Canada">Canada</option>
-        <option value="">-------------</option>
-        <option value="Afghanistan">Afghanistan</option>
-        <option value="Albania">Albania</option>
-        ..
-        <option value="Zimbabwe">Zimbabwe</option> 
-    
-    ### country_select  
-    
-    rhtml:
-        # Input
-        <%= country_select(:user, :country, ["France", "United States", "Canada"], {}, :class => "select_country") %>
-    
-        # Output
-        <select id="user_country" name="user[country]">
-          <option value="France">France</option>
-          <option value="United States">United States</option>
-          <option value="Canada">Canada</option>
-          <option value="">-------------</option>
-          <option value="Afghanistan">Afghanistan</option> 
-          ..
-          <option value="Zimbabwe">Zimbabwe</option> 
-        </select>
+    table:
+    *Standard routes*            *new record?*    *method*         *URL*
+    `form_for(@customer)`        yes	      POST	       `/customers`
+    `form_for(@customer)`	     no               PUT	       `/customers/1`
+    *Nested routes*            *new record?*    *method*         *URL*
+    `form_for(@address, :url => customer_addresses_path(@customer))`   	yes     POST	`/customers/1/addresses`
+    `form_for(@address, :url => customer_addresses_path(@customer))`	no	PUT	  `/customers/1/addresses/24`
     
 
-  id: "7"
-  summary: creates a drop-down select list of most countries in the world
+  id: "29"
+  summary: using form_for in a RESTful context
+sections_007: 
+  permalink: mailer-model
+  content_id: "13"
+  title: Mailer Model
+  body: |
+    ## Mailer Model
+    
+    To use ActionMailer, you need to create a mailer model. Emails are defined by creating methods within the mailer model which are then used to set variables to be used in the mail template, to change options on the mail, or to add attachments.
+    
+    ### Mailer model generator
+    
+    plain:
+        ruby script/generate mailer NameOfMailer method1 method2 method3 
+     
+    ### Example mailer model
+    ruby:
+        class OrderMailer < ActionMailer::Base
+          
+            def confirm(order,sent_at = Time.now)
+                subject    "Subject line goes here"
+                body       :order => order
+                recipients ["bill@microsoft.com", "steve@apple.com"]
+                from       "david@dizzy.co.uk"
+                sent_on    sent_at
+            end    
+        end
+
+  id: "13"
+  summary: emails are defined by creating methods within the mailer model

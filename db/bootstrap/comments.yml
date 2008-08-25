@@ -40,15 +40,19 @@ comments_007:
   created_at: 2008-05-07 10:47:58
   email: nobody@nowhere.com
 comments_019: 
-  name: go
+  name: Nicholas Mercer
   new: "1"
-  content_id: "12"
-  body: Test
-  subject: "testing "
+  content_id: "2"
+  body: |
+    Any ideas on how to fix the following?
+    
+    DEPRECATION WARNING: paginate is deprecated and will be removed from Rails 2.0 (Pagination is moving to a plugin in Rails 2.0: script/plugin install svn://errtheblog.com/svn/plugins/classic_pagination)  See http://www.rubyonrails.org/deprecation for details. (called from list at /rails/gtown/app/controllers/photo_admin_controller.rb:12)
+
+  subject: Rails 2.0
   id: "21"
   parent_id: 
-  created_at: 2008-07-16 13:48:36
-  email: david@dizzy.co.uk
+  created_at: 2008-07-18 12:45:32
+  email: nmercer@noiseable.com
 comments_008: 
   name: Robert Green
   new: "1"
@@ -60,15 +64,15 @@ comments_008:
   created_at: 2008-06-20 12:22:03
   email: rbgrn@rbgrn.net
 comments_020: 
-  name: test
+  name: Nicholas Mercer
   new: "1"
-  content_id: "12"
-  body: Test
-  subject: Test
+  content_id: "2"
+  body: "Sorry, posted wrong error message.....  DEPRECATION WARNING: You've called image_path with a source that doesn't include an extension. In Rails 2.0, that will not result in .png automatically being appended. So you should call image_path('/photo_admin/code_image/3.png') instead  See http://www.rubyonrails.org/deprecation for details. (called from image_tag at /rails/gtown/vendor/rails/actionpack/lib/action_view/helpers/asset_tag_helper.rb:188)"
+  subject: Rails 2.0
   id: "22"
-  parent_id: 
-  created_at: 2008-07-16 15:07:55
-  email: test@test.com
+  parent_id: "21"
+  created_at: 2008-07-18 12:46:14
+  email: nmercer@noiseable.com
 comments_009: 
   name: Brad
   new: "1"
@@ -79,6 +83,16 @@ comments_009:
   parent_id: 
   created_at: 2008-06-22 22:45:22
   email: smithbm@masters.edu
+comments_021: 
+  name: aj illescas
+  new: "1"
+  content_id: "2"
+  body: the image odes nit appear, instead a description, content type, filename and time of creation appears... could you help me with this one
+  subject: rails2.0
+  id: "23"
+  parent_id: 
+  created_at: 2008-07-28 00:27:29
+  email: ajibanda@yahoo.com
 comments_010: 
   name: Graeme
   new: "1"
@@ -89,6 +103,20 @@ comments_010:
   parent_id: 
   created_at: 2008-06-29 09:48:16
   email: graeme@privacy.net
+comments_022: 
+  name: txarli
+  new: "1"
+  content_id: "1"
+  body: |-
+    what ahout a little bit of courtesy?
+    So, when you find an excelent guide to migrations, the only thing to say is "What about drops for migrating down"
+    
+    pff...
+  subject: Cortesy
+  id: "24"
+  parent_id: "20"
+  created_at: 2008-07-30 07:20:02
+  email: mr.skorpio@gmail.com
 comments_011: 
   name: Jorge Barbosa
   new: "1"
@@ -99,6 +127,19 @@ comments_011:
   parent_id: 
   created_at: 2008-06-29 21:49:12
   email: redhat.lesi@gmail.com
+comments_023: 
+  name: Dougle
+  new: "1"
+  content_id: "1"
+  body: |-
+    "So, when you find an excelent guide to migrations, the only thing to say is "What about drops for migrating down" pff..."
+    
+    Exactly what i mean.. it would be an "excellent" guide if it had drop syntax, that's not discourteous at all.
+  subject: Drops?
+  id: "25"
+  parent_id: "24"
+  created_at: 2008-07-30 10:39:08
+  email: daniel-craig@hotmail.co.uk
 comments_012: 
   name: Jorge Barbosa
   new: "1"
@@ -119,6 +160,19 @@ comments_001:
   parent_id: 
   created_at: 2008-03-11 12:12:03
   email: sddlzz@163.com
+comments_024: 
+  name: Sarah Lewis
+  new: "1"
+  content_id: "2"
+  body: |-
+    This tutorial was exactly what I needed to get me started. My application needed attachments, and this helped me figure out the file upload portion. From there, it wasn't too hard to figure out how to associate the files with my other records, and I'm in business.
+    
+    Your step-by-step directions made this much easier than fiddling with one of the attachment plugins (and I'm speaking from frustrating experience here! :) ).
+  subject: Thanks for this resource!
+  id: "26"
+  parent_id: 
+  created_at: 2008-08-11 17:18:17
+  email: sarah@findableblogs.com
 comments_013: 
   name: Jorge Barbosa
   new: "1"
@@ -150,6 +204,19 @@ comments_002:
   parent_id: 
   created_at: 2008-03-24 22:41:35
   email: zhangpeng715@hotmail.com
+comments_025: 
+  name: sgk
+  new: "1"
+  content_id: "2"
+  body: |
+    I am now bald and lost about 20 pounds....
+    but when I finally added "has_many :image_files" to the class declaration in app/models/photo.rb, I can now load am image properly into the db.
+
+  subject: this failed for me until...
+  id: "27"
+  parent_id: 
+  created_at: 2008-08-13 14:53:52
+  email: seymour.krebs@gmail.com
 comments_014: 
   name: Eric
   new: "1"
@@ -170,6 +237,19 @@ comments_003:
   parent_id: 
   created_at: 2008-04-03 04:06:51
   email: tomomikyoko@gmail.com
+comments_026: 
+  name: Gideon
+  new: "1"
+  content_id: "1"
+  body: |-
+    Thanks for this very useful resource.
+    
+    The args for rename_table should be :old_table, :new_table (and rename_table is actually listed twice too).
+  subject: rename_table args reversed
+  id: "28"
+  parent_id: 
+  created_at: 2008-08-18 22:25:37
+  email: gideon@novamind.com
 comments_015: 
   name: Cwelle
   new: "1"

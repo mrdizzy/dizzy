@@ -16,7 +16,7 @@ class VersionTest < Test::Unit::TestCase
   end
   
   def test_should_fail_when_not_valid_version_number
-  	invalids = [ "one", "2_0", "2.A", "2 0" ]
+  	invalids = [ "one", "2_0", "2.A", "GU" ]
   	invalids.each do |invalid|
   		version = Version.new(:version_number => invalid)
   		version.valid?
