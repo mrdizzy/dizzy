@@ -13,4 +13,10 @@ class Category < ActiveRecord::Base
 	validates_presence_of 		:permalink, :name
 	validates_uniqueness_of 	:permalink, :name, :allow_blank => true
 	validates_format_of			:permalink, :with => /^[a-z0-9-]+$/, :allow_blank => true
+	
+	def self.find_by_permalink(id)
+		result = super(id)
+		raise ActiveRecord::RecordNotFound unless result
+		return result
+	end
 end
