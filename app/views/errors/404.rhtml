@@ -4,7 +4,7 @@
 	
 	<div id="error_right">
 		<h1><%= asterisk %> Error 404 - Page Not Found</h1>
-		<p>Unfortunately, we could not find the URL <span class="blue_bold">/<%= @error %></span></p>
+		<p>Unfortunately, we could not find the URL <span class="blue_bold"><%= request.request_uri %></span></p>
 	</div>
 
 </div>

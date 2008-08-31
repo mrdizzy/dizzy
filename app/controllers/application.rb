@@ -16,19 +16,14 @@ class ApplicationController < ActionController::Base
 	end
 	
 	def administrator?
-		if session[:administrator_id]
-			true
-		else
-			false
-		end
+		session[:administrator_id]
 	end
 	
 	def determine_layout
-	  	if session[:administrator_id]
-	  		"admin"
-	  	else
-	  		"application"
-	  	end
+	  	session[:administrator_id] ? "admin" : "application"
 	end
 	
+	def local_request?
+		false
+	end
 end
