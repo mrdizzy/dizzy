@@ -36,22 +36,19 @@ class CategoriesControllerTest < ActionController::TestCase
   end
   
   def test_rjs_should_fail_on_create_with_duplicate_parameters
-  		# Permalink and name
-  	xml_http_request :post, :create, :category => { :name => "Plugins", :permalink => "plugins" }
-   	assert_select_rjs :replace_html, "new_category_form"
-   	assert assigns(:category)
-   	assert_template("new")
-    assert_response :success
-    
-    	# Name only
-    xml_http_request :post, :create, :category => { :name => "Plugins", :permalink => "edna-everage" }
-    assert_select_rjs :replace_html, "new_category_form"
+    	# Permalink only    
+    xml_http_request :post, :create, :category => { :name => "Files", :permalink => "file-handling" }
+    assert_select_rjs :replace_html, "new_category_form"    
+    assert_select "p+ul>li", { :count => 1, :text => "Permalink has already been taken"}, "Should have found error on permalink"
+    assert_select "div>h2", {:count => 1, :text => "1 error prohibited this category from being saved" }, "Should have found 1 error"
     assert_template("new")
     assert_response :success
     
-    	# Permalink only    
-    xml_http_request :post, :create, :category => { :name => "A New Category Name", :permalink => "plugins" }
+       	# Name only    
+    xml_http_request :post, :create, :category => { :name => "File handling", :permalink => "file-handling-new" }
     assert_select_rjs :replace_html, "new_category_form"
+    assert_select "ul>li:nth-of-type(1)", { :count => 1, :text => "Name has already been taken"}, "Should have found error on name"
+    assert_select "div>h2", {:count => 1, :text => "1 error prohibited this category from being saved" }, "Should have found 1 error"
     assert_template("new")
     assert_response :success
         
