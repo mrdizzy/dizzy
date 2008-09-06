@@ -14,10 +14,9 @@
 #
 
 --- 
-cards: 
+business_card: 
   visible: "1"
   column_space: "1"
-  id: "1"
   description: Business cards
   header_content_type: image/gif
   header_filename: 
@@ -35,7 +34,6 @@ cards:
 leaflet: 
   visible: "1"
   column_space: "2"
-  id: "2"
   description: Leaflet
   header_content_type: image/gif
   header_filename: 
@@ -50,7 +48,6 @@ leaflet:
 letterhead: 
   visible: "1"
   column_space: "1"
-  id: "3"
   description: Letterhead
   header_content_type: image/gif
   header_filename: 
@@ -63,11 +60,10 @@ letterhead:
     f3nFKqa0VMTGdCfLxUsmSn5aZJpGLUtXbs8vN+LDW2OFU0A+7u/w8fLz9PXw
     CQA7
 
-  position: "3"
+  position: 3
 logo: 
-  visible: "1"
-  column_space: "1"
-  id: "4"
+  visible: 1
+  column_space: 1
   description: Logo
   header_content_type: image/gif
   header_filename: 
@@ -77,38 +73,34 @@ logo:
     DcTBUA4swoBH21AMMxaroCi0bgtojeU6DDTI49V4iBUXyuOy+RREzZqB2ocT
     EHZIXys4zBru9wBcUDjBCTEuORozHwoxJ4YMMAFOTIoMAwWAhZCGCQA7
 
-  position: "1"
+  position: 1
 colour_logo: 
   visible: 
-  column_space: "1"
-  id: "5"
+  column_space: 1
   description: Small Colour Logo
   header_content_type: 
   header_filename: 
   header_binary: 
-  position: "100"
+  position: 100
 grey_logo: 
   visible: 
-  column_space: "1"
-  id: "6"
+  column_space: 1
   description: Small Grey Logo
   header_content_type: 
   header_filename: 
   header_binary: 
-  position: "101"
+  position: 101
 header: 
   visible: 
   column_space: "1"
-  id: "7"
   description: Header
   header_content_type: 
   header_filename: 
   header_binary: 
   position: "102"
-slip: 
+compliment_slip: 
   visible: "1"
   column_space: "1"
-  id: "8"
   description: Compliment Slip
   header_content_type: image/gif
   header_filename: 

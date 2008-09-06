@@ -1,4 +1,4 @@
-# == Schema Information
+# = Schema Information
 # Schema version: 4
 #
 # Table name: comments
@@ -16,8 +16,8 @@
 --- !omap
 - great_grandmother: 
     name: Malandra Burrows
-    new: "1"
-    content_id: "1"
+    new: 1
+    content: action_mailer_cheatsheet
     body: |-
       That was an absolutely fantastic tutorial.
     
@@ -27,45 +27,50 @@
     
       Love, Malandra xxx
     subject: A great new tutorial
-    id: "1"
-    parent_id: 
+    parent: 
     created_at: 2008-06-16 21:17:46
     email: malandra@burrows.com
 - grandmother: 
     name: Gary Cooley
-    new: "1"
-    content_id: "1"
+    new: 1
+    content: action_mailer_cheatsheet
     body: |-
       That's no problem at all Malandra.
        
       Cheers and hugs.
     subject: No problem!
-    id: "2"
-    parent_id: "1"
+    parent: great_grandmother
     created_at: 2008-06-16 21:23:28
     email: david.jason@cooley.com
 - mother: 
     name: Gary Cooley
-    new: "1"
-    content_id: "1"
+    new: 1
+    content: action_mailer_cheatsheet
     body: |-
       That's no problem at all Malandra.
     
       Cheers and hugs.
     subject: No problem!
-    id: "3"
-    parent_id: "2"
+    parent: grandmother
     created_at: 2008-06-16 21:23:28
     email: jennifer.saunders@cooley.com  
 - daughter: 
-    name: David Cooley
-    new: "1"
-    content_id: "1"
+    name: Sarah Cooley
+    new: 1
+    content: action_mailer_cheatsheet
     body: |-
       Oh wow, superb, thank you so much.
     subject: No problem!
-    id: "4"
-    parent_id: "3"
+    parent: mother
     created_at: 2008-06-16 22:23:28
+    email: sarah@cooley.com
+- son: 
+    name: David Cooley
+    new: 1
+    content: action_mailer_cheatsheet
+    body: |-
+      Oh wow, superb, thank you so much.
+    subject: No problem!
+    parent: mother
+    created_at: 2008-06-16 22:33:28
     email: david@cooley.com
-  

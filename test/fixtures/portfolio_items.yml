@@ -16,10 +16,9 @@
 heavenly_grey_logo: 
   content_type: image/png
   size: "5000"
-  portfolio_type_id: "6"
-  id: "93"
+  portfolio_type: grey_logo
   filename: heavenlysmallgreylogo.png
-  company_id: "1"
+  company: heavenly
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAHYAAAA0CAMAAABo6TxEAAAABGdBTUEAAK/I
     NwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAABg
@@ -70,10 +69,9 @@ heavenly_grey_logo:
 heavenly_slip: 
   content_type: image/png
   size: "5000"
-  portfolio_type_id: "8"
-  id: "45"
+  portfolio_type: compliment_slip
   filename: heavenlyslip.png
-  company_id: "1"
+  company_id: heavenly
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAANEAAABTCAMAAAA2nBIOAAABgFBMVEX///9n
     Z2f6+vpxRD709PS7u7t3TkWbm5tXV1fIuriysrLCwsLa0MyulpOTcW22oZ6D
@@ -146,10 +144,9 @@ heavenly_slip:
 heavenly_header: 
   content_type: image/png
   size: "5000"
-  portfolio_type_id: "7"
-  id: "12"
+  portfolio_type: header
   filename: heavenlyheader.png
-  company_id: "1"
+  company: heavenly
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAIMAAAAlCAMAAABWBqqnAAAABGdBTUEAAK/I
     NwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAABg
@@ -189,10 +186,9 @@ heavenly_header:
 heavenly_letterhead: 
   content_type: image/png
   size: "5000"
-  portfolio_type_id: "3"
-  id: "34"
+  portfolio_type: letterhead
   filename: heavenlyletterhead.png
-  company_id: "1"
+  company: heavenly
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAL4AAAEBCAMAAADxQe+7AAADAFBMVEX////p
     6enn5+fo5OSafHmjiYXe29uScGzt6+v4+Pjx8fHt7e3v7+/q6uqKaGPIurno
@@ -384,10 +380,9 @@ heavenly_letterhead:
 heavenly_logo: 
   content_type: image/png
   size: "5000"
-  portfolio_type_id: "4"
-  id: "1"
+  portfolio_type: logo
   filename: heavenlylogo.png
-  company_id: "1"
+  company: heavenly
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAJ4AAABGCAMAAAAKNt0LAAAAYFBMVEX////6
     9/jAtrTp5uVyVlLuibfnKYzc0c9xcXH3xNyNjY3sV6SqkIuVc2760+b74e7T
@@ -449,10 +444,9 @@ heavenly_logo:
 heavenly_colour_logo: 
   content_type: image/png
   size: "5000"
-  portfolio_type_id: "5"
-  id: "92"
+  portfolio_type: color_logo
   filename: heavenlysmallcolourlogo.png
-  company_id: "1"
+  company: heavenly
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAHYAAAA0CAMAAABo6TxEAAAABGdBTUEAAK/I
     NwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAADA
@@ -511,10 +505,9 @@ heavenly_colour_logo:
 heavenly_cards: 
   content_type: image/png
   size: "5000"
-  portfolio_type_id: "1"
-  id: "23"
+  portfolio_type: business_card
   filename: heavenlycard.png
-  company_id: "1"
+  company: heavenly
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAOcAAADHCAMAAADVhrQkAAADAFBMVEX////E
     xMSNjIyDg4Pf3t7BwcGioqJ6eXmmpqapqamZmZlxcXHa2tpsbGxJSUliYmLV

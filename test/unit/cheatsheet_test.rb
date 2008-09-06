@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
 class CheatsheetTest < Test::Unit::TestCase
-  fixtures :contents, :binaries
+  fixtures :contents
 
   def test_truth
     assert true

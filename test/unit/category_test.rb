@@ -15,11 +15,7 @@ class CategoryTest < Test::Unit::TestCase
   def test_should_fail_with_empty_attributes
 	category = Category.new
 	assert !category.valid?
-	assert_equal category.errors[:name], "can't be blank"
-	assert_equal category.errors[:permalink], "can't be blank"
 	assert_equal category.errors.full_messages, ["Name can't be blank", "Permalink can't be blank"]
-	assert category.errors.invalid?(:name)
-	assert category.errors.invalid?(:permalink)
 	assert_equal category.errors.count, 2
   end
 
@@ -29,7 +25,7 @@ class CategoryTest < Test::Unit::TestCase
   		category = Category.new(:name => "New Category", :permalink => permalink)
   		assert !category.valid?, "Permalink #{permalink} should be invalid"
   		assert_equal category.errors[:permalink], "is invalid"
-  	 	assert_nil category.errors[:name] 	 	 
+  	 	assert_equal 1, category.errors.size 	 
 	end
   end 
   
@@ -45,14 +41,14 @@ class CategoryTest < Test::Unit::TestCase
   	duplicate = Category.new(:name => "Action Mailer", :permalink => "abc-def-ghi")
   	assert !duplicate.valid?, "Category name should be invalid"
   	assert_equal duplicate.errors[:name], "has already been taken"
-  	assert_nil duplicate.errors[:category]
+  	assert_equal 1, duplicate.errors.size
   	end
 
   def test_should_fail_on_create_with_duplicate_permalink
   	duplicate = Category.new(:name => "Melanie", :permalink => "file-handling")
   	assert !duplicate.valid?, "Category permalink should be invalid"
   	assert_equal duplicate.errors[:permalink], "has already been taken"
-  	assert_nil duplicate.errors[:name]
+  	assert_equal 1, duplicate.errors.size
   end 	  
   
   def test_should_remove_category_and_association_when_destroyed
@@ -61,7 +57,7 @@ class CategoryTest < Test::Unit::TestCase
     	category.destroy
 	end
 	category = categories(:cheatsheets)
-	assert_difference('category.contents.size', -1) do 
+	assert_difference('category.contents.size', -2) do 
 		category.destroy
 	end
   end

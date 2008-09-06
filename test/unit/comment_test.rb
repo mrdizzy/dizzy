@@ -3,7 +3,6 @@ require File.dirname(__FILE__) + '/../test_helper'
 class CommentTest < Test::Unit::TestCase
   fixtures :comments
 
-  # Replace this with your real tests.
   def test_truth
     assert true
   end
@@ -58,4 +57,12 @@ class CommentTest < Test::Unit::TestCase
   	comment = comments(:mother)
   	assert comment.valid?, comment.errors.full_messages
   end  
+  
+  def test_should_have_children
+  	comments = comments(:great_grandmother)
+  	assert_equal comments.children.first, comments(:grandmother)
+  	
+  	comments = comments(:mother)
+  	assert_equal comments.children, [comments(:son),comments(:daughter)]
+  end
 end

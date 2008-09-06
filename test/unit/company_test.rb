@@ -1,20 +1,18 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
 class CompanyTest < Test::Unit::TestCase
-  fixtures :companies
-  fixtures :portfolio_items
-  fixtures :portfolio_types
+  fixtures :companies, :portfolio_items, :portfolio_types
 
-  # Replace this with your real tests.
   def test_truth
     assert true
+    assert_valid companies(:heavenly)
+    companies(:heavenly).portfolio_items.all?{|portfolio_item| assert_valid portfolio_item}
   end
   
 	def test_invalid_with_empty_attributes
 		company = Company.new
 		assert !company.valid?
-		assert company.errors.invalid?(:name)
-		assert company.errors.invalid?(:description)
+		assert_equal company.errors.size, 3
 	end     
 	
 	def test_should_fail_if_no_header
@@ -29,4 +27,5 @@ class CompanyTest < Test::Unit::TestCase
 		company.name = "Benefits Agency PLC"
 		assert company.valid?, company.errors.full_messages
 	end	
+	
 end
