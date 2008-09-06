@@ -1,16 +1,11 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
 class PortfolioItemTest < Test::Unit::TestCase
-	  fixtures :companies
-	  fixtures :portfolio_types
-      fixtures :portfolio_items
+	  fixtures :portfolio_items, :portfolio_types, :companies
 
-  # Replace this with your real tests.
   def test_truth
     assert true
   end
-  
-  # Validations
   
     def test_portfolio_item_must_be_between_1k_and_100k
   	portfolio_item = portfolio_items(:heavenly_logo)
@@ -31,13 +26,14 @@ class PortfolioItemTest < Test::Unit::TestCase
   	bad 	= %w(image/jpg image/jpeg audio/wav image/tiff image/pngg image/giff image/png/audio)
   	
   	bad.each do |content_type| 
-		valid_content_type = PortfolioItem.new(	:portfolio_type_id	=> "2",
-												:company_id 		=> "1",
+  		
+		valid_content_type = PortfolioItem.new(	:portfolio_type	=> portfolio_types(:letterhead),
+												:company_id		=> companies(:silver).id,
 												:content_type 		=> content_type,
 												:filename 			=> "letterhead.png",
 												:size 				=> "3644",
 												:data				=> portfolio_items(:heavenly_logo).data)
-														
+												
 		assert !valid_content_type.valid?,  valid_content_type.errors.full_messages
 		assert_equal "must be a PNG or GIF file", valid_content_type.errors.on(:content_type)
 	end
@@ -45,8 +41,8 @@ class PortfolioItemTest < Test::Unit::TestCase
 	good	= %w(image/png image/x-png image/gif)
 	
 	good.each do |content_type|
-		valid_content_type = PortfolioItem.new( :portfolio_type_id	=> "2",
-												:company_id 		=> "1",
+		valid_content_type = PortfolioItem.new( :portfolio_type	=> portfolio_types(:letterhead),
+												:company 		=> companies(:silver),
 												:content_type 		=> content_type,
 												:filename 			=> "letterhead.png",
 												:size 				=> "3644",
@@ -55,21 +51,13 @@ class PortfolioItemTest < Test::Unit::TestCase
   	end
   end    
   
-  
-  # Associations
-  
   def test_portfolio_item_must_be_destroyed_upon_company_deletion
-  	portfolio_items = PortfolioItem.find_all_by_company_id(1)  
-  	assert_equal 7, portfolio_items.size
-  	company = Company.find(1)
-  	company.destroy
-	portfolio_items = PortfolioItem.find_all_by_company_id(1)  	
-	assert_equal 0, portfolio_items.size
+		flunk
   end
   
   def test_portfolio_type_id_must_be_unique_to_company
-  	existing_portfolio_type = PortfolioItem.new( 	:portfolio_type_id 	=> "3",
-													:company_id 		=> "1",
+  	existing_portfolio_type = PortfolioItem.new( 	:portfolio_type_id		=> portfolio_types(:letterhead).id,
+													:company 			=> companies(:heavenly),
 													:content_type 		=> "image/png",
 													:filename 			=> "colourlogo.png",
 													:data				=> portfolio_items(:heavenly_logo).data)
@@ -80,7 +68,6 @@ class PortfolioItemTest < Test::Unit::TestCase
 
   def test_portfolio_type_id_parent_must_exist
   	portfolio_item = portfolio_items(:heavenly_logo)
-  	puts portfolio_item.portfolio_type_id
   	portfolio_item.portfolio_type_id = 323
   	assert !portfolio_item.valid?
   	assert_equal "does not exist", portfolio_item.errors.on(:portfolio_type)

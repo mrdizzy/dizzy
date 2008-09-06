@@ -1,15 +1,14 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
 class BinaryTest < Test::Unit::TestCase
-  fixtures :binaries
+  fixtures :binaries, :contents
 
-  # Replace this with your real tests.
   def test_truth
     assert true
   end
  
   def test_thumbnail_size
-  	png = binaries(:rails_migrations_png)
+  	png = binaries(:action_mailer_png)
   	png.size = ""
   	assert !png.valid?
   	

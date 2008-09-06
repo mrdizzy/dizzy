@@ -1,8 +1,8 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
 class BinaryTest < Test::Unit::TestCase
-	fixtures :contents, :categories, :categories_contents, :binaries
-
+	fixtures :binaries, :contents
+	
   def test_truth
   	assert true
   	assert_valid binaries(:action_mailer_pdf)

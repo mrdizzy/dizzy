@@ -1,11 +1,10 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
 class PdfTest < Test::Unit::TestCase
-  fixtures :binaries
-  fixtures :contents
+  fixtures :binaries, :contents
   
   def test_cheatsheet_content_type_should_be_valid
-  	pdf = binaries(:rails_migrations_pdf)
+  	pdf = binaries(:action_mailer_pdf)
   	assert pdf.valid?, pdf.errors.full_messages
   	 	
   	pdf.content_type = "image/png"
@@ -21,7 +20,7 @@ class PdfTest < Test::Unit::TestCase
   end
   
   def test_cheatsheet_size_should_be_less_than_700k
-  	pdf = binaries(:rails_migrations_pdf)
+  	pdf = binaries(:action_mailer_pdf)
   	pdf.size = ""
   	assert !pdf.valid?
   	

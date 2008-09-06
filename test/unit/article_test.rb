@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
 class ArticleTest < Test::Unit::TestCase
-	fixtures :users, :contents, :categories, :versions
+  fixtures :contents, :categories, :users, :versions
   
   def test_truth
     assert true
@@ -15,7 +15,7 @@ class ArticleTest < Test::Unit::TestCase
   	@form_helpers.style = ""
   	@form_helpers.valid?
   	assert_equal "can't be blank", @form_helpers.errors.on(:style), @form_helpers.errors.full_messages
-  	assert_equal 1, @form_helpers.errors.size
+  	assert_equal 1, @form_helpers.errors.size, @form_helpers.errors.full_messages
   end
   
   def test_should_fail_on_invalid_style

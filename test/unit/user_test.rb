@@ -3,7 +3,6 @@ require File.dirname(__FILE__) + '/../test_helper'
 class UserTest < Test::Unit::TestCase
   fixtures :users
 
-  # Replace this with your real tests.
   def test_truth
     assert true
   end
@@ -29,6 +28,7 @@ class UserTest < Test::Unit::TestCase
 
   def test_user_passwords_should_match
   	user = users(:mr_dizzy)
+  	
   	
   	user.password = "world1"
   	user.password_confirmation = "world1"

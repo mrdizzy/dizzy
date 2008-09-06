@@ -1,8 +1,9 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
 class CategoryTest < Test::Unit::TestCase
-  fixtures :categories, :contents, :binaries
-
+	
+	fixtures :categories
+  
   def test_truth
     assert true
     assert categories(:beginners).valid?, categories(:beginners).errors.full_messages 
@@ -51,15 +52,7 @@ class CategoryTest < Test::Unit::TestCase
   	assert_equal 1, duplicate.errors.size
   end 	  
   
-  def test_should_remove_category_and_association_when_destroyed
-  	category = categories(:beginners)
-  	assert_difference('Category.count', -1) do
-    	category.destroy
-	end
-	category = categories(:cheatsheets)
-	assert_difference('category.contents.size', -2) do 
-		category.destroy
-	end
+  def test_should_remove_category_when_destroyed
   end
   
 end
