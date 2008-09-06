@@ -1,25 +1,7 @@
 require File.dirname(__FILE__) + '/../test_helper'
-require 'contents_controller'
 
-# Re-raise errors caught by the controller.
-class ContentsController; def rescue_action(e) raise e end; end
+class ContentsControllerTest < ActionController::TestCase
 
-class ContentsControllerTest < Test::Unit::TestCase
-	
-	fixtures :contents
-	fixtures :users
-	fixtures :categories
-	fixtures :versions
-	fixtures :categories_contents
-	fixtures :comments
-
-  def setup
-    @controller = ContentsController.new
-    @request    = ActionController::TestRequest.new
-    @response   = ActionController::TestResponse.new
-  end
-
-  # Replace this with your real tests.
   def test_truth
     assert true
   end

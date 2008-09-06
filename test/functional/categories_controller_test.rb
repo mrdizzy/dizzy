@@ -1,27 +1,16 @@
 require File.dirname(__FILE__) + '/../test_helper'
-require 'categories_controller'
 
-# Re-raise errors caught by the controller.
-class CategoriesController; def rescue_action(e) raise e end; end
-
-class CategoriesControllerTest < Test::Unit::TestCase
+class CategoriesControllerTest < ActionController::TestCase
 	
 	fixtures :categories
 	
   def setup
-    @controller = CategoriesController.new
-    @request    = ActionController::TestRequest.new
-    @response   = ActionController::TestResponse.new
-    
-    @main_category = categories(:plugins)
+    @main_category = categories(:file_handling)
   end
 
-  # Replace this with your real tests.
   def test_truth
     assert true
   end
-  
-  # HTML
   
   def test_should_succeed_on_show_with_valid_permalink
   	get :show, :id => @main_category.permalink
@@ -30,8 +19,6 @@ class CategoriesControllerTest < Test::Unit::TestCase
   	assert_template("show")
   end
     
-  # RJS
-  
   def test_rjs_should_succeed_on_destroy_with_valid_id
   	xml_http_request :delete, :destroy, :id => @main_category.id
   	assert_select_rjs :replace_html, "category_#{@main_category.id}", "<del>#{@main_category.name}</del>"

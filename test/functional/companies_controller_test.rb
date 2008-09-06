@@ -1,22 +1,7 @@
 require File.dirname(__FILE__) + '/../test_helper'
-require 'companies_controller'
 
-# Re-raise errors caught by the controller.
-class CompaniesController; def rescue_action(e) raise e end; end
-
-class CompaniesControllerTest < Test::Unit::TestCase
+class CompaniesControllerTest < ActionController::TestCase
 	
-	fixtures :companies
-	fixtures :portfolio_types
-	fixtures :portfolio_items
-
-  def setup
-    @controller = CompaniesController.new
-    @request    = ActionController::TestRequest.new
-    @response   = ActionController::TestResponse.new
-  end
-
-  # Replace this with your real tests.
   def test_truth
     assert true
   end

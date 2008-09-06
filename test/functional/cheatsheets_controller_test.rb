@@ -1,26 +1,8 @@
 require File.dirname(__FILE__) + '/../test_helper'
-require 'cheatsheets_controller'
 
-# Re-raise errors caught by the controller.
-class CheatsheetsController; def rescue_action(e) raise e end; end
-
-class CheatsheetsControllerTest < Test::Unit::TestCase
-	
-	fixtures :contents
-	fixtures :users
-	fixtures :binaries
-	fixtures :categories
-	fixtures :versions
-	fixtures :categories_contents
-	fixtures :comments
-
-  def setup
-    @controller = CheatsheetsController.new
-    @request    = ActionController::TestRequest.new
-    @response   = ActionController::TestResponse.new
-  end
-
-  # Replace this with your real tests.
+class CheatsheetsControllerTest  < ActionController::TestCase
+  fixtures :users, :contents
+  
   def test_truth
     assert true
   end

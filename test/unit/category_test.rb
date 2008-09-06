@@ -52,7 +52,10 @@ class CategoryTest < Test::Unit::TestCase
   	assert_equal 1, duplicate.errors.size
   end 	  
   
-  def test_should_remove_category_when_destroyed
+  def test_should_remove_category
+  	assert_difference('Category.count', -1) do
+  		categories(:cheatsheets).destroy
+  	end
   end
   
 end
