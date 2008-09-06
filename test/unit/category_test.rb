@@ -1,11 +1,15 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
 class CategoryTest < Test::Unit::TestCase
-  fixtures :categories, :contents, :binaries, :categories_contents
+  fixtures :categories, :contents, :binaries
 
-  # Replace this with your real tests.
   def test_truth
     assert true
+    assert categories(:beginners).valid?, categories(:beginners).errors.full_messages 
+    assert categories(:file_handling).valid?, categories(:file_handling).errors.full_messages
+    assert categories(:cheatsheets).valid?, categories(:cheatsheets).errors.full_messages
+    assert categories(:action_mailer).valid?, categories(:action_mailer).errors.full_messages
+    assert categories(:helpers).valid?, categories(:helpers).errors.full_messages
   end
   
   def test_should_fail_with_empty_attributes
@@ -38,24 +42,28 @@ class CategoryTest < Test::Unit::TestCase
   end
 
   def test_should_fail_on_create_with_duplicate_name
-  	duplicate = Category.new(:name => "Plugins", :permalink => "abc-def-ghi")
+  	duplicate = Category.new(:name => "Action Mailer", :permalink => "abc-def-ghi")
   	assert !duplicate.valid?, "Category name should be invalid"
   	assert_equal duplicate.errors[:name], "has already been taken"
   	assert_nil duplicate.errors[:category]
   	end
 
   def test_should_fail_on_create_with_duplicate_permalink
-  	duplicate = Category.new(:name => "Melanie", :permalink => "plugins")
+  	duplicate = Category.new(:name => "Melanie", :permalink => "file-handling")
   	assert !duplicate.valid?, "Category permalink should be invalid"
   	assert_equal duplicate.errors[:permalink], "has already been taken"
   	assert_nil duplicate.errors[:name]
   end 	  
   
-  def test_should_remove_association_when_destroyed
-  	category = categories(:migrations)
-  	assert_equal 4, category.contents.size
-  	category.destroy
-  	assert_equal 0, category.contents.size
+  def test_should_remove_category_and_association_when_destroyed
+  	category = categories(:beginners)
+  	assert_difference('Category.count', -1) do
+    	category.destroy
+	end
+	category = categories(:cheatsheets)
+	assert_difference('category.contents.size', -1) do 
+		category.destroy
+	end
   end
   
 end

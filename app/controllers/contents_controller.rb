@@ -13,7 +13,6 @@ class ContentsController < ApplicationController
 	end
 	
 	def show 
-		#load "#{RAILS_ROOT}/app/helpers/contents_helper.rb"
 		@content 		= Content.find_by_permalink(params[:id])		
 		@comment 		= Comment.new				
 		@categories 	= Category.find(:all, :order => :name)

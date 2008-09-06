@@ -9,8 +9,7 @@
 
 --- 
 one: 
-  version_number: "1.0"
-  id: "1"
+  version_number: 1.0
 two: 
-  version_number: "2.0"
-  id: "2"
+  version_number: 2.0
+  

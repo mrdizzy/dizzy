@@ -11,7 +11,7 @@ class PortfoliosController < ApplicationController
 	def show			
 		@company_pages, @companies = paginate :companies, :per_page => 8, :order => :name		
 		@company 	= Company.find(params[:id])		
-    	@header 	= PortfolioItem.find_by_portfolio_type_id_and_company_id(7,@company.id)
+    	@header 	= @company.portfolio_items.header
     	
     	respond_to do |wants|
     		wants.html

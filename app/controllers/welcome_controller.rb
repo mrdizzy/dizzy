@@ -3,8 +3,8 @@ class WelcomeController < ApplicationController
 	
 	def index
 		paginate_logos
-		@recent_tutorials 	= Content.recent_tutorials
-		@recent_snippets	= Content.recent_snippets
+		@recent_tutorials 	= Cheatsheet.recent
+		@recent_snippets	= Content.recent.snippets
 	end
 	
 	def next_logo

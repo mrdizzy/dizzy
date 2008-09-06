@@ -22,13 +22,15 @@ class Company < ActiveRecord::Base
   		end
   		
   		# Make sure that company has a header graphic
-  		
   		header = portfolio_items.collect { |item| item if item.portfolio_type_id == 7}.compact
 
   		if header.first.nil?
   			errors.add_to_base "Company must have a header graphic"
-  		end
-  		
+  		end	
 	end 
+	
+	def portfolio_items_for_display
+		self.portfolio_items.visible.find(:all, :order => "portfolio_types.position")
+	end
 
 end

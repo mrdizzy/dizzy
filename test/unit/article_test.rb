@@ -1,26 +1,28 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
 class ArticleTest < Test::Unit::TestCase
-	fixtures :users, :contents, :categories, :categories_contents, :versions
+	fixtures :users, :contents, :categories, :versions
   
-  # Replace this with your real tests.
   def test_truth
     assert true
   end
   
   def setup
-  	@form_helpers = contents(:form_helpers_article)
+  	@form_helpers = contents(:form_helpers_snippet)
   end
   
-  # Style
-    
-  def test_fail_when_empty_style
+  def test_should_fail_on_empty_style
   	@form_helpers.style = ""
-  	assert !@form_helpers.valid?, "Article should not be valid"
+  	@form_helpers.valid?
+  	assert_equal "can't be blank", @form_helpers.errors.on(:style), @form_helpers.errors.full_messages
+  	assert_equal 1, @form_helpers.errors.size
   end
   
-  def test_succeed_when_valid
-  	assert @form_helpers.valid?, @form_helpers.errors.full_messages
+  def test_should_fail_on_invalid_style
+  	@form_helpers.style = "PURPLE"
+  	@form_helpers.valid?
+  	assert_equal "is not included in the list", @form_helpers.errors.on(:style), @form_helpers.errors.full_messages
+  	assert_equal 1, @form_helpers.errors.size
   end
     
 end

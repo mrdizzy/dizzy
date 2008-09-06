@@ -15,6 +15,8 @@
 class Binary < ActiveRecord::Base
 	validates_presence_of :binary_data, :content_type, :size, :filename, :content_id
 	belongs_to :content
+	
+	validates_existence_of :content, :on => :update
 
 	def uploaded_data=(binary_data)
 			self.filename 		= binary_data.original_filename
@@ -31,5 +33,5 @@ end
 
 class Pdf < Binary
 	validates_inclusion_of :size, :in => 1.kilobyte..700.kilobytes, :message => "must be between 1k and 700k"
-	validates_format_of :content_type, :with => /application\/pdf/, :message => "must be a PDF file"
+	validates_format_of :content_type, :with => /(application\/pdf|binary\/octet-stream)/, :message => "must be a PDF file"
 end

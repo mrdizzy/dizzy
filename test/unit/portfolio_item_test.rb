@@ -80,9 +80,10 @@ class PortfolioItemTest < Test::Unit::TestCase
 
   def test_portfolio_type_id_parent_must_exist
   	portfolio_item = portfolio_items(:heavenly_logo)
+  	puts portfolio_item.portfolio_type_id
   	portfolio_item.portfolio_type_id = 323
   	assert !portfolio_item.valid?
-  	assert_equal "must exist in the database", portfolio_item.errors.on(:portfolio_type_id)
+  	assert_equal "does not exist", portfolio_item.errors.on(:portfolio_type)
   end
   
 end

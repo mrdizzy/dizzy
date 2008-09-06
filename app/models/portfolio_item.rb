@@ -22,9 +22,11 @@ class PortfolioItem < ActiveRecord::Base
 	validates_presence_of :content_type
 	validates_presence_of :data
 	belongs_to 	:portfolio_type
-	belongs_to	:company, :order => "portfolio_types.position"
+	belongs_to	:company
 	validates_existence_of :portfolio_type
-	#validates_existence_of :company
+	
+	named_scope :visible, { :conditions => ("portfolio_types.visible = '1'"), :include => "portfolio_type"}
+	named_scope :header, { :conditions => "portfolio_type_id = '7'" }
 	
 	def uploaded_data=(binary_data)
 		self.filename = binary_data.original_filename
@@ -33,9 +35,4 @@ class PortfolioItem < ActiveRecord::Base
 		self.size = binary_data.size
 	end
 	
-	def validate	
-		if portfolio_type.nil?
-			errors.add(:portfolio_type_id, "must exist in the database")
-		end
-	end
 end
