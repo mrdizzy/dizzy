@@ -38,7 +38,7 @@ class CommentTest < Test::Unit::TestCase
   	comment = comments(:mother)
   	comment.parent_id = 13434
   	assert !comment.valid?, comment.errors.full_messages
-  	assert_equal "must exist in the database", comment.errors.on(:parent_id)
+  	assert_equal "does not exist", comment.errors.on(:parent)
   end
   
   def test_should_pass_with_valid_parent
@@ -50,7 +50,7 @@ class CommentTest < Test::Unit::TestCase
   	comment = comments(:mother)
   	comment.content_id = 23232
   	assert !comment.valid?, comment.errors.full_messages
-  	assert_equal "must exist in the database", comment.errors.on(:content_id)
+  	assert_equal "does not exist", comment.errors.on(:content)
   end
   
   def test_should_pass_with_linked_article
