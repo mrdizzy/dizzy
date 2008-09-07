@@ -76,6 +76,12 @@ class ContentTest < Test::Unit::TestCase
   		@action_mailer_cheatsheet.date = Time.current
   		@action_mailer_cheatsheet.save!
    end
+   
+     assert_difference('Content.recent.count') do 
+  		@action_mailer_cheatsheet.date = Time.current - 61.minutes
+  		@action_mailer_cheatsheet.save!
+   end
+   
   end
   
 end
