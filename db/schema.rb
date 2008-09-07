@@ -99,6 +99,10 @@ ActiveRecord::Schema.define(:version => 13) do
     t.boolean "visible",                           :default => true
   end
 
+  create_table "schema_info", :id => false, :force => true do |t|
+    t.integer "version", :limit => 11
+  end
+
   create_table "sections", :force => true do |t|
     t.text    "body"
     t.integer "content_id", :limit => 11, :default => 0, :null => false
