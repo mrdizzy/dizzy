@@ -8,7 +8,7 @@ class ContentsController < ApplicationController
 		@latest = Content.recent
 		respond_to do |wants|
 			wants.html
-			wants.rss { render :action => "index.rxml", :layout => false  }
+			wants.rss { render :template => "contents/index.xml.erb", :layout => false  }
 		end
 	end
 	
