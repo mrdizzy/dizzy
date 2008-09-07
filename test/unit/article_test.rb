@@ -24,5 +24,16 @@ class ArticleTest < Test::Unit::TestCase
   	assert_equal "is not included in the list", @form_helpers.errors.on(:style), @form_helpers.errors.full_messages
   	assert_equal 1, @form_helpers.errors.size
   end
+  
+  def test_should_fail_with_empty_body
+  	@form_helpers.content = ""
+  	assert "can't be empty", @form_helpers.errors.invalid?(:content)
+  end 
+  
+  def test_should_destroy_article
+  	assert_difference('Article.count', -1) do
+  		@form_helpers.destroy
+  	end
+  end
     
 end
