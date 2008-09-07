@@ -9,6 +9,7 @@ set :password, "beaslewig175"
 # via the :deploy_to variable:
 # set :deploy_to, "/var/www/#{application}"
 
+set :shared_rails_dir, "/home/dizzynew/rails_apps/rails_2_1"
 set :deploy_to, "/home/dizzynew/rails_apps/#{application}"
 set :deploy_via, :export
 
@@ -43,13 +44,13 @@ task :after_update do
 	run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
 	
 	# relink rails vendor
-	# run "ln -nfs #{shared_rails_dir} #{release_path}/vendor/rails "
+	 run "ln -nfs #{shared_rails_dir} #{release_path}/vendor/rails "
 	
 	# chmod dispatchers and reaper
-	run "chmod 755 #{release_path}/public/dispatch.fcgi"
-	run "chmod 755 #{release_path}/public/dispatch.cgi"
-	run "chmod 755 #{release_path}/script/process/reaper"
-	run "chmod 755 #{release_path}/public"
+	#run "chmod 755 #{release_path}/public/dispatch.fcgi"
+	#run "chmod 755 #{release_path}/public/dispatch.cgi"
+	#run "chmod 755 #{release_path}/script/process/reaper"
+	#run "chmod 755 #{release_path}/public"
 end
 
 # =============================================================================
