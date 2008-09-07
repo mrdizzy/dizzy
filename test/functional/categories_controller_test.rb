@@ -20,15 +20,19 @@ class CategoriesControllerTest < ActionController::TestCase
   end
     
   def test_rjs_should_succeed_on_destroy_with_valid_id
-  	xml_http_request :delete, :destroy, :id => @main_category.id
+  	assert_difference('Category.count', -1) do
+  		xml_http_request :delete, :destroy, :id => @main_category.id
+    end
   	assert_select_rjs :replace_html, "category_#{@main_category.id}", "<del>#{@main_category.name}</del>"
   	assert_template("destroy")
   	assert_response :success
   end
   
   def test_rjs_should_succeed_on_create_with_valid_parameters
-  	xml_http_request :post, :create, :category => { :name => "Jennifer Hardware", :permalink => "jennifer-hardware" }
-   assert_select_rjs :insert_html, :bottom, "category_list", :partial => "category_link"
+  	assert_difference('Category.count') do
+  		xml_http_request :post, :create, :category => { :name => "Jennifer Hardware", :permalink => "jennifer-hardware" }
+    end
+    assert_select_rjs :insert_html, :bottom, "category_list", :partial => "category_link"
     category_id = assigns(:category).id
     assert_select "li#category_#{category_id}"
     assert_template("create")
@@ -50,8 +54,7 @@ class CategoriesControllerTest < ActionController::TestCase
     assert_select "ul>li:nth-of-type(1)", { :count => 1, :text => "Name has already been taken"}, "Should have found error on name"
     assert_select "div>h2", {:count => 1, :text => "1 error prohibited this category from being saved" }, "Should have found 1 error"
     assert_template("new")
-    assert_response :success
-        
+    assert_response :success        
   end
 
 end
