@@ -70,4 +70,12 @@ class ContentTest < Test::Unit::TestCase
   	end
   end
   
+  def test_should_wait_1_hour_before_displaying_new_articles
+
+   assert_difference('Content.recent.count',-1) do 
+  		@action_mailer_cheatsheet.date = Time.current
+  		@action_mailer_cheatsheet.save!
+   end
+  end
+  
 end
