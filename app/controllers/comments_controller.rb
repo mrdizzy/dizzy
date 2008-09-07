@@ -5,11 +5,7 @@ class CommentsController < ApplicationController
 	# TODO: If administrator logged in, then create comments from administrator rather than external user 
 	# TODO: Make email field optional to avoid readers putting in fake emails
 	def index
-		if administrator?
-			@latest = Content.recent
-		else 
-			redirect_to login_path
-		end
+		redirect_to login_path unless administrator?
 	end
 	
 	def new

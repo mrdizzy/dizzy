@@ -6,7 +6,6 @@ class ContentsController < ApplicationController
 	
 	def index 
 		@latest = Content.recent
-		
 	end
 	
 	def show 
@@ -14,13 +13,7 @@ class ContentsController < ApplicationController
 		@comment 		= Comment.new				
 		@categories 	= Category.find(:all, :order => :name)
 		respond_to do |wants|
-			wants.html do 
-				if @content.is_a?(Article) 
-					render(:template => "contents/article")
-				else
-					render(:template => "contents/cheatsheet")
-				end
-			end
+			wants.html { @content.is_a?(Article) ? render(:template => "contents/article") : render(:template => "contents/cheatsheet") }
 			wants.pdf { send_data(@content.pdf.binary_data, :type => "application/pdf", :disposition => 'inline') }
 			wants.png { send_data(@content.thumbnail.binary_data, :type => "image/png", :disposition => 'inline') }
 		end
@@ -44,8 +37,8 @@ class ContentsController < ApplicationController
 
   def update
     @article = Article.find(params[:id])
+    
     if @article.update_attributes(params[:article])
-
       flash[:notice] = 'Successfully updated.'
       redirect_to content_path(@article.permalink)
     else
@@ -56,8 +49,8 @@ class ContentsController < ApplicationController
 	def create
 		@article = Article.new(params[:article])
 		@article.user_id = session[:administrator_id]
-		if @article.valid?
-  	 		@article.save
+		
+		if @article.save
       		flash[:notice] = 'Successfully created.'
       		redirect_to latest_path
     	else
