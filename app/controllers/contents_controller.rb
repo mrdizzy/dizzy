@@ -6,10 +6,7 @@ class ContentsController < ApplicationController
 	
 	def index 
 		@latest = Content.recent
-		respond_to do |wants|
-			wants.html
-			wants.rss { render :template => "contents/index.xml.builder", :layout => false  }
-		end
+		
 	end
 	
 	def show 
