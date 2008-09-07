@@ -1,7 +1,6 @@
 class ContentSweeper < ActionController::Caching::Sweeper
 	
 	# TODO Make sweeper regenerate content pages upon category modification
-	
 	# TODO Make sweeper regenerate PDF after new PDF uploaded
 	
 	observe Content, Section

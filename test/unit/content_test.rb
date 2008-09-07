@@ -13,13 +13,14 @@ class ContentTest < Test::Unit::TestCase
   end
    
   def setup
-  	@form_helpers = contents(:form_helpers_snippet)
+  	@form_helpers_article		= contents(:form_helpers_snippet)
+  	@action_mailer_cheatsheet 	= contents(:action_mailer_cheatsheet)
   end
   
   def test_should_fail_without_category
-  	@form_helpers.categories.destroy_all
-  	assert !@form_helpers.valid?
-  	assert_equal "can't be blank", @form_helpers.errors.on(:categories)
+  	@form_helpers_article.categories.destroy_all
+  	assert !@form_helpers_article.valid?
+  	assert_equal "can't be blank", @form_helpers_article.errors.on(:categories)
   end
   
     def test_should_fail_with_empty_attributes
@@ -34,17 +35,17 @@ class ContentTest < Test::Unit::TestCase
  def test_should_fail_permalink_with_bad_characters
   	bad_permalinks = ["underscore_not_valid", "&no-!weird-%#\"/'characters)$", "no spaces", "NO-CAPITALS"]
   	bad_permalinks.each do |permalink|
-  		@form_helpers.permalink = permalink
-  		assert !@form_helpers.valid?
-  		assert_equal "is invalid", @form_helpers.errors.on(:permalink)
+  		@form_helpers_article.permalink = permalink
+  		assert !@form_helpers_article.valid?
+  		assert_equal "is invalid", @form_helpers_article.errors.on(:permalink)
   	 end
   end 
   
   def test_should_succeed_with_valid_permalinks
   	good_permalinks = ["valid-category-name", "rails-2-and-jeffrey", "wembley"]
   	good_permalinks.each do |permalink|
-  		@form_helpers.permalink = permalink
-  		assert @form_helpers.valid?, @form_helpers.errors.full_messages
+  		@form_helpers_article.permalink = permalink
+  		assert @form_helpers_article.valid?, @form_helpers_article.errors.full_messages
   	 end
   end
   
@@ -56,9 +57,17 @@ class ContentTest < Test::Unit::TestCase
   end
   
   def test_fail_when_empty_title
- 	@form_helpers.title = ""
- 	assert !@form_helpers.valid?
- 	assert_equal "can't be blank", @form_helpers.errors.on(:title)
+ 	@form_helpers_article.title = ""
+ 	assert !@form_helpers_article.valid?
+ 	assert_equal "can't be blank", @form_helpers_article.errors.on(:title)
+  end
+  
+  def test_should_destroy_dependencies
+  	count = @action_mailer_cheatsheet.comments.size
+  	count = 0 - count
+  	assert_difference('Comment.count',count) do
+  		@action_mailer_cheatsheet.destroy
+  	end
   end
   
 end

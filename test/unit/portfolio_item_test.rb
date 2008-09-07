@@ -66,7 +66,7 @@ class PortfolioItemTest < Test::Unit::TestCase
 	assert_equal "must not be a duplicate", existing_portfolio_type.errors.on(:portfolio_type_id)
   end    
 
-  def test_portfolio_type_id_parent_must_exist
+  def test_portfolio_type_id_must_exist
   	portfolio_item = portfolio_items(:heavenly_logo)
   	portfolio_item.portfolio_type_id = 323
   	assert !portfolio_item.valid?

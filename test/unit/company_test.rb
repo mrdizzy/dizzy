@@ -9,6 +9,10 @@ class CompanyTest < Test::Unit::TestCase
     companies(:heavenly).portfolio_items.all?{|portfolio_item| assert_valid portfolio_item}
   end
   
+  def setup
+  	@heavenly = companies(:heavenly)
+  end
+  
 	def test_invalid_with_empty_attributes
 		company = Company.new
 		assert !company.valid?
@@ -27,5 +31,13 @@ class CompanyTest < Test::Unit::TestCase
 		company.name = "Benefits Agency PLC"
 		assert company.valid?, company.errors.full_messages
 	end	
+	
+	def test_should_destroy_dependencies
+		count = @heavenly.portfolio_items.count
+		count = 0 - count
+		assert_difference('PortfolioItem.count',count) do 
+			@heavenly.destroy
+		end
+	end
 	
 end
