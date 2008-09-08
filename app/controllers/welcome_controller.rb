@@ -2,6 +2,8 @@ class WelcomeController < ApplicationController
 	helper :contents
 	
 	def index
+		# TODO Polymorphic URL: linking to cheatsheet/content
+		
 		paginate_logos
 		@recent_tutorials 	= Cheatsheet.recent
 		@recent_snippets	= Content.recent.snippets

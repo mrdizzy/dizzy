@@ -9,7 +9,7 @@ set :password, "beaslewig175"
 # via the :deploy_to variable:
 # set :deploy_to, "/var/www/#{application}"
 
-set :shared_rails_dir, "/home/dizzynew/rails_apps/rails_2_1"
+set :shared_rails_dir, "/home/dizzynew/rails_apps/rails_2_1_1"
 set :deploy_to, "/home/dizzynew/rails_apps/#{application}"
 set :deploy_via, :export
 
@@ -98,10 +98,7 @@ namespace :deploy do
 	
 	task :staging do
 		set :deploy_to, "/home/dizzynew/rails_apps/staging/#{application}"
-		default
-		remigrate
-		restart
-		
+		default		
 	end
 	task :setup_staging do
 			set :deploy_to, "/home/dizzynew/rails_apps/staging/#{application}"
@@ -117,7 +114,7 @@ namespace :deploy do
 	end
 	
 	task :start do
- 		run "cd #{deploy_to}/current && mongrel_rails start -p 3012 -e production -d"
+ 		run "cd #{deploy_to}/current && mongrel_rails start -p 12182 -e production -d"
 	end
 
 	desc "Restart the mongrel cluster"

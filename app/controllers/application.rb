@@ -26,8 +26,4 @@ class ApplicationController < ActionController::Base
 	  	session[:administrator_id] ? "admin" : "application"
 	end
 	
-	def local_request?
-		false
-	end
-	
 end

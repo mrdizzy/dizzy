@@ -26,10 +26,10 @@ class ContentSweeper < ActionController::Caching::Sweeper
 			content.sections.each do |section|
 				expire_page hash_for_cheatsheet_section_path(:cheatsheet_id => content.permalink, :id => section.permalink)
 			end	
+			expire_page hash_for_formatted_cheatsheet_path(:id => content.permalink, :format => :png)
+			expire_page hash_for_formatted_cheatsheet_path(:id => content.permalink, :format => :pdf)	
 		end
 		expire_page hash_for_content_path(:id => content.permalink)
-		expire_page hash_for_formatted_content_path(:id => content.permalink, :format => :png)
-		expire_page hash_for_formatted_content_path(:id => content.permalink, :format => :pdf)	
 		
 	end
 	

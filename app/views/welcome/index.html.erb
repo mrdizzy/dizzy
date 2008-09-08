@@ -30,14 +30,14 @@
 			<!-- MAIN ARTICLE -->
 			
 			<span class="posted_in">
-			 	<%= solid_arrow %> <%= link_to(@recent_tutorials[0].main_category.name.upcase, category_path(@recent_tutorials[0].main_category.permalink)) %>
+			 	<%= solid_arrow %> <%= link_to(@recent_tutorials.first.main_category.name.upcase, category_path(@recent_tutorials.first.main_category.permalink)) %>
 			</span>
-			<h1><%= @recent_tutorials[0].title %></h1>
+			<h1><%= @recent_tutorials.first.title %></h1>
 						
 			<div id="more_button">
 				<div class="more">
 					<div class="arrow"><%= diamond %></div>
-					<span class="read"><%= link_to("MORE &raquo;", content_path(@recent_tutorials[0].permalink)) %></span>
+					<span class="read"><%= link_to("MORE &raquo;", content_path(@recent_tutorials.first.permalink)) %></span>
 				</div>
 			</div>	
 			
