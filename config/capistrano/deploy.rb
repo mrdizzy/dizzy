@@ -95,25 +95,38 @@ EOF
 	
 end
 namespace :deploy do
+	
 	task :staging do
+		set :deploy_to, "/home/dizzynew/rails_apps/staging/#{application}"
 		default
 		remigrate
 		restart
+		
+	end
+	task :setup_staging do
+			set :deploy_to, "/home/dizzynew/rails_apps/staging/#{application}"
+			setup
 	end
 	
+	task :setup_staging_database do 
+			set :deploy_to, "/home/dizzynew/rails_apps/staging/#{application}"
+			setup_database
+	end
 	task :remigrate do
-		
-	send(run_method, "cd #{deploy_to}/current && rake db:remigrate RAILS_ENV=production")
-end
+		send(run_method, "cd #{deploy_to}/current && rake db:remigrate RAILS_ENV=production")
+	end
+	
 	task :start do
- run "cd #{deploy_to}/current && mongrel_rails start -p 3012 -e production -d"
-end
+ 		run "cd #{deploy_to}/current && mongrel_rails start -p 3012 -e production -d"
+	end
 
-desc "Restart the mongrel cluster"
+	desc "Restart the mongrel cluster"
 	task :restart, :roles => :app do
-	send(run_method, "cd #{deploy_to}/current && mongrel_rails restart")
-end
- namespace :web do
+		send(run_method, "cd #{deploy_to}/current && mongrel_rails restart")
+	end
+ 
+ 	namespace :web do
+    
     desc <<-DESC
       Present a maintenance page to visitors. Disables your application's web \
       interface by writing a "maintenance.html" file to each web server. The \
@@ -130,6 +143,7 @@ end
 
       Further customization will require that you write your own task.
     DESC
+    
     task :disable, :roles => :web, :except => { :no_release => true } do
       require 'erb'
       
