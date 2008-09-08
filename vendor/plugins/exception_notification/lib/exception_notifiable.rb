@@ -65,14 +65,14 @@ module ExceptionNotifiable
 
     def render_404
       respond_to do |type|
-        type.html { render :file => "#{RAILS_ROOT}/app/views/errors/404.html.erb", :status => "404 Not Found" }
+        type.html { render :template => "errors/404", :status => "404 Not Found" }
         type.all  { render :nothing => true, :status => "404 Not Found" }
       end
     end
 
     def render_500
       respond_to do |type|
-        type.html { render :file => "#{RAILS_ROOT}/app/views/errors/500.html.erb", :status => "500 Error" }
+        type.html { render :template => "errors/500", :status => "500 Error" }
         type.all  { render :nothing => true, :status => "500 Error" }
       end
     end
