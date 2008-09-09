@@ -27,6 +27,7 @@ form_helpers_snippet:
   description: Sometimes you want to quickly see the output of helper methods, and constantly clicking refresh in your browser then viewing the page source can be tiresome. Instead, use the Rails console to check helpers are doing what you want them to.
   content: Content goes here
   user: mr_dizzy
+  
 action_mailer_cheatsheet: 
   permalink: action-mailer
   title: Action Mailer
@@ -37,6 +38,7 @@ action_mailer_cheatsheet:
   description: Send and receive emails using the Action Mailer framework.
   content: 
   user: mr_dizzy
+  
 cheatsheet_without_binaries: 
   permalink: migrations
   title: Migrations
@@ -47,6 +49,7 @@ cheatsheet_without_binaries:
   description: Database migrations without Rails.
   content: Here is some content!
   user: mr_dizzy  
+  
 file_uploads_tutorial: 
   permalink: store-file-uploads-in-database
   title: Beginning File Uploads to the Database

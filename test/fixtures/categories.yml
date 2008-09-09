@@ -12,15 +12,19 @@
 helpers: 
   permalink: helpers
   name: Helpers
+  
 cheatsheets: 
   permalink: cheatsheets
   name: Cheatsheets
+  
 file_handling: 
   permalink: file-handling
   name: File handling
+  
 action_mailer: 
   permalink: action-mailer
   name: Action Mailer
+  
 beginners:
   permalink: beginners
   name: Beginners

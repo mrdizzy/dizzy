@@ -21,16 +21,9 @@ business_card:
   header_content_type: image/gif
   header_filename: 
   header_binary: !binary |
-    R0lGODlhSQAQAKIHAI2NjdLS0re3t3Nzc6SkpO/v72ZmZv///yH5BAEAAAcA
-    LAAAAABJABAAAAP/eLrc/jDKSau9eAbBiy2Cl42TYASHMQCDQVSmQM6QiRqA
-    AhiiRv8NWyp3IPB2CqGgRQgYBE7BDuAp7AayghGrVckU2hYgcH2lCATqdHfD
-    EgYo5MEW3dRVAaMMMLYZA4B/gAssUAEgeU8pK0twAS1tLC4HcjYmBB53LwU4
-    dWR8ipShClEMBRs4iwdOKEUnQ0knla9GLndfOCYGuzhWeL5wsa2ruampQnOv
-    qcRSPMmtvjGlQ6wOBQMDYNikoysKxjnVrjdjZDyXjyd2bE/TvdiAh4bY89kH
-    11iA8EY5qfj6r1qoGHNvCp0pgNqF8idpzJteD6ks8GULW5p+RHwBQAakDKPH
-    jyBDihxJsuSFBAA7
-
+    R0lGODlhAQABAIAAAAAAAP///yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==
   position: "2"
+  
 leaflet: 
   visible: "1"
   column_space: "2"
@@ -38,13 +31,9 @@ leaflet:
   header_content_type: image/gif
   header_filename: 
   header_binary: !binary |
-    R0lGODlhJgAQAKIHAO/v74uLi9fX1729vXNzc6WlpWZmZv///yH5BAEAAAcA
-    LAAAAAAmABAAAAOReLrc/jDKOcegDQxiSMDGhy2FMQiBAVlLOLZiCrkKrQAp
-    caFdcRhAA++A61yCwp9IEQgIBiaNoHQKCYqH5tMksAKUi+4J9dFAP7SUWEAG
-    15ZQZOB8dqfiQfTSBhUwPG92JkkMNlZsAAQ6T4kEUy5pBo0nA1+KVz9IlQEc
-    TgKKBU2CRJxWBxuSL6qrrK2ur7AMCQA7
-
+    R0lGODlhAQABAIAAAAAAAP///yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==
   position: "5"
+  
 letterhead: 
   visible: "1"
   column_space: "1"
@@ -52,15 +41,9 @@ letterhead:
   header_content_type: image/gif
   header_filename: 
   header_binary: !binary |
-    R0lGODlhPAAQAKIHAGhoaPHx8bW1tYqKiqamptjY2MbGxv///yH5BAEAAAcA
-    LAAAAAA8ABAAAAPWeLrc/jDKSau9RxhcCxBcIwDFAQxSIJSHAU7eGypjeUqx
-    csPfvNQm1CIwAHw8xqSxQDSCap9TcRA4NHuFIoCgyEpJQcZgUBgJRoSCh0wk
-    j1xGgmFJ6I3LAEO5UBcEjAZzYDsHMWp3PWGGWQNvhT1/ZEeMVnADcxsHdTZC
-    GUonOWEjSo1goSejSZeorCxAhHMsXYk3sQxAp6uyYUGYCptBamqABQYBkTYk
-    f3nFKqa0VMTGdCfLxUsmSn5aZJpGLUtXbs8vN+LDW2OFU0A+7u/w8fLz9PXw
-    CQA7
-
+    R0lGODlhAQABAIAAAAAAAP///yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==
   position: 3
+  
 logo: 
   visible: 1
   column_space: 1
@@ -68,12 +51,9 @@ logo:
   header_content_type: image/gif
   header_filename: 
   header_binary: !binary |
-    R0lGODlhHAAQAKIHAPDw8L+/v3V1ddnZ2Y6OjqSkpGZmZv///yH5BAEAAAcA
-    LAAAAAAcABAAAAN2eLrc/jBKFcK8yxCMNb/eAhSCBhyjIQTGcASEah2hIqzB
-    DcTBUA4swoBH21AMMxaroCi0bgtojeU6DDTI49V4iBUXyuOy+RREzZqB2ocT
-    EHZIXys4zBru9wBcUDjBCTEuORozHwoxJ4YMMAFOTIoMAwWAhZCGCQA7
-
+    R0lGODlhAQABAIAAAAAAAP///yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==
   position: 1
+  
 colour_logo: 
   visible: 
   column_space: 1
@@ -82,6 +62,7 @@ colour_logo:
   header_filename: 
   header_binary: 
   position: 100
+  
 grey_logo: 
   visible: 
   column_space: 1
@@ -90,6 +71,7 @@ grey_logo:
   header_filename: 
   header_binary: 
   position: 101
+  
 header: 
   visible: 
   column_space: "1"
@@ -98,6 +80,7 @@ header:
   header_filename: 
   header_binary: 
   position: "102"
+  
 compliment_slip: 
   visible: "1"
   column_space: "1"
@@ -105,14 +88,5 @@ compliment_slip:
   header_content_type: image/gif
   header_filename: 
   header_binary: !binary |
-    R0lGODlhWQAQAKIHAIyMjNPT07W1tezs7HR0dKSkpGZmZv///yH5BAEAAAcA
-    LAAAAABZABAAAAP/eLrc/jDKSau9OGs5ghDD9gDGAYqZYARsNJAEQBRoQw4G
-    UDMBDakBAiFCEuxGpUHoeCBFgEoIzrcYCAi5gGmFLbxyHYOABAg5cwdDATYo
-    CLVfgjEgJn8NYkXcs3ICAFczW1oMBWIBNyoAiAYEPYd4LEJfaTp4AnQzQUN/
-    fCyNjyAkAUtvpEB+WYYfKwxTempAB3RGlXQ+dIyVu00lW6ssnWoHODpOC28K
-    qCU3Cm+tC7QLObLStnmzdSVoaL3KOXjhi9hox3pYBFZ9zL69OOlVw8SxrdZZ
-    8rlnljrev9AK9oy1i0ZtnTtnQzKxCHZIhjotARVuosSN3zEgpkgFPLBqQkmB
-    TwWW9Vq0CiCJRiDcZBmUrda9P2C8VVRwccULLIs2fjFyc8bDVG7kMAGIbSgT
-    c0ZbJj060OgLQktrrIlKteqBBAA7
-
+    R0lGODlhAQABAIAAAAAAAP///yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==
   position: "4"
