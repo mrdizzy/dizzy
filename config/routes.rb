@@ -13,12 +13,9 @@ ActionController::Routing::Routes.draw do |map|
   # -- just remember to delete public/index.html.
     
     # Redirects
-    map.connect '/cheatsheets/rails-migrations.pdf', :controller => 'redirect', :url => '/ruby_on_rails/cheatsheets/rails-migrations.pdf'  
-    map.connect '/articles/rails-migrations.pdf', :controller => 'redirect', :url => '/ruby_on_rails/cheatsheets/rails-migrations.pdf'      
-    map.connect '/articles/rails-migrations', :controller => 'redirect', :url => '/ruby_on_rails/cheatsheets/rails-migrations'
-    map.connect '/ruby_on_rails/categories/migrations/contents/rails-migrations', :controller => 'redirect', :url => '/ruby_on_rails/cheatsheets/rails-migrations'    
-    map.connect '/articles/beginning-file-uploads', :controller => 'redirect', :url => '/ruby_on_rails/contents/store-file-uploads-in-database'    
-    map.connect '/ruby_on_rails/categories/file-handling/contents/beginning-file-uploads', :controller => 'redirect', :url => '/ruby_on_rails/contents/store-file-uploads-in-database'
+    REDIRECTS.each do |redirect|    
+    	map.connect redirect.first, :controller => 'redirect', :url => redirect.last
+	end
 
     # Named routes
     map.latest 'ruby_on_rails/latest', :controller => "contents", :action => "index"

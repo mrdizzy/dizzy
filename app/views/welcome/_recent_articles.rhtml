@@ -1,8 +1,0 @@
-	<span class="posted_in"><%= asterisk %> <%= recent_articles.main_category_name.upcase %></span>
-
-	<h3><%= link_to recent_articles.title, content_path(recent_articles.permalink) %></h3>
-	
-	<h4>POSTED <%= time_ago_in_words(recent_articles.date).upcase %> AGO</h4>
-	
-	<p><%= recent_articles.description %></p>
-	
