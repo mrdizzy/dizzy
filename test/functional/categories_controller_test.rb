@@ -2,7 +2,7 @@ require File.dirname(__FILE__) + '/../test_helper'
 
 class CategoriesControllerTest < ActionController::TestCase
 	
-	fixtures :categories
+	fixtures :categories, :versions, :contents
 	
   def setup
     @main_category = categories(:file_handling)

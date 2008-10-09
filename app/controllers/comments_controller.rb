@@ -38,11 +38,11 @@ class CommentsController < ApplicationController
 				@parent_comment.children << @comment			
 				if @parent_comment.save
 					@comment = @parent_comment.children.last
-					wants.js { render :action => "create_child.rjs"}
+					wants.js { render :action => "create_child"}
 					CommentMailer.deliver_response(@parent_comment)			
 					CommentMailer.deliver_notification(@comment)			
 				else
-					wants.js { render :action => "new_child.rjs"}
+					wants.js { render :action => "new_child"}
 				end		
 			else
 				@content 	= Content.find(params[:content_id])	
@@ -52,7 +52,7 @@ class CommentsController < ApplicationController
 					CommentMailer.deliver_notification(@comment)	
 					wants.js
 				else
-					wants.js { render :action => "new.rjs"}
+					wants.js { render :action => "new"}
 				end
 			end			
 		end							

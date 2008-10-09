@@ -2,6 +2,8 @@ require File.dirname(__FILE__) + '/../test_helper'
 
 class CommentsControllerTest < ActionController::TestCase
 	
+  fixtures :comments, :contents
+  	
   def test_truth
     assert true
   end
@@ -23,9 +25,12 @@ class CommentsControllerTest < ActionController::TestCase
   
  def test_create_main_comment
   	num_deliveries = ActionMailer::Base.deliveries.size
-  	xhr(:get, :create, :comment => { :subject => "Hello", :body => "This is a comment", :name => "Malandra Mysogynist", :email => 'malandra@dutyfree.com' }, :content_id => 10)
-  	
+  	xhr(:post, :create, :comment => { :subject => "Hello", :body => "This is a comment", :name => "Malandra Mysogynist", :email => 'malandra@dutyfree.com' }, :content_id => contents(:action_mailer_cheatsheet).id)
+
+	puts @response.body  	
   	assert_template("create")
+  	
+
   		# Email sent to self
   	assert_equal num_deliveries+1, ActionMailer::Base.deliveries.size
   end  

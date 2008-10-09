@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
 class CheatsheetsControllerTest  < ActionController::TestCase
-  fixtures :users, :contents
+  fixtures :users, :contents, :categories
   
   def test_truth
     assert true
@@ -38,7 +38,7 @@ class CheatsheetsControllerTest  < ActionController::TestCase
  										  "date(4i)" => "14",
  										  "date(5i)" => "24",
  										  :title => "ActionMailer",
- 										  :category_ids => ["2"],
+ 										  :category_ids => [categories(:cheatsheets),categories(:action_mailer)],
  										  :version_id => "1",
  										  :description => "Action Mailer cheatsheet",
  										  :new_version => "" },
@@ -59,7 +59,7 @@ class CheatsheetsControllerTest  < ActionController::TestCase
  										  "date(4i)" => "14",
  										  "date(5i)" => "24",
  										  :title => "ActionMailer",
- 										  :category_ids => ["2"],
+ 										  :category_ids => [categories(:cheatsheets),categories(:action_mailer)],
  										  :version_id => "1",
  										  :description => "Action Mailer cheatsheet",
  										  :new_version => "" },
@@ -97,7 +97,7 @@ class CheatsheetsControllerTest  < ActionController::TestCase
  	end
  	
  	def test_should_succeed_on_update_with_valid_attributes
- 		post :update, { :id => "11", 
+ 		post :update, { :id => contents(:action_mailer_cheatsheet), 
  						:thumbnail 	=> 	{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png") },
  						:cheatsheet =>	{ :permalink => "action-two-mailer",
  										  "date(li)" => "2008",
@@ -106,7 +106,7 @@ class CheatsheetsControllerTest  < ActionController::TestCase
  										  "date(4i)" => "14",
  										  "date(5i)" => "24",
  										  :title => "ActionMailer",
- 										  :category_ids => ["2"],
+ 										  :category_ids => [categories(:cheatsheets),categories(:action_mailer)],
  										  :version_id => "1",
  										  :description => "Action Mailer cheatsheet",
  										  :new_version => "" },
@@ -130,7 +130,7 @@ class CheatsheetsControllerTest  < ActionController::TestCase
  										  "date(4i)" => "14",
  										  "date(5i)" => "24",
  										  :title => "ActionMailer",
- 										  :category_ids => ["2"],
+ 										  :category_ids => [categories(:cheatsheets),categories(:action_mailer)],
  										  :version_id => "1",
  										  :description => "Action Mailer cheatsheet",
  										  :new_version => "" },
