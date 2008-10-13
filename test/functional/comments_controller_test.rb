@@ -2,7 +2,7 @@ require File.dirname(__FILE__) + '/../test_helper'
 
 class CommentsControllerTest < ActionController::TestCase
 	
-  fixtures :comments, :contents
+  fixtures :comments, :contents, :binaries
   	
   def test_truth
     assert true
@@ -26,8 +26,7 @@ class CommentsControllerTest < ActionController::TestCase
  def test_create_main_comment
   	num_deliveries = ActionMailer::Base.deliveries.size
   	xhr(:post, :create, :comment => { :subject => "Hello", :body => "This is a comment", :name => "Malandra Mysogynist", :email => 'malandra@dutyfree.com' }, :content_id => contents(:action_mailer_cheatsheet).id)
-
-	puts @response.body  	
+	puts assigns(:content).errors.full_messages
   	assert_template("create")
   	
 
@@ -48,18 +47,18 @@ class CommentsControllerTest < ActionController::TestCase
   # Child comments
   
   def test_succeed_new_child_comment_form
-  	get :new, :content_id => 10, :comment_id => "2"
-  	assert_template("new_child.rjs")
+  	xhr(:get, :new, :content_id => 10, :comment_id => "2")
+  	assert_template("new_child")
   	end
 
   def test_fail_create_invalid_child_comment
-  	get :new, :comment => { :body => "Here is a comment" }, :content_id => 10, :comment_id => 2
-  	assert_template("new_child.rjs") 
+  	xhr(:get, :new, :comment => { :body => "Here is a comment" }, :content_id => 10, :comment_id => 2)
+  	assert_template("new_child") 
 	end    	
 
   def test_succeed_create_valid_child_comment
   	num_deliveries = ActionMailer::Base.deliveries.size
-  	get :create, :comment => { :subject => "Hello", :body => "This is a comment", :name => "Malandra Mysogynist", :email => 'malandra@dutyfree.com', :content_id => 10 }, :comment_id => "2" 
+  	xhr(:get, :create, :comment => { :subject => "Hello", :body => "This is a comment", :name => "Malandra Mysogynist", :email => 'malandra@dutyfree.com', :content_id => 10 }, :comment_id => "2")
   	
   	assert_template("create_child.rjs")
   	
@@ -70,7 +69,7 @@ class CommentsControllerTest < ActionController::TestCase
   # Destroy
 
   def test_succeed_destroy_comment_with_administrator
-  	xhr(:delete, :destroy, { :id => "1" }, { :administrator_id => users(:mr_dizzy).name })
+  	delete :destroy, { :id => "1" }, { :administrator_id => users(:mr_dizzy).name }
   	assert_template("destroy")
   	assert_select_rjs
   	assert_response :success

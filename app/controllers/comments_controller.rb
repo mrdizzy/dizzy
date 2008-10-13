@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
 		@comment.content_id 	= params[:content_id]
 		respond_to do |wants|
 		 	if params[:comment_id]
-		 		wants.js { render :action => 'new_child.rjs' }	
+		 		wants.js { render :action => 'new_child' }	
 	 		else
 	 			wants.js
  			end

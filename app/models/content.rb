@@ -21,6 +21,7 @@ class Content < ActiveRecord::Base
 	has_many 				:sections, :dependent => :destroy, :order => "'title' ASC"
 	belongs_to 				:version
 	belongs_to 				:user
+	has_many				:binaries
 	
 	validates_existence_of	:version
 	validates_existence_of  :user	
