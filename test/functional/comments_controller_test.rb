@@ -2,7 +2,7 @@ require File.dirname(__FILE__) + '/../test_helper'
 
 class CommentsControllerTest < ActionController::TestCase
 	
-  fixtures :comments, :contents, :binaries
+  fixtures :comments, :contents, :binaries, :users
   	
   def test_truth
     assert true
@@ -17,7 +17,7 @@ class CommentsControllerTest < ActionController::TestCase
  
   def show_comments_index_to_authorized_user
   	get :index, {}, { :administrator_id => users(:mr_dizzy).name }
-  	assert_template("index.rhtml")
+  	assert_template("index")
   	assert_response :success
   end 
   
@@ -26,41 +26,45 @@ class CommentsControllerTest < ActionController::TestCase
  def test_create_main_comment
   	num_deliveries = ActionMailer::Base.deliveries.size
   	xhr(:post, :create, :comment => { :subject => "Hello", :body => "This is a comment", :name => "Malandra Mysogynist", :email => 'malandra@dutyfree.com' }, :content_id => contents(:action_mailer_cheatsheet).id)
-	puts assigns(:content).errors.full_messages
   	assert_template("create")
-  	
+  	assert_select_rjs
 
   		# Email sent to self
   	assert_equal num_deliveries+1, ActionMailer::Base.deliveries.size
   end  
   
   def test_new_main_comment 	
-  	xhr(:get, :new, :content_id => 10)
+  	xhr(:get, :new, :content_id => contents(:action_mailer_cheatsheet).id)
   	assert_template("new")
+  	assert_select_rjs
   end
   
   def test_fail_invalid_main_comment
-  	xhr(:get, :new, :comment => { :name => "Melissa" }, :content_id => 10)
+  	xhr(:get, :new, :comment => { :name => "Melissa" }, :content_id => contents(:action_mailer_cheatsheet).id)
   	assert_template("new") 
+  	assert_select_rjs
 	end    
   
   # Child comments
   
   def test_succeed_new_child_comment_form
-  	xhr(:get, :new, :content_id => 10, :comment_id => "2")
+  	xhr(:get, :new, :content_id => contents(:action_mailer_cheatsheet).id, :comment_id => "2")
   	assert_template("new_child")
+  	assert_select_rjs
   	end
 
   def test_fail_create_invalid_child_comment
-  	xhr(:get, :new, :comment => { :body => "Here is a comment" }, :content_id => 10, :comment_id => 2)
+  	xhr(:get, :new, :comment => { :body => "Here is a comment" }, :content_id => contents(:action_mailer_cheatsheet).id, :comment_id => comments(:mother).id)
   	assert_template("new_child") 
+  	assert_select_rjs
 	end    	
 
   def test_succeed_create_valid_child_comment
   	num_deliveries = ActionMailer::Base.deliveries.size
-  	xhr(:get, :create, :comment => { :subject => "Hello", :body => "This is a comment", :name => "Malandra Mysogynist", :email => 'malandra@dutyfree.com', :content_id => 10 }, :comment_id => "2")
+  	xhr(:get, :create, :comment => { :subject => "Hello", :body => "This is a comment", :name => "Malandra Mysogynist", :email => 'malandra@dutyfree.com', :content_id => contents(:action_mailer_cheatsheet).id }, :comment_id => comments(:mother).id)
   	
-  	assert_template("create_child.rjs")
+  	assert_template("create_child")
+  	assert_select_rjs
   	
   		# Email sent to author of parent comment and self
   	assert_equal num_deliveries+2, ActionMailer::Base.deliveries.size
@@ -69,15 +73,15 @@ class CommentsControllerTest < ActionController::TestCase
   # Destroy
 
   def test_succeed_destroy_comment_with_administrator
-  	delete :destroy, { :id => "1" }, { :administrator_id => users(:mr_dizzy).name }
+  	delete :destroy, { :id => comments(:mother).id }, { :administrator_id => users(:mr_dizzy).name }
   	assert_template("destroy")
   	assert_select_rjs
   	assert_response :success
   end
   
-    def test_fail_destroy_comment_without_administrator
+  def test_fail_destroy_comment_without_administrator
   	delete :destroy, { :id => "1" }
-  	  assert_redirected_to login_path
+    assert_redirected_to login_path
   end
 
 end
