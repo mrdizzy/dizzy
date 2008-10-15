@@ -15,7 +15,7 @@ class CommentsControllerTest < ActionController::TestCase
    assert_redirected_to login_path
   end
  
-  def show_comments_index_to_authorized_user
+  def test_show_comments_index_to_authorized_user
   	get :index, {}, { :administrator_id => users(:mr_dizzy).name }
   	assert_template("index")
   	assert_response :success
@@ -26,7 +26,7 @@ class CommentsControllerTest < ActionController::TestCase
  def test_create_main_comment
   	num_deliveries = ActionMailer::Base.deliveries.size
   	xhr(:post, :create, :comment => { :subject => "Hello", :body => "This is a comment", :name => "Malandra Mysogynist", :email => 'malandra@dutyfree.com' }, :content_id => contents(:action_mailer_cheatsheet).id)
-  	assert_template("create")
+  	assert_template("create.js.rjs")
   	assert_select_rjs
 
   		# Email sent to self

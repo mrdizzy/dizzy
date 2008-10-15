@@ -11,12 +11,8 @@ class CommentsController < ApplicationController
 	def new
 		@comment 				= Comment.new
 		@comment.content_id 	= params[:content_id]
-		respond_to do |wants|
-		 	if params[:comment_id]
-		 		wants.js { render :action => 'new_child' }	
-	 		else
-	 			wants.js
- 			end
+		if params[:comment_id]
+			render :action => 'new_child'
 	 	end
 	end
 	
@@ -31,31 +27,28 @@ class CommentsController < ApplicationController
 	
 	def create			
 		@comment = Comment.new(params[:comment])
-		
-		respond_to do |wants|	
-			if params[:comment_id]	
-				@parent_comment 	= Comment.find(params[:comment_id])	
-				@parent_comment.children << @comment			
-				if @parent_comment.save
-					@comment = @parent_comment.children.last
-					wants.js { render :action => "create_child"}
-					CommentMailer.deliver_response(@parent_comment)			
-					CommentMailer.deliver_notification(@comment)			
-				else
-					wants.js { render :action => "new_child"}
-				end		
+		if params[:comment_id]	
+			@parent_comment 	= Comment.find(params[:comment_id])	
+			@parent_comment.children << @comment			
+			if @parent_comment.save
+				@comment = @parent_comment.children.last
+				render :action => "create_child"
+				CommentMailer.deliver_response(@parent_comment)			
+				CommentMailer.deliver_notification(@comment)			
 			else
-				@content 	= Content.find(params[:content_id])	
-				@content.comments << @comment			
-				if @content.save
-					@comment = @content.comments.last
-					CommentMailer.deliver_notification(@comment)	
-					wants.js
-				else
-					wants.js { render :action => "new"}
-				end
-			end			
-		end							
+				render :action => "new_child"
+			end		
+		else
+			@content 	= Content.find(params[:content_id])	
+			@content.comments << @comment			
+			if @content.save
+				@comment = @content.comments.last
+				CommentMailer.deliver_notification(@comment)	
+			else
+				render :action => "new"
+			end
+		end			
+							
 	end
 
 end
