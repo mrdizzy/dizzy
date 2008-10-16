@@ -94,6 +94,42 @@ EOF
 	 put database_configuration, "#{shared_path}/config/database.yml"
 	
 end
+
+	task :staging_database do
+
+	 # generate database configuration
+	 database_configuration =  <<-EOF
+development:
+  adapter: #{database_adapter}
+  database: dizzynew_dizzydevelopment
+  username: #{database_username}
+  password: #{database_password}
+  host: #{database_hostname}
+
+# Warning: The database defined as 'test' will be erased and
+# re-generated from your development database when you run 'rake'.
+# Do not set this db to the same as development or production.
+test:
+  adapter: #{database_adapter}
+  database: dizzynew_dizzytest
+  username: #{database_username}
+  password: #{database_password}
+  host: #{database_hostname}
+
+production:
+  adapter: #{database_adapter}
+  database: dizzynew_dizzystaging
+  username: #{database_username}
+  password: #{database_password}
+  host: #{database_hostname}
+EOF
+	
+	 # put database configuration in shared config dir
+	 run "mkdir -p #{shared_path}/config" 
+	 put database_configuration, "#{shared_path}/config/database.yml"
+	
+end
+
 namespace :deploy do
 	
 	task :staging do
@@ -107,7 +143,7 @@ namespace :deploy do
 	
 	task :setup_staging_database do 
 			set :deploy_to, "/home/dizzynew/rails_apps/staging/#{application}"
-			setup_database
+			staging_database
 	end
 	task :remigrate do
 		send(run_method, "cd #{deploy_to}/current && rake db:remigrate RAILS_ENV=production")
