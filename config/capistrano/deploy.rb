@@ -4,18 +4,12 @@ set :use_sudo, false
 set :user, "dizzynew"   
 set :password, "beaslewig175"
 
-# If you aren't deploying to /u/apps/#{application} on the target
-# servers (which is the default), you can specify the actual location
-# via the :deploy_to variable:
-# set :deploy_to, "/var/www/#{application}"
-
 set :shared_rails_dir, "/home/dizzynew/rails_apps/rails_2_1_1"
 set :deploy_to, "/home/dizzynew/rails_apps/#{application}"
 set :deploy_via, :export
 
 set :rails_env, "production"
-# If you aren't using Subversion to manage your source code, specify
-# your SCM below:
+
 # set :scm, :subversion
 
 role :app, "www21.a2hosting.com"
@@ -29,7 +23,7 @@ set :svn_password, "world1"
 #=============================================================================
 ssh_options[:port] = 7822 
 
-	# DATABASE
+# DATABASE
 # =============================================================================
 set :database_adapter, "mysql"
 set :database_username, "dizzynew"
@@ -48,7 +42,6 @@ task :after_update do
 	
 end
 
-# =============================================================================
 # DATABASE.YML CREATION
 # =============================================================================
 
@@ -57,8 +50,8 @@ desc "Setup Database Configuration"
 
 task :setup_database do
 
-	 # generate database configuration
-	database_configuration = <<-ENDOF
+database_configuration = <<-ENDOF
+
 common: &common
   adapter: #{database_adapter}
   username: #{database_username}
@@ -75,16 +68,11 @@ production:
 
 ENDOF
 	
-	 # put database configuration in shared config dir
-	 run "mkdir -p #{shared_path}/config" 
-	 put database_configuration, "#{shared_path}/config/database.yml"
-	
 end
 
 task :staging_database do
 
-	 # generate database configuration
-	database_configuration = <<-EOF
+database_configuration = <<-EOF
 	
 common: &common
   adapter: #{database_adapter}
@@ -101,12 +89,16 @@ production:
   <<: *common
 
 EOF
-	
-	 # put database configuration in shared config dir
-	 run "mkdir -p #{shared_path}/config" 
-	 put database_configuration, "#{shared_path}/config/database.yml"
-	
+
 end
+
+task :place_database_configuration
+  run "mkdir -p #{shared_path}/config" 
+  put database_configuration, "#{shared_path}/config/database.yml"
+end
+
+# DEPLOYMENT
+# =============================================================================
 
 namespace :deploy do
 	
@@ -114,6 +106,7 @@ namespace :deploy do
 		set :deploy_to, "/home/dizzynew/rails_apps/staging/#{application}"
 		default		
 	end
+	
 	task :setup_staging do
 			set :deploy_to, "/home/dizzynew/rails_apps/staging/#{application}"
 			setup
@@ -123,6 +116,7 @@ namespace :deploy do
 			set :deploy_to, "/home/dizzynew/rails_apps/staging/#{application}"
 			staging_database
 	end
+	
 	task :remigrate do
 		send(run_method, "cd #{deploy_to}/current && rake db:remigrate RAILS_ENV=production")
 	end
