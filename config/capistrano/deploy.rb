@@ -46,11 +46,6 @@ task :after_update do
 	# relink rails vendor
 	 run "ln -nfs #{shared_rails_dir} #{release_path}/vendor/rails "
 	
-	# chmod dispatchers and reaper
-	#run "chmod 755 #{release_path}/public/dispatch.fcgi"
-	#run "chmod 755 #{release_path}/public/dispatch.cgi"
-	#run "chmod 755 #{release_path}/script/process/reaper"
-	#run "chmod 755 #{release_path}/public"
 end
 
 # =============================================================================
@@ -60,34 +55,25 @@ end
 desc "Construct database configuration"
 desc "Setup Database Configuration"
 
-	task :setup_database do
+task :setup_database do
 
 	 # generate database configuration
-	 database_configuration =  <<-EOF
-development:
+	database_configuration = <<-ENDOF
+common: &common
   adapter: #{database_adapter}
-  database: dizzynew_dizzydevelopment
   username: #{database_username}
   password: #{database_password}
   host: #{database_hostname}
 
-# Warning: The database defined as 'test' will be erased and
-# re-generated from your development database when you run 'rake'.
-# Do not set this db to the same as development or production.
 test:
-  adapter: #{database_adapter}
   database: dizzynew_dizzytest
-  username: #{database_username}
-  password: #{database_password}
-  host: #{database_hostname}
+  <<: *common
 
 production:
-  adapter: #{database_adapter}
   database: dizzynew_dizzyproduction
-  username: #{database_username}
-  password: #{database_password}
-  host: #{database_hostname}
-EOF
+  <<: *common
+
+ENDOF
 	
 	 # put database configuration in shared config dir
 	 run "mkdir -p #{shared_path}/config" 
@@ -95,33 +81,25 @@ EOF
 	
 end
 
-	task :staging_database do
+task :staging_database do
 
 	 # generate database configuration
-	 database_configuration =  <<-EOF
-development:
+	database_configuration = <<-EOF
+	
+common: &common
   adapter: #{database_adapter}
-  database: dizzynew_dizzydevelopment
   username: #{database_username}
   password: #{database_password}
   host: #{database_hostname}
 
-# Warning: The database defined as 'test' will be erased and
-# re-generated from your development database when you run 'rake'.
-# Do not set this db to the same as development or production.
 test:
-  adapter: #{database_adapter}
   database: dizzynew_dizzytest
-  username: #{database_username}
-  password: #{database_password}
-  host: #{database_hostname}
+  <<: *common
 
 production:
-  adapter: #{database_adapter}
   database: dizzynew_dizzystaging
-  username: #{database_username}
-  password: #{database_password}
-  host: #{database_hostname}
+  <<: *common
+
 EOF
 	
 	 # put database configuration in shared config dir
