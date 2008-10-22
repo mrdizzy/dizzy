@@ -38,7 +38,7 @@ class SectionsControllerTest < ActionController::TestCase
 				 }
 					  					
   	assert_equal 0, assigns(:section).errors.size, assigns(:section).errors.full_messages
-  	assert_redirected_to cheatsheet_section_path("rails-migrations", assigns(:section).permalink)
+  	assert_redirected_to cheatsheet_section_path(content(:action_mailer_cheatsheet).id, assigns(:section).permalink)
   end
 
   def test_should_fail_on_create_with_invalid_content_id
