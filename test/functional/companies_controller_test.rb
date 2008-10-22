@@ -2,6 +2,8 @@ require File.dirname(__FILE__) + '/../test_helper'
 
 class CompaniesControllerTest < ActionController::TestCase
 	
+	fixtures :companies, :portfolio_items, :portfolio_types
+	
   def test_truth
     assert true
   end
@@ -21,11 +23,11 @@ class CompaniesControllerTest < ActionController::TestCase
   								{ :name => "Pepsi Cola", :description => "Beautiful drinks company" }, 
   						:new_portfolio_items =>
   								{ "0" =>
-  										{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png"), :portfolio_type_id => 1 }, 
+  										{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png"), :portfolio_type_id => portfolio_types(:business_card).id }, 
   								 "1" =>
-  										{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png"), :portfolio_type_id => 6 }, 	
+  										{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png"), :portfolio_type_id => portfolio_types(:letterhead).id }, 	
   								"2" =>
-  										{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png"), :portfolio_type_id => 3 }, 	
+  										{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png"), :portfolio_type_id => portfolio_types(:compliment_slip).id }, 	
   								}	
   					}
   	assert_response :success
@@ -37,11 +39,11 @@ class CompaniesControllerTest < ActionController::TestCase
   								{ :name => "Pepsi Cola", :description => "Beautiful drinks company" }, 
   						:new_portfolio_items =>
   								{ "0" =>
-  										{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png"), :portfolio_type_id => 7 }, 
+  										{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png"), :portfolio_type_id => portfolio_types(:business_card).id }, 
   								 "1" =>
-  										{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png"), :portfolio_type_id => 6 }, 	
+  										{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png"), :portfolio_type_id => portfolio_types(:header).id }, 	
   								"2" =>
-  										{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png"), :portfolio_type_id => 3 }, 	
+  										{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png"), :portfolio_type_id => portfolio_types(:letterhead).id }, 	
   								}
   					}
   	assert_redirected_to companies_path
@@ -61,11 +63,11 @@ class CompaniesControllerTest < ActionController::TestCase
   								{ :name => "", :description => "Beautiful drinks company" }, 
   						:new_portfolio_items =>
   								{ "0" =>
-  										{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png"), :portfolio_type_id => 7 }, 
+  										{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png"), :portfolio_type_id => portfolio_types(:business_card).id }, 
   								 "1" =>
-  										{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png"), :portfolio_type_id => 6 }, 	
+  										{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png"), :portfolio_type_id => portfolio_types(:letterhead).id }, 	
   								"2" =>
-  										{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png"), :portfolio_type_id => 3 }, 	
+  										{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png"), :portfolio_type_id => portfolio_types(:header).id }, 	
   								}
   					}
   		assert_response :success
@@ -77,11 +79,11 @@ class CompaniesControllerTest < ActionController::TestCase
   								{ :name => "Minghella Ice Creams", :description => "" }, 
   						:new_portfolio_items =>
   								{ "0" =>
-  										{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png"), :portfolio_type_id => 7 }, 
+  										{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png"), :portfolio_type_id => portfolio_types(:business_card).id }, 
   								 "1" =>
-  										{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png"), :portfolio_type_id => 6 }, 	
+  										{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png"), :portfolio_type_id => portfolio_types(:letterhead).id }, 	
   								"2" =>
-  										{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png"), :portfolio_type_id => 3 }, 	
+  										{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png"), :portfolio_type_id => portfolio_types(:header).id }, 	
   								}
   					}
   		assert_response :success

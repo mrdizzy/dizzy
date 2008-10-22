@@ -18,7 +18,6 @@ class CommentsControllerTest < ActionController::TestCase
   def test_show_comments_index_to_authorized_user
   	get :index, {}, { :administrator_id => users(:mr_dizzy).name }
   	assert_template("index")
-  		assert_select_rjs
   	assert_response :success
   end 
   
