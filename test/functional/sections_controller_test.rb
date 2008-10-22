@@ -10,32 +10,31 @@ class SectionsControllerTest < ActionController::TestCase
  	
   def test_section_fixture
   	assert sections(:directory_structure)
-  	assert contents(:rails_migrations_cheatsheet)
+  	assert contents(:action_mailer_cheatsheet)
   end
   
   def test_should_succeed_on_new
-  	get :new, :cheatsheet_id => "rails-migrations"
+  	get :new, :cheatsheet_id => contents(:action_mailer_cheatsheet).permalink
   	
-  	assert_select "form[action=/ruby_on_rails/cheatsheets/rails-migrations/sections]"
+  	assert_select "form[action=/ruby_on_rails/cheatsheets/action-mailer/sections]"
   	assert_response :success
   	assert_template "new"
   end
   
   def test_should_succeed_on_edit
-  	get :edit, :cheatsheet_id => "rails-migrations", :id => "1"
+  	get :edit, :cheatsheet_id => contents(:action_mailer_cheatsheet).permalink, :id => sections(:database_mapping).id
 
-	assert_select "form[action=/ruby_on_rails/cheatsheets/rails-migrations/sections/1]"
+	assert_select "form[action=/ruby_on_rails/cheatsheets/action-mailer/sections/#{sections(:database_mapping).id}]"
 	assert_response :success
 	assert_template "edit"
   end
 
   def test_should_succeed_on_create_with_valid_parameters
   	post :create, { :section => 	{ 	:body => "Here is some body text",
-  										:content_id => "1",
+  										:content_id => contents(:action_mailer_cheatsheet).id,
   										:title => "Section title",
 					  					:summary => "A brief summary",
-					  					:permalink => "a-unique-and-valid-permalink-for-sections"},
-					  :cheatsheet_id => "rails-migrations"
+					  					:permalink => "a-unique-and-valid-permalink-for-sections"}
 				 }
 					  					
   	assert_equal 0, assigns(:section).errors.size, assigns(:section).errors.full_messages
@@ -47,8 +46,7 @@ class SectionsControllerTest < ActionController::TestCase
   										:content_id => 154,
   										:title => "Section title",
 					  					:summary => "A brief summary",
-					  					:permalink => "a-unique-and-valid-permalink-for-sections"},
-					  :cheatsheet_id => "rails-migrations"
+					  					:permalink => "a-unique-and-valid-permalink-for-sections"}
 				 }
 					  					
   	assert_equal 1, assigns(:section).errors.size, assigns(:section).errors.full_messages
@@ -70,8 +68,8 @@ class SectionsControllerTest < ActionController::TestCase
   def test_should_succeed_on_destroy_with_valid_parameters
   	sections = Section.find(:all)
   	size_before_delete = sections.size
-  	delete :destroy, { :cheatsheet_id => "rails-migrations", :id => "1" }
-  	assert_redirected_to edit_cheatsheet_path(1)
+  	delete :destroy, { :cheatsheet_id => contents(:action_mailer_cheatsheet).permalink, :id => sections(:database_mapping).id }
+  	assert_redirected_to edit_cheatsheet_path(contents(:action_mailer_cheatsheet).id)
   	assert_equal size_before_delete - 1, Section.find(:all).size
   end
 
