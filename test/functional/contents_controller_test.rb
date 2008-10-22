@@ -2,6 +2,8 @@ require File.dirname(__FILE__) + '/../test_helper'
 
 class ContentsControllerTest < ActionController::TestCase
 
+  fixtures :contents, :users, :binaries, :categories, :sections, :versions
+
   def test_truth
     assert true
   end
@@ -54,7 +56,7 @@ class ContentsControllerTest < ActionController::TestCase
  	# Edit
  	
  	def test_should_show_edit_form_when_administrator
- 		get :edit, {:id => 10}, { :administrator_id => users(:mr_dizzy).id }
+ 		get :edit, {:id => contents(:file_uploads_tutorial).id}, { :administrator_id => users(:mr_dizzy).id }
  		assert_response :success
  		assert_select "form" do
  			assert_select "select#article_style" do
@@ -74,8 +76,8 @@ class ContentsControllerTest < ActionController::TestCase
  	# Show
  	
  	def test_should_show_comments_without_administrator
- 		get :show, { :id => "rails-migrations" }
- 		comments = Comment.find_all_by_content_id(1)
+ 		get :show, { :id => contents(:file_uploads_tutorial).permalink }
+ 		comments = contents(:file_uploads_tutorial).comments
 		comments.each do |comment|
 			assert_select "div#comment_#{comment.id}" do 
 				assert_select "h6", comment.subject, "No subject found"
@@ -88,8 +90,8 @@ class ContentsControllerTest < ActionController::TestCase
  	end
  	
  	def test_should_show_comments_administrator
- 		get :show, { :id => "rails-migrations" }, { :administrator_id => users(:mr_dizzy).id }
- 		comments = Comment.find_all_by_content_id(1)
+ 		get :show, { :id => "store-file-uploads-in-database" }, { :administrator_id => users(:mr_dizzy).id }
+ 		comments = contents(:file_uploads_tutorial).comments
 		comments.each do |comment|
 			assert_select "div#comment_#{comment.id}" do 
 				assert_select "h6", comment.subject, "No comment subject found"

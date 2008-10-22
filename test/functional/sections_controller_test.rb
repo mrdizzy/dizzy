@@ -2,6 +2,8 @@ require File.dirname(__FILE__) + '/../test_helper'
 
 class SectionsControllerTest < ActionController::TestCase
 
+  fixtures :contents, :sections, :users
+
   def test_truth
     assert true
   end
