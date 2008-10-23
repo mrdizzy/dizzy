@@ -108,13 +108,13 @@ namespace :deploy do
 	end
 	
 	task :setup_staging do
-			set :deploy_to, "/home/dizzynew/rails_apps/staging/#{application}"
-			setup
+		set :deploy_to, "/home/dizzynew/rails_apps/staging/#{application}"
+		setup
 	end
 	
 	task :setup_staging_database do 
-			set :deploy_to, "/home/dizzynew/rails_apps/staging/#{application}"
-			staging_database
+		set :deploy_to, "/home/dizzynew/rails_apps/staging/#{application}"
+		staging_database
 	end
 	
 	task :remigrate do
