@@ -160,7 +160,7 @@ namespace :deploy do
 
       put result, "#{shared_path}/maintenance.html", :mode => 0644
       run "cd #{deploy_to}/current && mongrel_rails stop"
-      run "cd #{deploy_to}/current && mongrel_rails start -S config/mongrel.conf -p 3012 -e production -r #{deploy_to}/shared -d"
+      run "cd #{deploy_to}/current && mongrel_rails start -S config/mongrel.conf -p 12182 -e production -r #{deploy_to}/shared -d"
     end
 
     desc <<-DESC
