@@ -28,6 +28,7 @@ class CommentsController < ApplicationController
 	def create			
 		@comment = Comment.new(params[:comment])
 		if params[:comment_id]	
+			@comment.content_id = params[:content_id]
 			@parent_comment 	= Comment.find(params[:comment_id])	
 			@parent_comment.children << @comment			
 			if @parent_comment.save
