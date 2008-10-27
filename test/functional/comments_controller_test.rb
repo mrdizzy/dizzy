@@ -65,7 +65,7 @@ class CommentsControllerTest < ActionController::TestCase
 
   def test_succeed_create_valid_child_comment
   	num_deliveries = ActionMailer::Base.deliveries.size
-  	xhr(:get, :create, :comment => { :subject => "Hello", :body => "This is a comment", :name => "Malandra Mysogynist", :email => 'malandra@dutyfree.com', :content_id => contents(:action_mailer_cheatsheet).id }, :comment_id => comments(:mother).id)
+  	xhr(:get, :create, :comment => { :subject => "Hello", :body => "This is a comment", :name => "Malandra Mysogynist", :email => 'malandra@dutyfree.com' }, :comment_id => comments(:mother).id, :content_id => contents(:action_mailer_cheatsheet).id)
   	
   	assert_template("create_child")
   	assert_select_rjs
