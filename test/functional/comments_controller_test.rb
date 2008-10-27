@@ -26,10 +26,6 @@ class CommentsControllerTest < ActionController::TestCase
  def test_create_main_comment
   	num_deliveries = ActionMailer::Base.deliveries.size
   	xhr(:post, :create, :comment => { :subject => "Hello", :body => "This is a comment", :name => "Malandra Mysogynist", :email => 'malandra@dutyfree.com' }, :content_id => contents(:action_mailer_cheatsheet).id)
-  	comment = assigns["comment"]
-  	comment.valid?
-  	puts comment.errors.full_messages
-  	puts assigns["content"].errors.full_messages
   	assert_template("create")
   	assert_select_rjs
 

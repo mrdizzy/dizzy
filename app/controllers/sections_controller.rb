@@ -1,6 +1,7 @@
 class SectionsController < ApplicationController
 	helper :contents
 	before_filter :load_content 	
+	
 	caches_page :show
 	cache_sweeper 	:content_sweeper, :only => [ :destroy, :update, :create ]
 

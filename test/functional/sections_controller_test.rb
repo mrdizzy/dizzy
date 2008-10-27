@@ -2,7 +2,7 @@ require File.dirname(__FILE__) + '/../test_helper'
 
 class SectionsControllerTest < ActionController::TestCase
 
-  fixtures :contents, :sections, :users
+  fixtures :contents, :sections, :users, :binaries, :versions, :categories
 
   def test_truth
     assert true
@@ -34,7 +34,7 @@ class SectionsControllerTest < ActionController::TestCase
   										:content_id => contents(:action_mailer_cheatsheet).id,
   										:title => "Section title",
 					  					:summary => "A brief summary",
-					  					:permalink => "a-unique-and-valid-permalink-for-sections"}
+					  					:permalink => "a-unique-and-valid-permalink-for-sections"}, :cheatsheet_id => contents(:action_mailer_cheatsheet).permalink
 				 }
 					  					
   	assert_equal 0, assigns(:section).errors.size, assigns(:section).errors.full_messages
@@ -45,7 +45,7 @@ class SectionsControllerTest < ActionController::TestCase
   										:content_id => 154,
   										:title => "Section title",
 					  					:summary => "A brief summary",
-					  					:permalink => "a-unique-and-valid-permalink-for-sections"}
+					  					:permalink => "a-unique-and-valid-permalink-for-sections"}, :cheatsheet_id => contents(:action_mailer_cheatsheet).permalink
 				 }
 					  					
   	assert_equal 1, assigns(:section).errors.size, assigns(:section).errors.full_messages

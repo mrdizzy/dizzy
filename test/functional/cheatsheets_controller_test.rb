@@ -1,13 +1,14 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
 class CheatsheetsControllerTest  < ActionController::TestCase
-  fixtures :users, :contents, :categories
+  
+  fixtures :contents, :users, :binaries, :categories, :sections, :versions
   
   def test_truth
     assert true
   end
  	
- 	def test_should_succed_on_create_with_valid_attributes
+ 	def test_should_succeed_on_create_with_valid_attributes
  		post :create, { :thumbnail 	=> 	{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png") },
  						:cheatsheet =>	{ :permalink => "action-two-mailer",
  										  "date(li)" => "2008",
@@ -16,7 +17,7 @@ class CheatsheetsControllerTest  < ActionController::TestCase
  										  "date(4i)" => "14",
  										  "date(5i)" => "24",
  										  :title => "ActionMailer",
- 										  :category_ids => ["2"],
+ 										  :category_ids => [categories(:cheatsheets).id],
  										  :version_id => "1",
  										  :description => "Action Mailer cheatsheet",
  										  :new_version => "" },
@@ -90,8 +91,7 @@ class CheatsheetsControllerTest  < ActionController::TestCase
  	end
  	
  	def test_should_succeed_on_edit_with_administrator
- 		get :edit, { :id => 11 }, { :administrator_id => users(:mr_dizzy).id }
- 		assert_equal 11, assigns(:cheatsheet).id
+ 		get :edit, { :id => contents(:action_mailer_cheatsheet).id }, { :administrator_id => users(:mr_dizzy).id }
  		assert_response :success
  		assert_template "edit"
  	end
@@ -121,7 +121,7 @@ class CheatsheetsControllerTest  < ActionController::TestCase
  	end
  	
  	def test_should_fail_on_update_with_valid_attributes
- 		post :update, { :id => "11", 
+ 		post :update, { :id => contents(:action_mailer_cheatsheet).id, 
  						:thumbnail => { :uploaded_data => "" },
  						:cheatsheet =>	{ :permalink => "action-two-mailer^%",
  										  "date(li)" => "2008",
@@ -131,7 +131,7 @@ class CheatsheetsControllerTest  < ActionController::TestCase
  										  "date(5i)" => "24",
  										  :title => "ActionMailer",
  										  :category_ids => [categories(:cheatsheets),categories(:action_mailer)],
- 										  :version_id => "1",
+ 										  :version_id => versions(:one),
  										  :description => "Action Mailer cheatsheet",
  										  :new_version => "" },
  						:pdf => { :uploaded_data => fixture_file_upload("letterhead.png", "image/png") } 
