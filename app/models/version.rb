@@ -1,9 +1,9 @@
 # == Schema Information
-# Schema version: 4
+# Schema version: 13
 #
 # Table name: versions
 #
-#  id             :integer(11)   not null, primary key
+#  id             :integer(4)    not null, primary key
 #  version_number :string(255)   
 #
 

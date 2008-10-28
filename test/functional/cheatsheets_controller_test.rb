@@ -9,7 +9,7 @@ class CheatsheetsControllerTest  < ActionController::TestCase
   end
  	
  	def test_should_succeed_on_create_with_valid_attributes
- 		post :create, { :thumbnail 	=> 	{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png") },
+ 		post :create, { 
  						:cheatsheet =>	{ :permalink => "action-two-mailer",
  										  "date(li)" => "2008",
  										  "date(2i)" => "8",
@@ -18,10 +18,10 @@ class CheatsheetsControllerTest  < ActionController::TestCase
  										  "date(5i)" => "24",
  										  :title => "ActionMailer",
  										  :category_ids => [categories(:cheatsheets).id],
- 										  :version_id => "1",
+ 										  :version_id => versions(:one).id,
  										  :description => "Action Mailer cheatsheet",
- 										  :new_version => "" },
- 						:pdf => { :uploaded_data => fixture_file_upload("letterhead.png", "application/pdf") } 
+ 										  :new_version => "",:binary_attributes => {
+ 						:pdf => { :uploaded_data => fixture_file_upload("letterhead.png", "application/pdf") }, :thumbnail 	=> 	{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png") }} }
  					}, { :administrator_id => users(:mr_dizzy).id }
  		
  		assert_equal 0, assigns(:cheatsheet).errors.size, assigns(:cheatsheet).errors.full_messages	
@@ -98,7 +98,6 @@ class CheatsheetsControllerTest  < ActionController::TestCase
  	
  	def test_should_succeed_on_update_with_valid_attributes
  		post :update, { :id => contents(:action_mailer_cheatsheet), 
- 						:thumbnail 	=> 	{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png") },
  						:cheatsheet =>	{ :permalink => "action-two-mailer",
  										  "date(li)" => "2008",
  										  "date(2i)" => "8",
@@ -107,10 +106,9 @@ class CheatsheetsControllerTest  < ActionController::TestCase
  										  "date(5i)" => "24",
  										  :title => "ActionMailer",
  										  :category_ids => [categories(:cheatsheets),categories(:action_mailer)],
- 										  :version_id => "1",
+ 										  :version_id => versions(:one).id,
  										  :description => "Action Mailer cheatsheet",
- 										  :new_version => "" },
- 						:pdf => { :uploaded_data => fixture_file_upload("letterhead.png", "application/pdf") } 
+ 										  :new_version => "" }
  					}, { :administrator_id => users(:mr_dizzy).id }
  		
  		assert_equal 0, assigns(:cheatsheet).errors.size, assigns(:cheatsheet).errors.full_messages 		
@@ -120,9 +118,8 @@ class CheatsheetsControllerTest  < ActionController::TestCase
 		assert_redirected_to cheatsheet_path("action-two-mailer")
  	end
  	
- 	def test_should_fail_on_update_with_valid_attributes
+ 	def test_should_fail_on_update_with_invalid_attributes
  		post :update, { :id => contents(:action_mailer_cheatsheet).id, 
- 						:thumbnail => { :uploaded_data => "" },
  						:cheatsheet =>	{ :permalink => "action-two-mailer^%",
  										  "date(li)" => "2008",
  										  "date(2i)" => "8",
@@ -133,8 +130,11 @@ class CheatsheetsControllerTest  < ActionController::TestCase
  										  :category_ids => [categories(:cheatsheets),categories(:action_mailer)],
  										  :version_id => versions(:one),
  										  :description => "Action Mailer cheatsheet",
- 										  :new_version => "" },
- 						:pdf => { :uploaded_data => fixture_file_upload("letterhead.png", "image/png") } 
+ 										  :new_version => "", 
+ 										  :binary_attributes => {
+ 												:pdf => { :uploaded_data => fixture_file_upload("letterhead.png", "application/ndf") }, 													:thumbnail 	=> 	{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png") } 
+ 										   } 
+ 							}
  					}, { :administrator_id => users(:mr_dizzy).id }
 
  		assert_equal 2, assigns(:cheatsheet).errors.size, assigns(:cheatsheet).errors.full_messages

@@ -1,14 +1,14 @@
 # == Schema Information
-# Schema version: 4
+# Schema version: 13
 #
 # Table name: portfolio_items
 #
-#  id                :integer(11)   not null, primary key
-#  portfolio_type_id :integer(11)   
-#  company_id        :integer(11)   
+#  id                :integer(4)    not null, primary key
+#  portfolio_type_id :integer(4)    default(0), not null
+#  company_id        :integer(4)    default(0), not null
 #  content_type      :string(255)   
 #  filename          :string(255)   
-#  size              :integer(11)   
+#  size              :integer(4)    
 #  data              :binary        
 #
 

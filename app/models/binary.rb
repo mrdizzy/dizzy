@@ -1,15 +1,15 @@
 # == Schema Information
-# Schema version: 4
+# Schema version: 13
 #
 # Table name: binaries
 #
-#  id           :integer(11)   not null, primary key
-#  binary_data  :binary        
+#  id           :integer(4)    not null, primary key
+#  binary_data  :binary(167772 
 #  type         :string(255)   
 #  content_type :string(255)   
-#  size         :integer(11)   
+#  size         :integer(4)    
 #  filename     :string(255)   
-#  content_id   :integer(11)   
+#  content_id   :integer(4)    default(0), not null
 #
 
 class Binary < ActiveRecord::Base

@@ -1,17 +1,18 @@
 # == Schema Information
-# Schema version: 4
+# Schema version: 13
 #
 # Table name: contents
 #
-#  id          :integer(11)   not null, primary key
+#  id          :integer(4)    not null, primary key
 #  type        :string(255)   
 #  title       :string(255)   
 #  description :string(255)   
-#  user_id     :integer(11)   
+#  user_id     :integer(4)    
 #  date        :datetime      
 #  content     :text          
 #  permalink   :string(255)   
-#  version_id  :integer(11)   
+#  version_id  :integer(4)    
+#  style       :string(255)   
 #
 
 --- 

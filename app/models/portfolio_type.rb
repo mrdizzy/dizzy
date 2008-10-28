@@ -1,12 +1,12 @@
 # == Schema Information
-# Schema version: 4
+# Schema version: 13
 #
 # Table name: portfolio_types
 #
-#  id                  :integer(11)   not null, primary key
+#  id                  :integer(4)    not null, primary key
 #  description         :string(40)    
-#  column_space        :integer(11)   
-#  position            :integer(11)   
+#  column_space        :integer(4)    
+#  position            :integer(4)    
 #  header_binary       :binary        
 #  header_filename     :string(255)   
 #  header_content_type :string(255)   

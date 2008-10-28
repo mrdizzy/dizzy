@@ -1,11 +1,11 @@
 # == Schema Information
-# Schema version: 4
+# Schema version: 13
 #
 # Table name: sections
 #
-#  id         :integer(11)   not null, primary key
+#  id         :integer(4)    not null, primary key
 #  body       :text          
-#  content_id :integer(11)   
+#  content_id :integer(4)    default(0), not null
 #  title      :string(255)   
 #  summary    :string(255)   
 #  permalink  :string(255)   
