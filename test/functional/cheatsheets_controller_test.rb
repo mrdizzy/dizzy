@@ -42,8 +42,7 @@ class CheatsheetsControllerTest  < ActionController::TestCase
  										  :category_ids => [categories(:cheatsheets),categories(:action_mailer)],
  										  :version_id => "1",
  										  :description => "Action Mailer cheatsheet",
- 										  :new_version => "" },
- 						:pdf => { :uploaded_data => fixture_file_upload("letterhead.png", "application/pdf") } 
+ 										  :new_version => "" }
  					}, { :administrator_id => users(:mr_dizzy).id }
  					
  		assert assigns(:cheatsheet).errors.on(:thumbnail)
@@ -63,8 +62,7 @@ class CheatsheetsControllerTest  < ActionController::TestCase
  										  :category_ids => [categories(:cheatsheets),categories(:action_mailer)],
  										  :version_id => "1",
  										  :description => "Action Mailer cheatsheet",
- 										  :new_version => "" },
- 						:pdf => { :uploaded_data => "" } 
+ 										  :new_version => "" }
  					}, { :administrator_id => users(:mr_dizzy).id }
  					
  		assert assigns(:cheatsheet).errors.on(:pdf)
