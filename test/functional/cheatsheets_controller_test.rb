@@ -126,7 +126,7 @@ class CheatsheetsControllerTest  < ActionController::TestCase
  										  "date(5i)" => "24",
  										  :title => "ActionMailer",
  										  :category_ids => [categories(:cheatsheets),categories(:action_mailer)],
- 										  :version_id => versions(:one),
+ 										  :version_id => versions(:one).id,
  										  :description => "Action Mailer cheatsheet",
  										  :new_version => "", 
  										  :binary_attributes => {
@@ -135,6 +135,7 @@ class CheatsheetsControllerTest  < ActionController::TestCase
  							}
  					}, { :administrator_id => users(:mr_dizzy).id }
 
+ 		puts assigns(:cheatsheet).errors.full_messages
  		assert_equal 2, assigns(:cheatsheet).errors.size, assigns(:cheatsheet).errors.full_messages
  		assert_equal "is invalid", assigns(:cheatsheet).errors.on(:permalink)
  		assert_equal "is invalid", assigns(:cheatsheet).errors.on(:pdf)
