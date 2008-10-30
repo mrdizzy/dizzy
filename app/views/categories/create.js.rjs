@@ -1,2 +1,0 @@
-page.insert_html :bottom, :category_list, :partial => "category_link"
-page.visual_effect(:highlight, "category_#{@category.id.to_s}", :duration => 1.5, :endcolor => "#ffffff", :startcolor => "#D1ECF9")

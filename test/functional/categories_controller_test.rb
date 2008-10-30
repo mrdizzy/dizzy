@@ -24,7 +24,6 @@ class CategoriesControllerTest < ActionController::TestCase
   		xml_http_request :delete, :destroy, { :id => @main_category.id }, { :administrator_id => users(:mr_dizzy).id }
     end
   	assert_select_rjs :replace_html, "category_#{@main_category.id}", "<del>#{@main_category.name}</del>"
-  	assert_template("destroy")
   	assert_response :success
   end
   
@@ -41,7 +40,6 @@ class CategoriesControllerTest < ActionController::TestCase
     assert_select_rjs :insert_html, :bottom, "category_list", :partial => "category_link"
     category_id = assigns(:category).id
     assert_select "li#category_#{category_id}"
-    assert_template("create")
   	assert_response :success
   end
   
