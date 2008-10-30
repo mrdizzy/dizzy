@@ -7,25 +7,14 @@ class CategoriesController < ApplicationController
 
 	def create
 	 	@category = Category.new(params[:category])
-	 	respond_to do |wants|
-		 	if @category.save
-		 		wants.html
-		 		wants.js
-	 		else 
-	 			wants.html { redirect_to new_category_path }
-	 			wants.js { render :action => :new}
-	 		end
-	 	end
+		if administrator? 
+			redirect_to new_category_path unless @category.save 
+		end
 	end	
 
  	def destroy
- 		@category = Category.find(params[:id])
- 	 	respond_to do |wants|
-	 	 	if @category.destroy
-				wants.html
-				wants.js 
-			end
-		end
+ 	  @category = Category.find(params[:id])
+	  @category.destroy if administrator?
  	end
   	
 end

@@ -21,16 +21,22 @@ class CategoriesControllerTest < ActionController::TestCase
     
   def test_rjs_should_succeed_on_destroy_with_valid_id
   	assert_difference('Category.count', -1) do
-  		xml_http_request :delete, :destroy, :id => @main_category.id
+  		xml_http_request :delete, :destroy, { :id => @main_category.id }, { :administrator_id => users(:mr_dizzy).id }
     end
   	assert_select_rjs :replace_html, "category_#{@main_category.id}", "<del>#{@main_category.name}</del>"
   	assert_template("destroy")
   	assert_response :success
   end
   
+  def test_rjs_should_fail_on_destroy_when_not_logged_in
+  	assert_difference('Category.count', 0) do
+  		xml_http_request :delete, :destroy, :id => @main_category.id
+    end
+  end  
+  
   def test_rjs_should_succeed_on_create_with_valid_parameters
   	assert_difference('Category.count') do
-  		xml_http_request :post, :create, :category => { :name => "Jennifer Hardware", :permalink => "jennifer-hardware" }
+  		xml_http_request :post, :create, { :category => { :name => "Jennifer Hardware", :permalink => "jennifer-hardware" } }, { :administrator_id => users(:mr_dizzy).id }
     end
     assert_select_rjs :insert_html, :bottom, "category_list", :partial => "category_link"
     category_id = assigns(:category).id
@@ -39,9 +45,15 @@ class CategoriesControllerTest < ActionController::TestCase
   	assert_response :success
   end
   
+  def test_rjs_should_fail_on_create_when_not_logged_in
+  	  assert_difference('Category.count', 0) do
+  		xml_http_request :post, :create, { :category => { :name => "Melanie Hardware", :permalink => "melanie-hardware" } }
+    end
+  end
+  
   def test_rjs_should_fail_on_create_with_duplicate_parameters
     	# Permalink only    
-    xml_http_request :post, :create, :category => { :name => "Files", :permalink => "file-handling" }
+    xml_http_request :post, :create, { :category => { :name => "Files", :permalink => "file-handling" } }, { :administrator_id => users(:mr_dizzy).id }
     assert_select_rjs :replace_html, "new_category_form"    
     assert_select "p+ul>li", { :count => 1, :text => "Permalink has already been taken"}, "Should have found error on permalink"
     assert_select "div>h2", {:count => 1, :text => "1 error prohibited this category from being saved" }, "Should have found 1 error"
@@ -49,7 +61,7 @@ class CategoriesControllerTest < ActionController::TestCase
     assert_response :success
     
        	# Name only    
-    xml_http_request :post, :create, :category => { :name => "File handling", :permalink => "file-handling-new" }
+    xml_http_request :post, :create, { :category => { :name => "File handling", :permalink => "file-handling-new" } }, { :administrator_id => users(:mr_dizzy).id }
     assert_select_rjs :replace_html, "new_category_form"
     assert_select "ul>li:nth-of-type(1)", { :count => 1, :text => "Name has already been taken"}, "Should have found error on name"
     assert_select "div>h2", {:count => 1, :text => "1 error prohibited this category from being saved" }, "Should have found 1 error"
