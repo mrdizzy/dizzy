@@ -35,3 +35,8 @@ task :after_update do
 	 run "ln -nfs #{shared_rails_dir} #{release_path}/vendor/rails "
 	
 end
+
+task :database_configuration do
+  run "mkdir -p #{shared_path}/config" 
+  put database_configuration, "#{shared_path}/config/database.yml"
+end

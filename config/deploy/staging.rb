@@ -1,4 +1,4 @@
-set :deploy_to, "/home/dizzynew/rails_apps/#{application}"
+set :deploy_to, "/home/dizzynew/rails_apps/staging/#{application}"
 
 # DATABASE.YML CREATION
 # =============================================================================
@@ -24,10 +24,6 @@ EOF
 
 end
 
-task :place_database_configuration do
-  run "mkdir -p #{shared_path}/config" 
-  put database_configuration, "#{shared_path}/config/database.yml"
-end
 
 # DEPLOYMENT
 # =============================================================================
@@ -35,11 +31,11 @@ end
 namespace :deploy do
 
 	task :start do
- 		run "cd #{deploy_to}/current && mongrel_rails start -p 12069 -e production -d"
+ 		run "cd #{deploy_to}/current && mongrel_rails start -p 12182 -e production -d"
 	end
 
 	desc "Restart mongrel"
 	task :restart, :roles => :app do
-		run "cd #{deploy_to}/current && mongrel_rails stop && mongrel_rails start -p 12069 -e production -d"
+		run "cd #{deploy_to}/current && mongrel_rails stop && mongrel_rails start -p 12182 -e production -d"
 	end
 end
