@@ -22,7 +22,7 @@ ssh_options[:port] = 7822
 set :database_adapter, "mysql"
 set :database_username, "dizzynew"
 set :database_password, "beaslewig175"
-set :database_hostname, "localhost"
+set :database_hostname, "127.0.0.1"
 
 # =============================================================================
 desc "Tasks to execute after update"
@@ -39,4 +39,18 @@ end
 task :database_configuration do
   run "mkdir -p #{shared_path}/config" 
   put database_configuration, "#{shared_path}/config/database.yml"
+end
+
+namespace :deploy do
+	
+	desc "Stop the app server"
+	task :stop, :roles => :app do
+	send(run_method, "cd #{current_path} && mongrel_rails stop")
+	end
+
+	desc "Restart the app server"
+	task :restart, :roles => :app do
+		send(run_method, "cd #{current_path} && mongrel_rails restart")
+	end
+	
 end

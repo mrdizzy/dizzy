@@ -25,17 +25,15 @@ EOF
 end
 
 
+
 # DEPLOYMENT
 # =============================================================================
 
 namespace :deploy do
-
-	task :start do
- 		run "cd #{deploy_to}/current && mongrel_rails start -p 12182 -e production -d"
+	
+	desc "start the app server"
+	task :start, :roles => :app do
+	send(run_method, "cd #{current_path} && mongrel_rails start -d -p 12182 -e #{rails_env}")
 	end
 
-	desc "Restart mongrel"
-	task :restart, :roles => :app do
-		run "cd #{deploy_to}/current && mongrel_rails stop && mongrel_rails start -p 12182 -e production -d"
-	end
 end
