@@ -31,8 +31,7 @@ class CheatsheetsControllerTest  < ActionController::TestCase
  	end
  	
  	def test_should_fail_on_create_without_thumbnail
- 		post :create, { :thumbnail 	=> 	{ :uploaded_data => "" },
- 						:cheatsheet =>	{ :permalink => "action-two-mailer",
+ 		post :create, { :cheatsheet =>	{ :permalink => "action-two-mailer",
  										  "date(li)" => "2008",
  										  "date(2i)" => "8",
  										  "date(3i)" => "1",
@@ -40,19 +39,24 @@ class CheatsheetsControllerTest  < ActionController::TestCase
  										  "date(5i)" => "24",
  										  :title => "ActionMailer",
  										  :category_ids => [categories(:cheatsheets),categories(:action_mailer)],
- 										  :version_id => "1",
+ 										  :version_id => versions(:one).id,
  										  :description => "Action Mailer cheatsheet",
- 										  :new_version => "" }
+ 										  :new_version => "",
+ 										  :binary_attributes => { 
+ 										    :thumbnail => { :uploaded_data => "" },
+ 										  	:pdf =>  { :uploaded_data => fixture_file_upload("letterhead.png", "application/pdf") }
+ 										  }
+ 										   }
  					}, { :administrator_id => users(:mr_dizzy).id }
  					
  		assert assigns(:cheatsheet).errors.on(:thumbnail)
+ 		assert_equal 1, assigns(:cheatsheet).errors.size, "Should be 1 error on cheatsheet"
  		assert_response :success
 		assert_template "new"
  	end 	
  
  	def test_should_fail_on_create_without_pdf
- 		post :create, { :thumbnail 	=> 	{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png")  },
- 						:cheatsheet =>	{ :permalink => "action-two-mailer",
+ 		post :create, { :cheatsheet =>	{ :permalink => "action-two-mailer",
  										  "date(li)" => "2008",
  										  "date(2i)" => "8",
  										  "date(3i)" => "1",
@@ -60,12 +64,18 @@ class CheatsheetsControllerTest  < ActionController::TestCase
  										  "date(5i)" => "24",
  										  :title => "ActionMailer",
  										  :category_ids => [categories(:cheatsheets),categories(:action_mailer)],
- 										  :version_id => "1",
+ 										  :version_id => versions(:one).id,
  										  :description => "Action Mailer cheatsheet",
- 										  :new_version => "" }
+ 										  :new_version => "",
+ 										  :binary_attributes => { 
+ 										    :pdf => { :uploaded_data => "" },
+ 										  	:thumbnail =>  { :uploaded_data => fixture_file_upload("letterhead.png", "image/png") }
+ 										  }
+ 										 }
  					}, { :administrator_id => users(:mr_dizzy).id }
  					
  		assert assigns(:cheatsheet).errors.on(:pdf)
+ 		assert_equal 1, assigns(:cheatsheet).errors.size, "Should be 1 error on cheatsheet"
  		assert_response :success
 		assert_template "new"
  	end 	
@@ -130,12 +140,11 @@ class CheatsheetsControllerTest  < ActionController::TestCase
  										  :description => "Action Mailer cheatsheet",
  										  :new_version => "", 
  										  :binary_attributes => {
- 												:pdf => { :uploaded_data => fixture_file_upload("letterhead.png", "application/ndf") }, 													:thumbnail 	=> 	{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png") } 
+ 												:pdf => { :uploaded_data => fixture_file_upload("letterhead.png", "application/andf") }, 																:thumbnail 	=> 	{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png") } 
  										   } 
  							}
  					}, { :administrator_id => users(:mr_dizzy).id }
 
- 		puts assigns(:cheatsheet).errors.full_messages
  		assert_equal 2, assigns(:cheatsheet).errors.size, assigns(:cheatsheet).errors.full_messages
  		assert_equal "is invalid", assigns(:cheatsheet).errors.on(:permalink)
  		assert_equal "is invalid", assigns(:cheatsheet).errors.on(:pdf)
