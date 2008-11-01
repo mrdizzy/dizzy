@@ -24,6 +24,8 @@ class Content < ActiveRecord::Base
 	belongs_to 				:user
 	has_many				:binaries
 	
+	validates_associated :pdf, :thumbnail
+	
 	validates_existence_of	:version
 	validates_existence_of  :user	
 	validates_presence_of 	:categories
@@ -101,8 +103,6 @@ class Cheatsheet < Content
 								:content_type 	=> pdf_data.content_type.chomp,
 								:binary_data 	=> pdf_data.read,
 								:size			=> pdf_data.size)
-								puts self.pdf.content_type
-								puts pdf.content_type
 			end
 			unless thumbnail_data.blank?
 				self.pdf.update_attributes(:filename 		=> thumbnail_data.original_filename,

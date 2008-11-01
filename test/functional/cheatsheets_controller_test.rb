@@ -29,6 +29,30 @@ class CheatsheetsControllerTest  < ActionController::TestCase
  		assert_response :redirect
 		assert_redirected_to cheatsheets_path
  	end
+
+ 	def test_should_fail_on_create_with_invalid_attributes
+ 		post :create, { 
+ 						:cheatsheet =>	{ :permalink => "migrations",
+ 										  "date(li)" => "2008",
+ 										  "date(2i)" => "8",
+ 										  "date(3i)" => "1",
+ 										  "date(4i)" => "14",
+ 										  "date(5i)" => "24",
+ 										  :title => "ActionMailer",
+ 										  :category_ids => [categories(:cheatsheets).id],
+ 										  :version_id => versions(:one).id,
+ 										  :description => "Action Mailer cheatsheet",
+ 										  :new_version => "",:binary_attributes => {
+ 						:pdf => { :uploaded_data => fixture_file_upload("letterhead.png", "application/exe") }, :thumbnail 	=> 	{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png") }} }
+ 					}, { :administrator_id => users(:mr_dizzy).id }
+ 		
+ 		assert_equal 2, assigns(:cheatsheet).errors.size, assigns(:cheatsheet).errors.full_messages	
+ 		
+ 		assert_equal "has already been taken", assigns(:cheatsheet).errors.on(:permalink)
+ 		assert_equal "is invalid", assigns(:cheatsheet).errors.on(:pdf)
+ 		assert_equal "must be a PDF file", assigns(:cheatsheet).pdf.errors.on(:content_type)
+ 		assert_template "new"
+ 	end
  	
  	def test_should_fail_on_create_without_thumbnail
  		post :create, { :cheatsheet =>	{ :permalink => "action-two-mailer",
@@ -128,7 +152,7 @@ class CheatsheetsControllerTest  < ActionController::TestCase
  	
  	def test_should_fail_on_update_with_invalid_attributes
  		post :update, { :id => contents(:action_mailer_cheatsheet).id, 
- 						:cheatsheet =>	{ :permalink => "action-two-mailer-three",
+ 						:cheatsheet =>	{ :permalink => "action-two-mailer&three",
  										  "date(li)" => "2008",
  										  "date(2i)" => "8",
  										  "date(3i)" => "1",
@@ -144,10 +168,11 @@ class CheatsheetsControllerTest  < ActionController::TestCase
  										   } 
  							}
  					}, { :administrator_id => users(:mr_dizzy).id }
-		puts assigns(:cheatsheet).pdf.content_type
+
  		assert_equal 2, assigns(:cheatsheet).errors.size, assigns(:cheatsheet).errors.full_messages
  		assert_equal "is invalid", assigns(:cheatsheet).errors.on(:permalink)
  		assert_equal "is invalid", assigns(:cheatsheet).errors.on(:pdf)
+ 		assert_equal "must be a PDF file", assigns(:cheatsheet).pdf.errors.on(:content_type)
  		assert_response :success
 		assert_template "edit"
  	end
