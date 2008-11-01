@@ -31,6 +31,7 @@ form_helpers_snippet:
   
 action_mailer_cheatsheet: 
   permalink: action-mailer
+  related_articles: action_mailer_related_article, action_mailer_second_related_article
   title: Action Mailer
   date: 2008-06-16 00:15:00
   type: Cheatsheet
@@ -62,4 +63,30 @@ file_uploads_tutorial:
   description: Learn how to upload files to the database, then retrieve and display them
   content: |-
     In this tutorial, I'll create a simple application to upload photos through a simple HTML form, and store them in the database, then render and display them on demand. The steps we'll go through are as follows:
+  user: mr_dizzy
+
+action_mailer_related_article:
+  permalink: action-mailer-related_article
+  title: Related action mailer article
+  date: 2007-07-02 23:36:00
+  related_articles: action_mailer_cheatsheet, action_mailer_second_related_article
+  type: Article
+  style: TUTORIAL
+  categories: cheatsheets, beginners
+  version: one
+  description: An associated article. 
+  content: I can't believe it's not butter
+  user: mr_dizzy
+
+action_mailer_second_related_article:
+  permalink: action-mailer-second-related_article
+  title: Second elated action mailer article
+  date: 2007-07-02 23:36:00
+  related_articles: action_mailer_cheatsheet, action_mailer_related_article
+  type: Article
+  style: TUTORIAL
+  categories: cheatsheets, beginners
+  version: one
+  description: Another associated article. 
+  content: I can't believe it's not butter again
   user: mr_dizzy

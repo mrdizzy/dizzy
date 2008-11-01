@@ -84,4 +84,8 @@ class ContentTest < Test::Unit::TestCase
    
   end
   
+  def test_should_have_related_articles
+  	 assert_equal @action_mailer_cheatsheet.related_articles.size, 2, "Should have one related article"
+  end
+  
 end
