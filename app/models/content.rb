@@ -95,11 +95,14 @@ class Cheatsheet < Content
 		
 		else
 		
-			unless pdf_data.blank?			
+			unless pdf_data.blank?	
+				
 				self.pdf.update_attributes(:filename 		=> pdf_data.original_filename,
 								:content_type 	=> pdf_data.content_type.chomp,
 								:binary_data 	=> pdf_data.read,
 								:size			=> pdf_data.size)
+								puts self.pdf.content_type
+								puts pdf.content_type
 			end
 			unless thumbnail_data.blank?
 				self.pdf.update_attributes(:filename 		=> thumbnail_data.original_filename,
@@ -109,6 +112,7 @@ class Cheatsheet < Content
 			end		
 		
 		end
+		
 	end
 	
 	def title

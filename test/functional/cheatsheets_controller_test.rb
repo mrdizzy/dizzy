@@ -144,7 +144,7 @@ class CheatsheetsControllerTest  < ActionController::TestCase
  										   } 
  							}
  					}, { :administrator_id => users(:mr_dizzy).id }
-
+		puts assigns(:cheatsheet).pdf.content_type
  		assert_equal 2, assigns(:cheatsheet).errors.size, assigns(:cheatsheet).errors.full_messages
  		assert_equal "is invalid", assigns(:cheatsheet).errors.on(:permalink)
  		assert_equal "is invalid", assigns(:cheatsheet).errors.on(:pdf)
