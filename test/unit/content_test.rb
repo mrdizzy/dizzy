@@ -17,7 +17,21 @@ class ContentTest < Test::Unit::TestCase
   	@action_mailer_cheatsheet 	= contents(:action_mailer_cheatsheet)
   end
   
-  def test_should_fail_without_category
+  def test_should_fail_with_invalid_version
+  	@form_helpers_article.version_id = 231
+  	assert !@form_helpers_article.valid?
+  	assert_equal 1, @form_helpers_article.errors.size, "Should have at least 1 error"
+  	assert_equal "does not exist", @form_helpers_article.errors.on(:version)
+  end
+  
+  def test_should_fail_with_invalid_user
+  	@form_helpers_article.user_id = 2314
+  	assert !@form_helpers_article.valid?
+  	assert_equal 1, @form_helpers_article.errors.size, "Should have at least 1 error"
+  	assert_equal "does not exist", @form_helpers_article.errors.on(:user)
+  end  
+  
+  def test_should_fail_with_empty_category
   	@form_helpers_article.categories.destroy_all
   	assert !@form_helpers_article.valid?
   	assert_equal "can't be blank", @form_helpers_article.errors.on(:categories)
@@ -56,7 +70,7 @@ class ContentTest < Test::Unit::TestCase
   	assert_equal "has already been taken", duplicate.errors.on(:permalink)
   end
   
-  def test_fail_when_empty_title
+  def test_should_fail_when_empty_title
  	@form_helpers_article.title = ""
  	assert !@form_helpers_article.valid?
  	assert_equal "can't be blank", @form_helpers_article.errors.on(:title)
