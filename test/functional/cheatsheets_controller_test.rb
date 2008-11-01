@@ -50,7 +50,7 @@ class CheatsheetsControllerTest  < ActionController::TestCase
  					}, { :administrator_id => users(:mr_dizzy).id }
  					
  		assert assigns(:cheatsheet).errors.on(:thumbnail)
- 		assert_equal 1, assigns(:cheatsheet).errors.size, "Should be 1 error on cheatsheet"
+ 		assert_equal 1, assigns(:cheatsheet).errors.size, assigns(:cheatsheet).errors.full_messages
  		assert_response :success
 		assert_template "new"
  	end 	
@@ -75,7 +75,7 @@ class CheatsheetsControllerTest  < ActionController::TestCase
  					}, { :administrator_id => users(:mr_dizzy).id }
  					
  		assert assigns(:cheatsheet).errors.on(:pdf)
- 		assert_equal 1, assigns(:cheatsheet).errors.size, "Should be 1 error on cheatsheet"
+ 		assert_equal 1, assigns(:cheatsheet).errors.size, assigns(:cheatsheet).errors.full_messages
  		assert_response :success
 		assert_template "new"
  	end 	
@@ -128,7 +128,7 @@ class CheatsheetsControllerTest  < ActionController::TestCase
  	
  	def test_should_fail_on_update_with_invalid_attributes
  		post :update, { :id => contents(:action_mailer_cheatsheet).id, 
- 						:cheatsheet =>	{ :permalink => "action-two-mailer^%",
+ 						:cheatsheet =>	{ :permalink => "action-two-mailer-three",
  										  "date(li)" => "2008",
  										  "date(2i)" => "8",
  										  "date(3i)" => "1",
