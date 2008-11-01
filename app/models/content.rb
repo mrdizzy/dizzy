@@ -19,12 +19,8 @@ class Content < ActiveRecord::Base
 	has_and_belongs_to_many :categories
 	has_and_belongs_to_many :related_articles, :class_name => "Content", :foreign_key => "related_id"
 	has_many 				:comments, :dependent => :destroy, :order => "'created_at' DESC"
-	has_many 				:sections, :dependent => :destroy, :order => "'title' ASC"
 	belongs_to 				:version
 	belongs_to 				:user
-	has_many				:binaries
-	
-	validates_associated :pdf, :thumbnail
 	
 	validates_existence_of	:version
 	validates_existence_of  :user	
@@ -71,10 +67,13 @@ class Article < Content
 end
 
 class Cheatsheet < Content
+	
+	has_many 				:sections, :dependent => :destroy, :order => "'title' ASC", :foreign_key => "content_id"
 	has_one :pdf, :dependent => :destroy, :foreign_key => "content_id"
 	has_one :thumbnail, :dependent => :destroy, :foreign_key => "content_id"
 	
 	validates_presence_of :pdf, :thumbnail
+	validates_associated :pdf, :thumbnail
 	
 	def binary_attributes=(binaries)
 			pdf_data 		= binaries[:pdf][:uploaded_data]
