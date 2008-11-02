@@ -13,18 +13,15 @@ server "www21.a2hosting.com", :app, :web, :db, :primary => true
 
 set :svn_username, "david.pettifer"		
 	
-# SSH OPTIONS
-#=============================================================================
 ssh_options[:port] = 7822 
 
-# DATABASE
-# =============================================================================
 set :database_adapter, "mysql"
 set :database_username, "dizzynew"
 set :database_password, "beaslewig175"
 set :database_hostname, "127.0.0.1"
 
 # =============================================================================
+
 desc "Tasks to execute after update"
 task :after_update do
 	
@@ -36,7 +33,8 @@ task :after_update do
 	
 end
 
-task :database_configuration do
+desc "Create database.yml file"
+task :setup_database do
   run "mkdir -p #{shared_path}/config" 
   put database_configuration, "#{shared_path}/config/database.yml"
 end
