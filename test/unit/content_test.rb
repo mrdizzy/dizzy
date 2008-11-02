@@ -34,7 +34,7 @@ class ContentTest < Test::Unit::TestCase
   def test_should_fail_with_empty_category
   	@form_helpers_article.categories.destroy_all
   	assert !@form_helpers_article.valid?
-  	assert_equal "can't be blank", @form_helpers_article.errors.on(:categories)
+  	assert_equal "can't be blank", @form_helpers_article.errors.on(:category_ids)
   end
   
     def test_should_fail_with_empty_attributes
