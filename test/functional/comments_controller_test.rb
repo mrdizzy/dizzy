@@ -53,6 +53,11 @@ class CommentsControllerTest < ActionController::TestCase
   	assert_select_rjs
   	end
 
+  def test_succeed_new_html_child_comment_form
+  	get(:new, :content_id => contents(:action_mailer_cheatsheet).id, :comment_id => "2")
+  	assert_template("new_child")
+  end
+
   def test_fail_create_invalid_child_comment
   	xhr(:get, :new, :comment => { :body => "Here is a comment" }, :content_id => contents(:action_mailer_cheatsheet).id, :comment_id => comments(:mother).id)
   	assert_template("new_child") 
