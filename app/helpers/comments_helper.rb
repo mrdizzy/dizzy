@@ -31,7 +31,7 @@ def prepare_comments(comments,result=Array.new, init=true, counter=0)
 		end
 					
 		result << 
-		"<div class=\"reply_comment\" id=\"reply_#{comment.id}\">" + link_to_remote("Reply to this comment", :url => new_content_comment_child_comment_path(:content_id => comment.content.id, :comment_id => comment.id), :method => :get, :format => :js)  + "</div><div id=\"reply_form_#{comment.id}\"></div>"
+		"<div class=\"reply_comment\" id=\"reply_#{comment.id}\">" + link_to_remote("Reply to this comment", { :url => new_content_comment_child_comment_path(:content_id => comment.content.id, :comment_id => comment.id), :method => :get }, :href => "http://www.yahoo.com")  + "</div><div id=\"reply_form_#{comment.id}\"></div>"
 			
 		prepare_comments(comment.children,result,false,counter) unless comment.children.empty?
 					
