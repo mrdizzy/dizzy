@@ -42,6 +42,16 @@ img {
 		margin-bottom: 0.5em;
 	}
 	h2 {
+		font-family: "Georgia";
+		font-weight:normal;
+		font-style:italic;
+		font-size: 1.7em; /* 15px */ 
+		line-height: 1.4em; /* 18px */ 
+		margin-top: 0.6em; 
+		margin-bottom: 0.6em;	
+		letter-spacing:-0.03em;	
+	}
+	h3 {
 		font-family:"Georgia";
 		font-size: 1.7em; 
 		line-height: 1.4em; 
@@ -50,16 +60,6 @@ img {
 		margin-bottom: 1.125em;
 		letter-spacing:-0.05em;
 	}
-	h3 {
-		font-size: 1.4em; /* 15px */ 
-		line-height: 1.2em; /* 18px */ 
-		margin-top: 0.6em; 
-		margin-bottom: 0.6em;	
-		font-family: "Georgia";
-		font-weight:bold;
-		font-style:italic;
-		letter-spacing:-0.03em;
-	}
 	h4 {
 		color: #878787;
 		font-weight:normal; 
@@ -67,7 +67,7 @@ img {
 		line-height: 1.8em; /* 18px */
 		margin-top: 0.6em; margin-bottom: 0.6em;
 		letter-spacing:0.2em;
-	}	
+	}		
 	.posted_in {
 		letter-spacing:0.2em;
 		font-size: 0.8em; /* 15px */ 

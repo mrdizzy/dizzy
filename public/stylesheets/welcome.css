@@ -1,6 +1,6 @@
 /* Typography
 =====================================================*/
-	#welcome h2 {
+	#welcome h3 {
 		font-family:"Georgia";
 		font-size: 1.6em; /* 16px */ 
 		line-height: 1.125em; /* 18px */ 
@@ -8,7 +8,7 @@
 		margin-top:0.6em;
 		margin-bottom:0.6em; 
 	}
-	#welcome h3 {
+	#welcome h2 {
 			font-size:2.2em;
 			font-weight:normal;
 			font-style:normal;

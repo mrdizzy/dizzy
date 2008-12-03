@@ -50,7 +50,7 @@
 			<span class="posted_in">
 			 	<%= solid_arrow %> <%= link_to(@recent_tutorials[1].main_category.name.upcase, category_path(@recent_tutorials[1].main_category.permalink)) %>
 			</span>
-			<h3><%= @recent_tutorials[1].title %></h3>
+			<h2><%= @recent_tutorials[1].title %></h2>
 		<div id="more_button"><div class="more"><div class="arrow"><%= diamond %></div><span class="read"><%= link_to("MORE &raquo;", content_path(@recent_tutorials[1].permalink)) %></span></div></div>		<span class="date">POSTED <%= time_ago_in_words(@recent_tutorials[1].date).upcase %> AGO</span>
 			<p><%= @recent_tutorials[1].description %></p>
 			<% end %>
@@ -61,7 +61,7 @@
 			<span class="posted_in">
 			 	<%= solid_arrow %> <%= link_to(@recent_tutorials[2].main_category.name.upcase, category_path(@recent_tutorials[2].main_category.permalink)) %>
 			</span>
-			<h3><%= @recent_tutorials[2].title %></h3>
+			<h2><%= @recent_tutorials[2].title %></h2>
 			<div id="more_button"><div class="more"><div class="arrow"><%= diamond %></div><span class="read"><%= link_to("MORE &raquo;", content_path(@recent_tutorials[2].permalink)) %></span></div></div>		<span class="date">POSTED <%= time_ago_in_words(@recent_tutorials[2].date).upcase %> AGO</span>
 			<p><%= @recent_tutorials[2].description %></p>
 			<% end %>
@@ -71,7 +71,7 @@
 			<span class="posted_in">
 			 	<%= solid_arrow %> <%= link_to(@recent_tutorials[3].main_category.name.upcase, category_path(@recent_tutorials[3].main_category.permalink)) %>
 			</span>
-			<h3><%= @recent_tutorials[3].title %></h3>
+			<h2><%= @recent_tutorials[3].title %></h2>
 			<div id="more_button"><div class="more"><div class="arrow"><%= diamond %></div><span class="read"><%= link_to("MORE &raquo;", content_path(@recent_tutorials[3].permalink)) %></span></div></div>		<span class="date">POSTED <%= time_ago_in_words(@recent_tutorials[3].date).upcase %> AGO</span>
 			<p><%= @recent_tutorials[3].description %></p>
 			<% end %>
@@ -87,7 +87,7 @@
 			<span class="posted_in">
 			 	<%= solid_arrow %> <%= link_to(@recent_snippets[0].main_category.name.upcase, category_path(@recent_snippets[0].main_category.permalink)) %>
 			</span>
-			<h2><%= @recent_snippets[0].title %> </h2>
+			<h3><%= @recent_snippets[0].title %> </h3>
 			<div id="more_button"><div class="more"><div class="arrow"><%= diamond %></div><span class="read"><%= link_to("MORE &raquo;", content_path(@recent_snippets[0].permalink)) %></span></div></div>	<span class="date">POSTED <%= time_ago_in_words(@recent_snippets[0].date).upcase %> AGO</span>
 			<p><%= @recent_snippets[0].description %></p>
 		
@@ -96,7 +96,7 @@
 			<span class="posted_in">
 			 	<%= solid_arrow %> <%= link_to(@recent_snippets[1].main_category.name.upcase, category_path(@recent_snippets[1].main_category.permalink)) %>
 			</span>
-			<h2><%= @recent_snippets[1].title %></h2>
+			<h3><%= @recent_snippets[1].title %></h3>
 			<div id="more_button"><div class="more"><div class="arrow"><%= diamond %></div><span class="read"><%= link_to("MORE &raquo;", content_path(@recent_snippets[1].permalink)) %></span></div></div>	<span class="date">POSTED <%= time_ago_in_words(@recent_snippets[1].date).upcase %> AGO</span>
 			<p><%= @recent_snippets[1].description %></p>
 		
@@ -105,10 +105,10 @@
 			<span class="posted_in">
 			 	<%= solid_arrow %> <%= link_to(@recent_snippets[2].main_category.name.upcase, category_path(@recent_snippets[2].main_category.permalink)) %>
 			</span>
-			<h2><%= @recent_snippets[2].title %></h2>
+			<h3><%= @recent_snippets[2].title %></h3>
 			<div id="more_button"><div class="more"><div class="arrow"><%= diamond %></div><span class="read"><%= link_to("MORE &raquo;", content_path(@recent_snippets[2].permalink)) %></span></div></div>	<span class="date">POSTED <%= time_ago_in_words(@recent_snippets[2].date).upcase %> AGO</span>
 			<p><%= @recent_snippets[2].description %></p>
 		</div>
 	
 	</div>
-</div>
+</div> 
