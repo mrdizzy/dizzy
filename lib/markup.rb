@@ -539,6 +539,7 @@ str = str + "\n"
 			language = $1
 			codeblock = $2
 			codeblock.strip!
+			codeblock = "    " + codeblock
 			remainder = $3
 			codeblock = parse_coderay(codeblock, :ruby, "none")	if language =~ /ruby/
 			codeblock = parse_coderay(codeblock, :rhtml, "none")	if language =~ /rhtml/

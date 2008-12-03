@@ -1,4 +1,18 @@
-/* Index
+/* Article 
+======================*/
+	#article h2 {
+		font-style:italic;
+		font-weight:bold;
+		font-size:1.6em;
+	}
+	#article h4 {
+		letter-spacing:0em;
+		font-size:1em;
+		font-weight:bold;
+		font-family:"Trebuchet MS";
+		color:black;
+	}
+/* Cheatsheet
 ======================*/
 	#cheatsheet_image {
 		float:right;
@@ -15,11 +29,11 @@
 		border-bottom:1px dashed #000000;
 	}	
 	#cheatsheet h3 { 
-			font-family:"Trebuchet MS"; 
-			color:black; 
-			letter-spacing:0em; 
-			font-size:1.3em;
-			font-weight:bold;
+		font-family:"Trebuchet MS"; 
+		color:black; 
+		letter-spacing:0em; 
+		font-size:1.3em;
+		font-weight:bold;
 	}
 /* Sections
 ======================*/
