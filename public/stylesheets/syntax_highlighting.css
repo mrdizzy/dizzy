@@ -2,6 +2,8 @@
 ==================================== */
 pre { margin-bottom: 1.5em; }
 pre.CodeRay {
+	border: 1px dashed #434343;;
+	padding: 1em;
 	background-color:transparent;
 	font-family:"Courier New","Courier", monospace; 
 	word-wrap: break-word;       /* Internet Explorer 5.5+ */
@@ -11,11 +13,15 @@ pre.CodeRay {
 	white-space: -o-pre-wrap;    /* Opera 7 */
 	font-size: 1em; /* 12px */ line-height: 1.5em; /* 18px */ margin: 0 0 0 0;
 }
+table pre.CodeRay { 
+	border:0;
+}
 code { 
 	color:#29A4BD; 
 	font-family:"Courier New","Courier", monospace; 
 	font-size: 1em; /* 12px */ line-height: 1.5em; /* 18px */ margin: 0 0 0 0;
 }
+
 /*
 :attribute_name => 'an',		:attribute_name_fat => 'af',
 :attribute_value => 'av',		:attribute_value_fat => 'aw',
