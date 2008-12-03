@@ -2,8 +2,8 @@
 ==================================== */
 pre { margin-bottom: 1.5em; }
 pre.CodeRay {
-	border: 1px dashed #434343;;
-	padding: 1em;
+	border: 1px dashed #434343;
+	padding: 1em 1em 1em 0;
 	background-color:transparent;
 	font-family:"Courier New","Courier", monospace; 
 	word-wrap: break-word;       /* Internet Explorer 5.5+ */
@@ -12,6 +12,7 @@ pre.CodeRay {
 	white-space: -pre-wrap;      /* Opera 4-6 */
 	white-space: -o-pre-wrap;    /* Opera 7 */
 	font-size: 1em; /* 12px */ line-height: 1.5em; /* 18px */ margin: 0 0 0 0;
+	margin-bottom:1em;
 }
 table pre.CodeRay { 
 	border:0;

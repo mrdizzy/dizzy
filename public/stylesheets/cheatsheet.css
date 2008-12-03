@@ -5,7 +5,8 @@
 		font-weight:bold;
 		font-size:1.6em;
 	}
-	#article h4 {
+	#article h4,
+	#cheatsheet h4 {
 		letter-spacing:0em;
 		font-size:1em;
 		font-weight:bold;
@@ -85,12 +86,17 @@
 	}
 /* Cheatsheet Table
 ========================= */
-	#cheatsheet table {	margin-bottom:1.5em; }	
-	
+	#cheatsheet table {	
+		border:1px dotted grey;
+		margin-bottom:1.5em; 
+	}	
+	#cheatsheet table p {
+		margin:0.2em 0 0.2em 0;
+	}
 	#cheatsheet td {
-		border-bottom:1px solid grey;
-		padding-top:0.5em;
-		padding-bottom:0.5em;
+		border:1px dotted grey;
+		padding-left:1em;
+
 	}
 /* PDF Thumbnail 
 ======================*/
