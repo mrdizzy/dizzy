@@ -4,9 +4,8 @@
 		border: 1px dotted #888;
 		text-align:center;
 	}
-	.portfolio_item {
-		border-top: 1px dotted #888;
-	}
+	.portfolio_item { border-top: 1px dotted #888; }
+	
 /* Frontend Portfolio
 ==================================== */
 	#column1 {

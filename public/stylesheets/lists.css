@@ -7,37 +7,25 @@ ul {
 	line-height: 1.5em; /* 18px */ 
 	margin: 0 0 1.5em 0;
 }
-
-ul ul {	font-size:inherit; }
+	ul ul {	font-size:inherit; }
 
 li.alt {
 	background-image:url("/images/f/backgrounds/spiral2.png");
 	background-repeat:no-repeat;
 	background-position: top right;
 }
-
-/* Errors list 
-================ */
-#errorExplanation ul li {
-	font-size:1.1em;
-	color: #29A4BD; 
-	font-weight:bold;
-}
-
 /* Directory structure lists
 ==================================== */
 ul.directory  {
 	list-style-image:url(/images/f/small_icons/folder.png);
 }
-
 /* Categories list
 ==================================== */
-ul.categories, #admin_links ul {
+ul.categories, 
+#admin_links ul {
 	font-weight:bold;
 	line-height:3em;
 }
-
 /* Cheatsheet section list
 ==================================== */
-
 ul { margin-right:10px;}

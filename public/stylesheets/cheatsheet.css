@@ -4,27 +4,25 @@
 		float:right;
 		text-align:center;	
 	}
-
-/* Page 
-======================*/
-	#method.blue {
-		background-color:#D8EEF9;
-		padding:5px;
-		margin-top:10px;
+	#cheatsheet h2 {
+		font-weight:bold;
+		color:#000000;
+		font-size: 1.5em; 
+		text-align:center;
+		line-height: 1em; 
+		margin-top: 0.5em; 
+		margin-bottom: 0.5em;
+		border-bottom:1px dashed #000000;
+	}	
+	#cheatsheet h3 { 
+			font-family:"Trebuchet MS"; 
+			color:black; 
+			letter-spacing:0em; 
+			font-size:1.3em;
 	}
-	#cheatsheet_title {
-		float:left;
-	}
-	#content {
-		clear:both;
-	}
-
 /* Sections
 ======================*/
-	
-	#section_container {
-		width:600px;
-	}	
+	#section_container { width:600px; }	
 	#section_list {
 		clear:both;
 		border-bottom:1px solid transparent;
@@ -70,20 +68,44 @@
 		height:9px;
 		float:left;		
 	}
+/* Cheatsheet Table
+========================= */
+	#cheatsheet table {	margin-bottom:1.5em; }	
+	
+	#cheatsheet td {
+		border-bottom:1px solid grey;
+		padding-top:0.5em;
+		padding-bottom:0.5em;
+	}
 /* PDF Thumbnail 
 ======================*/
-
-.thumbnail {
-	float:left;
-	text-align:center;
-	width:200px;
-}
-
+	.thumbnail {
+		float:left;
+		text-align:center;
+		width:200px;
+	}
 /* Related
-======================*/
-	
+======================*/	
 	#blurb {
 		border: 1px dashed #878787;
 		padding:0 7px 0px 7px;
 		width:100%;
 	}
+		#blurb h2 {
+			font-family:"Georgia";
+			font-size:1.4em;	
+			margin-bottom:0.5em;	
+		}	
+		#blurb h4 {
+			color: #29A4BD;
+			font-weight:normal; 
+			font-size: 0.76em; /* 10px */
+			line-height: 1.8em; /* 18px */
+			margin-top: 0.6em; margin-bottom: 0.8em;
+			letter-spacing:0.2em;
+		}	
+		#blurb p {		
+			font-size:1.2em;
+			font-style:italic;
+			font-family:"Trebuchet MS";
+		}

@@ -1,8 +1,6 @@
 /* Syntax highlighting 
 ==================================== */
-pre {
-	margin-bottom: 1.5em;
-}
+pre { margin-bottom: 1.5em; }
 pre.CodeRay {
 	background-color:transparent;
 	font-family:"Courier New","Courier", monospace; 
@@ -13,13 +11,11 @@ pre.CodeRay {
 	white-space: -o-pre-wrap;    /* Opera 7 */
 	font-size: 1em; /* 12px */ line-height: 1.5em; /* 18px */ margin: 0 0 0 0;
 }
-
 code { 
 	color:#29A4BD; 
 	font-family:"Courier New","Courier", monospace; 
 	font-size: 1em; /* 12px */ line-height: 1.5em; /* 18px */ margin: 0 0 0 0;
 }
-
 /*
 :attribute_name => 'an',		:attribute_name_fat => 'af',
 :attribute_value => 'av',		:attribute_value_fat => 'aw',
