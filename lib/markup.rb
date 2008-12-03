@@ -538,8 +538,8 @@ str = str + "\n"
 		str.gsub( CodeBlockRegexp ) {|block|
 			language = $1
 			codeblock = $2
+			codeblock.strip!
 			remainder = $3
-		
 			codeblock = parse_coderay(codeblock, :ruby, "none")	if language =~ /ruby/
 			codeblock = parse_coderay(codeblock, :rhtml, "none")	if language =~ /rhtml/
 			codeblock = "<div>" + codeblock.rstrip + "</div>" if language =~ /ruby/ or language =~ /rhtml/
