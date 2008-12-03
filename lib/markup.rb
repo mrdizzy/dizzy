@@ -548,7 +548,7 @@ str = str + "\n"
 			 # Generate the codeblock
 			if language =~ /plain/
 				%{\n\n%s\n\n%s} %
-				[  "<pre>" + encode_code(codeblock,rs).rstrip + "</pre>", remainder ]
+				[  "<pre>" + encode_code(codeblock,rs) + "</pre>", remainder ]
 			else
 			%{\n\n%s\n\n\n%s} %
 				[  codeblock.rstrip, remainder ]

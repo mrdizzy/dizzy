@@ -87,12 +87,12 @@
 /* Cheatsheet Table
 ========================= */
 	#cheatsheet table {	
-		border:1px dotted grey;
+		border:1px dotted #878787;
 		margin-bottom:1.5em; 
 	}	
 	#cheatsheet table p { margin:0.2em 0 0.2em 0; }
 	#cheatsheet td {
-		border:1px dotted grey;
+		border:1px dotted #878787;
 		padding-left:0.5em;
 	}
 /* PDF Thumbnail 
