@@ -7,13 +7,13 @@ table { width:100%; border-collapse: collapse; }
 =====================================================*/
 	b, em, strong {	font-weight:bold; }
 	i { font-style:italic; }
-	p { font: normal 1em/1.5em "Verdana"; margin: 0.6em 0 1.5em 0; }
-	h1 { font-family:"Georgia"; font-weight: normal; letter-spacing:-0.05em; color:#434343; font-size:3.5em; line-height: 1.3846em; margin-top: 0.6923em; margin-bottom: 0.5em; }
-	h2 { font: normal italic 8em/1.4em "Georgia", serif; margin-top: 0.6em; margin-bottom: 0.6em;	letter-spacing:-0.03em;	}
+	p { font: 1em/1.5em "Verdana"; margin: 0.6em 0 1.5em 0; }
+	h1 { font: 3.5em/1.3846em "Georgia", serif; letter-spacing:-0.05em; margin-top: 0.6923em; margin-bottom: 0.5em; }
+	h2 { font: italic 1.7em/1.4em "Georgia", serif; margin-top: 0.6em; margin-bottom: 0.6em; letter-spacing:-0.03em;	}
 	h3 { font: bold italic 1.4em/1.2em "Georgia", serif; margin-top:0; margin-bottom: 1.125em; letter-spacing:-0.05em; }
-	h4 { font: normal 0.76em/1.8em "Georgia", serif; color: #878787; margin-top: 0.6em; margin-bottom: 0.6em; letter-spacing:0.2em; }		
-	.posted_in { font: normal 0.8em "Arial Black"; letter-spacing:0.2em; color: #29A4BD; text-decoration: none;	}
-	.date { font: normal 0.8333em/18em; color: #878787;	margin-top: 1.8em; margin-bottom: 0.6em; letter-spacing:0.2em; }
+	h4 { font: 0.76em/1.8em "Georgia", serif; color: #878787; margin-top: 0.6em; margin-bottom: 0.6em; letter-spacing:0.2em; }		
+	.posted_in { font: 0.8em "Arial Black"; letter-spacing:0.2em; color: #29A4BD; text-decoration: none;	}
+	.date { font: 0.8333em/18em; color: #878787; margin-top: 1.8em; margin-bottom: 0.6em; letter-spacing:0.2em; }
 	a:link { color: #29A4BD; }	
 	a:visited { color:#006A8C; }
 
@@ -29,23 +29,22 @@ table { width:100%; border-collapse: collapse; }
 
 /* =CSS WELCOME
 =====================================================*/
-	#welcome { clear:both;}
+	#welcome { clear:both; }
 	#first_half { width:730px; }
 		#welcome_left {	float:left;	width:394px; padding-right:10px; border-right:1px dotted #CCCCCC; }
 		#welcome_right { width:310px; float:right; }
 	#second_half { width:220px; border-left:1px dotted #CCCCCC; padding-left:10px; float:right; }	
 
 	#welcome a { text-decoration:none; }
-	
 	#welcome h2 { font: normal 2.2em "Georgia", serif;}		
 	#welcome h3 { font: normal 1.6em/1.125em "Georgia", serif; margin-top:0.6em; margin-bottom:0.6em; }
 	#welcome p { padding-bottom:10px; border-bottom:1px dotted #CCCCCC; }
 
-	#logo_pagination { width:100%; text-align:center; }
 	#latest_logo { width:100%; text-align:center; padding-top:10px; padding-bottom:5px; }
+	#logo_pagination { width:100%; text-align:center; }
 	#category_list a, 
 	#logo_pagination a { text-decoration:underline; }
-
+	
 	#more_button { float:left; margin-right:10px; }
 	.more {	border:1px solid #CCCCCC; width:80px; float:left; text-align:center; height:18px; }
 	.arrow { float:left; border-right:1px solid #CCCCCC; width:20px; height:18px; }
