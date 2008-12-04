@@ -1,9 +1,4 @@
 module ContentsHelper
-
-require 'coderay.rb'
-require 'digest/md5'
-require 'logger'
-require 'strscan'
 		
 	def parse_cheatsheet_xml(content)
 		content = "Use numbered headers: true
