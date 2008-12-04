@@ -1,6 +1,6 @@
 /* Article 
 ======================*/
-	#article h2 { font-style:italic; font-weight:bold; font-size:1.6em; }
+	#article h2 { font-size:1.6em; }
 	#article h4,
 	#cheatsheet h4 { letter-spacing:0em; font-size:1em;	font-weight:bold; font-family:"Trebuchet MS"; color:black; }
 	
