@@ -1,9 +1,5 @@
 #left_column {display:none; }
-
 #right_column { width:100%;}
-
 #navigation { display:none; }
-
 #top_container { background-image:none; }
-
 .break { page-break-before:always; }

@@ -5,17 +5,17 @@ table { width:100%; border-collapse: collapse; }
 
 /* =CSS TYPOGRAPHY
 =====================================================*/
-b, em, strong {	font-weight:bold; }
-i { font-style:italic;}
-p { font: normal 1em/1.5em "Verdana"; margin: 0.6em 0 1.5em 0; }
-h1 { font-family:"Georgia"; font-weight: normal; letter-spacing:-0.05em; color:#434343; font-size:3.5em;line-height: 1.3846em; margin-top: 0.6923em; margin-bottom: 0.5em; }
-h2 { font: normal italic 1.7em/1.4em "Georgia", serif; margin-top: 0.6em; margin-bottom: 0.6em;	letter-spacing:-0.03em;	}
-h3 { font: bold italic 1.4em/1.2em "Georgia", serif; margin-top:0; margin-bottom: 1.125em; letter-spacing:-0.05em; }
-h4 { font: normal 0.76em/1.8em "Georgia", serif; color: #878787; margin-top: 0.6em; margin-bottom: 0.6em; letter-spacing:0.2em; }		
-.posted_in { font: normal 0.8em "Arial Black"; letter-spacing:0.2em; color: #29A4BD; text-decoration: none;	}
-.date { font: normal 0.8333em/18em; color: #878787;	margin-top: 1.8em; margin-bottom: 0.6em; letter-spacing:0.2em; }
-a:link { color: #29A4BD; }	
-a:visited { color:#006A8C; }
+	b, em, strong {	font-weight:bold; }
+	i { font-style:italic; }
+	p { font: normal 1em/1.5em "Verdana"; margin: 0.6em 0 1.5em 0; }
+	h1 { font-family:"Georgia"; font-weight: normal; letter-spacing:-0.05em; color:#434343; font-size:3.5em; line-height: 1.3846em; margin-top: 0.6923em; margin-bottom: 0.5em; }
+	h2 { font: normal italic 8em/1.4em "Georgia", serif; margin-top: 0.6em; margin-bottom: 0.6em;	letter-spacing:-0.03em;	}
+	h3 { font: bold italic 1.4em/1.2em "Georgia", serif; margin-top:0; margin-bottom: 1.125em; letter-spacing:-0.05em; }
+	h4 { font: normal 0.76em/1.8em "Georgia", serif; color: #878787; margin-top: 0.6em; margin-bottom: 0.6em; letter-spacing:0.2em; }		
+	.posted_in { font: normal 0.8em "Arial Black"; letter-spacing:0.2em; color: #29A4BD; text-decoration: none;	}
+	.date { font: normal 0.8333em/18em; color: #878787;	margin-top: 1.8em; margin-bottom: 0.6em; letter-spacing:0.2em; }
+	a:link { color: #29A4BD; }	
+	a:visited { color:#006A8C; }
 
 /* Global reusable classes
 ==================================== */
@@ -25,14 +25,83 @@ a:visited { color:#006A8C; }
 	.block { display:block; }
 	.clearfix { clear:both;	}
 	.spiro { background: url("/images/f/branding/spirosmall.png") center no-repeat; margin:	0 auto; width: 29px; font-size: 2.4167em; line-height: 1em; margin-top: 0; margin-bottom: 0.32em; }	
-	.amp { color:#434343; font: italic 1.3em "Georgia";	}		
+	.amp { color:#434343; font: italic 1.3em "Georgia";	}	
+
+/* =CSS WELCOME
+=====================================================*/
+	#welcome { clear:both;}
+	#first_half { width:730px; }
+		#welcome_left {	float:left;	width:394px; padding-right:10px; border-right:1px dotted #CCCCCC; }
+		#welcome_right { width:310px; float:right; }
+	#second_half { width:220px; border-left:1px dotted #CCCCCC; padding-left:10px; float:right; }	
+
+	#welcome a { text-decoration:none; }
 	
+	#welcome h2 { font: normal 2.2em "Georgia", serif;}		
+	#welcome h3 { font: normal 1.6em/1.125em "Georgia", serif; margin-top:0.6em; margin-bottom:0.6em; }
+	#welcome p { padding-bottom:10px; border-bottom:1px dotted #CCCCCC; }
+
+	#logo_pagination { width:100%; text-align:center; }
+	#latest_logo { width:100%; text-align:center; padding-top:10px; padding-bottom:5px; }
+	#category_list a, 
+	#logo_pagination a { text-decoration:underline; }
+
+	#more_button { float:left; margin-right:10px; }
+	.more {	border:1px solid #CCCCCC; width:80px; float:left; text-align:center; height:18px; }
+	.arrow { float:left; border-right:1px solid #CCCCCC; width:20px; height:18px; }
+	.read a { letter-spacing:0.2em; font-family:"Helvetica"; font-size: 0.75em;	color: #29A4BD;	text-decoration: none; }
+	
+	/* =CSS CONTENT
+======================*/
+	#article h2 { font-size:1.6em; }
+	
+	#cheatsheet h2 { font-weight:bold; color:#000000; font-size: 1.5em; text-align:center; line-height: 1em; margin-top: 0.5em; margin-bottom: 0.5em; border-bottom:1px dashed #000000; }	
+	#cheatsheet h3 { font-family:"Trebuchet MS"; color:black; letter-spacing:0em; font-size:1.3em; font-weight:bold; }
+	#article h4,
+	#cheatsheet h4 { letter-spacing:0em; font-size:1em;	font-weight:bold; font-family:"Trebuchet MS"; color:black; }
+	
+	#cheatsheet table {	border:1px dotted #878787; margin-bottom:1.5em; }	
+	#cheatsheet table p { margin:0.2em 0 0.2em 0; }
+	#cheatsheet td { border:1px dotted #878787;	padding-left:0.5em; }
+	
+	#cheatsheet_image {	float:right; text-align:center;	}
+	.thumbnail { float:left; text-align:center;	width:200px; }
+
+	#blurb { border: 1px dashed #878787; padding:0 7px 0px 7px;	width:100%;	}
+	#blurb h2 { font-family:"Georgia"; font-size:1.4em;	margin-bottom:0.5em; }	
+	#blurb h4 {	color: #29A4BD;	font-weight:normal; font-size: 0.76em; line-height: 1.8em; margin-top: 0.6em; margin-bottom: 0.8em;	letter-spacing:0.2em; }	
+	#blurb p { font-size:1.2em;	font-style:italic; font-family:"Trebuchet MS"; }
+
+/* =BEGIN ARTICLE LINKS
+========================= */
+	.articles h6 { font-size:1.2em;	font-weight:normal;	line-height:1.5em;letter-spacing:0px; font-family:"Georgia"; font-style:italic; color: #434343; }
+	.articles h2 { line-height:1.3; }
+	
+	table.articles td { padding:0.5em; border: 1px dotted #999; }
+	table.articles td.content {	width: 50%;	}
+	
+	tr.even { background-image:url("/images/f/backgrounds/spiral2.png"); background-repeat:repeat; background-position:top right; }
+	
+	.thumbnail { float:left; }
+
+/* =CSS COMMENTS
+==================================== */
+	#comments .odd, 
+	#conversation .odd { clear:both; border: 1px dotted #888; padding:5px; margin:8px 0 8px 0; background-color:white; background-image:url("/images/f/backgrounds/spiral2.png"); }
+	#comments .normal, 
+	#conversation .normal { clear:both;	background-color:white;	border: 1px dotted #888; padding:5px; margin:8px 0 8px 0; }
+	.reply_comment { width:100%; text-align:center; clear:both; }
+	.comments_left { width:25%;	float:left; }
+	.comments_right { float:right; width:74%; }
+	#comments .email { font-weight:bold; font-size:0.8em; }
+	#comments h6 { color:#29A4BD; font-family:"Georgia"; font-size:1.6em; font-weight:normal; letter-spacing:-0.035em; line-height:1.125em; margin-bottom:0.6em; margin-top:0em; }
+
 /* =CSS HEADER
 ==================================== */
-#top_container 	{ background: url("/images/f/backgrounds/back.png") no-repeat top right;	width:100%; height:105px; }
-#slogan 		{ padding-top:53px;	float:left; }
-#logo			{ padding-top:7px; text-align:center; width:150px; height:90px; margin: 0 auto; float:left; }
-	#right_of_logo { text-align:center; width:600px; height:105px; float:right; }
+	#top_container 	{ background: url("/images/f/backgrounds/back.png") no-repeat top right;	width:100%; height:105px; }
+	#slogan 		{ padding-top:53px;	float:left; }
+	#logo			{ padding-top:7px; text-align:center; width:150px; height:90px; margin: 0 auto; float:left; }
+		#right_of_logo { text-align:center; width:600px; height:105px; float:right; }
 	
 /* =CSS NAVIGATION
 ======================*/
@@ -49,3 +118,49 @@ a:visited { color:#006A8C; }
 	#latest_logo a:hover {	background-color:transparent; }
 	.footer_logos {
 		background: white url(/images/f/backgrounds/back.png) no-repeat right top;	border-top: 1px dotted  #CCCCCC; height:100px; text-align:center; width:100%; }
+		
+/* =CSS LISTS
+==================================== */
+	ul { padding-left: 3em; list-style-image:url(/images/f/bullets/pixels/diamond.png); font-size: 1em; line-height: 1.5em; margin: 0 0 1.5em 0; }
+	ul ul {	font-size:inherit; }
+	li.alt { background-image:url("/images/f/backgrounds/spiral2.png"); background-repeat:no-repeat; background-position: top right; }
+	ul.directory { list-style-image:url(/images/f/small_icons/folder.png); }
+	ul.categories, 
+	#admin_links ul { font-weight:bold; line-height:3em; }
+	ul { margin-right:10px;}
+	
+	dl { line-height:1.5em; }
+	dt { font-weight:bold; margin-top:0.5em; }
+	dd { margin-left:4em;}
+
+input {  border-color:#999; border-style:solid; border-width:2px 1px 1px 2px; color:#434343; font-size:1.4em; padding:0.2em; margin:0; }
+	input:focus { background-color: #D1ECF9; }
+	input.checkbox { width: 2em; padding:0;	}
+	input.radio { width: 2em; border:0; }
+	input.submit { width: 136px; height:34px; margin: 0 auto; background:url(/images/f/buttons/submit2.png) no-repeat; outline: none; padding:0; border:0; }
+	input.submit:hover { background: url(/images/f/buttons/submit2.png) no-repeat 0 -34px; padding:0; border:0; }
+label { font-family:"Georgia"; font-weight: bold; display:block; margin-top: 1em; }	
+textarea { border-color:#999; border-style:solid; border-width:2px 1px 1px 2px; width:95%; }	
+select { border-color:#999; border-style:solid; border-width:2px 1px 1px 2px; }
+
+/* =CSS FORMS
+==================================== */
+	#errorExplanation h3 { color: #29A4BD; }
+	#error_container { text-align:center; }
+	
+	#error_left { float:left; width:33%; text-align:right; }
+	.fieldWithErrors { padding:	2px; border: 2px solid #29A4BD; }
+	#errorExplanation ul li { font-size:1.1em; color: #29A4BD; font-weight:bold; }
+	
+	.hover { background-color: #D1ECF9; }
+	
+/* =CSS FRONTEND PORTFOLIO
+==================================== */
+	#column1 { float:left; width: 25%; }
+	#logos { float:right; width: 75% }
+	
+	table.portfolio_table {	border: 1px dashed #888; }
+	table.portfolio_table td { vertical-align: middle; text-align:center; border: 1px dotted #888; }
+	
+	#company_description h2 { margin-top:1em; }
+	#company_description h3 { font-weight:normal; margin-top:1.2em; margin-bottom:1.2em; }	
