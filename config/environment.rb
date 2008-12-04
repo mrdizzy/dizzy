@@ -24,7 +24,7 @@ config.time_zone = 'London'
   # (create the session table with 'rake create_sessions_table')
   # config.action_controller.session_store = :active_record_store
   config.action_controller.session = { :session_key => "_dizzy_session", :secret => "beaslewig175world66607814752865" }
-
+  config.gem "maruku"
   # Enable page/fragment caching by setting a file-based store
   # (remember to create the caching directory and make it readable to the application)
   # config.action_controller.fragment_cache_store = :file_store, "#{RAILS_ROOT}/cache"
@@ -52,5 +52,3 @@ end
 
 # Include your application configuration below
 #ActionController::AbstractRequest.relative_url_root = "/dizzy" 
-
-require 'markup'

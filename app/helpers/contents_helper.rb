@@ -6,7 +6,11 @@ require 'logger'
 require 'strscan'
 		
 	def parse_cheatsheet_xml(content)
-		result = BlueCloth.new(content).to_html
+		content = "Use numbered headers: true
+HTML use syntax: true
+
+" + content
+		result = Maruku.new(content).to_html
 		result
 	end
 

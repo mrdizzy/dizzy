@@ -9,7 +9,6 @@ class ContentsController < ApplicationController
 	end
 	
 	def show 
-		require_dependency RAILS_ROOT + "/lib/markup.rb"
 		@content 		= Content.find_by_permalink(params[:id])		
 		@comment 		= Comment.new				
 		@categories 	= Category.find(:all, :order => :name)
