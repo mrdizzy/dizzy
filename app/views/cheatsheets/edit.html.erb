@@ -4,14 +4,6 @@
 <%= error_messages_for :cheatsheet %>
 <%= @cheatsheet.errors.full_messages %>
 
-<ul>
-<% @cheatsheet.sections.each do |section| %>
-	<li><%= link_to section.title, edit_cheatsheet_section_path(@cheatsheet.permalink, section.id) %> | <%= link_to "X", cheatsheet_section_path(@cheatsheet.permalink, section.id), :method => :delete %></li>
-<% end %>
-</ul>
-
-<p><%= asterisk %> <%= link_to "Add new section", new_cheatsheet_section_path(@cheatsheet.permalink)%></p>
-
 	<!-- MAIN EDIT FORM -->
 
 <% form_for :cheatsheet, :url => cheatsheet_path, :html => { :multipart => true, :method => :put } do |form| %>

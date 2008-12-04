@@ -5,12 +5,13 @@
 <h1><%= asterisk %> <%= @content.title %></h1>
 <h2><%= @content.description %></h2>
 
-<%= render(:partial => "shared/section_list", :object => @content.sections, :locals => { :current_article_permalink => nil} ) %>
-<div id="cheatsheet">
-<% sections = @content.sections.collect { |section|  parse_cheatsheet_xml(section.body) } %>
-<%= sections.to_s %>
 
+<%= spiro %>
+
+<div id="cheatsheet">
+	<%= @content.parsed_content %>
 </div>
+
 <%= spiro %>
 
 <%= render(:partial => "comments/comments", :object => @content ) %>

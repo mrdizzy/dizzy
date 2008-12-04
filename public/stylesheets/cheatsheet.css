@@ -1,129 +1,41 @@
 /* Article 
 ======================*/
-	#article h2 {
-		font-style:italic;
-		font-weight:bold;
-		font-size:1.6em;
-	}
+	#article h2 { font-style:italic; font-weight:bold; font-size:1.6em; }
 	#article h4,
-	#cheatsheet h4 {
-		letter-spacing:0em;
-		font-size:1em;
-		font-weight:bold;
-		font-family:"Trebuchet MS";
-		color:black;
-	}
+	#cheatsheet h4 { letter-spacing:0em; font-size:1em;	font-weight:bold; font-family:"Trebuchet MS"; color:black; }
+	
 /* Cheatsheet
 ======================*/
-	#cheatsheet_image {
-		float:right;
-		text-align:center;	
-	}
-	#cheatsheet h2 {
-		font-weight:bold;
-		color:#000000;
-		font-size: 1.5em; 
-		text-align:center;
-		line-height: 1em; 
-		margin-top: 0.5em; 
-		margin-bottom: 0.5em;
-		border-bottom:1px dashed #000000;
-	}	
-	#cheatsheet h3 { 
-		font-family:"Trebuchet MS"; 
-		color:black; 
-		letter-spacing:0em; 
-		font-size:1.3em;
-		font-weight:bold;
-	}
+	#cheatsheet_image {	float:right; text-align:center;	}
+	
+	#cheatsheet h2 { font-weight:bold; color:#000000; font-size: 1.5em; text-align:center; line-height: 1em; margin-top: 0.5em; margin-bottom: 0.5em; border-bottom:1px dashed #000000; }	
+	#cheatsheet h3 { font-family:"Trebuchet MS"; color:black; letter-spacing:0em; font-size:1.3em; font-weight:bold; }
+	
 /* Sections
 ======================*/
 	#section_container { width:600px; }	
-	#section_list {
-		clear:both;
-		border-bottom:1px solid transparent;
-		border-left:1px solid #BBBDBF;
-		border-right:1px solid #BBBDBF;
-	}
-	#topright {
-		background-image:url("/images/f/boxes/topright.png");
-		width:9px;
-		height:9px;
-		float:right;
-	}	
-	#topleft {
-		background-image:url("/images/f/boxes/topleft.png");
-		width:9px;
-		height:9px;
-		float:left;		
-	}
-	#topmiddle {
-		background-color:#BBBDBF;
-		margin-left:9px;
-		margin-right:9px;
-		height:1px;
-		width:582px;
-	}
-	#bottommiddle {
-		background-color:#BBBDBF;
-		width:582px;
-		margin-left:9px;
-		margin-right:9px;
-		margin-top:8px;
-		height:1px;
-	}
-	#bottomright {
-		background-image:url("/images/f/boxes/bottomright.png");
-		width:9px;
-		height:9px;
-		float:right;
-	}	
-	#bottomleft {
-		background-image:url("/images/f/boxes/bottomleft.png");
-		width:9px;
-		height:9px;
-		float:left;		
-	}
+	#section_list {	clear:both;	border-bottom:1px solid transparent; border-left:1px solid #BBBDBF;	border-right:1px solid #BBBDBF; }
+	
+	#topright {	background-image:url("/images/f/boxes/topright.png"); width:9px; height:9px; float:right; }	
+	#topleft { background-image:url("/images/f/boxes/topleft.png"); width:9px; height:9px; float:left; }
+	#topmiddle { background-color:#BBBDBF; margin-left:9px; margin-right:9px; height:1px; width:582px; }
+	#bottommiddle {	background-color:#BBBDBF; width:582px; margin-left:9px; margin-right:9px; margin-top:8px; height:1px; }
+	#bottomright { background-image:url("/images/f/boxes/bottomright.png");	width:9px; height:9px; float:right; }	
+	#bottomleft { background-image:url("/images/f/boxes/bottomleft.png"); width:9px; height:9px; float:left; }
+	
 /* Cheatsheet Table
 ========================= */
-	#cheatsheet table {	
-		border:1px dotted #878787;
-		margin-bottom:1.5em; 
-	}	
+	#cheatsheet table {	border:1px dotted #878787; margin-bottom:1.5em; }	
 	#cheatsheet table p { margin:0.2em 0 0.2em 0; }
-	#cheatsheet td {
-		border:1px dotted #878787;
-		padding-left:0.5em;
-	}
+	#cheatsheet td { border:1px dotted #878787;	padding-left:0.5em; }
+	
 /* PDF Thumbnail 
 ======================*/
-	.thumbnail {
-		float:left;
-		text-align:center;
-		width:200px;
-	}
+	.thumbnail { float:left; text-align:center;	width:200px; }
+	
 /* Related
 ======================*/	
-	#blurb {
-		border: 1px dashed #878787;
-		padding:0 7px 0px 7px;
-		width:100%;
-	}
-		#blurb h2 {
-			font-family:"Georgia";
-			font-size:1.4em;	
-			margin-bottom:0.5em;	
-		}	
-		#blurb h4 {
-			color: #29A4BD;
-			font-weight:normal; 
-			font-size: 0.76em; /* 10px */
-			line-height: 1.8em; /* 18px */
-			margin-top: 0.6em; margin-bottom: 0.8em;
-			letter-spacing:0.2em;
-		}	
-		#blurb p {		
-			font-size:1.2em;
-			font-style:italic;
-			font-family:"Trebuchet MS";
-		}
+	#blurb { border: 1px dashed #878787; padding:0 7px 0px 7px;	width:100%;	}
+	#blurb h2 { font-family:"Georgia"; font-size:1.4em;	margin-bottom:0.5em; }	
+	#blurb h4 {	color: #29A4BD;	font-weight:normal; font-size: 0.76em; line-height: 1.8em; margin-top: 0.6em; margin-bottom: 0.8em;	letter-spacing:0.2em; }	
+	#blurb p { font-size:1.2em;	font-style:italic; font-family:"Trebuchet MS"; }

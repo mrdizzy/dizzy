@@ -3,7 +3,7 @@ class ContentSweeper < ActionController::Caching::Sweeper
 	# TODO Make sweeper regenerate content pages upon category modification
 	# TODO Make sweeper regenerate PDF after new PDF uploaded
 	
-	observe Content, Section
+	observe Content
 	
 	def after_save(record)
 		expire_content_page(record)
@@ -23,9 +23,6 @@ class ContentSweeper < ActionController::Caching::Sweeper
 		content = record.is_a?(Content) ? record : record.content
 		if content.is_a?(Cheatsheet)			
 			expire_page hash_for_cheatsheet_path(:id => content.permalink)
-			content.sections.each do |section|
-				expire_page hash_for_cheatsheet_section_path(:cheatsheet_id => content.permalink, :id => section.permalink)
-			end	
 			expire_page hash_for_formatted_cheatsheet_path(:id => content.permalink, :format => :png)
 			expire_page hash_for_formatted_cheatsheet_path(:id => content.permalink, :format => :pdf)	
 		end

@@ -45,30 +45,38 @@ class Content < ActiveRecord::Base
 		create_version(:version_number => new_version) unless new_version.blank?
 	end
 	
+	def parsed_content
+		result = "Use numbered headers: true
+HTML use syntax: true
+
+" + self.content
+		result = Maruku.new(result).to_html
+
+	end
+	
 end
 
 class Article < Content
 	validates_presence_of 	:content	
-	before_save 			:parse_content
+	#before_save 			:parse_content
 	validates_presence_of	:style
 	validates_inclusion_of 	:style, :in => STYLES, :allow_blank => true
 	
-	def parse_content
-		self.content.gsub!("<%", "&lt;%")
-		self.content.gsub!("%>", "%&gt;")
-		self.content
-	end
-	
-	def parsed_content
-		self.content.gsub!("&lt;%","<%")
-		self.content.gsub!("%&gt;","%>")
-		self.content
-	end
+	#def parse_content
+	#	self.content.gsub!("<%", "&lt;%")
+	#	self.content.gsub!("%>", "%&gt;")
+	#	self.content
+	#end
+	#
+	#def parsed_content
+	#	self.content.gsub!("&lt;%","<%")
+	#	self.content.gsub!("%&gt;","%>")
+	#	self.content
+	#end
 end
 
 class Cheatsheet < Content
 	
-	has_many 				:sections, :dependent => :destroy, :order => "'title' ASC", :foreign_key => "content_id"
 	has_one :pdf, :dependent => :destroy, :foreign_key => "content_id"
 	has_one :thumbnail, :dependent => :destroy, :foreign_key => "content_id"
 	

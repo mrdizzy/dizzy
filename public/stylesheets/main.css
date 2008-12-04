@@ -1,46 +1,20 @@
-* {
- 	margin:			0;
- 	padding:		0;
- 	border:			0;
-	font-weight: 	normal;
-	font-style: 	normal;
-} 
+* {	margin:	0; padding: 0; border: 0; font-weight: normal; font-style: normal; } 
 body {  
 	font-family:		"Verdana", sans-serif;
 	color: 				#434343;
 	background-color: 	#fff;
 	font-size:			12px;
 }
-img {
-	vertical-align:	middle;
-	text-align:		center;
-}
+img { vertical-align: middle; text-align: center; }
 /* Tables
 ==================================== */
-	table 	{ 
-		width:100%; 
-		border-collapse: collapse;
-	}
+	table { width:100%; border-collapse: collapse; }
 /* Typography
 ==================================== */
 	b, em, strong {	font-weight:bold; }
 	i { font-style:italic;}
-	p {
-	    font-family:"Verdana";
-		font-size: 1em; /* 12px */ 
-		line-height: 1.5em; /* 18px */ 
-		margin: 0.6em 0 1.5em 0;
-	}
-	h1 {
-		font-family:"Georgia";
-		font-weight: normal;
-		letter-spacing:-0.05em;
-		color:#434343;
-		font-size:3.5em;	
-		line-height: 1.3846em; /* 36px */ 
-		margin-top: 0.6923em; 
-		margin-bottom: 0.5em;
-	}
+	p { font-family:"Verdana"; font-size: 1em; line-height: 1.5em; margin: 0.6em 0 1.5em 0; }
+	 h1 { font-family:"Georgia"; font-weight: normal; letter-spacing:-0.05em; color:#434343; font-size:3.5em;line-height: 1.3846em; margin-top: 0.6923em; margin-bottom: 0.5em; }
 	h2 {
 		font-family: "Georgia";
 		font-weight:normal;
@@ -123,10 +97,7 @@ img {
 		background-repeat:no-repeat;
 		background-position: top right;
 	}
-	#slogan {
-		padding-top:53px;
-		float:left;
-	}
+	#slogan { padding-top:53px;	float:left; }
 	#logo { 
 		padding-top:7px;
 		 text-align:center;
@@ -135,8 +106,7 @@ img {
 		 margin: 0 auto;
 		 float:left;
 	}
-	#right_of_logo {
-		text-align:center;
+	#right_of_logo {text-align:center;
 		width:600px;
 		height:105px;
 		float:right;
@@ -157,26 +127,20 @@ img {
 	}
 /* Container
 ======================*/
-	#page_container { 
-		width:				975px;
+	#page_container { width:				975px;
 		margin: 			0 auto;
 	}
-	#left_column {
-		width: 		700px;
+	#left_column {	width: 		700px;
 		float:		left;
 	}
-	#right_column {
-		width:		200px;
+	#right_column {	width:		200px;
 		float:		right;
 	}
 /* Footer
 ==================================== */
 	#footer a:hover, 
-	#latest_logo a:hover {
-		background-color:transparent;
-	}
-	.footer_logos {
-		background-image:url(/images/f/backgrounds/back.png);
+	#latest_logo a:hover {	background-color:transparent; }
+	.footer_logos { background-image:url(/images/f/backgrounds/back.png);
 		background-position:right top;
 		background-repeat:no-repeat;
 		border-top: 1px dotted  #CCCCCC;
