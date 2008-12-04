@@ -1,31 +1,24 @@
 /* Lists
 ==================================== */
-ul { 
-	padding-left: 3em;
-	list-style-image:url(/images/f/bullets/pixels/diamond.png);
-	font-size: 1em; /* 12px */ 
-	line-height: 1.5em; /* 18px */ 
-	margin: 0 0 1.5em 0;
-}
-	ul ul {	font-size:inherit; }
+ul { padding-left: 3em; list-style-image:url(/images/f/bullets/pixels/diamond.png); font-size: 1em; line-height: 1.5em; margin: 0 0 1.5em 0; }
+ul ul {	font-size:inherit; }
 
-li.alt {
-	background-image:url("/images/f/backgrounds/spiral2.png");
-	background-repeat:no-repeat;
-	background-position: top right;
-}
+li.alt { background-image:url("/images/f/backgrounds/spiral2.png"); background-repeat:no-repeat; background-position: top right; }
+
 /* Directory structure lists
 ==================================== */
-ul.directory  {
-	list-style-image:url(/images/f/small_icons/folder.png);
-}
+ul.directory { list-style-image:url(/images/f/small_icons/folder.png); }
+
 /* Categories list
 ==================================== */
 ul.categories, 
-#admin_links ul {
-	font-weight:bold;
-	line-height:3em;
-}
+#admin_links ul { font-weight:bold; line-height:3em; }
+
 /* Cheatsheet section list
 ==================================== */
 ul { margin-right:10px;}
+
+dl { line-height:1.5em; }
+dt { font-weight:bold; margin-top:0.5em; }
+dd { margin-left:4em;}
+
