@@ -14,11 +14,6 @@ class CheatsheetsController < ContentsController
 	end
   end
   
-  def destroy
-	 @cheatsheet = Cheatsheet.find(params[:id])
-	 @cheatsheet.destroy
-  end  	
-  
   def update
   	 @cheatsheet = Cheatsheet.find(params[:id])
   	 @cheatsheet.update_attributes(params[:cheatsheet])

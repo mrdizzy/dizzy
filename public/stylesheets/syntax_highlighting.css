@@ -3,6 +3,7 @@
 pre { margin-bottom: 1.5em; }
 code.ruby {
 	display:block;
+	color:grey;
 	border: 1px dashed #434343;
 	padding: 1em;
 	background-color:transparent;
