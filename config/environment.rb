@@ -16,9 +16,11 @@ Rails::Initializer.run do |config|
   
   config.action_controller.session = { :session_key => "_dizzy_session", :secret => "beaslewig175world66607814752865" }
   
-  config.gem "maruku"
+  config.gem "maruku" 
   config.gem "coderay"
 end
 
 # Include your application configuration below
 #ActionController::AbstractRequest.relative_url_root = "/dizzy" 
+
+load "#{RAILS_ROOT}/lib/maruku_patch.rb"

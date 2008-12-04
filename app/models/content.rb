@@ -53,7 +53,6 @@ HTML use syntax: true
 		result = Maruku.new(result).to_html
 
 	end
-	
 end
 
 class Article < Content
