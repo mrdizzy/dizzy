@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 13) do
+ActiveRecord::Schema.define(:version => 20081204220440) do
 
   create_table "binaries", :force => true do |t|
     t.binary  "binary_data",  :limit => 16777215
@@ -99,15 +99,9 @@ ActiveRecord::Schema.define(:version => 13) do
     t.boolean "visible",                           :default => true
   end
 
-  create_table "sections", :force => true do |t|
-    t.text    "body"
-    t.integer "content_id", :default => 0, :null => false
-    t.string  "title"
-    t.string  "summary"
-    t.string  "permalink"
+  create_table "schema_info", :id => false, :force => true do |t|
+    t.integer "version"
   end
-
-  add_index "sections", ["content_id"], :name => "fk_content_sections"
 
   create_table "users", :force => true do |t|
     t.string "name"
