@@ -13,7 +13,7 @@ class ContentsController < ApplicationController
 		@comment 		= Comment.new				
 		@categories 	= Category.find(:all, :order => :name)
 		respond_to do |wants|
-			wants.html { @content.is_a?(Article) ? render(:template => "contents/article") : render(:template => "contents/cheatsheet") }
+			wants.html { render :template => "contents/show"}
 			wants.pdf { send_data(@content.pdf.binary_data, :type => "application/pdf", :disposition => 'inline') }
 			wants.png { send_data(@content.thumbnail.binary_data, :type => "image/png", :disposition => 'inline') }
 		end
