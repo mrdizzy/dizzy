@@ -1,84 +1,23 @@
-/* Typography
-=====================================================*/
-	#welcome a { text-decoration:none; }
-	
-	#welcome h2 {
-			font-size:2.2em;
-			font-weight:normal;
-			font-style:normal;
-	}		
-	#welcome h3 {
-		font-family:"Georgia";
-		font-size: 1.6em; /* 16px */ 
-		line-height: 1.125em; /* 18px */ 
-		font-weight:normal;
-		font-style:normal;
-		margin-top:0.6em;
-		margin-bottom:0.6em; 
-	}
-	#welcome p {
-		padding-bottom:10px;
-		border-bottom:1px dotted #CCCCCC;
-	}
-/* Container
+/* =CSS WELCOME
 =====================================================*/
 	#welcome { clear:both;}
 	#first_half { width:730px; }
-		#welcome_left {
-			float:left;
-			width:394px;
-			padding-right:10px;
-			border-right:1px dotted #CCCCCC;
-		}
-		#welcome_right {
-			width:310px;		
-			float:right;
-		}
-	#second_half {
-		width:220px;
-		border-left:1px dotted #CCCCCC;
-		padding-left:10px;
-		float:right;
-	}	
-/* Logos
-=====================================================*/
-	#logo_pagination {
-		width:100%;
-		text-align:center;
-	}
-	#latest_logo {
-		width:100%;
-		text-align:center;
-		padding-top:10px;
-		padding-bottom:5px;
-	}
+		#welcome_left {	float:left;	width:394px; padding-right:10px; border-right:1px dotted #CCCCCC; }
+		#welcome_right { width:310px; float:right; }
+	#second_half { width:220px; border-left:1px dotted #CCCCCC; padding-left:10px; float:right; }	
+
+	#welcome a { text-decoration:none; }
+	
+	#welcome h2 { font: normal 2.2em "Georgia", serif;}		
+	#welcome h3 { font: normal 1.6em/1.125em "Georgia", serif; margin-top:0.6em; margin-bottom:0.6em; }
+	#welcome p { padding-bottom:10px; border-bottom:1px dotted #CCCCCC; }
+
+	#logo_pagination { width:100%; text-align:center; }
+	#latest_logo { width:100%; text-align:center; padding-top:10px; padding-bottom:5px; }
 	#category_list a, 
-	#logo_pagination a {
-		text-decoration:underline;
-	}
-/* More Link
-=====================================================*/
-	#more_button {
-		float:left;
-		margin-right:10px;
-	}
-	.more {
-		border:1px solid #CCCCCC;
-		width:80px;
-		float:left;
-		text-align:center;
-		height:18px;
-	}
-	.arrow {
-		float:left;
-		border-right:1px solid #CCCCCC;
-		width:20px;
-		height:18px;
-	}
-	.read a {
-		letter-spacing:0.2em;
-		font-family:"Helvetica";
-		font-size: 0.75em; /* 15px */ 
-		color: #29A4BD;
-		text-decoration: none;
-	}
+	#logo_pagination a { text-decoration:underline; }
+
+	#more_button { float:left; margin-right:10px; }
+	.more {	border:1px solid #CCCCCC; width:80px; float:left; text-align:center; height:18px; }
+	.arrow { float:left; border-right:1px solid #CCCCCC; width:20px; height:18px; }
+	.read a { letter-spacing:0.2em; font-family:"Helvetica"; font-size: 0.75em;	color: #29A4BD;	text-decoration: none; }
