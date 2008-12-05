@@ -2,7 +2,7 @@ require File.dirname(__FILE__) + '/../test_helper'
 
 class CheatsheetsControllerTest  < ActionController::TestCase
   
-  fixtures :contents, :users, :binaries, :categories, :sections, :versions
+  fixtures :contents, :users, :binaries, :categories, :versions
   
   def test_truth
     assert true
