@@ -1,10 +1,11 @@
-code { font: bold 1em/1.5em "Courier New","Courier", monospace; color:black; }
+code { font: bold 100% "Courier New","Courier", monospace; color:black; }
 code.ruby {
 	display:block;
-	font-weigt: normal;
+	font-weight: normal;
 	color:grey;
 	border: 1px dashed #434343;
-	padding: 1em;
+	padding: 2%;
+	margin: 0.4em 0 0.4em;
 	word-wrap: break-word;       /* Internet Explorer 5.5+ */
 	white-space: pre-wrap;       /* css-3 */
 	white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
