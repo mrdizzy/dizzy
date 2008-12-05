@@ -11,7 +11,8 @@ table { width:100%; border-collapse: collapse; }
 	h1 { font: 3.5em/1.3846em "Georgia", serif; letter-spacing:-0.05em; margin-top: 0.6923em; margin-bottom: 0.5em; }
 	h2 { font: italic 1.7em/1.4em "Georgia", serif; margin-top: 0.6em; margin-bottom: 0.6em; letter-spacing:-0.03em;	}
 	h3 { font: bold italic 1.4em/1.2em "Georgia", serif; margin-top:0; margin-bottom: 1.125em; letter-spacing:-0.05em; }
-	h4 { font: 0.76em/1.8em "Georgia", serif; color: #878787; margin-top: 0.6em; margin-bottom: 0.6em; letter-spacing:0.2em; }		
+	h4 { font: 0.76em/1.8em "Georgia", serif; color: #878787; margin-top: 0.6em; margin-bottom: 0.6em; letter-spacing:0.2em; }
+	h6 { font: italic 1.2em/1.5em "Georgia"; letter-spacing:0px; color: #434343; }		
 	.posted_in { font: 0.8em "Arial Black"; letter-spacing:0.2em; color: #29A4BD; text-decoration: none;	}
 	.date { font: 0.8333em/18em; color: #878787; margin-top: 1.8em; margin-bottom: 0.6em; letter-spacing:0.2em; }
 	a:link { color: #29A4BD; }	
@@ -52,29 +53,24 @@ table { width:100%; border-collapse: collapse; }
 	
 	/* =CSS CONTENT
 ======================*/
-	#article h2 { font-size:1.6em; font-weight:bold; color: black; border-bottom: 1px black dashed; }
-	#article h3 { font-weight:normal; font-style:normal;}
+	#article h2 { font: bold italic 1.5em/1em "Georgia"; color: black; text-align:center; margin: 0.5em 0 0.5em; border-bottom:1px dashed black; }	
+	#article h3 { font: bold italic 1.3em "Trebuchet MS"; color:black; letter-spacing:0em; }
+	#article h4 { font: bold 1em "Trebuchet MS"; color:black; letter-spacing:0em; }
 	
-	#cheatsheet h2 { font-weight:bold; color:#000000; font-size: 1.5em; text-align:center; line-height: 1em; margin-top: 0.5em; margin-bottom: 0.5em; border-bottom:1px dashed #000000; }	
-	#cheatsheet h3 { font-family:"Trebuchet MS"; color:black; letter-spacing:0em; font-size:1.3em; font-weight:bold; }
-	#article h4,
-	#cheatsheet h4 { letter-spacing:0em; font-size:1em;	font-weight:bold; font-family:"Trebuchet MS"; color:black; }
-	
-	#cheatsheet table {	border:1px dotted #878787; margin-bottom:1.5em; }	
-	#cheatsheet table p { margin:0.2em 0 0.2em 0; }
-	#cheatsheet td { border:1px dotted #878787;	padding-left:0.5em; }
+	#article table { border:1px dotted #878787; margin-bottom:1.5em; }	
+	#article table p { margin:0.2em 0 0.2em 0; }
+	#article td { border:1px dotted #878787; padding-left:0.5em; }
 	
 	#cheatsheet_image {	float:right; text-align:center;	}
 	.thumbnail { float:left; text-align:center;	width:200px; }
 
-	#blurb { border: 1px dashed #878787; padding:0 7px 0px 7px;	width:100%;	}
-	#blurb h2 { font-family:"Georgia"; font-size:1.4em;	margin-bottom:0.5em; }	
-	#blurb h4 {	color: #29A4BD;	font-weight:normal; font-size: 0.76em; line-height: 1.8em; margin-top: 0.6em; margin-bottom: 0.8em;	letter-spacing:0.2em; }	
-	#blurb p { font-size:1.2em;	font-style:italic; font-family:"Trebuchet MS"; }
+	#blurb { border: 1px dashed #878787; padding:0 7px 0px 7px; }
+	#blurb h2 { font-family:"Georgia"; font-size:1.4em;	margin-bottom: 0.5em; }	
+	#blurb h4 {	font: normal 0.76em/1.8em "Verdana"; color: #29A4BD; margin: 0.6em 0 0.8em; letter-spacing:0.2em; }	
+	#blurb p { font: italic 1.2em "Trebuchet MS"; }
 
 /* =BEGIN ARTICLE LINKS
 ========================= */
-	.articles h6 { font-size:1.2em;	font-weight:normal;	line-height:1.5em;letter-spacing:0px; font-family:"Georgia"; font-style:italic; color: #434343; }
 	.articles h2 { line-height:1.3; }
 	
 	table.articles td { padding:0.5em; border: 1px dotted #999; }
@@ -87,9 +83,9 @@ table { width:100%; border-collapse: collapse; }
 /* =CSS COMMENTS
 ==================================== */
 	#comments .odd, 
-	#conversation .odd { clear:both; border: 1px dotted #888; padding:5px; margin:8px 0 8px 0; background-color:white; background-image:url("/images/f/backgrounds/spiral2.png"); }
+	#conversation .odd { clear:both; border: 1px dotted #888; padding:5px; margin:8px 0 8px; background-color:white; background-image:url("/images/f/backgrounds/spiral2.png"); }
 	#comments .normal, 
-	#conversation .normal { clear:both;	background-color:white;	border: 1px dotted #888; padding:5px; margin:8px 0 8px 0; }
+	#conversation .normal { clear:both;	background-color:white;	border: 1px dotted #888; padding:5px; margin:8px 0 8px; }
 	.reply_comment { width:100%; text-align:center; clear:both; }
 	.comments_left { width:25%;	float:left; }
 	.comments_right { float:right; width:74%; }
@@ -98,7 +94,7 @@ table { width:100%; border-collapse: collapse; }
 
 /* =CSS HEADER
 ==================================== */
-	#top_container 	{ background: url("/images/f/backgrounds/back.png") no-repeat top right;	width:100%; height:105px; }
+	#top_container 	{ background: url("/images/f/backgrounds/back.png") no-repeat top right; width:100%; height:105px; }
 	#slogan 		{ padding-top:53px;	float:left; }
 	#logo			{ padding-top:7px; text-align:center; width:150px; height:90px; margin: 0 auto; float:left; }
 		#right_of_logo { text-align:center; width:600px; height:105px; float:right; }
@@ -117,7 +113,7 @@ table { width:100%; border-collapse: collapse; }
 	#footer a:hover, 
 	#latest_logo a:hover {	background-color:transparent; }
 	.footer_logos {
-		background: white url(/images/f/backgrounds/back.png) no-repeat right top;	border-top: 1px dotted  #CCCCCC; height:100px; text-align:center; width:100%; }
+		background: white url('/images/f/backgrounds/back.png') no-repeat right top; border-top: 1px dotted #CCCCCC; height:100px; text-align:center; width:100%; }
 		
 /* =CSS LISTS
 ==================================== */
@@ -137,8 +133,8 @@ input {  border-color:#999; border-style:solid; border-width:2px 1px 1px 2px; co
 	input:focus { background-color: #D1ECF9; }
 	input.checkbox { width: 2em; padding:0;	}
 	input.radio { width: 2em; border:0; }
-	input.submit { width: 136px; height:34px; margin: 0 auto; background:url(/images/f/buttons/submit2.png) no-repeat; outline: none; padding:0; border:0; }
-	input.submit:hover { background: url(/images/f/buttons/submit2.png) no-repeat 0 -34px; padding:0; border:0; }
+	input.submit { width: 136px; height:34px; margin: 0 auto; background:url('/images/f/buttons/submit2.png') no-repeat; outline: none; padding:0; border:0; }
+	input.submit:hover { background: url('/images/f/buttons/submit2.png') no-repeat 0 -34px; padding:0; border:0; }
 label { font-family:"Georgia"; font-weight: bold; display:block; margin-top: 1em; }	
 textarea { border-color:#999; border-style:solid; border-width:2px 1px 1px 2px; width:95%; }	
 select { border-color:#999; border-style:solid; border-width:2px 1px 1px 2px; }
