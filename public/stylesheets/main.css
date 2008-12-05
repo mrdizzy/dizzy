@@ -1,28 +1,47 @@
-* {	margin:	0; padding: 0; border: 0; font-weight: normal; font-style: normal; } 
-body { font: normal 12px "Verdana", sans-serif;	color: #434343; background-color: #fff; }
-img { vertical-align: middle; text-align: center; }
-table { width:100%; border-collapse: collapse; }
+/* YAHOO RESET =========================================== */
+	html {color:#000;background:#FFF;}
+	body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}
+	table {border-collapse:collapse;border-spacing:0;}
+	fieldset,img {border:0;}
+	address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}
+	li{list-style:none;}
+	caption,th{text-align:left;}
+	h1,h2,h3,h4,h5,h6{font: normal 100% Georgia, serif; letter-spacing:-0.05em;}
+	q:before,q:after{content:'';}
+	abbr,acronym{border:0;font-variant:normal;}
+	sup{vertical-align:text-top;}
+	sub{vertical-align:text-bottom;}
+	input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit;}
+	input,textarea,select{*font-size:100%;}legend{color:#000;}del,ins{text-decoration:none;}
+
+/* YAHOO FONTS =========================================== */
+	body { font:13px/1.231 verdana,arial,helvetica,clean,sans-serif;*font-size:small;*font:x-small;color:#434343; }
+	select, input, button, textarea { font:99% arial,helvetica,clean,sans-serif; }
+	table { font-size:inherit;font:100%; }
+	pre, code, kbd, samp, tt { font-family:monospace;*font-size:108%;line-height:100%;}
 
 /* =CSS TYPOGRAPHY =====================================================*/
-	b, em, strong {	font-weight:bold; }
 	i { font-style:italic; }
-	p { font: 1em/1.5em "Verdana"; margin: 0.6em 0 1.5em 0; }
-	h1 { font: 3.5em/1.3846em "Georgia", serif; letter-spacing:-0.05em; margin-top: 0.6923em; margin-bottom: 0.5em; }
-	h2 { font: italic 1.7em/1.4em "Georgia", serif; margin-top: 0.6em; margin-bottom: 0.6em; letter-spacing:-0.03em;	}
-	h3 { font: bold italic 1.4em/1.2em "Georgia", serif; margin-top:0; margin-bottom: 1.125em; letter-spacing:-0.05em; }
-	h4 { font: 0.76em/1.8em "Georgia", serif; color: #878787; margin-top: 0.6em; margin-bottom: 0.6em; letter-spacing:0.2em; }
-	h6 { font: italic 1.2em/1.5em "Georgia"; letter-spacing:0px; color: #434343; }		
-	.posted_in { font: 0.8em "Arial Black"; letter-spacing:0.2em; color: #29A4BD; text-decoration: none;	}
-	.date { font: normal 0.8333em/1em "Verdana"; color: #878787; letter-spacing:0.2em; }
+	h1 { font-size:400%; }
+	h2 { font-size:197%;  }
+	h3 { font-size:167%; }
+	h4 { font-size:123.1; }
+	h5 { font-size:100%; }
+	h6 { font-size:77% }
+	
+	ul { margin-left: 5%; line-height:150%;}
+	li { list-style-image:url('/images/f/bullets/pixels/diamond.png');}
+	
+	dt { font-weight:bold; }
+	dd { margin-left:4em;}
+	
 	a:link { color: #29A4BD; }	
 	a:visited { color:#006A8C; }
+	
+	.posted_in { font: 0.8em "Arial Black"; letter-spacing:0.2em; color: #29A4BD; text-decoration: none; }
+	.date { font: normal 0.8333em/1em "Verdana"; color: #878787; letter-spacing:0.2em; }
 
 /* Global reusable classes ==================================== */
-	.left {	float:left;	}
-	.right { float:right; }
-	.center { text-align:center;}	
-	.block { display:block; }
-	.clearfix { clear:both;	}
 	.spiro { background: url("/images/f/branding/spirosmall.png") center no-repeat; margin:	0 auto; width: 29px; font-size: 2.4167em; line-height: 1em; margin-top: 0; margin-bottom: 0.32em; }	
 	.amp { font: italic 1.3em "Georgia"; color:#434343; }	
 
@@ -39,8 +58,8 @@ table { width:100%; border-collapse: collapse; }
 	#welcome p { padding-bottom:10px; border-bottom:1px dotted #CCCCCC; }
 
 	#latest_logo { width:100%; text-align:center; padding-top:10px; padding-bottom:5px; }
+	#latest_logo a:hover { background-color:transparent;  }
 	#logo_pagination { width:100%; text-align:center; }
-	#category_list a, 
 	#logo_pagination a { text-decoration:underline; }
 	
 	#more_button { float:left; margin-right:10px; }
@@ -49,13 +68,11 @@ table { width:100%; border-collapse: collapse; }
 	.read a { letter-spacing:0.2em; font-family:"Helvetica"; font-size: 0.75em;	color: #29A4BD;	text-decoration: none; }
 	
 /* =CSS CONTENT ======================*/
-	#article h2 { font: bold italic 1.5em/1em "Georgia"; color: black; text-align:center; margin: 0.5em 0 0.5em; border-bottom:1px dashed black; }	
+	#article h2 { font: bold italic 1.5em/1em "Georgia"; color:black; text-align:center; border-bottom:1px dashed black; }	
 	#article h3 { font: bold italic 1.3em "Trebuchet MS"; color:black; letter-spacing:0em; }
 	#article h4 { font: bold 1em "Trebuchet MS"; color:black; letter-spacing:0em; }
 	
-	#article table { border:1px dotted #878787; margin-bottom:1.5em; }	
-	#article table p { margin:0.2em 0 0.2em 0; }
-	#article td { border:1px dotted #878787; padding-left:0.5em; }
+	#article td { border:1px dotted #878787; }
 	
 	#cheatsheet_image {	float:right; text-align:center;	}
 	.thumbnail { float:left; text-align:center;	width:200px; }
@@ -100,24 +117,13 @@ table { width:100%; border-collapse: collapse; }
 	#left_column {	width: 700px; float: left; }
 	#right_column {	width: 200px; float: right;	}
 	
+	#category_list { line-height:250%; }
+	
 /* =CSS FOOTER ==================================== */
-	#footer a:hover, 
-	#latest_logo a:hover {	background-color:transparent; }
+	#footer a:hover { background-color:transparent; }
+	#footer { clear:both ;}
 	.footer_logos {
 		background: white url('/images/f/backgrounds/back.png') no-repeat right top; border-top: 1px dotted #CCCCCC; height:100px; text-align:center; width:100%; }
-		
-/* =CSS LISTS ==================================== */
-	ul { padding-left: 3em; list-style-image:url(/images/f/bullets/pixels/diamond.png); font-size: 1em; line-height: 1.5em; margin: 0 0 1.5em 0; }
-	ul ul {	font-size:inherit; }
-	li.alt { background-image:url("/images/f/backgrounds/spiral2.png"); background-repeat:no-repeat; background-position: top right; }
-	ul.directory { list-style-image:url(/images/f/small_icons/folder.png); }
-	ul.categories, 
-	#admin_links ul { font-weight:bold; line-height:3em; }
-	ul { margin-right:10px;}
-	
-	dl { line-height:1.5em; }
-	dt { font-weight:bold; margin-top:0.5em; }
-	dd { margin-left:4em;}
 	
 /* =CSS FORMS ==================================== */
 input {  border-color:#999; border-style:solid; border-width:2px 1px 1px 2px; color:#434343; font-size:1.4em; padding:0.2em; margin:0; }
