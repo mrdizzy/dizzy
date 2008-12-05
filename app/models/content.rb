@@ -30,8 +30,8 @@ class Content < ActiveRecord::Base
 	validates_uniqueness_of :permalink	
 
 	named_scope :recent, lambda { { :conditions => ["date < ?", 1.hour.ago], :order => "date DESC"  } }
-	named_scope :snippets, :conditions => { :style => "SNIPPET" }, :limit => 10, :order => "date DESC"
- 	named_scope :tutorials, :conditions => { :style => "TUTORIAL"}, :limit => 10, :order => "date DESC"
+	named_scope :snippets, :conditions => { :style => "SNIPPET" }, :order => "date DESC"
+ 	named_scope :tutorials, :conditions => { :style => "TUTORIAL"}, :order => "date DESC"
   
 	before_save :create_new_version
 	
@@ -57,21 +57,8 @@ end
 
 class Article < Content
 	validates_presence_of 	:content	
-	#before_save 			:parse_content
 	validates_presence_of	:style
 	validates_inclusion_of 	:style, :in => STYLES, :allow_blank => true
-	
-	#def parse_content
-	#	self.content.gsub!("<%", "&lt;%")
-	#	self.content.gsub!("%>", "%&gt;")
-	#	self.content
-	#end
-	#
-	#def parsed_content
-	#	self.content.gsub!("&lt;%","<%")
-	#	self.content.gsub!("%&gt;","%>")
-	#	self.content
-	#end
 end
 
 class Cheatsheet < Content

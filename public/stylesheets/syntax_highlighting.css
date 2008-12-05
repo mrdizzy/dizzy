@@ -1,12 +1,7 @@
-/* Syntax highlighting 
-==================================== */
-code { 
-	color:black; 
-	font: bold 1em/1.5em "Courier New","Courier", monospace;
-}
+code { font: bold 1em/1.5em "Courier New","Courier", monospace; color:black; }
 code.ruby {
 	display:block;
-	font: normal;
+	font-weigt: normal;
 	color:grey;
 	border: 1px dashed #434343;
 	padding: 1em;

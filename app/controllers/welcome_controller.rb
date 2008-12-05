@@ -1,12 +1,9 @@
 class WelcomeController < ApplicationController
-	helper :contents
 	
 	def index
-		# TODO Polymorphic URL: linking to cheatsheet/content
-		
 		paginate_logos
-		@recent_tutorials 	= Cheatsheet.recent
-		@recent_snippets	= Content.recent.snippets
+		@tutorials 			= Content.recent.(:all, :limit => 5, :conditions => )
+		@snippets			= Content.recent.snippets.all(:limit => 3)
 	end
 	
 	def next_logo
@@ -20,14 +17,6 @@ class WelcomeController < ApplicationController
 			page.replace_html :logo_pagination, :partial => "logo_pagination"
 		end
 	end	
-	
-	def contact 
-		render :update do |page|
-			page.insert_html :after, :navigation, :partial => "contact"
-			page.visual_effect :toggle_blind, :contact_form
-			page.replace_html :contact_us, "<b>Contact us</b>"
-		end
-	end
 	
 	private
 	

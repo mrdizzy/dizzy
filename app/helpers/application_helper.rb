@@ -1,19 +1,10 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
 
-	# Stylesheets
-	
 	def core_front_end_stylesheets
-		stylesheet_link_tag("main", :media => "all") +
-		stylesheet_link_tag("header_footer", :media => "all") +
-		stylesheet_link_tag("typography", :media => "all") +
-		stylesheet_link_tag("forms", :media => "all") +
-		stylesheet_link_tag("lists", :media => "all") +
-		stylesheet_link_tag("tables", :media => "all")
+		stylesheet_link_tag("main", :media => "all")
 	end
 	
-	# Links
-    
     def article_link(object)
     	link_to object.title, content_path(object.permalink)
     end
@@ -70,7 +61,7 @@ module ApplicationHelper
 		submit_tag '', { :class => 'submit' } 
 	end
 
-	# Footert
+	# Footer
 	
 	def get_random_companies
 		@five_random_companies = Company.find(:all, :order => 'RAND()', :limit => 5)

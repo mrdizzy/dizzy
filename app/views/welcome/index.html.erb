@@ -3,9 +3,10 @@
 	<div id="second_half">		
         
     	<!-- LOGOS -->
-    			<p > <%= solid_arrow %>	 <%= image_tag("f/small_icons/feed-icon-small.png")%> <span class="posted_in">
-			<%= link_to "RSS FEED", formatted_contents_path(:rss) %>
-			</span></p>
+		<p> <%= solid_arrow %> <%= image_tag("f/small_icons/feed-icon-small.png")%> 
+			<span class="posted_in"><%= link_to "RSS FEED", formatted_contents_path(:rss) %></span>
+		</p>
+			
 		<div id="latest_container">
 		
 			<span class="posted_in"><%= solid_arrow %> LATEST WORK</span>
@@ -14,9 +15,8 @@
 				<%= link_to image_tag(formatted_portfolio_item_path(:id => @logos[0].id, :format => :png)), portfolio_path(@logos[0].company_id) %>
 			</div>
 		
-			<div id="logo_pagination">
-	  			<%= render :partial => "logo_pagination" %>
-			</div>
+			<div id="logo_pagination"><%= render :partial => "logo_pagination" %></div>
+			
 		</div>
 		
 		<%= category_list %>
@@ -32,6 +32,7 @@
 			<span class="posted_in">
 			 	<%= solid_arrow %> <%= link_to(@recent_tutorials.first.main_category.name.upcase, category_path(@recent_tutorials.first.main_category.permalink)) %>
 			</span>
+			
 			<h1><%= @recent_tutorials.first.title %></h1>
 						
 			<div id="more_button">
@@ -46,6 +47,7 @@
 			<p>	<%= truncate(@recent_tutorials[0].description, 300)%></p>	
 				
 			<!-- SECOND ARTICLE -->
+			
 			<% unless @recent_tutorials[1].nil? %>
 			<span class="posted_in">
 			 	<%= solid_arrow %> <%= link_to(@recent_tutorials[1].main_category.name.upcase, category_path(@recent_tutorials[1].main_category.permalink)) %>
@@ -53,62 +55,29 @@
 			<h2><%= @recent_tutorials[1].title %></h2>
 		<div id="more_button"><div class="more"><div class="arrow"><%= diamond %></div><span class="read"><%= link_to("MORE &raquo;", content_path(@recent_tutorials[1].permalink)) %></span></div></div>		<span class="date">POSTED <%= time_ago_in_words(@recent_tutorials[1].date).upcase %> AGO</span>
 			<p><%= @recent_tutorials[1].description %></p>
-			<% end %>
-	
-			<!-- THIRD ARTICLE -->
-			
-			<% unless @recent_tutorials[2].nil? %>
-			<span class="posted_in">
-			 	<%= solid_arrow %> <%= link_to(@recent_tutorials[2].main_category.name.upcase, category_path(@recent_tutorials[2].main_category.permalink)) %>
-			</span>
-			<h2><%= @recent_tutorials[2].title %></h2>
-			<div id="more_button"><div class="more"><div class="arrow"><%= diamond %></div><span class="read"><%= link_to("MORE &raquo;", content_path(@recent_tutorials[2].permalink)) %></span></div></div>		<span class="date">POSTED <%= time_ago_in_words(@recent_tutorials[2].date).upcase %> AGO</span>
-			<p><%= @recent_tutorials[2].description %></p>
-			<% end %>
-			
-					
-			<% unless @recent_tutorials[3].nil? %>
-			<span class="posted_in">
-			 	<%= solid_arrow %> <%= link_to(@recent_tutorials[3].main_category.name.upcase, category_path(@recent_tutorials[3].main_category.permalink)) %>
-			</span>
-			<h2><%= @recent_tutorials[3].title %></h2>
-			<div id="more_button"><div class="more"><div class="arrow"><%= diamond %></div><span class="read"><%= link_to("MORE &raquo;", content_path(@recent_tutorials[3].permalink)) %></span></div></div>		<span class="date">POSTED <%= time_ago_in_words(@recent_tutorials[3].date).upcase %> AGO</span>
-			<p><%= @recent_tutorials[3].description %></p>
-			<% end %>
-				
+			<% end %>		
 			
 			
 		</div>
 	
 		<div id="welcome_right">			
 		
-			<!-- FOURTH ARTICLE -->	
+			<% @snippets.each do |snippet| %>		
 			
-			<span class="posted_in">
-			 	<%= solid_arrow %> <%= link_to(@recent_snippets[0].main_category.name.upcase, category_path(@recent_snippets[0].main_category.permalink)) %>
-			</span>
-			<h3><%= @recent_snippets[0].title %> </h3>
-			<div id="more_button"><div class="more"><div class="arrow"><%= diamond %></div><span class="read"><%= link_to("MORE &raquo;", content_path(@recent_snippets[0].permalink)) %></span></div></div>	<span class="date">POSTED <%= time_ago_in_words(@recent_snippets[0].date).upcase %> AGO</span>
-			<p><%= @recent_snippets[0].description %></p>
+				<span class="posted_in">
+				 	<%= solid_arrow %> <%= link_to(snippet.main_category.name.upcase, category_path(snippet.main_category.permalink)) %>
+				</span>
+				<h3><%= snippet.title %> </h3>
+				<div id="more_button">
+					<div class="more">
+						<div class="arrow"><%= diamond %></div>
+						<span class="read"><%= link_to("MORE &raquo;", content_path(snippet.permalink)) %></span>
+					</div>
+				</div>
+				<span class="date">POSTED <%= time_ago_in_words(snippet.date).upcase %> AGO</span>
+				<p><%= snippet.description %></p>
+				
+			<% end %>
 		
-			<!-- FIFTH ARTICLE -->
-		
-			<span class="posted_in">
-			 	<%= solid_arrow %> <%= link_to(@recent_snippets[1].main_category.name.upcase, category_path(@recent_snippets[1].main_category.permalink)) %>
-			</span>
-			<h3><%= @recent_snippets[1].title %></h3>
-			<div id="more_button"><div class="more"><div class="arrow"><%= diamond %></div><span class="read"><%= link_to("MORE &raquo;", content_path(@recent_snippets[1].permalink)) %></span></div></div>	<span class="date">POSTED <%= time_ago_in_words(@recent_snippets[1].date).upcase %> AGO</span>
-			<p><%= @recent_snippets[1].description %></p>
-		
-			<!-- SIXTH ARTICLE -->
-		
-			<span class="posted_in">
-			 	<%= solid_arrow %> <%= link_to(@recent_snippets[2].main_category.name.upcase, category_path(@recent_snippets[2].main_category.permalink)) %>
-			</span>
-			<h3><%= @recent_snippets[2].title %></h3>
-			<div id="more_button"><div class="more"><div class="arrow"><%= diamond %></div><span class="read"><%= link_to("MORE &raquo;", content_path(@recent_snippets[2].permalink)) %></span></div></div>	<span class="date">POSTED <%= time_ago_in_words(@recent_snippets[2].date).upcase %> AGO</span>
-			<p><%= @recent_snippets[2].description %></p>
-		</div>
-	
 	</div>
 </div> 
