@@ -4,14 +4,14 @@
 
 <% if article_link.is_a?(Article) %>
 	
-	<td class="content">
+	<td>
 		<h2><%= asterisk %> <%= link_to article_link.title, content_path(article_link.permalink) %></h2>
 		<p><%= article_link.description %></p>
 	</td>
 	
 	<td>
 		<p>
-			<span class="date">POSTED <%= time_ago_in_words(article_link.date).upcase %> AGO</span><br/>
+			<span class="posted_ago">POSTED <%= time_ago_in_words(article_link.date).upcase %> AGO</span><br/>
 			<%= posted_in(article_link.categories) %><br/>
 			<i>Rails <%= article_link.version.version_number %></i>
 		</p>
@@ -31,16 +31,15 @@
 
 <% else %>
 
-<td class="content">
+<td>
 	<h3><%= asterisk %> <%= article_link.title %> <%= article_link.version.version_number %></h3>
 
-	<div class="thumbnail"><%= pdf_thumbnail(article_link) %></div>
+	<div class="pdf_thumbnail"><%= pdf_thumbnail(article_link) %></div>
 	
 		<br/><br/><br/><br/><br/>
 		<p>
 			<%= image_tag("f/small_icons/html.png") %>
-			<%= diamond %> 
-			<%= link_to "HTML", cheatsheet_path(article_link.permalink) %> 
+			<%= diamond %> 	<%= link_to "HTML", cheatsheet_path(article_link.permalink) %> 
 		</p>
 		
 		<p>
@@ -53,11 +52,11 @@
 	
 	<td>
 		<p>
-			<span class="date">POSTED <%= time_ago_in_words(article_link.date).upcase %> AGO</span><br/>
+			<span class="posted_ago">POSTED <%= time_ago_in_words(article_link.date).upcase %> AGO</span><br/>
 			<%= posted_in(article_link.categories) %>
 		</p>
 		
-		<h6><%= article_link.description %> </h6>
+		<p class="article_link_description"><%= article_link.description %></p>
 		
 		<% if administrator? %>
 			<p><%= link_to 'edit', edit_cheatsheet_path(article_link.id) %> <%= diamond %> <%= link_to 'delete', cheatsheet_path(article_link.id), :method => "delete" %></p>

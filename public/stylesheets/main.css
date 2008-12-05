@@ -41,11 +41,14 @@
 	a:visited { color:#006A8C; }
 	
 	.posted_in { font: 0.8em "Arial Black"; letter-spacing:0.2em; color: #29A4BD; text-decoration: none; }
-	.date { font: normal 0.8333em/1em "Verdana"; color: #878787; letter-spacing:0.2em; }
-
-/* Global reusable classes ==================================== */
-	.spiro { background: url("/images/f/branding/spirosmall.png") center no-repeat; margin:	0 auto; width: 29px; font-size: 2.4167em; line-height: 1em; margin-top: 0; margin-bottom: 0.32em; }	
+	.posted_ago { font: normal 0.8333em/1em "Verdana"; color: #878787; letter-spacing:0.2em; }
 	.amp { font: italic 1.3em "Georgia"; color:#434343; }	
+
+/* TABLES =================================== */
+	tr.even { background:url("/images/f/backgrounds/spiral2.png") repeat top right; }
+
+/* PAGE FURNITURE ==================================== */
+	.spiro { background: url("/images/f/branding/spirosmall.png") center no-repeat; margin:	0 auto; width: 29px; }	
 
 /* =CSS WELCOME =====================================================*/
 	#welcome { clear:both; }
@@ -84,16 +87,15 @@
 	#blurb h4 {	font: normal 0.76em/1.8em "Verdana"; color: #29A4BD; margin: 0.6em 0 0.8em; letter-spacing:0.2em; }	
 	#blurb p { font: italic 1.2em "Trebuchet MS"; }
 
-/* =BEGIN ARTICLE LINKS ========================= */
-	.articles h2 { line-height:1.3; }
-	.articles h3 { font: bold italic 131% Georgia; }
+/* =CATEGORY PAGES ========================= */
+	#article_links h2 { line-height:1.3; }
+	#article_links h3 { font: bold italic 131% Georgia; }
 	
-	table.articles td { padding:0.5em; border: 1px dotted #999; }
-	table.articles td.content {	width: 50%;	}
+	#article_links td { padding:0.5em; border: 1px dotted #999; }
+	#article_links tr td:first-child {	width: 50%;	}
+	#article_links .article_link_description { font: italic 108% Georgia ;}
 	
-	tr.even { background-image:url("/images/f/backgrounds/spiral2.png"); background-repeat:repeat; background-position:top right; }
-	
-	.thumbnail { float:left; }
+	#article_links .pdf_thumbnail { float:left; }
 
 /* =CSS COMMENTS ==================================== */
 	#comments .odd, 
@@ -123,10 +125,9 @@
 	#category_list { line-height:250%; }
 	
 /* =CSS FOOTER ==================================== */
-	#footer a:hover { background-color:transparent; }
 	#footer { clear:both ;}
-	.footer_logos {
-		background: white url('/images/f/backgrounds/back.png') no-repeat right top; border-top: 1px dotted #CCCCCC; height:100px; text-align:center; width:100%; }
+	#footer a:hover { background-color:transparent; }
+	.footer_logos {	background: white url('/images/f/backgrounds/back.png') no-repeat right top; border-top: 1px dotted #CCCCCC; height:100px; text-align:center; width:100%; }
 	
 /* =CSS FORMS ==================================== */
 input {  border-color:#999; border-style:solid; border-width:2px 1px 1px 2px; color:#434343; font-size:1.4em; padding:0.2em; margin:0; }
