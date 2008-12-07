@@ -3,6 +3,7 @@
 	<div id="second_half">		
         
     	<!-- LOGOS -->
+    	
 		<p> <%= solid_arrow %> <%= image_tag("f/small_icons/feed-icon-small.png")%> 
 			<span class="posted_in"><%= link_to "RSS FEED", formatted_contents_path(:rss) %></span>
 		</p>
@@ -12,7 +13,7 @@
 			<span class="posted_in"><%= solid_arrow %> LATEST WORK</span>
 			
 			<div id="latest_logo">
-				<%= link_to image_tag(formatted_portfolio_item_path(:id => @logos[0].id, :format => :png)), portfolio_path(@logos[0].company_id) %>
+				<%= link_to image_tag(formatted_portfolio_item_path(:id => @logos.first.id, :format => :png)), portfolio_path(@logos.first.company_id) %>
 			</div>
 		
 			<div id="logo_pagination"><%= render :partial => "logo_pagination" %></div>
@@ -33,7 +34,7 @@
 			 	<%= solid_arrow %> <%= link_to(@main_article.main_category.name.upcase, category_path(@main_article.main_category.permalink)) %>
 			</span>
 			
-			<h1><%= @main_article.title %></h1>
+			<h1><%= link_to(@main_article.title, content_path(@main_article.permalink)) %></h1>
 						
 			<div id="more_button">
 				<div class="more">
@@ -54,7 +55,7 @@
 			 	<%= solid_arrow %> <%= link_to(article.main_category.name.upcase, category_path(article.main_category.permalink)) %>
 			</span>
 			
-			<h2><%= article.title %></h2>
+			<h2><%= link_to(article.title, content_path(article.permalink)) %></h2>
 			
 			<div id="more_button">
 				<div class="more">
@@ -78,7 +79,7 @@
 				 	<%= solid_arrow %> <%= link_to(snippet.main_category.name.upcase, category_path(snippet.main_category.permalink)) %>
 				</span>
 				
-				<h3><%= snippet.title %> </h3>
+				<h3><%= link_to(snippet.title, content_path(snippet.permalink)) %> </h3>
 				
 				<div id="more_button">
 					<div class="more">
