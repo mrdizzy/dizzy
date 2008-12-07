@@ -1,12 +1,19 @@
 <% if administrator? %>
+	
 	<div id="new_category_form">
+		
 	<% remote_form_for :category, :url => categories_path do |form| %>
+	
 		<label for="category[name]"><%= diamond %> Name</label>
 		<%= form.text_field :name, :size => 20 %><br/>
 		
 		<label for="category[permalink]"><%= diamond %> Permalink</label>
 		<%= form.text_field :permalink, :size => 20 %><br/>
+		
 		<%= submit_button %>
+		
 	<% end %>
+	
 	</div>
+
 <% end %>

@@ -8,8 +8,7 @@
 			<%= link_to image_tag("f/nav/home.png"), "/" %>
 		<% end %>
 	</div>
-	
-	
+
 	<!-- CHEATSHEETS -->
 	<div class="nav_button">
 		<% if current_page?(:controller => "cheatsheets", :action => "index") %>
@@ -18,7 +17,6 @@
 			<%= link_to image_tag("f/nav/cheats.png"), cheatsheets_path %>
 		<% end %>
 	</div>	
-	
 	
 	<!-- RUBY ON RAILS -->
 	<div class="nav_button">
@@ -29,7 +27,6 @@
 		<% end %> 
 	</div>
 	
-	
 	<!-- PORTFOLIO -->
 	<div class="nav_button">
 		<% if current_page?(:controller => 'portfolios', :action => "show") %>
@@ -38,7 +35,6 @@
 			<%= link_to image_tag("f/nav/portfolio.png"), "/portfolios/1" %>
 		<% end %>
 	</div>
-	
 	
 	<!-- CONTACT -->
 	<div id="contact_icon" class="nav_button">
@@ -49,6 +45,5 @@
 	</div>
 
 </div>
-<div id="contact_form" style="display:none;">
-	
-</div>
+
+<div id="contact_form" style="display:none;"></div>
