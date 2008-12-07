@@ -4,7 +4,8 @@
         
     	<!-- LOGOS -->
     	
-		<p> <%= solid_arrow %> <%= image_tag("f/small_icons/feed-icon-small.png")%> 
+		<p> 
+			<%= solid_arrow %> <%= image_tag("f/small_icons/feed-icon-small.png")%> 
 			<span class="posted_in"><%= link_to "RSS FEED", formatted_contents_path(:rss) %></span>
 		</p>
 			
@@ -30,20 +31,13 @@
 			
 			<!-- MAIN ARTICLE -->
 			
+			<span class="posted_ago">POSTED <%= time_ago_in_words(@main_article.date).upcase %> AGO</span>
+			
+			<h1><%= link_to(@main_article.title, content_path(@main_article.permalink)) %></h1>	
+			
 			<span class="posted_in">
 			 	<%= solid_arrow %> <%= link_to(@main_article.main_category.name.upcase, category_path(@main_article.main_category.permalink)) %>
 			</span>
-			
-			<h1><%= link_to(@main_article.title, content_path(@main_article.permalink)) %></h1>
-						
-			<div id="more_button">
-				<div class="more">
-					<div class="arrow"><%= diamond %></div>
-					<span class="read"><%= link_to("MORE &raquo;", content_path(@main_article.permalink)) %></span>
-				</div>
-			</div>	
-			
-			<span class="posted_ago">POSTED <%= time_ago_in_words(@main_article.date).upcase %> AGO</span>
 				
 			<p>	<%= truncate(@main_article.description, 300)%></p>	
 				
@@ -51,20 +45,14 @@
 			
 			<% @articles.each do |article| %>
 			
+			<span class="posted_ago">POSTED <%= time_ago_in_words(article.date).upcase %> AGO</span>
+			
+			<h2><%= link_to(article.title, content_path(article.permalink)) %></h2>
+			
 			<span class="posted_in">
 			 	<%= solid_arrow %> <%= link_to(article.main_category.name.upcase, category_path(article.main_category.permalink)) %>
 			</span>
 			
-			<h2><%= link_to(article.title, content_path(article.permalink)) %></h2>
-			
-			<div id="more_button">
-				<div class="more">
-					<div class="arrow"><%= diamond %></div>
-					<span class="read"><%= link_to("MORE &raquo;", content_path(article.permalink)) %></span>
-				</div>
-			</div>		
-			
-			<span class="posted_ago">POSTED <%= time_ago_in_words(article.date).upcase %> AGO</span>
 			<p><%= article.description %></p>
 			
 			<% end %>		
@@ -75,20 +63,14 @@
 		
 			<% @snippets.each do |snippet| %>		
 			
+				<span class="posted_ago">POSTED <%= time_ago_in_words(snippet.date).upcase %> AGO</span>
+				
+				<h3><%= link_to(snippet.title, content_path(snippet.permalink)) %> </h3>	
+				
 				<span class="posted_in">
 				 	<%= solid_arrow %> <%= link_to(snippet.main_category.name.upcase, category_path(snippet.main_category.permalink)) %>
 				</span>
 				
-				<h3><%= link_to(snippet.title, content_path(snippet.permalink)) %> </h3>
-				
-				<div id="more_button">
-					<div class="more">
-						<div class="arrow"><%= diamond %></div>
-						<span class="read"><%= link_to("MORE &raquo;", content_path(snippet.permalink)) %></span>
-					</div>
-				</div>
-				
-				<span class="posted_ago">POSTED <%= time_ago_in_words(snippet.date).upcase %> AGO</span>
 				<p><%= snippet.description %></p>
 				
 			<% end %>

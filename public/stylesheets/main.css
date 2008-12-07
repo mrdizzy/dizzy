@@ -5,7 +5,7 @@
 	address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}
 	li{list-style:none;}
 	caption,th{text-align:left;}
-	h1,h2,h3,h4,h5,h6{font: normal 100%/1.25 Georgia, serif; letter-spacing:-0.05em; margin: 0.5em 0 0.5em; }
+	h1,h2,h3,h4,h5,h6{font: normal 100%/1.25 Georgia, serif; letter-spacing:-0.05em; margin: 0.3em 0 0.3em; }
 	q:before,q:after{content:'';}
 	abbr,acronym{border:0;font-variant:normal;}
 	sup{vertical-align:text-top;}
@@ -57,20 +57,16 @@
 
 	#welcome a { text-decoration:none; color: #434343}
 		#welcome a:hover { text-decoration:underline; }
-		#welcome .posted_in a { color: #29A4BD; }
+		#welcome .posted_in a,	#welcome #category_list a { color: #29A4BD; }
 	#welcome h2 { font: normal 2.2em "Georgia", serif;}		
 	#welcome h3 { font: normal 1.6em/1.125em "Georgia", serif;  }
 	#welcome p { padding-bottom:1em; border-bottom:1px dotted #CCCCCC; }
 
 	#latest_logo { width:100%; text-align:center; padding-top:10px; padding-bottom:5px; }
 	#latest_logo a:hover { background-color:transparent;  }
+	
 	#logo_pagination { width:100%; text-align:center; }
 	#logo_pagination a { text-decoration:underline; }
-	
-	#more_button { float:left; margin-right:10px; }
-	.more {	border:1px solid #CCCCCC; width:80px; float:left; text-align:center; height:18px; }
-	.arrow { float:left; border-right:1px solid #CCCCCC; width:20px; height:18px; }
-	.read a { letter-spacing:0.2em; font-family:"Helvetica"; font-size: 0.75em;	color: #29A4BD;	text-decoration: none; }
 	
 /* =CSS CONTENT ======================*/
 	#article h2 { font: bold italic 1.5em/1em "Georgia"; color:black; text-align:center; border-bottom:1px dashed black; }	
