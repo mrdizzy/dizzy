@@ -1,7 +1,6 @@
 /* YAHOO RESET =========================================== */
 	html {color:#000;background:#FFF;}
 	body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}
-	table {border-collapse:collapse;border-spacing:0;}
 	fieldset,img {border:0;}
 	address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}
 	li{list-style:none;}
@@ -31,8 +30,7 @@
 	h5 { font-size:100%; }
 	h6 { font-size:77% }
 	
-	ul { margin-left: 5%; line-height:150%;}
-	li { list-style-image:url('/images/f/bullets/pixels/diamond.png');}
+	ul { margin-left: 3em; line-height:150%;}
 	
 	dt { font-weight:bold; }
 	dd { margin-left:4em;}
@@ -40,12 +38,12 @@
 	a:link { color: #29A4BD; }	
 	a:visited { color:#006A8C; }
 	
-	.posted_in { font: 0.8em "Arial Black"; letter-spacing:0.2em; color: #29A4BD; text-decoration: none; }
-	.posted_ago { font: normal 0.8333em/1em "Verdana"; color: #878787; letter-spacing:0.2em; }
+	.posted_in { font: 75% "Arial Black"; letter-spacing:0.2em; color: #29A4BD; text-decoration: none; }
+	.posted_ago { font: normal 75% "Verdana"; color: #878787; letter-spacing:0.2em; }
 	.amp { font: italic 1.3em "Georgia"; color:#434343; }	
 
 /* TABLES =================================== */
-	tr.even { background:url("/images/f/backgrounds/spiral2.png") repeat top right; }
+	table {border-collapse:collapse;border-spacing:0;width:100%;}	
 
 /* PAGE FURNITURE ==================================== */
 	.spiro { background: url("/images/f/branding/spirosmall.png") center no-repeat; margin:	0 auto; width: 29px; }	
@@ -96,6 +94,9 @@
 	#article_links .article_link_description { font: italic 108% Georgia ;}
 	
 	#article_links .pdf_thumbnail { float:left; }
+	
+	#category_list li { background:url('/images/f/bullets/pixels/diamond.png') no-repeat 0 1em; padding-left:1em; }
+	#category_list li a { text-decoration:underline;}
 
 /* =CSS COMMENTS ==================================== */
 	#comments .odd, 
@@ -130,15 +131,15 @@
 	.footer_logos {	background: white url('/images/f/backgrounds/back.png') no-repeat right top; border-top: 1px dotted #CCCCCC; height:100px; text-align:center; width:100%; }
 	
 /* =CSS FORMS ==================================== */
-input {  border-color:#999; border-style:solid; border-width:2px 1px 1px 2px; color:#434343; font-size:1.4em; padding:0.2em; margin:0; }
-	input:focus { background-color: #D1ECF9; }
-	input.checkbox { width: 2em; padding:0;	}
-	input.radio { width: 2em; border:0; }
-	input.submit { width: 136px; height:34px; margin: 0 auto; background:url('/images/f/buttons/submit2.png') no-repeat; outline: none; padding:0; border:0; }
-	input.submit:hover { background: url('/images/f/buttons/submit2.png') no-repeat 0 -34px; padding:0; border:0; }
-label { font-family:"Georgia"; font-weight: bold; display:block; margin-top: 1em; }	
-textarea { border-color:#999; border-style:solid; border-width:2px 1px 1px 2px; width:95%; }	
-select { border-color:#999; border-style:solid; border-width:2px 1px 1px 2px; }
+	input {  border-color:#999; border-style:solid; border-width:2px 1px 1px 2px; color:#434343; font-size:1.4em; padding:0.2em; margin:0; }
+		input:focus { background-color: #D1ECF9; }
+		input.checkbox { width: 2em; padding:0;	}
+		input.radio { width: 2em; border:0; }
+		input.submit { width: 136px; height:34px; margin: 0 auto; background:url('/images/f/buttons/submit2.png') no-repeat; outline: none; padding:0; border:0; }
+		input.submit:hover { background: url('/images/f/buttons/submit2.png') no-repeat 0 -34px; padding:0; border:0; }
+	label { font-family:"Georgia"; font-weight: bold; display:block; margin-top: 1em; }	
+	textarea { border-color:#999; border-style:solid; border-width:2px 1px 1px 2px; width:95%; }	
+	select { border-color:#999; border-style:solid; border-width:2px 1px 1px 2px; }
 
 /* ERRORS==================================== */
 	#errorExplanation h3 { color: #29A4BD; }

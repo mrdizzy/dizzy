@@ -42,7 +42,7 @@
 				</div>
 			</div>	
 			
-			<span class="date">POSTED <%= time_ago_in_words(@main_article.date).upcase %> AGO</span>
+			<span class="posted_ago">POSTED <%= time_ago_in_words(@main_article.date).upcase %> AGO</span>
 				
 			<p>	<%= truncate(@main_article.description, 300)%></p>	
 				
@@ -62,7 +62,8 @@
 					<span class="read"><%= link_to("MORE &raquo;", content_path(article.permalink)) %></span>
 				</div>
 			</div>		
-			<span class="date">POSTED <%= time_ago_in_words(article.date).upcase %> AGO</span>
+			
+			<span class="posted_ago">POSTED <%= time_ago_in_words(article.date).upcase %> AGO</span>
 			<p><%= article.description %></p>
 			
 			<% end %>		
@@ -76,14 +77,17 @@
 				<span class="posted_in">
 				 	<%= solid_arrow %> <%= link_to(snippet.main_category.name.upcase, category_path(snippet.main_category.permalink)) %>
 				</span>
+				
 				<h3><%= snippet.title %> </h3>
+				
 				<div id="more_button">
 					<div class="more">
 						<div class="arrow"><%= diamond %></div>
 						<span class="read"><%= link_to("MORE &raquo;", content_path(snippet.permalink)) %></span>
 					</div>
 				</div>
-				<span class="date">POSTED <%= time_ago_in_words(snippet.date).upcase %> AGO</span>
+				
+				<span class="posted_ago">POSTED <%= time_ago_in_words(snippet.date).upcase %> AGO</span>
 				<p><%= snippet.description %></p>
 				
 			<% end %>
