@@ -30,34 +30,43 @@
 			<!-- MAIN ARTICLE -->
 			
 			<span class="posted_in">
-			 	<%= solid_arrow %> <%= link_to(@recent_tutorials.first.main_category.name.upcase, category_path(@recent_tutorials.first.main_category.permalink)) %>
+			 	<%= solid_arrow %> <%= link_to(@main_article.main_category.name.upcase, category_path(@main_article.main_category.permalink)) %>
 			</span>
 			
-			<h1><%= @recent_tutorials.first.title %></h1>
+			<h1><%= @main_article.title %></h1>
 						
 			<div id="more_button">
 				<div class="more">
 					<div class="arrow"><%= diamond %></div>
-					<span class="read"><%= link_to("MORE &raquo;", content_path(@recent_tutorials.first.permalink)) %></span>
+					<span class="read"><%= link_to("MORE &raquo;", content_path(@main_article.permalink)) %></span>
 				</div>
 			</div>	
 			
-			<span class="date">POSTED <%= time_ago_in_words(@recent_tutorials[0].date).upcase %> AGO</span>
+			<span class="date">POSTED <%= time_ago_in_words(@main_article.date).upcase %> AGO</span>
 				
-			<p>	<%= truncate(@recent_tutorials[0].description, 300)%></p>	
+			<p>	<%= truncate(@main_article.description, 300)%></p>	
 				
 			<!-- SECOND ARTICLE -->
 			
-			<% unless @recent_tutorials[1].nil? %>
+			<% @articles.each do |article| %>
+			
 			<span class="posted_in">
-			 	<%= solid_arrow %> <%= link_to(@recent_tutorials[1].main_category.name.upcase, category_path(@recent_tutorials[1].main_category.permalink)) %>
+			 	<%= solid_arrow %> <%= link_to(article.main_category.name.upcase, category_path(article.main_category.permalink)) %>
 			</span>
-			<h2><%= @recent_tutorials[1].title %></h2>
-		<div id="more_button"><div class="more"><div class="arrow"><%= diamond %></div><span class="read"><%= link_to("MORE &raquo;", content_path(@recent_tutorials[1].permalink)) %></span></div></div>		<span class="date">POSTED <%= time_ago_in_words(@recent_tutorials[1].date).upcase %> AGO</span>
-			<p><%= @recent_tutorials[1].description %></p>
+			
+			<h2><%= article.title %></h2>
+			
+			<div id="more_button">
+				<div class="more">
+					<div class="arrow"><%= diamond %></div>
+					<span class="read"><%= link_to("MORE &raquo;", content_path(article.permalink)) %></span>
+				</div>
+			</div>		
+			<span class="date">POSTED <%= time_ago_in_words(article.date).upcase %> AGO</span>
+			<p><%= article.description %></p>
+			
 			<% end %>		
-			
-			
+						
 		</div>
 	
 		<div id="welcome_right">			

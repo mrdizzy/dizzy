@@ -2,7 +2,8 @@ class WelcomeController < ApplicationController
 	
 	def index
 		paginate_logos
-		@tutorials 			= Content.recent.(:all, :limit => 5, :conditions => )
+		@articles 			= Content.recent.all(:limit => 4)
+		@main_article		= @articles.shift
 		@snippets			= Content.recent.snippets.all(:limit => 3)
 	end
 	
