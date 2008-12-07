@@ -40,7 +40,7 @@
 	
 	.posted_in a { font: 75% "Arial Black"; letter-spacing:0.2em; color: #29A4BD; text-decoration: none; }
 	.posted_ago { font: normal 75% "Verdana"; color: #878787; letter-spacing:0.2em; }
-	.amp { font: italic 1.3em "Georgia"; color:#434343; }	
+	.amp { font: italic normal 120% "Georgia"; color:#434343; }	
 
 /* TABLES =================================== */
 	table {border-collapse:collapse;border-spacing:0;width:100%;}	
