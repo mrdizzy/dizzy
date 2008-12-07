@@ -28,12 +28,15 @@
 	<div id="first_half">
 	
 		<div id="welcome_left">
-			
+					
 			<!-- MAIN ARTICLE -->
 			
 			<span class="posted_ago">POSTED <%= time_ago_in_words(@main_article.date).upcase %> AGO</span>
 			
 			<h1><%= link_to(@main_article.title, content_path(@main_article.permalink)) %></h1>	
+
+
+
 			
 			<span class="posted_in">
 			 	<%= solid_arrow %> <%= link_to(@main_article.main_category.name.upcase, category_path(@main_article.main_category.permalink)) %>
@@ -43,8 +46,8 @@
 				
 			<!-- SECOND ARTICLE -->
 			
+
 			<% @articles.each do |article| %>
-			
 			<span class="posted_ago">POSTED <%= time_ago_in_words(article.date).upcase %> AGO</span>
 			
 			<h2><%= link_to(article.title, content_path(article.permalink)) %></h2>
@@ -54,7 +57,7 @@
 			</span>
 			
 			<p><%= article.description %></p>
-			
+		
 			<% end %>		
 						
 		</div>

@@ -2,7 +2,7 @@ class WelcomeController < ApplicationController
 	
 	def index
 		paginate_logos
-		@articles 			= Content.recent.all(:limit => 3)
+		@recent 			= Content.recent(:limit => 5, :conditions => [ "style != ?", "SNIPPET" ] )
 		@main_article		= @articles.shift
 		@snippets			= Content.recent.snippets.all(:limit => 3)
 	end
