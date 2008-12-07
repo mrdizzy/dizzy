@@ -1,11 +1,12 @@
 code { font: bold 100% "Courier New","Courier", monospace; color:black; }
+pre code { margin:1em; display:block; }
 code.ruby {
 	display:block;
 	font-weight: normal;
 	color:grey;
 	border: 1px dashed #434343;
 	padding: 2%;
-	margin: 0.4em 0 0.4em;
+	margin: 1em 0 1em;
 	word-wrap: break-word;       /* Internet Explorer 5.5+ */
 	white-space: pre-wrap;       /* css-3 */
 	white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */

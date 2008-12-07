@@ -48,6 +48,8 @@ class Content < ActiveRecord::Base
 	def parsed_content
 		result = "Use numbered headers: true
 HTML use syntax: true
+{:rhtml: lang=rhtml html_use_syntax=true}
+{:ruby: lang=ruby  html_use_syntax=true}
 
 " + self.content
 		result = Maruku.new(result).to_html

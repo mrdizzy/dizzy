@@ -14,20 +14,14 @@ module MaRuKu
 				element = 
 				if use_syntax && lang
 					begin
-						if not $syntax_loaded
-							require 'rubygems'
-							require 'syntax'
-							require 'syntax/convertors/html'
-							$syntax_loaded = true
-						end
-						convertor = Syntax::Convertors::HTML.for_syntax lang
+						
 						
 						# eliminate trailing newlines otherwise Syntax crashes
 						source = source.gsub(/\n*\Z/,'')
 						
-						html = convertor.convert( source )
-						html = html.gsub(/\&apos;/,'&#39;') # IE bug
-						html = html.gsub(/'/,'&#39;') # IE bug
+						#html = convertor.convert( source )
+						#html = html.gsub(/\&apos;/,'&#39;') # IE bug
+						#html = html.gsub(/'/,'&#39;') # IE bug
 			#			html = html.gsub(/&/,'&amp;') 
 						html = "<pre>" + CodeRay.scan(source, lang.to_sym).html + "</pre>"
 						code = Document.new(html, {:respect_whitespace =>:all}).root

@@ -19,3 +19,17 @@ namespace :deploy do
 	end
 
 end
+
+namespace :deploy do 
+	desc "Dump the database"
+	task :dump_database, :roles => :app do 
+		run("mysqldump -u #{database_username} --password=beaslewig175 dizzynew_dizzyproduction >export.sql")
+	end
+end
+
+namespace :deploy do 
+	desc "Download dump"
+	task :download_database, :roles => :app do
+		download "export.sql", "export.sql"
+	end
+end
