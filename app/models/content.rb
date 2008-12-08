@@ -20,10 +20,8 @@ class Content < ActiveRecord::Base
 	has_and_belongs_to_many :related_articles, :class_name => "Content", :foreign_key => "related_id"
 	has_many 				:comments, :dependent => :destroy, :order => "'created_at' DESC"
 	belongs_to 				:version
-	belongs_to 				:user
 	
 	validates_existence_of	:version
-	validates_existence_of  :user	
 	validates_presence_of 	:category_ids
 	validates_format_of		:permalink, :with => /^[a-z0-9-]+$/, :allow_blank => true
 	validates_presence_of 	:title, :description, :date, :user_id, :permalink, :version_id 
