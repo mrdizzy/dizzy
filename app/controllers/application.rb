@@ -6,22 +6,21 @@ class ApplicationController < ActionController::Base
 	
 	require_dependency 'content'
 	require_dependency 'binary'
+	
+	helper_method :administrator?
 
  private
  
-	def authorize		
-		unless User.find_by_id(session[:user_id])
-			flash[:notice] = "Please log in"
-			redirect_to(:controller => "login" , :action => "login" )
+ 	def authorize		
+		unless administrator?
+			flash[:error] = "unauthorized access"
+			redirect_to login_path
+			false
 		end
-	end
-	
+	end 
+ 
 	def administrator?
-		session[:administrator_id]
-	end
-	
-	def determine_layout
-	  	session[:administrator_id] ? "admin" : "application"
+		session[:admin_password] == PASSWORD
 	end
 	
 end
