@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081204220440) do
+ActiveRecord::Schema.define(:version => 20081208125256) do
 
   create_table "binaries", :force => true do |t|
     t.binary  "binary_data",  :limit => 16777215
@@ -97,6 +97,10 @@ ActiveRecord::Schema.define(:version => 20081204220440) do
     t.string  "header_filename"
     t.string  "header_content_type"
     t.boolean "visible",                           :default => true
+  end
+
+  create_table "schema_info", :id => false, :force => true do |t|
+    t.integer "version"
   end
 
   create_table "users", :force => true do |t|
