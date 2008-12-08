@@ -25,30 +25,33 @@ set :database_hostname, "127.0.0.1"
 desc "Tasks to execute after update"
 task :after_update do
 	
-	# relink shared deployment database configuration
 	run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
-	
-	# relink rails vendor
-	 run "ln -nfs #{shared_rails_dir} #{release_path}/vendor/rails "
+	run "ln -nfs #{shared_rails_dir} #{release_path}/vendor/rails "
 	
 end
 
 desc "Create database.yml file"
 task :setup_database do
-  run "mkdir -p #{shared_path}/config" 
-  put database_configuration, "#{shared_path}/config/database.yml"
+	
+	run "mkdir -p #{shared_path}/config" 
+	put database_configuration, "#{shared_path}/config/database.yml"
+	
 end
 
 namespace :deploy do
 	
 	desc "Stop the app server"
 	task :stop, :roles => :app do
-	send(run_method, "cd #{current_path} && mongrel_rails stop")
+		
+		send(run_method, "cd #{current_path} && mongrel_rails stop")
+		
 	end
 
 	desc "Restart the app server"
 	task :restart, :roles => :app do
+		
 		send(run_method, "cd #{current_path} && mongrel_rails restart")
+		
 	end
 	
 end

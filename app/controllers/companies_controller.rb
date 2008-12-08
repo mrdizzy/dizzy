@@ -65,9 +65,6 @@ class CompaniesController < ApplicationController
 	def destroy
 		@company = Company.find(params[:id])
 		@company.destroy
-		respond_to do |wants|
-			wants.js
-		end
 	end
 	
 end
