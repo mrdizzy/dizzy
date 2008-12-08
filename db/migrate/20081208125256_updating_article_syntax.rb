@@ -536,9 +536,14 @@ content.save!
 cheatsheet = Cheatsheet.find(17)
 cheatsheet.content = <<-EOF
 
+# Table of Contents
+
+* Table of Contents
+{:toc}
+
 ## Class convenience methods
 
-### validates\_acceptance\_of
+### validates\\_acceptance\\_of
 
 Encapsulates the pattern of wanting to validate the acceptance of a terms of service check box (or similar agreement). 
   
@@ -551,7 +556,7 @@ If the database column does not exist, the `terms_of_service` attribute is entir
 `:accept` - Specifies value that is considered accepted. The default value is a string `"1"`, which makes it easy to relate to an HTML checkbox. This should be set to `true` if you are validating a database column, since the attribute is typecast from `"1"` to true before validation.
 
 
-### validates\_associated
+### validates\\_associated
 
 Validates whether the associated object or objects are all valid themselves. Works with any kind of association.
 
@@ -569,7 +574,7 @@ Validates whether the associated object or objects are all valid themselves. Wor
 ...this would specify a circular dependency and cause infinite recursion.
 This validation will not fail if the association hasn't been assigned. If you want to ensure that the association is both present and guaranteed to be valid, you also need to use `validates_presence_of`
 
-### validates\_confirmation\_of
+### validates\\_confirmation\\_of
 
 Encapsulates the pattern of wanting to validate a password or email address field with a confirmation. Example...
 
@@ -592,7 +597,7 @@ The added `password_confirmation` attribute is virtual: it exists only as an in-
     validates_presence_of :password_confirmation, :if => :password_changed
 {:ruby}
 
-### validates\_each
+### validates\\_each
 
 Validates each attribute against a block.
 
@@ -601,7 +606,7 @@ Validates each attribute against a block.
     end
 {:ruby}
 
-### validates\_exclusion\_of
+### validates\\_exclusion\\_of
 
 Validates that the value of the specified attribute is not in a particular enumerable object.
 
@@ -612,20 +617,20 @@ Validates that the value of the specified attribute is not in a particular enume
 
 `:in`	   An enumerable object of items that the value shouldn't be part of
 
-### validates\_format\_of
+### validates\\_format\\_of
 
 Validates whether the value of the specified attribute is of the correct form by matching it against the regular expression provided.
 
-    validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :on => :create
+    validates_format_of :email, :with => /\\A([^@\\s]+)@((?:[-a-z0-9]+\\.)+[a-z]{2,})\\Z/i, :on => :create
 {:ruby}
 
-Note: use `\A` and `\Z` to match the start and end of the string, `^` and `$` match the start/end of a line.
+Note: use `\\A` and `\\Z` to match the start and end of the string, `^` and `$` match the start/end of a line.
 
 A regular expression must be provided or else an exception will be raised.
 
 `:with`	            The regular expression used to validate the format with
 
-### validates\_inclusion\_of
+### validates\\_inclusion\\_of
 
 Validates whether the value of the specified attribute is available in a particular enumerable object.
 
@@ -636,7 +641,7 @@ Validates whether the value of the specified attribute is available in a particu
 
 `:in`	    An enumerable object of items that the value shouldn't be part of
 
-### validates\_length\_of
+### validates\\_length\\_of
 
 Validates that the specified attribute matches the length restrictions supplied. Only one option can be used at a time:
 
@@ -647,7 +652,7 @@ Validates that the specified attribute matches the length restrictions supplied.
     validates_length_of :user_name, :within => 6..20, :too_long => "pick a shorter name", :too_short => "pick a longer name"
     validates_length_of :fav_bra_size, :minimum => 1, :too_short => "please enter at least %d character"
     validates_length_of :smurf_leader, :is => 4, :message => "papa is spelled with %d characters... don't play me."
-    validates_length_of :essay, :minimum => 100, :too_short => "Your essay must be at least %d words."), :tokenizer => lambda {|str| str.scan(/\w+/) }
+    validates_length_of :essay, :minimum => 100, :too_short => "Your essay must be at least %d words."), :tokenizer => lambda {|str| str.scan(/\\w+/) }
 {:ruby}
 
 `:minimum`            	The minimum size of the attribute
@@ -658,11 +663,11 @@ Validates that the specified attribute matches the length restrictions supplied.
 `:too_long`             The error message if the attribute goes over the maximum (default is: `"is too long (maximum is %d characters)"`)
 `:too_short`	        The error message if the attribute goes under the minimum (default is: `"is too short (min is %d characters)"`)
 `:wrong_length`	        The error message if using the `:is` method and the attribute is the wrong size (default is: `"is the wrong length (should be %d characters)"`)
-`:tokenizer`	        Specifies how to split up the attribute string. (e.g. `:tokenizer => lambda {|str| str.scan(/\w+/)}` to count words as in above example.) Defaults to `lambda{ |value| value.split(//) }` which counts individual characters
+`:tokenizer`	        Specifies how to split up the attribute string. (e.g. `:tokenizer => lambda {|str| str.scan(/\\w+/)}` to count words as in above example.) Defaults to `lambda{ |value| value.split(//) }` which counts individual characters
 
-### validates\_numericality\_of
+### validates\\_numericality\\_of
 
-Validates whether the value of the specified attribute is numeric by trying to convert it to a float with `Kernel.Float` (if `only_integer` is `false`) or applying it to the regular expression `/\A[+\-]?\d+\Z/` (if `only_integer` is set to `true`).
+Validates whether the value of the specified attribute is numeric by trying to convert it to a float with `Kernel.Float` (if `only_integer` is `false`) or applying it to the regular expression `/\\A[+\\-]?\\d+\\Z/` (if `only_integer` is set to `true`).
   
     validates_numericality_of :age, :greater_than => 18
 {:ruby}
@@ -676,7 +681,7 @@ Validates whether the value of the specified attribute is numeric by trying to c
 `:odd`	                 Specifies the value must be an odd number
 `:even`	                   Specifies the value must be an even number
 
-### validates\_presence\_of
+### validates\\_presence\\_of
 
 Validates that the specified attributes are not blank (as defined by blank?). Happens by default on save. 
 
@@ -687,11 +692,11 @@ The `first_name` attribute must be in the object and it cannot be blank.
 
 If you want to validate the presence of a boolean field (where the real values are `true` and `false`), you will want to use `validates_inclusion_of :field_name, :in => [true, false]` This is due to the way `blank?` handles boolean values. 
 
-### validates\_size\_of
+### validates\\_size\\_of
 
 Alias for `validates_length_of`
 
-### validates\_uniqueness\_of
+### validates\\_uniqueness\\_of
 
 Validates whether the value of the specified attributes are unique across the system. Useful for making sure that only one user can be named "davidhh".
 

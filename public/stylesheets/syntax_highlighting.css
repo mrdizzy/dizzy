@@ -1,4 +1,4 @@
-code { font: bold 100% "Courier New","Courier", monospace; color:black; }
+code { font: bold 100% "Courier New", "Courier", monospace; color:black; }
 pre code { margin:1em; display:block; }
 code.ruby {
 	display:block;
