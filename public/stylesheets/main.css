@@ -71,7 +71,7 @@
 	#logo_pagination a { text-decoration:underline; }
 	
 /* =CSS CONTENT ======================*/
-	#article h2 { font: bold italic 1.5em/1em "Georgia"; color:black; text-align:center; border-bottom:1px dashed black; }	
+	#article h2, #article h1 { font: bold italic 1.5em/1em "Georgia"; color:black; text-align:center; border-bottom:1px dashed black; }	
 	#article h3 { font: bold italic 1.3em "Trebuchet MS"; color:black; margin: 1em 0 1em; }
 	#article h4 { font: bold 1em "Trebuchet MS"; color:black; }
 	
