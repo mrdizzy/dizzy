@@ -24,7 +24,7 @@ class Content < ActiveRecord::Base
 	validates_existence_of	:version
 	validates_presence_of 	:category_ids
 	validates_format_of		:permalink, :with => /^[a-z0-9-]+$/, :allow_blank => true
-	validates_presence_of 	:title, :description, :date, :user_id, :permalink, :version_id 
+	validates_presence_of 	:title, :description, :date, :user, :permalink, :version_id 
 	validates_uniqueness_of :permalink	
 
 	named_scope :recent, lambda { { :conditions => ["date < ?", 1.hour.ago], :order => "date DESC"  } }

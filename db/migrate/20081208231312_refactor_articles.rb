@@ -1,4 +1,4 @@
-class UpdatingArticleSyntax < ActiveRecord::Migration
+class RefactorArticles < ActiveRecord::Migration
   def self.up
   	
 content = Content.find(15)
