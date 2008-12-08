@@ -22,6 +22,7 @@
 /* =CSS TYPOGRAPHY =====================================================*/
 	i { font-style:italic; }
 	p { margin: 0.4em 0 0.4em;}
+	em { font-weight:bold;}
 	
 	h1 { font-size:325%; }
 	h2 { font-size:153.9%; font-style:italic; }
@@ -31,6 +32,7 @@
 	h6 { font-size:77% }
 	
 	ul { margin-left: 3em; line-height:150%;}
+	li { background:url('/images/f/bullets/pixels/diamond.png') no-repeat 0 0.6em; padding-left:1em; }
 	
 	dt { font-weight:bold; }
 	dd { margin-left:4em;}
@@ -70,10 +72,12 @@
 	
 /* =CSS CONTENT ======================*/
 	#article h2 { font: bold italic 1.5em/1em "Georgia"; color:black; text-align:center; border-bottom:1px dashed black; }	
-	#article h3 { font: bold italic 1.3em "Trebuchet MS"; color:black; }
+	#article h3 { font: bold italic 1.3em "Trebuchet MS"; color:black; margin: 1em 0 1em; }
 	#article h4 { font: bold 1em "Trebuchet MS"; color:black; }
 	
-	#article td { border:1px dotted #878787; }
+	#article th { font: bold italic 100% "Trebuchet MS", serif; border:1px dotted #878787; padding: 0.5em;  color: black;}
+	#article td { border:1px dotted #878787; padding: 0.5em; }
+	#article tr td:first-child code{ color: #29A4BD;}
 	
 	#cheatsheet_image {	float:right; text-align:center;	}
 	.thumbnail { float:left; text-align:center;	width:200px; }
@@ -132,6 +136,7 @@
 		input.submit { width: 136px; height:34px; margin: 0 auto; background:url('/images/f/buttons/submit2.png') no-repeat; outline: none; padding:0; border:0; }
 		input.submit:hover { background: url('/images/f/buttons/submit2.png') no-repeat 0 -34px; padding:0; border:0; }
 	label {font: bold 100% Georgia; display:block; margin-top: 1em; }	
+	textarea { width:100%; font: normal 100% monospace;}
 
 /* ERRORS==================================== */
 	#errorExplanation h3 { color: #29A4BD; }
