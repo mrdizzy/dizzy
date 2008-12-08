@@ -1,19 +1,7 @@
-<% form_tag( administrator_sessions_path, :method => "post" ) do %>
+<% form_tag administrator_sessions_path do %>
 	
-	<% if flash[:notice] %>
-    	<div id="errorExplanation" class="errorExplanation">
-    		<ul>
-    			<li><%= flash[:notice] %></li>
-    		</ul>
-    	</div>
-    <% end %>
+	<%= text_field_tag :admin_password %>
 	
-	<p><label for="administrator_username"><%= diamond %> Username</label><br/>
-	<%= text_field_tag 'username' %></p>
-
-	<p><label for="administrator_password"><%= diamond %> Password</label><br/>
-	<%= password_field_tag 'password' %></p>
+	<%= submit_button %>
 	
-	<p><%= submit_button %></p>
-
 <% end %>
