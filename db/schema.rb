@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081208125256) do
+ActiveRecord::Schema.define(:version => 20081208184531) do
 
   create_table "binaries", :force => true do |t|
     t.binary  "binary_data",  :limit => 16777215
@@ -59,15 +59,12 @@ ActiveRecord::Schema.define(:version => 20081208125256) do
     t.string   "type"
     t.string   "title"
     t.string   "description"
-    t.integer  "user_id"
     t.datetime "date"
     t.text     "content"
     t.string   "permalink"
     t.integer  "version_id"
     t.string   "style"
   end
-
-  add_index "contents", ["user_id"], :name => "fk_user_contents"
 
   create_table "contents_contents", :id => false, :force => true do |t|
     t.integer "content_id", :default => 0, :null => false
@@ -97,19 +94,6 @@ ActiveRecord::Schema.define(:version => 20081208125256) do
     t.string  "header_filename"
     t.string  "header_content_type"
     t.boolean "visible",                           :default => true
-  end
-
-  create_table "schema_info", :id => false, :force => true do |t|
-    t.integer "version"
-  end
-
-  create_table "users", :force => true do |t|
-    t.string "name"
-    t.string "hashed_password"
-    t.string "salt"
-    t.string "firstname"
-    t.string "surname"
-    t.string "email"
   end
 
   create_table "versions", :force => true do |t|
