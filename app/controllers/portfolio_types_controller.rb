@@ -1,6 +1,7 @@
 class PortfolioTypesController < ApplicationController
   
 	before_filter :authorize, :except => :show
+	caches_page :show
 	
 	def show
 		@portfolio_type = PortfolioType.find(params[:id])
