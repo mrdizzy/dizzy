@@ -1,7 +1,7 @@
 require '../test_helper'
 
 class CachingTest < ActionController::IntegrationTest
-   fixtures :contents, :binaries, :categories, :versions
+   fixtures :contents, :binaries, :categories, :versions, :portfolio_items, :companies, :portfolio_types
 
   # Replace this with your real tests.
   def test_truth
@@ -23,9 +23,9 @@ class CachingTest < ActionController::IntegrationTest
   	  	   assert_cache_pages("/ruby_on_rails/cheatsheets/action-mailer", 
   	  	   						"/ruby_on_rails/latest",
   	  	   						"/ruby_on_rails/contents/debugging-form-helpers-with-the-console",
-  	  	   						"/")
+  	  	   						"/", "/welcome")
   	   
-  	   assert_expire_pages("/ruby_on_rails/cheatsheets/action-mailer", "/ruby_on_rails/latest", "/") do |*urls|
+  	   assert_expire_pages("/ruby_on_rails/cheatsheets/action-mailer", "/ruby_on_rails/latest", "/", "/welcome") do |*urls|
       	post "/cheatsheets/destroy/#{contents(:action_mailer_cheatsheet).id}"
       	post "/contents/destroy/#{contents(:form_helpers_snippet).id}"
        end
