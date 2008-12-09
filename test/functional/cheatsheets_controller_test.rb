@@ -2,7 +2,7 @@ require File.dirname(__FILE__) + '/../test_helper'
 
 class CheatsheetsControllerTest  < ActionController::TestCase
   
-  fixtures :contents, :users, :binaries, :categories, :versions
+  fixtures :contents, :binaries, :categories, :versions
   
   def test_truth
     assert true
@@ -22,7 +22,7 @@ class CheatsheetsControllerTest  < ActionController::TestCase
  										  :description => "Action Mailer cheatsheet",
  										  :new_version => "",:binary_attributes => {
  						:pdf => { :uploaded_data => fixture_file_upload("letterhead.png", "application/pdf") }, :thumbnail 	=> 	{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png") }} }
- 					}, { :administrator_id => users(:mr_dizzy).id }
+ 					}, { :admin_password => PASSWORD }
  		
  		assert_equal 0, assigns(:cheatsheet).errors.size, assigns(:cheatsheet).errors.full_messages	
  		
@@ -44,7 +44,7 @@ class CheatsheetsControllerTest  < ActionController::TestCase
  										  :description => "Action Mailer cheatsheet",
  										  :new_version => "",:binary_attributes => {
  						:pdf => { :uploaded_data => fixture_file_upload("letterhead.png", "application/exe") }, :thumbnail 	=> 	{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png") }} }
- 					}, { :administrator_id => users(:mr_dizzy).id }
+ 					}, { :admin_password => PASSWORD }
  		
  		assert_equal 2, assigns(:cheatsheet).errors.size, assigns(:cheatsheet).errors.full_messages	
  		
@@ -71,7 +71,7 @@ class CheatsheetsControllerTest  < ActionController::TestCase
  										  	:pdf =>  { :uploaded_data => fixture_file_upload("letterhead.png", "application/pdf") }
  										  }
  										   }
- 					}, { :administrator_id => users(:mr_dizzy).id }
+ 					}, { :admin_password => PASSWORD }
  					
  		assert assigns(:cheatsheet).errors.on(:thumbnail)
  		assert_equal 1, assigns(:cheatsheet).errors.size, assigns(:cheatsheet).errors.full_messages
@@ -96,7 +96,7 @@ class CheatsheetsControllerTest  < ActionController::TestCase
  										  	:thumbnail =>  { :uploaded_data => fixture_file_upload("letterhead.png", "image/png") }
  										  }
  										 }
- 					}, { :administrator_id => users(:mr_dizzy).id }
+ 					}, { :admin_password => PASSWORD }
  					
  		assert assigns(:cheatsheet).errors.on(:pdf)
  		assert_equal 1, assigns(:cheatsheet).errors.size, assigns(:cheatsheet).errors.full_messages
@@ -111,7 +111,7 @@ class CheatsheetsControllerTest  < ActionController::TestCase
  	end
  	
  	def test_should_succeed_on_new_with_administrator
- 		get :new, {}, { :administrator_id => users(:mr_dizzy).id }
+ 		get :new, {}, { :admin_password => PASSWORD }
  		assert_response :success
  		assert_template "new"
  	end
@@ -123,7 +123,7 @@ class CheatsheetsControllerTest  < ActionController::TestCase
  	end
  	
  	def test_should_succeed_on_edit_with_administrator
- 		get :edit, { :id => contents(:action_mailer_cheatsheet).id }, { :administrator_id => users(:mr_dizzy).id }
+ 		get :edit, { :id => contents(:action_mailer_cheatsheet).id }, { :admin_password => PASSWORD }
  		assert_response :success
  		assert_template "edit"
  	end
@@ -141,7 +141,7 @@ class CheatsheetsControllerTest  < ActionController::TestCase
  										  :version_id => versions(:one).id,
  										  :description => "Action Mailer cheatsheet",
  										  :new_version => "" }
- 					}, { :administrator_id => users(:mr_dizzy).id }
+ 					}, { :admin_password => PASSWORD }
  		
  		assert_equal 0, assigns(:cheatsheet).errors.size, assigns(:cheatsheet).errors.full_messages 		
  		assert_equal 0, assigns(:cheatsheet).pdf.errors.size, assigns(:cheatsheet).pdf.errors.full_messages  		
@@ -167,7 +167,7 @@ class CheatsheetsControllerTest  < ActionController::TestCase
  												:pdf => { :uploaded_data => fixture_file_upload("letterhead.png", "application/andf") }, 																:thumbnail 	=> 	{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png") } 
  										   } 
  							}
- 					}, { :administrator_id => users(:mr_dizzy).id }
+ 					}, { :admin_password => PASSWORD }
 
  		assert_equal 2, assigns(:cheatsheet).errors.size, assigns(:cheatsheet).errors.full_messages
  		assert_equal "is invalid", assigns(:cheatsheet).errors.on(:permalink)

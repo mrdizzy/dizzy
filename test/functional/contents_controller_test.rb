@@ -2,7 +2,7 @@ require File.dirname(__FILE__) + '/../test_helper'
 
 class ContentsControllerTest < ActionController::TestCase
 
-  fixtures :contents, :users, :binaries, :categories, :versions
+  fixtures :contents, :binaries, :categories, :versions
 
   def test_truth
     assert true
@@ -11,13 +11,13 @@ class ContentsControllerTest < ActionController::TestCase
   # Index
   
   def test_index_administrator
-    get :index, {}, { :administrator_id => users(:mr_dizzy).id }
+    get :index, {}, { :admin_password => PASSWORD }
 	assert_response :success
     	# Categories form 
     assert_select "form[action=\"#{categories_path}\"]", { :count => 1}
     	# Articles
     content = Content.find(:all, :order => "date DESC")
-    assert_select "table.articles" do 
+    assert_select "table#article_links" do 
 	    content.each do |article|
     		assert_select "td", /#{article.title}/
     	end
@@ -30,7 +30,7 @@ class ContentsControllerTest < ActionController::TestCase
    get :index
    assert_select "form[action=\"#{categories_path}\"]", false, "There should be no new category form"
  content = Content.find(:all, :order => "date DESC")
-    assert_select "table.articles" do 
+    assert_select "table#article_links" do 
 	    content.each do |article|
     		assert_select "td", /#{article.title}/
     	end
@@ -44,7 +44,7 @@ class ContentsControllerTest < ActionController::TestCase
  	# New
  	
  	def test_should_show_new_form_when_administrator
- 		get :new, {}, { :administrator_id => users(:mr_dizzy).id }
+ 		get :new, {}, { :admin_password => PASSWORD }
  		assert_response :success
  	end
  	
@@ -56,7 +56,7 @@ class ContentsControllerTest < ActionController::TestCase
  	# Edit
  	
  	def test_should_show_edit_form_when_administrator
- 		get :edit, {:id => contents(:file_uploads_tutorial).id}, { :administrator_id => users(:mr_dizzy).id }
+ 		get :edit, {:id => contents(:file_uploads_tutorial).id}, { :admin_password => PASSWORD }
  		assert_response :success
  		assert_select "form" do
  			assert_select "select#article_style" do
@@ -90,7 +90,7 @@ class ContentsControllerTest < ActionController::TestCase
  	end
  	
  	def test_should_show_comments_administrator
- 		get :show, { :id => "store-file-uploads-in-database" }, { :administrator_id => users(:mr_dizzy).id }
+ 		get :show, { :id => "store-file-uploads-in-database" }, { :admin_password => PASSWORD }
  		comments = contents(:file_uploads_tutorial).comments
 		comments.each do |comment|
 			assert_select "div#comment_#{comment.id}" do 

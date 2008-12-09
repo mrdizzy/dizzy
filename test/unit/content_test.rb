@@ -24,13 +24,6 @@ class ContentTest < Test::Unit::TestCase
   	assert_equal "does not exist", @form_helpers_article.errors.on(:version)
   end
   
-  def test_should_fail_with_invalid_user
-  	@form_helpers_article.user_id = 2314
-  	assert !@form_helpers_article.valid?
-  	assert_equal 1, @form_helpers_article.errors.size, "Should have at least 1 error"
-  	assert_equal "does not exist", @form_helpers_article.errors.on(:user)
-  end  
-  
   def test_should_fail_with_empty_category
   	@form_helpers_article.categories.destroy_all
   	assert !@form_helpers_article.valid?

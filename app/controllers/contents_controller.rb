@@ -4,7 +4,6 @@ class ContentsController < ApplicationController
 	caches_page 	:show
 	cache_sweeper 	:content_sweeper, :only => [ :destroy, :update, :create ]
 	
-	
   before_filter :authorize, :except => [ :index, :show ]
 	
 	def index 

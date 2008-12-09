@@ -37,19 +37,8 @@ action_mailer_cheatsheet:
   categories: cheatsheets, beginners
   version: one
   description: Send and receive emails using the Action Mailer framework.
-  content: 
+  content: Content goes here
   user: mr_dizzy
-  
-cheatsheet_without_binaries: 
-  permalink: migrations
-  title: Migrations
-  date: 2008-07-16 00:15:00
-  type: Cheatsheet
-  categories: cheatsheets, beginners
-  version: one
-  description: Database migrations without Rails.
-  content: Here is some content!
-  user: mr_dizzy  
   
 file_uploads_tutorial: 
   permalink: store-file-uploads-in-database

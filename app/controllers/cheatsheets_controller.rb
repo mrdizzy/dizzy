@@ -28,7 +28,7 @@ class CheatsheetsController < ContentsController
   
   def create
   	@cheatsheet = Cheatsheet.new(params[:cheatsheet])
-  	@cheatsheet.user_id = session[:administrator_id]
+  	@cheatsheet.user = "mr_dizzy"
   	
   	 if @cheatsheet.save
       flash[:notice] = 'Cheatsheet was successfully created.'

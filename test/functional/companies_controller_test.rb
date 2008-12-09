@@ -11,7 +11,7 @@ class CompaniesControllerTest < ActionController::TestCase
   # NEW
   
   def test_new_company
-  	get :new
+  	get :new, {}, { :admin_password => PASSWORD }
   	assert_response :success
   	assert_template "companies/new"
   end
@@ -29,7 +29,7 @@ class CompaniesControllerTest < ActionController::TestCase
   								"2" =>
   										{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png"), :portfolio_type_id => portfolio_types(:compliment_slip).id }, 	
   								}	
-  					}
+  					}, { :admin_password => PASSWORD }
   	assert_response :success
   	assert_template "companies/new"
   end
@@ -45,7 +45,7 @@ class CompaniesControllerTest < ActionController::TestCase
   								"2" =>
   										{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png"), :portfolio_type_id => portfolio_types(:letterhead).id }, 	
   								}
-  					}
+  					}, { :admin_password => PASSWORD }
   	assert_redirected_to companies_path
   	follow_redirect
   	assert_template "companies/index"
@@ -69,7 +69,7 @@ class CompaniesControllerTest < ActionController::TestCase
   								"2" =>
   										{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png"), :portfolio_type_id => portfolio_types(:header).id }, 	
   								}
-  					}
+  					}, { :admin_password => PASSWORD }
   		assert_response :success
   		assert_template "companies/new"
   end
@@ -85,7 +85,7 @@ class CompaniesControllerTest < ActionController::TestCase
   								"2" =>
   										{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png"), :portfolio_type_id => portfolio_types(:header).id }, 	
   								}
-  					}
+  					}, { :admin_password => PASSWORD }
   		assert_response :success
   		assert_template "companies/new"
   end
