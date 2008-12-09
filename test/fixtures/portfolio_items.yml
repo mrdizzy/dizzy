@@ -27,7 +27,7 @@ heavenly_slip:
   size: "5000"
   portfolio_type: compliment_slip
   filename: heavenlyslip.png
-  company_id: heavenly
+  company: heavenly
   data: !binary |
     R0lGODlhAQABAIAAAAAAAP///yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==
 
@@ -61,7 +61,7 @@ heavenly_logo:
 heavenly_colour_logo: 
   content_type: image/png
   size: "5000"
-  portfolio_type: color_logo
+  portfolio_type: colour_logo
   filename: heavenlysmallcolourlogo.png
   company: heavenly
   data: !binary |
@@ -73,68 +73,5 @@ heavenly_cards:
   portfolio_type: business_card
   filename: heavenlycard.png
   company: heavenly
-  data: !binary |
-    R0lGODlhAQABAIAAAAAAAP///yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==
-
-silver_grey_logo: 
-  content_type: image/png
-  size: "5000"
-  portfolio_type: grey_logo
-  filename: silversmallgreylogo.png
-  company: silver
-  data: !binary |
-    R0lGODlhAQABAIAAAAAAAP///yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==
-
-silver_slip: 
-  content_type: image/png
-  size: "5000"
-  portfolio_type: compliment_slip
-  filename: silverslip.png
-  company_id: silver
-  data: !binary |
-    R0lGODlhAQABAIAAAAAAAP///yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==
-
-silver_header: 
-  content_type: image/png
-  size: "5000"
-  portfolio_type: header
-  filename: silverheader.png
-  company: silver
-  data: !binary |
-    R0lGODlhAQABAIAAAAAAAP///yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==
-
-silver_letterhead: 
-  content_type: image/png
-  size: "5000"
-  portfolio_type: letterhead
-  filename: silverletterhead.png
-  company: silver
-  data: !binary |
-    R0lGODlhAQABAIAAAAAAAP///yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==
-
-silver_logo: 
-  content_type: image/png
-  size: "5000"
-  portfolio_type: logo
-  filename: silverlogo.png
-  company: silver
-  data: !binary |
-    R0lGODlhAQABAIAAAAAAAP///yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==
-
-silver_colour_logo: 
-  content_type: image/png
-  size: "5000"
-  portfolio_type: color_logo
-  filename: silversmallcolourlogo.png
-  company: silver
-  data: !binary |
-    R0lGODlhAQABAIAAAAAAAP///yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==
-
-silver_cards: 
-  content_type: image/png
-  size: "5000"
-  portfolio_type: business_card
-  filename: silvercard.png
-  company: silver
   data: !binary |
     R0lGODlhAQABAIAAAAAAAP///yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==

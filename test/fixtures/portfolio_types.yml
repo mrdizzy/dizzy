@@ -85,7 +85,7 @@ compliment_slip:
   visible: "1"
   column_space: "1"
   description: Compliment Slip
-  header_content_type: image/gif
+  header_content_type:
   header_filename: 
   header_binary: !binary |
     R0lGODlhAQABAIAAAAAAAP///yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==
