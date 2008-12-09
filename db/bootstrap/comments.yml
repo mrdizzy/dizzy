@@ -1,4 +1,27 @@
 --- 
+comments_039: 
+  name: shikha
+  new: "1"
+  content_id: "1"
+  body: |-
+    i have tried so many times but :limit is not working. code:
+    
+    add_column(:table, :field, :bigint, {:limit => 13})
+  subject: Limit is not working with integer or bigint
+  id: "43"
+  parent_id: 
+  created_at: 2008-11-17 09:21:05
+  email: ssharma@siyainfosystems.com
+comments_028: 
+  name: Andrew Degenhardt
+  new: "1"
+  content_id: "13"
+  body: What are all the content types?
+  subject: content type
+  id: "30"
+  parent_id: 
+  created_at: 2008-09-02 16:43:36
+  email: andrew@elancommunications.net
 comments_017: 
   name: vinay
   new: "1"
@@ -19,6 +42,31 @@ comments_006:
   parent_id: 
   created_at: 2008-05-02 16:13:48
   email: joelewis@gmial.com
+comments_040: 
+  name: Richard Patching
+  new: "1"
+  content_id: "1"
+  body: |-
+    To create a bigint you need to set the integer limit to be between 5 and 8 bytes.
+    
+    The following example would give you a bigint with length 20:
+    
+    t.integer :foo, :limit => 8
+  subject: Limit is not working with integer or bigint
+  id: "44"
+  parent_id: "43"
+  created_at: 2008-12-01 11:14:02
+  email: richard@edendevelopment.co.uk
+comments_029: 
+  name: observer
+  new: "1"
+  content_id: "2"
+  body: It would probably be useful to mention the version of Rails with which this code has been successfully tested.
+  subject: Rails Version
+  id: "31"
+  parent_id: 
+  created_at: 2008-09-03 15:25:16
+  email: none@nowhere.net
 comments_018: 
   name: Dougle
   new: "1"
@@ -39,6 +87,18 @@ comments_007:
   parent_id: 
   created_at: 2008-05-07 10:47:58
   email: nobody@nowhere.com
+comments_030: 
+  name: mosquete
+  new: "1"
+  content_id: "1"
+  body: |
+    In "Fixtures" section, item 4, "migration.rb" was swapped with "customers.yml".
+
+  subject: Minor mistake
+  id: "32"
+  parent_id: 
+  created_at: 2008-09-04 15:49:54
+  email: mosquete@bol.com.br
 comments_019: 
   name: Nicholas Mercer
   new: "1"
@@ -63,6 +123,19 @@ comments_008:
   parent_id: 
   created_at: 2008-06-20 12:22:03
   email: rbgrn@rbgrn.net
+comments_031: 
+  name: mosquete
+  new: "1"
+  content_id: "8"
+  body: |-
+    Thanks for the cheatsheet!
+    
+    And here's some feedback: I think the "Visual representation of params" is unnecessary. The description of "params[]" just above it leaves no doubt about the organization of its content. So that space could be used for something else.
+  subject: Visual representation not necessary
+  id: "33"
+  parent_id: 
+  created_at: 2008-09-08 20:38:13
+  email: mosquete@bol.com.br
 comments_020: 
   name: Nicholas Mercer
   new: "1"
@@ -83,6 +156,19 @@ comments_009:
   parent_id: 
   created_at: 2008-06-22 22:45:22
   email: smithbm@masters.edu
+comments_032: 
+  name: Carl
+  new: "1"
+  content_id: "2"
+  body: |-
+    I recently needed to do this for a pretty static site and didn't really want to use attachment_fu this time, so I used this as a guideline to see if I could do it. Based on previous comments I wasn't sure what the problems would be, but I had minimal problems, and they were all do to simple copy/paste errors (since I'm not doing quite the same thing). I have models, lets call them Animals, and they has_many photos (with photos being set up basically as above). Photos belongs_to Animals. Photo.rb has the def image_file=(input_data)
+     code from above. In my animals controller I did add @photo = Photo.new(params[:photo])
+     in the create action, and @photo = Photo.new in the new action (I used it for the fields_for in the view) and then I created a photos controller with the code_view code for displaying the image inline from the tutorial. It all worked perfectly.
+  subject: Works with 2.1.1
+  id: "36"
+  parent_id: 
+  created_at: 2008-10-27 19:35:03
+  email: nexusrpg@gmail.com
 comments_021: 
   name: aj illescas
   new: "1"
@@ -103,6 +189,19 @@ comments_010:
   parent_id: 
   created_at: 2008-06-29 09:48:16
   email: graeme@privacy.net
+comments_033: 
+  name: Adam
+  new: "1"
+  content_id: "2"
+  body: |-
+    How much would this change to use mp3's instead of pictures?  Would the mp3 files be pulled from the database the same way?  Thanks and great website.  Very helpful to the RoR newbie
+    
+    -Adam
+  subject: Mp3 Implementation
+  id: "37"
+  parent_id: 
+  created_at: 2008-11-04 09:09:57
+  email: agm791@earthlink.net
 comments_022: 
   name: txarli
   new: "1"
@@ -127,6 +226,26 @@ comments_011:
   parent_id: 
   created_at: 2008-06-29 21:49:12
   email: redhat.lesi@gmail.com
+comments_034: 
+  name: Gabe Odess
+  new: "1"
+  content_id: "2"
+  body: |-
+    When I tried to upload my image I got an error saying:
+    
+         undefined method `image_file=' for #<Photo:0x2508aa0>
+    
+    I ended up changing the 'create' method from @photo = Photo.new(params[:photo]) to:
+    
+        @photo = Photo.new
+        @photo.image_file(params[:photo]["image_file"])
+    
+    and that worked fine, but do you have any idea why I would be getting that error message?  It seems like I'm missing some elegant feature, which is causing me to have to do this in two steps... thoughts?
+  subject: No Method 'image_file'
+  id: "38"
+  parent_id: 
+  created_at: 2008-11-06 03:36:04
+  email: gabeodess@gmail.com
 comments_023: 
   name: Dougle
   new: "1"
@@ -160,6 +279,16 @@ comments_001:
   parent_id: 
   created_at: 2008-03-11 12:12:03
   email: sddlzz@163.com
+comments_035: 
+  name: fomaiv
+  new: "1"
+  content_id: "2"
+  body: What if need update a image ??
+  subject: fomaiv
+  id: "39"
+  parent_id: 
+  created_at: 2008-11-10 16:56:53
+  email: ivmafo@gmail.com
 comments_024: 
   name: Sarah Lewis
   new: "1"
@@ -204,6 +333,16 @@ comments_002:
   parent_id: 
   created_at: 2008-03-24 22:41:35
   email: zhangpeng715@hotmail.com
+comments_036: 
+  name: ssk
+  new: "1"
+  content_id: "2"
+  body: just to chek
+  subject: u r great
+  id: "40"
+  parent_id: "2"
+  created_at: 2008-11-13 09:37:25
+  email: ssk@gmail.com
 comments_025: 
   name: sgk
   new: "1"
@@ -237,6 +376,16 @@ comments_003:
   parent_id: 
   created_at: 2008-04-03 04:06:51
   email: tomomikyoko@gmail.com
+comments_037: 
+  name: dsfdsf
+  new: "1"
+  content_id: "2"
+  body: just to check
+  subject: reply to brad
+  id: "41"
+  parent_id: "9"
+  created_at: 2008-11-13 10:04:54
+  email: ssk@gmail.com
 comments_026: 
   name: Gideon
   new: "1"
@@ -272,6 +421,28 @@ comments_004:
   parent_id: 
   created_at: 2008-04-12 12:27:37
   email: len@lenwhite.com
+comments_038: 
+  name: dsfdsf
+  new: "1"
+  content_id: "2"
+  body: dsfdsfdsfdsfds
+  subject: just to chek
+  id: "42"
+  parent_id: "40"
+  created_at: 2008-11-13 12:30:35
+  email: ssk@gmail.com
+comments_027: 
+  name: Ryan Shillington
+  new: "1"
+  content_id: "1"
+  body: |
+    You're missing the table argument from the rename_column syntax as well.
+
+  subject: rename_column is wrong too
+  id: "29"
+  parent_id: 
+  created_at: 2008-08-26 12:56:45
+  email: hotpron@mail.com
 comments_016: 
   name: Jagannathan Sundaram
   new: "1"
