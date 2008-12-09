@@ -44,7 +44,7 @@
 		
 		<p>
 			<%= image_tag("f/small_icons/pdf.png") %>	
-			<%= diamond %> <%= link_to "PDF", formatted_content_path(article_link.permalink, "pdf") %> 
+			<%= diamond %> <%= link_to "PDF", formatted_cheatsheet_path(article_link.permalink, "pdf") %> 
 			(<%= number_to_human_size(article_link.pdf.size) %>)
 		</p>
 	
@@ -59,7 +59,7 @@
 		<p class="article_link_description"><%= article_link.description %></p>
 		
 		<% if administrator? %>
-			<p><%= link_to 'edit', edit_cheatsheet_path(article_link.id) %> <%= diamond %> <%= link_to 'delete', cheatsheet_path(article_link.id), :method => "delete" %></p>
+			<p><%= link_to 'edit', edit_polymorphic_path(article_link) %> <%= diamond %> <%= link_to 'delete', cheatsheet_path(article_link.id), :method => "delete" %></p>
 		<% end %>
 		
 	</td>

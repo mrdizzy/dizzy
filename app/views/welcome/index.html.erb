@@ -33,8 +33,11 @@
 			
 			<span class="posted_ago">POSTED <%= time_ago_in_words(@main_article.date).upcase %> AGO</span>
 			
-			<h1><%= link_to(@main_article.title, content_path(@main_article.permalink)) %></h1>	
-
+			<% if @main_article.is_a?(Article) %>
+				<h1><%= link_to(@main_article.title, content_path(@main_article.permalink)) %></h1>	
+			<% else %>
+				<h1><%= link_to(@main_article.title, cheatsheet_path(@main_article.permalink)) %></h1>	
+			<% end %>
 
 
 			
@@ -48,16 +51,21 @@
 			
 
 			<% @articles.each do |article| %>
-			<span class="posted_ago">POSTED <%= time_ago_in_words(article.date).upcase %> AGO</span>
 			
-			<h2><%= link_to(article.title, content_path(article.permalink)) %></h2>
+				<span class="posted_ago">POSTED <%= time_ago_in_words(article.date).upcase %> AGO</span>
+				
+				<% if @main_article.is_a?(Article) %>
+					<h2><%= link_to(article.title, content_path(article.permalink)) %></h2>
+				<% else %>
+					<h2><%= link_to(article.title, cheatsheet_path(article.permalink)) %></h2>
+				<% end %>
+				
+				<span class="posted_in">
+				 	<%= solid_arrow %> <%= link_to(article.main_category.name.upcase, category_path(article.main_category.permalink)) %>
+				</span>
+				
+				<p><%= article.description %></p>
 			
-			<span class="posted_in">
-			 	<%= solid_arrow %> <%= link_to(article.main_category.name.upcase, category_path(article.main_category.permalink)) %>
-			</span>
-			
-			<p><%= article.description %></p>
-		
 			<% end %>		
 						
 		</div>
