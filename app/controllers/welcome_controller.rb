@@ -1,5 +1,7 @@
 class WelcomeController < ApplicationController
 	
+	caches_page :index
+	
 	def index
 		paginate_logos
 		@articles 			= Content.recent.all(:limit => 4, :conditions => [ "contents.style != ? OR contents.style IS NULL", "SNIPPET" ] )

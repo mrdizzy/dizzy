@@ -20,13 +20,14 @@ class ContentSweeper < ActionController::Caching::Sweeper
 	private
 	
 	def expire_content_page(record)
+		
 		if record.is_a?(Cheatsheet)			
 			expire_page hash_for_cheatsheet_path(:id => record.permalink)
 			expire_page hash_for_formatted_cheatsheet_path(:id => record.permalink, :format => :png)
 			expire_page hash_for_formatted_cheatsheet_path(:id => record.permalink, :format => :pdf)	
 		end
-		expire_page hash_for_content_path(:id => record.permalink)
 		
+		expire_page hash_for_content_path(:id => record.permalink)
 	end
 	
 	def expire_latest_page(record)
