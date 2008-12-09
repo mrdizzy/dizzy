@@ -2,17 +2,7 @@
 	
 	<div id="company_description"><%= render :partial => "company_description" %></div>
 	
-	<div id="portfolio_list">
-		
-		<% @companies.each do |company| %>
-			<p><%= link_to_remote company.name, { :url => portfolio_path(company), :method => :get}  %></p>
-		<% end %>		
-		
-		<%= link_to_remote "&laquo; Previous", { :url => portfolios_path(:page => @company_pages.current.previous), :method => :get } if @company_pages.current.previous %>
-		
-		<%= link_to_remote "Next &raquo;", { :url => portfolios_path(:page => @company_pages.current.next), :method => :get } if @company_pages.current.next %>
-	
-	</div>
+	<div id="portfolio_list"><%= render :partial => "company_list" %></div>
 	
 	<div id="next"></div>
 		

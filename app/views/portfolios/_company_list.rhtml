@@ -1,5 +1,5 @@
 <% @companies.each do |company| %>
-	<p><%= link_to_remote company.name, { :url => portfolio_path(company.id), :method => :get } %></p>
+	<p><%= link_to_remote company.name, { :url => formatted_portfolio_path(company.id, :js), :method => :get } %></p>
 <% end %>
 
 <%= link_to_remote "&laquo; Previous", { :url => portfolios_path(:page => @company_pages.current.previous), :method => :get } if @company_pages.current.previous %>
