@@ -1,5 +1,7 @@
 class PortfolioTypesController < ApplicationController
   
+	before_filter :authorize, :except => :show
+	
 	def show
 		@portfolio_type = PortfolioType.find(params[:id])
 		respond_to do |wants|

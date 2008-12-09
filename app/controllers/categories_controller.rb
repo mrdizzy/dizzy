@@ -1,6 +1,8 @@
 class CategoriesController < ApplicationController
 	helper :contents
 
+	before_filter :authorize, :except => :show
+
 	def show
 		@category = Category.find_by_permalink(params[:id])
 	end

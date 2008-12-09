@@ -2,11 +2,10 @@ class CommentsController < ApplicationController
 	
 	cache_sweeper :comment_sweeper, :only => [ :destroy, :update, :create ]	
 	
+	before_filter :authorize, :except => :destroy
+	
 	# TODO: If administrator logged in, then create comments from administrator rather than external user 
 	# TODO: Make email field optional to avoid readers putting in fake emails
-	def index
-		redirect_to login_path unless administrator?
-	end
 	
 	def new
 		@comment 				= Comment.new
@@ -17,12 +16,8 @@ class CommentsController < ApplicationController
 	end
 	
 	def destroy
-		if administrator?
-			@comment = Comment.find(params[:id])
-	 	 	@comment.destroy
-		else
-			redirect_to login_path
-		end
+		@comment = Comment.find(params[:id])
+ 	 	@comment.destroy
 	end
 	
 	def create			

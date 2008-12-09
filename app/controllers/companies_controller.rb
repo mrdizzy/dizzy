@@ -1,6 +1,8 @@
 class CompaniesController < ApplicationController
 		
 	cache_sweeper :portfolio_item_sweeper
+	
+	before_filter :authorize
 		
 	def index
 		@companies = Company.find(:all, :order => :name)
