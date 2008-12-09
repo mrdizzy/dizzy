@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
 class ContentTest < Test::Unit::TestCase
-  fixtures :contents, :users, :versions, :categories, :binaries
+  fixtures :contents, :versions, :categories, :binaries
   
   def test_truth
     assert true

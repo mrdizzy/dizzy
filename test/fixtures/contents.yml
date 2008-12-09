@@ -27,7 +27,6 @@ form_helpers_snippet:
   version: one
   description: Sometimes you want to quickly see the output of helper methods, and constantly clicking refresh in your browser then viewing the page source can be tiresome. Instead, use the Rails console to check helpers are doing what you want them to.
   content: Content goes here
-  user: mr_dizzy
   
 action_mailer_cheatsheet: 
   permalink: action-mailer
