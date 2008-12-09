@@ -2,6 +2,8 @@ class PortfolioItemsController < ApplicationController
 	
 	before_filter :authorize, :except => :show 
 	
+	caches_page :show
+	
 	def show
 		@portfolio_item = PortfolioItem.find(params[:id])
 		respond_to do |wants|
