@@ -1,8 +1,9 @@
 class PortfolioItemsController < ApplicationController
 	
-	before_filter :authorize, :except => :show 
+	before_filter 	:authorize, :except => :show 
 	
-	caches_page :show
+	cache_sweeper 	:portfolio_item_sweeper, :only => [ :destroy, :update, :create ]
+	caches_page 	:show
 	
 	def show
 		@portfolio_item = PortfolioItem.find(params[:id])

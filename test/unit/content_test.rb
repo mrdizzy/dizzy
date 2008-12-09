@@ -8,8 +8,6 @@ class ContentTest < Test::Unit::TestCase
     assert contents(:form_helpers_snippet).valid?, contents(:form_helpers_snippet).errors.full_messages
     assert contents(:action_mailer_cheatsheet).valid?, contents(:action_mailer_cheatsheet).errors.full_messages
     assert contents(:file_uploads_tutorial).valid?, contents(:file_uploads_tutorial).errors.full_messages
-    assert !contents(:cheatsheet_without_binaries).valid?
-    assert_equal 2,	contents(:cheatsheet_without_binaries).errors.size
   end
    
   def setup
@@ -32,7 +30,7 @@ class ContentTest < Test::Unit::TestCase
   
     def test_should_fail_with_empty_attributes
   	cheatsheet = Content.new
-  	fields = %w{ title description user_id date permalink version_id }  	
+  	fields = %w{ title description user date permalink version_id }  	
   	assert !cheatsheet.valid?
   	fields.each do |field|  		
   		assert_equal "can't be blank", cheatsheet.errors.on(field.to_sym)

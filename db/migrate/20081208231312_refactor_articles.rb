@@ -536,11 +536,6 @@ content.save!
 cheatsheet = Cheatsheet.find(17)
 cheatsheet.content = <<-EOF
 
-# Table of Contents
-
-* Table of Contents
-{:toc}
-
 ## Class convenience methods
 
 ### validates\\_acceptance\\_of

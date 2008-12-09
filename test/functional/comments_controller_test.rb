@@ -2,7 +2,7 @@ require File.dirname(__FILE__) + '/../test_helper'
 
 class CommentsControllerTest < ActionController::TestCase
 	
-  fixtures :comments, :contents, :binaries, :users, :categories, :versions
+  fixtures :comments, :contents, :binaries, :categories, :versions
   	
   def test_truth
     assert true
@@ -16,7 +16,7 @@ class CommentsControllerTest < ActionController::TestCase
   end
  
   def test_show_comments_index_to_authorized_user
-  	get :index, {}, { :administrator_id => users(:mr_dizzy).name }
+  	get :index, {}, { :admin_password => PASSWORD }
   	assert_template("index")
   	assert_response :success
   end 
@@ -78,7 +78,7 @@ class CommentsControllerTest < ActionController::TestCase
   # Destroy
 
   def test_succeed_destroy_comment_with_administrator
-  	delete :destroy, { :id => comments(:mother).id }, { :administrator_id => users(:mr_dizzy).name }
+  	delete :destroy, { :id => comments(:mother).id }, { :admin_password => PASSWORD }
   	assert_template("destroy")
   	assert_select_rjs
   	assert_response :success

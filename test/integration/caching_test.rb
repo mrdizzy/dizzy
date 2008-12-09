@@ -18,16 +18,21 @@ class CachingTest < ActionController::IntegrationTest
 
   end
  
-  def test_caching
+  def test_caching_of_cheatsheet_pages
   	  post "/administrator_sessions", :admin_password => PASSWORD
-  	  	   assert_cache_pages("/ruby_on_rails/cheatsheets/action-mailer", 
+  	  assert_cache_pages("/ruby_on_rails/cheatsheets/action-mailer", 
   	  	   						"/ruby_on_rails/latest",
-  	  	   						"/ruby_on_rails/contents/debugging-form-helpers-with-the-console",
-  	  	   						"/", "/welcome")
+  	  	   						"/")
   	   
-  	   assert_expire_pages("/ruby_on_rails/cheatsheets/action-mailer", "/ruby_on_rails/latest", "/", "/welcome") do |*urls|
-      	post "/cheatsheets/destroy/#{contents(:action_mailer_cheatsheet).id}"
-      	post "/contents/destroy/#{contents(:form_helpers_snippet).id}"
+  	   assert_expire_pages("/ruby_on_rails/cheatsheets/action-mailer", 
+  	   							"/ruby_on_rails/latest", 
+  	   							"/") do |*urls|
+  	   		post "/cheatsheets/destroy/#{contents(:action_mailer_cheatsheet).id}"
        end
   end
+  
+ def test_caching_of_portfolio_items
+  	  post "/administrator_sessions", :admin_password => PASSWORD
+  	  assert_cache_pages("/portfolio_items/#{portfolio_items(:heavenly_slip).id}.png")
+  end  
 end

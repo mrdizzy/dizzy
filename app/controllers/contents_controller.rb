@@ -1,10 +1,11 @@
 class ContentsController < ApplicationController
 	
-	helper 			:comments		
+	helper 			:comments	
+		
 	caches_page 	:show, :index
 	cache_sweeper 	:content_sweeper, :only => [ :destroy, :update, :create ]
 	
-  before_filter :authorize, :except => [ :index, :show ]
+ 	before_filter 	:authorize, :except => [ :index, :show ]
 	
 	def index 
 		@latest = Content.recent

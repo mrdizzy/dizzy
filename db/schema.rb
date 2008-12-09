@@ -97,10 +97,6 @@ ActiveRecord::Schema.define(:version => 20081208231312) do
     t.boolean "visible",                           :default => true
   end
 
-  create_table "schema_info", :id => false, :force => true do |t|
-    t.integer "version"
-  end
-
   create_table "versions", :force => true do |t|
     t.string "version_number"
   end
