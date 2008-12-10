@@ -9,6 +9,17 @@ class CompanyTest < Test::Unit::TestCase
     companies(:heavenly).portfolio_items.all?{|portfolio_item| assert_valid portfolio_item}
   end
   
+  def test_fixtures_valid
+  	Company.all.each do |company|
+  		assert company.valid?, company.errors.full_messages
+  	end
+  	
+  	 companies(:heavenly).portfolio_items.each do |item|
+  	 	puts item.portfolio_type.description
+  	 	puts item.filename
+  	 end
+  end
+  
   def setup
   	@heavenly = companies(:heavenly)
   end

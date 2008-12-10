@@ -24,9 +24,6 @@ class WelcomeController < ApplicationController
 	private
 	
 	def paginate_logos
-		@logo_pages, @logos = paginate :portfolio_items, :per_page => 1, :include => [:portfolio_type, :company], :conditions => ["portfolio_types.description = ? AND companies.visible = ?", "Logo", 1], :order => "portfolio_items.id desc"
-		puts "-------------"
-		puts @logo_pages
-		
+		@logo_pages, @logos = paginate :portfolio_items, :per_page => 1, :include => [:portfolio_type, :company], :conditions => ["portfolio_types.description = ? AND companies.visible = ?", "Logo", 1], :order => "portfolio_items.id desc"		
 	end
 end

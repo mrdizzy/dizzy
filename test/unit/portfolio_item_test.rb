@@ -7,6 +7,12 @@ class PortfolioItemTest < Test::Unit::TestCase
     assert true
   end
   
+  def test_fixtures_valid
+  	 PortfolioItem.all.each do |item|
+  	 	assert item.valid?, item.errors.full_messages
+  	 end
+  end
+  
     def test_portfolio_item_must_be_between_1k_and_100k
   	portfolio_item = portfolio_items(:heavenly_logo)
   	

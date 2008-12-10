@@ -6,6 +6,12 @@ class PortfolioTypeTest < Test::Unit::TestCase
   def test_truth
     assert true
   end
+  
+  def test_fixtures_valid
+  	PortfolioType.all.each do |type|
+  		assert type.valid?, type.errors.full_messages
+  	end
+  end
 
 	def test_position_must_be_unique
 		product = PortfolioType.new(:description =>		"Huge Billboard Advert",

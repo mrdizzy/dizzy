@@ -21,16 +21,7 @@ heavenly_grey_logo:
   company: heavenly
   data: !binary |
     R0lGODlhAQABAIAAAAAAAP///yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==
-
-heavenly_slip: 
-  content_type: image/png
-  size: "5000"
-  portfolio_type: compliment_slip
-  filename: heavenlyslip.png
-  company: heavenly
-  data: !binary |
-    R0lGODlhAQABAIAAAAAAAP///yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==
-
+    
 heavenly_header: 
   content_type: image/png
   size: "5000"
@@ -72,6 +63,15 @@ heavenly_cards:
   size: "5000"
   portfolio_type: business_card
   filename: heavenlycard.png
+  company: heavenly
+  data: !binary |
+    R0lGODlhAQABAIAAAAAAAP///yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==
+
+heavenly_slip: 
+  content_type: image/png
+  size: "5000"
+  portfolio_type: compliment_slip
+  filename: heavenlyslip.png
   company: heavenly
   data: !binary |
     R0lGODlhAQABAIAAAAAAAP///yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==

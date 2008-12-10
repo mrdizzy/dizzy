@@ -66,7 +66,7 @@ colour_logo:
 grey_logo: 
   visible: 
   column_space: 1
-  description: Small Grey Logo
+  description: "Small Grey Logo"
   header_content_type: 
   header_filename: 
   header_binary: 
@@ -75,7 +75,7 @@ grey_logo:
 header: 
   visible: 
   column_space: "1"
-  description: Header
+  description: "Header"
   header_content_type: 
   header_filename: 
   header_binary: 
