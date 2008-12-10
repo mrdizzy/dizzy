@@ -27,4 +27,9 @@ class Test::Unit::TestCase
   # Add more helper methods to be used by all tests here...
   
   
+  def login
+  	 post "/administrator_sessions", :admin_password => PASSWORD
+  end
+
+  
 end

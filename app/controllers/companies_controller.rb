@@ -1,6 +1,6 @@
 class CompaniesController < ApplicationController
 		
-	cache_sweeper :portfolio_item_sweeper
+	cache_sweeper :portfolio_item_sweeper, :company_sweeper
 	
 	before_filter :authorize
 		
