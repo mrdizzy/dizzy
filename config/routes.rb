@@ -42,7 +42,7 @@ ActionController::Routing::Routes.draw do |map|
 	map.resources :companies
 	map.resources :portfolio_items
 	map.resources :portfolio_types
-	map.resources :portfolios, :requirements => { :page => /\d+/}, :page => nil
+	map.resources :portfolios
 	
   # Allow downloading Web Service WSDL as a file with an extension
   # instead of a file named 'wsdl'

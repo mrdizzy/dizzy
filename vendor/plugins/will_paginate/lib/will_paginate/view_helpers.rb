@@ -199,6 +199,8 @@ module WillPaginate
     end
   end
 
+
+
   # This class does the heavy lifting of actually building the pagination
   # links. It is used by the <tt>will_paginate</tt> helper internally.
   class LinkRenderer
@@ -387,4 +389,17 @@ module WillPaginate
       end
     end
   end
+
+class RemoteLinkRenderer < WillPaginate::LinkRenderer
+  def prepare(collection, options, template)
+    @remote = options.delete(:remote) || {}
+    super
+  end
+
+protected
+  def page_link(page, text, attributes = {})
+    @template.link_to_remote(text, {:url => url_for(page), :method => :get}.merge(@remote))
+  end
+end
+
 end

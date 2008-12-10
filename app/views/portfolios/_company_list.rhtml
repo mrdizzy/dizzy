@@ -5,3 +5,6 @@
 <%= link_to_remote "&laquo; Previous", { :url => formatted_portfolios_path(:page => @company_pages.current.previous, :format => :js), :method => :get } if @company_pages.current.previous %>
 
 <%= link_to_remote "Next &raquo;", { :url => formatted_portfolios_path(:page => @company_pages.current.next, :format => :js), :method => :get } if @company_pages.current.next %>
+
+<%= will_paginate @companies %>
+
