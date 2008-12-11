@@ -331,7 +331,6 @@ module WillPaginate
         else
           @url_params[param_name] = page_one ? 1 : 2
         end
-        puts @url_params
 
         url = @template.url_for(@url_params)
         return url if page_one

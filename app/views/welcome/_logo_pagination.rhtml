@@ -1,1 +1,1 @@
-<p><%= will_paginate @logos, :renderer => "RemoteLinkRenderer", :page_links => false %></p>
+<p><%= link_to_remote "Next", :url => formatted_welcome_path(:page => @logos.next_page)%></p>
