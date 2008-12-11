@@ -22,7 +22,7 @@ ActionController::Routing::Routes.draw do |map|
    map.login 'login', :controller => "administrator_sessions", :action => "new"
    map.logout 'logout', :controller => "administrator_sessions", :action => "destroy"    
 	map.root :controller => "welcome"   
-	map.formatted_welcome '/welcome/:page.:format', :controller => "welcome", :action => "index"
+	map.formatted_welcome '/:page.:format', :controller => "welcome", :action => "index"
     
     # RESTful routes 
     map.resources :administrator_sessions
@@ -45,7 +45,6 @@ ActionController::Routing::Routes.draw do |map|
 	map.resources :portfolio_types
 	map.resources :portfolios
 	map.paged_portfolios "/portfolios/page/:page", :controller => "portfolios", :action => "index"
-	map.page_welcome "/:page", :controller => "welcome", :action => "index"
 	
   # Allow downloading Web Service WSDL as a file with an extension
   # instead of a file named 'wsdl'
