@@ -296,7 +296,7 @@ module WillPaginate
     
     def page_link_or_span(page, span_class, text = nil)
       text ||= page.to_s
-      
+    	
       if page and page != current_page
         classnames = span_class && span_class.index(' ') && span_class.split(' ', 2).last
         page_link page, text, :rel => rel_value(page), :class => classnames
@@ -331,6 +331,7 @@ module WillPaginate
         else
           @url_params[param_name] = page_one ? 1 : 2
         end
+        puts @url_params
 
         url = @template.url_for(@url_params)
         return url if page_one
