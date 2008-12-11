@@ -22,7 +22,7 @@ ActionController::Routing::Routes.draw do |map|
    map.login 'login', :controller => "administrator_sessions", :action => "new"
    map.logout 'logout', :controller => "administrator_sessions", :action => "destroy"    
 	map.root :controller => "welcome"   
-	map.formatted_welcome '/:page.:format', :controller => "welcome", :action => "index"
+	map.formatted_welcome '/:page.:format', :controller => "welcome", :action => "show"
     
     # RESTful routes 
     map.resources :administrator_sessions
@@ -51,5 +51,5 @@ ActionController::Routing::Routes.draw do |map|
   #map.connect ':controller/service.wsdl', :action => 'wsdl'
 
   # Install the default route as the lowest priority.
-	map.connect ':controller/:action/:id'
+	#map.connect ':controller/:action/:id'
 end

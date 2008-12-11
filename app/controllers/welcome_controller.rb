@@ -8,6 +8,13 @@ class WelcomeController < ApplicationController
 		@articles 			= Content.recent.all(:limit => 4, :conditions => [ "contents.style != ? OR contents.style IS NULL", "SNIPPET" ] )
 		@main_article		= @articles.shift
 		@snippets			= Content.recent.snippets.all(:limit => 3)
+		
+	end	
+	
+	def show
+		
+		@logos = PortfolioItem.paginate :per_page => 1, :page => params[:page], :conditions => [ "portfolio_type_id = ?", 4]
+		
 		respond_to do |wants|
 			wants.html
 			wants.js do
@@ -21,8 +28,6 @@ class WelcomeController < ApplicationController
 				end
 			end
 		end
-	end	
 	
-	private
-	
+	end
 end
