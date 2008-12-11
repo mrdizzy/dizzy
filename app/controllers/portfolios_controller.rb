@@ -6,7 +6,7 @@ class PortfoliosController < ApplicationController
 		@companies = Company.pages(params[:page])
 		@company = Company.first
 		respond_to do |wants|
-			wants.html { render :template => "portfolios/show"}
+			wants.html
 			wants.js do
 				render :update do |page|
 					page.replace_html :portfolio_list, :partial => "company_list"
@@ -16,7 +16,7 @@ class PortfoliosController < ApplicationController
 	end
 	
 	def show			
-		@companies = Company.pages(params[:page])
+
 		@company 	= Company.find(params[:id])		
     	@header 	= @company.portfolio_items.header
     	respond_to do |wants|
