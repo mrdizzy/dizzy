@@ -1,8 +1,3 @@
 <p>
-	<%= link_to_remote "&laquo; Previous", :url => { :action => "next_logo", :page => @logo_pages.current.previous} if @logo_pages.current.previous %>
-	
-	<%= diamond if @logo_pages.current.previous %>
-	
-	<%= link_to_remote "Next &raquo;", :url => { :action => "next_logo", :page => @logo_pages.current.next} if @logo_pages.current.next %>
-	
+	<%= will_paginate @logos %>
 </p>
