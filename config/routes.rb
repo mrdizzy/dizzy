@@ -44,6 +44,7 @@ ActionController::Routing::Routes.draw do |map|
 	map.resources :portfolio_types
 	map.resources :portfolios
 	map.paged_portfolios "/portfolios/page/:page", :controller => "portfolios", :action => "index"
+	map.page_welcome "/:page", :controller => "welcome", :action => "index"
 	
   # Allow downloading Web Service WSDL as a file with an extension
   # instead of a file named 'wsdl'
