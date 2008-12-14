@@ -19,21 +19,11 @@
 	</div>	
 	
 	<!-- RUBY ON RAILS -->
-	<div class="nav_button">
-		<% if current_page?(:controller => "contents", :action => "show") or current_page?(:controller => "contents", :action => "index") or current_page?(:controller => "categories", :action => "show") or current_page?(:controller => "sections", :action => "show") or current_page?(:controller => "cheatsheets") && !current_page?(:controller => "cheatsheets", :action => "index") %> 
-			<%= image_tag("f/nav/rails_over.png") %>
-		<% else %>
-			<%= link_to image_tag("f/nav/rails.png"), latest_path %>
-		<% end %> 
-	</div>
+	<div class="nav_button"><%= link_to image_tag("f/nav/rails.png"), latest_path %></div>
 	
 	<!-- PORTFOLIO -->
 	<div class="nav_button">
-		<% if current_page?(:controller => 'portfolios', :action => "show") %>
-			<%= image_tag("f/nav/portfolio_over.png") %>
-		<% else %>
-			<%= link_to image_tag("f/nav/portfolio.png"), "/portfolios/1" %>
-		<% end %>
+		<%= link_to image_tag("f/nav/portfolio.png"), "/portfolios/1" %>
 	</div>
 	
 	<!-- CONTACT -->
