@@ -5,14 +5,16 @@ class CachePortfoliosTest < ActionController::IntegrationTest
    
   def test_should_cache_on_show
   	assert_cache_pages("/portfolios/#{companies(:heavenly).id}.js")
-  end 
+  end
   
   def test_should_cache_on_index
   	assert_cache_pages("/portfolios")
   end
   
   def test_should_cache_pagination
-  	assert_cache_pages("portfolios/page/2.js")
+  	get "/portfolios/page/2.js"
+  	assert_response :success
+  	assert_cache_pages("/portfolios/page/2.js")
   end
 
   def test_should_expire_show_on_company_destroy
@@ -27,7 +29,6 @@ class CachePortfoliosTest < ActionController::IntegrationTest
   	assert_expire_pages("/portfolios/#{companies(:heavenly).id}.js") do |*urls|
   		delete "/portfolio_items/#{portfolio_items(:heavenly_slip).id}"
   	end
-  end  
+  end
   
-    
 end

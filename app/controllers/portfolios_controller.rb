@@ -15,8 +15,7 @@ class PortfoliosController < ApplicationController
 		end
 	end
 	
-	def show			
-
+	def show
 		@company 	= Company.find(params[:id])		
     	@header 	= @company.portfolio_items.header
     	respond_to do |wants|
@@ -28,5 +27,6 @@ class PortfoliosController < ApplicationController
 				end
 			end
 		end
-	end  
+	end
+	
 end
