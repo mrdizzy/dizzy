@@ -19,10 +19,11 @@ ActionController::Routing::Routes.draw do |map|
 
     # Named routes
     map.latest 'ruby_on_rails/latest', :controller => "contents", :action => "index"
-   map.login 'login', :controller => "administrator_sessions", :action => "new"
-   map.logout 'logout', :controller => "administrator_sessions", :action => "destroy"    
+   	map.login 'login', :controller => "administrator_sessions", :action => "new"
+  	map.logout 'logout', :controller => "administrator_sessions", :action => "destroy"    
 	map.root :controller => "welcome"   
 	map.formatted_welcome '/:page.:format', :controller => "welcome", :action => "show"
+	map.paged_portfolios "/portfolios/page/:page.:format", :controller => "portfolios", :action => "index"
     
     # RESTful routes 
     map.resources :administrator_sessions
@@ -44,7 +45,6 @@ ActionController::Routing::Routes.draw do |map|
 	map.resources :portfolio_items
 	map.resources :portfolio_types
 	map.resources :portfolios
-	map.paged_portfolios "/portfolios/page/:page", :controller => "portfolios", :action => "index"
 	
   # Allow downloading Web Service WSDL as a file with an extension
   # instead of a file named 'wsdl'
