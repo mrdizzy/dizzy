@@ -1,6 +1,6 @@
 code { font: bold 100% "Courier New", "Courier", monospace; color:black; }
 pre code { margin:1em; display:block; }
-code.ruby {
+code.ruby, code.plaintext {
 	display:block;
 	font-weight: normal;
 	color:grey;
@@ -12,6 +12,9 @@ code.ruby {
 	white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
 	white-space: -pre-wrap;      /* Opera 4-6 */
 	white-space: -o-pre-wrap;    /* Opera 7 */
+}
+code.plaintext {
+	color:black;
 }
 /*
 :attribute_name => 'an',		:attribute_name_fat => 'af',

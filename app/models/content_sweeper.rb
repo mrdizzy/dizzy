@@ -10,7 +10,6 @@ class ContentSweeper < ActionController::Caching::Sweeper
 		expire_latest_page(record)
 		expire_welcome_page
 		expire_rss_feed
-		expire_cheatsheets_index
 	end
 	
 	def after_destroy(record)
@@ -18,7 +17,6 @@ class ContentSweeper < ActionController::Caching::Sweeper
 		expire_latest_page(record)
 		expire_welcome_page
 		expire_rss_feed
-		expire_cheatsheets_index
 	end
 	
 	private

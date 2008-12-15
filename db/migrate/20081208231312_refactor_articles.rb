@@ -548,7 +548,11 @@ Encapsulates the pattern of wanting to validate the acceptance of a terms of ser
 
 If the database column does not exist, the `terms_of_service` attribute is entirely virtual. This check is performed only if `terms_of_service` is not `nil` and by default on save.
 
-`:accept` - Specifies value that is considered accepted. The default value is a string `"1"`, which makes it easy to relate to an HTML checkbox. This should be set to `true` if you are validating a database column, since the attribute is typecast from `"1"` to true before validation.
+#### Options {#acceptance_of_options}
+
+Key                  | Value 
+---------------------|-----------------------------------------------------
+`:accept`            | Specifies value that is considered accepted. The default value is a string `"1"`, which makes it easy to relate to an HTML checkbox. This should be set to `true` if you are validating a database column, since the attribute is typecast from `"1"` to true before validation.
 
 
 ### validates\\_associated
@@ -610,7 +614,11 @@ Validates that the value of the specified attribute is not in a particular enume
     validates_exclusion_of :format, :in => %w( mov avi ), :message => "extension %s is not allowed"
 {:ruby}
 
-`:in`	   An enumerable object of items that the value shouldn't be part of
+#### Options            {#exclusion_of_options}
+
+Key                  | Value 
+---------------------|-----------------------------------------------------
+`:in`	             | An enumerable object of items that the value shouldn't be part of
 
 ### validates\\_format\\_of
 
@@ -623,7 +631,11 @@ Note: use `\\A` and `\\Z` to match the start and end of the string, `^` and `$` 
 
 A regular expression must be provided or else an exception will be raised.
 
-`:with`	            The regular expression used to validate the format with
+#### Options     {#format_of_options}
+
+Key                  | Value 
+---------------------|-----------------------------------------------------
+`:with`	             | The regular expression used to validate the format with
 
 ### validates\\_inclusion\\_of
 
@@ -634,7 +646,11 @@ Validates whether the value of the specified attribute is available in a particu
     validates_inclusion_of :format, :in => %w( jpg gif png ), :message => "extension %s is not included in the list" 
 {:ruby}
 
-`:in`	    An enumerable object of items that the value shouldn't be part of
+#### Options            {#inclusion_of_options}
+
+Key                  | Value 
+---------------------|-----------------------------------------------------
+`:in`	             | An enumerable object of items that the value shouldn't be part of
 
 ### validates\\_length\\_of
 
@@ -650,15 +666,19 @@ Validates that the specified attribute matches the length restrictions supplied.
     validates_length_of :essay, :minimum => 100, :too_short => "Your essay must be at least %d words."), :tokenizer => lambda {|str| str.scan(/\\w+/) }
 {:ruby}
 
-`:minimum`            	The minimum size of the attribute
-`:maximum`         	The maximum size of the attribute
-`:is`	                The exact size of the attribute
-`:within`	        A range specifying the minimum and maximum size of the attribute
-`:in`	                Alias for `:within`
-`:too_long`             The error message if the attribute goes over the maximum (default is: `"is too long (maximum is %d characters)"`)
-`:too_short`	        The error message if the attribute goes under the minimum (default is: `"is too short (min is %d characters)"`)
-`:wrong_length`	        The error message if using the `:is` method and the attribute is the wrong size (default is: `"is the wrong length (should be %d characters)"`)
-`:tokenizer`	        Specifies how to split up the attribute string. (e.g. `:tokenizer => lambda {|str| str.scan(/\\w+/)}` to count words as in above example.) Defaults to `lambda{ |value| value.split(//) }` which counts individual characters
+#### Options                {#length_of_options}
+
+Key					| Value
+--------------------|---------------------------------------------------------------
+`:minimum`          | The minimum size of the attribute
+`:maximum`          | The maximum size of the attribute
+`:is`	            | The exact size of the attribute
+`:within`	        | A range specifying the minimum and maximum size of the attribute
+`:in`	            | Alias for `:within`
+`:too_long`         | The error message if the attribute goes over the maximum (default is: `"is too long (maximum is %d characters)"`)
+`:too_short`	    | The error message if the attribute goes under the minimum (default is: `"is too short (min is %d characters)"`)
+`:wrong_length`	    | The error message if using the `:is` method and the attribute is the wrong size (default is: `"is the wrong length (should be %d characters)"`)
+`:tokenizer`	    | Specifies how to split up the attribute string. (e.g. `:tokenizer => lambda {\|str\| str.scan(/\\w+/)}` to count words as in above example.) Defaults to `lambda{ |value| value.split(//) }` which counts individual characters
 
 ### validates\\_numericality\\_of
 
@@ -667,14 +687,18 @@ Validates whether the value of the specified attribute is numeric by trying to c
     validates_numericality_of :age, :greater_than => 18
 {:ruby}
 
-`:only_integer`	       Specifies whether the value has to be an integer, e.g. an integral value (default is` false`)
-`:greater_than`	       Specifies the value must be greater than the supplied value
-`:greater_than_or_equal_to`	           Specifies the value must be greater than or equal the supplied value
-`:equal_to`	                     Specifies the value must be equal to the supplied value
-`:less_than`	                Specifies the value must be less than the supplied value
-`:less_than_or_equal_to`	        Specifies the value must be less than or equal the supplied value
-`:odd`	                 Specifies the value must be an odd number
-`:even`	                   Specifies the value must be an even number
+#### Options           {#numericality_of_options}
+
+Key					            | Value
+--------------------------------|------------------------------------------------------------
+`:only_integer`	                | Specifies whether the value has to be an integer, e.g. an integral value (default is` false`)
+`:greater_than`	                | Specifies the value must be greater than the supplied value
+`:greater_than_or_equal_to`	    | Specifies the value must be greater than or equal the supplied value
+`:equal_to`	                    | Specifies the value must be equal to the supplied value
+`:less_than`	                | Specifies the value must be less than the supplied value
+`:less_than_or_equal_to`	    | Specifies the value must be less than or equal the supplied value
+`:odd`	                        | Specifies the value must be an odd number
+`:even`	                        | Specifies the value must be an even number
 
 ### validates\\_presence\\_of
 
@@ -706,8 +730,12 @@ When the record is created, a check is performed to make sure that no record exi
 
 Because this check is performed outside the database there is still a chance that duplicate values will be inserted in two parallel transactions. To guarantee against this you should create a unique index on the field. See `add_index` for more information.
 
-`:scope`	     One or more columns by which to limit the scope of the uniqueness constraint
-`:case_sensitive`	    Looks for an exact match. Ignored by non-text columns (`false` by default)
+#### Options                     {#uniqueness_of_options}
+
+Key                  | Value 
+---------------------|-----------------------------------------------------
+`:scope`	         | One or more columns by which to limit the scope of the uniqueness constraint
+`:case_sensitive`	 | Looks for an exact match. Ignored by non-text columns (`false` by default)
 
 EOF
 

@@ -25,8 +25,10 @@ module MaRuKu
 			#			html = html.gsub(/&/,'&amp;') 
 						html = "<pre>" + CodeRay.scan(source, lang.to_sym).html + "</pre>"
 						code = Document.new(html, {:respect_whitespace =>:all}).root
+						
+						code.attributes['class'] = lang
+						
 						code.name = 'code'
-						code.attributes['class'] = 'ruby'
 						#code.attributes['lang'] = lang
 						
 						pre = Element.new 'pre'
