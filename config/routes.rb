@@ -13,9 +13,7 @@ ActionController::Routing::Routes.draw do |map|
   # -- just remember to delete public/index.html.
     
     # Redirects
-    REDIRECTS.each do |redirect|    
-    	map.connect redirect.first, :controller => 'redirect', :url => redirect.last
-	end
+    REDIRECTS.each { |redirect| map.connect redirect.first, :controller => 'redirect', :url => redirect.last }
 
     # Named routes
     map.latest 'ruby_on_rails/latest', :controller => "contents", :action => "index"
@@ -27,11 +25,8 @@ ActionController::Routing::Routes.draw do |map|
     
     # RESTful routes 
     map.resources :administrator_sessions
-    map.resources :categories, :path_prefix => "/ruby_on_rails"
-    
-    map.resources :cheatsheets, :path_prefix => "/ruby_on_rails" do |contents|
-		contents.resources :sections
-	end
+    map.resources :categories, :path_prefix => "/ruby_on_rails"    
+    map.resources :cheatsheets, :path_prefix => "/ruby_on_rails"
 	
 	map.resources :contents, :path_prefix => "/ruby_on_rails" do |contents|
 		contents.resources :comments do |comments|

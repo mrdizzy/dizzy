@@ -12,14 +12,9 @@ class ContentsController < ApplicationController
 	end
 	
 	def show 
-		@content 		= Content.find_by_permalink(params[:id])		
+		@content 		= Article.find_by_permalink(params[:id])		
 		@comment 		= Comment.new				
 		@categories 	= Category.find(:all, :order => :name)
-		respond_to do |wants|
-			wants.html { render :template => "contents/show"}
-			wants.pdf { send_data(@content.pdf.binary_data, :type => "application/pdf", :disposition => 'inline') }
-			wants.png { send_data(@content.thumbnail.binary_data, :type => "image/png", :disposition => 'inline') }
-		end
 	end
 	
 	def edit 

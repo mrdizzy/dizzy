@@ -9,7 +9,7 @@ xml.rss(:version=>"2.0"){
         xml.item do
           xml.title(article.title)
           xml.description(article.description)      
-          xml.author(article.user.name) 
+          xml.author(article.user) 
           xml.link(content_url(article.permalink))   
         end
       end

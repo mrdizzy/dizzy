@@ -3,15 +3,22 @@ class CheatsheetsController < ContentsController
   def index	
     @cheatsheets = Cheatsheet.recent
   end
+ 
+ def show
+ 	@content = Cheatsheet.find_by_permalink(params[:id])
+	@comment 		= Comment.new				
+	@categories 	= Category.find(:all, :order => :name) 	
+		respond_to do |wants|
+			wants.html { render :template => "contents/show"}
+			wants.pdf { send_data(@content.pdf.binary_data, :type => "application/pdf", :disposition => 'inline') }
+			wants.png { send_data(@content.thumbnail.binary_data, :type => "image/png", :disposition => 'inline') }
+		end 
+	end
   
   def new
-  	if administrator?
-		@cheatsheet = Cheatsheet.new
-	  	@pdf 		= Pdf.new
-  		@thumbnail	= Thumbnail.new
-	else 
-		redirect_to login_path
-	end
+	@cheatsheet = Cheatsheet.new
+  	@pdf 		= Pdf.new
+	@thumbnail	= Thumbnail.new
   end
   
   def update
@@ -39,11 +46,7 @@ class CheatsheetsController < ContentsController
   end
   
   def edit
-  	if administrator?
-  		@cheatsheet =  Cheatsheet.find(params[:id]) 
-  	else 
-  		redirect_to login_path
-  	end 
+  	@cheatsheet =  Cheatsheet.find(params[:id]) 
   end
 
 end
