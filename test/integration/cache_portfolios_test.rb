@@ -1,4 +1,4 @@
-require '../test_helper'
+require File.dirname(__FILE__) + '/../test_helper'
 
 class CachePortfoliosTest < ActionController::IntegrationTest
    fixtures :companies, :portfolio_items, :portfolio_types
@@ -30,5 +30,5 @@ class CachePortfoliosTest < ActionController::IntegrationTest
   		delete "/portfolio_items/#{portfolio_items(:heavenly_slip).id}"
   	end
   end
-  
+ 
 end

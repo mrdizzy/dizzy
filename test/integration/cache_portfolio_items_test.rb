@@ -1,4 +1,4 @@
-require '../test_helper'
+require File.dirname(__FILE__) + '/../test_helper'
 
 class CachePortfolioItemsTest < ActionController::IntegrationTest
    fixtures :companies, :portfolio_items, :portfolio_types

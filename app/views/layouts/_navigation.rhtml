@@ -19,11 +19,17 @@
 	</div>	
 	
 	<!-- RUBY ON RAILS -->
-	<div class="nav_button"><%= link_to image_tag("f/nav/rails.png"), latest_path %></div>
+	<div class="nav_button">
+		<%= link_to image_tag("f/nav/rails.png"), latest_path %>
+	</div>
 	
 	<!-- PORTFOLIO -->
 	<div class="nav_button">
-		<%= link_to image_tag("f/nav/portfolio.png"), "/portfolios/1" %>
+		<% if current_page?(:controller => 'portfolios') %>
+			<%= image_tag("f/nav/portfolio_over.png") %>
+		<% else %>
+			<%= link_to image_tag("f/nav/portfolio.png"), "/portfolios" %>
+		<% end %>
 	</div>
 	
 	<!-- CONTACT -->

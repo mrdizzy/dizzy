@@ -1,4 +1,4 @@
-require '../test_helper'
+require File.dirname(__FILE__) + '/../test_helper'
 
 class CacheContentsTest < ActionController::IntegrationTest
    fixtures :contents, :binaries, :categories, :versions
