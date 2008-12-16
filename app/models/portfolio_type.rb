@@ -24,8 +24,6 @@ class PortfolioType < ActiveRecord::Base
 	
 	def uploaded_data=(binary_data)
 			unless binary_data.blank?
-			self.header_filename = binary_data.original_filename
-			self.header_content_type = binary_data.content_type.chomp
 			self.header_binary = binary_data.read
 		end
 	end	

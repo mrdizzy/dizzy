@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081208231312) do
+ActiveRecord::Schema.define(:version => 20081216175905) do
 
   create_table "binaries", :force => true do |t|
     t.binary  "binary_data",  :limit => 16777215
@@ -88,17 +88,11 @@ ActiveRecord::Schema.define(:version => 20081208231312) do
   add_index "portfolio_items", ["company_id"], :name => "company_id"
 
   create_table "portfolio_types", :force => true do |t|
-    t.string  "description",         :limit => 40
+    t.string  "description",   :limit => 40
     t.integer "column_space"
     t.integer "position"
     t.binary  "header_binary"
-    t.string  "header_filename"
-    t.string  "header_content_type"
-    t.boolean "visible",                           :default => true
-  end
-
-  create_table "schema_info", :id => false, :force => true do |t|
-    t.integer "version"
+    t.boolean "visible",                     :default => true
   end
 
   create_table "versions", :force => true do |t|
