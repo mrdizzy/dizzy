@@ -14,10 +14,12 @@
 #
 
 class PortfolioType < ActiveRecord::Base
-	validates_presence_of		:description, :column_space, :position
-	validates_uniqueness_of 	:description, :position
+	validates_presence_of		:description, :column_space
+	validates_presence_of		:position, :unless => Proc.new { |portfolio_type| portfolio_type.visible == false }
+	validates_uniqueness_of 	:description
+	validates_uniqueness_of		:position, :allow_blank => true
 	validates_inclusion_of		:column_space, :in => 0..3,:message => "should be between 0 and 3"
-	validates_numericality_of 	:position
+	validates_numericality_of 	:position,:allow_blank => true
 	has_many 					:portfolio_items, :dependent => :destroy
 	
 	def uploaded_data=(binary_data)

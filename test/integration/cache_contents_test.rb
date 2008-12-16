@@ -36,6 +36,13 @@ class CacheContentsTest < ActionController::IntegrationTest
   	end
   end
   
+  def test_should_expire_show_article_on_update
+  	login
+  	assert_expire_pages("/ruby_on_rails/contents/store-file-uploads-in-database") do |*urls|
+  		put "/ruby_on_rails/contents/#{contents(:file_uploads_tutorial).id}", { :article => { :permalink => "boo-boo"} }
+  	end
+  end
+  
   def test_should_cache_index_cheatsheets
   	assert_cache_pages("/ruby_on_rails/cheatsheets")
   end

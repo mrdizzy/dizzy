@@ -39,6 +39,13 @@ class CachePortfoliosTest < ActionController::IntegrationTest
   	end
   end
   
+  def test_should_expire_index_on_company_update
+  	login
+  	assert_expire_pages("/portfolios") do |*urls|
+  		put "/companies/#{companies(:heavenly).id}", { :company => { :name => "Jupiter Smith Ltd" } }
+  	end
+  end
+  
   def test_should_cache_pagination
   	get "/portfolios/page/2.js"
   	assert_response :success
@@ -51,6 +58,10 @@ class CachePortfoliosTest < ActionController::IntegrationTest
   	assert_expire_pages("/portfolios/page/2.js") do |*urls|
   		delete "/companies/#{companies(:heavenly).id}"
   	end
+  end
+  
+  def test_should_expire_pagination_on_company_update
+  	flunk
   end
  
 end

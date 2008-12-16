@@ -7,11 +7,15 @@ class CachePortfolioTypeTest < ActionController::IntegrationTest
 	assert_cache_pages("/portfolio_types/#{portfolio_types(:business_card).id}.png")
   end
   
-  def test_should_expire_on_destroy
+  def test_should_expire_show_on_destroy
     login
 	assert_expire_pages("/portfolio_types/#{portfolio_types(:business_card).id}.png") do |*urls|
   	  	delete "/portfolio_types/#{portfolio_types(:business_card).id}"
   	  end  
+  end
+  
+  def test_should_expire_show_on_update
+  	
   end
   
 end

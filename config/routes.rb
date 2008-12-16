@@ -15,6 +15,7 @@ ActionController::Routing::Routes.draw do |map|
     # Redirects
     REDIRECTS.each { |redirect| map.connect redirect.first, :controller => 'redirect', :url => redirect.last }
 
+	map.connect "/portfolio_types", :controller => "portfolio_types", :action => "update", :conditions => { :method => :put }
     # Named routes
     map.latest 'ruby_on_rails/latest', :controller => "contents", :action => "index"
    	map.login 'login', :controller => "administrator_sessions", :action => "new"
@@ -40,6 +41,7 @@ ActionController::Routing::Routes.draw do |map|
 	map.resources :portfolio_items
 	map.resources :portfolio_types
 	map.resources :portfolios
+	
 	
   # Allow downloading Web Service WSDL as a file with an extension
   # instead of a file named 'wsdl'

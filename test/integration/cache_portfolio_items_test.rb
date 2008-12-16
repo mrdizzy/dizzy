@@ -7,16 +7,14 @@ class CachePortfolioItemsTest < ActionController::IntegrationTest
     assert_cache_pages("/portfolio_items/#{portfolio_items(:heavenly_slip).id}.png")
   end
    
-  def test_should_expire_on_destroy
+  def test_should_expire_show_on_destroy
   	  login
-  	  assert_expire_pages("/portfolio_items/#{portfolio_items(:heavenly_slip).id}.png",
-  	  					  "/portfolios/#{portfolio_items(:heavenly_slip).company.id}",
-  	  					  "/portfolios/#{portfolio_items(:heavenly_slip).company.id}.js") do |*urls|
+  	  assert_expire_pages("/portfolio_items/#{portfolio_items(:heavenly_slip).id}.png") do |*urls|
   	  	delete "/portfolio_items/#{portfolio_items(:heavenly_slip).id}"
   	  end 
   end
   
-   def test_should_expire_on_company_destroy
+   def test_should_expire_show_on_company_destroy
    	  login
    	  assert_expire_pages("/portfolio_items/#{portfolio_items(:heavenly_slip).id}.png",
   	  					"/portfolio_items/#{portfolio_items(:heavenly_letterhead).id}.png") do |*urls|

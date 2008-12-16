@@ -12,12 +12,14 @@
 <p><%= error_message_on 'portfolio_type', 'position' %></p>
 
 <p><label for="portfolio_type_position">Position</label>
-<%= select 'portfolio_type[]', 'position', 0..20, {} %></p>
+<%= select 'portfolio_type[]', 'position', 0..200, {:include_blank => true} %></p>
+
 <p><label for="portfolio_type_visible">Visible?</label>
 <%= check_box "portfolio_type[]", "visible" %></p>
+
 <p><%= error_message_on 'portfolio_type', 'image_header' %></p>
 <label for="portfolio_type_image_header">Header</label>
-<div class="fileinputs">
-	<%= file_field "portfolio_type[]", 'uploaded_data', :class => "file" %></p>
-</div>
 
+<div class="fileinputs"><%= file_field "portfolio_type[]", 'uploaded_data', :class => "file" %></p></div>
+
+<%= spiro %>

@@ -13,7 +13,7 @@ class PortfolioTypesController < ApplicationController
 	end
 	
 	def index
-  		@portfolio_type_pages, @portfolio_types = paginate :portfolio_types, :per_page => 10, :order => 'position'
+  		@portfolio_types = PortfolioType.all
   end
 
   def new
@@ -25,7 +25,7 @@ class PortfolioTypesController < ApplicationController
   	
   	if @portfolio_type.save
       flash[:notice] = 'PortfolioType was successfully created.'
-      redirect_to :action => 'list'
+      redirect_to :action => "index"
    else
       render :action => 'new'
     end
@@ -38,7 +38,7 @@ class PortfolioTypesController < ApplicationController
   def update
 		@portfolio_types = PortfolioType.update(params[:portfolio_type].keys, params[:portfolio_type].values)
 		if @portfolio_types.all? { |value| value.errors.empty? }
-				redirect_to :action => 'list'
+				redirect_to :action => "index"
 		else
 			render :action => 'edit'
 		end		
@@ -46,7 +46,7 @@ class PortfolioTypesController < ApplicationController
 
   def destroy
     PortfolioType.find(params[:id]).destroy
-    redirect_to :action => 'list'
+    redirect_to :action => "index"
   end	
 	
 end

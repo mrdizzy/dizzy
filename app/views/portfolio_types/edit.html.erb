@@ -1,6 +1,6 @@
 <h1>Editing</h1>
 
-<% form_for :portfolio_type, :url => { :action => :update }, :html => { :multipart => true } do |form| %>
+<% form_for :portfolio_type, :url => portfolio_types_path, :html => { :multipart => true,  :method => :put  }do |form| %>
 
   <%= render :partial => 'portfolio_type', :collection => @portfolio_types  %>
 

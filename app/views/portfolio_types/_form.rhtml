@@ -10,11 +10,11 @@
 
 <%= select "portfolio_type",'column_space', 1..3, {} %></p>
 
-
 <p><label for="portfolio_type_position">Position</label>
 	
 <p><%= error_message_on 'portfolio_type', 'position' %></p>
-<%= select "portfolio_type", 'position', 0..20, {} %></p>
+<%= select "portfolio_type", 'position', 0..200, {:include_blank => true } %></p>
+
 <p><label for="portfolio_type_visible">Visible?</label>
 <%= form.check_box  "visible",  :class => "checkbox" %></p>
 <p><label for="portfolio_type_image_header">Graphical Header</label>
