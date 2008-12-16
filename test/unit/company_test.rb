@@ -13,11 +13,6 @@ class CompanyTest < Test::Unit::TestCase
   	Company.all.each do |company|
   		assert company.valid?, company.errors.full_messages
   	end
-  	
-  	 companies(:heavenly).portfolio_items.each do |item|
-  	 	puts item.portfolio_type.description
-  	 	puts item.filename
-  	 end
   end
   
   def setup

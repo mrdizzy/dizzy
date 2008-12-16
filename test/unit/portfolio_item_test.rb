@@ -28,34 +28,35 @@ class PortfolioItemTest < Test::Unit::TestCase
   	assert portfolio_item.valid?, portfolio_item.errors.full_messages
   end
   
-  def test_content_type_must_be_valid
+  def test_bad_content_type_must_be_invalid
   	bad 	= %w(image/jpg image/jpeg audio/wav image/tiff image/pngg image/giff image/png/audio)
   	
   	bad.each do |content_type| 
   		
 		valid_content_type = PortfolioItem.new(	:portfolio_type	=> portfolio_types(:letterhead),
 												:company_id		=> companies(:silver).id,
-												:content_type 		=> content_type,
-												:filename 			=> "letterhead.png",
-												:size 				=> "3644",
-												:data				=> portfolio_items(:heavenly_logo).data)
+												:content_type 	=> content_type,
+												:size			=> 56.kilobytes,
+												:data			=> portfolio_items(:heavenly_letterhead).data )
 												
 		assert !valid_content_type.valid?,  valid_content_type.errors.full_messages
-		assert_equal "must be a PNG or GIF file", valid_content_type.errors.on(:content_type)
+		assert_equal "must be a PNG file", valid_content_type.errors.on(:content_type), "Content type should have error"
 	end
-	
-	good	= %w(image/png image/x-png image/gif)
+  end  
+  
+  def test_good_content_type_must_be_valid
+  	good	= %w(image/png image/x-png)
 	
 	good.each do |content_type|
 		valid_content_type = PortfolioItem.new( :portfolio_type	=> portfolio_types(:letterhead),
-												:company 		=> companies(:silver),
-												:content_type 		=> content_type,
-												:filename 			=> "letterhead.png",
-												:size 				=> "3644",
-												:data				=> portfolio_items(:heavenly_logo).data)
+												:company_id 		=> companies(:silver).id,												
+												:size			=> 56.kilobytes,
+												:data	=> portfolio_items(:heavenly_letterhead).data ,
+												:content_type => content_type)
+											
   		assert valid_content_type.valid?, valid_content_type.errors.full_messages
   	end
-  end    
+  end  
   
   def test_portfolio_item_must_be_destroyed_upon_company_deletion
 		flunk
@@ -64,8 +65,6 @@ class PortfolioItemTest < Test::Unit::TestCase
   def test_portfolio_type_id_must_be_unique_to_company
   	existing_portfolio_type = PortfolioItem.new( 	:portfolio_type_id		=> portfolio_types(:letterhead).id,
 													:company 			=> companies(:heavenly),
-													:content_type 		=> "image/png",
-													:filename 			=> "colourlogo.png",
 													:data				=> portfolio_items(:heavenly_logo).data)
 													
 	assert !existing_portfolio_type.valid?,  existing_portfolio_type.errors.full_messages

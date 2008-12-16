@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20081208231312
+# Schema version: 20081216175905
 #
 # Table name: portfolio_items
 #
@@ -14,64 +14,50 @@
 
 ---
 heavenly_grey_logo: 
-  content_type: image/png
   size: "5000"
   portfolio_type: grey_logo
-  filename: heavenlysmallgreylogo.png
   company: heavenly
   data: !binary |
     R0lGODlhAQABAIAAAAAAAP///yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==
     
 heavenly_header: 
-  content_type: image/png
   size: "5000"
   portfolio_type: header
-  filename: heavenlyheader.png
   company: heavenly
   data: !binary |
     R0lGODlhAQABAIAAAAAAAP///yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==
 
 heavenly_letterhead: 
-  content_type: image/png
   size: "5000"
   portfolio_type: letterhead
-  filename: heavenlyletterhead.png
   company: heavenly
   data: !binary |
     R0lGODlhAQABAIAAAAAAAP///yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==
 
 heavenly_logo: 
-  content_type: image/png
   size: "5000"
   portfolio_type: logo
-  filename: heavenlylogo.png
   company: heavenly
   data: !binary |
     R0lGODlhAQABAIAAAAAAAP///yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==
 
 heavenly_colour_logo: 
-  content_type: image/png
   size: "5000"
   portfolio_type: colour_logo
-  filename: heavenlysmallcolourlogo.png
   company: heavenly
   data: !binary |
     R0lGODlhAQABAIAAAAAAAP///yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==
 
 heavenly_cards: 
-  content_type: image/png
   size: "5000"
   portfolio_type: business_card
-  filename: heavenlycard.png
   company: heavenly
   data: !binary |
     R0lGODlhAQABAIAAAAAAAP///yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==
 
 heavenly_slip: 
-  content_type: image/png
   size: "5000"
   portfolio_type: compliment_slip
-  filename: heavenlyslip.png
   company: heavenly
   data: !binary |
     R0lGODlhAQABAIAAAAAAAP///yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==

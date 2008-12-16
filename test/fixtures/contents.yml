@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20081208231312
+# Schema version: 20081216175905
 #
 # Table name: contents
 #

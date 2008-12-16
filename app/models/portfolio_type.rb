@@ -1,16 +1,14 @@
 # == Schema Information
-# Schema version: 20081208231312
+# Schema version: 20081216175905
 #
 # Table name: portfolio_types
 #
-#  id                  :integer(4)    not null, primary key
-#  description         :string(40)    
-#  column_space        :integer(4)    
-#  position            :integer(4)    
-#  header_binary       :binary        
-#  header_filename     :string(255)   
-#  header_content_type :string(255)   
-#  visible             :boolean(1)    default(TRUE)
+#  id            :integer(4)    not null, primary key
+#  description   :string(40)    
+#  column_space  :integer(4)    
+#  position      :integer(4)    
+#  header_binary :binary        
+#  visible       :boolean(1)    default(TRUE)
 #
 
 class PortfolioType < ActiveRecord::Base

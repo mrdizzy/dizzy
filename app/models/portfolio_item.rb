@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20081208231312
+# Schema version: 20081216175905
 #
 # Table name: portfolio_items
 #
@@ -13,24 +13,29 @@
 #
 
 class PortfolioItem < ActiveRecord::Base
-	validates_uniqueness_of :portfolio_type_id, :scope => 'company_id', :message => "must not be a duplicate"
-	validates_format_of :content_type,
-						:with => /(gif|png)$/i,
-						:message => "must be a PNG or GIF file"
-	validates_inclusion_of		:size, :in => 1.kilobyte..100.kilobytes,:message => "must be between 1kb and 100kb"
-	validates_presence_of :filename
-	validates_presence_of :content_type
-	validates_presence_of :data
+	
+	attr_writer :content_type
+	
 	belongs_to 	:portfolio_type
 	belongs_to	:company
+	
+	validates_uniqueness_of :portfolio_type_id, :scope => 'company_id', :message => "must not be a duplicate"
+	validates_format_of :content_type,
+						:with => /png$/i,
+						:message => "must be a PNG file"
+	validates_inclusion_of		:size, :in => 1.kilobyte..100.kilobytes,:message => "must be between 1kb and 100kb"
+	validates_presence_of :data
 	validates_existence_of :portfolio_type
+	
 	
 	named_scope :visible, { :conditions => ("portfolio_types.visible = '1'"), :include => "portfolio_type"}
 	named_scope :header, { :conditions => "portfolio_type_id = '7'" }
 	
+	def content_type
+		@content_type ? @content_type : "image/png" 
+	end
+	
 	def uploaded_data=(binary_data)
-		self.filename = binary_data.original_filename
-		self.content_type = binary_data.content_type.chomp
 		self.data = binary_data.read
 		self.size = binary_data.size
 	end

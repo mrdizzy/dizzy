@@ -8,7 +8,7 @@ class PortfolioTypesController < ApplicationController
 	def show
 		@portfolio_type = PortfolioType.find(params[:id])
 		respond_to do |wants|
-			wants.png { send_data(@portfolio_type.header_binary, :type => @portfolio_type.header_content_type, :disposition => 'inline') }
+			wants.png { send_data(@portfolio_type.header_binary, :type => "image/png", :disposition => 'inline') }
 		end
 	end
 	

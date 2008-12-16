@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081216175905) do
+ActiveRecord::Schema.define(:version => 20081216215513) do
 
   create_table "binaries", :force => true do |t|
     t.binary  "binary_data",  :limit => 16777215
@@ -78,8 +78,6 @@ ActiveRecord::Schema.define(:version => 20081216175905) do
   create_table "portfolio_items", :force => true do |t|
     t.integer "portfolio_type_id", :default => 0, :null => false
     t.integer "company_id",        :default => 0, :null => false
-    t.string  "content_type"
-    t.string  "filename"
     t.integer "size"
     t.binary  "data"
   end
