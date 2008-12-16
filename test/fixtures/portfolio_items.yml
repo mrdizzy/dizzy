@@ -61,3 +61,10 @@ heavenly_slip:
   company: heavenly
   data: !binary |
     R0lGODlhAQABAIAAAAAAAP///yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==
+    
+silver_header: 
+  size: "10000"
+  portfolio_type: header
+  company: silver
+  data: !binary |
+    R0lGODlhAQABAIAAAAAAAP///yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==

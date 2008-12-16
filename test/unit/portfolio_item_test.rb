@@ -59,7 +59,12 @@ class PortfolioItemTest < Test::Unit::TestCase
   end  
   
   def test_portfolio_item_must_be_destroyed_upon_company_deletion
-		flunk
+	company = companies(:heavenly)
+	portfolio_items = companies(:heavenly).portfolio_items
+	
+	assert_difference('PortfolioItem.count', (0 - portfolio_items.size)) do
+		company.destroy
+	end
   end
   
   def test_portfolio_type_id_must_be_unique_to_company
