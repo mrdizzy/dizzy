@@ -6,6 +6,7 @@ class ContentSweeper < ActionController::Caching::Sweeper
 	observe Content
 	
 	def after_save(record)
+		puts "after_save"
 		expire_content_page(record, record.permalink_was)
 		expire_latest_page
 		expire_welcome_page

@@ -23,9 +23,8 @@ class CheatsheetsController < ContentsController
   
   def update
   	 @cheatsheet = Cheatsheet.find(params[:id])
-  	 @cheatsheet.update_attributes(params[:cheatsheet])
  
-    if @cheatsheet.save
+    if @cheatsheet.update_attributes(params[:cheatsheet])
       flash[:notice] = 'Cheatsheet was successfully updated.'
       redirect_to cheatsheet_path(@cheatsheet.permalink)
     else

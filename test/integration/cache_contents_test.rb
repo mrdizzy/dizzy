@@ -18,6 +18,13 @@ class CacheContentsTest < ActionController::IntegrationTest
       end
   end  
   
+  def test_should_expire_show_cheatsheet_on_update
+  	login
+  	assert_expire_pages("/ruby_on_rails/cheatsheets/action-mailer") do |*urls|
+  		put "/ruby_on_rails/cheatsheets/#{contents(:action_mailer_cheatsheet).id}", { :cheatsheet => { :permalink => "boo-boo"} }
+  	end
+  end
+  
   def test_should_cache_article_on_show
   	assert_cache_pages("/ruby_on_rails/contents/store-file-uploads-in-database")
   end
