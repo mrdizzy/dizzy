@@ -24,6 +24,19 @@ class ContentsController < ApplicationController
   	def new
   		@article = Article.new
   	end
+  	
+  	def preview
+  		@content = params[:content]
+  		result = "Use numbered headers: true
+HTML use syntax: true
+
+{:rhtml: lang=rhtml html_use_syntax=true}
+{:ruby: lang=ruby  html_use_syntax=true}
+
+" + @content
+		@content = Maruku.new(result).to_html
+
+  	end
 
   def update
     @article = Article.find(params[:id])

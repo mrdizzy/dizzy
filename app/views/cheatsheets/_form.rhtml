@@ -20,6 +20,13 @@
 <p><label for="article_content"><%= diamond %> Content</label>
 <%= form.text_area :content %></p>
 
+ <%= observe_field :cheatsheet_content, :url => preview_cheatsheets_path,
+      :update => :article,
+      :with => "content"    
+        %>
+
+<div id="article"></div>
+
 <p><label for="article_date"><%= diamond %> Date</label>
 <%= form.datetime_select :date %></p>
 

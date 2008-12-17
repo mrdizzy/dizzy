@@ -1,3 +1,6 @@
+set :default_stage, 'staging'
+require 'capistrano/ext/multistage'
+
 set :application, "dizzy"
 set :repository,  "http://dizzy.googlecode.com/svn/trunk"
 set :use_sudo, false
