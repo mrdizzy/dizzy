@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
 class CacheContentsTest < ActionController::IntegrationTest
-   fixtures :contents, :binaries, :categories, :versions
+   fixtures :contents, :binaries, :categories, :versions, :comments
    
   def test_should_cache_cheatsheet_on_show
   	  assert_cache_pages("/ruby_on_rails/cheatsheets/action-mailer")
@@ -82,5 +82,26 @@ class CacheContentsTest < ActionController::IntegrationTest
   		delete "/ruby_on_rails/contents/#{contents(:file_uploads_tutorial).id}"
   	end  	
   end  
+  
+  def test_should_expire_show_contents_on_comments_create
+  	assert_expire_pages("/ruby_on_rails/contents/#{contents(:file_uploads_tutorial).permalink}") do |*urls|
+  		post content_comments_path(contents(:file_uploads_tutorial).id), 
+  								{ :comment => { 	
+  												:subject => "Hello", 
+		  										:body => "This is a comment", 
+		  										:name => "Malandra Mysogynist", 
+		  										:email => 'malandra@dutyfree.com' }, 
+  								:content_id => contents(:action_mailer_cheatsheet).id
+  									
+  								}
+  	end
+  end
+  
+    def test_should_expire_show_contents_on_comments_destroy
+    login
+  	assert_expire_pages("/ruby_on_rails/cheatsheets/#{contents(:action_mailer_cheatsheet).permalink}") do |*urls|
+  		delete comment_path(comments(:great_grandmother).id)
+  	end
+  end
  
 end

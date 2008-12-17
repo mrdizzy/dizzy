@@ -1,13 +1,11 @@
 class ContentSweeper < ActionController::Caching::Sweeper
 	
 	# TODO Make sweeper regenerate content pages upon category modification
-	# TODO Make sweeper regenerate PDF after new PDF uploaded
 	
 	observe Content
 	
 	def after_save(record)
-		puts "after_save"
-		expire_content_page(record, record.permalink_was)
+		record.permalink_was ? expire_content_page(record, record.permalink_was) : expire_content_page(record,record.permalink)
 		expire_latest_page
 		expire_welcome_page
 		expire_rss_feed

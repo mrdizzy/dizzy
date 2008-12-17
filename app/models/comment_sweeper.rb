@@ -4,7 +4,6 @@ class CommentSweeper < ActionController::Caching::Sweeper
 	
 	def after_save(record)
 		expire_content_page(record)
-
 	end
 	
 	def after_destroy(record)
@@ -13,11 +12,11 @@ class CommentSweeper < ActionController::Caching::Sweeper
 	
 	private
 	
-	def expire_content_page(record)
-		content = record.content
-		if content.is_a?(Cheatsheet)			
-			expire_page hash_for_cheatsheet_path(:id => content.permalink)
+	def expire_content_page(comment)
+		if comment.content.is_a?(Cheatsheet)			
+			expire_page hash_for_cheatsheet_path(:id => comment.content.permalink)
+		else
+			expire_page hash_for_content_path(:id => comment.content.permalink)	
 		end
-		expire_page hash_for_content_path(:id => content.permalink)		
 	end
 end

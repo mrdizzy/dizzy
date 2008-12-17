@@ -18,6 +18,7 @@ Rails::Initializer.run do |config|
   
   config.gem "maruku" 
   config.gem "coderay"
+
 end
 
 # Include your application configuration below
