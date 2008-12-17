@@ -32,7 +32,7 @@ class CheatsheetsControllerTest  < ActionController::TestCase
 
  	def test_should_fail_on_create_with_invalid_attributes
  		post :create, { 
- 						:cheatsheet =>	{ :permalink => "migrations",
+ 						:cheatsheet =>	{ :permalink => "action-mailer",
  										  "date(li)" => "2008",
  										  "date(2i)" => "8",
  										  "date(3i)" => "1",
