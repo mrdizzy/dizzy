@@ -1,12 +1,18 @@
 <div id="new_category_form">
+
 	<%= error_messages_for :category %>
 	<%= flash[:errors]%>
+	
 	<% remote_form_for :category, :url => categories_path do |form| %>
+	
 		<label for="category_name"><%= diamond %> Name</label>
 		<%= form.text_field :name, :size => 20 %><br/>
 		
 		<label for="category_permalink"><%= diamond %> Permalink<br/></label>
 		<%= form.text_field :permalink, :size => 20 %><br/>
+		
 		<%= submit_button %>
+		
 	<% end %>
+	
 </div>

@@ -16,7 +16,7 @@ class CategoriesController < ApplicationController
 				page.visual_effect(:highlight, "category_#{@category.id.to_s}", :duration => 1.5, :endcolor => "#ffffff", :startcolor => "#D1ECF9")
 			end
 		else
-			redirect_to new_category_path 
+			render :action => "new"
 		end				
 	end	
 
