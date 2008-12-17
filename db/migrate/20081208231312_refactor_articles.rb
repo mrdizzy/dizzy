@@ -743,7 +743,7 @@ cheatsheet.save!
 
 ######################################################
 
-cheatsheet = Cheatsheet.find(17)
+cheatsheet = Cheatsheet.find(1)
 cheatsheet.content = <<-EOF
 
 # Table of contents
@@ -753,7 +753,7 @@ cheatsheet.content = <<-EOF
 
 ## Table methods
 
-### change\\_table
+### change\_table
 
 Provides a block that enables you to alter columns on an existing table using various shortcut methods...
 
@@ -763,7 +763,7 @@ Provides a block that enables you to alter columns on an existing table using va
     end
 {:ruby}
 
-### create\\_table
+### create\_table
 
 Creates a table on the database. Creates a table called `:table_name` and makes the table object available to a block that can then add columns to it by specifying column_types or utilising shortcut methods such as using `belongs_to` to specify 
 foreign keys...
@@ -783,21 +783,21 @@ Key             | Value                     | Description
 `:primary_key`  | `:symbol`	                | overrides the default name of `:id` for the primary column. Use this to specify the name of the column in the database that Rails will use to store the primary key
 `:options`	| `"string"`	                | pass raw options to your underlying database, e.g. `auto_increment = 10000`. Note that passing options will cause you to lose the default `ENGINE=InnoDB statement`
 
-### drop\\_table
+### drop\_table
 
 Destroys the specified table.
 
     drop_table :table_name
 {:ruby}
     
-### rename\\_table
+### rename\_table
 
 Renames the specified table.
 
     rename_table :old_table_name, :new_table_name
 {:ruby}
 
-## example\\_migration.rb
+## example\_migration.rb
 
     class CreateCustomers < ActiveRecord::Migration  
 
@@ -841,18 +841,21 @@ Rails          | db2	        | mysql         | openbase     | Oracle
 `:time`        | time           | time          | time         | date
 `:timestamp`   | timestamp      | datetime      | timestamp    | date
 
-Rails*        *postgresql*  *sqlite*      *sqlserver*     *Sybase*
-`:binary`      bytea         blob          image           image
-`:boolean`     boolean       boolean       bit             bit
-`:date`        date          date          datetime        datetime
-`:datetime`    timestamp     datetime      datetime        datetime
-`:decimal`     decimal       decimal       decimal         decimal
-`:float`       float         float         float(8)        float(8)
-`:integer`     integer       integer       int             int
-`:string`      \*            varchar(255)  varchar(255)    varchar(255)
-`:text`        text          text          text            text
-`:time`        time          datetime      datetime        time
-`:timestamp`   timestamp     datetime      datetime        timestamp
+* * * 
+
+Rails          | postgresql     | sqlite        | sqlserver    | Sybase
+---------------|----------------|---------------|--------------|---------------
+`:binary`      | bytea          | blob          | image        | image
+`:boolean`     | boolean        | boolean       | bit          | bit
+`:date`        | date           | date          | datetime     | datetime
+`:datetime`    | timestamp      | datetime      | datetime     | datetime
+`:decimal`     | decimal        | decimal       | decimal      | decimal
+`:float`       | float          | float         | float(8)     | float(8)
+`:integer`     | integer        | integer       | int          | int
+`:string`      | *              | varchar(255)  | varchar(255) | varchar(255)
+`:text`        | text           | text          | text         | text
+`:time`        | time           | datetime      | datetime     | time
+`:timestamp`   | timestamp      | datetime      | datetime     | timestamp
 
 ## Rake tasks
 
@@ -909,13 +912,9 @@ db:version
 
 ## Directory structure
 
-* `rails_root`
-    * `db`
-    + `schema.rb`
-      + `migrate`
-        + `20080812205401_create_customers.rb`
-        + `20080812215424_add_photo.rb`
-        + `20080812235405_alter_surname.rb`
+*    `rails_root`
+    * db
+*    Hello
 
 ## Shortcut methods
 
@@ -927,7 +926,7 @@ t.timestamps	       t.index	           t.remove_index
 
 ## Column methods
 
-### add\\_column
+### add\_column
 
 Creates a new column on the specified table.
 
@@ -944,21 +943,21 @@ Key            | Value                   | Description
 `:precision`   | `integer`	         | Specifies the precision for a `:decimal` column.
 `:scale`       | `integer`	         | Specifies the scale for a `:decimal` column.
 
-### change\\_column
+### change\_column
 
 Change the data type of the specified column
 
     change_column :table_name, :column_name, :new_column_type
 {:ruby}
 
-### rename\\_column
+### rename\_column
 
 Renames the specified column.
 
     rename_column :table_name, :old_column_name, :new_column_name 
 {:ruby}
 
-### remove\\_column
+### remove\_column
 
 Removes the specified column.
 
@@ -967,14 +966,14 @@ Removes the specified column.
 
 ## Indexes
 
-### add\\_index
+### add\_index
 
 Creates an index for the specified column.
 
     add_index :table_name, :column_name, :unique => true
 {:ruby}
 
-## remove\\_index
+## remove\_index
 
 Remove an index from the specified column.
 
@@ -1038,6 +1037,239 @@ Fixtures contain data which can be loaded into your database using migrations. F
 {:ruby}
 
 EOF
+
+cheatsheet.save!
+
+###################################
+
+# Table of Contents
+
+* Table
+{:toc}
+
+## Read methods 
+
+### count
+
+Alias for `size`
+
+### each
+
+Yields each attribute and associated message per error added.
+
+    class Company < ActiveRecord::Base
+      validates_presence_of :name, :address, :email
+      validates_length_of :name, :in => 5..30
+    end
+
+    company = Company.create(:address => '123 First St.')
+
+    company.errors.each{|attr,msg| puts "#{attr} - #{msg}" } 
+      # => name - is too short (minimum is 5 characters)
+      # => name - can't be blank
+      # => address - can't be blank
+{:ruby}
+
+### each\_full
+
+Yields each full error message added. So `Person.errors.add("first_name", "can't be empty")` will be returned through iteration as `"First name can't be empty"`.
+
+    class Company < ActiveRecord::Base
+      validates_presence_of :name, :address, :email
+      validates_length_of :name, :in => 5..30
+    end
+
+    company = Company.create(:address => '123 First St.')
+
+    company.errors.each_full{|msg| puts msg } 
+      # => Name is too short (minimum is 5 characters)
+      # => Name can't be blank
+      # => Address can't be blank
+{:ruby}
+
+### full\_messages
+
+Returns all the full error messages in an array.
+
+    class Company < ActiveRecord::Base
+      validates_presence_of :name, :address, :email
+      validates_length_of :name, :in => 5..30
+    end  
+
+    company = Company.create(:address => '123 First St.')
+  
+    company.errors.full_messages 
+      # => ["Name is too short (minimum is 5 characters)", "Name can't be blank", "Address can't be blank"]
+{:ruby}
+
+### empty?
+
+Returns `true` if no errors have been added.
+
+### length
+
+Alias for `size`
+
+### on
+
+Returns `nil`, if no errors are associated with the specified attribute. Returns the error message if one error is associated with the specified attribute. Returns an array of error messages if more than one error is associated with the specified attribute.
+
+    class Company < ActiveRecord::Base
+      validates_presence_of :name, :address, :email
+      validates_length_of :name, :in => 5..30
+    end
+  
+    company = Company.create(:address => '123 First St.')
+
+    company.errors.on(:name)      
+      # => ["is too short (minimum is 5 characters)", "can't be blank"]
+    company.errors.on(:email)     
+      # => "can't be blank"
+    company.errors.on(:address)   
+      # => nil
+{:ruby}
+
+This method is also aliased as the shortcut `[]` (see below)
+
+### on\_base
+
+Returns errors that have been assigned to the base object through `add_to_base` according to the normal rules of `on(attribute)`.
+
+### invalid? (attribute)
+
+Returns `true` if the specified attribute has errors associated with it.
+
+    class Company < ActiveRecord::Base
+      validates_presence_of :name, :address, :email
+      validates_length_of :name, :in => 5..30
+    end
+  
+    company = Company.create(:address => '123 First St.')
+
+    company.errors.invalid?(:name)      
+      # => true
+    company.errors.invalid?(:address)   
+      # => false
+{:ruby}
+
+### size
+
+Returns the total number of errors added. Two errors added to the same attribute will be counted as such.
+
+### to\_xml(options={})
+
+Returns an XML representation of this error object.
+
+### \[\] (attribute)
+
+Alias for `on` method...
+
+    company.errors[:email]
+{:ruby}
+
+## Write methods
+
+### add `(attribute, msg = @@default_error_messages[:invalid])`
+
+Adds an error message `msg` to the `attribute`, which will be returned on a call to `on(attribute)` for the same attribute and ensure that this error object returns false when asked if `empty?`. More than one error can be added to the same attribute in which case an array will be returned on a call to `on(attribute)`. If no msg is supplied, `"invalid"` is assumed.
+
+### add\_on\_blank `([attributes], msg = @@default_error_messages[:blank])`
+
+Will add an error message to each of the attributes in `[attributes]` that is blank (for example, an `empty` string).
+
+### add\_on\_empty `(attributes, msg = @@default_error_messages[:empty])`
+
+Will add an error message to each of the attributes in `attributes` that is empty.
+
+### add\_to\_base `(attributes, msg = @@default_error_messages[:empty])`
+
+Adds an error to the base object instead of any particular attribute. This is used to report errors that don't tie to any specific attribute, but rather to the object as a whole. These error messages don't get prepended with any field name when iterating with `each_full`, so they should be complete sentences.
+
+### clear
+
+Removes all the errors that have been added to the object.
+
+## Default error messages
+
+These error messages are stored in a Rails class variable, `@@default_error_messages` and can be changed or added to as follows:
+
+    ActiveRecord::Errors.default_error_messages[:blank] = "Your custom message here"
+{:ruby}
+
+These default error messages are used by Rails' built in validation class methods and some of the errors object's write methods such as `add_on_blank`. You may find it useful to change them if, for example, you require your error messages in a different language.
+
+Key                 | Value
+--------------------|-------------------------------
+`:inclusion`        |           "is not included in the list" 
+`:exclusion`        |           "is reserved"
+`:invalid`          |           "is invalid"
+`:confirmation`     |           "doesn't match confirmation"
+`:accepted`         |           "must be accepted"
+`:empty`	    |           "can't be empty"
+`:blank`	    |           "can't be blank"
+`:too_long`	    |           "is too long (maximum is %d characters)"
+`:too_short`	    |           "is too short (maximum is %d characters)"
+`:wrong_length`	    |           "is the wrong length (should be %d characters)"
+`:taken`	    |           "has already been taken
+`:not_a_number`	    |           "is not a number
+`:greater_than`     |       "must be greater than %d"
+`:greater_than_or_equal_to`  |  "must be greater than or equal to %d"
+`:equal_to`	             | "must be equal to %d"
+`:less_than`	             |  "must be less than %d"
+`:less_than_or_equal_to`     |  "must be less than or equal to %d"
+`:odd`	                     |  "must be odd"
+`:even`	                     |  "must be even"
+
+## View Helpers
+
+### error_message_on `(object, attribute, prepend_text = "", append_text = "", css_class = "formError")`
+
+Returns a string containing the error message attached to the attribute of the object if one exists. This error message is wrapped in a `<div>` tag, which can be extended to include a `prepend_text` and/or `append_text` (to properly explain the error), and a `css_class` to style it accordingly. Object should either be the name of an instance variable or the actual object itself. As an example, let's say you have a model `@post` that has an error message on the title attribute...
+
+    error_message_on "post", "title"
+      # => <div class="formError">can't be empty</div>
+    error_message_on @post, "title"
+      # => <div class="formError">can't be empty</div>
+    error_message_on "post", "title", "Title simply ", " (or it won't work).", "inputError"
+      # => <div class="inputError">Title simply can't be empty (or it won't work).</div>
+{:rhtml}
+
+`object`           the name of an `@instance_variable` or the actual object
+`attribute`        the attribute you wish to check for errors
+`prepend_text`     text to be prepended to the error message
+`append_text`      text to be appended to the error message
+`css_class`        CSS class of the `<div>` which will wrap the error message
+
+### error_messages_for `({hash})`
+
+Returns a string with a `<div>` containing all of the error messages for the objects located as instance variables by the names given. If more than one object is specified, the errors for the objects are displayed in the order that the object names are provided.
+
+This `<div>` can be tailored by the following options...
+
+`:header_tag`         Used for the header of the error `<div>` (default is `h2`)
+`:id`                 The class of the error `<div>` (default is `errorExplanation`)
+`:class`              The `id` of the error `<div>` (default is `errorExplanation`)
+`:object`             The object (or array of objects) for which to display errors, if you need to escape the instance variable convention
+`:object_name`        The object name to use in the header, or any text that you prefer. If `:object_name` is not set, the name of the first object will be used
+`:header_message`     The message in the header of the error `<div>`. Pass nil or an empty string to avoid the header message altogether (default message is `"X errors prohibited this object from being saved"`)
+`:message`            The explanation message after the header message and before the error list. Pass `nil` or an empty string to avoid the explanation message altogether (default message is `"There were problems with the following fields:"`)
+
+To specify the display for one object, you simply provide its name as a parameter. For example, for the `@user` model...
+
+    error_messages_for :user
+{:ruby}
+
+To specify more than one object, you simply list them: optionally, you can add an extra `:object_name` parameter, which will be the name used in the header message:
+
+    error_messages_for :user_common, :user, :object_name => :user
+{:ruby}
+
+If the objects cannot be located as instance variables, you can add an extra `:object` parameter which gives the actual object (or array of objects to use)...
+
+    error_messages_for :user, :object => @question.user
+{:ruby}
+
+This is a pre-packaged presentation of the errors with embedded strings and a certain HTML structure. If what you need is significantly different from the default presentation, it makes plenty of sense to access the object.errors instance yourself and set it up.
 
 end
 
