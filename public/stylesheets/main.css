@@ -73,7 +73,7 @@
 /* =CSS CONTENT ======================*/
 	#article h2, #article h1 { font: bold italic 1.5em/1em "Georgia"; color:black; text-align:center; border-bottom:1px dashed black; }	
 	#article h3 { font: bold italic 1.3em "Trebuchet MS"; color:black; margin: 1em 0 1em; }
-	#article h4 { font: bold 1em "Trebuchet MS"; color:black; }
+	#article h4 { font: bold 1em "Trebuchet MS"; color:black; text-align:center;}
 	
 	#article th { font: bold italic 100% "Trebuchet MS", serif; border:1px dotted #878787; padding: 0.5em;  color: black;}
 	#article td { border:1px dotted #878787; padding: 0.5em; }

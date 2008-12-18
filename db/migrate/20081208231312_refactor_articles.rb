@@ -1042,6 +1042,9 @@ cheatsheet.save!
 
 ###################################
 
+cheatsheet = Cheatsheet.find(16)
+cheatsheet.content = <<-EOF
+
 # Table of Contents
 
 * Table
@@ -1135,7 +1138,7 @@ This method is also aliased as the shortcut `[]` (see below)
 
 Returns errors that have been assigned to the base object through `add_to_base` according to the normal rules of `on(attribute)`.
 
-### invalid? (attribute)
+### invalid?
 
 Returns `true` if the specified attribute has errors associated with it.
 
@@ -1156,34 +1159,47 @@ Returns `true` if the specified attribute has errors associated with it.
 
 Returns the total number of errors added. Two errors added to the same attribute will be counted as such.
 
-### to\_xml(options={})
+### to\_xml
 
 Returns an XML representation of this error object.
 
 ### \[\] (attribute)
 
-Alias for `on` method...
-
     company.errors[:email]
-{:ruby}
+
+Alias for `on` method...
 
 ## Write methods
 
-### add `(attribute, msg = @@default_error_messages[:invalid])`
+### add 
+
+    add(attribute, msg = @@default_error_messages[:invalid])
 
 Adds an error message `msg` to the `attribute`, which will be returned on a call to `on(attribute)` for the same attribute and ensure that this error object returns false when asked if `empty?`. More than one error can be added to the same attribute in which case an array will be returned on a call to `on(attribute)`. If no msg is supplied, `"invalid"` is assumed.
 
-### add\_on\_blank `([attributes], msg = @@default_error_messages[:blank])`
+
+### add\_on\_blank
 
 Will add an error message to each of the attributes in `[attributes]` that is blank (for example, an `empty` string).
 
-### add\_on\_empty `(attributes, msg = @@default_error_messages[:empty])`
+    add_on_blank(:name, :surname, :age, "should not be blank")
+{:ruby}
+
+### add\_on\_empty
 
 Will add an error message to each of the attributes in `attributes` that is empty.
 
-### add\_to\_base `(attributes, msg = @@default_error_messages[:empty])`
+    add_on_empty(:name, :surname, :age, "empty is bad!")
+{:ruby}
 
-Adds an error to the base object instead of any particular attribute. This is used to report errors that don't tie to any specific attribute, but rather to the object as a whole. These error messages don't get prepended with any field name when iterating with `each_full`, so they should be complete sentences.
+### add\_to\_base 
+
+    add_to_base([attributes], msg = @@default_error_messages[:empty])
+
+Adds an error, `msg`, to the base object instead of any particular attribute. This is used to report errors that don't tie to any specific attribute, but rather to the object as a whole. These error messages don't get prepended with any field name when iterating with `each_full`, so they should be complete sentences.
+
+    add_to_base(:name, :surname, :age, "default error message here")
+{:ruby}
 
 ### clear
 
@@ -1222,7 +1238,9 @@ Key                 | Value
 
 ## View Helpers
 
-### error_message_on `(object, attribute, prepend_text = "", append_text = "", css_class = "formError")`
+### error\_message\_on 
+   
+    error_message_on(object, attribute, prepend_text = "", append_text = "", css_class = "formError")
 
 Returns a string containing the error message attached to the attribute of the object if one exists. This error message is wrapped in a `<div>` tag, which can be extended to include a `prepend_text` and/or `append_text` (to properly explain the error), and a `css_class` to style it accordingly. Object should either be the name of an instance variable or the actual object itself. As an example, let's say you have a model `@post` that has an error message on the title attribute...
 
@@ -1232,27 +1250,35 @@ Returns a string containing the error message attached to the attribute of the o
       # => <div class="formError">can't be empty</div>
     error_message_on "post", "title", "Title simply ", " (or it won't work).", "inputError"
       # => <div class="inputError">Title simply can't be empty (or it won't work).</div>
-{:rhtml}
+{:ruby}
 
-`object`           the name of an `@instance_variable` or the actual object
-`attribute`        the attribute you wish to check for errors
-`prepend_text`     text to be prepended to the error message
-`append_text`      text to be appended to the error message
-`css_class`        CSS class of the `<div>` which will wrap the error message
+#### Options
 
-### error_messages_for `({hash})`
+Option           | Type        | Value
+-----------------|-------------|--------------------------------------------
+`object`         | Object      | the name of an `@instance_variable` or the actual object
+`attribute`      | Symbol      | the attribute you wish to check for errors
+`prepend_text`   | String      | text to be prepended to the error message
+`append_text`    | String      | ext to be appended to the error message
+`css_class`      | String      | CSS class of the `<div>` which will wrap the error message
+
+### error\_messages\_for
 
 Returns a string with a `<div>` containing all of the error messages for the objects located as instance variables by the names given. If more than one object is specified, the errors for the objects are displayed in the order that the object names are provided.
 
 This `<div>` can be tailored by the following options...
 
-`:header_tag`         Used for the header of the error `<div>` (default is `h2`)
-`:id`                 The class of the error `<div>` (default is `errorExplanation`)
-`:class`              The `id` of the error `<div>` (default is `errorExplanation`)
-`:object`             The object (or array of objects) for which to display errors, if you need to escape the instance variable convention
-`:object_name`        The object name to use in the header, or any text that you prefer. If `:object_name` is not set, the name of the first object will be used
-`:header_message`     The message in the header of the error `<div>`. Pass nil or an empty string to avoid the header message altogether (default message is `"X errors prohibited this object from being saved"`)
-`:message`            The explanation message after the header message and before the error list. Pass `nil` or an empty string to avoid the explanation message altogether (default message is `"There were problems with the following fields:"`)
+#### Options
+
+Option            | Type          | Value
+------------------|---------------|------------------------------------------
+`:header_tag`     | String        |     Used for the header of the error `<div>` (default is `h2`)
+`:id`             | String        | The class of the error `<div>` (default is `errorExplanation`)
+`:class`          | String        |     The `id` of the error `<div>` (default is `errorExplanation`)
+`:object`         | Object        |    The object (or array of objects) for which to display errors, if you need to escape the instance variable convention
+`:object_name`    | String        |     The object name to use in the header, or any text that you prefer. If `:object_name` is not set, the name of the first object will be used
+`:header_message`  | String       |  The message in the header of the error `<div>`. Pass nil or an empty string to avoid the header message altogether (default message is `"X errors prohibited this object from being saved"`)
+`:message`       | String |     The explanation message after the header message and before the error list. Pass `nil` or an empty string to avoid the explanation message altogether (default message is `"There were problems with the following fields:"`)
 
 To specify the display for one object, you simply provide its name as a parameter. For example, for the `@user` model...
 
@@ -1270,6 +1296,10 @@ If the objects cannot be located as instance variables, you can add an extra `:o
 {:ruby}
 
 This is a pre-packaged presentation of the errors with embedded strings and a certain HTML structure. If what you need is significantly different from the default presentation, it makes plenty of sense to access the object.errors instance yourself and set it up.
+
+EOF
+
+cheatsheet.save!
 
 end
 
