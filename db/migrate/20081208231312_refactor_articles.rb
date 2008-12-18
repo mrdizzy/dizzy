@@ -765,7 +765,7 @@ Provides a block that enables you to alter columns on an existing table using va
 
 ### create\_table
 
-Creates a table on the database. Creates a table called `:table_name` and makes the table object available to a block that can then add columns to it by specifying column_types or utilising shortcut methods such as using `belongs_to` to specify 
+Creates a table on the database. Creates a table called `:table_name` and makes the table object available to a block that can then add columns to it by specifying column\_types or utilising shortcut methods such as using `belongs_to` to specify 
 foreign keys...
 
     create_table :table_name, {table_options} do |t|
@@ -773,7 +773,7 @@ foreign keys...
     end
 {:ruby}
 
-#### Options
+#### table\_options
 
 Key             | Value                     | Description
 ----------------|---------------------------|-----------------------------------
@@ -859,55 +859,55 @@ Rails          | postgresql     | sqlite        | sqlserver    | Sybase
 
 ## Rake tasks
 
-db:create
-db:create:all	
+`db:create`
+`db:create:all`	
 : Creates a single database specified in `config/databases.yml` for the current `RAILS_ENV` or creates all the databases
 
-db:drop
-db:drop:all
+`db:drop`
+`db:drop:all`
 : Drops a single database specified in `config/databases.yml` for the current `RAILS_ENV` or drops all the databases
 
-db:fixtures:load	
+`db:fixtures:load`
 : Load fixtures from `test/fixtures` into the current environment's database
 
-db:migrate	
+`db:migrate`	
 : Run all unapplied migrations
 
-db:migrate:up
-db:migrate:down	
+`db:migrate:up`
+`db:migrate:down`	
 : Move forward to the next migration, or back to the previous migration
 
-db:migrate VERSION=18	
+`db:migrate VERSION=18`
 : Migrate database to specific version
 
-db:migrate RAILS_ENV=production	
+`db:migrate RAILS_ENV=production`	
 : Use migrations to recreate tables in the testing or production databases
 
-db:schema:dump	
+`db:schema:dump`	
 : Create a `db/schema.rb` file that can be portably used against any database supported by ActiveRecord
 
-db:schema:load	
+`db:schema:load`
 : Load a schema.rb file into the database
 
-db:sessions:create	
+`db:sessions:create`
 : Create a sessions table for use with `CGI::Sessions::ActiveRecordStore`
 
-db:sessions:clear	
+`db:sessions:clear`	
 : Clear the sessions table
 
-db:structure:dump
+`db:structure:dump`
 : Dump database structure to SQL file
 
-db:reset
+`db:reset`
 : Drops the database, creates the database and then runs migrations against the database. Takes a `VERSION` argument as well as `RAILS_ENV`
 
-db:rollback STEP=4
+`db:rollback STEP=4`
 : Takes a STEP argument to determine how many version to rollback, the default being one version
 
-db:test:prepare	
+`db:test:prepare`	
 : Clone your database structure into the test database
 
-db:version
+`db:version`
 : Tells you the current version your database is at
 
 ## Directory structure
@@ -918,11 +918,10 @@ db:version
 
 ## Shortcut methods
 
-t.column	           t.change	           t.rename
-t.remove	           t.change_default	   t.references
-t.remove_references	   t.belongs_to	       t.remove_belongs_to
-t.timestamps	       t.index	           t.remove_index
-
+    t.column               t.change                t.rename
+    t.remove               t.change_default	   t.references    
+    t.remove_references    t.belongs_to            t.remove_belongs_to
+    t.timestamps           t.index                 t.remove_index
 
 ## Column methods
 
@@ -933,7 +932,7 @@ Creates a new column on the specified table.
     add_column :table_name, :column_name, :column_type, {column_options}
 {:ruby}
 
-#### Options     {#add_column_options}
+#### column\_options     {#add_column_options}
 
 Key            | Value                   | Description
 ---------------|-------------------------|------------------------
@@ -973,7 +972,7 @@ Creates an index for the specified column.
     add_index :table_name, :column_name, :unique => true
 {:ruby}
 
-## remove\_index
+### remove\_index
 
 Remove an index from the specified column.
 
@@ -1043,22 +1042,28 @@ cheatsheet.save!
 ###################################
 
 cheatsheet = Cheatsheet.find(16)
-cheatsheet.content = <<-EOF
-
-# Table of Contents
+cheatsheet.content = <<-EOF# Table of Contents
 
 * Table
 {:toc}
 
 ## Read methods 
 
+### \[\]       {#on_alias}
+
+    object.errors[:attribute]
+
+Alias for [`on`](#on) method.
+
 ### count
 
-Alias for `size`
+Alias for [`size`](#size)
 
 ### each
 
-Yields each attribute and associated message per error added.
+    each { |attr, msg| ... }
+
+Yields each attribute `attr` and associated message `msg` per error added.
 
     class Company < ActiveRecord::Base
       validates_presence_of :name, :address, :email
@@ -1067,15 +1072,17 @@ Yields each attribute and associated message per error added.
 
     company = Company.create(:address => '123 First St.')
 
-    company.errors.each{|attr,msg| puts "#{attr} - #{msg}" } 
+    company.errors.each { |attr,msg| puts "#{attr} - #{msg}" } 
       # => name - is too short (minimum is 5 characters)
       # => name - can't be blank
-      # => address - can't be blank
+      # => email - can't be blank
 {:ruby}
 
 ### each\_full
 
-Yields each full error message added. So `Person.errors.add("first_name", "can't be empty")` will be returned through iteration as `"First name can't be empty"`.
+    each_full {|msg| ...}
+
+Yields each full error message `msg` added. So `Person.errors.add("first_name", "can't be empty")` will be returned through iteration as `"First name can't be empty"`.
 
     class Company < ActiveRecord::Base
       validates_presence_of :name, :address, :email
@@ -1087,7 +1094,7 @@ Yields each full error message added. So `Person.errors.add("first_name", "can't
     company.errors.each_full{|msg| puts msg } 
       # => Name is too short (minimum is 5 characters)
       # => Name can't be blank
-      # => Address can't be blank
+      # => Email can't be blank
 {:ruby}
 
 ### full\_messages
@@ -1102,7 +1109,7 @@ Returns all the full error messages in an array.
     company = Company.create(:address => '123 First St.')
   
     company.errors.full_messages 
-      # => ["Name is too short (minimum is 5 characters)", "Name can't be blank", "Address can't be blank"]
+      # => ["Name is too short (minimum is 5 characters)", "Name can't be blank", "Email can't be blank"]
 {:ruby}
 
 ### empty?
@@ -1111,9 +1118,11 @@ Returns `true` if no errors have been added.
 
 ### length
 
-Alias for `size`
+Alias for [`size`](#size)
 
 ### on
+
+   on(:attribute)
 
 Returns `nil`, if no errors are associated with the specified attribute. Returns the error message if one error is associated with the specified attribute. Returns an array of error messages if more than one error is associated with the specified attribute.
 
@@ -1132,11 +1141,11 @@ Returns `nil`, if no errors are associated with the specified attribute. Returns
       # => nil
 {:ruby}
 
-This method is also aliased as the shortcut `[]` (see below)
+This method is also aliased as the shortcut [`[]`](#on_alias)
 
 ### on\_base
 
-Returns errors that have been assigned to the base object through `add_to_base` according to the normal rules of `on(attribute)`.
+Returns errors that have been assigned to the base object through `add_to_base` according to the normal rules of `on(:attribute)`.
 
 ### invalid?
 
@@ -1163,22 +1172,17 @@ Returns the total number of errors added. Two errors added to the same attribute
 
 Returns an XML representation of this error object.
 
-### \[\] (attribute)
-
-    company.errors[:email]
-
-Alias for `on` method...
-
 ## Write methods
 
 ### add 
 
     add(attribute, msg = @@default_error_messages[:invalid])
 
-Adds an error message `msg` to the `attribute`, which will be returned on a call to `on(attribute)` for the same attribute and ensure that this error object returns false when asked if `empty?`. More than one error can be added to the same attribute in which case an array will be returned on a call to `on(attribute)`. If no msg is supplied, `"invalid"` is assumed.
-
+Adds an error message `msg` to the `attribute`, which will be returned on a call to `on(attribute)` for the same attribute and ensure that this error object returns false when asked if `empty?`. More than one error can be added to the same attribute in which case an array will be returned on a call to `on(attribute)`. If no `msg` is supplied, `"invalid"` is assumed.
 
 ### add\_on\_blank
+
+    add(attribute, msg = @@default_error_messages[:blank])
 
 Will add an error message to each of the attributes in `[attributes]` that is blank (for example, an `empty` string).
 
@@ -1186,6 +1190,8 @@ Will add an error message to each of the attributes in `[attributes]` that is bl
 {:ruby}
 
 ### add\_on\_empty
+
+    add(attribute, msg = @@default_error_messages[:empty])
 
 Will add an error message to each of the attributes in `attributes` that is empty.
 
@@ -1290,12 +1296,12 @@ To specify more than one object, you simply list them: optionally, you can add a
     error_messages_for :user_common, :user, :object_name => :user
 {:ruby}
 
-If the objects cannot be located as instance variables, you can add an extra `:object` parameter which gives the actual object (or array of objects to use)...
+If the objects cannot be located as instance variables, you can add an extra `:object` parameter which gives the actual object (or aarray of objects to use)...
 
     error_messages_for :user, :object => @question.user
 {:ruby}
 
-This is a pre-packaged presentation of the errors with embedded strings and a certain HTML structure. If what you need is significantly different from the default presentation, it makes plenty of sense to access the object.errors instance yourself and set it up.
+This is a pre-packaged presentation of the errors with embedded strings and a certain HTML structure. If what you need is significantly different from the default presentation, it makes plenty of sense to access the `object.errors` instance yourself and set it up.
 
 EOF
 

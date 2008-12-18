@@ -35,7 +35,7 @@
 	li { background:url('/images/f/bullets/pixels/diamond.png') no-repeat 0 0.6em; padding-left:1em; }
 	
 	dt { font-weight:bold; }
-	dd { margin-left:4em;}
+	dd { margin: 0 0 1em 4em;}
 	
 	a:link { color: #29A4BD; }	
 	a:visited { color:#006A8C; }
