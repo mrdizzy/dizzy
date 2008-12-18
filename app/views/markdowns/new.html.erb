@@ -1,0 +1,25 @@
+<div id="doc3" class="yui-t3">
+	
+	<div id="hd"></div>
+	
+	<div id="bd">
+		
+		<div id="yui-main"> 
+			
+	        <div class="yui-b">
+	         	<div id="output"></div> 
+	      	</div> 
+		</div>
+      	<div class="yui-b">
+      		<p><%= label_tag :content %>
+			<%= text_area_tag :content, nil, :rows => "100" %></p>
+
+				<%= observe_field :content, :url => markdowns_path, :update => :output, :frequency => 2, :with => "content" %>
+      	</div> 
+		
+	</div>
+	
+	<div id="ft"></div>
+	
+</div>
+        
