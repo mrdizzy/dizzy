@@ -1,10 +1,8 @@
 --- 
 portfolio_items_093: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "6"
   id: "99"
-  filename: organicsmallgreylogo.png
   company_id: "13"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAE8AAABLCAMAAAAGeyqiAAAABGdBTUEAAK/I
@@ -38,11 +36,9 @@ portfolio_items_093:
     QmCC
 
 portfolio_items_072: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "6"
   id: "78"
-  filename: walktowalksmallgreylogo.png
   company_id: "11"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAFsAAABOCAMAAAB485qDAAAABGdBTUEAAK/I
@@ -78,11 +74,9 @@ portfolio_items_072:
     MziUcTGkAAAAAElFTkSuQmCC
 
 portfolio_items_007: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "4"
   id: "7"
-  filename: roselogo.png
   company_id: "7"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAEoAAAB2BAMAAACdRhiUAAAAMFBMVEXAwMCw
@@ -121,11 +115,9 @@ portfolio_items_007:
     AABJRU5ErkJggg==
 
 portfolio_items_030: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "1"
   id: "30"
-  filename: casualbaycard.png
   company_id: "8"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAARIAAADcCAMAAACLfN5hAAAAwFBMVEX////L
@@ -294,11 +286,9 @@ portfolio_items_030:
     5/l0lRE3owAAAABJRU5ErkJggg==
 
 portfolio_items_028: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "1"
   id: "28"
-  filename: silvercard.png
   company_id: "6"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAOcAAADHCAMAAADVhrQkAAABgFBMVEX////B
@@ -540,11 +530,9 @@ portfolio_items_028:
     bwhEfjYKIZHyn8DJzjSAOofe86sUn/8HuF8omHlQ61wAAAAASUVORK5CYII=
 
 portfolio_items_051: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "8"
   id: "51"
-  filename: roseslip.png
   company_id: "7"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAANEAAABTCAMAAAA2nBIOAAAAwFBMVEX///87
@@ -602,11 +590,9 @@ portfolio_items_051:
     9CHD/0oZ1jVFy/8AjDodWQ2SBh4AAAAASUVORK5CYII=
 
 portfolio_items_094: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "4"
   id: "100"
-  filename: outofyourboxlogo.png
   company_id: "14"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAH4AAABgCAMAAADsITZRAAAABGdBTUEAAK/I
@@ -647,11 +633,9 @@ portfolio_items_094:
     T8+7jAAAAABJRU5ErkJggg==
 
 portfolio_items_073: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "5"
   id: "79"
-  filename: walktowalksmallcolourlogo.png
   company_id: "11"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAFsAAABOCAMAAAB485qDAAAABGdBTUEAAK/I
@@ -687,11 +671,9 @@ portfolio_items_073:
     AElFTkSuQmCC
 
 portfolio_items_010: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "4"
   id: "10"
-  filename: towergatelogo.png
   company_id: "10"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAHkAAAB6BAMAAABpQOHUAAAAMFBMVEX///9g
@@ -735,11 +717,9 @@ portfolio_items_010:
     lE2zTeY3Qch1Ghvd5jYt/QO5PLp/UZWWQwAAAABJRU5ErkJggg==
 
 portfolio_items_008: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "4"
   id: "8"
-  filename: casualbaylogo.png
   company_id: "8"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAALYAAABDBAMAAADDgeKdAAAAMFBMVEX///+N
@@ -765,11 +745,9 @@ portfolio_items_008:
     QYWRarxEmv8l4iU8zusF/nMV2vwK4F8AAAAASUVORK5CYII=
 
 portfolio_items_031: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "1"
   id: "31"
-  filename: chickencard.png
   company_id: "9"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAOcAAADHCAMAAADVhrQkAAADAFBMVEX////V
@@ -1058,11 +1036,9 @@ portfolio_items_031:
     tLdukgAAAABJRU5ErkJggg==
 
 portfolio_items_029: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "1"
   id: "29"
-  filename: rosecard.png
   company_id: "7"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAARIAAADcCAMAAACLfN5hAAAAwFBMVEX///9T
@@ -1269,11 +1245,9 @@ portfolio_items_029:
     gg==
 
 portfolio_items_052: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "8"
   id: "52"
-  filename: casualbayslip.png
   company_id: "8"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAANEAAABTCAMAAAA2nBIOAAABgFBMVEX////r
@@ -1374,11 +1348,9 @@ portfolio_items_052:
     YII=
 
 portfolio_items_095: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "8"
   id: "101"
-  filename: outofyourboxslip.png
   company_id: "14"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAANEAAABTCAMAAAA2nBIOAAAABGdBTUEAAK/I
@@ -1475,11 +1447,9 @@ portfolio_items_095:
     RU5ErkJggg==
 
 portfolio_items_074: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "5"
   id: "80"
-  filename: silversmallcolourlogo.png
   company_id: "6"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAG8AAAAuCAMAAAARH7ebAAAABGdBTUEAAK/I
@@ -1508,11 +1478,9 @@ portfolio_items_074:
     1lJ23UGnoKzaNDd5mr7l/RVgAEPNEBIB4HIiAAAAAElFTkSuQmCC
 
 portfolio_items_011: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "4"
   id: "11"
-  filename: walktowalklogo.png
   company_id: "11"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAHkAAABoCAMAAADirq9FAAAAYFBMVEX/////
@@ -1566,11 +1534,9 @@ portfolio_items_011:
     oFpitgAAAABJRU5ErkJggg==
 
 portfolio_items_009: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "4"
   id: "9"
-  filename: chickenlogo.png
   company_id: "9"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAH4AAABzBAMAAACsk6tlAAAAMFBMVEX////t
@@ -1615,11 +1581,9 @@ portfolio_items_009:
     0iDp4r4AAAAASUVORK5CYII=
 
 portfolio_items_032: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "1"
   id: "32"
-  filename: towergatecard.png
   company_id: "10"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAARIAAADcCAMAAACLfN5hAAADAFBMVEX///91
@@ -1916,11 +1880,9 @@ portfolio_items_032:
     QHgzxl6hxQL6aoD8f8wVY6ieGNxbAAAAAElFTkSuQmCC
 
 portfolio_items_053: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "8"
   id: "53"
-  filename: chickenslip.png
   company_id: "9"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAANEAAABTCAMAAAA2nBIOAAADAFBMVEX///+i
@@ -2032,11 +1994,9 @@ portfolio_items_053:
     TB5weRDIZ3J7+pZyHo/bbWMxXNdSjWv5H9kIML63VHhzAAAAAElFTkSuQmCC
 
 portfolio_items_096: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "3"
   id: "102"
-  filename: outofyourboxletterhead.png
   company_id: "14"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAL4AAAEBCAMAAADxQe+7AAAABGdBTUEAAK/I
@@ -2166,11 +2126,9 @@ portfolio_items_096:
     AAAAAElFTkSuQmCC
 
 portfolio_items_075: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "6"
   id: "81"
-  filename: silversmallgreylogo.png
   company_id: "6"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAG8AAAAtCAMAAACXi8U1AAAABGdBTUEAAK/I
@@ -2197,11 +2155,9 @@ portfolio_items_075:
     RK5CYII=
 
 portfolio_items_012: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "7"
   id: "12"
-  filename: heavenlyheader.png
   company_id: "1"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAIMAAAAlCAMAAABWBqqnAAAABGdBTUEAAK/I
@@ -2239,11 +2195,9 @@ portfolio_items_012:
     Cv4AAAAASUVORK5CYII=
 
 portfolio_items_033: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "1"
   id: "33"
-  filename: walktowalkcard.png
   company_id: "11"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAOcAAADHCAMAAADVhrQkAAABgFBMVEX///96
@@ -2457,11 +2411,9 @@ portfolio_items_033:
     iZR/B07q6TnqjO49j8PK/wPzQinIImRXzwAAAABJRU5ErkJggg==
 
 portfolio_items_054: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "8"
   id: "54"
-  filename: towergateslip.png
   company_id: "10"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAANEAAABTCAMAAAA2nBIOAAADAFBMVEX///+E
@@ -2563,11 +2515,9 @@ portfolio_items_054:
     hgdwXUkAAAAASUVORK5CYII=
 
 portfolio_items_097: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "1"
   id: "103"
-  filename: outofyourboxcard.png
   company_id: "14"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAOcAAADHCAMAAADVhrQkAAAABGdBTUEAAK/I
@@ -2860,11 +2810,9 @@ portfolio_items_097:
     SUVORK5CYII=
 
 portfolio_items_076: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "5"
   id: "82"
-  filename: hurricanesmallcolourlogo.png
   company_id: "5"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAFcAAAA3CAMAAABO4iYEAAAABGdBTUEAAK/I
@@ -2886,11 +2834,9 @@ portfolio_items_076:
     9JYL16qxAAAAAElFTkSuQmCC
 
 portfolio_items_013: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "7"
   id: "13"
-  filename: smartheader.png
   company_id: "2"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAIMAAAAmCAMAAADQktgJAAAABGdBTUEAAK/I
@@ -2921,11 +2867,9 @@ portfolio_items_013:
     AwAhAX2pNR907QAAAABJRU5ErkJggg==
 
 portfolio_items_034: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "3"
   id: "34"
-  filename: heavenlyletterhead.png
   company_id: "1"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAL4AAAEBCAMAAADxQe+7AAADAFBMVEX////p
@@ -3115,11 +3059,9 @@ portfolio_items_034:
     5gUAAAAASUVORK5CYII=
 
 portfolio_items_055: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "8"
   id: "55"
-  filename: walktowalkslip.png
   company_id: "11"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAANEAAABTCAMAAAA2nBIOAAABgFBMVEX///+7
@@ -3185,11 +3127,9 @@ portfolio_items_055:
     Slk9VyrlcvkHqvJ67UvLfwFBPv3Vc4NgDgAAAABJRU5ErkJggg==
 
 portfolio_items_098: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "7"
   id: "104"
-  filename: outofyourboxheader.png
   company_id: "14"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAIMAAAAuCAMAAAA8wVpkAAAABGdBTUEAAK/I
@@ -3219,11 +3159,9 @@ portfolio_items_098:
     565/O/WLFVx1ca1+08sx9x9Gr2r/CDAA1Cg2aog7/IAAAAAASUVORK5CYII=
 
 portfolio_items_077: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "6"
   id: "83"
-  filename: hurricanesmallgreylogo.png
   company_id: "5"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAFcAAAA3CAMAAABO4iYEAAAABGdBTUEAAK/I
@@ -3243,11 +3181,9 @@ portfolio_items_077:
     TkSuQmCC
 
 portfolio_items_035: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "3"
   id: "35"
-  filename: smartletterhead.png
   company_id: "2"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAL4AAAEBCAMAAADxQe+7AAABgFBMVEX////Y
@@ -3319,11 +3255,9 @@ portfolio_items_035:
     Wq9ikOFP30Cjous9FtL1SmOM/xfM5FIr/L7E7gAAAABJRU5ErkJggg==
 
 portfolio_items_056: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "2"
   id: "56"
-  filename: heavenlyleaflet.png
   company_id: "1"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAARgAAAD6CAMAAABNq6iDAAAABGdBTUEAAK/I
@@ -3714,11 +3648,9 @@ portfolio_items_056:
     FYyHjTPNClGKHF4BXB4zLv/1/wUYAP5qVYqjVzSnAAAAAElFTkSuQmCC
 
 portfolio_items_014: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "7"
   id: "14"
-  filename: pinkheader.png
   company_id: "3"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAIIAAAAqCAMAAAE/lUPaAAAABGdBTUEAAK/I
@@ -3758,11 +3690,9 @@ portfolio_items_014:
     Og1FpgAAAABJRU5ErkJggg==
 
 portfolio_items_099: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "4"
   id: "105"
-  filename: phoenixlogo.png
   company_id: "15"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAE0AAABkCAMAAAD0dE18AAAABGdBTUEAAK/I
@@ -3799,11 +3729,9 @@ portfolio_items_099:
     ZV/4n7Yx/gkwAOJoWygrFch5AAAAAElFTkSuQmCC
 
 portfolio_items_078: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "5"
   id: "84"
-  filename: ellabellasmallcolourlogo.png
   company_id: "12"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAFcAAABXCAMAAABGFileAAAABGdBTUEAAK/I
@@ -3863,11 +3791,9 @@ portfolio_items_078:
     i/9vCsUvzM/P/gRViP8JMABz+1ye8UkK6wAAAABJRU5ErkJggg==
 
 portfolio_items_057: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "4"
   id: "57"
-  filename: ellabellalogo.png
   company_id: "12"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAHMAAAB0CAMAAACBmP1sAAAAYFBMVEX////z
@@ -3933,11 +3859,9 @@ portfolio_items_057:
     afpKHjT/Q2ua5vrXjP8B4y/ev/8lITgAAAAASUVORK5CYII=
 
 portfolio_items_015: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "7"
   id: "15"
-  filename: hilaryheader.png
   company_id: "4"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAIMAAAAoCAMAAADqmLl5AAAABGdBTUEAAK/I
@@ -3969,11 +3893,9 @@ portfolio_items_015:
     YII=
 
 portfolio_items_036: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "3"
   id: "36"
-  filename: pinkletterhead.png
   company_id: "3"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAL4AAAEBCAMAAADxQe+7AAABgFBMVEX///9K
@@ -4055,11 +3977,9 @@ portfolio_items_036:
     JbY7DUw9AAAAAElFTkSuQmCC
 
 portfolio_items_080: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "5"
   id: "86"
-  filename: hilarytudorsmallcolourlogo.png
   company_id: "4"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAI8AAAA2CAMAAADJeDocAAAABGdBTUEAAK/I
@@ -4100,11 +4020,9 @@ portfolio_items_080:
     Lmf3+qp+CDAAnSGvIPpA6d4AAAAASUVORK5CYII=
 
 portfolio_items_079: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "6"
   id: "85"
-  filename: ellabellasmallgreylogo.png
   company_id: "12"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAFcAAABYCAMAAAC3QJuLAAAABGdBTUEAAK/I
@@ -4153,11 +4071,9 @@ portfolio_items_079:
     AkAAAAAASUVORK5CYII=
 
 portfolio_items_016: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "7"
   id: "16"
-  filename: hurricaneheader.png
   company_id: "5"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAIMAAAAmCAMAAADQktgJAAAABGdBTUEAAK/I
@@ -4179,11 +4095,9 @@ portfolio_items_016:
     IF+GefwVYAAp9AVbQHsNdgAAAABJRU5ErkJggg==
 
 portfolio_items_037: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "3"
   id: "37"
-  filename: hilaryletterhead.png
   company_id: "4"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAL4AAAEBCAMAAADxQe+7AAABgFBMVEX///+s
@@ -4298,11 +4212,9 @@ portfolio_items_037:
     yPLyzDsV/39JB+npXZ8e7wAAAABJRU5ErkJggg==
 
 portfolio_items_058: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "1"
   id: "58"
-  filename: ellabellacard.png
   company_id: "12"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAOcAAADHCAMAAADVhrQkAAAABGdBTUEAAK/I
@@ -4617,11 +4529,9 @@ portfolio_items_058:
     IwAAAABJRU5ErkJggg==
 
 portfolio_items_081: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "6"
   id: "87"
-  filename: hilarytudorsmallgreylogo.png
   company_id: "4"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAI8AAAA2CAMAAADJeDocAAAABGdBTUEAAK/I
@@ -4651,11 +4561,9 @@ portfolio_items_081:
     2d+uAAAAAElFTkSuQmCC
 
 portfolio_items_038: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "3"
   id: "38"
-  filename: hurricaneletterhead.png
   company_id: "5"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAL4AAAEBCAMAAADxQe+7AAABgFBMVEX///+t
@@ -4717,11 +4625,9 @@ portfolio_items_038:
     TNr3KslQPp+bfIf/D2uDombe0gRxAAAAAElFTkSuQmCC
 
 portfolio_items_060: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "3"
   id: "60"
-  filename: ellabellaletterhead.png
   company_id: "12"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAL4AAAEBCAMAAADxQe+7AAADAFBMVEX////h
@@ -4867,11 +4773,9 @@ portfolio_items_060:
     rkJggg==
 
 portfolio_items_059: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "7"
   id: "59"
-  filename: ellabellaheader.png
   company_id: "12"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAIMAAAAjCAMAAACAX0m6AAAABGdBTUEAAK/I
@@ -4908,11 +4812,9 @@ portfolio_items_059:
     zB8BBgDXNltZ8joacAAAAABJRU5ErkJggg==
 
 portfolio_items_082: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "5"
   id: "88"
-  filename: pinkgorillassmallcolourlogo.png
   company_id: "3"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAEsAAABPCAMAAACUAcjOAAAABGdBTUEAAK/I
@@ -4945,11 +4847,9 @@ portfolio_items_082:
     GABmlnyl8bpdAwAAAABJRU5ErkJggg==
 
 portfolio_items_017: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "7"
   id: "17"
-  filename: silverheader.png
   company_id: "6"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAIMAAAAgCAMAAAAGyzsUAAAABGdBTUEAAK/I
@@ -4973,11 +4873,9 @@ portfolio_items_017:
     3lXS5wDsVPDDuXtVgz4Sehr0nwADAH0MIbOBGxCMAAAAAElFTkSuQmCC
 
 portfolio_items_040: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "3"
   id: "40"
-  filename: roseletterhead.png
   company_id: "7"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAL4AAAEBCAMAAADxQe+7AAAAwFBMVEX///9+
@@ -5085,11 +4983,9 @@ portfolio_items_040:
     p9Pb5xn/v6Fs9xZhU9KFAAAAAElFTkSuQmCC
 
 portfolio_items_061: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "8"
   id: "61"
-  filename: ellabellaslip.png
   company_id: "12"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAANEAAABTCAMAAAA2nBIOAAABgFBMVEX////L
@@ -5173,11 +5069,9 @@ portfolio_items_061:
     QU235X/9zKf0VhjYGwAAAABJRU5ErkJggg==
 
 portfolio_items_083: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "6"
   id: "89"
-  filename: pinkgorillassmallgreylogo.png
   company_id: "3"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAEsAAABPCAMAAACUAcjOAAAABGdBTUEAAK/I
@@ -5207,11 +5101,9 @@ portfolio_items_083:
     SSPVlfJ/AgwASe0hzt4C3dkAAAAASUVORK5CYII=
 
 portfolio_items_020: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "7"
   id: "20"
-  filename: chickenheader.png
   company_id: "9"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAIYAAAAmCAMAAAA2uxNNAAAABGdBTUEAAK/I
@@ -5247,11 +5139,9 @@ portfolio_items_020:
     RK5CYII=
 
 portfolio_items_018: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "7"
   id: "18"
-  filename: roseheader.png
   company_id: "7"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAIcAAAAnCAMAAAASJavWAAAABGdBTUEAAK/I
@@ -5278,11 +5168,9 @@ portfolio_items_018:
     LFFIpeBTgAEABUVv5MbO3+AAAAAASUVORK5CYII=
 
 portfolio_items_041: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "3"
   id: "41"
-  filename: casualbayletterhead.png
   company_id: "8"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAL4AAAEBCAMAAADxQe+7AAADAFBMVEX////6
@@ -5542,11 +5430,9 @@ portfolio_items_041:
     QmCC
 
 portfolio_items_039: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "3"
   id: "39"
-  filename: silverletterhead.png
   company_id: "6"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAL4AAAEBCAMAAADxQe+7AAABgFBMVEX///+e
@@ -5666,11 +5552,9 @@ portfolio_items_039:
     g4MBI+oAAAAASUVORK5CYII=
 
 portfolio_items_062: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "4"
   id: "62"
-  filename: organiclogo.png
   company_id: "13"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAGkAAABjBAMAAABqNzNvAAAAGFBMVEX////R
@@ -5705,11 +5589,9 @@ portfolio_items_062:
     gg==
 
 portfolio_items_084: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "5"
   id: "90"
-  filename: casualbaysmallcolourlogo.png
   company_id: "8"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAIgAAAAyCAMAAACwNWNzAAAABGdBTUEAAK/I
@@ -5736,11 +5618,9 @@ portfolio_items_084:
     rkJggg==
 
 portfolio_items_021: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "7"
   id: "21"
-  filename: towergateheader.png
   company_id: "10"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAIMAAAAmCAMAAADQktgJAAAABGdBTUEAAK/I
@@ -5782,11 +5662,9 @@ portfolio_items_021:
     +v/DF9tPAQYA+xln06ILfp4AAAAASUVORK5CYII=
 
 portfolio_items_019: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "7"
   id: "19"
-  filename: casualbayheader.png
   company_id: "8"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAIMAAAAmCAMAAADQktgJAAAABGdBTUEAAK/I
@@ -5811,11 +5689,9 @@ portfolio_items_019:
     ck7cYnJ87/5L+yfAAOfQ87Kb/bNRAAAAAElFTkSuQmCC
 
 portfolio_items_042: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "3"
   id: "42"
-  filename: chickenletterhead.png
   company_id: "9"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAL4AAAEBCAMAAADxQe+7AAADAFBMVEX////t
@@ -5971,11 +5847,9 @@ portfolio_items_042:
     Q+rqqg+Y8P8H0edeVHCh4ZwAAAAASUVORK5CYII=
 
 portfolio_items_063: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "7"
   id: "64"
-  filename: organicheader.png
   company_id: "13"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAIMAAAAmCAMAAADQktgJAAAABGdBTUEAAK/I
@@ -6014,11 +5888,9 @@ portfolio_items_063:
     O8CPXgIAAAAASUVORK5CYII=
 
 portfolio_items_100: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "8"
   id: "106"
-  filename: phoenixslip.png
   company_id: "15"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAANEAAABTCAMAAAA2nBIOAAAABGdBTUEAAK/I
@@ -6086,11 +5958,9 @@ portfolio_items_100:
     dEf5TYABADTey0k23wPjAAAAAElFTkSuQmCC
 
 portfolio_items_085: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "6"
   id: "91"
-  filename: casualbaysmallgreylogo.png
   company_id: "8"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAIgAAAAyCAMAAACwNWNzAAAABGdBTUEAAK/I
@@ -6114,11 +5984,9 @@ portfolio_items_085:
     FuAu38pabYc85h9L/J319qUDo/RPgAEAzIN62ZhoJhwAAAAASUVORK5CYII=
 
 portfolio_items_001: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "4"
   id: "1"
-  filename: heavenlylogo.png
   company_id: "1"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAJ4AAABGCAMAAAAKNt0LAAAAYFBMVEX////6
@@ -6178,11 +6046,9 @@ portfolio_items_001:
     GaWp9Lw1pzQ/bjjqb5FJg8wPAPwPfIYgio6wqoQAAAAASUVORK5CYII=
 
 portfolio_items_022: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "7"
   id: "22"
-  filename: walktowalkheader.png
   company_id: "11"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAIMAAAAmCAMAAADQktgJAAAABGdBTUEAAK/I
@@ -6216,11 +6082,9 @@ portfolio_items_022:
     RU5ErkJggg==
 
 portfolio_items_043: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "3"
   id: "43"
-  filename: towergateletterhead.png
   company_id: "10"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAL4AAAEBCAMAAADxQe+7AAADAFBMVEX////x
@@ -6392,11 +6256,9 @@ portfolio_items_043:
     8N1PoB3rbel4SEtLc7sD/38G5NlbQ59POwAAAABJRU5ErkJggg==
 
 portfolio_items_064: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "3"
   id: "65"
-  filename: organicletterhead.png
   company_id: "13"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAL4AAAEBCAMAAADxQe+7AAABgFBMVEX////j
@@ -6539,11 +6401,9 @@ portfolio_items_064:
     SUVORK5CYII=
 
 portfolio_items_101: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "3"
   id: "107"
-  filename: phoenixletterhead.png
   company_id: "15"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAL4AAAEBCAMAAADxQe+7AAAABGdBTUEAAK/I
@@ -6647,11 +6507,9 @@ portfolio_items_101:
     RYtPH+C6XKmU+iEqlfK1gv/8+f8CDAAj4W2gslyWdQAAAABJRU5ErkJggg==
 
 portfolio_items_086: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "5"
   id: "92"
-  filename: heavenlysmallcolourlogo.png
   company_id: "1"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAHYAAAA0CAMAAABo6TxEAAAABGdBTUEAAK/I
@@ -6708,11 +6566,9 @@ portfolio_items_086:
     rkJggg==
 
 portfolio_items_002: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "4"
   id: "2"
-  filename: smartlogo.png
   company_id: "2"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAG8AAABvBAMAAAAQ64NTAAAAMFBMVEX////O
@@ -6755,11 +6611,9 @@ portfolio_items_002:
     huBuAAAAAElFTkSuQmCC
 
 portfolio_items_023: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "1"
   id: "23"
-  filename: heavenlycard.png
   company_id: "1"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAOcAAADHCAMAAADVhrQkAAADAFBMVEX////E
@@ -7029,11 +6883,9 @@ portfolio_items_023:
     rkJggg==
 
 portfolio_items_044: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "3"
   id: "44"
-  filename: walktowalkletterhead.png
   company_id: "11"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAL4AAAEBCAMAAADxQe+7AAADAFBMVEX////p
@@ -7193,11 +7045,9 @@ portfolio_items_044:
     7X1tm15eAAAAAElFTkSuQmCC
 
 portfolio_items_065: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "8"
   id: "66"
-  filename: organicslip.png
   company_id: "13"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAANEAAABTCAMAAAA2nBIOAAABgFBMVEX////+
@@ -7275,11 +7125,9 @@ portfolio_items_065:
     AABJRU5ErkJggg==
 
 portfolio_items_102: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "1"
   id: "108"
-  filename: phoenixcard.png
   company_id: "15"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAOcAAADHCAMAAADVhrQkAAAABGdBTUEAAK/I
@@ -7507,11 +7355,9 @@ portfolio_items_102:
     DABqbGYau4G5uAAAAABJRU5ErkJggg==
 
 portfolio_items_087: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "6"
   id: "93"
-  filename: heavenlysmallgreylogo.png
   company_id: "1"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAHYAAAA0CAMAAABo6TxEAAAABGdBTUEAAK/I
@@ -7560,11 +7406,9 @@ portfolio_items_087:
     YII=
 
 portfolio_items_024: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "1"
   id: "24"
-  filename: smartcard.png
   company_id: "2"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAOcAAADHCAMAAADVhrQkAAAABGdBTUEAAK/I
@@ -7839,11 +7683,9 @@ portfolio_items_024:
     Ccb/E2AAdS5SMlM85KUAAAAASUVORK5CYII=
 
 portfolio_items_045: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "8"
   id: "45"
-  filename: heavenlyslip.png
   company_id: "1"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAANEAAABTCAMAAAA2nBIOAAABgFBMVEX///9n
@@ -7914,11 +7756,9 @@ portfolio_items_045:
     AAAASUVORK5CYII=
 
 portfolio_items_066: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "5"
   id: "72"
-  filename: smartsmallcolourlogo.png
   company_id: "2"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAFQAAABTCAMAAAA2sNBLAAAABGdBTUEAAK/I
@@ -7966,11 +7806,9 @@ portfolio_items_066:
     fqFUAAAAAElFTkSuQmCC
 
 portfolio_items_003: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "4"
   id: "3"
-  filename: pinklogo.png
   company_id: "3"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAGQAAABpCAMAAAD7ona4AAAAYFBMVEX////W
@@ -8008,11 +7846,9 @@ portfolio_items_003:
     Ojk7DzEC/wE8Zv3p+nsMcgAAAABJRU5ErkJggg==
 
 portfolio_items_103: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "7"
   id: "109"
-  filename: phoenixheader.png
   company_id: "15"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAIIAAAAgCAMAAADpCVAqAAAABGdBTUEAAK/I
@@ -8037,11 +7873,9 @@ portfolio_items_103:
     4zzDZNcAAAAASUVORK5CYII=
 
 portfolio_items_088: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "5"
   id: "94"
-  filename: towergatesmallcolourlogo.png
   company_id: "10"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAFsAAABcCAMAAAA27TkTAAAABGdBTUEAAK/I
@@ -8084,11 +7918,9 @@ portfolio_items_088:
     mQu1Mx41OVU7eivz1837+CvAAEOPjipofZrTAAAAAElFTkSuQmCC
 
 portfolio_items_067: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "6"
   id: "73"
-  filename: smartsmallgreylogo.png
   company_id: "2"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAFQAAABTCAMAAAA2sNBLAAAABGdBTUEAAK/I
@@ -8119,11 +7951,9 @@ portfolio_items_067:
     jpf8E2AA8t9F7m+MttcAAAAASUVORK5CYII=
 
 portfolio_items_046: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "8"
   id: "46"
-  filename: smartslip.png
   company_id: "2"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAANEAAABTCAMAAAA2nBIOAAABgFBMVEX////m
@@ -8198,11 +8028,9 @@ portfolio_items_046:
     QmCC
 
 portfolio_items_004: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "4"
   id: "4"
-  filename: hilarylogo.png
   company_id: "4"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAL4AAABJCAMAAAC0PWwOAAAAYFBMVEX/////
@@ -8244,11 +8072,9 @@ portfolio_items_004:
     vL4pKn5tAqlYRF+htJeb/Lc55z8c6JiuIFCyaQAAAABJRU5ErkJggg==
 
 portfolio_items_025: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "1"
   id: "25"
-  filename: pinkcard.png
   company_id: "3"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAOcAAADHCAMAAADVhrQkAAADAFBMVEX///+1
@@ -8475,11 +8301,9 @@ portfolio_items_025:
     gg==
 
 portfolio_items_104: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "5"
   id: "110"
-  filename: phoenixsmallcolourlogo.png
   company_id: "15"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAADkAAABLCAMAAAD9LN99AAAABGdBTUEAAK/I
@@ -8506,11 +8330,9 @@ portfolio_items_104:
     a6X43kdfY6WPvxzPf3LK/iPyR4ABAKFfyUBqyBsTAAAAAElFTkSuQmCC
 
 portfolio_items_090: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "5"
   id: "96"
-  filename: boxsmallcolourlogo.png
   company_id: "14"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAF4AAABICAMAAABIg7LaAAAABGdBTUEAAK/I
@@ -8541,11 +8363,9 @@ portfolio_items_090:
     QmCC
 
 portfolio_items_089: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "6"
   id: "95"
-  filename: towergatesmallgreylogo.png
   company_id: "10"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAFsAAABbCAMAAAAr6AmrAAAABGdBTUEAAK/I
@@ -8585,11 +8405,9 @@ portfolio_items_089:
     vW8nWjX1oLtthJG+73Q37Y8AAwCSvLb31hycbwAAAABJRU5ErkJggg==
 
 portfolio_items_068: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "5"
   id: "74"
-  filename: rosesmallcolourlogo.png
   company_id: "7"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAADgAAABaCAMAAADaZGV9AAAABGdBTUEAAK/I
@@ -8621,11 +8439,9 @@ portfolio_items_068:
     prgVTt/lUhR8Dat/AgwAEjQCR242AEMAAAAASUVORK5CYII=
 
 portfolio_items_005: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "4"
   id: "5"
-  filename: hurricanelogo.png
   company_id: "5"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAHQAAABJBAMAAAAeUB9nAAAAGFBMVEX///+b
@@ -8645,11 +8461,9 @@ portfolio_items_005:
     vwDdk3VDXLTrdgAAAABJRU5ErkJggg==
 
 portfolio_items_026: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "1"
   id: "26"
-  filename: hilarycard.png
   company_id: "4"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAOcAAADHCAMAAADVhrQkAAAABGdBTUEAAK/I
@@ -8903,11 +8717,9 @@ portfolio_items_026:
     5LpK/sN6S+0AAAAASUVORK5CYII=
 
 portfolio_items_047: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "8"
   id: "47"
-  filename: pinkslip.png
   company_id: "3"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAANEAAABTCAMAAAA2nBIOAAABgFBMVEX///9m
@@ -8970,11 +8782,9 @@ portfolio_items_047:
     ExYYNjQAAAAASUVORK5CYII=
 
 portfolio_items_091: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "6"
   id: "97"
-  filename: boxsmallgreylogo.png
   company_id: "14"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAF4AAABICAMAAABIg7LaAAAABGdBTUEAAK/I
@@ -9005,11 +8815,9 @@ portfolio_items_091:
     TkSuQmCC
 
 portfolio_items_070: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "5"
   id: "76"
-  filename: chickensmallcolourlogo.png
   company_id: "9"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAF8AAABXCAMAAABVwWmqAAAABGdBTUEAAK/I
@@ -9046,11 +8854,9 @@ portfolio_items_070:
     gAAAAABJRU5ErkJggg==
 
 portfolio_items_069: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "6"
   id: "75"
-  filename: rosesmallgreylogo.png
   company_id: "7"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAADgAAABaCAMAAADaZGV9AAAABGdBTUEAAK/I
@@ -9078,11 +8884,9 @@ portfolio_items_069:
     TkSuQmCC
 
 portfolio_items_027: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "1"
   id: "27"
-  filename: hurricanecard.png
   company_id: "5"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAOcAAADHCAMAAADVhrQkAAAABGdBTUEAAK/I
@@ -9317,11 +9121,9 @@ portfolio_items_027:
     332QumqKH/oAAAAASUVORK5CYII=
 
 portfolio_items_048: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "8"
   id: "48"
-  filename: hilaryslip.png
   company_id: "4"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAANEAAABTCAMAAAA2nBIOAAABgFBMVEX///+u
@@ -9390,11 +9192,9 @@ portfolio_items_048:
     SUVORK5CYII=
 
 portfolio_items_105: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "6"
   id: "111"
-  filename: phoenixsmallgreylogo.png
   company_id: "15"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAADkAAABLCAMAAAD9LN99AAAABGdBTUEAAK/I
@@ -9421,11 +9221,9 @@ portfolio_items_105:
     jvhSHPfzn2TZf0T+EWAAN+iQL0/KxMYAAAAASUVORK5CYII=
 
 portfolio_items_092: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "5"
   id: "98"
-  filename: organicxsmallcolourlogo.png
   company_id: "13"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAE8AAABLCAMAAAAGeyqiAAAABGdBTUEAAK/I
@@ -9459,11 +9257,9 @@ portfolio_items_092:
     U7+4UWSjl/vsX7Z/AgwAaBYf3bt+wR4AAAAASUVORK5CYII=
 
 portfolio_items_071: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "6"
   id: "77"
-  filename: chickensmallgreylogo.png
   company_id: "9"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAF8AAABXCAMAAABVwWmqAAAABGdBTUEAAK/I
@@ -9497,11 +9293,9 @@ portfolio_items_071:
     AAAAAElFTkSuQmCC
 
 portfolio_items_006: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "4"
   id: "6"
-  filename: silverlogo.png
   company_id: "6"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAAJMAAAA8BAMAAACQgZUdAAAAMFBMVEX////L
@@ -9534,11 +9328,9 @@ portfolio_items_006:
     771dOS8Ox3LpX1mHz6pXziPPzd8X58VU3n5pdAAAAABJRU5ErkJggg==
 
 portfolio_items_050: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "8"
   id: "50"
-  filename: silverslip.png
   company_id: "6"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAANEAAABTCAMAAAA2nBIOAAABgFBMVEX////E
@@ -9623,11 +9415,9 @@ portfolio_items_050:
     0PJfscsDdCiK5xQAAAAASUVORK5CYII=
 
 portfolio_items_049: 
-  content_type: image/png
   size: "123"
   portfolio_type_id: "8"
   id: "49"
-  filename: hurricaneslip.png
   company_id: "5"
   data: !binary |
     iVBORw0KGgoAAAANSUhEUgAAANEAAABTCAMAAAA2nBIOAAADAFBMVEX///+d

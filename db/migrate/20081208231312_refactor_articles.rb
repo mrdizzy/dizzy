@@ -1147,7 +1147,7 @@ This method is also aliased as the shortcut [`[]`](#on_alias)
 
 Returns errors that have been assigned to the base object through `add_to_base` according to the normal rules of `on(:attribute)`.
 
-### invalid?
+### invalid? 
 
 Returns `true` if the specified attribute has errors associated with it.
 
@@ -1186,8 +1186,9 @@ Adds an error message `msg` to the `attribute`, which will be returned on a call
 
 Will add an error message to each of the attributes in `[attributes]` that is blank (for example, an `empty` string).
 
-    add_on_blank(:name, :surname, :age, "should not be blank")
-{:ruby}
+### add\_on\_empty 
+
+>>>>>>> .r618
 
 ### add\_on\_empty
 
@@ -1260,6 +1261,8 @@ Returns a string containing the error message attached to the attribute of the o
 
 #### Options
 
+### error\_messages\_for
+
 Option           | Type        | Value
 -----------------|-------------|--------------------------------------------
 `object`         | Object      | the name of an `@instance_variable` or the actual object
@@ -1267,6 +1270,7 @@ Option           | Type        | Value
 `prepend_text`   | String      | text to be prepended to the error message
 `append_text`    | String      | ext to be appended to the error message
 `css_class`      | String      | CSS class of the `<div>` which will wrap the error message
+>>>>>>> .r618
 
 ### error\_messages\_for
 

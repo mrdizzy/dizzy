@@ -4,8 +4,6 @@ portfolio_types_001:
   column_space: "1"
   id: "1"
   description: Business cards
-  header_content_type: image/gif
-  header_filename: 
   header_binary: !binary |
     R0lGODlhSQAQAKIHAI2NjdLS0re3t3Nzc6SkpO/v72ZmZv///yH5BAEAAAcA
     LAAAAABJABAAAAP/eLrc/jDKSau9eAbBiy2Cl42TYASHMQCDQVSmQM6QiRqA
@@ -22,8 +20,6 @@ portfolio_types_002:
   column_space: "2"
   id: "2"
   description: Leaflet
-  header_content_type: image/gif
-  header_filename: 
   header_binary: !binary |
     R0lGODlhJgAQAKIHAO/v74uLi9fX1729vXNzc6WlpWZmZv///yH5BAEAAAcA
     LAAAAAAmABAAAAOReLrc/jDKOcegDQxiSMDGhy2FMQiBAVlLOLZiCrkKrQAp
@@ -37,8 +33,6 @@ portfolio_types_003:
   column_space: "1"
   id: "3"
   description: Letterhead
-  header_content_type: image/gif
-  header_filename: 
   header_binary: !binary |
     R0lGODlhPAAQAKIHAGhoaPHx8bW1tYqKiqamptjY2MbGxv///yH5BAEAAAcA
     LAAAAAA8ABAAAAPWeLrc/jDKSau9RxhcCxBcIwDFAQxSIJSHAU7eGypjeUqx
@@ -54,8 +48,6 @@ portfolio_types_004:
   column_space: "1"
   id: "4"
   description: Logo
-  header_content_type: image/gif
-  header_filename: 
   header_binary: !binary |
     R0lGODlhHAAQAKIHAPDw8L+/v3V1ddnZ2Y6OjqSkpGZmZv///yH5BAEAAAcA
     LAAAAAAcABAAAAN2eLrc/jBKFcK8yxCMNb/eAhSCBhyjIQTGcASEah2hIqzB
@@ -68,8 +60,6 @@ portfolio_types_005:
   column_space: "1"
   id: "5"
   description: Small Colour Logo
-  header_content_type: 
-  header_filename: 
   header_binary: 
   position: "100"
 portfolio_types_006: 
@@ -77,8 +67,6 @@ portfolio_types_006:
   column_space: "1"
   id: "6"
   description: Small Grey Logo
-  header_content_type: 
-  header_filename: 
   header_binary: 
   position: "101"
 portfolio_types_007: 
@@ -86,8 +74,6 @@ portfolio_types_007:
   column_space: "1"
   id: "7"
   description: Header
-  header_content_type: 
-  header_filename: 
   header_binary: 
   position: "102"
 portfolio_types_008: 
@@ -95,8 +81,6 @@ portfolio_types_008:
   column_space: "1"
   id: "8"
   description: Compliment Slip
-  header_content_type: image/gif
-  header_filename: 
   header_binary: !binary |
     R0lGODlhWQAQAKIHAIyMjNPT07W1tezs7HR0dKSkpGZmZv///yH5BAEAAAcA
     LAAAAABZABAAAAP/eLrc/jDKSau9OGs5ghDD9gDGAYqZYARsNJAEQBRoQw4G
