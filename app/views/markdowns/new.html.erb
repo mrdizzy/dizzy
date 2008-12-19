@@ -11,7 +11,7 @@
 	      	</div> 
 		</div>
       	<div class="yui-b">
-      		<p><%= label_tag :content %>
+      		<p><%= label_tag :content %><br/>
 			<%= text_area_tag :content, nil, :rows => "100" %></p>
 
 				<%= observe_field :content, :url => markdowns_path, :update => :output, :frequency => 2, :with => "content" %>
@@ -19,7 +19,9 @@
 		
 	</div>
 	
-	<div id="ft"></div>
+	<div id="ft">
+		<h3>&copy; Copyright 1990 International Media PLC</h3>
+	</div>
 	
 </div>
         
