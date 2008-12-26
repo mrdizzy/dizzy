@@ -1072,7 +1072,7 @@ Yields each attribute `attr` and associated message `msg` per error added.
 
     company = Company.create(:address => '123 First St.')
 
-    company.errors.each { |attr,msg| puts "#{attr} - #{msg}" } 
+    company.errors.each { |attr,msg| puts "\#{attr} - \#{msg}" } 
       # => name - is too short (minimum is 5 characters)
       # => name - can't be blank
       # => email - can't be blank

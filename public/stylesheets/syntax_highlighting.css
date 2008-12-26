@@ -1,6 +1,6 @@
 code { font: bold 100% "Courier New", "Courier", monospace; color:black; }
 pre code { margin:1em; display:block; }
-code.ruby, code.plaintext {
+code.ruby, code.plaintext, code.rhtml {
 	display:block;
 	font-weight: normal;
 	color:grey;
@@ -121,3 +121,83 @@ code.plaintext {
 .ruby .ty { color:#339; font-weight:bold }
 .ruby .v  { color:#036 }
 .ruby .xt { color:#444 }
+
+
+/* */
+
+
+.rhtml .af { color:#00C }
+.rhtml .an { color:#000 }
+.rhtml .av { color:#700 }
+.rhtml .aw { color:#C00 }
+.rhtml .bi { color:#509; font-weight:bold }
+.rhtml .c  { color:#888 }
+
+.rhtml .ch { color:#04D }
+.rhtml .ch .k { color:#04D }
+.rhtml .ch .dl { color:#000 }
+
+.rhtml .cl { color:#29A4BD; font-weight:bold }
+.rhtml .co { color:grey; font-weight:bold }
+.rhtml .cr { color:#0A0 }
+.rhtml .cv { color:#369 }
+.rhtml .df { color:#099; font-weight:bold }
+.rhtml .di { color:#088; font-weight:bold }
+.rhtml .dl { color:#000 }
+.rhtml .do { color:#970 }
+.rhtml .ds { color:#D42; font-weight:bold }
+.rhtml .e  { color:#666; font-weight:bold }
+.rhtml .en { color:#006A8C; font-weight:bold }
+.rhtml .er { color:#F00; background-color:#FAA }
+.rhtml .ex { color:#F00; font-weight:bold }
+.rhtml .fl { color:#60E; font-weight:bold }
+.rhtml .fu { color:#29A4BD; font-weight:bold }
+.rhtml .gv { color:#d70; font-weight:bold }
+.rhtml .hx { color:#058; font-weight:bold }
+.rhtml .i  { color:grey; font-weight:bold }
+.rhtml .ic { color:#B44; font-weight:bold }
+
+.rhtml .il { background: none; color: black; }
+.rhtml .il .il { background: #ddd }
+.rhtml .il .il .il { background: #ccc }
+.rhtml .il .idl { font-weight: bold; color: #888 }
+
+.rhtml .in { color:#B2B; font-weight:bold }
+.rhtml .iv { color:grey; }
+.rhtml .la { color:#970; font-weight:bold }
+.rhtml .lv { color:#963 }
+.rhtml .oc { color:#40E; font-weight:bold }
+.rhtml .on { color:#000; font-weight:bold }
+.rhtml .op { }
+.rhtml .pc { color:black; font-weight:bold }
+.rhtml .pd { color:#369; font-weight:bold }
+.rhtml .pp { color:#579 }
+.rhtml .pt { color:#339; font-weight:bold }
+.rhtml .r  { color:#006A8C; font-weight:bold }
+
+.rhtml .rx { background-color:#fff0ff }
+.rhtml .rx .k { color:#808 }
+.rhtml .rx .dl { color:#000 }
+.rhtml .rx .mod { color:#C2C }
+.rhtml .rx .fu  { color:#404; font-weight: bold }
+
+.rhtml .s  { background-color:#F5F5F5; }
+.rhtml .s  .s { background-color:#ffe0e0 }
+.rhtml .s  .s  .s { background-color:#ffd0d0 }
+.rhtml .s  .k { color:#29A4BD }
+.rhtml .s  .dl { color:#000 }
+
+.rhtml .sh { background-color:#f0fff0 }
+.rhtml .sh .k { color:#2B2 }
+.rhtml .sh .dl { color:#000 }
+
+.rhtml .sy { color:#006A8C; font-style:italic }
+.rhtml .sy .k { color:#29A4BD }
+.rhtml .sy .dl { color:#000 }
+
+.rhtml .ta { color:grey; font-weight:bold; }
+.rhtml .tf { color:#070; font-weight:bold }
+.rhtml .ts { color:#D70; font-weight:bold }
+.rhtml .ty { color:#339; font-weight:bold }
+.rhtml .v  { color:#036 }
+.rhtml .xt { color:#444 }

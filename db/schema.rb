@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081216215513) do
+ActiveRecord::Schema.define(:version => 20081218132651) do
 
   create_table "binaries", :force => true do |t|
     t.binary  "binary_data",  :limit => 16777215
@@ -75,6 +75,11 @@ ActiveRecord::Schema.define(:version => 20081216215513) do
   add_index "contents_contents", ["related_id"], :name => "fk_secondary_content_contents"
   add_index "contents_contents", ["content_id"], :name => "fk_main_content_contents"
 
+  create_table "markdowns", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "portfolio_items", :force => true do |t|
     t.integer "portfolio_type_id", :default => 0, :null => false
     t.integer "company_id",        :default => 0, :null => false
@@ -91,6 +96,10 @@ ActiveRecord::Schema.define(:version => 20081216215513) do
     t.integer "position"
     t.binary  "header_binary"
     t.boolean "visible",                     :default => true
+  end
+
+  create_table "schema_info", :id => false, :force => true do |t|
+    t.integer "version"
   end
 
   create_table "versions", :force => true do |t|
