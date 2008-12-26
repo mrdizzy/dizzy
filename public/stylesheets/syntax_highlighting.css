@@ -3,7 +3,7 @@ pre code { margin:1em; display:block; }
 code.ruby, code.plaintext, code.rhtml {
 	display:block;
 	font-weight: normal;
-	color:grey;
+	color:black;
 	border: 1px dashed #434343;
 	padding: 2%;
 	margin: 1em 0 1em;

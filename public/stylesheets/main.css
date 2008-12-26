@@ -22,7 +22,10 @@
 /* =CSS TYPOGRAPHY =====================================================*/
 	i { font-style:italic; }
 	p { margin: 0.4em 0 0.4em;}
-	em { font-weight:bold;}
+	em { font-style:italic;}
+	strong { font-weight:bold;}
+	
+	hr {border-bottom:1px dashed black; background:none; color:white; height:0;}
 	
 	h1 { font-size:325%; }
 	h2 { font-size:153.9%; font-style:italic; }
@@ -31,8 +34,9 @@
 	h5 { font-size:100%; }
 	h6 { font-size:77% }
 	
-	ul { margin-left: 3em; line-height:150%;}
-	li { background:url('/images/f/bullets/pixels/diamond.png') no-repeat 0 0.6em; padding-left:1em; }
+	ul,ol { margin-left: 2em; line-height:150%;}
+	li { background:url('/images/f/bullets/pixels/diamond.png') no-repeat 0 0.6em; }
+	ol li {background:none; list-style-type:decimal; font: bold 1em "Trebuchet MS"; color:black; }
 	
 	dt { font-weight:bold; }
 	dd { margin: 0 0 1em 4em;}
@@ -71,7 +75,7 @@
 	#logo_pagination a { text-decoration:underline; }
 	
 /* =CSS CONTENT ======================*/
-	#article h2, #article h1 { font: bold italic 1.5em/1em "Georgia"; color:black; text-align:center; border-bottom:1px dashed black; }	
+	#article h2, #article h1 { font: bold italic 1.5em/1em "Georgia"; color:black; text-align:center; border-bottom:1px dashed black; padding-top:1em; padding-bottom:0.5em; margin-bottom:0.5em}	
 	#article h3 { font: bold italic 1.3em "Trebuchet MS"; color:black; margin: 1em 0 1em; }
 	#article h4 { font: bold 1em "Trebuchet MS"; color:black; text-align:center;}
 	
