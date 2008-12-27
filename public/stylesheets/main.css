@@ -34,8 +34,8 @@
 	h5 { font-size:100%; }
 	h6 { font-size:77% }
 	
-	ul,ol { margin-left: 2em; line-height:150%;}
-	li { background:url('/images/f/bullets/pixels/diamond.png') no-repeat 0 0.6em; }
+	ul, ol { margin-left:2em;line-height:150%;}
+	ul li { background:url('/images/f/bullets/pixels/diamond.png') no-repeat 0 0.6em; padding-left:1em;}
 
 	ol li {background:none;  list-style-type:decimal; }
 	
@@ -85,7 +85,8 @@
 	#article td { border:1px dotted #878787; padding: 0.5em; }
 	#article tr td:first-child code{ color: #29A4BD;}
 	
-	.footnotes { border-top:1px dashed black; margin-top:4em; padding-top:0.25em;}
+	.footnotes { border-top:1px solid black; margin-top:4em; padding-top:0.25em;}
+	.maruku_toc li { background:none;}
 	
 	#cheatsheet_image {	float:right; text-align:center;	}
 	.thumbnail { float:left; text-align:center;	width:200px; }

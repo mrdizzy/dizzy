@@ -554,7 +554,7 @@ Key                  | Value
 ---------------------|-----------------------------------------------------
 `:accept`            | Specifies value that is considered accepted. The default value is a string `"1"`, which makes it easy to relate to an HTML checkbox. This should be set to `true` if you are validating a database column, since the attribute is typecast from `"1"` to true before validation.
 
-### validates\_associated
+### validates\\_associated
 
 Validates whether the associated object or objects are all valid themselves. Works with any kind of association.
 
@@ -595,7 +595,7 @@ The added `password_confirmation` attribute is virtual: it exists only as an in-
     validates_presence_of :password_confirmation, :if => :password_changed
 {:ruby}
 
-### validates\_each
+### validates\\_each
 
 Validates each attribute against a block.
 
@@ -604,7 +604,7 @@ Validates each attribute against a block.
     end
 {:ruby}
 
-### validates\_exclusion\_of
+### validates\\_exclusion\\_of
 
 Validates that the value of the specified attribute is not in a particular enumerable object.
 
@@ -619,7 +619,7 @@ Key                  | Value
 ---------------------|-----------------------------------------------------
 `:in`	             | An enumerable object of items that the value shouldn't be part of
 
-### validates\_format\_of
+### validates\\_format\\_of
 
 Validates whether the value of the specified attribute is of the correct form by matching it against the regular expression provided.
 
@@ -760,11 +760,13 @@ Each ActiveRecord object has its own errors object which stores a list of errors
 
 The errors object itself has a number of methods which enable you to both add to the list of errors, or inspect the object for errors which have already been added. For example, to add an error to the name attribute of an object, we would use the `add` method...
 
-    object.errors.add(:name, "shouldn't be empty!") {:ruby}
+    object.errors.add(:name, "shouldn't be empty!")
+{:ruby}
 
 ...and to retrieve errors on the `:name` attribute we could read from the errors object...
 
-    object.errors.on(:name)    # => "shouldn't be empty!" {:ruby}
+    object.errors.on(:name)    # => "shouldn't be empty!"
+{:ruby}
 
 You will find our cheatsheet ActiveRecord Validation Errors a useful resource for manipulating the errors object.
 
@@ -797,8 +799,8 @@ Here are some examples of implementing low-level, roll-your-own validation metho
     person.errors.on "last_name"        # => "can't be empty"
     person.errors.on "phone_number"     # => "has invalid format"
     person.errors.each_full { |msg| puts msg }
-                                    # => "Last name can't be empty\n" +
-                                         "Phone number has invalid format"
+                                    # => "Last name can't be empty"
+                                    # => "Phone number has invalid format"
 
     person.attributes = { "last_name" => "Heinemeier", "phone_number" => "555-555" }
     person.save # => true (and person is now saved in the database)
@@ -1418,7 +1420,7 @@ Once a mailer action and template are defined, you can deliver your message or c
     Notifier.deliver(mail)
 {:ruby}
 
-You can pass the mailer model any variables you need to use in the generation of the email. In the example above we have passed it a variable named customer which could be an instance of an ActiveRecord Customer model. We can then access our customer's details in the mailer model.
+You can pass the mailer model any variables you need to use in the generation of the email. In the example above we have passed it a variable named `customer` which could be an instance of an ActiveRecord `Customer` model. We can then access our customer's details in the mailer model.
 
 ## Multipart messages
 
@@ -1450,7 +1452,7 @@ Each would be rendered and added as a separate part to the message with the corr
 
 Like ActionController, each mailer class has a corresponding view directory in which each method of the class looks for a template with its own name. For example...
 
-*Mailer model*      |   *Class method*          |   *Corresponding template*
+Mailer model      |   Class method         |   Corresponding template
 --------------------|---------------------------|-----------------------------
 `Notifier`          | `signup_notification` | `app/views/notifier/signup_notification.erb`
 `Notifier`          | `despatch_alert`         | `app/views/notifier/despatch_alert.erb`
@@ -1475,43 +1477,48 @@ The `body` method is used to pass variables to the view. Each variable passed wi
 
 Method | Value | Purpose
 -------|-------|---------
-`recipients` | `[array]` or `"string"` | A string containing the email of address of the recipient, or an array of strings containing email addresses of multiple recipients. Will use the email's `To:` header.
-`sent_on` | `Time` object | A `Time` object which will be used to set the `Date:` header of the email. If not specified, then the current time and date will be used.
+`recipients` | `[array]` _or_ `"string"` | A `"string"` containing the email of address of the recipient, or an `[array]` of `"strings"` "containing email addresses of multiple recipients. Will use the email's `To:` header.
+`sent_on` | `Time` _object_ | A `Time` object which will be used to set the `Date:` header of the email. If not specified, then the current time and date will be used.
 `subject` | `"string"` | The subject line to be used to set the email's `Subject:` header.
-`from` | `[array]` or `"string"`  | A string containing the email address to appear on the `From:` line of the email being created, or a array of strings containing multiple email addresses in the same format as recipients.
-`body` | `{hash}` | The body method sets instance variables to be available in the view template
-`attachment` | `{hash}` or `block`  | enables you to add attachments to your email message.
-`bcc` | `[array]` or `"string"` | Blind carbon copy recipients in the same format as `recipients`.
-`cc` | `[array]` or `"string"` | Carbon copy recipients in the same format as `recipients`
-`content_type  |  `"string"`  | Set the content type of the message. Defaults to `text/plain`
-`headers`   | `{hash}`  |  A hash containing name/value pairs [^header_pairs] to be converted into abitrary header lines.
+`from` | `[array]` _or_ `"string"`  | A `"string"` containing the email address to appear on the `From:` line of the email being created, or an `[array]` of `"strings"` containing multiple email addresses in the same format as recipients.
+`body` | `{hash}` | The `body` method sets instance variables to be available in the view template
+`attachment` | `{hash}` _or_ `block`  | Enables you to add attachments to your email message.
+`bcc` | `[array]` _or_ `"string"` | Blind carbon copy recipients in the same format as `recipients`.
+`cc` | `[array]` _or_ `"string"` | Carbon copy recipients in the same format as `recipients`
+`content_type  |  `"string"`  | Set the `content_type`` of the message. Defaults to `text/plain`
+`headers`   | `{hash}`  |  A `{hash}` containing name/value pairs [^header_pairs] to be converted into abitrary header lines.
 `mime_version` | `"string"` | The mime version for the message. Defaults to `1.0`
-`charset` | `"string"` | The charset for the body and to encode the subject. Defaults to `UTF-8`
-`implicit_parts_order` | `[array]`  | When an email is built implicitly, this variable controls how the parts are ordered. Defaults to `["text/html", "text/enriched", "text/plain"]`. Items that appear first in the array have higher priority in the receiving mail client and appear last in the mime encoded message.
+`charset` | `"string"` | The `charset` for the body and to encode the subject. Defaults to `UTF-8`
+`implicit_parts_order` | `[array]`  | When an email is built implicitly, this variable controls how the parts are ordered. Defaults to `["text/html", "text/enriched", "text/plain"]`. Items that appear first in the `[array]` have higher priority in the receiving mail client and appear last in the mime encoded message.
 
 ## URLs
 
-If your view includes URLs from the application, you need to use `url_for` in the mailer class method instead of in the view template. You can pass the result to the view via the `body` method. Unlike controllers from ActionPack, the mailer instance doesn't have any context about the incoming request. 
+If your view includes URLs from the application, you need to use `url_for` in the mailer class method instead of in the view template. You can pass the result to the view via the `body` method. Unlike controllers from ActionPack, the mailer instance doesn't have any context about the incoming request, therefore you need to define the host, using `:host`. 
 
     body :home_page => url_for(:host => "dizzy.co.uk", :controller => "welcome", :action => "index")
 {:ruby}
 
 ## ActionMailer::Base Configuration Methods
 
-ActionMailer is configured by acessing configuration methods at the class level, for example, `ActionMailer::Base.template_root = "/my/templates"`. These methods allow you to define the overall settings to be used by your application whenever it invokes ActionMailer. Define these settings in your `config/environment.rb` file using `config.action_mailer.method_name_here`. If you require different settings for each of your Rails' environments, define settings separately via `config/environments`.
+ActionMailer is configured by accessing configuration methods at the class level. For example:
+
+    `ActionMailer::Base.template_root = "/my/templates"`
+{:ruby}
+
+These methods allow you to define the overall settings to be used by your application whenever it invokes ActionMailer. Define these settings in your `config/environment.rb` file using `config.action_mailer.method_name_here`. If you require different settings for each of your Rails' environments, define settings separately via `config/environments`.
 
 Method     | Value       | Purpose
 -----------|-------------|----------------
-`smtp_settings` | `{hash}` | A hash of settings [^hash_of_settings] for the SMTP mail server 
-`raise_delivery_errors` | `true` or `false` | Whether or not errors should be raised if the email fails to be delivered.
-`delivery_method` | `:smtp`, `:sendmail` or `:test` | Defines a delivery method, defaults to `:smtp`
-`perform_deliveries` | `true` or `false` | Determines whether deliver_* methods are actually carried out. By default they are, but this can be turned off to help functional testing.
+`smtp_settings` | `{hash}` | A `{hash}` of settings [^hash_of_settings] for the SMTP mail server 
+`raise_delivery_errors` | `true` _or_ `false` | Whether or not errors should be raised if the email fails to be delivered.
+`delivery_method` | `:smtp`, `:sendmail` _or_ `:test` | Defines a delivery method, defaults to `:smtp`
+`perform_deliveries` | `true` _or_ `false` | Determines whether `deliver_*` methods are actually carried out. By default they are, but this can be turned off to help functional testing.
 `template_root` | `"/path"` | The root from which template references will be made
-`logger` | Object      | Used for generation information on the mailing run if available. Can be set to `nil` for no logging. Compatible with Ruby's own Logger and Log4r loggers.
-`default_charset` |  `"string"`  | the default charset used for the body and to encode the subject. Defaults to `UTF-8`. You can also pick a different charset from inside a mailer method by setting charset
+`logger` | _Object_      | Used for generation information on the mailing run if available. Can be set to `nil` for no logging. Compatible with Ruby's own `Logger` and `Log4r` loggers.
+`default_charset` |  `"string"`  | the default `charset` used for the body and to encode the subject. Defaults to `UTF-8`. You can also pick a different `charset` from inside a mailer method by setting charset
 `default_mime_version` | `"string"` | The default mime version used for the message. Defaults to `1.0`. You can also pick a different value from inside a mailer method by setting `mime_version`
-`default_implicit_parts_order` | `[array]` | When an email is built implicitly, this variable controls how the parts are ordered. Defaults to `["text/html", "text/enriched", "text/plain"]`. Items that appear first in the array have higher priority in the receiving mail client and appear last in the mime encoded message. You can also pick a different value from inside a mailer method by setting `implicit_parts_order`
-`default_content_type`  | `"string"` | The default content type used for the main part of the message. Defaults to `text/plain`. You can also pick a different value from inside a mailer method by setting `content_type`
+`default_implicit_parts_order` | `[array]` | When an email is built implicitly, this variable controls how the parts are ordered. Defaults to `["text/html", "text/enriched", "text/plain"]`. Items that appear first in the `[array]` have higher priority in the receiving mail client and appear last in the mime encoded message. You can also pick a different value from inside a mailer method by setting `implicit_parts_order`
+`default_content_type`  | `"string"` | The default `content_type` used for the main part of the message. Defaults to `text/plain`. You can also pick a different value from inside a mailer method by setting `content_type`
 
 ## Setting attachments
 
@@ -1521,7 +1528,7 @@ Method     | Value       | Purpose
     end
 {:ruby}
 
-## smtp\_settings
+## smtp\\_settings
 
 Key | Value
 ----|------
