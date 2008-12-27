@@ -548,14 +548,13 @@ Encapsulates the pattern of wanting to validate the acceptance of a terms of ser
 
 If the database column does not exist, the `terms_of_service` attribute is entirely virtual. This check is performed only if `terms_of_service` is not `nil` and by default on save.
 
-#### Options {#acceptance_of_options}
+##### Options {#acceptance_of_options}
 
 Key                  | Value 
 ---------------------|-----------------------------------------------------
 `:accept`            | Specifies value that is considered accepted. The default value is a string `"1"`, which makes it easy to relate to an HTML checkbox. This should be set to `true` if you are validating a database column, since the attribute is typecast from `"1"` to true before validation.
 
-
-### validates\\_associated
+### validates\_associated
 
 Validates whether the associated object or objects are all valid themselves. Works with any kind of association.
 
@@ -596,7 +595,7 @@ The added `password_confirmation` attribute is virtual: it exists only as an in-
     validates_presence_of :password_confirmation, :if => :password_changed
 {:ruby}
 
-### validates\\_each
+### validates\_each
 
 Validates each attribute against a block.
 
@@ -605,7 +604,7 @@ Validates each attribute against a block.
     end
 {:ruby}
 
-### validates\\_exclusion\\_of
+### validates\_exclusion\_of
 
 Validates that the value of the specified attribute is not in a particular enumerable object.
 
@@ -614,24 +613,24 @@ Validates that the value of the specified attribute is not in a particular enume
     validates_exclusion_of :format, :in => %w( mov avi ), :message => "extension %s is not allowed"
 {:ruby}
 
-#### Options            {#exclusion_of_options}
+##### Options            {#exclusion_of_options}
 
 Key                  | Value 
 ---------------------|-----------------------------------------------------
 `:in`	             | An enumerable object of items that the value shouldn't be part of
 
-### validates\\_format\\_of
+### validates\_format\_of
 
 Validates whether the value of the specified attribute is of the correct form by matching it against the regular expression provided.
 
-    validates_format_of :email, :with => /\\A([^@\\s]+)@((?:[-a-z0-9]+\\.)+[a-z]{2,})\\Z/i, :on => :create
+    validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :on => :create
 {:ruby}
 
-Note: use `\\A` and `\\Z` to match the start and end of the string, `^` and `$` match the start/end of a line.
+Note: use `\A` and `\Z` to match the start and end of the string, `^` and `$` match the start/end of a line.
 
 A regular expression must be provided or else an exception will be raised.
 
-#### Options     {#format_of_options}
+##### Options     {#format_of_options}
 
 Key                  | Value 
 ---------------------|-----------------------------------------------------
@@ -646,7 +645,7 @@ Validates whether the value of the specified attribute is available in a particu
     validates_inclusion_of :format, :in => %w( jpg gif png ), :message => "extension %s is not included in the list" 
 {:ruby}
 
-#### Options            {#inclusion_of_options}
+##### Options            {#inclusion_of_options}
 
 Key                  | Value 
 ---------------------|-----------------------------------------------------
@@ -663,10 +662,10 @@ Validates that the specified attribute matches the length restrictions supplied.
     validates_length_of :user_name, :within => 6..20, :too_long => "pick a shorter name", :too_short => "pick a longer name"
     validates_length_of :fav_bra_size, :minimum => 1, :too_short => "please enter at least %d character"
     validates_length_of :smurf_leader, :is => 4, :message => "papa is spelled with %d characters... don't play me."
-    validates_length_of :essay, :minimum => 100, :too_short => "Your essay must be at least %d words."), :tokenizer => lambda {|str| str.scan(/\\w+/) }
+    validates_length_of :essay, :minimum => 100, :too_short => "Your essay must be at least %d words."), :tokenizer => lambda {|str| str.scan(/\w+/) }
 {:ruby}
 
-#### Options                {#length_of_options}
+##### Options                {#length_of_options}
 
 Key					| Value
 --------------------|---------------------------------------------------------------
@@ -678,16 +677,16 @@ Key					| Value
 `:too_long`         | The error message if the attribute goes over the maximum (default is: `"is too long (maximum is %d characters)"`)
 `:too_short`	    | The error message if the attribute goes under the minimum (default is: `"is too short (min is %d characters)"`)
 `:wrong_length`	    | The error message if using the `:is` method and the attribute is the wrong size (default is: `"is the wrong length (should be %d characters)"`)
-`:tokenizer`	    | Specifies how to split up the attribute string. (e.g. `:tokenizer => lambda {\|str\| str.scan(/\\w+/)}` to count words as in above example.) Defaults to `lambda{ |value| value.split(//) }` which counts individual characters
+`:tokenizer`	    | Specifies how to split up the attribute string [^tokenizer]
 
 ### validates\\_numericality\\_of
 
-Validates whether the value of the specified attribute is numeric by trying to convert it to a float with `Kernel.Float` (if `only_integer` is `false`) or applying it to the regular expression `/\\A[+\\-]?\\d+\\Z/` (if `only_integer` is set to `true`).
+Validates whether the value of the specified attribute is numeric by trying to convert it to a float with `Kernel.Float` (if `only_integer` is `false`) or applying it to the regular expression `/\A[+\-]?\d+\Z/` (if `only_integer` is set to `true`).
   
     validates_numericality_of :age, :greater_than => 18
 {:ruby}
 
-#### Options           {#numericality_of_options}
+##### Options           {#numericality_of_options}
 
 Key					            | Value
 --------------------------------|------------------------------------------------------------
@@ -713,13 +712,11 @@ If you want to validate the presence of a boolean field (where the real values a
 
 ### validates\\_size\\_of
 
-Alias for `validates_length_of`
+Alias for [`validates_length_of`](#validates_length_of)
 
 ### validates\\_uniqueness\\_of
 
 Validates whether the value of the specified attributes are unique across the system. Useful for making sure that only one user can be named "davidhh".
-
-    validates_uniqueness_of :user_name
 
 It can also validate whether the value of the specified attributes are unique based on multiple scope parameters. For example, making sure that a teacher can only be on the schedule once per semester for a particular class.
 
@@ -730,12 +727,102 @@ When the record is created, a check is performed to make sure that no record exi
 
 Because this check is performed outside the database there is still a chance that duplicate values will be inserted in two parallel transactions. To guarantee against this you should create a unique index on the field. See `add_index` for more information.
 
-#### Options                     {#uniqueness_of_options}
+##### Options                     {#uniqueness_of_options}
 
 Key                  | Value 
 ---------------------|-----------------------------------------------------
 `:scope`	         | One or more columns by which to limit the scope of the uniqueness constraint
 `:case_sensitive`	 | Looks for an exact match. Ignored by non-text columns (`false` by default)
+
+## Common options
+
+The above class convenience validation methods all take a hash of common options.
+
+Key             | Value
+----------------|-------------------------
+`:message`      | a custom error message
+`:on`           | specifies when this validation is active (default is `:save`, other options `:create`, `:update`)
+`:allow_nil`    | skip validation if attribute is `nil` (default is `false`). Notice that for `fixnum` and `float` columns empty strings are converted to `nil`
+`:allow_blank`  | if set to `true`, skips this validation if the attribute is blank (default is `false`)
+`:if`           | specifies a method, `proc` or `"string"` to call to determine if the validation should occur [^if_unless]
+`:unless`       | as `:if`, but used to determine if the validation should _not_ occur
+
+## Low level validations
+
+You can create your own validations by implementing the `validate` method (or the variations, `validate_on_create` and `validate_on_update`) in your model. The `validate` method will be called by ActiveRecord before every `save` or `update`, whilst the `validate_on_create` and `validate_on_update` methods will only be called when saving new records or updating existing records respectively. Most validation methods simply do two things:
+
+* Inspect the attributes of an object and check whether their values pass one or more conditions (such as making sure a name attribute is not empty and/or that it matches a certain regular expression)
+* If an attribute's value does not pass, add an error message to it
+
+### Errors
+
+Each ActiveRecord object has its own errors object which stores a list of errors related to that object and is accessible via the errors method on the object.
+
+The errors object itself has a number of methods which enable you to both add to the list of errors, or inspect the object for errors which have already been added. For example, to add an error to the name attribute of an object, we would use the `add` method...
+
+    object.errors.add(:name, "shouldn't be empty!") {:ruby}
+
+...and to retrieve errors on the `:name` attribute we could read from the errors object...
+
+    object.errors.on(:name)    # => "shouldn't be empty!" {:ruby}
+
+You will find our cheatsheet ActiveRecord Validation Errors a useful resource for manipulating the errors object.
+
+Here are some examples of implementing low-level, roll-your-own validation methods...
+
+### Example
+
+    class Person < ActiveRecord::Base
+      protected
+        def validate
+          errors.add_on_empty %w( first_name last_name )
+          errors.add("phone_number", "has invalid format") unless phone_number =~ /[0-9]*/
+        end
+
+        def validate_on_create # is only run the first time a new object is saved
+          unless valid_discount?(membership_discount)
+            errors.add("membership_discount", "has expired")
+          end
+        end
+
+        def validate_on_update
+          errors.add_to_base("No changes have occurred") if unchanged_attributes?
+        end
+    end
+
+    person = Person.new("first_name" => "David", "phone_number" => "what?")
+    person.save                         # => false (and doesn't do the save)
+    person.errors.empty?                # => false
+    person.errors.count                 # => 2
+    person.errors.on "last_name"        # => "can't be empty"
+    person.errors.on "phone_number"     # => "has invalid format"
+    person.errors.each_full { |msg| puts msg }
+                                    # => "Last name can't be empty\n" +
+                                         "Phone number has invalid format"
+
+    person.attributes = { "last_name" => "Heinemeier", "phone_number" => "555-555" }
+    person.save # => true (and person is now saved in the database)
+{:ruby}
+
+[^if_unless]: The following would call a method named `allow_validation`
+
+        :if => :allow_validation
+    {:ruby}
+    The return value would be evaluated to determine whether to perform the class validation. Alternatively, the evaluation can be done via a `proc`...
+
+        :if => Proc.new { |user| user.signup_step > 2 }). 
+    {:ruby}
+    The method, proc or "string" should return or evaluate to a true or false value.
+
+[^tokenizer]: Defaults to:
+
+        lambda { |value| value.split(//) }
+    {:ruby}
+
+    which counts individual characters. To count individual words, you would use:
+
+        :tokenizer => lambda {|str| str.scan(/\w+/)}
+    {:ruby}
 
 EOF
 
@@ -745,11 +832,6 @@ cheatsheet.save!
 
 cheatsheet = Cheatsheet.find(1)
 cheatsheet.content = <<-EOF
-
-# Table of contents
-
-* TOC list
-{:toc}
 
 ## Table methods
 
@@ -1044,9 +1126,6 @@ cheatsheet.save!
 cheatsheet = Cheatsheet.find(16)
 cheatsheet.content = <<-EOF# Table of Contents
 
-* Table
-{:toc}
-
 ## Read methods 
 
 ### \\[\\]       {#on_alias}
@@ -1299,12 +1378,8 @@ cheatsheet.save!
 
 ###############
 
-cheatsheet = Cheatsheet.find(1)
+cheatsheet = Cheatsheet.find(13)
 cheatsheet.content = <<-EOF
-# Table of Contents
-
-* TOC
-{:toc}
 
 ## Mailer Model
 
@@ -1468,13 +1543,8 @@ cheatsheet.save!
 
 ######################################################################
 
-cheatsheet = Cheatsheet.find(1)
+cheatsheet = Cheatsheet.find(8)
 cheatsheet.content = <<-EOF
-
-# Table of Contents
-
-* TOC
-{:toc}
 
 ## form\_for
 

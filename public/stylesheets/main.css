@@ -25,7 +25,7 @@
 	em { font-style:italic;}
 	strong { font-weight:bold;}
 	
-	hr {border-bottom:1px dashed black; background:none; color:white; height:0;}
+	hr { background:white; color:white; height:0px; border:0;}
 	
 	h1 { font-size:325%; }
 	h2 { font-size:153.9%; font-style:italic; }
@@ -36,7 +36,8 @@
 	
 	ul,ol { margin-left: 2em; line-height:150%;}
 	li { background:url('/images/f/bullets/pixels/diamond.png') no-repeat 0 0.6em; }
-	ol li {background:none; list-style-type:decimal; font: bold 1em "Trebuchet MS"; color:black; }
+
+	ol li {background:none;  list-style-type:decimal; }
 	
 	dt { font-weight:bold; }
 	dd { margin: 0 0 1em 4em;}
@@ -77,11 +78,14 @@
 /* =CSS CONTENT ======================*/
 	#article h2, #article h1 { font: bold italic 1.5em/1em "Georgia"; color:black; text-align:center; border-bottom:1px dashed black; padding-top:1em; padding-bottom:0.5em; margin-bottom:0.5em}	
 	#article h3 { font: bold italic 1.3em "Trebuchet MS"; color:black; margin: 1em 0 1em; }
-	#article h4 { font: bold 1em "Trebuchet MS"; color:black; text-align:center;}
+	#article h4, #article h5 { font: bold 1em "Trebuchet MS"; color:black; }
+	#article h5 { text-align:center;}
 	
 	#article th { font: bold italic 100% "Trebuchet MS", serif; border:1px dotted #878787; padding: 0.5em;  color: black;}
 	#article td { border:1px dotted #878787; padding: 0.5em; }
 	#article tr td:first-child code{ color: #29A4BD;}
+	
+	.footnotes { border-top:1px dashed black; margin-top:4em; padding-top:0.25em;}
 	
 	#cheatsheet_image {	float:right; text-align:center;	}
 	.thumbnail { float:left; text-align:center;	width:200px; }

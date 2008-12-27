@@ -7,7 +7,7 @@ document.observe('dom:loaded', function() {
 			s.src = "/binaries/" + image[1] + ".png"
 		})
 		s.observe('mouseout', function() {
-			s.src = "/binaries/" + image[1] + ".grey"
+			s.src = "/binaries/" + image[1] + "/grey.png"
 		})
 	})		
 })

@@ -37,14 +37,13 @@ ActionController::Routing::Routes.draw do |map|
 		end
 	end
 	
-	map.resources :binaries
+	map.resources :binaries, :member => { :grey => :get }
 	map.resources :comments
 	map.resources :companies
 	map.resources :portfolio_items
 	map.resources :portfolio_types
 	map.resources :portfolios
-	
-	
+
   # Allow downloading Web Service WSDL as a file with an extension
   # instead of a file named 'wsdl'
   #map.connect ':controller/service.wsdl', :action => 'wsdl'
