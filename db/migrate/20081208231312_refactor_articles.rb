@@ -1485,7 +1485,7 @@ Method | Value | Purpose
 `attachment` | `{hash}` _or_ `block`  | Enables you to add attachments to your email message.
 `bcc` | `[array]` _or_ `"string"` | Blind carbon copy recipients in the same format as `recipients`.
 `cc` | `[array]` _or_ `"string"` | Carbon copy recipients in the same format as `recipients`
-`content_type  |  `"string"`  | Set the `content_type`` of the message. Defaults to `text/plain`
+`content_type  |  `"string"`  | Set the `content_type` of the message. Defaults to `text/plain`
 `headers`   | `{hash}`  |  A `{hash}` containing name/value pairs [^header_pairs] to be converted into abitrary header lines.
 `mime_version` | `"string"` | The mime version for the message. Defaults to `1.0`
 `charset` | `"string"` | The `charset` for the body and to encode the subject. Defaults to `UTF-8`
@@ -1502,7 +1502,7 @@ If your view includes URLs from the application, you need to use `url_for` in th
 
 ActionMailer is configured by accessing configuration methods at the class level. For example:
 
-    `ActionMailer::Base.template_root = "/my/templates"`
+    ActionMailer::Base.template_root = "/my/templates"
 {:ruby}
 
 These methods allow you to define the overall settings to be used by your application whenever it invokes ActionMailer. Define these settings in your `config/environment.rb` file using `config.action_mailer.method_name_here`. If you require different settings for each of your Rails' environments, define settings separately via `config/environments`.
@@ -1553,7 +1553,7 @@ cheatsheet.save!
 cheatsheet = Cheatsheet.find(8)
 cheatsheet.content = <<-EOF
 
-## form\_for
+## form\\_for
 
 `form_for` is used to easily manipulate HTML forms which are based upon ActiveRecord model objects:
 
@@ -1568,9 +1568,9 @@ cheatsheet.content = <<-EOF
 
 Key                         | Value                    | Purpose
 ----------------------------|--------------------------|-----------------------
-`:customer` *required*       | `:symbol` or `"string"`      | The name of the model object for all the fields in the form. All input fields will be prefixed with this. Rails will also look for an `@instance_variable` with the same name which should contain an instance of an existing or new ActiveRecord model object
+`:customer` *required*       | `:symbol` _or_ `"string"`      | The name of the model object for all the fields in the form. All input fields will be prefixed with this. Rails will also look for an `@instance_variable` with the same name which should contain an instance of an existing or new ActiveRecord model object
 `@customer` *optional*	   |  _ActiveRecord model object_     | If the `@instance_variable` containing the model object is named differently, you can pass a variable containing the actual model object here
-`:url` *optional*	         |  `"string"` or `{hash}`	   |  The URL to post the form to. Can take an explicit url as a string, or a hash in the same format as `url_for`
+`:url` *optional*	         |  `"string"` _or_ `{hash}`	   |  The URL to post the form to. Can take an explicit url as a string, or a hash in the same format as `url_for`
 `:html` *optional*	 |   `{hash}`	|  A `{hash}` of HTML attributes which will be added to the HTML `<form>` tag.
 `:method` *optional*	 |   `:symbol`	|   Pass as part of the `{hash}` of HTML attributes. Can be `:put`, `:post`, `:get` or `:delete`
 
@@ -1672,11 +1672,11 @@ If the record is new and has no id, then upon submitting the form, Rails will co
                    } }
 {:ruby}
 
-##fields\_for
+##fields\\_for
 
 `fields_for` creates a scope around a specific model object like `form_for`, but doesn't create the form tags themselves, making `fields_for` suitable for specifying additional model objects in the same form. See the [example](#example).
 
-## RESTful form\_for
+## RESTful form\\_for
 
 When standard routes are used in a RESTful context, Rails will reflect upon the object passed to it and  automatically build a form with the relevant RESTful URL depending on whether the form is wrapping a new record (create) or an existing record (update). Nested routes will require you to be more verbose. Standard routes	
 

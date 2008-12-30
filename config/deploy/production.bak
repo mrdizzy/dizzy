@@ -1,4 +1,4 @@
-set :deploy_to, "/home/dizzyphoenix/#{application}"
+set :deploy_to, "/home/dizzynew/rails_apps/#{application}"
 
 set :database_configuration, <<-EOF
 
@@ -12,6 +12,11 @@ production:
 EOF
 
 namespace :deploy do
+	
+	desc "start the app server"
+		task :start, :roles => :app do
+		send(run_method, "cd #{current_path} && mongrel_rails start -d -p 12089 -e #{rails_env}")
+	end
 	
 	desc "Dump and download the production database"
 		task :download_database, :roles => :app do 

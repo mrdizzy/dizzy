@@ -34,7 +34,7 @@
 	h5 { font-size:100%; }
 	h6 { font-size:77% }
 	
-	ul, ol { margin-left:2em;line-height:150%;}
+	ul, ol { margin-left:2em;}
 	ul li { background:url('/images/f/bullets/pixels/diamond.png') no-repeat 0 0.6em; padding-left:1em;}
 
 	ol li {background:none;  list-style-type:decimal; }
