@@ -2,6 +2,8 @@ class WelcomeController < ApplicationController
 	
 	caches_page :index
 	
+	spackag
+	
 	def index
 		@logos = PortfolioItem.paginate :per_page => 1, :page => params[:page], :conditions => [ "portfolio_type_id = ?", 4]
 		
