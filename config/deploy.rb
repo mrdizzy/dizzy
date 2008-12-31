@@ -27,10 +27,15 @@ set :database_hostname, "127.0.0.1"
 
 desc "Tasks to execute after update"
 task :after_update do
-	
 	run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
 	run "ln -nfs #{shared_rails_dir} #{release_path}/vendor/rails "
-	
+end
+
+namespace :deploy do
+	desc "Restart the app server"
+		task :restart, :roles => :app do
+		run "cd #{current_path}/tmp && touch restart.txt")
+	end
 end
 
 desc "Create database.yml file"
