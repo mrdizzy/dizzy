@@ -47,15 +47,15 @@ class CachePortfoliosTest < ActionController::IntegrationTest
   end
   
   def test_should_cache_pagination
-  	get "/portfolios/page/2.js"
+  	get "/portfolios/page/1.js"
   	assert_response :success
   	
-  	assert_cache_pages("/portfolios/page/2.js")
+  	assert_cache_pages("/portfolios/page/1.js")
   end
   
   def test_should_expire_pagination_on_company_destroy
 	login
-  	assert_expire_pages("/portfolios/page/2.js") do |*urls|
+  	assert_expire_pages("/portfolios/page/1.js") do |*urls|
   		delete "/companies/#{companies(:heavenly).id}"
   	end
   end

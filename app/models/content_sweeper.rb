@@ -6,16 +6,12 @@ class ContentSweeper < ActionController::Caching::Sweeper
 	
 	def after_save(record)
 		record.permalink_was ? expire_content_page(record, record.permalink_was) : expire_content_page(record,record.permalink)
-		expire_latest_page
 		expire_welcome_page
-		expire_rss_feed
 	end
 	
 	def after_destroy(record)
 		expire_content_page(record, record.permalink)
-		expire_latest_page
 		expire_welcome_page
-		expire_rss_feed
 	end
 	
 	private
@@ -28,15 +24,6 @@ class ContentSweeper < ActionController::Caching::Sweeper
 		else		
 			expire_page hash_for_content_path(:id => permalink)
 		end
-	end
-	
-	def expire_latest_page
-		expire_page hash_for_latest_path
-		expire_page "/ruby_on_rails/cheatsheets"
-	end
-	
-	def expire_rss_feed
-		expire_page "/ruby_on_rails/contents.rss"
 	end
 	
 	def expire_welcome_page

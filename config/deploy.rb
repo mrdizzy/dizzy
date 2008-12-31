@@ -34,7 +34,7 @@ end
 namespace :deploy do
 	desc "Restart the app server"
 		task :restart, :roles => :app do
-		run "cd #{current_path}/tmp && touch restart.txt")
+		run "cd #{current_path}/tmp && touch restart.txt"
 	end
 end
 

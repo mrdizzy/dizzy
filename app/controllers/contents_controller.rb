@@ -2,7 +2,7 @@ class ContentsController < ApplicationController
 	
 	helper 			:comments	
 		
-	caches_page 	:show, :index
+	caches_page 	:show
 	cache_sweeper 	:content_sweeper, :only => [ :destroy, :update, :create ]
 	
  	before_filter 	:authorize, :except => [ :index, :show ]

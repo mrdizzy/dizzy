@@ -42,47 +42,7 @@ class CacheContentsTest < ActionController::IntegrationTest
   		put "/ruby_on_rails/contents/#{contents(:file_uploads_tutorial).id}", { :article => { :permalink => "boo-boo"} }
   	end
   end
-  
-  def test_should_cache_index_cheatsheets
-  	assert_cache_pages("/ruby_on_rails/cheatsheets")
-  end
-  
-  def test_should_expire_index_cheatsheets_on_destroy
-  	login
-  	assert_expire_pages("/ruby_on_rails/cheatsheets") do |*urls|
-  		delete "/ruby_on_rails/cheatsheets/#{contents(:action_mailer_cheatsheet).id}"
-  	end  	
-  end
-  
-  def test_should_cache_index_contents
-  	assert_cache_pages("/ruby_on_rails/latest")
-  end
-  
-  def test_should_expire_index_contents_on_destroy
-  	login
-  	assert_expire_pages("/ruby_on_rails/latest") do |*urls|
-  		delete "/ruby_on_rails/contents/#{contents(:file_uploads_tutorial).id}"
-  	end  	
-  end
-  
-  def test_should_expire_index_welcome_on_contents_destroy
-  	login
-  	assert_expire_pages("/") do |*urls|
-  		delete "/ruby_on_rails/contents/#{contents(:file_uploads_tutorial).id}"
-  	end  	
-  end
  
-  def test_should_cache_index_contents_rss
-  	assert_cache_pages("/ruby_on_rails/contents.rss")
-  end
-  
-  def test_should_expire_index_contents_rss_on_contents_destroy
-  	login
-  	assert_expire_pages("/ruby_on_rails/contents.rss") do |*urls|
-  		delete "/ruby_on_rails/contents/#{contents(:file_uploads_tutorial).id}"
-  	end  	
-  end  
-  
   def test_should_expire_show_contents_on_comments_create
   	assert_expire_pages("/ruby_on_rails/contents/#{contents(:file_uploads_tutorial).permalink}") do |*urls|
   		post content_comments_path(contents(:file_uploads_tutorial).id), 

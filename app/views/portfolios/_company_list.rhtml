@@ -1,6 +1,8 @@
 <% @companies.each do |company| %>
-	<p><%= link_to_remote company.name, { :url => formatted_portfolio_path(company.id, :js) } %></p>
+	<p><%= link_to_remote company.name, { :url => formatted_portfolio_path(company.id, :js), :method => :get } %></p>
 <% end %>
 
-<%= link_to_remote "Previous", { :url => paged_portfolios_path(@companies.previous_page, :js) } if @companies.previous_page %>
-<%= link_to_remote "Next", { :url => paged_portfolios_path(@companies.next_page, :js) } if @companies.next_page %>
+<p>
+<%= link_to_remote "&lt; Previous", { :url => paged_portfolios_path(@companies.previous_page, :js) } if @companies.previous_page %> | 
+<%= link_to_remote "Next &gt;", { :url => paged_portfolios_path(@companies.next_page, :js) } if @companies.next_page %>
+</p>

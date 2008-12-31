@@ -23,7 +23,7 @@ ActionController::Routing::Routes.draw do |map|
    	map.login 'login', :controller => "administrator_sessions", :action => "new"
   	map.logout 'logout', :controller => "administrator_sessions", :action => "destroy"    
 	map.root :controller => "welcome"   
-	map.formatted_welcome '/:page.:format', :controller => "welcome", :action => "show"
+	map.formatted_welcome '/:page.:format', :controller => "welcome", :action => "show", :conditions => { :method => :get }
 	map.paged_portfolios "/portfolios/page/:page.:format", :controller => "portfolios", :action => "index"
     
     # RESTful routes 

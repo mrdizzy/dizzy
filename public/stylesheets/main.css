@@ -25,6 +25,8 @@
 	em { font-style:italic;}
 	strong { font-weight:bold;}
 	
+	img { vertical-align:middle;}
+	
 	hr { background:white; color:white; height:0px; border:0;}
 	
 	h1 { font-size:325%; }

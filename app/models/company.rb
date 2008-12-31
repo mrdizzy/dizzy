@@ -10,7 +10,7 @@
 #
 
 class Company < ActiveRecord::Base
-	
+
 	has_many :portfolio_items, :dependent => :destroy
 	has_many :portfolio_types, :through => :portfolio_items
 	validates_presence_of :description, :name
@@ -23,9 +23,9 @@ class Company < ActiveRecord::Base
   		
   	   errors.add_to_base "Company must have a header graphic" unless portfolio_items.any? {|item| item.portfolio_type.description == "Header" }
 	end 
-	
+
 	def self.pages(page)
-		paginate :per_page => 4, :order => :name, :page => page
+		paginate :per_page => 5, :order => :name, :page => page
 	end
 	
 	def portfolio_items_for_display
