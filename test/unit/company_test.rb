@@ -5,14 +5,11 @@ class CompanyTest < Test::Unit::TestCase
 
   def test_truth
     assert true
-    assert_valid companies(:heavenly)
-    companies(:heavenly).portfolio_items.all?{|portfolio_item| assert_valid portfolio_item}
   end
   
   def test_fixtures_valid
-  	Company.all.each do |company|
-  		assert company.valid?, company.errors.full_messages
-  	end
+  	assert_valid companies(:heavenly)
+    companies(:heavenly).portfolio_items.all?{|portfolio_item| assert_valid portfolio_item}
   end
   
   def setup
