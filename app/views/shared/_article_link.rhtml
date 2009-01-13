@@ -5,16 +5,19 @@
 <% if article_link.is_a?(Article) %>
 	
 	<td>
-		<h2><%= asterisk %> <%= link_to article_link.title, content_path(article_link.permalink) %></h2>
-		<p><%= article_link.description %></p>
+		<p><%= posted_in(article_link.categories) %><br/>
+		<i>Rails <%= article_link.version.version_number %></i></p>
+		
 	</td>
 	
 	<td>
-		<p>
-			<span class="posted_ago">POSTED <%= time_ago_in_words(article_link.date).upcase %> AGO</span><br/>
-			<%= posted_in(article_link.categories) %><br/>
-			<i>Rails <%= article_link.version.version_number %></i>
-		</p>
+		<span class="posted_ago">POSTED <%= time_ago_in_words(article_link.date).upcase %> AGO</span><br/>
+		<h2><%= asterisk %> <%= link_to article_link.title, content_path(article_link.permalink) %></h2>
+		<p><%= article_link.description %></p>
+		
+			
+			
+		
 		
 		<% if administrator? %>
 			<p><%= link_to 'edit', edit_content_path(article_link.id) %> <%= diamond %> <%= link_to 'delete', content_path(article_link.id), :method => "delete" %> </p>			
@@ -23,8 +26,6 @@
 	</td>
 	
 	<td>
-		by<br/>
-		<b><%= article_link.user%></b>
 	</td>
 
 <!-- CHEATSHEET -->
@@ -32,28 +33,19 @@
 <% else %>
 
 <td>
-	<h3><%= asterisk %> <%= article_link.title %> <%= article_link.version.version_number %></h3>
-
-	<div class="pdf_thumbnail"><%= pdf_thumbnail(article_link) %></div>
 	
-		<br/><br/><br/><br/><br/>
-		<p>
-			<%= image_tag("f/small_icons/html.png") %>
-			<%= diamond %> 	<%= link_to "HTML", cheatsheet_path(article_link.permalink) %> 
-		</p>
+	<p><%= posted_in(article_link.categories) %><br/>
+<%= article_link.version.version_number %></p>
+	
 		
-		<p>
-			<%= image_tag("f/small_icons/pdf.png") %>	
-			<%= diamond %> <%= link_to "PDF", formatted_cheatsheet_path(article_link.permalink, "pdf") %> 
-			(<%= number_to_human_size(article_link.pdf.size) %>)
-		</p>
 	
 	</td>
 	
 	<td>
 		<p>
-			<span class="posted_ago">POSTED <%= time_ago_in_words(article_link.date).upcase %> AGO</span><br/>
-			<%= posted_in(article_link.categories) %>
+			<span class="posted_ago">POSTED <%= time_ago_in_words(article_link.date).upcase %> AGO</span>
+			<h2><%= asterisk %> <%= link_to article_link.title, cheatsheet_path(article_link.permalink) %></h2>
+		
 		</p>
 		
 		<p class="article_link_description"><%= article_link.description %></p>
@@ -64,9 +56,17 @@
 		
 	</td>
 	
-	<td>
-		by<br/>
-		<b><%= article_link.user %></b>
+	<td class="icons">
+		<p>
+			<%= image_tag("f/small_icons/html.png") %>
+			<%= diamond %> 	<%= link_to "HTML", cheatsheet_path(article_link.permalink) %> 
+		</p>
+		
+		<p>
+			<%= image_tag("f/small_icons/pdf.png") %>	
+			<%= diamond %> <%= link_to "PDF", formatted_cheatsheet_path(article_link.permalink, "pdf") %> 
+			(<%= number_to_human_size(article_link.pdf.size) %>)
+		</p>
 	</td>
 
 <% end %>

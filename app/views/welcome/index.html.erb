@@ -1,90 +1,51 @@
 <div id="welcome">
-	
-	<div id="second_half">		
-        
-    	<!-- LOGOS -->
-    	
-		<p> 
-			<%= solid_arrow %> <%= image_tag("f/small_icons/feed-icon-small.png")%> 
-			<span class="posted_in"><%= link_to "RSS FEED", formatted_contents_path(:rss) %></span>
-		</p>
-			
-		<div id="latest_container">
-		
-			<span class="posted_in"><%= solid_arrow %> <%= link_to("LATEST WORK", portfolios_path) %></span>
-			
-			<div id="latest_logo">
-				<%= link_to image_tag(formatted_portfolio_item_path(:id => @logos.first.id, :format => :png)), portfolio_path(@logos.first.company_id) %>
-			</div>
-		
-			<div id="logo_pagination"><%= render :partial => "logo_pagination" %></div>
-			
-		</div>
-		
-		<%= category_list %>
-
-	</div>
-	
 	<div id="first_half">
 	
-		<div id="welcome_left">
-					
-			<!-- MAIN ARTICLE -->
-			
-			<span class="posted_ago">POSTED <%= time_ago_in_words(@main_article.date).upcase %> AGO</span>
-			
-			<% if @main_article.is_a?(Article) %>
-				<h1><%= link_to(@main_article.title, content_path(@main_article.permalink)) %></h1>	
+		
+			<% @articles.in_groups_of(4) do |columns| %>
+			<% columns.each do |column| %>
+			<% unless column.nil? %>
+			<% if columns.first == column %>
+				<div class="mini_column_clear">
 			<% else %>
-				<h1><%= link_to(@main_article.title, cheatsheet_path(@main_article.permalink)) %></h1>	
+				<div class="mini_column">
 			<% end %>
-
-
-			
-			<span class="posted_in">
-			 	<%= solid_arrow %> <%= link_to(@main_article.main_category.name.upcase, category_path(@main_article.main_category.permalink)) %>
-			</span>
-				
-			<p>	<%= truncate(@main_article.description, 300)%></p>	
-				
-			<!-- SECOND ARTICLE -->
-			
-
-			<% @articles.each do |article| %>
-			
-				<span class="posted_ago">POSTED <%= time_ago_in_words(article.date).upcase %> AGO</span>
+				<span class="posted_ago"><%= time_ago_in_words(column.date).upcase %> AGO</span>
 				
 				<% if @main_article.is_a?(Article) %>
-					<h2><%= link_to(article.title, content_path(article.permalink)) %></h2>
+					<h2><%= link_to(column.title, content_path(column.permalink)) %></h2>
 				<% else %>
-					<h2><%= link_to(article.title, cheatsheet_path(article.permalink)) %></h2>
+					<h2><%= link_to(column.title, cheatsheet_path(column.permalink)) %></h2>
 				<% end %>
 				
 				<span class="posted_in">
-				 	<%= solid_arrow %> <%= link_to(article.main_category.name.upcase, category_path(article.main_category.permalink)) %>
+				 	<%= solid_arrow %> <%= link_to(column.main_category.name.upcase, category_path(column.main_category.permalink)) %>
 				</span>
 				
-				<p><%= article.description %></p>
-			
+				<p><%= column.description %></p>
+			</div>
+			<% end %>
 			<% end %>		
-						
+			<% end %>			
 		</div>
 	
-		<div id="welcome_right">			
+	<div id="second_half">
+
+	
+	<div class="mini_column">
+			<%= category_list%>
+		</div>
 		
-			<% @snippets.each do |snippet| %>		
-			
-				<span class="posted_ago">POSTED <%= time_ago_in_words(snippet.date).upcase %> AGO</span>
-				
-				<h3><%= link_to(snippet.title, content_path(snippet.permalink)) %> </h3>	
-				
-				<span class="posted_in">
-				 	<%= solid_arrow %> <%= link_to(snippet.main_category.name.upcase, category_path(snippet.main_category.permalink)) %>
-				</span>
-				
-				<p><%= snippet.description %></p>
-				
-			<% end %>
-		
-	</div>
+		<div class="mini_column"><span class="posted_in"><%= solid_arrow%> LATEST WORK </span>
+			<table id="logo_table">
+				<% @companies.each do |footer_logo| %>
+				<tr>
+			<td>
+	<%= link_to image_tag(formatted_grey_binary_path(footer_logo,:png), :class => "footer_logo", :id => "footerlogo_#{footer_logo.id}"), portfolio_path(footer_logo) %>
+	<div style="display:none;"><%= image_tag(formatted_binary_path(footer_logo,:png)) %></div>
+</td>
+</tr>
+<tr><td><%= diamond %></td></tr>
+<% end %>
+</table></div>
 </div> 

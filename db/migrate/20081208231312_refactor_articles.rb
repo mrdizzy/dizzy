@@ -274,7 +274,7 @@ Now let's take a look in the `db` directory of your Rails application, where you
     end
 {:ruby}
 
-What the auto_migrations plugin does, is allow you to edit your `schema.rb` file directly, and then run `rake db:auto:migrate` to have the changes applied automatically. That's right: there's no need to generate and edit migrations files, just edit `schema.rb` directly and the plugin will detect the changes you've made as soon as you run `rake db:auto:migrate`.
+What the auto\\_migrations plugin does, is allow you to edit your `schema.rb` file directly, and then run `rake db:auto:migrate` to have the changes applied automatically. That's right: there's no need to generate and edit migrations files, just edit `schema.rb` directly and the plugin will detect the changes you've made as soon as you run `rake db:auto:migrate`.
 
 ### Example
 
@@ -338,7 +338,7 @@ And hey presto:
 
 ### Limitations
 
-Because auto_migrations makes several assumptions, there a few things it cannot do, namely changing the name of columns: it would simply drop the existing column and then create a new one with a new name. However, it will notice all of the following changes to `schema.rb`:
+Because auto\\_migrations makes several assumptions, there a few things it cannot do, namely changing the name of columns: it would simply drop the existing column and then create a new one with a new name. However, it will notice all of the following changes to `schema.rb`:
 
 * creating and dropping tables
 * creating and removing columns
@@ -347,7 +347,7 @@ Because auto_migrations makes several assumptions, there a few things it cannot 
 
 ### db:schema:to\\_migration
 
-And finally, when you want to start working with traditional migrations, you can get auto_migrations to create an initial migrations file based on the current `schema.rb`. Just run...
+And finally, when you want to start working with traditional migrations, you can get auto\\_migrations to create an initial migrations file based on the current `schema.rb`. Just run...
 
     rake db:schema:to_migration
 

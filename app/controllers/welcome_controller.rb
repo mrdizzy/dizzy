@@ -1,13 +1,12 @@
 class WelcomeController < ApplicationController
 	
 	caches_page :index
+	helper :portfolios
 	
 	def index
-		@logos = PortfolioItem.paginate :per_page => 1, :page => params[:page], :conditions => [ "portfolio_type_id = ?", 4]
-		
-		@articles 			= Content.recent.all(:limit => 4, :conditions => [ "contents.style != ? OR contents.style IS NULL", "SNIPPET" ] )
-		@main_article		= @articles.shift
-		@snippets			= Content.recent.snippets.all(:limit => 3)
+		@companies = Company.find(:all, :order => 'RAND()', :limit => 6)
+		@articles 			= Content.recent.all(:limit => 12)
+
 		
 	end	
 	
