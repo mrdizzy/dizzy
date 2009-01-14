@@ -5,7 +5,7 @@
 	address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}
 	li{list-style:none;}
 	caption,th{text-align:left;}
-	h1,h2,h3,h4,h5,h6{font: normal 100%/1.25 helvetica,arial,clean,sans-serif; margin: 0.3em 0 0.3em; }
+	h1,h2,h3,h4,h5,h6{font: normal 100%/1.25 helvetica,arial,clean,sans-serif;  }
 	q:before,q:after{content:'';}
 	abbr,acronym{border:0;font-variant:normal;}
 	sup{vertical-align:text-top;}
@@ -21,7 +21,7 @@
 
 /* =CSS TYPOGRAPHY =====================================================*/
 	i { font-style:italic; }
-	p { margin: 0.4em 0 0.4em; text-align:left;}
+	p { text-align:left; line-height:18px; }
 	em { font-style:italic;}
 	strong { font-weight:bold;}
 	
@@ -30,16 +30,16 @@
 	hr { background:white; color:white; height:0px; border:0;}
 	
 	h1 { font-size:325%; }
-	h2 { font-size:138.5%; font-weight:normal;  }
+	h2 { font-size:138.5%; line-height:18px; font-weight:normal;  }
 	h3 { font-size:167%; }
 	h4 { font-size:123.1; }
 	h5 { font-size:100%; }
 	h6 { font-size:77% }
 	
-	ul, ol { margin-left:2em; }
-	ul li { background:url('/images/f/bullets/pixels/diamond.png') no-repeat 0 0.6em; padding-left:1em;}
+	ul, ol { font-size:100%; margin-left:2em; padding:0; margin:0;}
+	ul li { background:url('/images/f/bullets/pixels/diamond.png') no-repeat 0 0.6em; padding-left:1em; line-height:36px; }
 
-	ol li {background:none;  list-style-type:decimal; }
+	ol li { background:none; list-style-type:decimal; }
 	
 	dt { font-weight:bold; }
 	dd { margin: 0 0 1em 4em;}
@@ -47,16 +47,15 @@
 	a:link { color: #29A4BD; }	
 	a:visited { color:#006A8C; }
 	
-	.posted_in { font: 75% "Arial Black"; letter-spacing:0.2em; color: #29A4BD; text-decoration: none; }
-	.posted_ago { font: normal 75% "Verdana"; color: #878787; letter-spacing:0.2em; }
+	.posted_in { font: 77% "Arial Black"; letter-spacing:0.2em; color: #29A4BD; text-decoration: none; line-height:36px;  }
+	.posted_ago { font: normal 77% "Verdana"; color: #878787; letter-spacing:0.2em; line-height:36px;  }
 	.amp { font: italic normal 120% "Georgia"; color:#434343; }	
 
 	.padded { padding:5px;}
 	
 	#page_container { width: 994px; margin:	0 auto; padding-left:10px; padding-right:10px; background-color:white;}
 	#left_column {	width: 700px; float: left; }
-	#right_column {	width: 200px; float: right;	}
-	
+	#right_column {	width: 274px; float: right;	}
 	
 /* TABLES =================================== */
 	table {border-collapse:collapse;border-spacing:0;width:100%;}	
@@ -66,8 +65,7 @@
 
 /* =CSS WELCOME =====================================================*/
 	#welcome { clear:both; border:0; padding:0; }
-	#first_half { width:648px;float:left;}
-		
+	#first_half { width:648px;float:left;}		
 	#second_half { width:326px; float:right; }	
 
 	#welcome a { text-decoration:none;color:#000;}
@@ -105,7 +103,7 @@
 #article_links { width:100%;}
 	#article_links h2 a { text-decoration:none;color:black; }
 	#article_links h2 a:hover { text-decoration:underline; }
-	#article_links td { width:38%; padding-bottom:1em; border-bottom: 1px dashed #999; }
+	#article_links td { width:38%; padding-bottom:17px; border-bottom: 1px dashed #999; }
 	#article_links td.icons { width:24%;}
 	
 	#category_list li { background:url('/images/f/bullets/pixels/diamond.png') no-repeat 0 1em; padding-left:1em; }
@@ -123,17 +121,18 @@
 	#comments h6 { font: normal 1.6em/1.125em "Georgia"; color:#29A4BD; letter-spacing:-0.035em; margin-bottom:0 0.6em; }
 
 /* =CSS HEADER ==================================== */
-	#top_container 	{ width:100%; height:105px; }
+	#top_container 	{ width:100%; height:107px; border-bottom:1px dotted #B2B1B1;}
 	#slogan 		{ padding-top:53px;	float:left; }
 	#logo			{ padding-top:7px; text-align:center; width:150px; height:90px; margin: 0 auto; float:left; }
 		#right_of_logo { text-align:center; width:600px; height:105px; float:right; }
 	
 /* =CSS NAVIGATION ======================*/
-	#navigation { height: 45px;	border-bottom: 1px dotted #B2B1B1; margin-bottom: 3px; }
-	.nav_button { width: 20%; margin: 0.2em 0 0.4em 0; float: left; }
-
-
-	#category_list { line-height:250%; }
+	#navigation { height: 53px;	border-bottom: 1px dotted #B2B1B1;}
+	.nav_button { width: 20%; float: left; font: 85% "Helvetica", Arial, serif; color:#000;}
+	.nav_button a { color:#B3DFE8;}
+	.nav_button a:hover { color:#29A4BD;}
+	#breadcrumbs { height:36px;}
+	
 	
 /* =CSS FOOTER ==================================== */
 	#footer { clear:both ;}

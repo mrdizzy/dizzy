@@ -3,38 +3,45 @@
 	<!-- HOME -->
 	<div class="nav_button">
 		<% if current_page?(:controller => 'welcome') %>
-			<%= image_tag("f/nav/home_over.png") %>
+			<%= image_tag("f/nav/home_over.png") %> <b>Home</b>
 		<% else %>
-			<%= link_to image_tag("f/nav/home.png"), "/" %>
+			<%= link_to image_tag("f/nav/home.png"), "/" %> <%= link_to "Home", "/" %>
 		<% end %>
 	</div>
 
 	<!-- CHEATSHEETS -->
 	<div class="nav_button">
 		<% if current_page?(:controller => "cheatsheets", :action => "index") %>
-			<%= image_tag("f/nav/cheats_over.png") %>
+			<%= image_tag("f/nav/cheats_over.png") %> <b>Cheatsheets</b>
 		<% else %>
-			<%= link_to image_tag("f/nav/cheats.png"), cheatsheets_path %>
+			<%= link_to image_tag("f/nav/cheats.png"), cheatsheets_path %> <%= link_to "Cheatsheets", cheatsheets_path %>
 		<% end %>
 	</div>	
 	
 	<!-- RUBY ON RAILS -->
 	<div class="nav_button">
-		<%= link_to image_tag("f/nav/rails.png"), latest_path %>
+		<% if ((request.request_uri =~/ruby_on_rails/i) && (!current_page?(:controller => "cheatsheets"))) %>
+		<%= link_to image_tag("f/nav/rails_over.png"), latest_path %> <b>Ruby on Rails</b>
+		<% else %>
+		<%= link_to image_tag("f/nav/rails.png"), latest_path %> <%= link_to "Ruby On Rails", latest_path %>
+		<% end %>
 	</div>
 	
 	<!-- PORTFOLIO -->
 	<div class="nav_button">
 		<% if current_page?(:controller => 'portfolios') %>
-			<%= image_tag("f/nav/portfolio_over.png") %>
+			<%= image_tag("f/nav/portfolio_over.png") %> <b>Portfolio</b>
 		<% else %>
-			<%= link_to image_tag("f/nav/portfolio.png"), "/portfolios" %>
+			<%= link_to image_tag("f/nav/portfolio.png"), "/portfolios" %> <%= link_to "Portfolio", "/portfolios" %>
 		<% end %>
 	</div>
 	
 	<!-- CONTACT -->
 	<div id="contact_icon" class="nav_button">
 		<%= link_to_function image_tag("f/nav/contact.png"), :before => "Element.show('contact_spinner')", :complete => "Element.hide('contact_spinner')" do |page| 
+		page['contact_form'].show
+	end %> 
+	<%= link_to_function "Contact", :before => "Element.show('contact_spinner')", :complete => "Element.hide('contact_spinner')" do |page| 
 		page['contact_form'].show
 		end %>
 		<div id="contact_spinner" style="display:none;"><img alt="Spinner" src="/images/f/spinner.gif" /></div>
