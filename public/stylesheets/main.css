@@ -64,7 +64,7 @@
 	.spiro { background: url("/images/f/branding/spirosmall.png") center no-repeat; margin:	0 auto; width: 29px; height:29px;}	
 
 /* =CSS WELCOME =====================================================*/
-	#welcome { clear:both; border:0; padding:0; }
+	#welcome { clear:both;}
 	#first_half { width:648px;float:left;}		
 	#second_half { width:326px; float:right; }	
 
@@ -137,9 +137,9 @@
 	
 	
 /* =CSS FOOTER ==================================== */
-	#footer { clear:both ;}
-	#footer a:hover { background-color:transparent; }
-	.footer_logos {	border-top: 1px dotted #CCCCCC; height:100px; text-align:center; width:100%; }
+	#footer {  clear:both; border-top: 1px dashed #B2B1B1; height:90px; }
+		#footer_man { float:left; width:50%;}
+		#footer_spiral {}
 	
 /* =CSS FORMS ==================================== */
 		input.submit { width: 136px; height:34px; margin: 0 auto; background:url('/images/f/buttons/submit2.png') no-repeat; outline: none; padding:0; border:0; }
