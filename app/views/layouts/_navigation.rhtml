@@ -1,6 +1,6 @@
 <div id="navigation">
 	
-	<!-- HOME -->
+<!-- HOME -->
 	<div class="nav_button">
 		<% if current_page?(:controller => 'welcome') %>
 			<%= image_tag("f/nav/home_over.png") %> <b>Home</b>
@@ -9,7 +9,7 @@
 		<% end %>
 	</div>
 
-	<!-- CHEATSHEETS -->
+<!-- CHEATSHEETS -->
 	<div class="nav_button">
 		<% if current_page?(:controller => "cheatsheets", :action => "index") %>
 			<%= image_tag("f/nav/cheats_over.png") %> <b>Cheatsheets</b>
@@ -18,7 +18,7 @@
 		<% end %>
 	</div>	
 	
-	<!-- RUBY ON RAILS -->
+<!-- RUBY ON RAILS -->
 	<div class="nav_button">
 		<% if ((request.request_uri =~/ruby_on_rails/i) && (!current_page?(:controller => "cheatsheets"))) %>
 		<%= link_to image_tag("f/nav/rails_over.png"), latest_path %> <b>Ruby on Rails</b>
@@ -27,7 +27,7 @@
 		<% end %>
 	</div>
 	
-	<!-- PORTFOLIO -->
+<!-- PORTFOLIO -->
 	<div class="nav_button">
 		<% if current_page?(:controller => 'portfolios') %>
 			<%= image_tag("f/nav/portfolio_over.png") %> <b>Portfolio</b>
@@ -36,7 +36,7 @@
 		<% end %>
 	</div>
 	
-	<!-- CONTACT -->
+<!-- CONTACT -->
 	<div id="contact_icon" class="nav_button">
 		<%= link_to_function image_tag("f/nav/contact.png"), :before => "Element.show('contact_spinner')", :complete => "Element.hide('contact_spinner')" do |page| 
 		page['contact_form'].show

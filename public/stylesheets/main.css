@@ -14,35 +14,35 @@
 	input,textarea,select{*font-size:100%;}legend{color:#000;}del,ins{text-decoration:none;}
 
 /* YAHOO FONTS =========================================== */
-	body { font:13px/1.231 helvetica,arial,clean,sans-serif;*font-size:small;*font:x-small;color:#434343;background:url('/images/f/backgrounds/new_back.png') repeat; }
+	body { font:13px/18px helvetica,arial,clean,sans-serif;*font-size:small;*font:x-small;color:#434343;background:url('/images/f/backgrounds/18px_grid.gif') repeat; }
 	select, input, button, textarea { font:99% arial,helvetica,clean,sans-serif; }
-	table { font-size:inherit;font:100%; }
-	pre, code, kbd, samp, tt { font-family:monospace;*font-size:108%;line-height:100%;}
+	table { font-size:inherit; font:100%; }
+	pre, code, kbd, samp, tt { font-family:monospace;*font-size:100%;}
 
 /* =CSS TYPOGRAPHY =====================================================*/
 	i { font-style:italic; }
-	p { text-align:left; line-height:18px; }
 	em { font-style:italic;}
 	strong { font-weight:bold;}
 	
 	img { vertical-align:middle;}
 	
-	hr { background:white; color:white; height:0px; border:0;}
+	hr { background:white; color:white; height:18px; margin:0; border:0; padding:0;}
 	
-	h1 { font-size:325%; }
+	h1 { font-size:197%; color:#000; font-weight:bold; line-height:36px; }
 	h2 { font-size:138.5%; line-height:18px; font-weight:normal;  }
 	h3 { font-size:167%; }
 	h4 { font-size:123.1; }
 	h5 { font-size:100%; }
 	h6 { font-size:77% }
 	
-	ul, ol { font-size:100%; margin-left:2em; padding:0; margin:0;}
-	ul li { background:url('/images/f/bullets/pixels/diamond.png') no-repeat 0 0.6em; padding-left:1em; line-height:36px; }
+	ul, ol { font-size:100%; margin-left:2em; }
+	ul li { background:url('/images/f/bullets/pixels/diamond.png') no-repeat 0 0.6em; padding-left:1em; line-height:18px; }
 
 	ol li { background:none; list-style-type:decimal; }
 	
+	dl { line-height:18px;}
 	dt { font-weight:bold; }
-	dd { margin: 0 0 1em 4em;}
+	dd { }
 	
 	a:link { color: #29A4BD; }	
 	a:visited { color:#006A8C; }
@@ -53,15 +53,13 @@
 
 	.padded { padding:5px;}
 	
-	#page_container { width: 994px; margin:	0 auto; padding-left:10px; padding-right:10px; background-color:white;}
-	#left_column {	width: 700px; float: left; }
-	#right_column {	width: 274px; float: right;	}
+	#page_container { width: 994px; margin:	0 auto; padding-left:10px; padding-right:10px; background-color:none;}
 	
 /* TABLES =================================== */
-	table {border-collapse:collapse;border-spacing:0;width:100%;}	
+	table { border-collapse:collapse;border-spacing:0;width:100%;}	
 
 /* PAGE FURNITURE ==================================== */
-	.spiro { background: url("/images/f/branding/spirosmall.png") center no-repeat; margin:	0 auto; width: 29px; height:29px;}	
+	.spiro { background: url("/images/f/branding/spirosmall.png") center no-repeat; margin:	0 auto; width: 29px; height:36px;}	
 
 /* =CSS WELCOME =====================================================*/
 	#welcome { clear:both;}
@@ -79,20 +77,22 @@
 	#logo_table td { padding:10px;}
 
 /* =CSS CONTENT ======================*/
-	#article h2, #article h1 { font: bold italic 1.5em/1em "Georgia"; color:black; text-align:center; border-bottom:1px dashed black; padding-top:1em; padding-bottom:0.5em; margin-bottom:0.5em}	
-	#article h3 { font: bold italic 1.3em "Trebuchet MS"; color:black; margin: 1em 0 1em; }
-	#article h4, #article h5 { font: bold 1em "Trebuchet MS"; color:black; }
-	#article h5 { text-align:center;}
+	#left_column {	width: 163px; float: left; }
+	#right_column {	width: 811px; float: right;	}
+		#right_column h2 { font: italic 123.1%/18px "Trebuchet MS"; color:black; }
 	
-	#article th { font: bold italic 100% "Trebuchet MS", serif; border:1px dotted #878787; padding: 0.5em;  color: black;}
-	#article td { border:1px dotted #878787; padding: 0.5em; }
+	#article h2, #article h1 { font: bold italic 100%/17px "Georgia"; color:black; text-align:center; border-bottom:1px dashed black; }	
+	#article h3 { font: bold italic 100%/18px "Trebuchet MS"; color:black;  }
+	#article h4, #article h5 { font: bold 100%/18px "Trebuchet MS"; color:black; }
+	#article h5 { text-align:center; line-height:18px;}
+	#article table { border:1px solid black;}
+	}
+	#article th { font: bold italic 100%/18px "Trebuchet MS", serif;  color: black;}
+	#article td {border-left: 1px solid black; border-right:1px solid black; padding-bottom:8px;border-bottom: 1px solid black; padding-top:9px;}
 	#article tr td:first-child code{ color: #29A4BD;}
 	
-	.footnotes { border-top:1px solid black; margin-top:4em; padding-top:0.25em;}
+	.footnotes { border-top:1px solid black; }
 	.maruku_toc li { background:none;}
-	
-	#cheatsheet_image {	float:right; text-align:center;	}
-	.thumbnail { float:left; text-align:center;	width:200px; }
 
 	#blurb { border: 1px dashed #878787; padding:0 7px 0px 7px; }
 	#blurb h2 { font: italic 1.5em "Georgia"; }	
@@ -101,8 +101,8 @@
 
 /* =CATEGORY PAGES ========================= */
 #article_links { width:100%;}
-	#article_links h2 a { text-decoration:none;color:black;}
-	#article_links h2 {  padding-top:18px;}
+	#article_links h2 a { text-decoration:none; color:black;}
+	#article_links h2 { padding-top:18px;}
 	#article_links h2 a:hover { text-decoration:underline; }
 	#article_links td { width:38%; padding-bottom:17px; border-bottom: 1px dashed #999; vertical-align:top; }
 	#article_links td.icons { width:24%; vertical-align:middle; }

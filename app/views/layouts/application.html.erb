@@ -7,9 +7,9 @@
 	<%= stylesheet_link_tag "syntax_highlighting", 	:media => "all" %>
 	
 	<%= javascript_include_tag :defaults %>
-	<%= javascript_include_tag "footer_rollover" %>
 	
 </head>
+
 <body>	
 
 	<div id="page_container">
@@ -20,32 +20,7 @@
 		<div id="contact_form" style="display:none;"></div>
 		
 		<div id="content_container">
-			<div id="left_column">
-				
-				<div id="breadcrumbs"><p><%= location_icon %> <a href="/">Home</a> <%= image_tag("f/bullets/arrows/solidarrow.png") %> <%= link_to "Ruby on Rails", latest_path %> <%= image_tag("f/bullets/arrows/solidarrow.png") %> <b><%=  @main_category %></b></p></div>
-				
-				<%= yield %>
-			</div>
-			
-			<div id="right_column">
-				
-				<%= yield :thumbnail %>
-				
-				<%= category_list %>
-				
-				<%= render :partial => "/layouts/category_list" %>
-				<% unless @content.nil? %>
-					<% @content.related_articles.each do |related| %>
-						<p><%= spiro %></p>
-						<div id="blurb">
-							<h4><%= solid_arrow %> RELATED ARTICLE</h4>
-							<h2><%= asterisk %> <%= related.title %></h2> 
-							<p><%= related.description %> <%= solid_arrow %> <%= link_to "More", content_path(related.permalink) %> </p>
-						</div>
-					<% end %>
-				<% end %>
-			</div>
-			
+			<%= yield %>
 		</div>
 		
 		<div id="footer" class="clearfix">

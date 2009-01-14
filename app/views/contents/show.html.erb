@@ -1,8 +1,33 @@
+<div id="breadcrumbs"><p><%= location_icon %> <a href="/">Home</a> <%= image_tag("f/bullets/arrows/solidarrow.png") %> <%= link_to "Ruby on Rails", latest_path %> <%= image_tag("f/bullets/arrows/solidarrow.png") %> <b><%=  @main_category %></b></p></div>
+				
+<div id="left_column">
+	
+	<%= category_list %>
+	
+	<%= render :partial => "/layouts/category_list" %>
+	
+	<% unless @content.nil? %>
+		<% @content.related_articles.each do |related| %>
+			<p><%= spiro %></p>
+			<div id="blurb">
+				<h4><%= solid_arrow %> RELATED ARTICLE</h4>
+				<h2><%= asterisk %> <%= related.title %></h2> 
+				<p><%= related.description %> <%= solid_arrow %> <%= link_to "More", content_path(related.permalink) %> </p>
+			</div>
+		<% end %>
+	<% end %>			
+				
+</div>
+			
+<div id="right_column">
+	
+			
 <% @title = @content.title %>
 
 <% @main_category = @content.main_category.name %>
 
-<h1><%= asterisk %> <%= @content.title %></h1>
+<h1><%= @content.title %></h1>
+
 <h2><%= @content.description %></h2>
 
 <%= spiro %>
@@ -25,4 +50,4 @@
 	</div>
 <% end %>
 <% end %>
-
+</div>
