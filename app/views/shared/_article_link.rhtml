@@ -42,12 +42,12 @@
 	</td>
 	
 	<td>
-		<p>
-			<span class="posted_ago">POSTED <%= time_ago_in_words(article_link.date).upcase %> AGO</span>
+		
+			
 			<h2><%= asterisk %> <%= link_to article_link.title, cheatsheet_path(article_link.permalink) %></h2>
 		
-		</p>
-		
+		<p>
+		<span class="posted_ago">POSTED <%= time_ago_in_words(article_link.date).upcase %> AGO</span></p>
 		<p class="article_link_description"><%= article_link.description %></p>
 		
 		<% if administrator? %>

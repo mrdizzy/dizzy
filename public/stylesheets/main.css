@@ -101,10 +101,12 @@
 
 /* =CATEGORY PAGES ========================= */
 #article_links { width:100%;}
-	#article_links h2 a { text-decoration:none;color:black; }
+	#article_links h2 a { text-decoration:none;color:black;}
+	#article_links h2 {  padding-top:18px;}
 	#article_links h2 a:hover { text-decoration:underline; }
-	#article_links td { width:38%; padding-bottom:17px; border-bottom: 1px dashed #999; }
-	#article_links td.icons { width:24%;}
+	#article_links td { width:38%; padding-bottom:17px; border-bottom: 1px dashed #999; vertical-align:top; }
+	#article_links td.icons { width:24%; vertical-align:middle; }
+		#article_links td.icons p {text-align:center; margin-top:9px; margin-bottom:9px; }
 	
 	#category_list li { background:url('/images/f/bullets/pixels/diamond.png') no-repeat 0 1em; padding-left:1em; }
 	#category_list li a { text-decoration:underline;}
