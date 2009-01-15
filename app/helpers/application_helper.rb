@@ -26,9 +26,13 @@ module ApplicationHelper
 	end
 	
 	def asterisk
-		image_tag("f/bullets/pixels/asterisk.png", :size=> "13x13", :alt => "*")
+		image_tag("f/bullets/pixels/asterisk.png", :alt => "*")
 	end
 	
+	def square
+		image_tag("f/bullets/pixels/square.png", :alt => "&mdash;")
+	end
+		
 	def bigarrow
 		image_tag("f/bullets/pixels/bigarrow.png", :size=> "17x13", :alt => "->")
 	end	

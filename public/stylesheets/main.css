@@ -48,6 +48,7 @@
 	a:visited { color:#006A8C; }
 	
 	.posted_in { font: 77% "Arial Black"; letter-spacing:0.2em; color: #29A4BD; text-decoration: none; line-height:36px;  }
+	#comments_header { height:36px; }
 	.posted_ago { font: normal 77% "Verdana"; color: #878787; letter-spacing:0.2em; line-height:36px;  }
 	.amp { font: italic normal 120% "Georgia"; color:#434343; }	
 
@@ -59,7 +60,7 @@
 	table {width:100%; border-collapse:collapse;}	
 
 /* PAGE FURNITURE ==================================== */
-	.spiro { background: url("/images/f/branding/spirosmall.png") center no-repeat; margin:	0 auto; width: 29px; height:36px; margin-top:13px; margin-bottom:14px;}	
+	.spiro { background: url("/images/f/branding/spirosmall.png") center no-repeat; width: 100%; height:54px; padding:0; }	
 
 /* =CSS WELCOME =====================================================*/
 	#welcome { clear:both;}
@@ -104,7 +105,7 @@
 /* =CATEGORY PAGES ========================= */
 #article_links { width:100%;}
 	#article_links h2 a { text-decoration:none; color:black;}
-	#article_links h2 { font-family: Arial; font-weight:bold; font-style:normal;padding-top:18px;}
+	#article_links h2 { font-family: Arial; font-weight:bold; font-style:normal;}
 	#article_links h2 a:hover { text-decoration:underline; }
 	#article_links td { width:38%; padding-bottom:17px; border-bottom: 1px dashed #999; vertical-align:top; }
 	#article_links td.icons { width:24%; vertical-align:middle; }
@@ -136,8 +137,8 @@
 	.nav_button { width: 165px; float: left; font: 85% "Helvetica", Arial, serif; color:#000;}
 	.nav_button a { color:#B3DFE8;}
 	.nav_button a:hover { color:#29A4BD;}
-	#breadcrumbs { padding-top:9px; padding-bottom:9px;}
-	#breadcrumbs a { height:36px; font: normal 85% Helvetica, Arial; }
+	#breadcrumbs { padding-top:9px; padding-bottom:9px; height:36px; }
+	#breadcrumbs a { font: normal 85%/18px Helvetica, Arial; }
 	.destination { font: bold italic 123.1% Georgia; color:#000;}
 	#category_list { margin-left:0;}
 		#rss_feed { padding-top:18px; width: 165px; float: left; }

@@ -11,7 +11,7 @@
 	
 	<td>
 		
-		<h2><%= link_to article_link.title, content_path(article_link.permalink) %></h2>
+		<h2><%= square %> <%= link_to article_link.title, content_path(article_link.permalink) %></h2>
 		<span class="posted_ago">POSTED <%= time_ago_in_words(article_link.date).upcase %> AGO</span>
 		<p><%= article_link.description %></p>
 
@@ -36,7 +36,7 @@
 	
 	<td>
 			
-		<h2> <%= link_to article_link.title, cheatsheet_path(article_link.permalink) %></h2>
+		<h2><%= square %> <%= link_to article_link.title, cheatsheet_path(article_link.permalink) %></h2>
 		
 		<span class="posted_ago">POSTED <%= time_ago_in_words(article_link.date).upcase %> AGO</span>
 		

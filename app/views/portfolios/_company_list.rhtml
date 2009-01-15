@@ -3,6 +3,6 @@
 <% end %>
 
 <p>
-<%= link_to_remote "&lt; Previous", { :url => paged_portfolios_path(@companies.previous_page, :js) } if @companies.previous_page %> | 
+<%= link_to_remote "&lt; Previous", { :url => paged_portfolios_path(@companies.previous_page, :js) } if @companies.previous_page %> <%= diamond if @companies.previous_page %> 
 <%= link_to_remote "Next &gt;", { :url => paged_portfolios_path(@companies.next_page, :js) } if @companies.next_page %>
 </p>
