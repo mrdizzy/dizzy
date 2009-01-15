@@ -140,7 +140,7 @@
 	.nav_button a { color:#B3DFE8;}
 	.nav_button a:hover { color:#29A4BD;}
 	#breadcrumbs { height:36px;}
-
+	#category_list { margin-left:0;}
 	
 /* =CSS FOOTER ==================================== */
 	#footer {  clear:both; border-top: 1px dashed #B2B1B1; height:90px; }
