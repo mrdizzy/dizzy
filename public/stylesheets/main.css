@@ -14,7 +14,7 @@
 	input,textarea,select{*font-size:100%;}legend{color:#000;}del,ins{text-decoration:none;}
 
 /* YAHOO FONTS =========================================== */
-	body { font:13px/18px helvetica,arial,clean,sans-serif;*font-size:small;*font:x-small;color:#434343;background:url('/images/f/backgrounds/new_back.png') repeat; }
+	body { font:13px/18px helvetica,arial,clean,sans-serif;*font-size:small;*font:x-small;color:#434343;background:url('/images/f/backgrounds/18px_grid.gif') repeat; }
 	select, input, button, textarea { font:99% arial,helvetica,clean,sans-serif; }
 	table { font-size:inherit; font:100%; }
 	pre, code, kbd, samp, tt { font-family:monospace;*font-size:100%;}
@@ -53,7 +53,7 @@
 
 	.padded { padding:5px;}
 	
-	#page_container { width: 994px; margin:	0 auto; padding-left:10px; padding-right:10px; background-color:white;}
+	#page_container { width: 994px; margin:	0 auto; padding-left:10px; padding-right:10px; background-color:none;}
 	
 /* TABLES =================================== */
 	table {width:100%; border-collapse:collapse;}	
@@ -92,7 +92,7 @@
 	#article td {border-left: 1px solid black; border-right:1px solid black; border-bottom:1px solid black; padding-bottom:9px; padding-top:8px; border-top: 1px solid black;}
 	#article th { font: bold italic 100%/18px "Trebuchet MS", serif; color: black; text-align:center; padding-bottom:9px; padding-top:8px; }
 	#article tr td:first-child code{ color: #29A4BD;}
-	
+	#article table { margin-bottom:18px;}
 	.footnotes { border-top:1px solid black; }
 	.maruku_toc li { background:none;}
 

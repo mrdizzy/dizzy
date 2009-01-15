@@ -1,4 +1,4 @@
-<div id="breadcrumbs"><p><%= location_icon %> <a href="/">Home</a> <%= image_tag("f/bullets/arrows/solidarrow.png") %> <%= link_to "Ruby on Rails", latest_path %> <%= image_tag("f/bullets/arrows/solidarrow.png") %> <b><%=  @main_category %></b></p></div>
+<div id="breadcrumbs"><p><%= location_icon %> <a href="/">Home</a> <%= image_tag("f/bullets/arrows/solidarrow.png") %> <%= link_to "Ruby on Rails", latest_path %> <%= image_tag("f/bullets/arrows/solidarrow.png") %> <%= link_to @content.main_category.name, category_path(@content.main_category.permalink) %> <%= image_tag("f/bullets/arrows/solidarrow.png") %></p></div>
 				
 <div id="left_column">
 	
@@ -32,7 +32,7 @@
 <%= spiro %>
 
 <div id="article"><%= @content.parsed_content %></div>
-
+<%= spiro %>
 <%= render(:partial => "comments/comments", :object => @content ) %>
 
 </div>
