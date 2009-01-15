@@ -114,10 +114,10 @@
 
 /* =CSS COMMENTS ==================================== */
 #comments { line-height:18px;}
-	#comments h1 { line-height:54px; margin-bottom:18px;}
-	#comments h6 { font:bold 116%/18px Arial; color:black; margin-bottom:18px; }
-	.single_comment { margin-left:2em; }
-	.root_comment { border-top: 1px solid black; }
+	#comments h1 { line-height:54px; }
+	#comments h6 { font:bold 116%/18px Arial; color:black; margin-bottom:18px; margin-top:18px;}
+	.single_comment { margin-left:2em; border-top: 1px dashed black; margin-top:17px; }
+	.root_comment { border-top: 1px solid black; margin-top:17px;}
 	.reply_comment { width:100%; text-align:center; clear:both; }
 	.comments_left { float:left; width:25%; }
 	.comments_right { float:right; width:74%; }
