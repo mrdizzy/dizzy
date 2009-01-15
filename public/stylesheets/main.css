@@ -29,7 +29,7 @@
 	hr { background:white; color:white; height:18px; margin:0; border:0; padding:0;}
 	
 	h1 { font-size:197%; color:#000; font-weight:bold; line-height:36px; }
-	h2 { font-size:138.5%; line-height:18px; font-weight:normal;}
+	h2 { font: italic normal 123.1%/18px "Trebuchet MS"; color:black; }
 	h3 { font-size:167%;   }
 	h4 { font-size:123.1; }
 	h5 { font-size:100%; }
@@ -103,7 +103,7 @@
 /* =CATEGORY PAGES ========================= */
 #article_links { width:100%;}
 	#article_links h2 a { text-decoration:none; color:black;}
-	#article_links h2 { padding-top:18px;}
+	#article_links h2 { font-family: Arial; font-weight:bold; font-style:normal;padding-top:18px;}
 	#article_links h2 a:hover { text-decoration:underline; }
 	#article_links td { width:38%; padding-bottom:17px; border-bottom: 1px dashed #999; vertical-align:top; }
 	#article_links td.icons { width:24%; vertical-align:middle; }
@@ -162,7 +162,9 @@
 /* =CSS FRONTEND PORTFOLIO ==================================== */
 	#column1 { float:left; width: 25%; }
 	#logos { float:right; width: 75% }
-	
-	table.portfolio_table {	border: 1px dashed #888; }
-	table.portfolio_table td { vertical-align: middle; text-align:center; border: 1px dotted #888; }
+	#portfolio_header { padding-top:18px; padding-bottom:18px;}
+	#portfolio_list { padding-top:18px; padding-bottom:18px; line-height:36px;}
+	.portfolio_table h2 { font-weight:bold; font-family:Arial, Helvetica; font-size:108%; font-style:normal;}
+	table.portfolio_table {	border: 1px dotted #000; }
+	table.portfolio_table td { vertical-align: middle; text-align:center; border: 1px dotted #000; }
 	

@@ -18,6 +18,7 @@ class PortfoliosController < ApplicationController
 	def show
 		@companies = Company.pages(params[:page])
 		@company 	= Company.find(params[:id])	
+		@header		= PortfolioItem.header.find_by_company_id(@company.id)
     	respond_to do |wants|
     		wants.html
     		wants.js do 
