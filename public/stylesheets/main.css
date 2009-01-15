@@ -36,7 +36,7 @@
 	h6 { font-size:77% }
 	
 	ul, ol { font-size:100%; margin-left:2em; }
-	ul li { background:url('/images/f/bullets/pixels/diamond.png') no-repeat 0 0.6em; padding-left:1em; line-height:18px; }
+	ul li { background:url('/images/f/bullets/pixels/diamond.png') no-repeat 0 0.7em; padding-left:1em; }
 
 	ol li { background:none; list-style-type:decimal; }
 	
@@ -108,8 +108,8 @@
 	#article_links td { width:38%; padding-bottom:17px; border-bottom: 1px dashed #999; vertical-align:top; }
 	#article_links td.icons { width:24%; vertical-align:middle; }
 		#article_links td.icons p {text-align:center; margin-top:9px; margin-bottom:9px; }
-	
-	#category_list li { background:url('/images/f/bullets/pixels/diamond.png') no-repeat 0 1em; padding-left:1em; }
+		
+	#category_list li { background:url('/images/f/bullets/pixels/diamond.png') no-repeat 0 0.5em; padding-bottom:18px;padding-left:1em; line-height:18px; vertical-align:middle}
 	#category_list li a { text-decoration:underline;}
 
 /* =CSS COMMENTS ==================================== */

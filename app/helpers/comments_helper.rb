@@ -24,7 +24,7 @@ def prepare_comments(comments,result=Array.new, init=true, counter=0)
 		result << "<p>" + link_to_remote("Delete", :url => comment_path(:content_id => comment.content.id, :id => comment.id), :method => :delete) + "</p>" if administrator? 
 					
 		result << 
-		"<div class=\"reply_comment\" id=\"reply_#{comment.id}\"><p>" + 
+		"<div class=\"reply_comment\" id=\"reply_#{comment.id}\"><p>" + diamond + " " + 
 		link_to_remote("Reply to this comment", { :url => new_content_comment_child_comment_path(:content_id => comment.content.id, :comment_id => comment.id), :method => :get }, :href => "http://www.yahoo.com")  + 
 		"</div><div id=\"reply_form_#{comment.id}\"></p></div>"
 			
