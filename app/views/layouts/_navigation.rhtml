@@ -14,7 +14,7 @@
 
 <!-- CHEATSHEETS -->
 	<div class="nav_button">
-		<% if current_page?(:controller => "cheatsheets", :action => "index") %>
+		<% if request.request_uri =~/cheatsheets/i %>
 			<%= image_tag("f/nav/cheats_over.png") %> <b>Cheatsheets</b>
 		<% else %>
 			<%= link_to image_tag("f/nav/cheats.png"), cheatsheets_path %> <%= link_to "Cheatsheets", cheatsheets_path %>
@@ -23,7 +23,7 @@
 	
 <!-- RUBY ON RAILS -->
 	<div class="nav_button">
-		<% if ((request.request_uri =~/ruby_on_rails/i) && (!current_page?(:controller => "cheatsheets"))) %>
+		<% if ((request.request_uri =~/ruby_on_rails/i) && (request.request_uri =~/cheatsheets/i).nil?) %>
 		<%= link_to image_tag("f/nav/rails_over.png"), latest_path %> <b>Ruby on Rails</b>
 		<% else %>
 		<%= link_to image_tag("f/nav/rails.png"), latest_path %> <%= link_to "Ruby On Rails", latest_path %>
