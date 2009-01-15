@@ -31,10 +31,18 @@
 	<div id="second_half">
 	
 	<div class="mini_column">
+
 			<%= category_list%>
 		</div>
 		
-		<div class="mini_column"><span class="posted_in"><%= solid_arrow%> LATEST WORK </span>
+		<div class="mini_column">
+			<p>
+<img height="9" width="13" src="/images/f/bullets/arrows/solidarrow.png" alt=">"/>
+<img src="/images/f/small_icons/feed-icon-small.png" alt="Feed-icon-small"/><span class="posted_in">
+			<a href="ruby_on_rails/contents.rss">RSS FEED</a>
+			</span></p>
+		
+		<span class="posted_in"><%= solid_arrow%> LATEST WORK </span>
 			<table id="logo_table">
 				<% @companies.each do |footer_logo| %>
 				<tr>

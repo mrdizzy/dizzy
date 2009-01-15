@@ -76,6 +76,8 @@ module ApplicationHelper
 	# Category List
 	
 	def category_list
+
+
 		result = "<ul id=\"category_list\" class=\"categories\">"
 		@categories = Category.find(:all, :order => :name)
 		@categories.each do |category|

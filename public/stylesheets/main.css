@@ -63,6 +63,7 @@
 
 /* =CSS WELCOME =====================================================*/
 	#welcome { clear:both;}
+	#welcome h2 { font-weight:bold; font-family:Arial, Helvetica; font-size:131%; font-style:normal;}
 	#first_half { width:648px;float:left;}		
 	#second_half { width:326px; float:right; }	
 
@@ -108,7 +109,7 @@
 	#article_links td { width:38%; padding-bottom:17px; border-bottom: 1px dashed #999; vertical-align:top; }
 	#article_links td.icons { width:24%; vertical-align:middle; }
 		#article_links td.icons p {text-align:center; margin-top:9px; margin-bottom:9px; }
-		
+		#category_list { margin-top:18px;}
 	#category_list li { background:url('/images/f/bullets/pixels/diamond.png') no-repeat 0 0.5em; padding-bottom:18px;padding-left:1em; line-height:18px; vertical-align:middle}
 	#category_list li a { text-decoration:underline;}
 

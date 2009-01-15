@@ -1,3 +1,10 @@
-<table id="article_links">
+<div id="left_column">
+
+<%= category_list %>
+</div>
+<div id="right_column">
+	<table id="article_links">
+
 	<%= render :partial => "shared/article_link", :collection => @category.contents %>
 </table>
+</div>
