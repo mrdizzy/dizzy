@@ -1,14 +1,16 @@
-code { font: normal 100% "Courier New"; }
-
-code.ruby, code.plaintext, code.rhtml {
+pre { 
+	font: normal 100%/18px monospace;
+	margin-bottom:18px;
 	word-wrap: break-word;       /* Internet Explorer 5.5+ */
 	white-space: pre-wrap;       /* css-3 */
 	white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
 	white-space: -pre-wrap;      /* Opera 4-6 */
-	white-space: -o-pre-wrap;    /* Opera 7 */
+	white-space: -o-pre-wrap;    /* Opera 7 */ 
 }
+code { font:normal 100% monospace; }
 
 code.plaintext { color:black; }
+
 /*
 :attribute_name => 'an',		:attribute_name_fat => 'af',
 :attribute_value => 'av',		:attribute_value_fat => 'aw',

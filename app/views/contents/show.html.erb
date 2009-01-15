@@ -34,20 +34,8 @@
 
 <div id="article"><%= @content.parsed_content %></div>
 
-<%= spiro %>
 
 <%= render(:partial => "comments/comments", :object => @content ) %>
 
-<% if @content.is_a?(Cheatsheet) %>
-<% content_for :thumbnail do %>
 
-	<div class="cheatsheet_thumbnail">
-		
-		<%= pdf_thumbnail(@content) %>
-		
-		<p><%= link_to image_tag("f/small_icons/pdf_sheet.png"), formatted_cheatsheet_path(:format => :pdf) %> 
-		   <%= link_to "PDF version", formatted_cheatsheet_path(:format => :pdf) %></p>
-	</div>
-<% end %>
-<% end %>
 </div>

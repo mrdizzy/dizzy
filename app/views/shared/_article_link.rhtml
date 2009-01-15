@@ -7,27 +7,21 @@
 	<td>
 		<p><%= posted_in(article_link.categories) %><br/>
 		<i>Rails <%= article_link.version.version_number %></i></p>
-		
 	</td>
 	
 	<td>
 		
-		<h2><%= asterisk %> <%= link_to article_link.title, content_path(article_link.permalink) %></h2>
-		<p><span class="posted_ago">POSTED <%= time_ago_in_words(article_link.date).upcase %> AGO</span></p>
+		<h2><%= link_to article_link.title, content_path(article_link.permalink) %></h2>
+		<span class="posted_ago">POSTED <%= time_ago_in_words(article_link.date).upcase %> AGO</span>
 		<p><%= article_link.description %></p>
-		
-			
-			
-		
-		
+
 		<% if administrator? %>
 			<p><%= link_to 'edit', edit_content_path(article_link.id) %> <%= diamond %> <%= link_to 'delete', content_path(article_link.id), :method => "delete" %> </p>			
 		<% end %>
 	
 	</td>
 	
-	<td>
-	</td>
+	<td></td>
 
 <!-- CHEATSHEET -->
 
@@ -38,17 +32,13 @@
 	<p><%= posted_in(article_link.categories) %><br/>
 <%= article_link.version.version_number %></p>
 	
-		
-	
 	</td>
 	
 	<td>
 			
-		<h2><%= asterisk %> <%= link_to article_link.title, cheatsheet_path(article_link.permalink) %></h2>
+		<h2> <%= link_to article_link.title, cheatsheet_path(article_link.permalink) %></h2>
 		
-		<p>
-			<span class="posted_ago">POSTED <%= time_ago_in_words(article_link.date).upcase %> AGO</span>
-		</p>
+		<span class="posted_ago">POSTED <%= time_ago_in_words(article_link.date).upcase %> AGO</span>
 		
 		<p class="article_link_description"><%= article_link.description %></p>
 		
