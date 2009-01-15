@@ -126,341 +126,93 @@ $(&quot;contact_form&quot;).show();
 
 <p>Provides a block that enables you to alter columns on an existing table using various shortcut methods&#8230;</p>
 
-<pre class='ruby'>change_table <span class='sy'>:table_name</span>,  {options} <span class='r'>do</span> |t|
-  t.change <span class='sy'>:column_name</span>, <span class='sy'>:new_column_type</span>
-  t.remove <span class='sy'>:column_name</span>
-<span class='r'>end</span></pre>
-
-<h3 id='create_table'><span class='maruku_section_number'>1.2. </span>create_table</h3>
-
-<p>Creates a table on the database. Creates a table called <span class="code">:table_name</span> and makes the table object available to a block that can then add columns to it by specifying column_types or utilising shortcut methods such as using <span class="code">belongs_to</span> to specify foreign keys&#8230;</p>
-
-<pre class='ruby'>create_table <span class='sy'>:table_name</span>, {table_options} <span class='r'>do</span> |t|
-  t.string <span class='sy'>:name</span>, {column_options}
-<span class='r'>end</span></pre>
-
-<h4 id='table_options'><span class='maruku_section_number'>1.2.1. </span>table_options</h4>
-<table><thead><tr><th>Key</th><th>Value</th><th>Description</th></tr></thead><tbody><tr><td style='text-align: left;'><span class="code">:force the issue</span></td><td style='text-align: left;'><span class="code">true or false</span></td><td style='text-align: left;'>if <span class="code">true</span>, forces drop of an existing table of the same name before creation the new one</td>
-</tr><tr><td style='text-align: center;'><span class="code">:temporary</span></td><td style='text-align: left;'><span class="code">true or false</span></td><td style='text-align: left;'>if <span class="code">true</span>, creates a temporary table, one that goes away when the application disconnects from the database</td>
-</tr><tr><td style='text-align: center;'><span class="code">:id</span></td><td style='text-align: left;'><span class="code">true or false</span></td><td style='text-align: left;'>if <span class="code">false</span>, defines a table with no primary key, for example when you need to define a join table</td>
-</tr><tr><td style='text-align: center;'><span class="code">:primary_key</span></td><td style='text-align: left;'><span class="code">:symbol</span></td><td style='text-align: center;'>overrides the default name of <span class="code">:id</span></td>
-</tr></tbody></table>
-<h3 id='drop_table'><span class='maruku_section_number'>1.3. </span>drop_table</h3>
-
-<p>Destroys the specified table.</p>
-
-<pre class='ruby'>drop_table <span class='sy'>:table_name</span></pre>
-
-<h3 id='rename_table'><span class='maruku_section_number'>1.4. </span>rename_table</h3>
-
-<p>Renames the specified table.</p>
-
-<pre class='ruby'>rename_table <span class='sy'>:old_table_name</span>, <span class='sy'>:new_table_name</span></pre>
-
-<h2 id='example_migrationrb'><span class='maruku_section_number'>2. </span>example_migration.rb</h2>
-
-<pre class="ruby"><span class='r'>class</span> <span class='cl'>CreateCustomers</span> &lt; <span class='co'>ActiveRecord</span>::<span class='co'>Migration</span>  
-
-  <span class='r'>def</span> <span class='pc'>self</span>.up
-    create_table <span class='sy'>:customers</span>, <span class='sy'>:primary_key</span> =&gt; <span class='sy'>:customer_id</span>, <span class='sy'>:options</span> =&gt; <span class='s'><span class='dl'>&quot;</span><span class='k'>auto_increment = 10000</span><span class='dl'>&quot;</span></span> <span class='r'>do</span> |t|
-      t.integer <span class='sy'>:customer_id</span>
-      t.string <span class='sy'>:name</span>,         <span class='sy'>:limit</span>   =&gt; <span class='i'>30</span>, <span class='sy'>:null</span> =&gt; <span class='pc'>false</span>
-      t.integer <span class='sy'>:age</span>
-      t.boolean <span class='sy'>:premium</span>,     <span class='sy'>:default</span> =&gt; <span class='i'>0</span>
-      t.binary <span class='sy'>:photo</span>,        <span class='sy'>:limit</span>   =&gt; <span class='i'>2</span>.megabytes
-      t.timestamps
-      t.text <span class='sy'>:notes</span>,          <span class='sy'>:default</span> =&gt; <span class='s'><span class='dl'>&quot;</span><span class='k'>No notes recorded</span><span class='dl'>&quot;</span></span>
-    <span class='r'>end</span>
-    
-    add_column <span class='sy'>:customers</span>, <span class='sy'>:surname</span>,  <span class='sy'>:string</span>,   <span class='sy'>:limit</span> =&gt; <span class='i'>50</span>    
-    
-    add_column <span class='sy'>:orders</span>,    <span class='sy'>:price</span>,    <span class='sy'>:decimal</span>,  <span class='sy'>:precision</span> =&gt; <span class='i'>8</span>, <span class='sy'>:scale</span> =&gt; <span class='i'>2</span>
-    
-    <span class='co'>Customer</span>.create <span class='sy'>:name</span> =&gt; <span class='s'><span class='dl'>&quot;</span><span class='k'>David</span><span class='dl'>&quot;</span></span>, <span class='sy'>:surname</span> =&gt; <span class='s'><span class='dl'>&quot;</span><span class='k'>Smith</span><span class='dl'>&quot;</span></span>, <span class='sy'>:age</span> =&gt; <span class='s'><span class='dl'>&quot;</span><span class='k'>32</span><span class='dl'>&quot;</span></span>, <span class='sy'>:premium</span> =&gt; <span class='s'><span class='dl'>&quot;</span><span class='k'>1</span><span class='dl'>&quot;</span></span>, <span class='sy'>:notes</span> =&gt; <span class='s'><span class='dl'>&quot;</span><span class='k'>One of our top customers!</span><span class='dl'>&quot;</span></span>
-  <span class='r'>end</span>
-
-  <span class='r'>def</span> <span class='pc'>self</span>.down 
-    drop_table <span class='sy'>:customers</span>
-  <span class='r'>end</span>
-<span class='r'>end</span></pre>
-
-<h2 id='database_mapping'><span class='maruku_section_number'>3. </span>Database Mapping</h2>
-<table><thead><tr><th>Rails</th><th>db2</th><th>mysql</th><th>openbase</th><th>Oracle</th></tr></thead><tbody><tr><td style='text-align: left;'><span class="code">:binary</span></td><td style='text-align: left;'>blob(32678)</td><td style='text-align: left;'>blob</td><td style='text-align: left;'>object</td><td style='text-align: left;'>blob</td>
-</tr><tr><td style='text-align: left;'><span class="code">:boolean</span></td><td style='text-align: left;'>decimal(1)</td><td style='text-align: left;'>tinyint(1)</td><td style='text-align: left;'>boolean</td><td style='text-align: left;'>number(10)</td>
-</tr><tr><td style='text-align: left;'><span class="code">:date</span></td><td style='text-align: left;'>date</td><td style='text-align: left;'>date</td><td style='text-align: left;'>date</td><td style='text-align: left;'>date</td>
-</tr><tr><td style='text-align: left;'><span class="code">:datetime</span></td><td style='text-align: left;'>timestamp</td><td style='text-align: left;'>datetime</td><td style='text-align: left;'>datetime</td><td style='text-align: left;'>date</td>
-</tr><tr><td style='text-align: left;'><span class="code">:decimal</span></td><td style='text-align: left;'>decimal</td><td style='text-align: left;'>decimal</td><td style='text-align: left;'>decimal</td><td style='text-align: left;'>decimal</td>
-</tr><tr><td style='text-align: left;'><span class="code">:float</span></td><td style='text-align: left;'>float</td><td style='text-align: left;'>float</td><td style='text-align: left;'>float</td><td style='text-align: left;'>number</td>
-</tr><tr><td style='text-align: left;'><span class="code">:integer</span></td><td style='text-align: left;'>int</td><td style='text-align: left;'>int(11)</td><td style='text-align: left;'>integer</td><td style='text-align: left;'>number(38)</td>
-</tr><tr><td style='text-align: left;'><span class="code">:string</span></td><td style='text-align: left;'>varchar(255)</td><td style='text-align: left;'>varchar(255)</td><td style='text-align: left;'>char(4096)</td><td style='text-align: left;'>varchar2(255)</td>
-</tr><tr><td style='text-align: left;'><span class="code">:text</span></td><td style='text-align: left;'>clob(32768)</td><td style='text-align: left;'>text</td><td style='text-align: left;'>text</td><td style='text-align: left;'>clob</td>
-</tr><tr><td style='text-align: left;'><span class="code">:time</span></td><td style='text-align: left;'>time</td><td style='text-align: left;'>time</td><td style='text-align: left;'>time</td><td style='text-align: left;'>date</td>
-</tr><tr><td style='text-align: left;'><span class="code">:timestamp</span></td><td style='text-align: left;'>timestamp</td><td style='text-align: left;'>datetime</td><td style='text-align: left;'>timestamp</td><td style='text-align: left;'>date</td>
-</tr></tbody></table><table><thead><tr><th>Rails</th><th>postgresql</th><th>sqlite</th><th>sqlserver</th><th>Sybase</th></tr></thead><tbody><tr><td style='text-align: left;'><span class="code">:binary</span></td><td style='text-align: left;'>bytea</td><td style='text-align: left;'>blob</td><td style='text-align: left;'>image</td><td style='text-align: left;'>image</td>
-</tr><tr><td style='text-align: left;'><span class="code">:boolean</span></td><td style='text-align: left;'>boolean</td><td style='text-align: left;'>boolean</td><td style='text-align: left;'>bit</td><td style='text-align: left;'>bit</td>
-</tr><tr><td style='text-align: left;'><span class="code">:date</span></td><td style='text-align: left;'>date</td><td style='text-align: left;'>date</td><td style='text-align: left;'>datetime</td><td style='text-align: left;'>datetime</td>
-</tr><tr><td style='text-align: left;'><span class="code">:datetime</span></td><td style='text-align: left;'>timestamp</td><td style='text-align: left;'>datetime</td><td style='text-align: left;'>datetime</td><td style='text-align: left;'>datetime</td>
-</tr><tr><td style='text-align: left;'><span class="code">:decimal</span></td><td style='text-align: left;'>decimal</td><td style='text-align: left;'>decimal</td><td style='text-align: left;'>decimal</td><td style='text-align: left;'>decimal</td>
-</tr><tr><td style='text-align: left;'><span class="code">:float</span></td><td style='text-align: left;'>float</td><td style='text-align: left;'>float</td><td style='text-align: left;'>float(8)</td><td style='text-align: left;'>float(8)</td>
-</tr><tr><td style='text-align: left;'><span class="code">:integer</span></td><td style='text-align: left;'>integer</td><td style='text-align: left;'>integer</td><td style='text-align: left;'>int</td><td style='text-align: left;'>int</td>
-</tr><tr><td style='text-align: left;'><span class="code">:string</span></td><td style='text-align: left;'>*</td><td style='text-align: left;'>varchar(255)</td><td style='text-align: left;'>varchar(255)</td><td style='text-align: left;'>varchar(255)</td>
-</tr><tr><td style='text-align: left;'><span class="code">:text</span></td><td style='text-align: left;'>text</td><td style='text-align: left;'>text</td><td style='text-align: left;'>text</td><td style='text-align: left;'>text</td>
-</tr><tr><td style='text-align: left;'><span class="code">:time</span></td><td style='text-align: left;'>time</td><td style='text-align: left;'>datetime</td><td style='text-align: left;'>datetime</td><td style='text-align: left;'>time</td>
-</tr><tr><td style='text-align: left;'><span class="code">:timestamp</span></td><td style='text-align: left;'>timestamp</td><td style='text-align: left;'>datetime</td><td style='text-align: left;'>datetime</td><td style='text-align: left;'>timestamp</td>
-</tr></tbody></table>
-<h2 id='rake_tasks'><span class='maruku_section_number'>4. </span>Rake tasks</h2>
-
-<dl>
-<dt><span class="code">db:create</span></dt>
-
-<dt><span class="code">db:create:all</span></dt>
-
-<dd>Creates a single database specified in <span class="code">config/databases.yml</span> for the current <span class="code">RAILS_ENV</span> or creates all the databases</dd>
-
-<dt><span class="code">db:drop</span></dt>
-
-<dt><span class="code">db:drop:all</span></dt>
-
-<dd>Drops a single database specified in <span class="code">config/databases.yml</span> for the current <span class="code">RAILS_ENV</span> or drops all the databases</dd>
-
-<dt><span class="code">db:fixtures:load</span></dt>
-
-<dd>Load fixtures from <span class="code">test/fixtures</span> into the current environment&#8217;s database</dd>
-
-<dt><span class="code">db:migrate</span></dt>
-
-<dd>Run all unapplied migrations</dd>
-
-<dt><span class="code">db:migrate:up</span></dt>
-
-<dt><span class="code">db:migrate:down</span></dt>
-
-<dd>Move forward to the next migration, or back to the previous migration</dd>
-
-<dt><span class="code">db:migrate VERSION=18</span></dt>
-
-<dd>Migrate database to specific version</dd>
-
-<dt><span class="code">db:migrate RAILS_ENV=production</span></dt>
-
-<dd>Use migrations to recreate tables in the testing or production databases</dd>
-
-<dt><span class="code">db:schema:dump</span></dt>
-
-<dd>Create a <span class="code">db/schema.rb</span> file that can be portably used against any database supported by ActiveRecord</dd>
-
-<dt><span class="code">db:schema:load</span></dt>
-
-<dd>Load a schema.rb file into the database</dd>
-
-<dt><span class="code">db:sessions:create</span></dt>
-
-<dd>Create a sessions table for use with <span class="code">CGI::Sessions::ActiveRecordStore</span></dd>
-
-<dt><span class="code">db:sessions:clear</span></dt>
-
-<dd>Clear the sessions table</dd>
-
-<dt><span class="code">db:structure:dump</span></dt>
-
-<dd>Dump database structure to SQL file</dd>
-
-<dt><span class="code">db:reset</span></dt>
-
-<dd>Drops the database, creates the database and then runs migrations against the database. Takes a <span class="code">VERSION</span> argument as well as <span class="code">RAILS_ENV</span></dd>
-
-<dt><span class="code">db:rollback STEP=4</span></dt>
-
-<dd>Takes a STEP argument to determine how many version to rollback, the default being one version</dd>
-
-<dt><span class="code">db:test:prepare</span></dt>
-
-<dd>Clone your database structure into the test database</dd>
-
-<dt><span class="code">db:version</span></dt>
-
-<dd>Tells you the current version your database is at</dd>
-</dl>
-
-<h2 id='directory_structure'><span class='maruku_section_number'>5. </span>Directory structure</h2>
-
-<ul>
-<li><span class="code">rails_root</span> * db</li>
-
-<li>Hello</li>
-</ul>
-
-<h2 id='shortcut_methods'><span class='maruku_section_number'>6. </span>Shortcut methods</h2>
-
-<pre>t.column               t.change                t.rename
-t.remove               t.change_default	   t.references    
-t.remove_references    t.belongs_to            t.remove_belongs_to
-t.timestamps           t.index                 t.remove_index</pre>
-
-<h2 id='column_methods'><span class='maruku_section_number'>7. </span>Column methods</h2>
-
-<h3 id='add_column'><span class='maruku_section_number'>7.1. </span>add_column</h3>
-
-<p>Creates a new column on the specified table.</p>
-
-<pre class="ruby">add_column <span class='sy'>:table_name</span>, <span class='sy'>:column_name</span>, <span class='sy'>:column_type</span>, {column_options}</span></pre>
-
-<h4 id='add_column_options'><span class='maruku_section_number'>7.1.1. </span>column_options</h4>
-<table><thead><tr><th>Key</th><th>Value</th><th>Description</th></tr></thead><tbody><tr><td style='text-align: left;'><span class="code">:null</span></td><td style='text-align: left;'><span class="code">true</span> or <span class="code">false</span></td><td style='text-align: left;'>if <span class="code">false</span>, the underlying column has a <span class="code">not null</span> constraint added by the database engine</td>
-</tr><tr><td style='text-align: left;'><span class="code">:limit</span></td><td style='text-align: left;'><span class="code">integer</span></td><td style='text-align: left;'>set a limit on the size of the field</td>
-</tr><tr><td style='text-align: left;'><span class="code">:default</span></td><td style='text-align: left;'><span class="code">string</span></td><td style='text-align: left;'>set a default value for the column</td>
-</tr><tr><td style='text-align: left;'><span class="code">:precision</span></td><td style='text-align: left;'><span class="code">integer</span></td><td style='text-align: left;'>Specifies the precision for a <span class="code">:decimal</span> column.</td>
-</tr><tr><td style='text-align: left;'><span class="code">:scale</span></td><td style='text-align: left;'><span class="code">integer</span></td><td style='text-align: left;'>Specifies the scale for a <span class="code">:decimal</span> column.</td>
-</tr></tbody></table>
-<h3 id='change_column'><span class='maruku_section_number'>7.2. </span>change_column</h3>
-
-<p>Change the data type of the specified column</p>
-
-<pre class="ruby">change_column <span class='sy'>:table_name</span>, <span class='sy'>:column_name</span>, <span class='sy'>:new_column_type</span></span></pre>
-
-<h3 id='rename_column'><span class='maruku_section_number'>7.3. </span>rename_column</h3>
-
-<p>Renames the specified column.</p>
-
-<pre class="ruby">rename_column <span class='sy'>:table_name</span>, <span class='sy'>:old_column_name</span>, <span class='sy'>:new_column_name</span> </span></pre>
-
-<h3 id='remove_column'><span class='maruku_section_number'>7.4. </span>remove_column</h3>
-
-<p>Removes the specified column.</p>
-
-<pre class="ruby">remove_column <span class='sy'>:table_name</span>, <span class='sy'>:column_name</span></span></pre>
-
-<h2 id='indexes'><span class='maruku_section_number'>8. </span>Indexes</h2>
-
-<h3 id='add_index'><span class='maruku_section_number'>8.1. </span>add_index</h3>
-
-<p>Creates an index for the specified column.</p>
-
-<pre class="ruby">add_index <span class='sy'>:table_name</span>, <span class='sy'>:column_name</span>, <span class='sy'>:unique</span> =&gt; <span class='pc'>true</span></span></pre>
-
-<h3 id='remove_index'><span class='maruku_section_number'>8.2. </span>remove_index</h3>
-
-<p>Remove an index from the specified column.</p>
-
-<pre class="ruby">remove_index <span class='sy'>:table_name</span>, <span class='sy'>:column_name</span></span></pre>
-
-<h2 id='miscellaneous_methods'><span class='maruku_section_number'>9. </span>Miscellaneous methods</h2>
-
-<h3 id='execute'><span class='maruku_section_number'>9.1. </span>execute</h3>
-
-<p>Takes a single string identifying a valid SQL command to execute directly.</p>
-
-<pre class="ruby">execute <span class='s'><span class='dl'>&quot;</span><span class='k'>alter table line_items add constraint fk_line_item_products foreign key (product_id) references products(id)</span><span class='dl'>&quot;</span></span></span></pre>
-
-<h3 id='irreversiblemigration'><span class='maruku_section_number'>9.2. </span>IrreversibleMigration</h3>
-
-<p>Use in the down method of a migration file to raise an exception when the up methods of the same migration file can not be reversed, e.g. changing a column type from <span class="code">:integer</span> to <span class="code">:string</span>.</p>
-
-<pre class="ruby">raise <span class='co'>ActiveRecord</span>::<span class='co'>IrreversibleMigration</span></span></pre>
-
-<h2 id='scriptgenerate'><span class='maruku_section_number'>10. </span>script/generate</h2>
-
-<pre><code class='plaintext'>script/generate migration new_migration_filename 
-  field_name:column_type name:string age:integer date_of_birth:date</span></pre>
-
-<h2 id='loading_fixtures'><span class='maruku_section_number'>11. </span>Loading fixtures</h2>
-
-<p>Fixtures contain data which can be loaded into your database using migrations. For example, to load data into a table named customers&#8230;</p>
-
-<ul>
-<li>Create a directory, db/migrate/data</li>
-
-<li>Create a file, customers.yml, inside db/migrate/data</li>
-
-<li>Generate a new migration file: <span class="code">ruby script/generate migration load_customers_data</span></li>
-
-<li>Edit it to load data from the <span class="code">customers.yml</span> file into your customers table</li>
-</ul>
-
-<h3 id='customersyml'><span class='maruku_section_number'>11.1. </span>customers.yml</h3>
-
-<pre class="ruby">melissa:
-  name: <span class='co'>Melissa</span>
-  age: <span class='i'>18</span>
-david: 
-  name: <span class='co'>David</span>
-  age: <span class='i'>23</span>        </span></pre>
-
-<h3 id='migrationrb'><span class='maruku_section_number'>11.2. </span>migration.rb</h3>
-
-<pre class="ruby">require <span class='s'><span class='dl'>'</span><span class='k'>active_record/fixtures</span><span class='dl'>'</span></span>
-<span class='r'>class</span> <span class='cl'>LoadCustomerData</span>
- <span class='r'>def</span> <span class='pc'>self</span>.up
-  down
-  directory = <span class='co'>File</span>.join(<span class='co'>File</span>.dirname(<span class='pc'>__FILE__</span>), <span class='s'><span class='dl'>&quot;</span><span class='k'>data</span><span class='dl'>&quot;</span></span>)
-  <span class='co'>Fixtures</span>.create_fixtures(directory, <span class='s'><span class='dl'>&quot;</span><span class='k'>customers</span><span class='dl'>&quot;</span></span>)
- <span class='r'>end</span>
- <span class='r'>def</span> <span class='pc'>self</span>.down
-  <span class='co'>Customer</span>.delete_all
- <span class='r'>end</span>
-<span class='r'>end</span></span></pre></div>
-
-<div class="spiro"> &nbsp;</div>
+</div>
 
 <div id="comments">
 
-	<h3 class="blue_bold"><img alt="*" height="13" src="/images/f/bullets/pixels/asterisk.png.?1201129166" width="13" /> Comments</h3>
+	<h1>Comments</h1>
 	
 	
+<div class="root_comment" id="comment_39"><h6>fomaiv</h6><p>What if need update a image ??</p><p><a href="http://www.yahoo.com" onclick="new Ajax.Request('/ruby_on_rails/contents/2/comments/39/child_comments/new', {asynchronous:true, evalScripts:true, method:'get'}); return false;">Reply to this comment</a></p></div>
+
+<div class="root_comment" id="comment_38"><div class="comments_container"><div class="comments_left"><p><span class="posted_ago">2 MONTHS AGO</span><br/> <span class="email">Gabe Odess</span></p></div><div class="comments_right"><h6>No Method 'image_file'</h6><p>When I tried to upload my image I got an error saying:
+
+     undefined method `image_file=' for #<Photo:0x2508aa0>
+
+I ended up changing the 'create' method from @photo = Photo.new(params[:photo]) to:
+
+    @photo = Photo.new
+    @photo.image_file(params[:photo]["image_file"])
+
+and that worked fine, but do you have any idea why I would be getting that error message?  It seems like I'm missing some elegant feature, which is causing me to have to do this in two steps... thoughts?</p></div><div class="reply_comment" id="reply_38"><p><a href="http://www.yahoo.com" onclick="new Ajax.Request('/ruby_on_rails/contents/2/comments/38/child_comments/new', {asynchronous:true, evalScripts:true, method:'get'}); return false;">Reply to this comment</a></div><div id="reply_form_38"></p></div></div></div>
+
+<div class="root_comment" id="comment_37"><div class="comments_left"><p><span class="posted_ago">2 MONTHS AGO</span><br/> <span class="email">Adam</span></p></div><div class="comments_right"><h6>Mp3 Implementation</h6><p>How much would this change to use mp3's instead of pictures?  Would the mp3 files be pulled from the database the same way?  Thanks and great website.  Very helpful to the RoR newbie
+
+-Adam</p></div><div class="reply_comment" id="reply_37"><p><a href="http://www.yahoo.com" onclick="new Ajax.Request('/ruby_on_rails/contents/2/comments/37/child_comments/new', {asynchronous:true, evalScripts:true, method:'get'}); return false;">Reply to this comment</a></div><div id="reply_form_37"></p></div></div>
+
+<div class="root_comment" id="comment_36"><div class="comments_left"><p><span class="posted_ago">2 MONTHS AGO</span><br/> <span class="email">Carl</span></p></div><div class="comments_right"><h6>Works with 2.1.1</h6><p>I recently needed to do this for a pretty static site and didn't really want to use attachment_fu this time, so I used this as a guideline to see if I could do it. Based on previous comments I wasn't sure what the problems would be, but I had minimal problems, and they were all do to simple copy/paste errors (since I'm not doing quite the same thing). I have models, lets call them Animals, and they has_many photos (with photos being set up basically as above). Photos belongs_to Animals. Photo.rb has the def image_file=(input_data)
+ code from above. In my animals controller I did add @photo = Photo.new(params[:photo])
+ in the create action, and @photo = Photo.new in the new action (I used it for the fields_for in the view) and then I created a photos controller with the code_view code for displaying the image inline from the tutorial. It all worked perfectly.</p></div><div class="reply_comment" id="reply_36"><p><a href="http://www.yahoo.com" onclick="new Ajax.Request('/ruby_on_rails/contents/2/comments/36/child_comments/new', {asynchronous:true, evalScripts:true, method:'get'}); return false;">Reply to this comment</a></div><div id="reply_form_36"></p></div></div>
+
+<div class="root_comment" id="comment_31"><div class="comments_left"><p><span class="posted_ago">4 MONTHS AGO</span><br/> <span class="email">observer</span></p></div><div class="comments_right"><h6>Rails Version</h6><p>It would probably be useful to mention the version of Rails with which this code has been successfully tested.</p></div><div class="reply_comment" id="reply_31"><p><a href="http://www.yahoo.com" onclick="new Ajax.Request('/ruby_on_rails/contents/2/comments/31/child_comments/new', {asynchronous:true, evalScripts:true, method:'get'}); return false;">Reply to this comment</a></div><div id="reply_form_31"></p></div></div>
+
+<div class="root_comment" id="comment_27"><div class="comments_left"><p><span class="posted_ago">5 MONTHS AGO</span><br/> <span class="email">sgk</span></p></div><div class="comments_right"><h6>this failed for me until...</h6><p>I am now bald and lost about 20 pounds....
+but when I finally added "has_many :image_files" to the class declaration in app/models/photo.rb, I can now load am image properly into the db.
+</p></div><div class="reply_comment" id="reply_27"><p><a href="http://www.yahoo.com" onclick="new Ajax.Request('/ruby_on_rails/contents/2/comments/27/child_comments/new', {asynchronous:true, evalScripts:true, method:'get'}); return false;">Reply to this comment</a></div><div id="reply_form_27"></p></div></div>
+
+<div class="root_comment" id="comment_26"><div class="comments_left"><p><span class="posted_ago">5 MONTHS AGO</span><br/> <span class="email">Sarah Lewis</span></p></div><div class="comments_right"><h6>Thanks for this resource!</h6><p>This tutorial was exactly what I needed to get me started. My application needed attachments, and this helped me figure out the file upload portion. From there, it wasn't too hard to figure out how to associate the files with my other records, and I'm in business.
+
+Your step-by-step directions made this much easier than fiddling with one of the attachment plugins (and I'm speaking from frustrating experience here! :) ).</p></div><div class="reply_comment" id="reply_26"><p><a href="http://www.yahoo.com" onclick="new Ajax.Request('/ruby_on_rails/contents/2/comments/26/child_comments/new', {asynchronous:true, evalScripts:true, method:'get'}); return false;">Reply to this comment</a></div><div id="reply_form_26"></p></div></div>
+
+<div class="root_comment" id="comment_23"><div class="comments_left"><p><span class="posted_ago">5 MONTHS AGO</span><br/> <span class="email">aj illescas</span></p></div><div class="comments_right"><h6>rails2.0</h6><p>the image odes nit appear, instead a description, content type, filename and time of creation appears... could you help me with this one</p></div><div class="reply_comment" id="reply_23"><p><a href="http://www.yahoo.com" onclick="new Ajax.Request('/ruby_on_rails/contents/2/comments/23/child_comments/new', {asynchronous:true, evalScripts:true, method:'get'}); return false;">Reply to this comment</a></div><div id="reply_form_23"></p></div></div>
 
 
 
-<div class="normal" id="comment_43"><div class="comments_left"><p><span class="posted_ago">ABOUT 1 MONTH AGO</span><br/> <span class="email">shikha</span></p></div><div class="comments_right"><h6>Limit is not working with integer or bigint</h6><p>i have tried so many times but :limit is not working. code:
+<div class="root_comment" id="comment_21"><div class="comments_left"><p><span class="posted_ago">6 MONTHS AGO</span><br/> <span class="email">Nicholas Mercer</span></p></div><div class="comments_right"><h6>Rails 2.0</h6><p>Any ideas on how to fix the following?
 
-add_column(:table, :field, :bigint, {:limit => 13})</p></div><div class="reply_comment" id="reply_43"><a href="http://www.yahoo.com" onclick="new Ajax.Request('/ruby_on_rails/contents/1/comments/43/child_comments/new', {asynchronous:true, evalScripts:true, method:'get'}); return false;">Reply to this comment</a></div><div id="reply_form_43"></div>
+DEPRECATION WARNING: paginate is deprecated and will be removed from Rails 2.0 (Pagination is moving to a plugin in Rails 2.0: script/plugin install svn://errtheblog.com/svn/plugins/classic_pagination)  See http://www.rubyonrails.org/deprecation for details. (called from list at /rails/gtown/app/controllers/photo_admin_controller.rb:12)
+</p></div><div class="reply_comment" id="reply_21"><p><a href="http://www.yahoo.com" onclick="new Ajax.Request('/ruby_on_rails/contents/2/comments/21/child_comments/new', {asynchronous:true, evalScripts:true, method:'get'}); return false;">Reply to this comment</a></div><div id="reply_form_21"></p></div>
 
-<div class="odd" id="comment_44"><div class="comments_left"><p><span class="posted_ago">ABOUT 1 MONTH AGO</span><br/> <span class="email">Richard Patching</span></p></div><div class="comments_right"><h6>Limit is not working with integer or bigint</h6><p>To create a bigint you need to set the integer limit to be between 5 and 8 bytes.
+<div class="single_comment" id="comment_22"><div class="comments_left"><p><span class="posted_ago">6 MONTHS AGO</span><br/> <span class="email">Nicholas Mercer</span></p></div><div class="comments_right"><h6>Rails 2.0</h6><p>Sorry, posted wrong error message.....  DEPRECATION WARNING: You've called image_path with a source that doesn't include an extension. In Rails 2.0, that will not result in .png automatically being appended. So you should call image_path('/photo_admin/code_image/3.png') instead  See http://www.rubyonrails.org/deprecation for details. (called from image_tag at /rails/gtown/vendor/rails/actionpack/lib/action_view/helpers/asset_tag_helper.rb:188)</p></div><div class="reply_comment" id="reply_22"><p><a href="http://www.yahoo.com" onclick="new Ajax.Request('/ruby_on_rails/contents/2/comments/22/child_comments/new', {asynchronous:true, evalScripts:true, method:'get'}); return false;">Reply to this comment</a></div><div id="reply_form_22"></p></div></div></div>
 
-The following example would give you a bigint with length 20:
+<div class="root_comment" id="comment_16"><div class="comments_left"><p><span class="posted_ago">6 MONTHS AGO</span><br/> <span class="email">Eric</span></p></div><div class="comments_right"><h6>Wonderful!</h6><p>This is just what I was looking for.  I didn't want to be limited by the popular attachment plugins out there.  Thanks for writing this up!</p></div><div class="reply_comment" id="reply_16"><p><a href="http://www.yahoo.com" onclick="new Ajax.Request('/ruby_on_rails/contents/2/comments/16/child_comments/new', {asynchronous:true, evalScripts:true, method:'get'}); return false;">Reply to this comment</a></div><div id="reply_form_16"></p></div></div>
 
-t.integer :foo, :limit => 8</p></div><div class="reply_comment" id="reply_44"><a href="http://www.yahoo.com" onclick="new Ajax.Request('/ruby_on_rails/contents/1/comments/44/child_comments/new', {asynchronous:true, evalScripts:true, method:'get'}); return false;">Reply to this comment</a></div><div id="reply_form_44"></div></div></div>
+<div class="root_comment" id="comment_15"><div class="comments_left"><p><span class="posted_ago">6 MONTHS AGO</span><br/> <span class="email">Jorge Barbosa</span></p></div><div class="comments_right"><h6>Error</h6><p>When I not fill the field  image_file appear this error:
+undefined method `original_filename'
 
-<div class="normal" id="comment_32"><div class="comments_left"><p><span class="posted_ago">4 MONTHS AGO</span><br/> <span class="email">mosquete</span></p></div><div class="comments_right"><h6>Minor mistake</h6><p>In "Fixtures" section, item 4, "migration.rb" was swapped with "customers.yml".
-</p></div><div class="reply_comment" id="reply_32"><a href="http://www.yahoo.com" onclick="new Ajax.Request('/ruby_on_rails/contents/1/comments/32/child_comments/new', {asynchronous:true, evalScripts:true, method:'get'}); return false;">Reply to this comment</a></div><div id="reply_form_32"></div></div>
+And I put "validate_presence_of: image_file" in my "model"
 
-<div class="normal" id="comment_29"><div class="comments_left"><p><span class="posted_ago">4 MONTHS AGO</span><br/> <span class="email">Ryan Shillington</span></p></div><div class="comments_right"><h6>rename_column is wrong too</h6><p>You're missing the table argument from the rename_column syntax as well.
-</p></div><div class="reply_comment" id="reply_29"><a href="http://www.yahoo.com" onclick="new Ajax.Request('/ruby_on_rails/contents/1/comments/29/child_comments/new', {asynchronous:true, evalScripts:true, method:'get'}); return false;">Reply to this comment</a></div><div id="reply_form_29"></div></div>
+What is a problem?
 
-<div class="normal" id="comment_28"><div class="comments_left"><p><span class="posted_ago">4 MONTHS AGO</span><br/> <span class="email">Gideon</span></p></div><div class="comments_right"><h6>rename_table args reversed</h6><p>Thanks for this very useful resource.
+</p></div><div class="reply_comment" id="reply_15"><p><a href="http://www.yahoo.com" onclick="new Ajax.Request('/ruby_on_rails/contents/2/comments/15/child_comments/new', {asynchronous:true, evalScripts:true, method:'get'}); return false;">Reply to this comment</a></div><div id="reply_form_15"></p></div></div>
 
-The args for rename_table should be :old_table, :new_table (and rename_table is actually listed twice too).</p></div><div class="reply_comment" id="reply_28"><a href="http://www.yahoo.com" onclick="new Ajax.Request('/ruby_on_rails/contents/1/comments/28/child_comments/new', {asynchronous:true, evalScripts:true, method:'get'}); return false;">Reply to this comment</a></div><div id="reply_form_28"></div></div>
+<div class="root_comment" id="comment_14"><div class="comments_left"><p><span class="posted_ago">6 MONTHS AGO</span><br/> <span class="email">Jorge Barbosa</span></p></div><div class="comments_right"><h6>Help me please!</h6><p>How can I validate  the presence of image_file?</p></div><div class="reply_comment" id="reply_14"><p><a href="http://www.yahoo.com" onclick="new Ajax.Request('/ruby_on_rails/contents/2/comments/14/child_comments/new', {asynchronous:true, evalScripts:true, method:'get'}); return false;">Reply to this comment</a></div><div id="reply_form_14"></p></div></div>
 
+<div class="root_comment" id="comment_11"><div class="comments_left"><p><span class="posted_ago">6 MONTHS AGO</span><br/> <span class="email">Jorge Barbosa</span></p></div><div class="comments_right"><h6>Very nice!</h6><p>Thanks for your help!</p></div><div class="reply_comment" id="reply_11"><p><a href="http://www.yahoo.com" onclick="new Ajax.Request('/ruby_on_rails/contents/2/comments/11/child_comments/new', {asynchronous:true, evalScripts:true, method:'get'}); return false;">Reply to this comment</a></div><div id="reply_form_11"></p></div></div>
 
+<div class="root_comment" id="comment_10"><div class="comments_left"><p><span class="posted_ago">6 MONTHS AGO</span><br/> <span class="email">Graeme</span></p></div><div class="comments_right"><h6>Elegant</h6><p>Such an elegant and quick solution!!!  Thankyou</p></div><div class="reply_comment" id="reply_10"><p><a href="http://www.yahoo.com" onclick="new Ajax.Request('/ruby_on_rails/contents/2/comments/10/child_comments/new', {asynchronous:true, evalScripts:true, method:'get'}); return false;">Reply to this comment</a></div><div id="reply_form_10"></p></div></div>
 
+<div class="root_comment" id="comment_9"><div class="comments_left"><p><span class="posted_ago">6 MONTHS AGO</span><br/> <span class="email">Brad</span></p></div><div class="comments_right"><h6>Very Helpful</h6><p>Thanks, this is just what I needed!</p></div><div class="reply_comment" id="reply_9"><p><a href="http://www.yahoo.com" onclick="new Ajax.Request('/ruby_on_rails/contents/2/comments/9/child_comments/new', {asynchronous:true, evalScripts:true, method:'get'}); return false;">Reply to this comment</a></div><div id="reply_form_9"></p></div>
 
+<div class="single_comment" id="comment_41"><div class="comments_left"><p><span class="posted_ago">2 MONTHS AGO</span><br/> <span class="email">dsfdsf</span></p></div><div class="comments_right"><h6>reply to brad</h6><p>just to check</p></div><div class="reply_comment" id="reply_41"><p><a href="http://www.yahoo.com" onclick="new Ajax.Request('/ruby_on_rails/contents/2/comments/41/child_comments/new', {asynchronous:true, evalScripts:true, method:'get'}); return false;">Reply to this comment</a></div><div id="reply_form_41"></p></div></div></div>
 
-<div class="normal" id="comment_20"><div class="comments_left"><p><span class="posted_ago">6 MONTHS AGO</span><br/> <span class="email">Dougle</span></p></div><div class="comments_right"><h6>Drops?</h6><p>What about drops for migrating down</p></div><div class="reply_comment" id="reply_20"><a href="http://www.yahoo.com" onclick="new Ajax.Request('/ruby_on_rails/contents/1/comments/20/child_comments/new', {asynchronous:true, evalScripts:true, method:'get'}); return false;">Reply to this comment</a></div><div id="reply_form_20"></div>
+<div class="root_comment" id="comment_8"><div class="comments_left"><p><span class="posted_ago">6 MONTHS AGO</span><br/> <span class="email">Robert Green</span></p></div><div class="comments_right"><h6>Excellent article!</h6><p>Fantastic article.  I used this in conjunction with rmagick and lightbox to get a rich photo handling UI.  Worked very well!</p></div><div class="reply_comment" id="reply_8"><p><a href="http://www.yahoo.com" onclick="new Ajax.Request('/ruby_on_rails/contents/2/comments/8/child_comments/new', {asynchronous:true, evalScripts:true, method:'get'}); return false;">Reply to this comment</a></div><div id="reply_form_8"></p></div></div>
 
-<div class="odd" id="comment_24"><div class="comments_left"><p><span class="posted_ago">5 MONTHS AGO</span><br/> <span class="email">txarli</span></p></div><div class="comments_right"><h6>Cortesy</h6><p>what ahout a little bit of courtesy?
-So, when you find an excelent guide to migrations, the only thing to say is "What about drops for migrating down"
+<div class="root_comment" id="comment_2"><div class="comments_left"><p><span class="posted_ago">9 MONTHS AGO</span><br/> <span class="email">peter</span></p></div><div class="comments_right"><h6>upload image</h6><p>how do you limit the image size in your example?
+I mean if you use attachment_fu or something else you can easily 
+limit the image file size as well.
+I am using the same idea as yours, but did not get the file size problem right.</p></div><div class="reply_comment" id="reply_2"><p><a href="http://www.yahoo.com" onclick="new Ajax.Request('/ruby_on_rails/contents/2/comments/2/child_comments/new', {asynchronous:true, evalScripts:true, method:'get'}); return false;">Reply to this comment</a></div><div id="reply_form_2"></p></div>
 
-pff...</p></div><div class="reply_comment" id="reply_24"><a href="http://www.yahoo.com" onclick="new Ajax.Request('/ruby_on_rails/contents/1/comments/24/child_comments/new', {asynchronous:true, evalScripts:true, method:'get'}); return false;">Reply to this comment</a></div><div id="reply_form_24"></div>
+<div class="single_comment" id="comment_40"><div class="comments_left"><p><span class="posted_ago">2 MONTHS AGO</span><br/> <span class="email">ssk</span></p></div><div class="comments_right"><h6>u r great</h6><p>just to chek</p></div><div class="reply_comment" id="reply_40"><p><a href="http://www.yahoo.com" onclick="new Ajax.Request('/ruby_on_rails/contents/2/comments/40/child_comments/new', {asynchronous:true, evalScripts:true, method:'get'}); return false;">Reply to this comment</a></div><div id="reply_form_40"></p></div>
 
-<div class="normal" id="comment_25"><div class="comments_left"><p><span class="posted_ago">5 MONTHS AGO</span><br/> <span class="email">Dougle</span></p></div><div class="comments_right"><h6>Drops?</h6><p>"So, when you find an excelent guide to migrations, the only thing to say is "What about drops for migrating down" pff..."
-
-Exactly what i mean.. it would be an "excellent" guide if it had drop syntax, that's not discourteous at all.</p></div><div class="reply_comment" id="reply_25"><a href="http://www.yahoo.com" onclick="new Ajax.Request('/ruby_on_rails/contents/1/comments/25/child_comments/new', {asynchronous:true, evalScripts:true, method:'get'}); return false;">Reply to this comment</a></div><div id="reply_form_25"></div></div></div></div>
-
-<div class="normal" id="comment_17"><div class="comments_left"><p><span class="posted_ago">6 MONTHS AGO</span><br/> <span class="email">Cwelle</span></p></div><div class="comments_right"><h6>Very nice, buy one type is missing</h6><p>Very nice, buy one type is missing. It's :text. Representing TEXT in mysql.</p></div><div class="reply_comment" id="reply_17"><a href="http://www.yahoo.com" onclick="new Ajax.Request('/ruby_on_rails/contents/1/comments/17/child_comments/new', {asynchronous:true, evalScripts:true, method:'get'}); return false;">Reply to this comment</a></div><div id="reply_form_17"></div></div>
-
-<div class="normal" id="comment_6"><div class="comments_left"><p><span class="posted_ago">8 MONTHS AGO</span><br/> <span class="email">Joe Lewis</span></p></div><div class="comments_right"><h6>Very nice - one small bug</h6><p>Thank you for the organized approach to looking at migrations - much appreciated. One small item - I noticed in the PDF version, the rename_column item uses rename_table in the code example (rename_table :old_column_name, :new_column_name). </p></div><div class="reply_comment" id="reply_6"><a href="http://www.yahoo.com" onclick="new Ajax.Request('/ruby_on_rails/contents/1/comments/6/child_comments/new', {asynchronous:true, evalScripts:true, method:'get'}); return false;">Reply to this comment</a></div><div id="reply_form_6"></div></div>
-
-<div class="normal" id="comment_5"><div class="comments_left"><p><span class="posted_ago">8 MONTHS AGO</span><br/> <span class="email">tom</span></p></div><div class="comments_right"><h6>migrate</h6><p>beneficial</p></div><div class="reply_comment" id="reply_5"><a href="http://www.yahoo.com" onclick="new Ajax.Request('/ruby_on_rails/contents/1/comments/5/child_comments/new', {asynchronous:true, evalScripts:true, method:'get'}); return false;">Reply to this comment</a></div><div id="reply_form_5"></div></div>
-
-<div class="normal" id="comment_3"><div class="comments_left"><p><span class="posted_ago">9 MONTHS AGO</span><br/> <span class="email">Tomomi</span></p></div><div class="comments_right"><h6>Very Beneficial</h6><p>Very Beneficial resource code.</p></div><div class="reply_comment" id="reply_3"><a href="http://www.yahoo.com" onclick="new Ajax.Request('/ruby_on_rails/contents/1/comments/3/child_comments/new', {asynchronous:true, evalScripts:true, method:'get'}); return false;">Reply to this comment</a></div><div id="reply_form_3"></div></div>
+<div class="single_comment" id="comment_42"><div class="comments_left"><p><span class="posted_ago">2 MONTHS AGO</span><br/> <span class="email">dsfdsf</span></p></div><div class="comments_right"><h6>just to chek</h6><p>dsfdsfdsfdsfds</p></div><div class="reply_comment" id="reply_42"><p><a href="http://www.yahoo.com" onclick="new Ajax.Request('/ruby_on_rails/contents/2/comments/42/child_comments/new', {asynchronous:true, evalScripts:true, method:'get'}); return false;">Reply to this comment</a></div><div id="reply_form_42"></p></div></div></div></div>
 	
 	<div id="add_comment">
-		<p><img alt="*" height="5" src="/images/f/bullets/pixels/diamond.png.?1201129166" width="5" /> <a href="#" onclick="new Ajax.Request('/ruby_on_rails/contents/1/comments/new', {asynchronous:true, evalScripts:true, method:'get'}); return false;">Add new comment</a></p>
+		<p><img alt="*" height="5" src="/images/f/bullets/pixels/diamond.png.?1201129166" width="5" /> <a href="#" onclick="new Ajax.Request('/ruby_on_rails/contents/2/comments/new', {asynchronous:true, evalScripts:true, method:'get'}); return false;">Add new comment</a></p>
 	</div>
 
 </div>
 
-
-</div>
 		</div>
 		
 		<div id="footer" class="clearfix">
