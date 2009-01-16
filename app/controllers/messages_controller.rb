@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
 	
 	def create
-		puts "GO!"
+		puts params[:message]
 	end
 end

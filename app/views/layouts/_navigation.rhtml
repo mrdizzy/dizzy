@@ -61,7 +61,7 @@
 	
 	<span class="posted_in"><%= square %> CONTACT US</span>
 	
-	<% form_remote_tag :action => "/messages" do %>
+	<% form_remote_tag :url  => "/messages", :before => "Element.show('contact_spinner')", :complete => "Element.hide('contact_spinner');Element.hide('contact_form')" do %>
 	
 		<%= label_tag "message[name]", "Name" %>
 		<%= text_field_tag "message[name]" %>
@@ -75,7 +75,7 @@
 		<%= label_tag "message[comment]", "Comment" %>
 		<%= text_area_tag "message[comment]", nil, :size => "100x10" %>
 		
-		<%= submit_button %>
+		<%= submit_tag %>
 		
 	<% end %>
 	
