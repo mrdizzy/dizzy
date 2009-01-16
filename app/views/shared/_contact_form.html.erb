@@ -7,7 +7,7 @@
 end %> </div>
 
 <span class="posted_in"><%= square %> CONTACT US</span>
-
+<%= error_messages_for :message %>
 <% remote_form_for @message, :before => "Element.show('contact_spinner')", :complete => "Element.hide('contact_spinner');" do |form| %>
 
 	<%= form.label :name%>
@@ -20,7 +20,7 @@ end %> </div>
 	<%= form.text_field :email_confirmation %>
 	
 	<%= form.label :message %>
-	<%= form.text_area :message, :size => "100x10" %>
+	<%= form.text_area :message, :size => "60x10" %>
 	
 	<%= submit_tag %>
 	

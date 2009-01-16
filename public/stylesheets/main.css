@@ -151,21 +151,22 @@
 /* =CSS FORMS ==================================== */
 		input.submit { width: 136px; height:34px; margin: 0 auto; background:url('/images/f/buttons/submit2.png') no-repeat; outline: none; padding:0; border:0; }
 		input.submit:hover { background: url('/images/f/buttons/submit2.png') no-repeat 0 -34px; padding:0; border:0; }
-	label {font: bold 108%/18px Helvetica, Arial; display:block; margin-top: 18px; color: black;}	
+	label {font: bold 108%/18px Helvetica, Arial; display:block; margin-top:9px; color: black;}	
 	textarea { width:100%; font: normal 100% monospace;}
 
 	#contact_form { padding:3px; border:1px dashed black; margin-bottom:9px;}
 	#contact_inside { border:1px solid black; padding:5px;}
 	#close_window { float:right; height:36px;}
+	
 /* ERRORS==================================== */
-	#errorExplanation h3 { color: #29A4BD; }
-	#error_container { text-align:center; }
-	
-	#error_left { float:left; width:33%; text-align:right; }
-	.fieldWithErrors { padding:	2px; border: 2px solid #29A4BD; }
-	#errorExplanation ul li { font-size:1.1em; color: #29A4BD; font-weight:bold; }
-	
-	.hover { background-color: #D1ECF9; }
+	#errorExplanation h2 { color:black; font-weight:bold; margin-top:9px;margin-bottom:9px; padding:0;}
+	#errorExplanation p {  margin-bottom:9px;}
+	#errorExplanation ul li { color: #29A4BD; font-weight:bold; }
+	.fieldWithErrors input, .fieldWithErrors textarea {  border:2px solid #29A4BD; }
+	.fieldWithErrors label {  color:#29A4BD; }
+	.formError { color:#29A4BD;}
+
+	input:hover, input:focus, textarea:hover, textarea:focus { background-color: #D1ECF9; }
 	
 /* =CSS FRONTEND PORTFOLIO ==================================== */
 	#column1 { float:left; width: 25%; }
