@@ -58,22 +58,25 @@
 		<div id="close_window"><%= link_to_function image_tag("f/small_icons/close_window.png"), :before => "Element.show('contact_spinner')", :complete => "Element.hide('contact_spinner')" do |page| 
 		page['contact_form'].toggle
 	end %> </div>
-	<span class="posted_in"><%= square %> CONTACT US</span>
-	<% form_tag "/" do %>
 	
-		<%= label_tag :name %>
-		<%= text_field_tag :name %>
+	<span class="posted_in"><%= square %> CONTACT US</span>
+	
+	<% form_remote_tag :action => "/messages" do %>
+	
+		<%= label_tag "message[name]", "Name" %>
+		<%= text_field_tag "message[name]" %>
 		
-		<%= label_tag :email %>
-		<%= text_field_tag :name %>
+		<%= label_tag "message[email]", "Email" %>
+		<%= text_field_tag "message[email]" %>
 		
-		<%= label_tag :email_confirmation %>
-		<%= text_field_tag :name %>
+		<%= label_tag "message[email_confirmation]", "Confirm email" %>
+		<%= text_field_tag "message[email_confirmation]" %>
 		
-		<%= label_tag :comment %>
-		<%= text_area_tag :comment, nil, :size => "100x10" %>
+		<%= label_tag "message[comment]", "Comment" %>
+		<%= text_area_tag "message[comment]", nil, :size => "100x10" %>
 		
 		<%= submit_button %>
+		
 	<% end %>
 	
 	</div>
