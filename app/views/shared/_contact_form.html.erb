@@ -1,0 +1,29 @@
+<% @message ||= Message.new %>
+
+<div id="contact_inside">
+	
+	<div id="close_window"><%= link_to_function image_tag("f/small_icons/close_window.png"), :before => "Element.show('contact_spinner')", :complete => "Element.hide('contact_spinner')" do |page| 
+	page['contact_form'].toggle
+end %> </div>
+
+<span class="posted_in"><%= square %> CONTACT US</span>
+
+<% remote_form_for @message, :before => "Element.show('contact_spinner')", :complete => "Element.hide('contact_spinner');" do |form| %>
+
+	<%= form.label :name%>
+	<%= form.text_field :name %>
+	
+	<%= form.label :email %>
+	<%= form.text_field :email %>
+	
+	<%= form.label :email_confirmation %>
+	<%= form.text_field :email_confirmation %>
+	
+	<%= form.label :message %>
+	<%= form.text_area :message, :size => "100x10" %>
+	
+	<%= submit_tag %>
+	
+<% end %>
+
+</div>

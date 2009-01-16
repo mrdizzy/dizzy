@@ -54,30 +54,5 @@
 </div>
 
 <div id="contact_form" style="display:none;">
-	<div id="contact_inside">
-		<div id="close_window"><%= link_to_function image_tag("f/small_icons/close_window.png"), :before => "Element.show('contact_spinner')", :complete => "Element.hide('contact_spinner')" do |page| 
-		page['contact_form'].toggle
-	end %> </div>
-	
-	<span class="posted_in"><%= square %> CONTACT US</span>
-	
-	<% form_remote_tag :url  => "/messages", :before => "Element.show('contact_spinner')", :complete => "Element.hide('contact_spinner');Element.hide('contact_form')" do %>
-	
-		<%= label_tag "message[name]", "Name" %>
-		<%= text_field_tag "message[name]" %>
-		
-		<%= label_tag "message[email]", "Email" %>
-		<%= text_field_tag "message[email]" %>
-		
-		<%= label_tag "message[email_confirmation]", "Confirm email" %>
-		<%= text_field_tag "message[email_confirmation]" %>
-		
-		<%= label_tag "message[messages]", "Comment" %>
-		<%= text_area_tag "message[message]", nil, :size => "100x10" %>
-		
-		<%= submit_tag %>
-		
-	<% end %>
-	
-	</div>
+<%= render :partial => "shared/contact_form"%>
 </div>

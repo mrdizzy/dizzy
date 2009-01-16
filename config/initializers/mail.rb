@@ -1,9 +1,9 @@
 ActionMailer::Base.smtp_settings = {
-	:address => "www21.a2hosting.com",
+	:address => "mail.dizzy.co.uk",
 	:domain => "dizzy.co.uk",
 	:authentication => :login,
-	:user_name => "dizzynew",
-	:password => "beaslewig175"
+	:user_name => "dreamhost@dizzy.co.uk",
+	:password => "#MH^JXEc"
 }
 
 FROM_EMAIL = "david.pettifer@dizzy.co.uk"

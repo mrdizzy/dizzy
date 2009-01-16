@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 	require_dependency 'binary'
 	
 	helper_method :administrator?
-
+	
  private
  
  	def authorize		
