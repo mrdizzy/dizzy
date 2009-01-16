@@ -4,7 +4,8 @@ class PortfoliosController < ApplicationController
 	
 	def index
 		@companies = Company.pages(params[:page])
-		@company = Company.first
+		@company = Company.find_by_name("Hurricane Sound")
+		@header		= PortfolioItem.header.find_by_company_id(@company.id)
 		respond_to do |wants|
 			wants.html { render :action => "show"}
 			wants.js do
