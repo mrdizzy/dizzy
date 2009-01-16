@@ -42,10 +42,10 @@
 <!-- CONTACT -->
 	<div id="contact_icon" class="nav_button">
 		<%= link_to_function image_tag("f/nav/contact.png"), :before => "Element.show('contact_spinner')", :complete => "Element.hide('contact_spinner')" do |page| 
-		page['contact_form'].show
+		page['contact_form'].toggle
 	end %> 
 	<%= link_to_function "Contact", :before => "Element.show('contact_spinner')", :complete => "Element.hide('contact_spinner')" do |page| 
-		page['contact_form'].show
+		page['contact_form'].toggle
 		end %>
 		<div id="contact_spinner" style="display:none;"><img alt="Spinner" src="/images/f/spinner.gif" /></div>
 	</div>
@@ -53,4 +53,28 @@
 	
 </div>
 
-<div id="contact_form" style="display:none;"></div>
+<div id="contact_form" style="display:none;">
+	<div id="contact_inside">
+		<div id="close_window"><%= link_to_function image_tag("f/small_icons/close_window.png"), :before => "Element.show('contact_spinner')", :complete => "Element.hide('contact_spinner')" do |page| 
+		page['contact_form'].toggle
+	end %> </div>
+	<span class="posted_in"><%= square %> CONTACT US</span>
+	<% form_tag "/" do %>
+	
+		<%= label_tag :name %>
+		<%= text_field_tag :name %>
+		
+		<%= label_tag :email %>
+		<%= text_field_tag :name %>
+		
+		<%= label_tag :email_confirmation %>
+		<%= text_field_tag :name %>
+		
+		<%= label_tag :comment %>
+		<%= text_area_tag :comment, nil, :size => "100x10" %>
+		
+		<%= submit_button %>
+	<% end %>
+	
+	</div>
+</div>

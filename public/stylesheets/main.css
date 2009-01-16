@@ -60,7 +60,7 @@
 	table {width:100%; border-collapse:collapse;}	
 
 /* PAGE FURNITURE ==================================== */
-	.spiro { background: url("/images/f/branding/spirosmall.png") center no-repeat; width: 100%; height:54px; padding:0; }	
+	.spiro { background: url("/images/f/branding/spirosmall.png") center no-repeat; width: 100%; height:54px; padding:0; }
 
 /* =CSS WELCOME =====================================================*/
 	#welcome { clear:both;}
@@ -151,9 +151,12 @@
 /* =CSS FORMS ==================================== */
 		input.submit { width: 136px; height:34px; margin: 0 auto; background:url('/images/f/buttons/submit2.png') no-repeat; outline: none; padding:0; border:0; }
 		input.submit:hover { background: url('/images/f/buttons/submit2.png') no-repeat 0 -34px; padding:0; border:0; }
-	label {font: bold 100% Georgia; display:block; margin-top: 1em; }	
+	label {font: bold 108%/18px Helvetica, Arial; display:block; margin-top: 18px; color: black;}	
 	textarea { width:100%; font: normal 100% monospace;}
 
+	#contact_form { padding:3px; border:1px dashed black; margin-bottom:9px;}
+	#contact_inside { border:1px solid black; padding:5px;}
+	#close_window { float:right; height:36px;}
 /* ERRORS==================================== */
 	#errorExplanation h3 { color: #29A4BD; }
 	#error_container { text-align:center; }
