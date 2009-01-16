@@ -3,6 +3,9 @@ class CreateMessages < ActiveRecord::Migration
     create_table :messages do |t|
 
       t.timestamps
+      t.string :name
+      t.string :message
+      t.string :email
     end
   end
 

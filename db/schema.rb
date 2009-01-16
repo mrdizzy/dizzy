@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081218132651) do
+ActiveRecord::Schema.define(:version => 20090116001346) do
 
   create_table "binaries", :force => true do |t|
     t.binary  "binary_data",  :limit => 16777215
@@ -78,6 +78,14 @@ ActiveRecord::Schema.define(:version => 20081218132651) do
   create_table "markdowns", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "messages", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+    t.string   "message"
+    t.string   "email"
   end
 
   create_table "portfolio_items", :force => true do |t|

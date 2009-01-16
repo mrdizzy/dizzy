@@ -1,0 +1,13 @@
+<table>
+
+<% @messages.each do |message| %>
+	<tr>
+		<td><b><%= message.name %></b></td>
+		<td><b><%= message.email %></b></td>
+	</tr>
+	<tr>
+		<td colspan="2"><%= message.message %></td>
+	</tr>
+<% end %>
+
+</table>
