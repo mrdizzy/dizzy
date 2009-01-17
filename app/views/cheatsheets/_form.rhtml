@@ -18,15 +18,14 @@
 <%= form.text_area :description, :size => "100x4" %></p>
 
 <p><label for="article_content"><%= diamond %> Content</label>
-<%= form.text_area :content %></p>
+<%= form.text_area :content, :size => "100x10" %></p>
+
 
  <%= observe_field :cheatsheet_content, :url => preview_cheatsheets_path,
-      :update => :article,
-      :with => "content"    
-        %>
-
-<div id="article"></div>
-
+      :update => :article, :frequency => 2,
+      :with => "content"    %>
+	  
+		<div id="article" style="height:350px; overflow:auto;width:100%;"></div>
 <p><label for="article_date"><%= diamond %> Date</label>
 <%= form.datetime_select :date %></p>
 

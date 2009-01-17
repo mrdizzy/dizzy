@@ -153,7 +153,7 @@
 		input.submit:hover { background: url('/images/f/buttons/submit2.png') no-repeat 0 -34px; padding:0; border:0; }
 	label {font: bold 108%/18px Helvetica, Arial; display:block; margin-top:9px; color: black;}	
 	textarea { width:100%; font: normal 100% monospace;}
-
+	
 	#contact_form { padding:3px; border:1px dashed black; margin-bottom:9px;}
 	#contact_inside { border:1px solid black; padding:5px;}
 	#close_window { float:right; height:36px;}
