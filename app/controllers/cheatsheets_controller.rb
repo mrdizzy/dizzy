@@ -5,7 +5,7 @@ class CheatsheetsController < ContentsController
   end
  
  def show
- 	@content = Cheatsheet.find_by_permalink(params[:id])
+ 	@content = Cheatsheet.permalink(params[:id])
 	@comment 		= Comment.new				
 	@categories 	= Category.find(:all, :order => :name) 	
 		respond_to do |wants|
