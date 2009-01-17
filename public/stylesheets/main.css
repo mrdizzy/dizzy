@@ -85,10 +85,11 @@
 		
 	#article ul, #article p { margin-bottom:18px;}	
 	
+	
 	#article h2, #article h1 { font: bold italic 135.8%/17px "Georgia"; color:black; text-align:center; border-bottom:1px dashed black; margin-bottom:18px;}	
 	#article h3 { font: bold italic 123.1%/18px "Trebuchet MS"; color:black; margin-bottom:18px;}
 	#article h4, #article h5 { font: bold 100%/18px "Trebuchet MS"; color:black; }
-	#article h5 { text-align:center; line-height:17px; border-bottom:1px solid black;}
+	#article h6 { font: bold italic 100%/17px "Trebuchet MS"; color:black;text-align:center; border-bottom:1px solid black;}
 	
 	#article td {border-left: 1px solid black; border-right:1px solid black; border-bottom:1px solid black; padding-bottom:9px; padding-top:8px; border-top: 1px solid black;}
 	#article th { font: bold italic 100%/18px "Trebuchet MS", serif; color: black; text-align:center; padding-bottom:9px; padding-top:8px; }
@@ -149,10 +150,11 @@
 		#footer_spiral {}
 	
 /* =CSS FORMS ==================================== */
+	input { line-height:18px; height:18px; border:1px solid black; margin-bottom:16px; padding:0; }
 		input.submit { width: 136px; height:34px; margin: 0 auto; background:url('/images/f/buttons/submit2.png') no-repeat; outline: none; padding:0; border:0; }
 		input.submit:hover { background: url('/images/f/buttons/submit2.png') no-repeat 0 -34px; padding:0; border:0; }
-	label {font: bold 108%/18px Helvetica, Arial; display:block; margin-top:9px; color: black;}	
-	textarea { width:100%; font: normal 100% monospace;}
+	label {font: bold 108%/18px Helvetica, Arial; display:block; margin-top:18px; color: black; }	
+	textarea { width:100%; font: normal 100%/18px monospace; border:1px solid black; height:162px;}
 	
 	#contact_form { padding:3px; border:1px dashed black; margin-bottom:9px;}
 	#contact_inside { border:1px solid black; padding:5px;}
