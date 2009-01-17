@@ -77,7 +77,169 @@ contents_009:
   id: "13"
   version_id: "3"
   description: ActionMailer is the Rails framework which handles email delivery. This comprehensive cheatsheet will help your email on its way.
-  content: 
+  content: |
+    ## Mailer Model
+    
+    To use ActionMailer, you need to create a mailer model. Emails are defined by creating methods within the mailer model which are then used to set variables to be used in the mail template, to change options on the mail, or to add attachments.
+    
+    ### Mailer model generator
+    
+        ruby script/generate mailer NameOfMailer method1 method2 method3
+    
+    ### Example mailer model
+    
+        class OrderMailer < ActionMailer::Base
+    
+            def confirm(order,sent_at = Time.now)
+                subject    "Subject line goes here"
+                body       :order => order
+                recipients ["bill@microsoft.com", "steve@apple.com"]s
+                from       "david@dizzy.co.uk"
+                sent_on    sent_at
+            end    
+        end
+    {:ruby}
+    
+    ## Delivering mail
+    
+    Once a mailer action and template are defined, you can deliver your message or create and save it for delivery later by calling the mailer class and prefixing your chosen class method with `deliver_` or `create_`
+    
+    ### Send mail
+    
+        Notifier.deliver_signup_notification(customer)
+    {:ruby}
+    
+    ### Create mail
+    
+        mail = Notifier.create_signup_notification(customer)
+        Notifier.deliver(mail)
+    {:ruby}
+    
+    You can pass the mailer model any variables you need to use in the generation of the email. In the example above we have passed it a variable named `customer` which could be an instance of an ActiveRecord `Customer` model. We can then access our customer's details in the mailer model.
+    
+    ## Multipart messages
+    
+    There are two ways to send multipart email messages, explicity by manually defining each part, and implicitly by letting ActionMailer do the donkey work.
+    
+    ### Explicitly
+     
+    You can explicitly define multipart messages using the part method...
+    
+        part "text/plain" do |p|
+            p.body = render_message("signup-as-plain", :account => recipient)
+            p.transfer_encoding = "base64"
+        end
+      
+        part :content_type => "text/html", :body => render_message("signup-as-html", :account => recipient)
+    {:ruby}
+    
+    ### Implicitly
+    
+    ActionMailer will automatically detect and use multipart templates, where each template is named after the name of the method, followed by the content type. Each such detected template will be added as a separate part to the message. For example:
+    
+        signup_notification.text.plain.erb
+        signup_notification.text.html.erb
+        signup_notification.text.xml.builder
+    
+    Each would be rendered and added as a separate part to the message with the corresponding content type. The same body hash is passed to each template.
+    
+    ## Views & Templates
+    
+    Like ActionController, each mailer class has a corresponding view directory in which each method of the class looks for a template with its own name. For example...
+    
+    Mailer model      |   Class method         |   Corresponding template
+    --------------------|---------------------------|-----------------------------
+    `Notifier`          | `signup_notification` | `app/views/notifier/signup_notification.erb`
+    `Notifier`          | `despatch_alert`         | `app/views/notifier/despatch_alert.erb`
+    `MailingList`       | `welcome_message`        | `app/views/mailing_list/welcome_message.erb`
+    
+    ### Making variables available to the view
+    
+    The `body` method is used to pass variables to the view. Each variable passed will be accessible as an `@instance_variable` with the name referenced by `:symbol`. 
+    
+    #### Model
+    
+        body :order => order, :name => name
+    {:ruby}
+    
+    #### View
+    
+        <%= @order %>
+        <%= @name %>
+    {:rhtml}
+    
+    ## Mailer Configuration Methods
+    
+    Method | Value | Purpose
+    -------|-------|---------
+    `recipients` | `[array]` _or_ `"string"` | A `"string"` containing the email of address of the recipient, or an `[array]` of `"strings"` containing email addresses of multiple recipients. Will use the email's `To:` header.
+    `sent_on` | `Time` _object_ | A `Time` object which will be used to set the `Date:` header of the email. If not specified, then the current time and date will be used.
+    `subject` | `"string"` | The subject line to be used to set the email's `Subject:` header.
+    `from` | `[array]` _or_ `"string"`  | A `"string"` containing the email address to appear on the `From:` line of the email being created, or an `[array]` of `"strings"` containing multiple email addresses in the same format as recipients.
+    `body` | `{hash}` | The `body` method sets instance variables to be available in the view template
+    `attachment` | `{hash}` _or_ `block`  | Enables you to add attachments to your email message.
+    `bcc` | `[array]` _or_ `"string"` | Blind carbon copy recipients in the same format as `recipients`.
+    `cc` | `[array]` _or_ `"string"` | Carbon copy recipients in the same format as `recipients`
+    `content_type  |  `"string"`  | Set the `content_type` of the message. Defaults to `text/plain`
+    `headers`   | `{hash}`  |  A `{hash}` containing name/value pairs [^header_pairs] to be converted into abitrary header lines.
+    `mime_version` | `"string"` | The mime version for the message. Defaults to `1.0`
+    `charset` | `"string"` | The `charset` for the body and to encode the subject. Defaults to `UTF-8`
+    `implicit_parts_order` | `[array]`  | When an email is built implicitly, this variable controls how the parts are ordered. Defaults to `["text/html", "text/enriched", "text/plain"]`. Items that appear first in the `[array]` have higher priority in the receiving mail client and appear last in the mime encoded message.
+    
+    ## URLs
+    
+    If your view includes URLs from the application, you need to use `url_for` in the mailer class method instead of in the view template. You can pass the result to the view via the `body` method. Unlike controllers from ActionPack, the mailer instance doesn't have any context about the incoming request, therefore you need to define the host, using `:host`. 
+    
+        body :home_page => url_for(:host => "dizzy.co.uk", :controller => "welcome", :action => "index")
+    {:ruby}
+    
+    ## ActionMailer::Base Configuration Methods
+    
+    ActionMailer is configured by accessing configuration methods at the class level. For example:
+    
+        `ActionMailer::Base.template_root = "/my/templates"`
+    {:ruby}
+    
+    These methods allow you to define the overall settings to be used by your application whenever it invokes ActionMailer. Define these settings in your `config/environment.rb` file using `config.action_mailer.method_name_here`. If you require different settings for each of your Rails' environments, define settings separately via `config/environments`.
+    
+    Method     | Value       | Purpose
+    -----------|-------------|----------------
+    `smtp_settings` | `{hash}` | A `{hash}` of settings [^hash_of_settings] for the SMTP mail server 
+    `raise_delivery_errors` | `true` _or_ `false` | Whether or not errors should be raised if the email fails to be delivered.
+    `delivery_method` | `:smtp`, `:sendmail` _or_ `:test` | Defines a delivery method, defaults to `:smtp`
+    `perform_deliveries` | `true` _or_ `false` | Determines whether `deliver_*` methods are actually carried out. By default they are, but this can be turned off to help functional testing.
+    `template_root` | `"/path"` | The root from which template references will be made
+    `logger` | _Object_      | Used for generation information on the mailing run if available. Can be set to `nil` for no logging. Compatible with Ruby's own `Logger` and `Log4r` loggers.
+    `default_charset` |  `"string"`  | the default `charset` used for the body and to encode the subject. Defaults to `UTF-8`. You can also pick a different `charset` from inside a mailer method by setting charset
+    `default_mime_version` | `"string"` | The default mime version used for the message. Defaults to `1.0`. You can also pick a different value from inside a mailer method by setting `mime_version`
+    `default_implicit_parts_order` | `[array]` | When an email is built implicitly, this variable controls how the parts are ordered. Defaults to `["text/html", "text/enriched", "text/plain"]`. Items that appear first in the `[array]` have higher priority in the receiving mail client and appear last in the mime encoded message. You can also pick a different value from inside a mailer method by setting `implicit_parts_order`
+    `default_content_type`  | `"string"` | The default `content_type` used for the main part of the message. Defaults to `text/plain`. You can also pick a different value from inside a mailer method by setting `content_type`
+    
+    ## Setting attachments
+    
+        attachment :content_type => "image/jpeg", :body => File.read("an-image.jpg")
+        attachment "application/pdf" do |a| 
+          a.body = generate_your_pdf_here()
+        end
+    {:ruby}
+    
+    ## smtp\_settings
+    
+    Key | Value
+    ----|------
+    `:address`   | the address of the SMTP server you will be using to send email. Defaults to `localhost`
+    `:port`      | the port number of the SMTP server you will be using. Defaults to `25`
+    `:domain`    | if you need to specify a `HELO` domain, you can do it here
+    `:user_name` | if your mail server requires authentication, set the username in this variable
+    `:password`  | if your mail server requires authentication, set the password in this variable
+    `:authentication` | if your mail server requires authentication, you need to specify the authentication type here. This is a symbol, and one of `:plain`,       `:login`, or `:cram_md5`
+    
+    [^header_pairs]: Name value pairs for setting headers  
+    
+            headers "X-Mail-Count" => 107370
+        {:ruby}
+    
+
   style: 
 contents_010: 
   user: mr_dizzy
@@ -139,7 +301,253 @@ contents_012:
   id: "16"
   version_id: "3"
   description: Each ActiveRecord backed model in Rails has an errors object which errors are added to if the model fails validation. This cheatsheet covers methods available, default errors messages and view error helpers.
-  content: 
+  content: |+
+    
+    ## Read methods 
+    
+    ### \[\]       {#on_alias}
+    
+        object.errors[:attribute]
+    
+    Alias for [`on`](#on) method.
+    
+    ### count
+    
+    Alias for [`size`](#size)
+    
+    ### each
+    
+        each { |attr, msg| ... }
+    
+    Yields each attribute `attr` and associated message `msg` per error added.
+    
+        class Company < ActiveRecord::Base
+          validates_presence_of :name, :address, :email
+          validates_length_of :name, :in => 5..30
+        end
+    
+        company = Company.create(:address => '123 First St.')
+    
+        company.errors.each { |attr,msg| puts "#{attr} - #{msg}" } 
+          # => name - is too short (minimum is 5 characters)
+          # => name - can't be blank
+          # => email - can't be blank
+    {:ruby}
+    
+    ### each\_full
+    
+        each_full {|msg| ...}
+    
+    Yields each full error message `msg` added. So `Person.errors.add("first_name", "can't be empty")` will be returned through iteration as `"First name can't be empty"`.
+    
+        class Company < ActiveRecord::Base
+          validates_presence_of :name, :address, :email
+          validates_length_of :name, :in => 5..30
+        end
+    
+        company = Company.create(:address => '123 First St.')
+    
+        company.errors.each_full{|msg| puts msg } 
+          # => Name is too short (minimum is 5 characters)
+          # => Name can't be blank
+          # => Email can't be blank
+    {:ruby}
+    
+    ### full\_messages
+    
+    Returns all the full error messages in an array.
+    
+        class Company < ActiveRecord::Base
+          validates_presence_of :name, :address, :email
+          validates_length_of :name, :in => 5..30
+        end  
+    
+        company = Company.create(:address => '123 First St.')
+      
+        company.errors.full_messages 
+          # => ["Name is too short (minimum is 5 characters)", "Name can't be blank", "Email can't be blank"]
+    {:ruby}
+    
+    ### empty?
+    
+    Returns `true` if no errors have been added.
+    
+    ### length
+    
+    Alias for [`size`](#size)
+    
+    ### on
+    
+        on(:attribute)
+    
+    Returns `nil`, if no errors are associated with the specified attribute. Returns the error message if one error is associated with the specified attribute. Returns an array of error messages if more than one error is associated with the specified attribute.
+    
+        class Company < ActiveRecord::Base
+          validates_presence_of :name, :address, :email
+          validates_length_of :name, :in => 5..30
+        end
+      
+        company = Company.create(:address => '123 First St.')
+    
+        company.errors.on(:name)      
+          # => ["is too short (minimum is 5 characters)", "can't be blank"]
+        company.errors.on(:email)     
+          # => "can't be blank"
+        company.errors.on(:address)   
+          # => nil
+    {:ruby}
+    
+    This method is also aliased as the shortcut [`[]`](#on_alias)
+    
+    ### on\_base
+    
+    Returns errors that have been assigned to the base object through `add_to_base` according to the normal rules of `on(:attribute)`.
+    
+    ### invalid? 
+    
+    Returns `true` if the specified attribute has errors associated with it.
+    
+        class Company < ActiveRecord::Base
+          validates_presence_of :name, :address, :email
+          validates_length_of :name, :in => 5..30
+        end
+      
+        company = Company.create(:address => '123 First St.')
+    
+        company.errors.invalid?(:name)      
+          # => true
+        company.errors.invalid?(:address)   
+          # => false
+    {:ruby}
+    
+    ### size
+    
+    Returns the total number of errors added. Two errors added to the same attribute will be counted as such.
+    
+    ### to\_xml
+    
+    Returns an XML representation of this error object.
+    
+    ## Write methods
+    
+    ### add 
+    
+        add(attribute, msg = @@default_error_messages[:invalid])
+    
+    Adds an error message `msg` to the `attribute`, which will be returned on a call to `on(attribute)` for the same attribute and ensure that this error object returns false when asked if `empty?`. More than one error can be added to the same attribute in which case an array will be returned on a call to `on(attribute)`. If no `msg` is supplied, `"invalid"` is assumed.
+    
+    ### add\_on\_blank
+    
+        add(attribute, msg = @@default_error_messages[:blank])
+    
+    Will add an error message to each of the attributes in `[attributes]` that is blank (for example, an `empty` string).
+    
+    ### add\_on\_empty
+    
+        add(attribute, msg = @@default_error_messages[:empty])
+    
+    Will add an error message to each of the attributes in `attributes` that is empty.
+    
+        add_on_empty(:name, :surname, :age, "empty is bad!")
+    {:ruby}
+    
+    ### add\_to\_base 
+    
+        add_to_base([attributes], msg = @@default_error_messages[:empty])
+    
+    Adds an error, `msg`, to the base object instead of any particular attribute. This is used to report errors that don't tie to any specific attribute, but rather to the object as a whole. These error messages don't get prepended with any field name when iterating with `each_full`, so they should be complete sentences.
+    
+        add_to_base(:name, :surname, :age, "default error message here")
+    {:ruby}
+    
+    ### clear
+    
+    Removes all the errors that have been added to the object.
+    
+    ## Default error messages
+    
+    These error messages are stored in a Rails class variable, `@@default_error_messages` and can be changed or added to as follows:
+    
+        ActiveRecord::Errors.default_error_messages[:blank] = "Your custom message here"
+    {:ruby}
+    
+    These default error messages are used by Rails' built in validation class methods and some of the errors object's write methods such as `add_on_blank`. You may find it useful to change them if, for example, you require your error messages in a different language.
+    
+    Key                 | Value
+    --------------------|-------------------------------
+    `:inclusion`        |           "is not included in the list" 
+    `:exclusion`        |           "is reserved"
+    `:invalid`          |           "is invalid"
+    `:confirmation`     |           "doesn't match confirmation"
+    `:accepted`         |           "must be accepted"
+    `:empty`	    |           "can't be empty"
+    `:blank`	    |           "can't be blank"
+    `:too_long`	    |           "is too long (maximum is %d characters)"
+    `:too_short`	    |           "is too short (maximum is %d characters)"
+    `:wrong_length`	    |           "is the wrong length (should be %d characters)"
+    `:taken`	    |           "has already been taken
+    `:not_a_number`	    |           "is not a number
+    `:greater_than`     |       "must be greater than %d"
+    `:greater_than_or_equal_to`  |  "must be greater than or equal to %d"
+    `:equal_to`	             | "must be equal to %d"
+    `:less_than`	             |  "must be less than %d"
+    `:less_than_or_equal_to`     |  "must be less than or equal to %d"
+    `:odd`	                     |  "must be odd"
+    `:even`	                     |  "must be even"
+    
+    ## View Helpers
+    
+    ### error\_message\_on 
+       
+        error_message_on(object, attribute, prepend_text = "", append_text = "", css_class = "formError")
+    
+    Returns a string containing the error message attached to the attribute of the object if one exists. This error message is wrapped in a `<div>` tag, which can be extended to include a `prepend_text` and/or `append_text` (to properly explain the error), and a `css_class` to style it accordingly. Object should either be the name of an instance variable or the actual object itself. As an example, let's say you have a model `@post` that has an error message on the title attribute...
+    
+        error_message_on "post", "title"
+          # => <div class="formError">can't be empty</div>
+        error_message_on @post, "title"
+          # => <div class="formError">can't be empty</div>
+        error_message_on "post", "title", "Title simply ", " (or it won't work).", "inputError"
+          # => <div class="inputError">Title simply can't be empty (or it won't work).</div>
+    {:ruby}
+    
+    #### Options
+    
+    ### error\_messages\_for
+    
+    Returns a string with a `<div>` containing all of the error messages for the objects located as instance variables by the names given. If more than one object is specified, the errors for the objects are displayed in the order that the object names are provided.
+    
+    This `<div>` can be tailored by the following options...
+    
+    #### Options
+    
+    Option            | Type          | Value
+    ------------------|---------------|------------------------------------------
+    `:header_tag`     | String        |     Used for the header of the error `<div>` (default is `h2`)
+    `:id`             | String        | The class of the error `<div>` (default is `errorExplanation`)
+    `:class`          | String        |     The `id` of the error `<div>` (default is `errorExplanation`)
+    `:object`         | Object        |    The object (or array of objects) for which to display errors, if you need to escape the instance variable convention
+    `:object_name`    | String        |     The object name to use in the header, or any text that you prefer. If `:object_name` is not set, the name of the first object will be used
+    `:header_message`  | String       |  The message in the header of the error `<div>`. Pass nil or an empty string to avoid the header message altogether (default message is `"X errors prohibited this object from being saved"`)
+    `:message`       | String |     The explanation message after the header message and before the error list. Pass `nil` or an empty string to avoid the explanation message altogether (default message is `"There were problems with the following fields:"`)
+    
+    To specify the display for one object, you simply provide its name as a parameter. For example, for the `@user` model...
+    
+        error_messages_for :user
+    {:ruby}
+    
+    To specify more than one object, you simply list them: optionally, you can add an extra `:object_name` parameter, which will be the name used in the header message:
+    
+        error_messages_for :user_common, :user, :object_name => :user
+    {:ruby}
+    
+    If the objects cannot be located as instance variables, you can add an extra `:object` parameter which gives the actual object (or aarray of objects to use)...
+    
+        error_messages_for :user, :object => @question.user
+    {:ruby}
+    
+    This is a pre-packaged presentation of the errors with embedded strings and a certain HTML structure. If what you need is significantly different from the default presentation, it makes plenty of sense to access the `object.errors` instance yourself and set it up.
+    
   style: 
 contents_001: 
   user: mr_dizzy
@@ -151,11 +559,6 @@ contents_001:
   version_id: "4"
   description: Up and down methods, rake tasks, column mapping, loading fixtures, example migration file, all packed onto one A4 page for an easy at-a-glance reference. Updated for Rails 2.1
   content: |+
-    
-    # Table of contents
-    
-    * TOC list
-    {:toc}
     
     ## Table methods
     
@@ -171,7 +574,7 @@ contents_001:
     
     ### create\_table
     
-    Creates a table on the database. Creates a table called `:table_name` and makes the table object available to a block that can then add columns to it by specifying column_types or utilising shortcut methods such as using `belongs_to` to specify 
+    Creates a table on the database. Creates a table called `:table_name` and makes the table object available to a block that can then add columns to it by specifying column\_types or utilising shortcut methods such as using `belongs_to` to specify 
     foreign keys...
     
         create_table :table_name, {table_options} do |t|
@@ -179,7 +582,7 @@ contents_001:
         end
     {:ruby}
     
-    #### Options
+    #### table\_options
     
     Key             | Value                     | Description
     ----------------|---------------------------|-----------------------------------
@@ -247,89 +650,87 @@ contents_001:
     `:time`        | time           | time          | time         | date
     `:timestamp`   | timestamp      | datetime      | timestamp    | date
     
-    Rails*        *postgresql*  *sqlite*      *sqlserver*     *Sybase*
-    `:binary`      bytea         blob          image           image
-    `:boolean`     boolean       boolean       bit             bit
-    `:date`        date          date          datetime        datetime
-    `:datetime`    timestamp     datetime      datetime        datetime
-    `:decimal`     decimal       decimal       decimal         decimal
-    `:float`       float         float         float(8)        float(8)
-    `:integer`     integer       integer       int             int
-    `:string`      *            varchar(255)  varchar(255)    varchar(255)
-    `:text`        text          text          text            text
-    `:time`        time          datetime      datetime        time
-    `:timestamp`   timestamp     datetime      datetime        timestamp
+    * * * 
+    
+    Rails          | postgresql     | sqlite        | sqlserver    | Sybase
+    ---------------|----------------|---------------|--------------|---------------
+    `:binary`      | bytea          | blob          | image        | image
+    `:boolean`     | boolean        | boolean       | bit          | bit
+    `:date`        | date           | date          | datetime     | datetime
+    `:datetime`    | timestamp      | datetime      | datetime     | datetime
+    `:decimal`     | decimal        | decimal       | decimal      | decimal
+    `:float`       | float          | float         | float(8)     | float(8)
+    `:integer`     | integer        | integer       | int          | int
+    `:string`      | *              | varchar(255)  | varchar(255) | varchar(255)
+    `:text`        | text           | text          | text         | text
+    `:time`        | time           | datetime      | datetime     | time
+    `:timestamp`   | timestamp      | datetime      | datetime     | timestamp
     
     ## Rake tasks
     
-    db:create
-    db:create:all	
+    `db:create`
+    `db:create:all`	
     : Creates a single database specified in `config/databases.yml` for the current `RAILS_ENV` or creates all the databases
     
-    db:drop
-    db:drop:all
+    `db:drop`
+    `db:drop:all`
     : Drops a single database specified in `config/databases.yml` for the current `RAILS_ENV` or drops all the databases
     
-    db:fixtures:load	
+    `db:fixtures:load`
     : Load fixtures from `test/fixtures` into the current environment's database
     
-    db:migrate	
+    `db:migrate`	
     : Run all unapplied migrations
     
-    db:migrate:up
-    db:migrate:down	
+    `db:migrate:up`
+    `db:migrate:down`	
     : Move forward to the next migration, or back to the previous migration
     
-    db:migrate VERSION=18	
+    `db:migrate VERSION=18`
     : Migrate database to specific version
     
-    db:migrate RAILS_ENV=production	
+    `db:migrate RAILS_ENV=production`	
     : Use migrations to recreate tables in the testing or production databases
     
-    db:schema:dump	
+    `db:schema:dump`	
     : Create a `db/schema.rb` file that can be portably used against any database supported by ActiveRecord
     
-    db:schema:load	
+    `db:schema:load`
     : Load a schema.rb file into the database
     
-    db:sessions:create	
+    `db:sessions:create`
     : Create a sessions table for use with `CGI::Sessions::ActiveRecordStore`
     
-    db:sessions:clear	
+    `db:sessions:clear`	
     : Clear the sessions table
     
-    db:structure:dump
+    `db:structure:dump`
     : Dump database structure to SQL file
     
-    db:reset
+    `db:reset`
     : Drops the database, creates the database and then runs migrations against the database. Takes a `VERSION` argument as well as `RAILS_ENV`
     
-    db:rollback STEP=4
+    `db:rollback STEP=4`
     : Takes a STEP argument to determine how many version to rollback, the default being one version
     
-    db:test:prepare	
+    `db:test:prepare`	
     : Clone your database structure into the test database
     
-    db:version
+    `db:version`
     : Tells you the current version your database is at
     
     ## Directory structure
     
-    * `rails_root`
-        * `db`
-        + `schema.rb`
-          + `migrate`
-            + `20080812205401_create_customers.rb`
-            + `20080812215424_add_photo.rb`
-            + `20080812235405_alter_surname.rb`
+    *    `rails_root`
+        * db
+    *    Hello
     
     ## Shortcut methods
     
-    t.column	           t.change	           t.rename
-    t.remove	           t.change_default	   t.references
-    t.remove_references	   t.belongs_to	       t.remove_belongs_to
-    t.timestamps	       t.index	           t.remove_index
-    
+        t.column               t.change                t.rename
+        t.remove               t.change_default	   t.references    
+        t.remove_references    t.belongs_to            t.remove_belongs_to
+        t.timestamps           t.index                 t.remove_index
     
     ## Column methods
     
@@ -340,7 +741,7 @@ contents_001:
         add_column :table_name, :column_name, :column_type, {column_options}
     {:ruby}
     
-    #### Options     {#add_column_options}
+    #### column\_options     {#add_column_options}
     
     Key            | Value                   | Description
     ---------------|-------------------------|------------------------
@@ -380,7 +781,7 @@ contents_001:
         add_index :table_name, :column_name, :unique => true
     {:ruby}
     
-    ## remove\_index
+    ### remove\_index
     
     Remove an index from the specified column.
     
@@ -467,12 +868,11 @@ contents_013:
     
     If the database column does not exist, the `terms_of_service` attribute is entirely virtual. This check is performed only if `terms_of_service` is not `nil` and by default on save.
     
-    #### Options {#acceptance_of_options}
+    ##### Options {#acceptance_of_options}
     
     Key                  | Value 
     ---------------------|-----------------------------------------------------
     `:accept`            | Specifies value that is considered accepted. The default value is a string `"1"`, which makes it easy to relate to an HTML checkbox. This should be set to `true` if you are validating a database column, since the attribute is typecast from `"1"` to true before validation.
-    
     
     ### validates\_associated
     
@@ -533,7 +933,7 @@ contents_013:
         validates_exclusion_of :format, :in => %w( mov avi ), :message => "extension %s is not allowed"
     {:ruby}
     
-    #### Options            {#exclusion_of_options}
+    ##### Options            {#exclusion_of_options}
     
     Key                  | Value 
     ---------------------|-----------------------------------------------------
@@ -543,14 +943,14 @@ contents_013:
     
     Validates whether the value of the specified attribute is of the correct form by matching it against the regular expression provided.
     
-        validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :on => :create
+        validates_format_of :email, :with => /A([^@ ]+)@((?:[-a-z0-9]+.)+[a-z]{2,})Z/i, :on => :create
     {:ruby}
     
-    Note: use `\A` and `\Z` to match the start and end of the string, `^` and `$` match the start/end of a line.
+    Note: use `A` and `Z` to match the start and end of the string, `^` and `$` match the start/end of a line.
     
     A regular expression must be provided or else an exception will be raised.
     
-    #### Options     {#format_of_options}
+    ##### Options     {#format_of_options}
     
     Key                  | Value 
     ---------------------|-----------------------------------------------------
@@ -565,7 +965,7 @@ contents_013:
         validates_inclusion_of :format, :in => %w( jpg gif png ), :message => "extension %s is not included in the list" 
     {:ruby}
     
-    #### Options            {#inclusion_of_options}
+    ##### Options            {#inclusion_of_options}
     
     Key                  | Value 
     ---------------------|-----------------------------------------------------
@@ -582,10 +982,10 @@ contents_013:
         validates_length_of :user_name, :within => 6..20, :too_long => "pick a shorter name", :too_short => "pick a longer name"
         validates_length_of :fav_bra_size, :minimum => 1, :too_short => "please enter at least %d character"
         validates_length_of :smurf_leader, :is => 4, :message => "papa is spelled with %d characters... don't play me."
-        validates_length_of :essay, :minimum => 100, :too_short => "Your essay must be at least %d words."), :tokenizer => lambda {|str| str.scan(/\w+/) }
+        validates_length_of :essay, :minimum => 100, :too_short => "Your essay must be at least %d words."), :tokenizer => lambda {|str| str.scan(/w+/) }
     {:ruby}
     
-    #### Options                {#length_of_options}
+    ##### Options                {#length_of_options}
     
     Key					| Value
     --------------------|---------------------------------------------------------------
@@ -597,16 +997,16 @@ contents_013:
     `:too_long`         | The error message if the attribute goes over the maximum (default is: `"is too long (maximum is %d characters)"`)
     `:too_short`	    | The error message if the attribute goes under the minimum (default is: `"is too short (min is %d characters)"`)
     `:wrong_length`	    | The error message if using the `:is` method and the attribute is the wrong size (default is: `"is the wrong length (should be %d characters)"`)
-    `:tokenizer`	    | Specifies how to split up the attribute string. (e.g. `:tokenizer => lambda {|str| str.scan(/\w+/)}` to count words as in above example.) Defaults to `lambda{ |value| value.split(//) }` which counts individual characters
+    `:tokenizer`	    | Specifies how to split up the attribute string [^tokenizer]
     
     ### validates\_numericality\_of
     
-    Validates whether the value of the specified attribute is numeric by trying to convert it to a float with `Kernel.Float` (if `only_integer` is `false`) or applying it to the regular expression `/\A[+\-]?\d+\Z/` (if `only_integer` is set to `true`).
+    Validates whether the value of the specified attribute is numeric by trying to convert it to a float with `Kernel.Float` (if `only_integer` is `false`) or applying it to the regular expression `/A[+-]?d+Z/` (if `only_integer` is set to `true`).
       
         validates_numericality_of :age, :greater_than => 18
     {:ruby}
     
-    #### Options           {#numericality_of_options}
+    ##### Options           {#numericality_of_options}
     
     Key					            | Value
     --------------------------------|------------------------------------------------------------
@@ -632,13 +1032,11 @@ contents_013:
     
     ### validates\_size\_of
     
-    Alias for `validates_length_of`
+    Alias for [`validates_length_of`](#validates_length_of)
     
     ### validates\_uniqueness\_of
     
     Validates whether the value of the specified attributes are unique across the system. Useful for making sure that only one user can be named "davidhh".
-    
-        validates_uniqueness_of :user_name
     
     It can also validate whether the value of the specified attributes are unique based on multiple scope parameters. For example, making sure that a teacher can only be on the schedule once per semester for a particular class.
     
@@ -649,12 +1047,104 @@ contents_013:
     
     Because this check is performed outside the database there is still a chance that duplicate values will be inserted in two parallel transactions. To guarantee against this you should create a unique index on the field. See `add_index` for more information.
     
-    #### Options                     {#uniqueness_of_options}
+    ##### Options                     {#uniqueness_of_options}
     
     Key                  | Value 
     ---------------------|-----------------------------------------------------
     `:scope`	         | One or more columns by which to limit the scope of the uniqueness constraint
     `:case_sensitive`	 | Looks for an exact match. Ignored by non-text columns (`false` by default)
+    
+    ## Common options
+    
+    The above class convenience validation methods all take a hash of common options.
+    
+    Key             | Value
+    ----------------|-------------------------
+    `:message`      | a custom error message
+    `:on`           | specifies when this validation is active (default is `:save`, other options `:create`, `:update`)
+    `:allow_nil`    | skip validation if attribute is `nil` (default is `false`). Notice that for `fixnum` and `float` columns empty strings are converted to `nil`
+    `:allow_blank`  | if set to `true`, skips this validation if the attribute is blank (default is `false`)
+    `:if`           | specifies a method, `proc` or `"string"` to call to determine if the validation should occur [^if_unless]
+    `:unless`       | as `:if`, but used to determine if the validation should _not_ occur
+    
+    ## Low level validations
+    
+    You can create your own validations by implementing the `validate` method (or the variations, `validate_on_create` and `validate_on_update`) in your model. The `validate` method will be called by ActiveRecord before every `save` or `update`, whilst the `validate_on_create` and `validate_on_update` methods will only be called when saving new records or updating existing records respectively. Most validation methods simply do two things:
+    
+    * Inspect the attributes of an object and check whether their values pass one or more conditions (such as making sure a name attribute is not empty and/or that it matches a certain regular expression)
+    * If an attribute's value does not pass, add an error message to it
+    
+    ### Errors
+    
+    Each ActiveRecord object has its own errors object which stores a list of errors related to that object and is accessible via the errors method on the object.
+    
+    The errors object itself has a number of methods which enable you to both add to the list of errors, or inspect the object for errors which have already been added. For example, to add an error to the name attribute of an object, we would use the `add` method...
+    
+        object.errors.add(:name, "shouldn't be empty!")
+    {:ruby}
+    
+    ...and to retrieve errors on the `:name` attribute we could read from the errors object...
+    
+        object.errors.on(:name)    # => "shouldn't be empty!"
+    {:ruby}
+    
+    You will find our cheatsheet ActiveRecord Validation Errors a useful resource for manipulating the errors object.
+    
+    Here are some examples of implementing low-level, roll-your-own validation methods...
+    
+    ### Example
+    
+        class Person < ActiveRecord::Base
+          protected
+            def validate
+              errors.add_on_empty %w( first_name last_name )
+              errors.add("phone_number", "has invalid format") unless phone_number =~ /[0-9]*/
+            end
+    
+            def validate_on_create # is only run the first time a new object is saved
+              unless valid_discount?(membership_discount)
+                errors.add("membership_discount", "has expired")
+              end
+            end
+    
+            def validate_on_update
+              errors.add_to_base("No changes have occurred") if unchanged_attributes?
+            end
+        end
+    
+        person = Person.new("first_name" => "David", "phone_number" => "what?")
+        person.save                         # => false (and doesn't do the save)
+        person.errors.empty?                # => false
+        person.errors.count                 # => 2
+        person.errors.on "last_name"        # => "can't be empty"
+        person.errors.on "phone_number"     # => "has invalid format"
+        person.errors.each_full { |msg| puts msg }
+                                        # => "Last name can't be empty"
+                                        # => "Phone number has invalid format"
+    
+        person.attributes = { "last_name" => "Heinemeier", "phone_number" => "555-555" }
+        person.save # => true (and person is now saved in the database)
+    {:ruby}
+    
+    [^if_unless]: The following would call a method named `allow_validation`
+    
+            :if => :allow_validation
+        {:ruby}
+        The return value would be evaluated to determine whether to perform the class validation. Alternatively, the evaluation can be done via a `proc`...
+    
+            :if => Proc.new { |user| user.signup_step > 2 }). 
+        {:ruby}
+        The method, proc or "string" should return or evaluate to a true or false value.
+    
+    [^tokenizer]: Defaults to:
+    
+            lambda { |value| value.split(//) }
+        {:ruby}
+    
+        which counts individual characters. To count individual words, you would use:
+    
+            :tokenizer => lambda {|str| str.scan(/w+/)}
+        {:ruby}
     
   style: 
 contents_002: 
@@ -1056,7 +1546,180 @@ contents_005:
   id: "8"
   version_id: "3"
   description: Create forms, check boxes, radio buttons, select lists and more using Rails' built-in form helpers.
-  content: 
+  content: |
+    
+    ## form_for
+    
+    `form_for` is used to easily manipulate HTML forms which are based upon ActiveRecord model objects:
+    
+        <%= form_for(:customer, @customer, :url => { :controller => "customers", :action => "create" }, :html => { :multipart => true, :method => :put }) do |f| %>
+          <%= f.text_field :age %> 
+          <%= text_field "customer", :age %>
+          <%= submit_tag %>
+        <% end %>
+    {:rhtml}
+    
+    ### Parameters
+    
+    Key                         | Value                    | Purpose
+    ----------------------------|--------------------------|-----------------------
+    `:customer` *required*       | `:symbol` or `"string"`      | The name of the model object for all the fields in the form. All input fields will be prefixed with this. Rails will also look for an `@instance_variable` with the same name which should contain an instance of an existing or new ActiveRecord model object
+    `@customer` *optional*	   |  _ActiveRecord model object_     | If the `@instance_variable` containing the model object is named differently, you can pass a variable containing the actual model object here
+    `:url` *optional*	         |  `"string"` or `{hash}`	   |  The URL to post the form to. Can take an explicit url as a string, or a hash in the same format as `url_for`
+    `:html` *optional*	 |   `{hash}`	|  A `{hash}` of HTML attributes which will be added to the HTML `<form>` tag.
+    `:method` *optional*	 |   `:symbol`	|   Pass as part of the `{hash}` of HTML attributes. Can be `:put`, `:post`, `:get` or `:delete`
+    
+    ## Parsing form data
+    
+    When a form is submitted to a Rails application, the parameters are automatically translated by Rails into the `params` object which is accessible as a hash structure. 
+    
+    ### Simple query strings
+    
+    Key/value pairs of your form's input fields are stored simply as key/value pairs in the params hash, such as the id which is extracted by routing from the URL:
+    
+    URL                        | Parameters          |  Hash constructed
+    ---------------------------|---------------------|----------
+    `/customers/1`             | id=1	         | `{ :id => "1" }`
+    `/customers/1?color=red`   | id=1&color=red      | `{ :id => "1", :color => "red" }`
+    
+    ### Nesting
+    
+    Square brackets `[]` are used to build more complex, nested structures:
+    
+    Field helper                          | Parameters                   |  Hash constructed
+    --------------------------------------|------------------------------|----------
+    `text_field :user, :name`             | user[name]=David	     | `{ :user => { :name => "David" }`
+    `text_field "user[address]", :city`   | user[address][city]=London   | `{ :user => { :address => { :city => "London" }}}`
+    `text_field "user[address]", :street` | user[address][street]=Road   | `{ :user => { :address => { :street => "Road" }}}`
+    
+    ### Multiple records
+    
+    Using empty square brackets `[]` after the name of a model object, such as `address[]`, will insert the `id` of the record you are editing into the input field, useful for editing multiple records on one form:
+    
+    Field helper                          | Parameters                   |  Hash constructed
+    --------------------------------------|------------------------------|----------
+    `text_field "address[]", :country`    |           address[4][country]=England           |    `{ :address => { 4 => { :country => "England" }}}`
+    `text_field "address[]", :town`               |   address[4][town]=London        |    `{ :address => { 4 => { :town => "London" }}}`
+    
+    If the record is new and has no id, then upon submitting the form, Rails will convert the fields into an array of hashes in order of appearance.
+    
+        text_field "address[]", :country 
+        text_field "address[]", :town
+        text_field "address[]", :country
+        text_field "address[]", :town
+    
+        { :address => [
+            { :country => "England", :town => "London" },
+            { :country => "Australia", :town => "Sydney" }
+          ]
+        }
+    {:ruby}
+    
+    ## Example
+    
+    ### Controller
+    
+        def new
+          @customer = Customer.new
+          3.times do 
+            @customer.addresses.build	
+          end
+        end
+    {:ruby}
+    
+    ### View
+    
+        <% form_for(@customer) do |f| %>
+          <%= f.text_field :name %>
+          <%= f.text_field :email %>
+          <% @customer.addresses.each do |address| %>
+            <% fields_for "customer[addresses][]", address do |fields| %>
+              <%= fields.text_field :number %>
+        	  <%= fields.text_field :street %>
+          <% end %>
+        <% end %>
+    {:rhtml}
+    
+    ### HTML
+    
+        <form id="new_customer" class="new_customer" method="post" action="/customers">
+        <input type="text" size="30" name="customer[name]"/>
+        <input type="text" size="30" name="customer[email]"/>
+        <input type="text" size="30" name="customer[addresses][][number]"/>
+        <input type="text" size="30" name="customer[addresses][][street]"/>
+        <input type="text" size="30" name="customer[addresses][][number]"/>
+        <input type="text" size="30" name="customer[addresses][][street]"/>
+        <input type="text" size="30" name="customer[addresses][][number]"/>
+        <input type="text" size="30" name="customer[addresses][][street]"/>
+        <input type="submit" value="Create" name="commit"/>
+        </form>
+    {:rhtml}
+    
+    ### params[]
+    
+        params = {
+          "customer" => { "name"=>"David Pettifer",
+                          "email"=>"david.p@dizzy.co.uk",
+                          "addresses"=> [
+                            { "number"=>"31", "street"=>"High" },
+                            { "number"=>"22", "street"=>"Brook" },
+                            { "number"=>"16", "street"=>"Kents" }  ]
+                       } }
+    {:ruby}
+    
+    ##fields_for
+    
+    `fields_for` creates a scope around a specific model object like `form_for`, but doesn't create the form tags themselves, making `fields_for` suitable for specifying additional model objects in the same form. See the [example](#example).
+    
+    ## RESTful form_for
+    
+    When standard routes are used in a RESTful context, Rails will reflect upon the object passed to it and  automatically build a form with the relevant RESTful URL depending on whether the form is wrapping a new record (create) or an existing record (update). Nested routes will require you to be more verbose. Standard routes	
+    
+    Standard routes         |  new record?   | method       | URL
+    ------------------------|----------------|--------------|------------------
+    `form_for(@customer)`     |   yes	   |   POST	  |     `/customers`
+    `form_for(@customer)`	  |   no           |    PUT	    |   `/customers/1`
+    
+    Nested routes         |   new record?   | method      |   URL
+    ----------------------|-----------------|-------------|------------------------
+    `form_for(@address, :url => customer_addresses_path(@customer))`  | 	yes   |  POST	| `/customers/1/addresses`
+    `form_for(@address, :url => customer_addresses_path(@customer))`  | no	| PUT	| `/customers/1/addresses/24`
+    
+    ## Input field helpers
+    
+        f.error_messages_for
+        f.check_box :terms, { :class => 'check' }, "yes", "no"
+        f.file_field :image
+        f.hidden_field :id
+        f.label :customer, "Text for label"
+        f.password_field :password
+        f.radio_button :language, "French"
+        f.text_area :comment, :size => "20x30", :disabled => "disabled"
+        f.text_field :age, :size => "20", :class => "age_box"
+    {:ruby}
+    
+    ## Multipart form
+    
+    ### View
+    
+        <% form_for(@customer, :html => { :multipart => true }) do |f| %>
+          <%= f.file_field :image_file %>
+        <%= submit_tag %>
+        <% end %>
+    {:rhtml}
+    
+    ### Model
+    
+        class Customer < ActiveRecord::Base
+          def image_file=(uploaded_data)
+            self.filename     = uploaded_data.original_filename
+            self.image_data   = uploaded_data.read
+            self.size         = uploaded_data.size
+            self.content_type = uploaded_data.content_type	
+          end
+        end
+    {:ruby}
+
   style: 
 contents_006: 
   user: mr_dizzy

@@ -75,6 +75,14 @@ ActiveRecord::Schema.define(:version => 20090116001346) do
   add_index "contents_contents", ["related_id"], :name => "fk_secondary_content_contents"
   add_index "contents_contents", ["content_id"], :name => "fk_main_content_contents"
 
+  create_table "conversations", :force => true do |t|
+    t.string   "subject"
+    t.string   "name"
+    t.datetime "created_at"
+    t.string   "email"
+    t.text     "body"
+  end
+
   create_table "markdowns", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -86,6 +94,11 @@ ActiveRecord::Schema.define(:version => 20090116001346) do
     t.string   "name"
     t.string   "message"
     t.string   "email"
+  end
+
+  create_table "polls", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
   end
 
   create_table "portfolio_items", :force => true do |t|
@@ -106,12 +119,23 @@ ActiveRecord::Schema.define(:version => 20090116001346) do
     t.boolean "visible",                     :default => true
   end
 
-  create_table "schema_info", :id => false, :force => true do |t|
-    t.integer "version"
+  create_table "sessions", :force => true do |t|
+    t.string   "session_id"
+    t.text     "data"
+    t.datetime "updated_at"
   end
+
+  add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
+  add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
 
   create_table "versions", :force => true do |t|
     t.string "version_number"
+  end
+
+  create_table "votes", :force => true do |t|
+    t.integer "poll_id"
+    t.string  "option"
+    t.integer "total"
   end
 
 end
