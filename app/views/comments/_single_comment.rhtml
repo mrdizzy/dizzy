@@ -1,10 +1,13 @@
 <!-- COMMENT -->
-
-<div class="normal" id="comment_<%= @comment.id %>">
+<% if @comment.parent_id? %>
+			<div class="single_comment" id="comment_<%= @comment.id %>">
+		<% else %>
+			<div class="root_comment" id="comment_<%= @comment.id %>">
+		<% end %>
 	
 	<div class="comments_left">
 		<p>
-			<span class="date"><%= time_ago_in_words(@comment.created_at).upcase %> AGO</span><br/> 
+			<span class="posted_ago"><%= time_ago_in_words(@comment.created_at).upcase %> AGO</span><br/> 
 			<span class="email"><%= @comment.email %></span>
 		</p>
 	</div>
@@ -15,7 +18,7 @@
 	</div>
 	
 	<div class="reply_comment" id="reply_<%= @comment.id %>">
-		<%= link_to_remote("Reply to this comment", :url => new_content_comment_child_comment_path(:content_id => @comment.content.id, :comment_id => @comment.id), :method => :get)%>
+		<%= diamond %> <%= link_to_remote("Reply to this comment", :url => new_content_comment_child_comment_path(:content_id => @comment.content.id, :comment_id => @comment.id), :method => :get)%>
 	</div>
 
 </div>

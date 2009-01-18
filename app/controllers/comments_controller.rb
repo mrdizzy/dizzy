@@ -38,7 +38,6 @@ class CommentsController < ApplicationController
 			@content 	= Content.find(params[:content_id])	
 			@content.comments << @comment			
 			if @content.save
-				@comment = @content.comments.last
 				CommentMailer.deliver_notification(@comment)	
 			else
 				render :action => "new"
