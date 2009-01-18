@@ -97,9 +97,10 @@
 	
 	#article .footnotes h1 { font: bold 138%/18px helvetica,arial,clean,sans-serif; color:black; border-bottom:1px solid black; text-align:left; padding-bottom:17px;}
 	.maruku_toc li { background:none;}
-	.footnotes ol { font-weight: bold; color:black; }
+	.footnotes ol { font-weight: bold; color:black;}
 	.footnotes ol p:first-child { font-weight:bold; color:black; }
 	.footnotes a { font-weight:normal; }
+	#article .footnotes ol li { margin-top:18px;}
 	.footnotes ol p { font-weight:normal; color: #434343;}
 	
 	#blurb { border: 1px dashed #878787; padding:0 7px 0px 7px; }
@@ -123,6 +124,8 @@
 #comments { line-height:18px;}
 	#comments h1 { line-height:54px; }
 	#comments h6 { font:bold 116%/18px Arial; color:black; margin-bottom:18px; margin-top:18px;}
+	
+	.comment_form { border-top:1px solid black; margin-top:17px;}
 	
 	.root_comment { border-top: 1px solid black;  clear:both; margin-top:17px; }
 	.single_comment { border-top: 1px dashed black; margin-left:30px;  margin-top:17px;}
@@ -154,7 +157,7 @@
 		#footer_spiral {}
 	
 /* =CSS FORMS ==================================== */
-	input { line-height:18px; height:18px; border:1px solid black; margin-bottom:16px; padding:0; }
+	input { line-height:18px; height:18px; border:1px solid black; padding:0; }
 		input.submit { width: 136px; height:34px; margin: 0 auto; background:url('/images/f/buttons/submit2.png') no-repeat; outline: none; padding:0; border:0; }
 		input.submit:hover { background: url('/images/f/buttons/submit2.png') no-repeat 0 -34px; padding:0; border:0; }
 	label {font: bold 108%/18px Helvetica, Arial; display:block; margin-top:18px; color: black; }	
