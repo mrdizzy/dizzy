@@ -1,7 +1,7 @@
 ActionMailer::Base.smtp_settings = {
 	:address => "mail.dizzy.co.uk",
 	:domain => "dizzy.co.uk",
-	:authentication => :login,
+	:authentication => :plain,
 	:user_name => "dreamhost@dizzy.co.uk",
 	:password => "#MH^JXEc"
 }
