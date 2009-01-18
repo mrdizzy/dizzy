@@ -1,9 +1,10 @@
 ActionMailer::Base.smtp_settings = {
-	:address => "mail.dizzy.co.uk",
-	:domain => "dizzy.co.uk",
-	:authentication => :plain,
-	:user_name => "dreamhost@dizzy.co.uk",
-	:password => "#MH^JXEc"
+	:address => "homie.mail.dreamhost.com",
+	:port => 25,
+	:domain => "intentional-stance.com",
+	:authentication => :login,
+	:user_name => "dreamhost@intentional-stance.com",
+	:password => "^pw4i#Ew"
 }
 
 FROM_EMAIL = "david.pettifer@dizzy.co.uk"
