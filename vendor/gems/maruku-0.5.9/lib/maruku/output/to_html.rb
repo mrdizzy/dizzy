@@ -297,7 +297,6 @@ Example:
 	def render_footnotes()
 		div = Element.new 'div'
 		div.attributes['class'] = 'footnotes'
-		div <<  Element.new('hr')
 			ol = Element.new 'ol'
 			@doc.footnotes_order.each_with_index do |fid, i| num = i+1
 				f = self.footnotes[fid]
@@ -308,7 +307,7 @@ Example:
 					a = Element.new 'a'
 						a.attributes['href'] = "\##{get_setting(:doc_prefix)}fnref:#{num}"
 						a.attributes['rev'] = 'footnote'
-						a<< Text.new('&#8617;', true, nil, true)
+						a<< Text.new('Top', true, nil, true)
 					li.insert_after(li.children.last, a)
 					ol << li
 				else

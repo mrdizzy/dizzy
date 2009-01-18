@@ -26,7 +26,7 @@
 
 	img { vertical-align:middle;}
 	
-	hr { background:white; color:white; height:18px; margin:0; border:0; padding:0;}
+	hr { background:none; color:none; height:18px; margin:0; border:1px solid black; padding:0;}
 	
 	h1 { font-size:197%; color:#000; font-weight:bold; line-height:36px; }
 	h2 { font: italic normal 123.1%/18px "Trebuchet MS"; color:black; }
@@ -42,7 +42,7 @@
 	
 	dl { line-height:18px;}
 	dt { font-weight:bold; }
-	dd { margin-left:1em; }
+	dd { margin-left:1em;padding-bottom:18px; }
 	
 	a:link { color: #29A4BD; }	
 	a:visited { color:#006A8C; }
@@ -95,10 +95,13 @@
 		#article th { font: bold italic 100%/18px "Trebuchet MS", serif; color: black; text-align:center; padding-bottom:9px; padding-top:8px; }
 		#article tr td:first-child code{ color: #29A4BD;}
 	
-	
-	.footnotes { border-top:1px solid black; }
+	#article .footnotes h1 { font: bold 138%/18px helvetica,arial,clean,sans-serif; color:black; border-bottom:1px solid black; text-align:left; padding-bottom:17px;}
 	.maruku_toc li { background:none;}
-
+	.footnotes ol { font-weight: bold; color:black; }
+	.footnotes ol p:first-child { font-weight:bold; color:black; }
+	.footnotes a { font-weight:normal; }
+	.footnotes ol p { font-weight:normal; color: #434343;}
+	
 	#blurb { border: 1px dashed #878787; padding:0 7px 0px 7px; }
 	#blurb h2 { font: italic 1.5em "Georgia"; }	
 	#blurb h4 {	font: normal 0.76em/1.8em "Verdana"; color: #29A4BD; margin: 0.6em 0 0.8em; letter-spacing:0.2em; }	

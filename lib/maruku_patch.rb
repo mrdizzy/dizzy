@@ -57,6 +57,35 @@ module MaRuKu
 				end
 				add_ws element
 			end	
+			
+			def render_footnotes()
+				div = Element.new 'div'				
+				div.attributes['class'] = 'footnotes'
+				header = Element.new 'h1'
+				header << Text.new('Footnotes')
+				div << header 
+					ol = Element.new 'ol'
+					@doc.footnotes_order.each_with_index do |fid, i| num = i+1
+						f = self.footnotes[fid]
+						if f
+							li = f.wrap_as_element('li')
+							li.attributes['id'] = "#{get_setting(:doc_prefix)}fn:#{num}"
+							
+							a = Element.new 'a'
+								a.attributes['href'] = "\##{get_setting(:doc_prefix)}fnref:#{num}"
+								a.attributes['rev'] = 'footnote'
+								a.attributes['class'] = 'footnote_up'
+								a<< Text.new('Up', true, nil, true)
+							li.insert_after(li.children.last, a)
+							ol << li
+						else
+							maruku_error "Could not find footnote id '#{fid}' among ["+
+							 self.footnotes.keys.map{|s|"'"+s+"'"}.join(', ')+"]."
+						end
+					end
+				div << ol
+				div
+			end
 		end
 	end
 end
