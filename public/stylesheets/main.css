@@ -17,7 +17,7 @@
 	body { font:13px/18px helvetica,arial,clean,sans-serif;*font-size:small;*font:x-small;color:#434343;background:url('/images/f/backgrounds/18px_grid.gif') repeat; }
 	select, input, button, textarea { font:99% arial,helvetica,clean,sans-serif; }
 	table { font-size:inherit; font:100%; }
-	pre, code, kbd, samp, tt { font-family:monospace;*font-size:100%;}
+	pre, code, kbd, samp, tt { font-family:monospace;*font-size:100%; }
 
 /* =CSS TYPOGRAPHY =====================================================*/
 	i { font-style:italic; }
@@ -85,16 +85,17 @@
 		
 	#article ul, #article p { margin-bottom:18px;}	
 	
-	
-	#article h2, #article h1 { font: bold italic 135.8%/17px "Georgia"; color:black; text-align:center; border-bottom:1px dashed black; margin-bottom:18px;}	
+	#article h2, #article h1 { font: bold italic 135.8%/17px "Georgia"; color:black; text-align:center; border-bottom:1px dashed black; margin:0; margin-bottom:18px; padding:0;}	
 	#article h3 { font: bold italic 123.1%/18px "Trebuchet MS"; color:black; margin-bottom:18px;}
 	#article h4, #article h5 { font: bold 100%/18px "Trebuchet MS"; color:black; }
 	#article h6 { font: bold italic 100%/17px "Trebuchet MS"; color:black;text-align:center; border-bottom:1px solid black;}
 	
-	#article td {border-left: 1px solid black; border-right:1px solid black; border-bottom:1px solid black; padding-bottom:9px; padding-top:8px; border-top: 1px solid black;}
-	#article th { font: bold italic 100%/18px "Trebuchet MS", serif; color: black; text-align:center; padding-bottom:9px; padding-top:8px; }
-	#article tr td:first-child code{ color: #29A4BD;}
-	#article table { margin-bottom:18px;}
+	#article table {margin-bottom:18px;padding:0; line-height:18px;}
+		#article td {border-left: 1px solid black; border-right:1px solid black; border-bottom:1px solid black; padding-bottom:9px; padding-top:8px; border-top: 1px solid black; padding-left:10px; padding-right:10px;}
+		#article th { font: bold italic 100%/18px "Trebuchet MS", serif; color: black; text-align:center; padding-bottom:9px; padding-top:8px; }
+		#article tr td:first-child code{ color: #29A4BD;}
+	
+	
 	.footnotes { border-top:1px solid black; }
 	.maruku_toc li { background:none;}
 

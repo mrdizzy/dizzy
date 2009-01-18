@@ -9,9 +9,7 @@ pre {
 	white-space: -pre-wrap;      /* Opera 4-6 */
 	white-space: -o-pre-wrap;    /* Opera 7 */ 
 }
-code { font:normal 100% monospace; }
-
-code.plaintext { color:black; }
+code { font:normal 100% monospace; color:black;}
 
 /*
 :attribute_name => 'an',		:attribute_name_fat => 'af',
