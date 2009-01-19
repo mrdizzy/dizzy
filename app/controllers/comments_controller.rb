@@ -10,9 +10,13 @@ class CommentsController < ApplicationController
 	def new
 		@comment 				= Comment.new
 		@comment.content_id 	= params[:content_id]
+		
 		if params[:comment_id]
-			render :action => 'new_child'
-	 	end
+			render :update do |page|
+				page.replace_html "reply_form_#{params[:comment_id]}", :partial => 'child_comment_form'
+				page.visual_effect :toggle_blind, "comment_form_#{params[:comment_id]}"
+			end
+		end
 	end
 	
 	def destroy
