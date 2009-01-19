@@ -16,12 +16,21 @@ class CommentsController < ApplicationController
 				page.replace_html "reply_form_#{params[:comment_id]}", :partial => 'child_comment_form'
 				page.visual_effect :toggle_blind, "comment_form_#{params[:comment_id]}"
 			end
+		else
+			render :update do |page|
+				page.replace_html "add_comment", :partial => 'comment_form'
+				page.visual_effect :toggle_blind, :comment_form
+			end
 		end
 	end
 	
 	def destroy
 		@comment = Comment.find(params[:id])
- 	 	@comment.destroy
+ 	 	if @comment.destroy
+			render :update do |page|
+				page.remove "comment_#{@comment.id}"
+			end
+		end
 	end
 	
 	def create			
@@ -32,11 +41,16 @@ class CommentsController < ApplicationController
 			@parent_comment.children << @comment			
 			if @parent_comment.save
 				@comment = @parent_comment.children.last
-				render :action => "create_child"
+				render :update do |page|
+					page.replace_html "reply_form_#{params[:comment_id]}", :partial => 'single_comment'
+				end
 				CommentMailer.deliver_response(@parent_comment)			
 				CommentMailer.deliver_notification(@comment)			
 			else
-				render :action => "new_child"
+				render :update do |page|
+					page.replace_html "reply_form_#{params[:comment_id]}", :partial => 'child_comment_form'
+					page.visual_effect :toggle_blind, "comment_form_#{params[:comment_id]}"
+				end
 			end		
 		else
 			@content 	= Content.find(params[:content_id])	
@@ -44,10 +58,11 @@ class CommentsController < ApplicationController
 			if @content.save
 				CommentMailer.deliver_notification(@comment)	
 			else
-				render :action => "new"
+				render :update do |page|
+					page.replace_html "add_comment", :partial => 'single_comment'
+				end
 			end
-		end			
-							
+		end							
 	end
 
 end

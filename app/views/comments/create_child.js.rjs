@@ -1,1 +1,0 @@
-page.replace_html "reply_form_#{params[:comment_id]}", :partial => 'single_comment'

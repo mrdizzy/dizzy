@@ -1,1 +1,0 @@
-page.replace_html "add_comment", :partial => 'single_comment'
