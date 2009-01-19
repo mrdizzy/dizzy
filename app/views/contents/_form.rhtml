@@ -10,6 +10,12 @@
 <p><label for="article_content"><%= diamond %> Content</label>
 <%= form.text_area :content %></p>
 
+ <%= observe_field :article_content, :url => preview_cheatsheets_path,
+      :update => :article, :frequency => 2,
+      :with => "content"    %>
+	  
+<div id="article" style="height:350px; overflow:auto;width:100%;"></div>
+
 <p><label for="article_date"><%= diamond %> Date</label>
 <%= form.datetime_select :date %></p>
 

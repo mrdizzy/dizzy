@@ -9,4 +9,7 @@ REDIRECTS = [ 	["/cheatsheets/rails-migrations.pdf", "/ruby_on_rails/cheatsheets
 				["/contents.rss", "/ruby_on_rails/contents.rss"],
 				["/portfolio/show", "/portfolios/1"] ,
 				["/ruby_on_rails/cheatsheets", "/ruby_on_rails/categories/cheatsheets"],
-				["/cheatsheets", "/ruby_on_rails/categories/cheatsheets"] ]
+				["/cheatsheets", "/ruby_on_rails/categories/cheatsheets"],
+				["/contents/rails-migrations", "/ruby_on_rails/cheatsheets/rails-migrations"]
+				
+			]
