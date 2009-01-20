@@ -51,7 +51,7 @@ HTML use syntax: true
 	
 	def create
 		@article = Article.new(params[:article])
-		@article.user_id = session[:administrator_id]
+		@article.user = "mr_dizzy"
 		
 		if @article.save
       		flash[:notice] = 'Successfully created.'
