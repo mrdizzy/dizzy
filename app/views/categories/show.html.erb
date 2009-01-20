@@ -3,9 +3,7 @@
 	<a href="/">Home</a> <%= solid_arrow %> <%= link_to "Ruby on Rails", latest_path %> <%= solid_arrow %> <span class="destination"><%= @category.name %></span></p>
 </div>
 
-<div id="left_column">
-	<%= category_list %>
-</div>
+<div id="left_column"><%= render :partial => "shared/category_list" %></div>
 
 <div id="right_column">
 	<table id="article_links">
