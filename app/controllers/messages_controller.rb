@@ -1,6 +1,8 @@
 class MessagesController < ApplicationController
 	
 	def create
+	puts params.to_yaml
+	
 		@message = Message.new(params[:message])
 		if @message.save		
 			Mercury.deliver_new_message(@message)

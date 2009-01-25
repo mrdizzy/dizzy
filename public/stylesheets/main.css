@@ -163,7 +163,11 @@
 	label {font: bold 108%/18px Helvetica, Arial; display:block; margin-top:18px; color: black; }	
 	textarea { width:100%; font: normal 100%/18px monospace; border:1px solid black; height:162px;}
 	
-	#contact_form { padding:3px; border:1px dashed black; margin-bottom:9px;}
+	#contact_form { padding:3px; border:1px dashed black; margin-bottom:9px; color:black;}
+	#contact_form td { padding-top:10px; border-bottom:1px solid black; padding-bottom:5px;}
+	#contact_form td:first-child { text-align:left; vertical-align:top;}
+	#contact_form td label { margin-top: 0px; }
+	
 	#contact_inside { border:1px solid black; padding:5px;}
 	#close_window { float:right; height:36px;}
 	
