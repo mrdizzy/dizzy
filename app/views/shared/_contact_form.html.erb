@@ -6,45 +6,48 @@
 	page['contact_form'].toggle
 end %> </div>
 
-<span class="posted_in"><%= square %> CONTACT US</span>
-<%= error_messages_for :message %>
-<% remote_form_for @message, :before => "Element.show('contact_spinner')", :complete => "Element.hide('contact_spinner');" do |form| %>
-<table>
-	<tr>
-		<td><%= form.label :name%></td>
-		<td><%= form.text_field :name %></td>
-	</tr>
-	<tr>
-		<td><%= form.label :email %></td>
-		<td><%= form.text_field :email %></td>
-	</tr>
-	<tr>
-		<td><%= form.label :email_confirmation %></td>
-		<td><%= form.text_field :email_confirmation %></td>
-	</tr>
-	<tr>
-		<td><%= form.label :message %></td>
-		<td><%= form.text_area :message, :size => "60x10" %></td>
-	</tr>
-	<tr>
-
-	<td><%= label_tag "recaptcha_response_field", "Security verification" %></td>
-	<td>
+	<span class="posted_in"><%= square %> CONTACT US</span>
 	
-	<div id="recaptcha_div">
-	<div id="recaptcha_image"></div>
-		<input type="text" name="recaptcha_response_field" id="recaptcha_response_field" />
-	</div>
-	<script type="text/javascript">
-	Recaptcha.create("6LfP1AQAAAAAAAKhfOUrKLj87PfBp77czQ87drhk",
-		"recaptcha_div", {
-		   theme: "custom",
-		}
-	);
-	</script>
-	</td>
-</tr>
-</table>
+	<%= error_messages_for :message %>
+	
+	<% remote_form_for @message, :before => "Element.show('contact_spinner')", :complete => "Element.hide('contact_spinner');" do |form| %>
+		<table>
+			<tr>
+				<td><%= form.label :name%></td>
+				<td><%= form.text_field :name %></td>
+			</tr>
+			<tr>
+				<td><%= form.label :email %></td>
+				<td><%= form.text_field :email %></td>
+			</tr>
+			<tr>
+				<td><%= form.label :email_confirmation %></td>
+				<td><%= form.text_field :email_confirmation %></td>
+			</tr>
+			<tr>
+				<td><%= form.label :message %></td>
+				<td><%= form.text_area :message, :size => "60x10" %></td>
+			</tr>
+			<tr>
+				<td><%= form.label :recaptcha_response_field, "Security verification" %></td>
+				<td>
+					
+					<div id="recaptcha_div">
+						<div id="recaptcha_image"></div>
+						<%= form.text_field :recaptcha_response_field, :id=>"recaptcha_response_field" %>
+					</div>
+					
+					<script type="text/javascript">
+						Recaptcha.create("6LfP1AQAAAAAAAKhfOUrKLj87PfBp77czQ87drhk",
+							"recaptcha_div", {
+							   theme: "custom",
+							}
+						);
+					</script>
+				</td>
+			</tr>
+		</table>
+
 	<%= submit_tag %>
 	
 <% end %>
