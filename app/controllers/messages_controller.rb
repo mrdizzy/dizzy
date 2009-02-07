@@ -1,4 +1,6 @@
 class MessagesController < ApplicationController
+
+	before_filter :authorize, :except => :create
 	
 	def create
 	
@@ -23,4 +25,10 @@ class MessagesController < ApplicationController
 	def index
 		@messages = Message.all
 	end
+
+	def destroy_all
+		Message.delete_all
+		redirect_to messages_path
+	end
+	
 end
