@@ -3,7 +3,7 @@
 # Uncomment below to force Rails into production mode
 # (Use only when you can't set environment variables through your web/app server)
 # ENV['RAILS_ENV'] = 'production'
-#RAILS_GEM_VERSION = '2.1' unless defined? RAILS_GEM_VERSION
+RAILS_GEM_VERSION = '2.1'
 RECAPTCHA_PUBLIC_KEY = '6LfP1AQAAAAAAAKhfOUrKLj87PfBp77czQ87drhk'
 RECAPTCHA_PRIVATE_KEY = '6LfP1AQAAAAAAJLC4g8ticB9p5RuyEdq1QH4syc6'
 # Bootstrap the Rails environment, frameworks, and default configuration
