@@ -5,7 +5,7 @@ set :application, "intentional-stance.com"
 set :repository,  "https://dizzy.googlecode.com/svn/trunk"
 set :use_sudo, false
 set :user, "dizzyphoenix"   
-set :password, "beaslewig175"
+set :password, "world1"
 
 set :shared_rails_dir, "/home/dizzynew/rails_apps/rails_2_1_1"
 set :deploy_via, :export
