@@ -15,9 +15,9 @@ ActiveRecord::Schema.define(:version => 20090116001346) do
     t.binary  "binary_data",  :limit => 16777215
     t.string  "type"
     t.string  "content_type"
-    t.integer "size"
+    t.integer "size",         :limit => 11
     t.string  "filename"
-    t.integer "content_id",                       :default => 0, :null => false
+    t.integer "content_id",   :limit => 11,       :default => 0, :null => false
   end
 
   add_index "binaries", ["content_id"], :name => "fk_content_binaries"
@@ -28,8 +28,8 @@ ActiveRecord::Schema.define(:version => 20090116001346) do
   end
 
   create_table "categories_contents", :id => false, :force => true do |t|
-    t.integer "category_id", :default => 0, :null => false
-    t.integer "content_id",  :default => 0, :null => false
+    t.integer "category_id", :limit => 11, :default => 0, :null => false
+    t.integer "content_id",  :limit => 11, :default => 0, :null => false
   end
 
   add_index "categories_contents", ["content_id"], :name => "fk_content_categories_contents"
@@ -39,10 +39,10 @@ ActiveRecord::Schema.define(:version => 20090116001346) do
     t.text     "body"
     t.string   "subject"
     t.string   "email"
-    t.integer  "parent_id"
-    t.integer  "content_id", :default => 0,    :null => false
+    t.integer  "parent_id",  :limit => 11
+    t.integer  "content_id", :limit => 11, :default => 0,    :null => false
     t.datetime "created_at"
-    t.boolean  "new",        :default => true
+    t.boolean  "new",                      :default => true
     t.string   "name"
   end
 
@@ -62,14 +62,14 @@ ActiveRecord::Schema.define(:version => 20090116001346) do
     t.datetime "date"
     t.text     "content"
     t.string   "permalink"
-    t.integer  "version_id"
+    t.integer  "version_id",  :limit => 11
     t.string   "style"
     t.string   "user"
   end
 
   create_table "contents_contents", :id => false, :force => true do |t|
-    t.integer "content_id", :default => 0, :null => false
-    t.integer "related_id", :default => 0, :null => false
+    t.integer "content_id", :limit => 11, :default => 0, :null => false
+    t.integer "related_id", :limit => 11, :default => 0, :null => false
   end
 
   add_index "contents_contents", ["related_id"], :name => "fk_secondary_content_contents"
@@ -89,9 +89,9 @@ ActiveRecord::Schema.define(:version => 20090116001346) do
   end
 
   create_table "portfolio_items", :force => true do |t|
-    t.integer "portfolio_type_id", :default => 0, :null => false
-    t.integer "company_id",        :default => 0, :null => false
-    t.integer "size"
+    t.integer "portfolio_type_id", :limit => 11, :default => 0, :null => false
+    t.integer "company_id",        :limit => 11, :default => 0, :null => false
+    t.integer "size",              :limit => 11
     t.binary  "data"
   end
 
@@ -100,8 +100,8 @@ ActiveRecord::Schema.define(:version => 20090116001346) do
 
   create_table "portfolio_types", :force => true do |t|
     t.string  "description",   :limit => 40
-    t.integer "column_space"
-    t.integer "position"
+    t.integer "column_space",  :limit => 11
+    t.integer "position",      :limit => 11
     t.binary  "header_binary"
     t.boolean "visible",                     :default => true
   end
