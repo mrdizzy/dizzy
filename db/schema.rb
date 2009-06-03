@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090603162308) do
+ActiveRecord::Schema.define(:version => 20090603225630) do
 
   create_table "binaries", :force => true do |t|
     t.binary  "binary_data",  :limit => 16777215
@@ -63,7 +63,6 @@ ActiveRecord::Schema.define(:version => 20090603162308) do
     t.text     "content"
     t.string   "permalink"
     t.integer  "version_id"
-    t.string   "style"
     t.string   "user"
   end
 
