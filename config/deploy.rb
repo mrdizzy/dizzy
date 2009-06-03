@@ -19,9 +19,9 @@ set :svn_username, "david.pettifer"
 #ssh_options[:port] = 7822 
 
 set :database_adapter, "mysql"
-set :database_username, "dizzynew"
-set :database_password, "JjpaJNWh"
-set :database_hostname, "127.0.0.1"
+set :database_username, "denzil"
+set :database_password, "fantasyland"
+set :database_hostname, "mysql.dizzyphoenix.dreamhosters.com"
 
 # =============================================================================
 
