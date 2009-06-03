@@ -19,8 +19,8 @@ Rails::Initializer.run do |config|
   config.time_zone = 'London'
   
   # Add load paths for sweepers and mailers
-  config.load_paths << "#{RAILS_ROOT}/app/models/sweepers"
-  config.load_paths << "#{RAILS_ROOT}/app/models/mailers"
+  config.load_paths << "#{RAILS_ROOT}/app/sweepers"
+  config.load_paths << "#{RAILS_ROOT}/app/mailers"
   
   config.action_controller.session = { :session_key => "_dizzy_session", :secret => "beaslewig175world66607814752865" }
   

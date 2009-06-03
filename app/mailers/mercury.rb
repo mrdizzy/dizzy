@@ -1,4 +1,4 @@
-class Mercury < ActionMailer::Base
+class Mercury < ApplicationMailer
     
   def new_message(message)
     subject    "dizzy.co.uk: A new message"
