@@ -1,16 +1,3 @@
-# == Schema Information
-# Schema version: 20081216175905
-#
-# Table name: portfolio_types
-#
-#  id            :integer(4)    not null, primary key
-#  description   :string(40)    
-#  column_space  :integer(4)    
-#  position      :integer(4)    
-#  header_binary :binary        
-#  visible       :boolean(1)    default(TRUE)
-#
-
 --- 
 business_card: 
   visible: "1"
@@ -72,3 +59,16 @@ compliment_slip:
   header_binary: !binary |
     R0lGODlhAQABAIAAAAAAAP///yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==
   position: "4"
+
+
+# == Schema Info
+# Schema version: 20090603225630
+#
+# Table name: portfolio_types
+#
+#  id            :integer(4)      not null, primary key
+#  column_space  :integer(4)
+#  description   :string(40)
+#  header_binary :binary
+#  position      :integer(4)
+#  visible       :boolean(1)      default(TRUE)

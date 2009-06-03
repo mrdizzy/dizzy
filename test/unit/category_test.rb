@@ -57,3 +57,12 @@ class CategoryTest < Test::Unit::TestCase
   end
   
 end
+
+# == Schema Info
+# Schema version: 20090603225630
+#
+# Table name: categories
+#
+#  id        :integer(4)      not null, primary key
+#  name      :string(255)
+#  permalink :string(255)

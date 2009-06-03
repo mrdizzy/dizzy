@@ -1,17 +1,3 @@
-# == Schema Information
-# Schema version: 20081216175905
-#
-# Table name: portfolio_items
-#
-#  id                :integer(4)    not null, primary key
-#  portfolio_type_id :integer(4)    default(0), not null
-#  company_id        :integer(4)    default(0), not null
-#  content_type      :string(255)   
-#  filename          :string(255)   
-#  size              :integer(4)    
-#  data              :binary        
-#
-
 class PortfolioItem < ActiveRecord::Base
 	
 	attr_writer :content_type
@@ -41,3 +27,15 @@ class PortfolioItem < ActiveRecord::Base
 	end
 	
 end
+
+
+# == Schema Info
+# Schema version: 20090603225630
+#
+# Table name: portfolio_items
+#
+#  id                :integer(4)      not null, primary key
+#  company_id        :integer(4)      not null, default(0)
+#  portfolio_type_id :integer(4)      not null, default(0)
+#  data              :binary
+#  size              :integer(4)

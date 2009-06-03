@@ -77,3 +77,19 @@ class CommentTest < Test::Unit::TestCase
   	#assert_equal mother.children, [sibling1,sibling2]
   end
 end
+
+
+# == Schema Info
+# Schema version: 20090603225630
+#
+# Table name: comments
+#
+#  id         :integer(4)      not null, primary key
+#  content_id :integer(4)      not null, default(0)
+#  parent_id  :integer(4)
+#  body       :text
+#  email      :string(255)
+#  name       :string(255)
+#  new        :boolean(1)      default(TRUE)
+#  subject    :string(255)
+#  created_at :datetime

@@ -1,16 +1,3 @@
-# == Schema Information
-# Schema version: 20081216175905
-#
-# Table name: portfolio_types
-#
-#  id            :integer(4)    not null, primary key
-#  description   :string(40)    
-#  column_space  :integer(4)    
-#  position      :integer(4)    
-#  header_binary :binary        
-#  visible       :boolean(1)    default(TRUE)
-#
-
 class PortfolioType < ActiveRecord::Base
 	validates_presence_of		:description, :column_space
 	validates_presence_of		:position, :unless => Proc.new { |portfolio_type| portfolio_type.visible == false }
@@ -26,3 +13,16 @@ class PortfolioType < ActiveRecord::Base
 		end
 	end	
 end
+
+
+# == Schema Info
+# Schema version: 20090603225630
+#
+# Table name: portfolio_types
+#
+#  id            :integer(4)      not null, primary key
+#  column_space  :integer(4)
+#  description   :string(40)
+#  header_binary :binary
+#  position      :integer(4)
+#  visible       :boolean(1)      default(TRUE)

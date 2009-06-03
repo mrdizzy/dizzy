@@ -1,20 +1,3 @@
-# == Schema Information
-# Schema version: 20081216175905
-#
-# Table name: contents
-#
-#  id          :integer(4)    not null, primary key
-#  type        :string(255)   
-#  title       :string(255)   
-#  description :string(255)   
-#  date        :datetime      
-#  content     :text          
-#  permalink   :string(255)   
-#  version_id  :integer(4)    
-#  style       :string(255)   
-#  user        :string(255)   
-#
-
 --- 
 form_helpers_snippet: 
   permalink: debugging-form-helpers-with-the-console
@@ -78,3 +61,19 @@ action_mailer_second_related_article:
   description: Another associated article. 
   content: I can't believe it's not butter again
   user: mr_dizzy
+
+
+# == Schema Info
+# Schema version: 20090603225630
+#
+# Table name: contents
+#
+#  id          :integer(4)      not null, primary key
+#  version_id  :integer(4)
+#  content     :text
+#  date        :datetime
+#  description :string(255)
+#  permalink   :string(255)
+#  title       :string(255)
+#  type        :string(255)
+#  user        :string(255)

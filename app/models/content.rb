@@ -1,20 +1,3 @@
-# == Schema Information
-# Schema version: 20081216175905
-#
-# Table name: contents
-#
-#  id          :integer(4)    not null, primary key
-#  type        :string(255)   
-#  title       :string(255)   
-#  description :string(255)   
-#  date        :datetime      
-#  content     :text          
-#  permalink   :string(255)   
-#  version_id  :integer(4)    
-#  style       :string(255)   
-#  user        :string(255)   
-#
-
 class Content < ActiveRecord::Base
 	has_and_belongs_to_many :categories
 	has_and_belongs_to_many :related_articles, :class_name => "Content", :foreign_key => "related_id"
@@ -28,8 +11,6 @@ class Content < ActiveRecord::Base
 	validates_uniqueness_of :permalink	
 
 	named_scope :recent, lambda { { :conditions => ["date < ?", 1.hour.ago], :order => "date DESC"  } }
-	named_scope :snippets, :conditions => { :style => "SNIPPET" }, :order => "date DESC"
- 	named_scope :tutorials, :conditions => { :style => "TUTORIAL"}, :order => "date DESC"
   
 	before_save :create_new_version
 	
@@ -58,8 +39,6 @@ end
 
 class Article < Content
 	validates_presence_of 	:content	
-	validates_presence_of	:style
-	validates_inclusion_of 	:style, :in => STYLES, :allow_blank => true
 end
 
 class Cheatsheet < Content
@@ -131,3 +110,19 @@ HTML use syntax: true
 		result + " Cheatsheet" if result
 	end
 end
+
+
+# == Schema Info
+# Schema version: 20090603225630
+#
+# Table name: contents
+#
+#  id          :integer(4)      not null, primary key
+#  version_id  :integer(4)
+#  content     :text
+#  date        :datetime
+#  description :string(255)
+#  permalink   :string(255)
+#  title       :string(255)
+#  type        :string(255)
+#  user        :string(255)

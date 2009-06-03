@@ -17,3 +17,16 @@ class Message < ActiveRecord::Base
 	end
 		
 end
+
+
+# == Schema Info
+# Schema version: 20090603225630
+#
+# Table name: messages
+#
+#  id         :integer(4)      not null, primary key
+#  email      :string(255)
+#  message    :string(255)
+#  name       :string(255)
+#  created_at :datetime
+#  updated_at :datetime

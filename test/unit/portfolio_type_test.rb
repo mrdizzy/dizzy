@@ -40,3 +40,15 @@ class PortfolioTypeTest < Test::Unit::TestCase
 		assert_equal 1, product.errors.size
 	end    
 end
+
+# == Schema Info
+# Schema version: 20090603225630
+#
+# Table name: portfolio_types
+#
+#  id            :integer(4)      not null, primary key
+#  column_space  :integer(4)
+#  description   :string(40)
+#  header_binary :binary
+#  position      :integer(4)
+#  visible       :boolean(1)      default(TRUE)

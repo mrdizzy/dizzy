@@ -84,3 +84,14 @@ class PortfolioItemTest < Test::Unit::TestCase
   end
   
 end
+
+# == Schema Info
+# Schema version: 20090603225630
+#
+# Table name: portfolio_items
+#
+#  id                :integer(4)      not null, primary key
+#  company_id        :integer(4)      not null, default(0)
+#  portfolio_type_id :integer(4)      not null, default(0)
+#  data              :binary
+#  size              :integer(4)

@@ -1,13 +1,3 @@
-# == Schema Information
-# Schema version: 20081216175905
-#
-# Table name: categories
-#
-#  id        :integer(4)    not null, primary key
-#  name      :string(255)   
-#  permalink :string(255)   
-#
-
 class Category < ActiveRecord::Base
 	has_and_belongs_to_many :contents, :order => "date DESC"
 	validates_presence_of 		:permalink, :name
@@ -23,3 +13,13 @@ class Category < ActiveRecord::Base
 		end	
 	end
 end
+
+
+# == Schema Info
+# Schema version: 20090603225630
+#
+# Table name: categories
+#
+#  id        :integer(4)      not null, primary key
+#  name      :string(255)
+#  permalink :string(255)

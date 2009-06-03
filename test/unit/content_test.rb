@@ -94,3 +94,18 @@ class ContentTest < Test::Unit::TestCase
   end
   
 end
+
+# == Schema Info
+# Schema version: 20090603225630
+#
+# Table name: contents
+#
+#  id          :integer(4)      not null, primary key
+#  version_id  :integer(4)
+#  content     :text
+#  date        :datetime
+#  description :string(255)
+#  permalink   :string(255)
+#  title       :string(255)
+#  type        :string(255)
+#  user        :string(255)

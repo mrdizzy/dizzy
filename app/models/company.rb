@@ -1,14 +1,3 @@
-# == Schema Information
-# Schema version: 20081216175905
-#
-# Table name: companies
-#
-#  id          :integer(4)    not null, primary key
-#  name        :string(40)    
-#  description :string(255)   
-#  visible     :boolean(1)    
-#
-
 class Company < ActiveRecord::Base
 
 	has_many :portfolio_items, :dependent => :destroy
@@ -33,3 +22,14 @@ class Company < ActiveRecord::Base
 	end
 
 end
+
+
+# == Schema Info
+# Schema version: 20090603225630
+#
+# Table name: companies
+#
+#  id          :integer(4)      not null, primary key
+#  description :string(255)
+#  name        :string(40)
+#  visible     :boolean(1)

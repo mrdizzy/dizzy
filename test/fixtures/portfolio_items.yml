@@ -1,17 +1,3 @@
-# == Schema Information
-# Schema version: 20081216175905
-#
-# Table name: portfolio_items
-#
-#  id                :integer(4)    not null, primary key
-#  portfolio_type_id :integer(4)    default(0), not null
-#  company_id        :integer(4)    default(0), not null
-#  content_type      :string(255)   
-#  filename          :string(255)   
-#  size              :integer(4)    
-#  data              :binary        
-#
-
 ---
 heavenly_grey_logo: 
   size: "5000"
@@ -68,3 +54,15 @@ silver_header:
   company: silver
   data: !binary |
     R0lGODlhAQABAIAAAAAAAP///yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==
+
+
+# == Schema Info
+# Schema version: 20090603225630
+#
+# Table name: portfolio_items
+#
+#  id                :integer(4)      not null, primary key
+#  company_id        :integer(4)      not null, default(0)
+#  portfolio_type_id :integer(4)      not null, default(0)
+#  data              :binary
+#  size              :integer(4)
