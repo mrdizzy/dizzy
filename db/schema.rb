@@ -106,6 +106,10 @@ ActiveRecord::Schema.define(:version => 20090116001346) do
     t.boolean "visible",                     :default => true
   end
 
+  create_table "schema_info", :id => false, :force => true do |t|
+    t.integer "version", :limit => 11
+  end
+
   create_table "versions", :force => true do |t|
     t.string "version_number"
   end

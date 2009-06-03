@@ -43,6 +43,7 @@ task :setup_database do
 	
 	run "mkdir -p #{shared_path}/config" 
 		 database_configuration =  <<-EOF
+
 development:
   adapter: #{database_adapter}
   database: dizzyphoenix_dizzydevelopment
@@ -50,9 +51,6 @@ development:
   password: #{database_password}
   host: #{database_hostname}
 
-# Warning: The database defined as 'test' will be erased and
-# re-generated from your development database when you run 'rake'.
-# Do not set this db to the same as development or production.
 test:
   adapter: #{database_adapter}
   database: dizzyphoenix_dizzytest
