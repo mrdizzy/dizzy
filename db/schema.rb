@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090603125252) do
+ActiveRecord::Schema.define(:version => 20090603162308) do
 
   create_table "binaries", :force => true do |t|
     t.binary  "binary_data",  :limit => 16777215
@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(:version => 20090603125252) do
     t.string  "content_type"
     t.integer "size"
     t.string  "filename"
-    t.integer "content_id",                       :null => false
+    t.integer "content_id",                       :default => 0, :null => false
   end
 
   add_index "binaries", ["content_id"], :name => "fk_content_binaries"
@@ -28,19 +28,19 @@ ActiveRecord::Schema.define(:version => 20090603125252) do
   end
 
   create_table "categories_contents", :id => false, :force => true do |t|
-    t.integer "category_id", :null => false
-    t.integer "content_id",  :null => false
+    t.integer "category_id", :default => 0, :null => false
+    t.integer "content_id",  :default => 0, :null => false
   end
 
-  add_index "categories_contents", ["category_id"], :name => "fk_category_categories_contents"
   add_index "categories_contents", ["content_id"], :name => "fk_content_categories_contents"
+  add_index "categories_contents", ["category_id"], :name => "fk_category_categories_contents"
 
   create_table "comments", :force => true do |t|
     t.text     "body"
     t.string   "subject"
     t.string   "email"
     t.integer  "parent_id"
-    t.integer  "content_id",                   :null => false
+    t.integer  "content_id", :default => 0,    :null => false
     t.datetime "created_at"
     t.boolean  "new",        :default => true
     t.string   "name"
@@ -68,12 +68,12 @@ ActiveRecord::Schema.define(:version => 20090603125252) do
   end
 
   create_table "contents_contents", :id => false, :force => true do |t|
-    t.integer "content_id", :null => false
-    t.integer "related_id", :null => false
+    t.integer "content_id", :default => 0, :null => false
+    t.integer "related_id", :default => 0, :null => false
   end
 
-  add_index "contents_contents", ["content_id"], :name => "fk_main_content_contents"
   add_index "contents_contents", ["related_id"], :name => "fk_secondary_content_contents"
+  add_index "contents_contents", ["content_id"], :name => "fk_main_content_contents"
 
   create_table "markdowns", :force => true do |t|
     t.datetime "created_at"
@@ -89,14 +89,14 @@ ActiveRecord::Schema.define(:version => 20090603125252) do
   end
 
   create_table "portfolio_items", :force => true do |t|
-    t.integer "portfolio_type_id", :null => false
-    t.integer "company_id",        :null => false
+    t.integer "portfolio_type_id", :default => 0, :null => false
+    t.integer "company_id",        :default => 0, :null => false
     t.integer "size"
     t.binary  "data"
   end
 
-  add_index "portfolio_items", ["company_id"], :name => "fk_company_portfolio_items"
-  add_index "portfolio_items", ["portfolio_type_id"], :name => "fk_portfolio_type_portfolio_items"
+  add_index "portfolio_items", ["portfolio_type_id"], :name => "portfolio_type_id"
+  add_index "portfolio_items", ["company_id"], :name => "company_id"
 
   create_table "portfolio_types", :force => true do |t|
     t.string  "description",   :limit => 40
