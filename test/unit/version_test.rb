@@ -15,11 +15,11 @@ class VersionTest < Test::Unit::TestCase
   end
   
   def test_should_fail_when_not_valid_version_number
-
+	flunk
   end
   
 	def test_should_succeed_when_valid_version_number		
-	  
+	  flunk
   end
     
   

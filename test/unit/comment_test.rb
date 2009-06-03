@@ -1,20 +1,19 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
 class CommentTest < Test::Unit::TestCase
- fixtures :comments, :contents
 
   def test_truth
     assert true
   end
   
-  def test_should_fail_blank_comment
+  def test_1_should_fail_blank_comment
   	comment = Comment.new
   	assert !comment.valid?, comment.errors.full_messages
   	assert comment.errors.count, 5
   end
   
-  def test_should_fail_invalid_email
-  	comment = comments(:grandmother)
+  def test_2_should_fail_invalid_email
+  	comment = Factory.build(:comment)
   	
   	bad_addresses = ["melinda@@dizzy.co.uk", "jamie@192.34.32.43", "louise@louise", "mr_habadashery@*bloo.com"]
   	bad_addresses.each do |address|
@@ -24,8 +23,8 @@ class CommentTest < Test::Unit::TestCase
   	end
   end
 
-  def test_should_pass_valid_email
-  	comment = comments(:grandmother)
+  def test_3_should_pass_valid_email
+  	comment = Factory.build(:comment)
   	
   	good_addresses = %w{ melinda@dizzy.co.uk jamie@dizzy.com louise.smith@germany.de mr_lewis@lewis.co.uk david.pettifer@dizzy.co.uk jamie.han@motif-switcher.com }
   	good_addresses.each do |address|
@@ -34,35 +33,47 @@ class CommentTest < Test::Unit::TestCase
   	end
   end
   
-  def test_should_fail_with_invalid_parent
-  	comment = comments(:mother)
+  def test_4_should_fail_with_invalid_parent
+  	comment = Factory(:comment)
   	comment.parent_id = 13434
   	assert !comment.valid?, comment.errors.full_messages
   	assert_equal "does not exist", comment.errors.on(:parent)
   end
   
-  def test_should_pass_with_valid_parent
-  	comment = comments(:daughter)
-  	assert comment.valid?, comment.errors.full_messages
+  def test_5_should_pass_with_valid_parent
+  	parent = Factory(:comment)
+	child = Factory(:comment)
+	child.parent_id = parent.id
+  	assert child.valid?, child.errors.full_messages
   end
   
-  def test_should_fail_without_linked_article
-  	comment = comments(:mother)
+  def test_6_should_fail_without_linked_article
+  	comment = Factory.build(:comment)
   	comment.content_id = 23232
   	assert !comment.valid?, comment.errors.full_messages
   	assert_equal "does not exist", comment.errors.on(:content)
   end
   
-  def test_should_pass_with_linked_article
-  	comment = comments(:mother)
-  	assert comment.valid?, comment.errors.full_messages
-  end  
-  
-  def test_should_have_children
-  	comments = comments(:great_grandmother)
-  	assert_equal comments.children.first, comments(:grandmother)
+  def test_8_should_have_children
+  	grandmother = Factory(:comment)
+	mother 		= Factory(:comment)
+	sibling1	= Factory(:comment)
+	sibling2	= Factory(:comment)
+	
+	mother.parent_id = grandmother.id
+	mother.save
+	
+	assert_equal 1, grandmother.children.count
+	assert_equal mother, grandmother.children.first
+	
+	sibling1.parent_id = mother.id
+	sibling2.parent_id = mother.id
+	sibling1.save
+	sibling2.save
+	
+  	assert_equal 2, mother.children.count
+	assert_equal [sibling1,sibling2], mother.children
   	
-  	comments = comments(:mother)
-  	assert_equal comments.children, [comments(:son),comments(:daughter)]
+  	#assert_equal mother.children, [sibling1,sibling2]
   end
 end
