@@ -14,7 +14,7 @@ Rails::Initializer.run do |config|
    config.frameworks -= [ :action_web_service ]
 
   config.time_zone = 'London'
-  
+  config.load_paths << "#{RAILS_ROOT}/app/models/sweepers"
   config.action_controller.session = { :session_key => "_dizzy_session", :secret => "beaslewig175world66607814752865" }
   
   config.gem "maruku" 
