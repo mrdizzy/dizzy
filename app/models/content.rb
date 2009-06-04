@@ -1,4 +1,5 @@
 class Content < ActiveRecord::Base
+
 	has_and_belongs_to_many :categories
 	has_and_belongs_to_many :related_articles, :class_name => "Content", :foreign_key => "related_id"
 	has_many 				:comments, :dependent => :destroy, :order => "'created_at' DESC"
@@ -27,10 +28,12 @@ class Content < ActiveRecord::Base
 end
 
 class Article < Content
+	acts_as_code
 	validates_presence_of 	:content	
 end
 
 class Cheatsheet < Content
+	acts_as_code :toc => true
 	
 	has_one :pdf, :dependent => :destroy, :foreign_key => "content_id"
 	has_one :thumbnail, :dependent => :destroy, :foreign_key => "content_id"
