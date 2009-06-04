@@ -24,17 +24,6 @@ class Content < ActiveRecord::Base
 		create_version(:version_number => new_version) unless new_version.blank?
 	end
 	
-	def parsed_content
-		result = "Use numbered headers: true
-HTML use syntax: true
-
-{:rhtml: lang=rhtml html_use_syntax=true}
-{:ruby: lang=ruby  html_use_syntax=true}
-
-" + self.content
-		result = Maruku.new(result).to_html
-
-	end
 end
 
 class Article < Content
@@ -48,24 +37,6 @@ class Cheatsheet < Content
 	
 	validates_presence_of :pdf, :thumbnail
 	validates_associated :pdf, :thumbnail
-	
-	def parsed_content
-		result = "Use numbered headers: true
-HTML use syntax: true
-
-{:rhtml: lang=rhtml html_use_syntax=true}
-{:ruby: lang=ruby  html_use_syntax=true}
-{:plaintext: lang=plaintext html_use_syntax=true}
-
-# Table of Contents
-
-* Table of Contents
-{:toc}
-
-" + self.content
-		result = Maruku.new(result).to_html
-
-	end
 	
 	def binary_attributes=(binaries)
 			pdf_data 		= binaries[:pdf][:uploaded_data]
