@@ -34,16 +34,21 @@ class CategoryTest < Test::Unit::TestCase
 
   def test_4_should_fail_on_create_with_duplicate_name
   	duplicate = Category.new(:name => "Action Mailer", :permalink => "abc-def-ghi")
-  	assert !duplicate.valid?, "Category name should be invalid"
-  	assert_equal duplicate.errors[:name], "has already been taken"
-  	assert_equal 1, duplicate.errors.size
+	duplicate.save!
+	duplicate2 = Category.new(:name => "Action Mailer", :permalink => "boo-dee-goo")
+  	assert !duplicate2.valid?, "Category name should be invalid"
+  	assert_equal "has already been taken", duplicate2.errors[:name]
+  	assert_equal 1, duplicate2.errors.size
   	end
 
   def test_5_should_fail_on_create_with_duplicate_permalink
   	duplicate = Category.new(:name => "Melanie", :permalink => "file-handling")
-  	assert !duplicate.valid?, "Category permalink should be invalid"
-  	assert_equal duplicate.errors[:permalink], "has already been taken"
-  	assert_equal 1, duplicate.errors.size
+	duplicate.save!
+	duplicate2 = Category.new(:name => "Hermintrude", :permalink => "file-handling")
+	
+  	assert !duplicate2.valid?, "Category permalink should be invalid"
+  	assert_equal "has already been taken", duplicate2.errors[:permalink]
+  	assert_equal 1, duplicate2.errors.size
   end 	  
   
   def test_6_should_remove_category
