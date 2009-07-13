@@ -28,7 +28,6 @@ end
 Factory.define :article do |c|
 	c.permalink { Factory.next(:permalink) }
 	c.title { Factory.next(:name) }
-	c.style "SNIPPET"
 	c.categories {|categories| [categories.association(:category), categories.association(:category)]}  
 	c.user "mr_dizzy"
 	c.date 1.hour.ago
