@@ -15,6 +15,16 @@ Factory.define :category do |c|
 	c.name { Factory.next(:name) }
 end
 
+Factory.define :cheatsheet do |c|
+#  version_id  :integer(4)
+	c.content "Here is the content of the cheatsheet"
+#  date        :datetime
+	c.description "A brief description"
+	c.permalink { Factory.next(:permalink) }
+	c.title { Factory.next(:name) }  
+	c.user  "mr_dizzy"
+end
+
 Factory.define :comment do |c|
 	c.name "Malandra Burrows"
 	c.new true
