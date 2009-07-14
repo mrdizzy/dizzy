@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
-class CommentTest < Test::Unit::TestCase
+class CommentTest < ActiveSupport::TestCase
 
   def test_truth
     assert true

@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
-class PdfTest < Test::Unit::TestCase
+class PdfTest < ActiveSupport::TestCase
   fixtures :binaries, :contents
   
   def test_cheatsheet_content_type_should_be_valid

@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
-class ContentTest < Test::Unit::TestCase
+class ContentTest < ActiveSupport::TestCase
   fixtures :contents, :versions, :categories, :binaries
   
   def test_truth

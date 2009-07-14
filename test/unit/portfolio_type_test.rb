@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
-class PortfolioTypeTest < Test::Unit::TestCase
+class PortfolioTypeTest < ActiveSupport::TestCase
   fixtures :portfolio_types
 
   def test_truth
