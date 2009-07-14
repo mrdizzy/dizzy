@@ -2,22 +2,29 @@ require File.dirname(__FILE__) + '/../test_helper'
 
 class CheatsheetTest < ActiveSupport::TestCase
 
-  def test_truth
-    assert true
-  end
+   def test_truth
+      assert true
+   end
   
   #TODO: Rewrite tests
   
-  def test_1_should_fail_without_pdf_and_thumbnail
-
-  	#assert !@action_mailer_cheatsheet.valid?
-  	#assert_equal ["Thumbnail can't be blank","Pdf can't be blank"], @action_mailer_cheatsheet.errors.full_messages
-  end
+   def test_1_should_fail_without_pdf
+      cheatsheet = Factory.build(:cheatsheet, :pdf => nil)
+      assert !cheatsheet.valid?
+      assert_equal ["Pdf can't be blank"], cheatsheet.errors.full_messages
+   end
   
-    def test_2_should_destroy_dependencies
-  	#assert_difference(['Cheatsheet.count', 'Pdf.count', 'Thumbnail.count'], -1) do
-  	#	@action_mailer_cheatsheet.destroy
-  	#end
+   def test_2_should_destroy_dependencies
+   3.times do |number|
+      Factory.create(:cheatsheet)
+   end
+   puts Cheatsheet.count
+   Cheatsheet.all.each do |c|
+   puts c.pdf
+   end
+  	assert_difference(['Cheatsheet.count', 'Pdf.count'], -1) do
+  		Cheatsheet.first.destroy
+  	end
   end
   
 end

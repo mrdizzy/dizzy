@@ -6,12 +6,8 @@ class Binary < ActiveRecord::Base
 
 end
 
-class Thumbnail < Binary
-	validates_inclusion_of :size, :in => 1.kilobyte..40.kilobytes, :message => "must be between 1k and 40k" 
-	validates_format_of :content_type, :with => /image\/png/, :message => "must be a PNG image file"
-end
-
 class Pdf < Binary
+   belongs_to :cheatsheet, :foreign_key => "content_id"
 	validates_inclusion_of :size, :in => 1.kilobyte..700.kilobytes, :message => "must be between 1k and 700k"
 	validates_format_of :content_type, :with => /(application\/pdf|binary\/octet-stream)/, :message => "must be a PDF file"
 end

@@ -44,10 +44,9 @@ end
 class Cheatsheet < Content
 	
 	has_one :pdf, :dependent => :destroy, :foreign_key => "content_id"
-	has_one :thumbnail, :dependent => :destroy, :foreign_key => "content_id"
 	
-	validates_presence_of :pdf, :thumbnail
-	validates_associated :pdf, :thumbnail
+	validates_presence_of :pdf
+	validates_associated :pdf
 	
 	def parsed_content
 		result = "Use numbered headers: true
@@ -71,38 +70,21 @@ HTML use syntax: true
 			pdf_data 		= binaries[:pdf][:uploaded_data]
 			thumbnail_data 	= binaries[:thumbnail][:uploaded_data]
 		
-		if self.new_record?
-		
+		if self.new_record?		
 			unless pdf_data.blank?			
 				self.build_pdf(:filename 		=> pdf_data.original_filename,
 								:content_type 	=> pdf_data.content_type.chomp,
 								:binary_data 	=> pdf_data.read,
 								:size			=> pdf_data.size)
 			end
-			unless thumbnail_data.blank?
-				self.build_thumbnail(:filename 		=> thumbnail_data.original_filename,
-										:content_type 	=> thumbnail_data.content_type.chomp,
-										:binary_data 	=> thumbnail_data.read,
-										:size			=> thumbnail_data.size)
-			end		
-		
 		else
-		
 			unless pdf_data.blank?					
 				self.pdf.update_attributes(:filename 		=> pdf_data.original_filename,
 								:content_type 	=> pdf_data.content_type.chomp,
 								:binary_data 	=> pdf_data.read,
 								:size			=> pdf_data.size)
 			end
-			unless thumbnail_data.blank?
-				self.thumbnail.update_attributes(:filename 		=> thumbnail_data.original_filename,
-										:content_type 	=> thumbnail_data.content_type.chomp,
-										:binary_data 	=> thumbnail_data.read,
-										:size			=> thumbnail_data.size)
-			end		
-		
 		end
-		
 	end
 	
 	def title

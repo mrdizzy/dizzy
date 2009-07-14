@@ -16,13 +16,15 @@ Factory.define :category do |c|
 end
 
 Factory.define :cheatsheet do |c|
-#  version_id  :integer(4)
+	c.association :version, :factory => :version
 	c.content "Here is the content of the cheatsheet"
-#  date        :datetime
+	c.date        Time.now
+	c.association :pdf, :factory => :pdf
 	c.description "A brief description"
 	c.permalink { Factory.next(:permalink) }
 	c.title { Factory.next(:name) }  
 	c.user  "mr_dizzy"
+	c.categories { |categories| [categories.association(:category), categories.association(:category)] }
 end
 
 Factory.define :comment do |c|
@@ -44,6 +46,14 @@ Factory.define :article do |c|
 	c.association :version, :factory => :version
 	c.description "Here is a description"
 	c.content "Here is the content"
+end
+
+Factory.define :pdf do |p|
+	p.association :content, :factory => :article
+	p.content_type "application/pdf"
+	p.filename "cheatsheet.pdf"
+	p.size 102324
+	p.binary_data "0101010101"
 end
 
 Factory.define :version do |v|
