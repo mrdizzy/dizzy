@@ -32,4 +32,3 @@ end
 # Table name: versions
 #
 #  id             :integer(4)      not null, primary key
-#  version_number :string(255)
