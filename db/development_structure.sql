@@ -61,7 +61,6 @@ CREATE TABLE `contents` (
   `content` text,
   `permalink` varchar(255) default NULL,
   `version_id` int(11) default NULL,
-  `style` varchar(255) default NULL,
   `user` varchar(255) default NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -115,10 +114,6 @@ CREATE TABLE `portfolio_types` (
   PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE `schema_info` (
-  `version` int(11) default NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
 CREATE TABLE `schema_migrations` (
   `version` varchar(255) NOT NULL default '',
   UNIQUE KEY `unique_schema_migrations` (`version`)
@@ -157,6 +152,10 @@ INSERT INTO schema_migrations (version) VALUES ('20081216215513');
 INSERT INTO schema_migrations (version) VALUES ('20081218132651');
 
 INSERT INTO schema_migrations (version) VALUES ('20090116001346');
+
+INSERT INTO schema_migrations (version) VALUES ('20090603225630');
+
+INSERT INTO schema_migrations (version) VALUES ('20090823223345');
 
 INSERT INTO schema_migrations (version) VALUES ('3');
 

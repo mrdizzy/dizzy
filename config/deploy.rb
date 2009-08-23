@@ -12,7 +12,7 @@ set :deploy_via, :export
 
 set :rails_env, "production"
 
-server "thing.dreamhost.com", :app, :web, :db, :primary => true
+server "supergirl.dreamhost.com", :app, :web, :db, :primary => true
 
 set :svn_username, "david.pettifer"		
 	

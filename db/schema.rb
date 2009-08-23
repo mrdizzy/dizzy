@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090605121801) do
+ActiveRecord::Schema.define(:version => 20090823223345) do
 
   create_table "binaries", :force => true do |t|
     t.binary  "binary_data",  :limit => 16777215
@@ -103,13 +103,6 @@ ActiveRecord::Schema.define(:version => 20090605121801) do
     t.integer "position"
     t.binary  "header_binary"
     t.boolean "visible",                     :default => true
-  end
-
-  create_table "uploads", :force => true do |t|
-    t.string   "description"
-    t.binary   "picture"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "versions", :force => true do |t|
