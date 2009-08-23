@@ -1,3 +1,5 @@
+## Sequences
+
 Factory.sequence :permalink do |d|
 	"a-valid-permalink-#{d}"
 end
@@ -8,6 +10,23 @@ end
 
 Factory.sequence :name do |d|
 	"A Valid Name #{d}"
+end
+
+Factory.sequence :number do |n|
+	n
+end
+
+### Factories
+
+Factory.define :article do |c|
+	c.permalink { Factory.next(:permalink) }
+	c.title { Factory.next(:name) }
+	c.categories {|categories| [categories.association(:category), categories.association(:category)]}  
+	c.user "mr_dizzy"
+	c.date 1.hour.ago
+	c.association :version, :factory => :version
+	c.description "Here is a description"
+	c.content "Here is the content"
 end
 
 Factory.define :category do |c|
@@ -37,15 +56,11 @@ Factory.define :comment do |c|
 	c.email "david.p@casamiento-cards.co.uk"
 end
 
-Factory.define :article do |c|
-	c.permalink { Factory.next(:permalink) }
-	c.title { Factory.next(:name) }
-	c.categories {|categories| [categories.association(:category), categories.association(:category)]}  
-	c.user "mr_dizzy"
-	c.date 1.hour.ago
-	c.association :version, :factory => :version
-	c.description "Here is a description"
-	c.content "Here is the content"
+Factory.define :company do |c|
+	c.name "Heavenly Chocolate Fountains"
+	c.visible true
+  c.portfolio_items { |items| [items.association(:portfolio_item_header)] }
+	c.description "Fun, hilarity, zany, bold, offbeat"
 end
 
 Factory.define :pdf do |p|
@@ -54,6 +69,35 @@ Factory.define :pdf do |p|
 	p.filename "cheatsheet.pdf"
 	p.size 102324
 	p.binary_data "0101010101"
+end
+
+Factory.define :portfolio_item do |p|
+  p.association :company
+  p.association :portfolio_type
+  p.data "data"
+  p.size 10.kilobytes
+end
+
+Factory.define :portfolio_item_header, :class => PortfolioItem do |p|
+  p.association :portfolio_type, :factory => :portfolio_type_header
+  p.data "data"
+  p.size 5.kilobytes
+end
+
+Factory.define :portfolio_type do |p|
+  p.visible true
+  p.column_space 1
+  p.description { Factory.next(:name) }
+  p.header_binary "binary"
+  p.position { Factory.next(:number) }
+end
+
+Factory.define :portfolio_type_header, :class => PortfolioType do |p|
+  p.visible true
+  p.column_space 1
+  p.description "Header"
+  p.header_binary "binary"
+  p.position 0
 end
 
 Factory.define :version do |v|

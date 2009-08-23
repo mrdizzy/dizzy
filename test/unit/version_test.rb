@@ -15,13 +15,21 @@ class VersionTest < ActiveSupport::TestCase
   end
   
   def test_2_should_fail_when_not_valid_version_number
-	flunk
+	invalid_version_numbers = ["two", "2_1", "2,1", "j.2", "2'1", "2@1", "2 1", "52<"]
+	invalid_version_numbers.each do |n|
+		version = Factory.build(:version, :version_number => n)
+		version.valid?
+		assert_equal "is not a number", version.errors.on(:version_number), n
+	end
   end
-  
-	def test_3_should_succeed_when_valid_version_number		
-	  flunk
+
+  def test_3_should_succeed_when_valid_version_number		
+	valid_version_numbers = ["1", "2", "3.2.1", "4.0", "3.2"]
+	valid_version_numbers.each do |n|
+		version = Factory.build(:version, :version_number => n)
+		assert version.valid?, "#{version.errors.full_messages}" + n
+	end
   end
-    
   
 end
 
