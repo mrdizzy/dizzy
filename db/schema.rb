@@ -99,13 +99,6 @@ ActiveRecord::Schema.define(:version => 20090825114153) do
     t.boolean "visible",                     :default => true
   end
 
-  create_table "uploads", :force => true do |t|
-    t.string   "description"
-    t.binary   "picture"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "versions", :force => true do |t|
     t.string "version_number"
   end
