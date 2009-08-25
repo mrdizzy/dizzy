@@ -65,6 +65,16 @@ class CategoryTest < ActiveSupport::TestCase
   	end
   end
   
+  def test_8_should_find_by_permalink
+    category = Factory(:category)
+    result = Category.find_by_permalink(category.permalink)
+    assert_equal category, result, "Two categories should be identical"
+  end
+  
+  def test_9_should_raise_error_if_permalink_not_found
+    assert_raise(ActiveRecord::RecordNotFound) { Category.find_by_permalink("no-such-permalink") }
+  end
+  
 end
 
 # == Schema Info

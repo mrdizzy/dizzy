@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 	
 protected
 	
-	def local_request?#
+	def local_request?
 		false
 	end
  
