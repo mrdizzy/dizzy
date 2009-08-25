@@ -2,10 +2,9 @@ class Version < ActiveRecord::Base
 	
 	# TODO Create foreign keys in database
 	has_many :contents
-	validates_presence_of :version_number
 	
-	# TODO: Create regex for validation version numbers
-	validates_numericality_of :version_number
+	validates_presence_of :version_number
+	validates_format_of :version_number, :with => /^(\d|\.)+$/, :allow_blank => true
 	validates_uniqueness_of :version_number
 end
 

@@ -19,7 +19,7 @@ class VersionTest < ActiveSupport::TestCase
 	invalid_version_numbers.each do |n|
 		version = Factory.build(:version, :version_number => n)
 		version.valid?
-		assert_equal "is not a number", version.errors.on(:version_number), n
+		assert_equal "is invalid", version.errors.on(:version_number), n
 	end
   end
 
@@ -29,6 +29,16 @@ class VersionTest < ActiveSupport::TestCase
 		version = Factory.build(:version, :version_number => n)
 		assert version.valid?, "#{version.errors.full_messages}" + n
 	end
+  end
+  
+  def test_4_should_fail_with_empty_version_number
+	version = Factory.build(:version, :version_number => "")
+	assert !version.valid?
+	assert_equal "can't be blank", version.errors[:version_number]
+	
+	version.version_number = nil
+	assert !version.valid?
+	assert_equal "can't be blank", version.errors[:version_number]
   end
   
 end
