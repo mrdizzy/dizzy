@@ -1,4 +1,4 @@
-class Pdf
+class Pdf < ActiveRecord::Base
 	belongs_to :content
 	belongs_to :cheatsheet, :foreign_key => "content_id"
 

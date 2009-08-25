@@ -34,11 +34,10 @@ Factory.define :category do |c|
 	c.name { Factory.next(:name) }
 end
 
-Factory.define :cheatsheet do |c|
+Factory.define :cheatsheet, :default_strategy => :build do |c|
 	c.association :version, :factory => :version
 	c.content "Here is the content of the cheatsheet"
 	c.date        Time.now
-	c.association :pdf
 	c.description "A brief description"
 	c.permalink { Factory.next(:permalink) }
 	c.title { Factory.next(:name) }  
@@ -63,8 +62,7 @@ Factory.define :company do |c|
 	c.description "Fun, hilarity, zany, bold, offbeat"
 end
 
-Factory.define :pdf do |p|
-	p.association :content, :factory => :article
+Factory.define :pdf, :default_strategy => :build do |p|
 	p.content_type "application/pdf"
 	p.filename "cheatsheet.pdf"
 	p.size 102324
