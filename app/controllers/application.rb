@@ -3,14 +3,16 @@
 class ApplicationController < ActionController::Base
 	
 	require_dependency 'content'
-	require_dependency 'binary'
 	
 	helper_method :administrator?
-	protected
+	
+protected
+	
 	def local_request?#
-	false
+		false
 	end
- private
+ 
+private
  
  	def authorize		
 		unless administrator?

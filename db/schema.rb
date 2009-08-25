@@ -9,18 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090823223345) do
-
-  create_table "binaries", :force => true do |t|
-    t.binary  "binary_data",  :limit => 16777215
-    t.string  "type"
-    t.string  "content_type"
-    t.integer "size"
-    t.string  "filename"
-    t.integer "content_id",                       :default => 0, :null => false
-  end
-
-  add_index "binaries", ["content_id"], :name => "fk_content_binaries"
+ActiveRecord::Schema.define(:version => 20090825114153) do
 
   create_table "categories", :force => true do |t|
     t.string "name"
@@ -74,11 +63,6 @@ ActiveRecord::Schema.define(:version => 20090823223345) do
   add_index "contents_contents", ["related_id"], :name => "fk_secondary_content_contents"
   add_index "contents_contents", ["content_id"], :name => "fk_main_content_contents"
 
-  create_table "markdowns", :force => true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "messages", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -86,6 +70,16 @@ ActiveRecord::Schema.define(:version => 20090823223345) do
     t.string   "message"
     t.string   "email"
   end
+
+  create_table "pdfs", :force => true do |t|
+    t.binary  "binary_data",  :limit => 16777215
+    t.string  "content_type"
+    t.integer "size"
+    t.string  "filename"
+    t.integer "content_id",                       :default => 0, :null => false
+  end
+
+  add_index "pdfs", ["content_id"], :name => "fk_content_binaries"
 
   create_table "portfolio_items", :force => true do |t|
     t.integer "portfolio_type_id", :default => 0, :null => false
@@ -103,6 +97,13 @@ ActiveRecord::Schema.define(:version => 20090823223345) do
     t.integer "position"
     t.binary  "header_binary"
     t.boolean "visible",                     :default => true
+  end
+
+  create_table "uploads", :force => true do |t|
+    t.string   "description"
+    t.binary   "picture"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "versions", :force => true do |t|
