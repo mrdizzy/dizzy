@@ -20,7 +20,6 @@ HTML use syntax: true
 
 " + self.content
 		result = Maruku.new(result).to_html
-
 	end
 	
 	def binary_attributes=(binaries)

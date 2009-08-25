@@ -38,7 +38,7 @@ Factory.define :cheatsheet do |c|
 	c.association :version, :factory => :version
 	c.content "Here is the content of the cheatsheet"
 	c.date        Time.now
-	c.association :pdf, :factory => :pdf
+	c.association :pdf
 	c.description "A brief description"
 	c.permalink { Factory.next(:permalink) }
 	c.title { Factory.next(:name) }  
