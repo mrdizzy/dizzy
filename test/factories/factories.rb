@@ -85,7 +85,8 @@ Factory.define :portfolio_type do |p|
   p.visible true
   p.column_space 1
   p.description { Factory.next(:name) }
-  p.header_binary "binary"
+  p.uploaded_data { ActionController::TestUploadedFile.new(File.join(Rails.root,
+'test', 'fixtures', 'letterhead.png'), 'image/png') }
   p.position { Factory.next(:number) }
 end
 

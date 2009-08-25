@@ -12,9 +12,10 @@ class PortfolioType < ActiveRecord::Base
 	validates_numericality_of 	:position, :allow_blank => true
 
 	def uploaded_data=(binary_data)
-			unless binary_data.blank?
-			self.header_binary = binary_data.read
-		end
+
+    unless binary_data.blank?
+      self.header_binary = binary_data.read
+    end
 	end	
 end
 
