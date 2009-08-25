@@ -6,12 +6,20 @@ class CompanyTest < ActiveSupport::TestCase
     assert true
   end
   
-	def test_1_invalid_with_empty_attributes
-		company = Factory(:company)
+	def test_1_invalid_with_empty_name
+		company = Factory.build(:company, :name => "")
 		assert !company.valid?
-		assert_equal company.errors.size, 3
+		assert_equal company.errors.size, 1
+		assert_equal "can't be blank", company.errors[:name]
 	end     
 
+	def test_1_invalid_with_empty_description
+		company = Factory.build(:company, :description => "")
+		assert !company.valid?
+		assert_equal company.errors.size, 1
+		assert_equal "can't be blank", company.errors[:description]
+	end     
+	
 	def test_2_should_fail_if_no_header
 		company = Factory.build(:company, :portfolio_items => [])
 		assert !company.valid?, "Company should not be valid as no header graphic"
@@ -19,16 +27,16 @@ class CompanyTest < ActiveSupport::TestCase
 	end
 
 	def test_3_should_succeed_if_valid_header
-		company = companies(:heavenly)
-		company.name = "Benefits Agency PLC"
-		assert company.valid?, company.errors.full_messages
+	flunk
 	end	
 
 	def test_4_should_destroy_dependencies
-		count = @heavenly.portfolio_items.count
-		count = 0 - count
-		assert_difference('PortfolioItem.count',count) do 
-			@heavenly.destroy
+		company = Factory(:company)
+		company.portfolio_items << [Factory(:portfolio_item), Factory(:portfolio_item), Factory(:portfolio_item)] 
+		portfolio_items = company.portfolio_items.size
+
+		assert_difference('PortfolioItem.count', 0 - portfolio_items ) do 
+			company.destroy
 		end
 	end
 

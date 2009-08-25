@@ -1,81 +1,73 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
 class ContentTest < ActiveSupport::TestCase
-  fixtures :contents, :versions, :categories, :binaries
   
-  def test_truth
-    assert true
-    assert contents(:form_helpers_snippet).valid?, contents(:form_helpers_snippet).errors.full_messages
-    assert contents(:action_mailer_cheatsheet).valid?, contents(:action_mailer_cheatsheet).errors.full_messages
-    assert contents(:file_uploads_tutorial).valid?, contents(:file_uploads_tutorial).errors.full_messages
-  end
-   
-  def setup
-  	@form_helpers_article		= contents(:form_helpers_snippet)
-  	@action_mailer_cheatsheet 	= contents(:action_mailer_cheatsheet)
+  def test_1_should_fail_with_invalid_version
+    article = Factory(:article)
+  	article.version_id = 231
+  	assert !article.valid?
+  	assert_equal 1, article.errors.size, "Should have at least 1 error"
+  	assert_equal "does not exist", article.errors[:version]
+	assert_equal 1, article.errors.size
   end
   
-  def test_should_fail_with_invalid_version
-  	@form_helpers_article.version_id = 231
-  	assert !@form_helpers_article.valid?
-  	assert_equal 1, @form_helpers_article.errors.size, "Should have at least 1 error"
-  	assert_equal "does not exist", @form_helpers_article.errors.on(:version)
+  def test_2_should_fail_with_empty_category
+	article = Factory(:article)	
+  	article.categories.destroy_all
+  	assert !article.valid?
+  	assert_equal "can't be blank", article.errors[:category_ids]
+	assert_equal 1, article.errors.size
   end
   
-  def test_should_fail_with_empty_category
-  	@form_helpers_article.categories.destroy_all
-  	assert !@form_helpers_article.valid?
-  	assert_equal "can't be blank", @form_helpers_article.errors.on(:category_ids)
-  end
-  
-    def test_should_fail_with_empty_attributes
-  	cheatsheet = Content.new
+    def test_3_should_fail_with_empty_attributes
+  	article = Article.new
   	fields = %w{ title description user date permalink version_id }  	
-  	assert !cheatsheet.valid?
+  	assert !article.valid?
   	fields.each do |field|  		
-  		assert_equal "can't be blank", cheatsheet.errors.on(field.to_sym)
+  		assert_equal "can't be blank", article.errors.on(field.to_sym)
   	end
   end
   
- def test_should_fail_permalink_with_bad_characters
+ def test_4_should_fail_permalink_with_bad_characters
+	article = Factory(:article)
   	bad_permalinks = ["underscore_not_valid", "&no-!weird-%#\"/'characters)$", "no spaces", "NO-CAPITALS"]
   	bad_permalinks.each do |permalink|
-  		@form_helpers_article.permalink = permalink
-  		assert !@form_helpers_article.valid?
-  		assert_equal "is invalid", @form_helpers_article.errors.on(:permalink)
+  		article.permalink = permalink
+  		assert !article.valid?
+  		assert_equal "is invalid", article.errors[:permalink]
+		assert_equal 1, article.errors.size
   	 end
   end 
   
-  def test_should_succeed_with_valid_permalinks
+  def test_5_should_succeed_with_valid_permalinks
+	article = Factory(:article)
   	good_permalinks = ["valid-category-name", "rails-2-and-jeffrey", "wembley"]
   	good_permalinks.each do |permalink|
-  		@form_helpers_article.permalink = permalink
-  		assert @form_helpers_article.valid?, @form_helpers_article.errors.full_messages
+  		article.permalink = permalink
+  		assert article.valid?, article.errors.full_messages
   	 end
   end
   
-    def test_should_fail_duplicate_permalinks
-  	duplicate 			= contents(:file_uploads_tutorial)
-  	duplicate.permalink = "debugging-form-helpers-with-the-console"
+    def test_6_should_fail_duplicate_permalinks
+  	article	  = Factory(:article)
+	duplicate = Factory.build(:article, :permalink => article.permalink)
 	assert !duplicate.valid?
-  	assert_equal "has already been taken", duplicate.errors.on(:permalink)
+  	assert_equal "has already been taken", duplicate.errors[:permalink]
+	assert_equal 1, duplicate.errors.size
   end
   
-  def test_should_fail_when_empty_title
- 	@form_helpers_article.title = ""
- 	assert !@form_helpers_article.valid?
- 	assert_equal "can't be blank", @form_helpers_article.errors.on(:title)
+  def test_7_should_fail_when_empty_title
+ 	article = Factory.build(:article, :title => "")
+ 	assert !article.valid?
+ 	assert_equal "can't be blank", article.errors[:title]
+	assert_equal 1, article.errors.size
   end
   
-  def test_should_destroy_dependencies
-  	count = @action_mailer_cheatsheet.comments.size
-  	count = 0 - count
-  	assert_difference('Comment.count',count) do
-  		@action_mailer_cheatsheet.destroy
-  	end
+  def test_8_should_destroy_dependencies
+	flunk
   end
   
-  def test_should_wait_1_hour_before_displaying_new_articles
+  def test_9_should_wait_1_hour_before_displaying_new_articles
 
    assert_difference('Content.recent.count',-1) do 
   		@action_mailer_cheatsheet.date = Time.current
@@ -89,8 +81,8 @@ class ContentTest < ActiveSupport::TestCase
    
   end
   
-  def test_should_have_related_articles
-  	 assert_equal @action_mailer_cheatsheet.related_articles.size, 2, "Should have one related article"
+  def test_a_should_have_related_articles
+  	 flunk
   end
   
 end

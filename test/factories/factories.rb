@@ -70,7 +70,6 @@ Factory.define :pdf, :default_strategy => :build do |p|
 end
 
 Factory.define :portfolio_item do |p|
-  p.association :company
   p.association :portfolio_type
   p.data "data"
   p.size 10.kilobytes

@@ -5,6 +5,7 @@ class Content < ActiveRecord::Base
 	belongs_to 				:version
 	
 	validates_existence_of	:version
+	validates_presence_of 	:content	 
 	validates_presence_of 	:category_ids
 	validates_format_of		:permalink, :with => /^[a-z0-9-]+$/, :allow_blank => true
 	validates_presence_of 	:title, :description, :date, :user, :permalink, :version_id 
@@ -38,5 +39,4 @@ HTML use syntax: true
 end
 
 class Article < Content
-	validates_presence_of 	:content	
 end
