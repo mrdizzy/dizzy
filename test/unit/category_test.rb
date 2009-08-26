@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
 class CategoryTest < ActiveSupport::TestCase
-  
+ 
   def test_truth
     assert true
   end
@@ -9,6 +9,7 @@ class CategoryTest < ActiveSupport::TestCase
   def test_1_should_fail_with_empty_name
 	category = Factory.build(:category, :name => "")
 	assert !category.valid?
+
 	assert_equal "can't be blank", category.errors[:name]
 	assert_equal 1, category.errors.size
   end
@@ -73,6 +74,17 @@ class CategoryTest < ActiveSupport::TestCase
   
   def test_9_should_raise_error_if_permalink_not_found
     assert_raise(ActiveRecord::RecordNotFound) { Category.find_by_permalink("no-such-permalink") }
+  end
+  
+  def test_a_should_display_contents
+   cheatsheet_latest = Factory(:cheatsheet, :date => Time.now, :pdf => Factory(:pdf))
+   cheatsheet_middle = Factory(:article, :date => 5.days.ago)
+   cheatsheet_oldest = Factory(:cheatsheet, :date => 10.days.ago, :pdf => Factory(:pdf))
+   
+   category = Factory(:category, :contents => [ cheatsheet_middle, cheatsheet_oldest, cheatsheet_latest ])
+   assert category.save
+   category = Category.find(category.id)
+   assert_equal [ cheatsheet_latest, cheatsheet_middle, cheatsheet_oldest ], category.contents, "Should be contents in order"
   end
   
 end

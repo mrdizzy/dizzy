@@ -2,8 +2,6 @@ require File.dirname(__FILE__) + '/../test_helper'
 
 class CompaniesControllerTest < ActionController::TestCase
 	
-	fixtures :companies, :portfolio_items, :portfolio_types
-	
   def test_truth
     assert true
   end

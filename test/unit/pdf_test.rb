@@ -50,7 +50,10 @@ class PdfTest < ActiveSupport::TestCase
   end
   
   def test_6_pdf_should_fail_with_invalid_content_id
-  flunk
+   pdf = Factory.build(:pdf, :content_id => 13232323232111)
+   assert !pdf.valid?, "Should be invalid"
+   assert_equal "doesn't exist", pdf.errors[:content]
+   assert_equal 1, pdf.errors.size
   end
   
 end

@@ -25,8 +25,13 @@ class Test::Unit::TestCase
   self.use_instantiated_fixtures  = false
 
   # Add more helper methods to be used by all tests here...
-  
-  
+  	 
+   def savefile(input)
+      aFile = File.new("file.html", "w")
+      aFile.write(input)
+      aFile.close
+   end
+   
   def login
   	 post "/administrator_sessions", :admin_password => PASSWORD
   end

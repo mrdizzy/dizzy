@@ -2,8 +2,6 @@ require File.dirname(__FILE__) + '/../test_helper'
 
 class CommentsControllerTest < ActionController::TestCase
 	
-  fixtures :comments, :contents, :binaries, :categories, :versions
-  	
   def test_truth
     assert true
   end
