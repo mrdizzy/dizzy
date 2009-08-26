@@ -19,7 +19,8 @@ class CommentTest < ActiveSupport::TestCase
   	bad_addresses.each do |address|
   		comment.email = address
   		assert !comment.valid?, comment.errors.full_messages
-  		assert_equal "must contain a valid address", comment.errors.on(:email)
+  		assert_equal "must contain a valid address", comment.errors[:email]
+      assert_equal 1, comment.errors.size
   	end
   end
 
@@ -37,13 +38,15 @@ class CommentTest < ActiveSupport::TestCase
   	comment = Factory(:comment)
   	comment.parent_id = 13434
   	assert !comment.valid?, comment.errors.full_messages
-  	assert_equal "does not exist", comment.errors.on(:parent)
+  	assert_equal "does not exist", comment.errors[:parent]
+   assert_equal 1, comment.errors.size
   end
   
   def test_5_should_pass_with_valid_parent
   	parent = Factory(:comment)
 	child = Factory(:comment)
 	child.parent_id = parent.id
+   child.content_id = child.parent.content_id
   	assert child.valid?, child.errors.full_messages
   end
   
@@ -53,30 +56,40 @@ class CommentTest < ActiveSupport::TestCase
   	assert !comment.valid?, comment.errors.full_messages
   	assert_equal "does not exist", comment.errors.on(:content)
   end
+
+   def test_8_child_should_have_same_content_id_as_parent
+      parent = Factory(:comment)
+      child = Factory.build(:comment)
+      parent.children << child
+
+     assert_equal "must be tied to the same content as parent comment", child.errors[:content_id]
+     assert 1, child.errors.count
+   end
+   
+   def test_9_should_fail_with_invalid_content_id
+      parent = Factory.build(:comment, :content_id => 1111222342)
+      assert !parent.valid?, parent.errors.full_messages
+      assert_equal "does not exist", parent.errors[:content]
+      assert_equal 1, parent.errors.count
+   end
+   
+   
+   def test_a_should_fail_with_empty_content
+      parent = Factory.build(:comment, :content => nil)
+      assert !parent.valid?, parent.errors.full_messages
+      assert_equal "can't be blank", parent.errors[:content_id]
+      assert_equal 1, parent.errors.count
+   end   
+   
+   def test_a1_should_display_new_comments_order_newest_first
+      comment1 = Factory(:comment, :created_at => Time.now)
+      comment2 = Factory(:comment, :created_at => 5.hours.ago)
+      comment3 = Factory(:comment, :new => false)
+      assert_equal [comment1, comment2], Comment.new_comments, "New comments should be displayed in ascending order"
+   end
   
-  def test_8_should_have_children
-  	grandmother = Factory(:comment)
-	mother 		= Factory(:comment)
-	sibling1	= Factory(:comment)
-	sibling2	= Factory(:comment)
-	
-	mother.parent_id = grandmother.id
-	mother.save
-	
-	assert_equal 1, grandmother.children.count
-	assert_equal mother, grandmother.children.first
-	
-	sibling1.parent_id = mother.id
-	sibling2.parent_id = mother.id
-	sibling1.save
-	sibling2.save
-	
-  	assert_equal 2, mother.children.count
-	assert_equal [sibling1,sibling2], mother.children
-  	
-  	#assert_equal mother.children, [sibling1,sibling2]
   end
-end
+
 
 
 # == Schema Info

@@ -2,6 +2,7 @@ class Content < ActiveRecord::Base
 	has_and_belongs_to_many :categories
 	has_and_belongs_to_many :related_articles, :class_name => "Content", :foreign_key => "related_id"
 	has_many 				:comments, :dependent => :destroy, :order => "'created_at' DESC"
+   
 	belongs_to 				:version
 	
 	validates_existence_of	:version
