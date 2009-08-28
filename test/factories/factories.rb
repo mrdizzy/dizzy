@@ -106,7 +106,8 @@ Factory.define :portfolio_type_header, :class => PortfolioType do |p|
   p.visible true
   p.column_space 1
   p.description "Header"
-  p.header_binary "binary"
+  p.uploaded_data { ActionController::TestUploadedFile.new(File.join(Rails.root,
+'test', 'fixtures', 'letterhead.png'), 'image/png') }
   p.position 0
 end
 
