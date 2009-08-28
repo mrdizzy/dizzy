@@ -19,7 +19,6 @@ class CompaniesControllerTest < ActionController::TestCase
   	get :new, {}, { :admin_password => PASSWORD }
   	assert_response :success
   	assert_template "companies/new"
-	savefile(@response.body)
   end
   
   def test_2_new_company_should_fail_when_not_logged_in
@@ -42,7 +41,7 @@ class CompaniesControllerTest < ActionController::TestCase
   										{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png"), :portfolio_type_id => @portfolio_type_3.id }, 	
   								}	
   					}, { :admin_password => PASSWORD }
-					
+	savefile(@response.body)
 	assert_equal 1, assigns(:company).errors.size, assigns(:company).errors.full_messages
 	assert_equal ["Company must have a header graphic"], assigns(:company).errors.full_messages, "Company must have a header graphic"				
 					
@@ -50,43 +49,37 @@ class CompaniesControllerTest < ActionController::TestCase
   	assert_template "companies/new"
   end
 
-  def test_3_should_pass_new_company_with_valid_header_graphic
+  def test_4_should_pass_new_company_with_valid_header_graphic
 	
   post :create, { 	:company => 
-  								{ :name => "Pepsi Cola", :description => "Beautiful drinks company" }, 
+  								{ :name => "Pepsi Cola", :description => "Beautiful drinks company", 
   						:new_portfolio_items =>
-  								{ "0" =>
+  								[
   										{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png"), :portfolio_type_id => @portfolio_type_1.id }, 
-  								 "1" =>
+  								
   										{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png"), :portfolio_type_id => @portfolio_type_2.id }, 	
-  								"2" =>
-  										{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png"), :portfolio_type_id => @portfolio_type_header.id }, 	
-  								}
+  								
+  										{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png"), :portfolio_type_id => @portfolio_type_header.id }	
+  								]
+                     }
   					}, { :admin_password => PASSWORD }
   	assert_redirected_to companies_path
-  	follow_redirect
-  	assert_template "companies/index"
-  	companies = Company.find(:all)
-  	companies.each do |company|
-  		assert_select "tr#company_#{company.id}" do 
-  			assert_select "td", /#{company.name}/
-  			assert_select "td", company.description
-  		end
-  	end
+ 
   end
   
-  def test_4_should_fail_new_company_with_no_name
+  def test_5_should_fail_new_company_with_no_name
 
   		post :create, { 	:company => 
-  								{ :name => "", :description => "Beautiful drinks company" }, 
+  								{ :name => "", :description => "Beautiful drinks company",
   						:new_portfolio_items =>
-  								{ "0" =>
+  								[
   										{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png"), :portfolio_type_id => @portfolio_type_1.id }, 
-  								 "1" =>
+  								
   										{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png"), :portfolio_type_id => @portfolio_type_2.id }, 	
-  								"2" =>
+  								
   										{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png"), :portfolio_type_id => @portfolio_type_header.id }, 	
-  								}
+  								]
+                        }
   					}, { :admin_password => PASSWORD }
 					
 		assert_equal 1, assigns(:company).errors.size, assigns(:company).errors.full_messages
@@ -95,23 +88,72 @@ class CompaniesControllerTest < ActionController::TestCase
   		assert_template "companies/new"
   end
 
-  def test_5_should_fail_new_company_with_no_description
+  def test_6_should_fail_new_company_with_no_description
   
   		post :create, { 	:company => 
-  								{ :name => "Minghella Ice Creams", :description => "" }, 
+  								{ :name => "Minghella Ice Creams", :description => "",
   						:new_portfolio_items =>
-  								{ "0" =>
+  								[
   										{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png"), :portfolio_type_id => @portfolio_type_1.id }, 
-  								 "1" =>
+  								 
   										{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png"), :portfolio_type_id => @portfolio_type_2.id }, 	
-  								"2" =>
+  								
   										{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png"), :portfolio_type_id => @portfolio_type_header.id }, 	
-  								}
+  								]
+                       }
   					}, { :admin_password => PASSWORD }
 		assert_equal 1, assigns(:company).errors.size, assigns(:company).errors.full_messages
 		assert_equal "can't be blank", assigns(:company).errors[:description], "description can't be blank!"
   		assert_response :success
   		assert_template "companies/new"
   end
+  
+  # EDIT
+  
+  def test_7_should_fail_on_edit_when_not_logged_in
+   company = Factory(:company, :portfolio_items => [ Factory(:portfolio_item), Factory(:portfolio_item), Factory(:portfolio_item, :portfolio_type => @portfolio_type_header)] )
+  
+   post :edit, { :id => company.id }, { }
+   assert_redirected_to login_path
+  end
+  
+  def test_8_should_succeed_on_edit_when_logged_in
+   company = Factory(:company, :portfolio_items => [ Factory(:portfolio_item), Factory(:portfolio_item), Factory(:portfolio_item, :portfolio_type => @portfolio_type_header)] )
+   
+   post :edit, { :id => company.id }, { :admin_password => PASSWORD}
+   assert_response :success
+  
+   assert_select "h1", :text => "Heavenly Chocolate Fountains"
+ end
+ 
+ def test_9_should_succeed_on_update
+    portfolio_item_a = Factory(:portfolio_item)
+    portfolio_item_b = Factory(:portfolio_item)
+    portfolio_item_c = Factory(:portfolio_item, :portfolio_type => @portfolio_type_header)
+ 
+   company = Factory(:company, :portfolio_items => [ portfolio_item_a, portfolio_item_b, portfolio_item_c] )
+ 
+   post :update, { 	:id => company.id, 
+                     :company =>
+  								{ :name => "An updated company!", :description => "An updated description!",
+  						:existing_portfolio_items =>
+                     {  portfolio_item_a.id =>
+  								
+  										{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png"), :portfolio_type_id => @portfolio_type_1.id }, 
+                        portfolio_item_b.id =>
+  								
+  										{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png"), :portfolio_type_id => @portfolio_type_2.id }, 	
+  								portfolio_item_c.id =>
+  										{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png"), :portfolio_type_id => @portfolio_type_header.id }, 	
+  								}
+                       }
+  					}, { :admin_password => PASSWORD }
 
+		assert_equal 0, assigns(:company).errors.size, assigns(:company).errors.full_messages
+		assert_equal assigns(:company).name, "An updated company!", "Name should have been updated!"
+      assert_equal assigns(:company).description, "An updated description!", "Description should have been updated!"
+      assert_redirected_to companies_path
+ 
+ end
+ 
 end

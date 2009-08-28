@@ -22,13 +22,16 @@ class Company < ActiveRecord::Base
 	end
 	
 	def new_portfolio_items=(new_portfolio_items)
-		
-		if self.new_record? 
-			new_portfolio_items.each do |item|
-				self.portfolio_items.build(item)
-			end
+		new_portfolio_items.each do |item|
+			self.portfolio_items.build(item)
 		end
 	end
+   
+   def existing_portfolio_items=(existing_portfolio_items)
+      self.portfolio_items.each do |item| 	
+			item.attributes = existing_portfolio_items[item.id.to_s]        
+      end
+   end
 
 end
 
