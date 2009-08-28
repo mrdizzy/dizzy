@@ -11,10 +11,14 @@ class PortfolioType < ActiveRecord::Base
 	validates_inclusion_of		  :column_space, :in => 1..3, :message => "should be between 1 and 3"
 	validates_numericality_of 	:position, :allow_blank => true
 
+  attr_accessor :content_type, :size
+  
 	def uploaded_data=(binary_data)
-
+    
     unless binary_data.blank?
-      self.header_binary = binary_data.read
+      self.content_type   = binary_data.content_type
+      self.size           = binary_data.size
+      self.header_binary  = binary_data.read
     end
 	end	
 end

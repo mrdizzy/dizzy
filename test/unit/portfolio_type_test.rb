@@ -60,6 +60,10 @@ class PortfolioTypeTest < ActiveSupport::TestCase
     end
   end
   
+  def test_8_should_fail_if_not_between_1k_and_10k
+    portfolio_type = Factory.build(:portfolio_type)
+    
+  end
   
   
 end
