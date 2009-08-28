@@ -12,6 +12,10 @@ Factory.sequence :name do |d|
 	"A Valid Name #{d}"
 end
 
+Factory.sequence :portfolio_type_name do |d|
+	"Portfolio Type #{d}"
+end
+
 Factory.sequence :category_name do |d|
 	"Category #{d}"
 end
@@ -96,7 +100,7 @@ end
 Factory.define :portfolio_type do |p|
   p.visible true
   p.column_space 1
-  p.description { Factory.next(:name) }
+  p.description { Factory.next(:portfolio_type_name) }
   p.uploaded_data { ActionController::TestUploadedFile.new(File.join(Rails.root,
 'test', 'fixtures', 'letterhead.png'), 'image/png') }
   p.position { Factory.next(:number) }

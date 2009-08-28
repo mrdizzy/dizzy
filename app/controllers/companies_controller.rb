@@ -21,13 +21,7 @@ class CompaniesController < ApplicationController
 
 	def create    
 	  	@designs	= PortfolioType.find(:all)
-		@company 	= Company.new(params[:company]) 
-		
-		params[:new_portfolio_items].each_value do |item| 
-		  	unless item[:uploaded_data].blank?
-		  		@company.portfolio_items.build(item) 
-		  	end
-		end 	  		
+		@company 	= Company.new(params[:company])   		
 		
 		if @company.save		
 			redirect_to :action => 'index'  	  			

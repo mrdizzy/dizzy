@@ -1,1 +1,198 @@
-Element.update("new_category_form", "\u003Cdiv id=\"new_category_form\"\u003E\n\n\t\u003Cdiv class=\"errorExplanation\" id=\"errorExplanation\"\u003E\u003Ch2\u003E1 error prohibited this category from being saved\u003C/h2\u003E\u003Cp\u003EThere were problems with the following fields:\u003C/p\u003E\u003Cul\u003E\u003Cli\u003EPermalink has already been taken\u003C/li\u003E\u003C/ul\u003E\u003C/div\u003E\n\t\n\t\n\t\u003Cform action=\"/ruby_on_rails/categories\" method=\"post\" onsubmit=\"new Ajax.Request('/ruby_on_rails/categories', {asynchronous:true, evalScripts:true, parameters:Form.serialize(this)}); return false;\"\u003E\n\t\n\t\t\u003Clabel for=\"category_name\"\u003E\u003Cimg alt=\"*\" height=\"5\" src=\"/images/f/bullets/pixels/diamond.png.?1244030446\" width=\"5\" /\u003E Name\u003C/label\u003E\n\t\t\u003Cinput id=\"category_name\" name=\"category[name]\" size=\"20\" type=\"text\" value=\"Files\" /\u003E\u003Cbr/\u003E\n\t\t\n\t\t\u003Clabel for=\"category_permalink\"\u003E\u003Cimg alt=\"*\" height=\"5\" src=\"/images/f/bullets/pixels/diamond.png.?1244030446\" width=\"5\" /\u003E Permalink\u003Cbr/\u003E\u003C/label\u003E\n\t\t\u003Cdiv class=\"fieldWithErrors\"\u003E\u003Cinput id=\"category_permalink\" name=\"category[permalink]\" size=\"20\" type=\"text\" value=\"a-valid-permalink-60\" /\u003E\u003C/div\u003E\u003Cbr/\u003E\n\t\t\n\t\t\u003Cinput class=\"submit\" name=\"commit\" type=\"submit\" value=\"\" /\u003E\n\t\t\n\t\u003C/form\u003E\n\t\n\u003C/div\u003E");
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<title>Ruby on Rails -  - Dizzy</title>
+	
+	<link href="/stylesheets/main.css?1251464254" media="all" rel="stylesheet" type="text/css" />
+	<link href="/stylesheets/syntax_highlighting.css?1244030446" media="all" rel="stylesheet" type="text/css" />
+	
+	<script src="/javascripts/prototype.js?1244030446" type="text/javascript"></script>
+<script src="/javascripts/effects.js?1244030446" type="text/javascript"></script>
+<script src="/javascripts/dragdrop.js?1244030446" type="text/javascript"></script>
+<script src="/javascripts/controls.js?1244030446" type="text/javascript"></script>
+<script src="/javascripts/application.js?1244030446" type="text/javascript"></script>
+	
+	 <!--[if IE]>
+    <style type="text/css">
+    	code { font: normal 100%/18px monospace;}
+	</style>
+    <![endif]-->
+	<script type="text/javascript">
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+	</script>
+	<script type="text/javascript">
+		try {
+			var pageTracker = _gat._getTracker("UA-900217-1");
+			pageTracker._trackPageview();
+		} catch(err) {}
+	</script>
+	<script type="text/javascript" src="http://api.recaptcha.net/js/recaptcha_ajax.js"></script>
+</head>
+
+<body>	
+
+	<div id="page_container">
+		
+		<div id="top_container">
+	
+	<div id="logo"><img alt="Dizzy logo" height="84" src="/images/f/branding/header/logo.png.?1244030446" width="85" /></div>
+	
+	<div id="right_of_logo">
+		<img alt="Making business beautiful" height="32" src="/images/f/branding/header/slogan_new.png.?1244030446" width="182" />	
+		<img alt="Makeover" src="/images/f/branding/header/2.png.?1244030446" />
+	</div>
+	
+</div>
+		<div id="navigation">
+	
+	<div id="rss_feed"
+			><p><img src="/images/f/small_icons/feed-icon-small.png" alt="Feed-icon-small"/> 
+			<a href="/ruby_on_rails/contents.rss">Subscribe</a></p>
+	</div>
+	
+<!-- HOME -->
+	<div class="nav_button">
+		
+			<a href="/"><img alt="Home" src="/images/f/nav/home.png.?1244030446" /></a> <a href="/">Home</a>
+		
+	</div>
+
+<!-- CHEATSHEETS -->
+	<div class="nav_button">
+		
+			<a href="/ruby_on_rails/cheatsheets"><img alt="Cheats" src="/images/f/nav/cheats.png.?1244030446" /></a> <a href="/ruby_on_rails/cheatsheets">Cheatsheets</a>
+		
+	</div>	
+	
+<!-- RUBY ON RAILS -->
+	<div class="nav_button">
+		
+		<a href="/ruby_on_rails/latest"><img alt="Rails" src="/images/f/nav/rails.png.?1244030446" /></a> <a href="/ruby_on_rails/latest">Ruby On Rails</a>
+		
+	</div>
+	
+<!-- PORTFOLIO -->
+	<div class="nav_button">
+		
+			<a href="/portfolios"><img alt="Portfolio" src="/images/f/nav/portfolio.png.?1244030446" /></a> <a href="/portfolios">Portfolio</a>
+		
+	</div>
+	
+<!-- CONTACT -->
+	<div id="contact_icon" class="nav_button">
+		<a before="Element.show('contact_spinner')" complete="Element.hide('contact_spinner')" href="#" onclick="$(&quot;contact_form&quot;).toggle();; return false;"><img alt="Contact" src="/images/f/nav/contact.png.?1244030446" /></a> 
+	<a before="Element.show('contact_spinner')" complete="Element.hide('contact_spinner')" href="#" onclick="$(&quot;contact_form&quot;).toggle();; return false;">Contact</a>
+		<div id="contact_spinner" style="display:none;"><img alt="Spinner" src="/images/f/spinner.gif" /></div>
+	</div>
+	
+</div>
+
+<div id="contact_form" style="display:none;">
+	
+
+<div id="contact_inside">
+	
+	<div id="close_window"><a before="Element.show('contact_spinner')" complete="Element.hide('contact_spinner')" href="#" onclick="$(&quot;contact_form&quot;).toggle();; return false;"><img alt="Close_window" src="/images/f/small_icons/close_window.png.?1244030446" /></a> </div>
+
+	<span class="posted_in"><img alt="&mdash;" src="/images/f/bullets/pixels/square.png.?1244030446" /> CONTACT US</span>
+	
+	
+	
+	<form action="/messages" class="new_message" id="new_message" method="post" onsubmit="Element.show('contact_spinner'); new Ajax.Request('/messages', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('contact_spinner');}, parameters:Form.serialize(this)}); return false;">
+		<table>
+			<tr>
+				<td><label for="message_name">Name</label></td>
+				<td><input id="message_name" name="message[name]" size="30" type="text" /></td>
+			</tr>
+			<tr>
+				<td><label for="message_email">Email</label></td>
+				<td><input id="message_email" name="message[email]" size="30" type="text" /></td>
+			</tr>
+			<tr>
+				<td><label for="message_email_confirmation">Email confirmation</label></td>
+				<td><input id="message_email_confirmation" name="message[email_confirmation]" size="30" type="text" /></td>
+			</tr>
+			<tr>
+				<td><label for="message_message">Message</label></td>
+				<td><textarea cols="60" id="message_message" name="message[message]" rows="10"></textarea></td>
+			</tr>
+			<tr>
+				<td><label for="message_recaptcha_response_field">Security verification</label></td>
+				<td>
+					
+					<div id="recaptcha_div">
+						<div id="recaptcha_image"></div>
+						<input id="recaptcha_response_field" name="message[recaptcha_response_field]" size="30" type="text" />
+					</div>
+					
+					<script type="text/javascript">
+						Recaptcha.create("6LfP1AQAAAAAAAKhfOUrKLj87PfBp77czQ87drhk",
+							"recaptcha_div", {
+							   theme: "custom",
+							}
+						);
+					</script>
+				</td>
+			</tr>
+		</table>
+
+	<input name="commit" type="submit" value="Save changes" />
+	
+</form>
+
+</div>
+</div>
+		
+		<div id="contact_form" style="display:none;"></div>
+		
+		<div id="content_container">
+			<h1>New company</h1>
+
+<form action="/companies" enctype="multipart/form-data" method="post">
+	
+	
+	
+	<p><label for="company_name">Name</label><br/>
+	<input id="company_name" name="company[name]" size="30" type="text" /></p>
+	
+	<p><label for="company_description">Description</label><br/>
+	<input id="company_description" name="company[description]" size="30" type="text" /></p>
+	
+	<div id="new_items">
+		 
+	   		<div id="new_portfolio_item_form_0">
+	
+  
+	
+	<p><label for="company_new_portfolio_items__uploaded_data">Uploaded data</label>Choose file</label>
+	<input id="company_new_portfolio_items__uploaded_data" name="company[new_portfolio_items][][uploaded_data]" size="30" type="file" /></p>
+	
+	<p><label for="company_new_portfolio_items__portfolio_type_id">Portfolio type</label>Choose type</label>
+	<select id="company_new_portfolio_items__portfolio_type_id" name="company[new_portfolio_items][][portfolio_type_id]"><option value="224">Header</option>
+<option value="221">Portfolio Type 1</option>
+<option value="222">Portfolio Type 2</option>
+<option value="223">Portfolio Type 3</option></select></p>  
+	
+
+</div>
+	  	
+	</div>
+	
+   	<div id="add_extra_link"> <p>
+	<a href="#" onclick="new Ajax.Request('/portfolio_items/new?index=1', {asynchronous:true, evalScripts:true, method:'get'}); return false;">Add Another Item</a></p>
+</div>
+ 
+ 	<input class="submit" name="commit" type="submit" value="" />
+ 	
+</form>
+		</div>
+		
+		<div id="footer" class="clearfix">
+	<div id="footer_man"><img alt="Footer_man" src="/images/f/backgrounds/footer_man.png.?1244030446" /></div>
+	<img alt="Spiral_circle" src="/images/f/backgrounds/spiral_circle.png.?1244030446" />
+</div>
+	
+	</div>
+</body>
+</html>

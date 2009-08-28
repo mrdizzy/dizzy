@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + '/../test_helper'
 class CompaniesControllerTest < ActionController::TestCase
 	
   def test_truth
-    assert true
+    assert true #
   end
   
   def setup
@@ -19,6 +19,7 @@ class CompaniesControllerTest < ActionController::TestCase
   	get :new, {}, { :admin_password => PASSWORD }
   	assert_response :success
   	assert_template "companies/new"
+	savefile(@response.body)
   end
   
   def test_2_new_company_should_fail_when_not_logged_in

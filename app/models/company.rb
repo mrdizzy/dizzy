@@ -20,6 +20,15 @@ class Company < ActiveRecord::Base
 	def portfolio_items_for_display
 		self.portfolio_items.visible.find(:all, :order => "portfolio_types.position")
 	end
+	
+	def new_portfolio_items=(new_portfolio_items)
+		
+		if self.new_record? 
+			new_portfolio_items.each do |item|
+				self.portfolio_items.build(item)
+			end
+		end
+	end
 
 end
 
