@@ -24,8 +24,7 @@ HTML use syntax: true
 	
 	def binary_attributes=(binaries)
 			pdf_data 		= binaries[:pdf][:uploaded_data]
-			thumbnail_data 	= binaries[:thumbnail][:uploaded_data]
-		
+         
 		if self.new_record?		
 			unless pdf_data.blank?			
 				self.build_pdf(:filename 		=> pdf_data.original_filename,

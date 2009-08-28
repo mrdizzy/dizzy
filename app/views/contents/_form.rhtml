@@ -19,9 +19,6 @@
 <p><label for="article_date"><%= diamond %> Date</label>
 <%= form.datetime_select :date %></p>
 
-<p><label for="article_style"><%= diamond %> Style</label>
-<%= form.select(:style, STYLES) %></p>
-
 <p><label for="article_version_number"><%= diamond %> Version</label>
 <%= form.collection_select(:version_id, Version.find(:all, :order => :version_number), :id, :version_number) %> <i>or add new version</i>
 <%= form.text_field :new_version %></p>

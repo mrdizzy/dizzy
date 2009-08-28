@@ -8,7 +8,7 @@ class CompaniesControllerTest < ActionController::TestCase
   
   # NEW
   
-  def test_new_company
+  def test_1_new_company
   	get :new, {}, { :admin_password => PASSWORD }
   	assert_response :success
   	assert_template "companies/new"
@@ -16,7 +16,7 @@ class CompaniesControllerTest < ActionController::TestCase
   
   # CREATE
   
-  def test_should_fail_new_company_without_header_graphic
+  def test_2_should_fail_new_company_without_header_graphic
   	post :create, { 	:company => 
   								{ :name => "Pepsi Cola", :description => "Beautiful drinks company" }, 
   						:new_portfolio_items =>
@@ -32,7 +32,7 @@ class CompaniesControllerTest < ActionController::TestCase
   	assert_template "companies/new"
   end
 
-  def test_should_pass_new_company_with_valid_header_graphic
+  def test_3_should_pass_new_company_with_valid_header_graphic
   	post :create, { 	:company => 
   								{ :name => "Pepsi Cola", :description => "Beautiful drinks company" }, 
   						:new_portfolio_items =>
@@ -56,7 +56,7 @@ class CompaniesControllerTest < ActionController::TestCase
   	end
   end
   
-  def test_should_fail_new_company_with_no_name
+  def test_4_should_fail_new_company_with_no_name
   		post :create, { 	:company => 
   								{ :name => "", :description => "Beautiful drinks company" }, 
   						:new_portfolio_items =>
@@ -72,7 +72,7 @@ class CompaniesControllerTest < ActionController::TestCase
   		assert_template "companies/new"
   end
 
-  def test_should_fail_new_company_with_no_description
+  def test_5_should_fail_new_company_with_no_description
   		post :create, { 	:company => 
   								{ :name => "Minghella Ice Creams", :description => "" }, 
   						:new_portfolio_items =>

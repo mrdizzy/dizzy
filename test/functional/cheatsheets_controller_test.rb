@@ -2,8 +2,6 @@ require File.dirname(__FILE__) + '/../test_helper'
 
 class CheatsheetsControllerTest  < ActionController::TestCase
   
-  fixtures :contents, :binaries, :categories, :versions
-  
   def test_truth
     assert true
   end
@@ -16,23 +14,20 @@ class CheatsheetsControllerTest  < ActionController::TestCase
 								"date(4i)" 		=> "14",
 								"date(5i)" 		=> "24",
 								:title 			=> "ActionMailer",
-								:category_ids 	=> [categories(:cheatsheets).id],
-								:version_id 	=> versions(:one).id,
+								:category_ids 	=> [Factory(:category).id, Factory(:category).id, Factory(:category).id],
+								:version_id 	=> Factory(:version).id,
 								:description 	=> "Action Mailer cheatsheet",
 								:new_version 	=> "",
 								
 								:binary_attributes => {
 									:pdf 	=> { 
 										:uploaded_data 	=> fixture_file_upload("letterhead.png", "application/pdf") 
-									}, 															
-									:thumbnail 	=> 	{ 
-										:uploaded_data => fixture_file_upload("letterhead.png", "image/png") 
 									}
 								} 
 	 						}
   end
  	
- 	def test_should_succeed_on_create_with_valid_attributes
+ 	def test_1_should_succeed_on_create_with_valid_attributes
  		post :create, { :cheatsheet =>	@valid_cheatsheet_hash}, { :admin_password => PASSWORD }
  		assert_equal 0, assigns(:cheatsheet).errors.size, assigns(:cheatsheet).errors.full_messages	
  		
@@ -40,7 +35,7 @@ class CheatsheetsControllerTest  < ActionController::TestCase
 		assert_redirected_to cheatsheet_path(@valid_cheatsheet_hash[:permalink])
  	end
 
- 	def test_should_fail_on_create_with_invalid_pdf
+ 	def test_2_should_fail_on_create_with_invalid_pdf
  		@valid_cheatsheet_hash[:binary_attributes][:pdf][:uploaded_data] = fixture_file_upload("letterhead.png", "application/exe")
 
  		post :create, { :cheatsheet =>	@valid_cheatsheet_hash}, { :admin_password => PASSWORD }
@@ -52,7 +47,7 @@ class CheatsheetsControllerTest  < ActionController::TestCase
  		assert_template "new"
  	end
  	
- 	def test_should_fail_on_create_with_invalid_permalink
+ 	def test_3_should_fail_on_create_with_invalid_permalink
  		@valid_cheatsheet_hash[:permalink] = "a-bad&permalink!"
 
  		post :create, { :cheatsheet =>	@valid_cheatsheet_hash}, { :admin_password => PASSWORD }
@@ -62,19 +57,7 @@ class CheatsheetsControllerTest  < ActionController::TestCase
  		assert_template "new"
  	end 	
  	
- 	def test_should_fail_on_create_with_blank_thumbnail
- 		
- 		@valid_cheatsheet_hash[:binary_attributes][:thumbnail][:uploaded_data] = ""
- 		
- 		post :create, { :cheatsheet =>	@valid_cheatsheet_hash}, { :admin_password => PASSWORD }
- 					
- 		assert assigns(:cheatsheet).errors.on(:thumbnail)
- 		assert_equal 1, assigns(:cheatsheet).errors.size, assigns(:cheatsheet).errors.full_messages
- 		assert_response :success
-		assert_template "new"
- 	end 	
- 
- 	def test_should_fail_on_create_with_blank_pdf
+ 	def test_4_should_fail_on_create_with_blank_pdf
  		
  		@valid_cheatsheet_hash[:binary_attributes][:pdf][:uploaded_data] = ""
  	
@@ -86,31 +69,31 @@ class CheatsheetsControllerTest  < ActionController::TestCase
 		assert_template "new"
  	end 	
  	
- 	def test_should_fail_on_new_without_administrator_logged_in
+ 	def test_5_should_fail_on_new_without_administrator_logged_in
  		get :new
  		assert_response :redirect
  		assert_redirected_to login_path
  	end
  	
- 	def test_should_succeed_on_new_with_administrator_logged_in
+ 	def test_6_should_succeed_on_new_with_administrator_logged_in
  		get :new, {}, { :admin_password => PASSWORD }
  		assert_response :success
  		assert_template "new"
  	end
  	
- 	def test_should_fail_on_edit_without_administrator_logged_in
+ 	def test_7_should_fail_on_edit_without_administrator_logged_in
  		get :edit, { :id => 11 }
  		assert_response :redirect
  		assert_redirected_to login_path
  	end
  	
- 	def test_should_succeed_on_edit_with_administrator_logged_in
+ 	def test_8_should_succeed_on_edit_with_administrator_logged_in
  		get :edit, { :id => contents(:action_mailer_cheatsheet).id }, { :admin_password => PASSWORD }
  		assert_response :success
  		assert_template "edit"
  	end
  	
- 	def test_should_succeed_on_update_with_valid_attributes
+ 	def test_9_should_succeed_on_update_with_valid_attributes
  		post :update, { :id => contents(:action_mailer_cheatsheet), :cheatsheet =>	@valid_cheatsheet_hash, }, { :admin_password => PASSWORD }
  		
  		assert_equal 0, assigns(:cheatsheet).errors.size, assigns(:cheatsheet).errors.full_messages 		
@@ -120,7 +103,7 @@ class CheatsheetsControllerTest  < ActionController::TestCase
 		assert_redirected_to cheatsheet_path("action-two-mailer")
  	end
  	
- 	def test_should_fail_on_update_with_invalid_attributes
+ 	def test_b_should_fail_on_update_with_invalid_attributes
  		
  		@valid_cheatsheet_hash[:permalink] = "bad&perma*link"
  		@valid_cheatsheet_hash[:binary_attributes][:pdf][:uploaded_data] = fixture_file_upload("letterhead.png", "application/exe")
