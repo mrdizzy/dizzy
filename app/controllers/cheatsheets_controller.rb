@@ -33,10 +33,9 @@ class CheatsheetsController < ContentsController
   def create
   	@cheatsheet = Cheatsheet.new(params[:cheatsheet])
   	@cheatsheet.user = "mr_dizzy"
-  	 puts "goo"
-  	 if @cheatsheet.save!
-      flash[:notice] = 'Cheatsheet was successfully created.'
-    
+	
+  	if @cheatsheet.save
+      flash[:notice] = 'Cheatsheet was successfully created.'    
       redirect_to cheatsheet_path(@cheatsheet.permalink)
     else
       render :action => 'new'

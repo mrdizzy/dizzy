@@ -8,11 +8,10 @@ class Pdf < ActiveRecord::Base
 	validates_format_of :content_type, :with => /(application\/pdf|binary\/octet-stream)/, :message => "must be a PDF file"
 end
 
-
 # == Schema Info
-# Schema version: 20090603225630
+# Schema version: 20090827143534
 #
-# Table name: binaries
+# Table name: pdfs
 #
 #  id           :integer(4)      not null, primary key
 #  content_id   :integer(4)      not null, default(0)
@@ -20,4 +19,3 @@ end
 #  content_type :string(255)
 #  filename     :string(255)
 #  size         :integer(4)
-#  type         :string(255)

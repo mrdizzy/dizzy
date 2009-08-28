@@ -8,9 +8,8 @@ class Version < ActiveRecord::Base
 	validates_uniqueness_of :version_number
 end
 
-
 # == Schema Info
-# Schema version: 20090603225630
+# Schema version: 20090827143534
 #
 # Table name: versions
 #

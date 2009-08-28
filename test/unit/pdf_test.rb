@@ -57,3 +57,15 @@ class PdfTest < ActiveSupport::TestCase
   end
   
 end
+
+# == Schema Info
+# Schema version: 20090827143534
+#
+# Table name: pdfs
+#
+#  id           :integer(4)      not null, primary key
+#  content_id   :integer(4)      not null, default(0)
+#  binary_data  :binary(16777215
+#  content_type :string(255)
+#  filename     :string(255)
+#  size         :integer(4)

@@ -43,10 +43,10 @@ class VersionTest < ActiveSupport::TestCase
   
 end
 
-
 # == Schema Info
-# Schema version: 20090603225630
+# Schema version: 20090827143534
 #
 # Table name: versions
 #
 #  id             :integer(4)      not null, primary key
+#  version_number :string(255)

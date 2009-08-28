@@ -18,9 +18,8 @@ class Message < ActiveRecord::Base
 		
 end
 
-
 # == Schema Info
-# Schema version: 20090603225630
+# Schema version: 20090827143534
 #
 # Table name: messages
 #

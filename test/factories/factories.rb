@@ -70,7 +70,7 @@ end
 Factory.define :company do |c|
 	c.name "Heavenly Chocolate Fountains"
 	c.visible true
-  c.portfolio_items { |items| [items.association(:portfolio_item_header)] }
+    c.portfolio_items { |items| [items.association(:portfolio_item_header)] }
 	c.description "Fun, hilarity, zany, bold, offbeat"
 end
 

@@ -13,6 +13,7 @@ class CheatsheetsControllerTest  < ActionController::TestCase
 								"date(3i)" 		=> "1",
 								"date(4i)" 		=> "14",
 								"date(5i)" 		=> "24",
+								:content		=> "Here is the content!",
 								:title 			=> "ActionMailer",
 								:category_ids 	=> [Factory(:category).id, Factory(:category).id, Factory(:category).id],
 								:version_id 	=> Factory(:version).id,
@@ -28,11 +29,11 @@ class CheatsheetsControllerTest  < ActionController::TestCase
   end
  	
  	def test_1_should_succeed_on_create_with_valid_attributes
- 		post :create, { :cheatsheet =>	@valid_cheatsheet_hash}, { :admin_password => PASSWORD }
- 		assert_equal 0, assigns(:cheatsheet).errors.size, assigns(:cheatsheet).errors.full_messages	
- 		
- 		assert_response :redirect
-		assert_redirected_to cheatsheet_path(@valid_cheatsheet_hash[:permalink])
+ 	post :create, { :cheatsheet =>	@valid_cheatsheet_hash}, { :admin_password => PASSWORD }
+	assert_equal 0, assigns(:cheatsheet).errors.size, assigns(:cheatsheet).errors.full_messages	
+ 	
+ 	assert_response :redirect
+	assert_redirected_to cheatsheet_path(@valid_cheatsheet_hash[:permalink])
  	end
 
  	def test_2_should_fail_on_create_with_invalid_pdf
@@ -88,17 +89,21 @@ class CheatsheetsControllerTest  < ActionController::TestCase
  	end
  	
  	def test_8_should_succeed_on_edit_with_administrator_logged_in
- 		get :edit, { :id => contents(:action_mailer_cheatsheet).id }, { :admin_password => PASSWORD }
+		cheatsheet = Factory(:cheatsheet, :pdf => Factory(:pdf))
+		cheatsheet.save!
+ 		get :edit, { :id => cheatsheet.id }, { :admin_password => PASSWORD }
  		assert_response :success
  		assert_template "edit"
  	end
  	
  	def test_9_should_succeed_on_update_with_valid_attributes
- 		post :update, { :id => contents(:action_mailer_cheatsheet), :cheatsheet =>	@valid_cheatsheet_hash, }, { :admin_password => PASSWORD }
+		cheatsheet = Factory(:cheatsheet, :pdf => Factory(:pdf))
+		cheatsheet.save!
+		
+ 		post :update, { :id => cheatsheet.id, :cheatsheet => @valid_cheatsheet_hash, }, { :admin_password => PASSWORD }
  		
  		assert_equal 0, assigns(:cheatsheet).errors.size, assigns(:cheatsheet).errors.full_messages 		
  		assert_equal 0, assigns(:cheatsheet).pdf.errors.size, assigns(:cheatsheet).pdf.errors.full_messages  		
- 		assert_equal 0, assigns(:cheatsheet).thumbnail.errors.size, assigns(:cheatsheet).thumbnail.errors.full_messages
  		assert_response :redirect
 		assert_redirected_to cheatsheet_path("action-two-mailer")
  	end
@@ -108,7 +113,10 @@ class CheatsheetsControllerTest  < ActionController::TestCase
  		@valid_cheatsheet_hash[:permalink] = "bad&perma*link"
  		@valid_cheatsheet_hash[:binary_attributes][:pdf][:uploaded_data] = fixture_file_upload("letterhead.png", "application/exe")
  		
- 		post :update, { :id => contents(:action_mailer_cheatsheet).id, :cheatsheet => @valid_cheatsheet_hash }, { :admin_password => PASSWORD }
+		cheatsheet = Factory(:cheatsheet, :pdf => Factory(:pdf))
+		cheatsheet.save!
+		
+ 		post :update, { :id => cheatsheet.id, :cheatsheet => @valid_cheatsheet_hash }, { :admin_password => PASSWORD }
 
  		assert_equal 2, assigns(:cheatsheet).errors.size, assigns(:cheatsheet).errors.full_messages
  		assert_equal "is invalid", assigns(:cheatsheet).errors.on(:permalink)

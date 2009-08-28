@@ -17,15 +17,19 @@ class CompaniesControllerTest < ActionController::TestCase
   # CREATE
   
   def test_2_should_fail_new_company_without_header_graphic
+	portfolio_type_1 = Factory(:portfolio_type)
+	portfolio_type_2 = Factory(:portfolio_type)
+	portfolio_type_3 = Factory(:portfolio_type)
+	
   	post :create, { 	:company => 
   								{ :name => "Pepsi Cola", :description => "Beautiful drinks company" }, 
   						:new_portfolio_items =>
   								{ "0" =>
-  										{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png"), :portfolio_type_id => portfolio_types(:business_card).id }, 
+  										{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png"), :portfolio_type_id => portfolio_type_1.id }, 
   								 "1" =>
-  										{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png"), :portfolio_type_id => portfolio_types(:letterhead).id }, 	
+  										{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png"), :portfolio_type_id => portfolio_type_2.id }, 	
   								"2" =>
-  										{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png"), :portfolio_type_id => portfolio_types(:compliment_slip).id }, 	
+  										{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png"), :portfolio_type_id => portfolio_type_3.id }, 	
   								}	
   					}, { :admin_password => PASSWORD }
   	assert_response :success
@@ -33,15 +37,19 @@ class CompaniesControllerTest < ActionController::TestCase
   end
 
   def test_3_should_pass_new_company_with_valid_header_graphic
-  	post :create, { 	:company => 
+	portfolio_type_1 = Factory(:portfolio_type)
+	portfolio_type_2 = Factory(:portfolio_type)
+	portfolio_type_header = Factory(:portfolio_type_header)
+	
+  post :create, { 	:company => 
   								{ :name => "Pepsi Cola", :description => "Beautiful drinks company" }, 
   						:new_portfolio_items =>
   								{ "0" =>
-  										{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png"), :portfolio_type_id => portfolio_types(:business_card).id }, 
+  										{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png"), :portfolio_type_id => portfolio_type_1.id }, 
   								 "1" =>
-  										{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png"), :portfolio_type_id => portfolio_types(:header).id }, 	
+  										{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png"), :portfolio_type_id => portfolio_type_2.id }, 	
   								"2" =>
-  										{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png"), :portfolio_type_id => portfolio_types(:letterhead).id }, 	
+  										{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png"), :portfolio_type_id => portfolio_type_header.id }, 	
   								}
   					}, { :admin_password => PASSWORD }
   	assert_redirected_to companies_path
@@ -73,6 +81,8 @@ class CompaniesControllerTest < ActionController::TestCase
   end
 
   def test_5_should_fail_new_company_with_no_description
+  
+  
   		post :create, { 	:company => 
   								{ :name => "Minghella Ice Creams", :description => "" }, 
   						:new_portfolio_items =>

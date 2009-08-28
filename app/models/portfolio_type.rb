@@ -22,17 +22,16 @@ class PortfolioType < ActiveRecord::Base
   
 	def uploaded_data=(binary_data)
     
-    unless binary_data.blank?
-
-      self.content_type    = binary_data.content_type
-      self.size            = binary_data.size
-      self.header_binary = binary_data.read
-	end	
+		unless binary_data.blank?
+		  self.content_type    = binary_data.content_type
+		  self.size            = binary_data.size
+		  self.header_binary = binary_data.read
+		end	
+	end
 end
 
-
 # == Schema Info
-# Schema version: 20090603225630
+# Schema version: 20090827143534
 #
 # Table name: portfolio_types
 #
