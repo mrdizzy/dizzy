@@ -18,8 +18,8 @@ class CategoriesController < ApplicationController
 		else
 			render :action => "new"
 		end				
-	end	
-
+	end
+   
  	def destroy
  	  @category = Category.find(params[:id])
 	  	if @category.destroy

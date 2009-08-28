@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090825114153) do
+ActiveRecord::Schema.define(:version => 20090827143534) do
 
   create_table "categories", :force => true do |t|
     t.string "name"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(:version => 20090825114153) do
     t.string   "permalink"
     t.integer  "version_id"
     t.string   "user"
+    t.boolean  "has_toc"
   end
 
   create_table "contents_contents", :id => false, :force => true do |t|
@@ -97,13 +98,6 @@ ActiveRecord::Schema.define(:version => 20090825114153) do
     t.integer "position"
     t.binary  "header_binary"
     t.boolean "visible",                     :default => true
-  end
-
-  create_table "uploads", :force => true do |t|
-    t.string   "description"
-    t.binary   "picture"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "versions", :force => true do |t|

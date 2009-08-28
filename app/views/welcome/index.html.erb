@@ -20,30 +20,48 @@
 	
 	<div id="second_half">
 	
-			<% @articles.in_groups_of(4) do |columns| %>
-			<% columns.each do |column| %>
-			<% unless column.nil? %>
-			<% if columns.first == column %>
-				<div class="mini_column_clear">
-			<% else %>
-				<div class="mini_column">
-			<% end %>
-				<span class="posted_ago"><%= time_ago_in_words(column.date).upcase %> AGO</span>
-				
-				<% if @main_article.is_a?(Article) %>
-					<h2><%= link_to(column.title, content_path(column.permalink)) %></h2>
-				<% else %>
-					<h2><%= link_to(column.title, cheatsheet_path(column.permalink)) %></h2>
-				<% end %>
-				
-				<span class="posted_in">
-				 	<%= asterisk %> <%= link_to(column.main_category.name.upcase, category_path(column.main_category.permalink)) %>
-				</span>
-				
-				<p><%= column.description %></p>
-			</div>
-			<% end %>
-			<% end %>		
-			<% end %>			
+		<% @articles.each do |content| %>
+      	<% if content.is_a?(Article) %>
+         
+	<span class="posted_ago">POSTED <%= time_ago_in_words(content.date).upcase %> AGO</span>   
+<h1 class="welcome"><%= link_to content.title, content_path(content.permalink) %></h1>
+
+   
+<h2 class="lead_in"><%= content.description %></h2>
+<div id="article">
+<%= content.content_without_toc %>
+
+<p><%= link_to content.comments.size.to_s + " comments", content_path(content.permalink) %></p>
+</div>
+         <% else %>
+         <span class="posted_ago">POSTED <%= time_ago_in_words(content.date).upcase %> AGO</span>   
+<h1 class="welcome"><%= link_to content.title, content_path(content.permalink) %></h1>
+         	<p><%= posted_in(content.categories) %><br/>
+ <%= content.version.version_number %></p>
+		
+		<h2 class="lead_in"><%= content.description %></h2>
+		
+		<table>
+	
+	<td class="icons">
+		<p>
+			<%= image_tag("f/small_icons/html.png") %>
+			<%= diamond %> 	<%= link_to "HTML", cheatsheet_path(content.permalink) %> 
+		</p>
+		</td>
+      <td>
+		<p>
+			<%= image_tag("f/small_icons/pdf.png") %>	
+			<%= diamond %> <%= link_to "PDF", formatted_cheatsheet_path(content.permalink, "pdf") %> 
+			(<%= number_to_human_size(content.pdf.size) %>)
+		</p>
+	</td>
+
+	</table>
+         <% end %> 
+      
+<%= spiro %>
+            
+      <% end %>
 
 </div> 

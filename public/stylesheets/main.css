@@ -65,10 +65,12 @@
 /* =CSS WELCOME =====================================================*/
 	#welcome { clear:both;}
 	#welcome h2 { font-weight:bold; font-family:Arial, Helvetica; font-size:131%; font-style:normal;}
+   #welcome h1.welcome { border-top: 1px solid black; }
+   #welcome h1:first { border-top: 0; }
 	#first_half { margin-top:9px;width:326px;float:left;}		
 	#second_half { margin-top:9px;width:648px; float:right; }	
 	#welcome #category_list { margin-left:0; margin-top:9px;}
-	#welcome a { text-decoration:none;color:#000;}
+	#welcome h1 a { text-decoration:none;color:#000;}
 		#welcome a:hover { text-decoration:underline; }
 		#welcome .posted_in a,	#welcome #category_list a { color: #29A4BD; }
 		
@@ -81,7 +83,7 @@
 /* =CSS CONTENT ======================*/
 	#left_column {	width: 163px; float: left; }
 	#right_column {	width: 811px; float: right;	}
-		#right_column h2 { font: italic 123.1%/18px "Trebuchet MS"; color:black; margin-top:9px; margin-bottom:9px; }		
+		#right_column h2, #second_half h2 { font: italic 123.1%/18px "Trebuchet MS"; color:black; margin-top:9px; margin-bottom:9px; }		
 		
 	#article ul, #article p { margin-bottom:18px;}	
 	

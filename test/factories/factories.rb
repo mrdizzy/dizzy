@@ -12,6 +12,18 @@ Factory.sequence :name do |d|
 	"A Valid Name #{d}"
 end
 
+Factory.sequence :category_name do |d|
+	"Category #{d}"
+end
+
+Factory.sequence :cheatsheet_name do |d|
+	"Cheatsheet #{d}"
+end
+
+Factory.sequence :article_name do |d|
+	"Article #{d}"
+end
+
 Factory.sequence :number do |n|
 	n
 end
@@ -20,7 +32,7 @@ end
 
 Factory.define :article do |c|
 	c.permalink { Factory.next(:permalink) }
-	c.title { Factory.next(:name) }
+	c.title { Factory.next(:article_name) }
 	c.categories {|categories| [categories.association(:category), categories.association(:category)]}  
 	c.user "mr_dizzy"
 	c.date 1.hour.ago
@@ -31,7 +43,7 @@ end
 
 Factory.define :category do |c|
 	c.permalink { Factory.next(:permalink) }
-	c.name { Factory.next(:name) }
+	c.name { Factory.next(:category_name) }
 end
 
 Factory.define :cheatsheet, :default_strategy => :build do |c|
@@ -40,7 +52,7 @@ Factory.define :cheatsheet, :default_strategy => :build do |c|
 	c.date        Time.now
 	c.description "A brief description"
 	c.permalink { Factory.next(:permalink) }
-	c.title { Factory.next(:name) }  
+	c.title { Factory.next(:cheatsheet_name) }  
 	c.user  "mr_dizzy"
 	c.categories { |categories| [categories.association(:category), categories.association(:category)] }
 end

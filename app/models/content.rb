@@ -2,6 +2,7 @@ class Content < ActiveRecord::Base
 	has_and_belongs_to_many :categories
 	has_and_belongs_to_many :related_articles, :class_name => "Content", :foreign_key => "related_id"
 	has_many 				:comments, :dependent => :destroy, :order => "'created_at' DESC"
+   
 	belongs_to 				:version
 	
 	validates_existence_of	:version
@@ -32,10 +33,23 @@ HTML use syntax: true
 {:rhtml: lang=rhtml html_use_syntax=true}
 {:ruby: lang=ruby  html_use_syntax=true}
 
-" + self.content
+" 
+self.has_toc ? toc = "# Table of Contents\n\n* TOC\n{:toc}\n" : toc = ""
+result = result + toc + self.content
 		result = Maruku.new(result).to_html
 
 	end
+   
+   def content_without_toc
+  result = "Use numbered headers: true
+HTML use syntax: true
+
+{:rhtml: lang=rhtml html_use_syntax=true}
+{:ruby: lang=ruby  html_use_syntax=true}
+
+" + self.content
+		result = Maruku.new(result).to_html 
+   end
 end
 
 class Article < Content
