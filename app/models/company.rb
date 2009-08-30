@@ -10,7 +10,7 @@ class Company < ActiveRecord::Base
     		errors.add_to_base "Portfolio items must all be of a different type"
   		end
   		
-  	   #errors.add_to_base "Company must have a header graphic" unless portfolio_items.any? {|item| item.portfolio_type.description == "Header" }
+  	   errors.add_to_base "Company must have a header graphic" unless portfolio_items.any? {|item| item.portfolio_type.description == "Header" }
 	end 
 
 	def self.pages(page)
@@ -23,13 +23,13 @@ class Company < ActiveRecord::Base
 	
 	def new_portfolio_items=(new_portfolio_items)
 		new_portfolio_items.each do |item|
-			self.portfolio_items << PortfolioItem.new(item)
+			self.portfolio_items.build(item)
 		end
 	end
    
    def existing_portfolio_items=(existing_portfolio_items)
       self.portfolio_items.each do |item| 
-         item.attributes = existing_portfolio_items[item.id.to_s]  unless existing_portfolio_items[item.id.to_s].nil?  
+         item.update_attributes(existing_portfolio_items[item.id.to_s]) unless existing_portfolio_items[item.id.to_s].nil?  
       end
    end
 

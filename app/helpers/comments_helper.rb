@@ -1,6 +1,6 @@
 module CommentsHelper
 
-def prepare_comments(comments,result=Array.new, init=true, counter=0)
+def prepare_comments(comments, result=Array.new, init=true, counter=0)
 	counter = counter + 1
 	comments.each do |comment|	
 		result << "\n\n"

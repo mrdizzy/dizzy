@@ -163,8 +163,7 @@ class CompaniesControllerTest < ActionController::TestCase
    company = Company.find(company.id)
    assert company, "Company must exist"
       
-      company.portfolio_items.each do |item|
-      
+      company.portfolio_items.each do |item|      
          assert_equal item.data, fixture_file_upload("compliment.png", "image/png").read
       end
       

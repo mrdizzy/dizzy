@@ -12,6 +12,10 @@ Factory.sequence :name do |d|
 	"A Valid Name #{d}"
 end
 
+Factory.sequence :comment_name do |d|
+	"Comment name #{d}"
+end
+
 Factory.sequence :portfolio_type_name do |d|
 	"Portfolio Type #{d}"
 end
@@ -62,7 +66,7 @@ Factory.define :cheatsheet, :default_strategy => :build do |c|
 end
 
 Factory.define :comment do |c|
-	c.name "Malandra Burrows"
+	c.name { Factory.next(:comment_name) }
 	c.new true
 	c.association :content, :factory => :article
 	c.created_at 1.hour.ago

@@ -1,37 +1,50 @@
 set :default_stage, 'staging'
 require 'capistrano/ext/multistage'
 
-set :application, "staging.dizzy.co.uk"
-
+# Git
 set :repository,  "git@github.com:mrdizzy/dizzy.git"
 set :scm, "git"
-
-ssh_options[:forward_agent] = true 
 set :scm_verbose, true
 set :git_enable_submodules, 1
-
 set :deploy_via, :remote_cache
-
 set :branch, "master"
+set :deploy_via, :export
+
+# Application
+set :application, "staging.dizzy.co.uk"
+set :shared_rails_dir, "/home/dizzynew/rails_apps/rails_2_1_1"
+set :rails_env, "production"
+
+# SSH
+server "supergirl.dreamhost.com", :app, :web, :db, :primary => true
 set :use_sudo, false
 set :user, "dizzyphoenix"   
 set :password, "world1"
-
-set :shared_rails_dir, "/home/dizzynew/rails_apps/rails_2_1_1"
-set :deploy_via, :export
-
-set :rails_env, "production"
-
-server "supergirl.dreamhost.com", :app, :web, :db, :primary => true
-
-set :svn_username, "david.pettifer"		
-	
+ssh_options[:forward_agent] = true    
 #ssh_options[:port] = 7822 
 
+# Database
 set :database_adapter, "mysql"
 set :database_username, "denzil"
 set :database_password, "fantasyland"
 set :database_hostname, "mysql.dizzyphoenix.dreamhosters.com"
+
+set :database_configuration,  <<-EOF
+
+test:
+  adapter: #{database_adapter}
+  database: dizzy_test
+  username: #{database_username}
+  password: #{database_password}
+  host: #{database_hostname}
+
+production:
+  adapter: #{database_adapter}
+  database: dizzy_production
+  username: #{database_username}
+  password: #{database_password}
+  host: #{database_hostname}
+EOF
 
 # =============================================================================
 
@@ -52,29 +65,6 @@ desc "Create database.yml file"
 task :setup_database do
 	
 	run "mkdir -p #{shared_path}/config" 
-		 database_configuration =  <<-EOF
-
-development:
-  adapter: #{database_adapter}
-  database: dizzyphoenix_dizzydevelopment
-  username: #{database_username}
-  password: #{database_password}
-  host: #{database_hostname}
-
-test:
-  adapter: #{database_adapter}
-  database: dizzyphoenix_dizzytest
-  username: #{database_username}
-  password: #{database_password}
-  host: #{database_hostname}
-
-production:
-  adapter: #{database_adapter}
-  database: dizzyphoenix_dizzyproduction
-  username: #{database_username}
-  password: #{database_password}
-  host: #{database_hostname}
-EOF
 	put database_configuration, "#{shared_path}/config/database.yml"
 	
 end

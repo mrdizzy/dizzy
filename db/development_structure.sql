@@ -1,16 +1,3 @@
-CREATE TABLE `binaries` (
-  `id` int(11) NOT NULL auto_increment,
-  `binary_data` mediumblob,
-  `type` varchar(255) default NULL,
-  `content_type` varchar(255) default NULL,
-  `size` int(11) default NULL,
-  `filename` varchar(255) default NULL,
-  `content_id` int(11) NOT NULL default '0',
-  PRIMARY KEY  (`id`),
-  KEY `fk_content_binaries` (`content_id`),
-  CONSTRAINT `fk_content_binaries` FOREIGN KEY (`content_id`) REFERENCES `___temp_dreamhost_restore_20090126_035259`.`contents` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 CREATE TABLE `categories` (
   `id` int(11) NOT NULL auto_increment,
   `name` varchar(255) default NULL,
@@ -21,10 +8,10 @@ CREATE TABLE `categories` (
 CREATE TABLE `categories_contents` (
   `category_id` int(11) NOT NULL default '0',
   `content_id` int(11) NOT NULL default '0',
-  KEY `fk_content_categories_contents` (`content_id`),
-  KEY `fk_category_categories_contents` (`category_id`),
-  CONSTRAINT `fk_category_categories_contents` FOREIGN KEY (`category_id`) REFERENCES `___temp_dreamhost_restore_20090126_035259`.`categories` (`id`),
-  CONSTRAINT `fk_content_categories_contents` FOREIGN KEY (`content_id`) REFERENCES `___temp_dreamhost_restore_20090126_035259`.`contents` (`id`)
+  KEY `category_id` (`category_id`),
+  KEY `content_id` (`content_id`),
+  CONSTRAINT `categories_contents_ibfk_2` FOREIGN KEY (`content_id`) REFERENCES `contents` (`id`),
+  CONSTRAINT `categories_contents_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `comments` (
@@ -38,10 +25,10 @@ CREATE TABLE `comments` (
   `new` tinyint(1) default '1',
   `name` varchar(255) default NULL,
   PRIMARY KEY  (`id`),
-  KEY `fk_content_comments` (`content_id`),
-  KEY `fk_comment_comments` (`parent_id`),
-  CONSTRAINT `fk_comment_comments` FOREIGN KEY (`parent_id`) REFERENCES `comments` (`id`),
-  CONSTRAINT `fk_content_comments` FOREIGN KEY (`content_id`) REFERENCES `___temp_dreamhost_restore_20090126_035259`.`contents` (`id`)
+  KEY `content_id` (`content_id`),
+  KEY `parent_id` (`parent_id`),
+  CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`parent_id`) REFERENCES `comments` (`id`),
+  CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`content_id`) REFERENCES `contents` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `companies` (
@@ -62,24 +49,20 @@ CREATE TABLE `contents` (
   `permalink` varchar(255) default NULL,
   `version_id` int(11) default NULL,
   `user` varchar(255) default NULL,
-  PRIMARY KEY  (`id`)
+  `has_toc` tinyint(1) default NULL,
+  PRIMARY KEY  (`id`),
+  KEY `version_id` (`version_id`),
+  CONSTRAINT `contents_ibfk_1` FOREIGN KEY (`version_id`) REFERENCES `versions` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `contents_contents` (
   `content_id` int(11) NOT NULL default '0',
   `related_id` int(11) NOT NULL default '0',
-  KEY `fk_secondary_content_contents` (`related_id`),
-  KEY `fk_main_content_contents` (`content_id`),
-  CONSTRAINT `fk_main_content_contents` FOREIGN KEY (`content_id`) REFERENCES `___temp_dreamhost_restore_20090126_035259`.`contents` (`id`),
-  CONSTRAINT `fk_secondary_content_contents` FOREIGN KEY (`related_id`) REFERENCES `___temp_dreamhost_restore_20090126_035259`.`contents` (`id`)
+  KEY `content_id` (`content_id`),
+  KEY `related_id` (`related_id`),
+  CONSTRAINT `contents_contents_ibfk_2` FOREIGN KEY (`related_id`) REFERENCES `contents` (`id`),
+  CONSTRAINT `contents_contents_ibfk_1` FOREIGN KEY (`content_id`) REFERENCES `contents` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-CREATE TABLE `markdowns` (
-  `id` int(11) NOT NULL auto_increment,
-  `created_at` datetime default NULL,
-  `updated_at` datetime default NULL,
-  PRIMARY KEY  (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `messages` (
   `id` int(11) NOT NULL auto_increment,
@@ -91,6 +74,18 @@ CREATE TABLE `messages` (
   PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+CREATE TABLE `pdfs` (
+  `id` int(11) NOT NULL auto_increment,
+  `binary_data` mediumblob,
+  `content_type` varchar(255) default NULL,
+  `size` int(11) default NULL,
+  `filename` varchar(255) default NULL,
+  `content_id` int(11) NOT NULL default '0',
+  PRIMARY KEY  (`id`),
+  KEY `content_id` (`content_id`),
+  CONSTRAINT `pdfs_ibfk_1` FOREIGN KEY (`content_id`) REFERENCES `contents` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 CREATE TABLE `portfolio_items` (
   `id` int(11) NOT NULL auto_increment,
   `portfolio_type_id` int(11) NOT NULL default '0',
@@ -98,10 +93,10 @@ CREATE TABLE `portfolio_items` (
   `size` int(11) default NULL,
   `data` blob,
   PRIMARY KEY  (`id`),
-  KEY `portfolio_type_id` (`portfolio_type_id`),
   KEY `company_id` (`company_id`),
-  CONSTRAINT `fk_company_portfolio_items` FOREIGN KEY (`company_id`) REFERENCES `___temp_dreamhost_restore_20090126_035259`.`companies` (`id`),
-  CONSTRAINT `fk_portfolio_type_portfolio_items` FOREIGN KEY (`portfolio_type_id`) REFERENCES `portfolio_types` (`id`)
+  KEY `portfolio_type_id` (`portfolio_type_id`),
+  CONSTRAINT `portfolio_items_ibfk_2` FOREIGN KEY (`portfolio_type_id`) REFERENCES `portfolio_types` (`id`),
+  CONSTRAINT `portfolio_items_ibfk_1` FOREIGN KEY (`company_id`) REFERENCES `companies` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `portfolio_types` (
@@ -155,7 +150,13 @@ INSERT INTO schema_migrations (version) VALUES ('20090116001346');
 
 INSERT INTO schema_migrations (version) VALUES ('20090603225630');
 
-INSERT INTO schema_migrations (version) VALUES ('20090823223345');
+INSERT INTO schema_migrations (version) VALUES ('20090823225151');
+
+INSERT INTO schema_migrations (version) VALUES ('20090825114153');
+
+INSERT INTO schema_migrations (version) VALUES ('20090827143534');
+
+INSERT INTO schema_migrations (version) VALUES ('20090830112439');
 
 INSERT INTO schema_migrations (version) VALUES ('3');
 
