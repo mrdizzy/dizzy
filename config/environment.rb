@@ -15,7 +15,7 @@ require File.join(File.dirname(__FILE__), 'boot')
 Rails::Initializer.run do |config|
   # Skip frameworks you're not going to use
   config.frameworks -= [ :action_web_service ]
-
+config.active_record.schema_format = :sql
   config.time_zone = 'London'
   
   # Add load paths for sweepers and mailers

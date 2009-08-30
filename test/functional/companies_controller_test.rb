@@ -63,6 +63,13 @@ class CompaniesControllerTest < ActionController::TestCase
   								]
                      }
   					}, { :admin_password => PASSWORD }
+   company = Company.find_by_name("Pepsi Cola")
+   assert company, "Company must exist"
+   
+   company.portfolio_items.each do |item|
+      assert_equal item.data, fixture_file_upload("letterhead.png", "image/png").read
+   end
+   
   	assert_redirected_to companies_path
  
   end
@@ -137,21 +144,30 @@ class CompaniesControllerTest < ActionController::TestCase
                      :company =>
   								{ :name => "An updated company!", :description => "An updated description!",
   						:existing_portfolio_items =>
-                     {  portfolio_item_a.id =>
+                     {  portfolio_item_a.id.to_s =>
   								
-  										{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png"), :portfolio_type_id => @portfolio_type_1.id }, 
-                        portfolio_item_b.id =>
+  										{ :uploaded_data => fixture_file_upload("compliment.png", "image/png"), :portfolio_type_id => @portfolio_type_1.id }, 
+                        portfolio_item_b.id.to_s =>
   								
-  										{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png"), :portfolio_type_id => @portfolio_type_2.id }, 	
-  								portfolio_item_c.id =>
-  										{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png"), :portfolio_type_id => @portfolio_type_header.id }, 	
+  										{ :uploaded_data => fixture_file_upload("compliment.png", "image/png"), :portfolio_type_id => @portfolio_type_2.id }, 	
+  								portfolio_item_c.id.to_s =>
+  										{ :uploaded_data => fixture_file_upload("compliment.png", "image/png"), :portfolio_type_id => @portfolio_type_header.id }, 	
   								}
                        }
   					}, { :admin_password => PASSWORD }
 
 		assert_equal 0, assigns(:company).errors.size, assigns(:company).errors.full_messages
 		assert_equal assigns(:company).name, "An updated company!", "Name should have been updated!"
-      assert_equal assigns(:company).description, "An updated description!", "Description should have been updated!"
+      assert_equal assigns(:company).description, "An updated description!", "Description should have been updated!"  
+
+   company = Company.find(company.id)
+   assert company, "Company must exist"
+      
+      company.portfolio_items.each do |item|
+      
+         assert_equal item.data, fixture_file_upload("compliment.png", "image/png").read
+      end
+      
       assert_redirected_to companies_path
  
  end

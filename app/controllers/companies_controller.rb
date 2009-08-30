@@ -22,8 +22,10 @@ class CompaniesController < ApplicationController
 	def create    
 	  	@designs	= PortfolioType.find(:all)
 		@company 	= Company.new(params[:company])   		
-		
-		if @company.save		
+		pp @company.description
+      pp @company.valid?
+		if @company.valid?
+         @company.save!
 			redirect_to companies_path 	  			
 	  	else
 	  		render :action => 'new' 
@@ -34,9 +36,9 @@ class CompaniesController < ApplicationController
 		@company = Company.find(params[:id])
 		@company.attributes = params[:company]
 	
-      if @company.valid? && @company.portfolio_items.all?(&:valid?)  
-         @company.save!
-         @company.portfolio_items.each(&:save!) 
+      if @company.valid? && @company.portfolio_items.all?(&:valid?) 
+         @company.save!         
+         @company.portfolio_items.each(&:save!)
          redirect_to companies_path
       else    
          @designs = PortfolioType.find(:all)

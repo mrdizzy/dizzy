@@ -1,8 +1,18 @@
 set :default_stage, 'staging'
 require 'capistrano/ext/multistage'
 
-set :application, "intentional-stance.com"
-set :repository,  "https://dizzy.googlecode.com/svn/trunk"
+set :application, "staging.dizzy.co.uk"
+
+set :repository,  "git@github.com:mrdizzy/dizzy.git"
+set :scm, "git"
+
+ssh_options[:forward_agent] = true 
+set :scm_verbose, true
+set :git_enable_submodules, 1
+
+set :deploy_via, :remote_cache
+
+set :branch, "master"
 set :use_sudo, false
 set :user, "dizzyphoenix"   
 set :password, "world1"

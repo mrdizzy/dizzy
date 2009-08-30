@@ -21,6 +21,7 @@ class PortfolioItem < ActiveRecord::Base
 	end
 	
 	def uploaded_data=(binary_data)
+   
 		self.data = binary_data.read
 		self.size = binary_data.size
 	end
