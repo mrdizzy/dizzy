@@ -2,7 +2,7 @@
 	
 	<% remote_form_for :comment, :url => content_comment_child_comments_path, :before => "Element.show('spinner_#{params[:comment_id]}');Element.hide('submit_button_#{params[:comment_id]}')", :complete => "Element.hide('spinner_#{params[:comment_id]}')" do |form| %>
 	
-		<%= render :partial => "form", :object => form %>
+		<%= render :partial => "comments/form", :object => form %>
 		
 	<% end %>
 	
