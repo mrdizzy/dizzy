@@ -33,7 +33,7 @@ class CommentsController < ApplicationController
      
 		if @comment.save
          render :update do |page|
-            page.replace_html "add_comment", :partial => 'single_comment'
+            page.replace_html "add_comment", :partial => 'comment', :object => @comment 
 			end
       else
          render :update do |page|

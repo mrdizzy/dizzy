@@ -15,7 +15,7 @@ class ChildCommentsController < ApplicationController
      
 		if @comment.save
           render :update do |page|
-				page.replace_html "reply_form_#{params[:comment_id]}", :partial => 'comments/single_comment'
+				page.replace_html "reply_form_#{params[:comment_id]}", :partial => 'comments/comment', :object => @comment
 			end
       else
          render :update do |page|
