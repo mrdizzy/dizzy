@@ -24,6 +24,10 @@ Factory.sequence :category_name do |d|
 	"Category #{d}"
 end
 
+Factory.sequence :comment_subject do |c|
+   "Comment subject #{c}"
+end
+
 Factory.sequence :cheatsheet_name do |d|
 	"Cheatsheet #{d}"
 end
@@ -71,7 +75,7 @@ Factory.define :comment do |c|
 	c.association :content, :factory => :article
 	c.created_at 1.hour.ago
 	c.body "Here is the body of the comment"
-	c.subject "Here is the subject of the comment"
+	c.subject { Factory.next(:comment_subject) }
 	c.email "david.p@casamiento-cards.co.uk"
 end
 

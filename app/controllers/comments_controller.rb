@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
 	
 	# TODO: If administrator logged in, then create comments from administrator rather than external user 
 	# TODO: Make email field optional to avoid readers putting in fake emails
-	
+   
 	def new
 		@comment = Comment.new
 		
@@ -19,11 +19,13 @@ class CommentsController < ApplicationController
 	
 	def destroy
 		@comment = Comment.find(params[:id])
+      
  	 	if @comment.destroy
 			render :update do |page|
 				page.remove "comment_#{@comment.id}"
 			end
 		end
+      
 	end
 	
 	def create			
@@ -38,7 +40,8 @@ class CommentsController < ApplicationController
             page.replace_html "add_comment", :partial => 'comment_form'
             page.visual_effect :toggle_blind, :comment_form
          end
-      end						
+      end
+      
 	end
 
 end

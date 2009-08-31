@@ -1,15 +1,15 @@
 <%= error_messages_for :comment, :header_tag => "h2" %>
 
-<label for="comment_subject"><%= diamond %> Subject</label>
+<%= form.label :subject %>
 <%= form.text_field :subject %>
 
-<label for="comment_name"><%= diamond %> Name</label>
+<%= form.label :name %>
 <%= form.text_field :name %>
 	
-<label for="comment_email"><%= diamond %> Email</label>
+<%= form.label :email %>   
 <%= form.text_field :email %>
 
-<label for="comment_content"><%= diamond %> Comment</label>
+<%= form.label :body %>
 <%= form.text_area :body, :size=>"20x10" %>
 
 <div id="submit_button_<%=params[:comment_id] %>">

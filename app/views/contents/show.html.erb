@@ -1,4 +1,10 @@
-<div id="breadcrumbs"><p><%= location_icon %> <a href="/">Home</a> <%= image_tag("f/bullets/arrows/solidarrow.png") %> <%= link_to "Ruby on Rails", latest_path %> <%= image_tag("f/bullets/arrows/solidarrow.png") %> <%= link_to @content.main_category.name, category_path(@content.main_category.permalink) %> <%= image_tag("f/bullets/arrows/solidarrow.png") %></p></div>
+<div id="breadcrumbs">
+   <p><%= location_icon %> 
+      <%= link_to "Hom", "/" %> <%= image_tag("f/bullets/arrows/solidarrow.png") %> 
+      <%= link_to "Ruby on Rails", latest_path %> <%= image_tag("f/bullets/arrows/solidarrow.png") %> 
+      <%= link_to @content.main_category.name, category_path(@content.main_category.permalink) %> <%= image_tag("f/bullets/arrows/solidarrow.png") %>
+   </p>
+</div>
 				
 <div id="left_column">
 	
@@ -18,21 +24,30 @@
 </div>
 			
 <div id="right_column">
-			
-<% @title = @content.title %>
+            
+   <% @title = @content.title %>
 
-<% @main_category = @content.main_category.name %>
+   <% @main_category = @content.main_category.name %>
 
-<h1><%= @content.title %></h1>
+   <h1><%= @content.title %></h1>
+   <h2><%= @content.description %></h2>
 
-<h2><%= @content.description %></h2>
+   <%= spiro %>
 
-<%= spiro %>
+   <div id="article"><%= @content.parsed_content %></div>
 
-<div id="article"><%= @content.parsed_content %></div>
+   <%= spiro %>
 
-<%= spiro %>
+   <div id="comments">
 
-<%= render(:partial => "comments/comments", :object => @content ) %>
+      <div id="comments_header"><p class="posted_in"> <%= asterisk %> COMMENTS </p></div>
+      
+      <%= render :partial => "comments/comment", :collection => @content.comments, :locals => { :init => true } %>
+      
+      <div id="add_comment">
+         <p><%= diamond %> <%= link_to_remote "Add new comment", :url => new_content_comment_path(@content.id), :method => :get %></p>
+      </div>
+
+   </div>
 
 </div>

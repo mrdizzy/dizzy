@@ -22,8 +22,26 @@ class CommentsControllerTest < ActionController::TestCase
   end
  
   def test_2_should_succeed_on_index_when_administrator_not_logged_in
-  	get :index, {}, { :admin_password => PASSWORD }
+   main_comment = Factory(:comment)
+   second_main_comment = Factory(:comment, :content_id => main_comment.content_id)
+   
+   main_comment.children << [ Factory(:comment, :content_id => main_comment.content_id), Factory(:comment, :content_id => main_comment.content_id) ]
+   get :index, {}, { :admin_password => PASSWORD }
   	assert_template("index")
+
+   assert_select "div#comments" do
+      Comment.roots.each do |root|
+         assert_select "div.root_comment#comment_#{root.id}" do 
+            assert_select "h6", :text => /#{root.subject}/
+            root.children.each do |child|
+               assert_select "div.single_comment#comment_#{child.id}" do
+                  assert_select "h6", :text => /#{child.subject}/
+               end
+            end
+         end
+      end
+   end
+
   	assert_response :success
   end 
   

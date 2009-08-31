@@ -1,6 +1,4 @@
 class ContentsController < ApplicationController
-	
-	helper 			:comments	
 		
 	caches_page 	:show
 	cache_sweeper 	:content_sweeper, :only => [ :destroy, :update, :create ]
