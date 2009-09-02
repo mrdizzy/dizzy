@@ -30,7 +30,6 @@ class CommentsController < ApplicationController
 	
 	def create			
 		@comment = Comment.new(params[:comment].merge({:content_id => params[:content_id]}))
-    pp @comment
      
 		if @comment.save
       render :update do |page|
