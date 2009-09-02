@@ -12,10 +12,13 @@
 <%= form.label :body %>
 <%= form.text_area :body, :size=>"20x10" %>
 
-<div id="submit_button_<%=params[:comment_id] %>">
-	<%= submit_button %>	
-</div>
 
-<div id="spinner_<%= params[:comment_id] %>" class="left" style="display:none;">
+<% div_for @comment, :submit_button do %>
+	<%= submit_button %>	
+<% end %>
+
+
+
+<% div_for @comment, :spinner,  :class=> "left", :style=> "display:none;" do %>
 	<img alt="Spinner" src="/images/f/spinner.gif" />
-</div>
+<% end %>
