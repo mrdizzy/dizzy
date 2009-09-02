@@ -4,8 +4,7 @@ class ChildCommentsController < ApplicationController
 		@comment = Comment.new
 		
 		render :update do |page|
-			page.replace_html "reply_form_#{params[:comment_id]}", :partial => 'child_comment_form'
-			page.visual_effect :toggle_blind, "comment_form_#{params[:comment_id]}"
+			page.replace_html "reply_comment_#{params[:comment_id]}", :partial => 'child_comment_form'
 		end
 		
 	end

@@ -1,10 +1,6 @@
 <!-- COMMENT -->
 
-<% if comment.parent_id? %>
-   <div class="single_comment" id="comment_<%= comment.id %>">
-<% else %>
-	<div class="root_comment" id="comment_<%= comment.id %>">
-<% end %>
+   <% div_for comment, :class => "margin_top left_indent border_top_black_dashed" do %>
 	
       <div class="comments_left">
          <p>
@@ -18,16 +14,14 @@
          <p><%= comment.body %></p>
       </div>
       
-      <div class="reply_comment" id="reply_<%= comment.id %>">
-         <%= diamond %> <%= link_to_remote("Reply to this comment", :url => new_content_comment_child_comment_path(:content_id => comment.content.id, :comment_id => comment.id), :method => :get)%>
-      </div>
-
-   <!-- HIDDEN DIV FOR REPLY FORM -->
-
-   <div id="reply_form_<%= comment.id %>"></div>
+      <% div_for comment, :reply do %>
+         <p class="center">
+            <%= diamond %> <%= link_to_remote("Reply to this comment", :url => new_content_comment_child_comment_path(comment.content, comment), :method => :get)%>
+         </p>
+      <% end %>
    
    <!-- CHILD COMMENTS -->
    
    <%= render(:partial => "comments/comment", :collection => comment.children) unless comment.children.empty? %> 
 
-   </div>
+<% end %>

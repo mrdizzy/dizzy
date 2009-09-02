@@ -11,8 +11,7 @@ class CommentsController < ApplicationController
 		@comment = Comment.new
 		
 		render :update do |page|
-			page.replace_html "add_comment", :partial => 'comment_form'
-			page.visual_effect :toggle_blind, :comment_form
+			page.replace_html "new_comment", :partial => 'comment_form'
 		end
 		
 	end
@@ -33,12 +32,11 @@ class CommentsController < ApplicationController
      
 		if @comment.save
          render :update do |page|
-            page.replace_html "add_comment", :partial => 'comment', :object => @comment 
+            page.replace "new_comment", :partial => 'comment', :object => @comment 
 			end
       else
          render :update do |page|
-            page.replace_html "add_comment", :partial => 'comment_form'
-            page.visual_effect :toggle_blind, :comment_form
+            page.replace_html "new_comment", :partial => 'comment_form'
          end
       end
       
