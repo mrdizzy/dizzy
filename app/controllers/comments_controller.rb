@@ -31,15 +31,13 @@ class CommentsController < ApplicationController
 	def create			
 		@comment = Comment.new(params[:comment].merge({:content_id => params[:content_id]}))
      
-		if @comment.save
       render :update do |page|
-        page.replace_html "new_comment_#{@comment.parent_id}", :partial => 'comment', :object => @comment 
-			end
-    else
-      render :update do |page|
-        page.replace_html "new_comment_#{@comment.parent_id}", :partial => 'comment_form'
+        if @comment.save
+          page.replace_html "new_comment_#{@comment.parent_id}", :partial => 'comment', :object => @comment 
+        else
+          page.replace_html "new_comment_#{@comment.parent_id}", :partial => 'comment_form'
+        end
       end
-    end
       
 	end
 
