@@ -35,7 +35,7 @@ ActionController::Routing::Routes.draw do |map|
 	
 	map.resources :contents, :path_prefix => "/ruby_on_rails" do |contents|
 		contents.resources :comments do |comments|
-			comments.resources :child_comments
+			comments.resources :child_comments, :controller => "comments"
 		end
 	end
 	

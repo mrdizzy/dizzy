@@ -8,11 +8,11 @@ class CommentsController < ApplicationController
 	# TODO: Make email field optional to avoid readers putting in fake emails
    
 	def new
-		@comment = Comment.new
+		@comment = Comment.new(:parent_id => params[:comment_id])
+    @parent_id = params[:comment_id]
 		
 		render :update do |page|
-			page.replace_html "add_comment", :partial => 'comment_form'
-			page.visual_effect :toggle_blind, :comment_form
+			page.replace_html "new_comment_#{@parent_id}", :partial => 'comment_form'
 		end
 		
 	end
@@ -30,17 +30,17 @@ class CommentsController < ApplicationController
 	
 	def create			
 		@comment = Comment.new(params[:comment].merge({:content_id => params[:content_id]}))
+    pp @comment
      
 		if @comment.save
-         render :update do |page|
-            page.replace_html "add_comment", :partial => 'comment', :object => @comment 
+      render :update do |page|
+        page.replace_html "new_comment_#{@comment.parent_id}", :partial => 'comment', :object => @comment 
 			end
-      else
-         render :update do |page|
-            page.replace_html "add_comment", :partial => 'comment_form'
-            page.visual_effect :toggle_blind, :comment_form
-         end
+    else
+      render :update do |page|
+        page.replace_html "new_comment_#{@comment.parent_id}", :partial => 'comment_form'
       end
+    end
       
 	end
 

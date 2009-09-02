@@ -44,7 +44,7 @@
       
       <%= render :partial => "comments/comment", :collection => @content.comments.roots %>
       
-      <div id="add_comment">
+      <div id="new_comment_" %>
          <p><%= diamond %> <%= link_to_remote "Add new comment", :url => new_content_comment_path(@content), :method => :get %></p>
       </div>
 

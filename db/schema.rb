@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090827143534) do
+ActiveRecord::Schema.define(:version => 20090830112439) do
 
   create_table "categories", :force => true do |t|
     t.string "name"
@@ -21,8 +21,8 @@ ActiveRecord::Schema.define(:version => 20090827143534) do
     t.integer "content_id",  :default => 0, :null => false
   end
 
-  add_index "categories_contents", ["content_id"], :name => "fk_content_categories_contents"
-  add_index "categories_contents", ["category_id"], :name => "fk_category_categories_contents"
+  add_index "categories_contents", ["category_id"], :name => "category_id"
+  add_index "categories_contents", ["content_id"], :name => "content_id"
 
   create_table "comments", :force => true do |t|
     t.text     "body"
@@ -35,8 +35,8 @@ ActiveRecord::Schema.define(:version => 20090827143534) do
     t.string   "name"
   end
 
-  add_index "comments", ["content_id"], :name => "fk_content_comments"
-  add_index "comments", ["parent_id"], :name => "fk_comment_comments"
+  add_index "comments", ["content_id"], :name => "content_id"
+  add_index "comments", ["parent_id"], :name => "parent_id"
 
   create_table "companies", :force => true do |t|
     t.string  "name",        :limit => 40
@@ -56,13 +56,15 @@ ActiveRecord::Schema.define(:version => 20090827143534) do
     t.boolean  "has_toc"
   end
 
+  add_index "contents", ["version_id"], :name => "version_id"
+
   create_table "contents_contents", :id => false, :force => true do |t|
     t.integer "content_id", :default => 0, :null => false
     t.integer "related_id", :default => 0, :null => false
   end
 
-  add_index "contents_contents", ["related_id"], :name => "fk_secondary_content_contents"
-  add_index "contents_contents", ["content_id"], :name => "fk_main_content_contents"
+  add_index "contents_contents", ["content_id"], :name => "content_id"
+  add_index "contents_contents", ["related_id"], :name => "related_id"
 
   create_table "messages", :force => true do |t|
     t.datetime "created_at"
@@ -80,7 +82,7 @@ ActiveRecord::Schema.define(:version => 20090827143534) do
     t.integer "content_id",                       :default => 0, :null => false
   end
 
-  add_index "pdfs", ["content_id"], :name => "fk_content_binaries"
+  add_index "pdfs", ["content_id"], :name => "content_id"
 
   create_table "portfolio_items", :force => true do |t|
     t.integer "portfolio_type_id", :default => 0, :null => false
@@ -89,8 +91,8 @@ ActiveRecord::Schema.define(:version => 20090827143534) do
     t.binary  "data"
   end
 
-  add_index "portfolio_items", ["portfolio_type_id"], :name => "portfolio_type_id"
   add_index "portfolio_items", ["company_id"], :name => "company_id"
+  add_index "portfolio_items", ["portfolio_type_id"], :name => "portfolio_type_id"
 
   create_table "portfolio_types", :force => true do |t|
     t.string  "description",   :limit => 40
@@ -98,13 +100,6 @@ ActiveRecord::Schema.define(:version => 20090827143534) do
     t.integer "position"
     t.binary  "header_binary"
     t.boolean "visible",                     :default => true
-  end
-
-  create_table "uploads", :force => true do |t|
-    t.string   "description"
-    t.binary   "picture"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "versions", :force => true do |t|
