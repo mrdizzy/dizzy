@@ -60,6 +60,12 @@ class CommentsControllerTest < ActionController::TestCase
       assert_select "p", :text => /#{comment.body}/
    end
    
+  def test_3_should_succeed_on_create_main_comment_with_valid_attributes_html
+    post(:create, :comment => main_comments.attributes, :content_id => article.id)
+    assert_redirect contents_path(article)
+    comment = assigns(:comment)
+  end
+   
   	assert_equal num_deliveries+1, ActionMailer::Base.deliveries.size # Email sent to self
   end     	    
   
@@ -97,12 +103,18 @@ class CommentsControllerTest < ActionController::TestCase
 	end 
      
   
-  # New
+  # N E W 
   
   def test_6_should_succeed_on_new_main_comment_rjs	
   	xhr(:get, :new, :content_id => article.id)
   	assert_template("_comment_form")
   	assert_select_rjs :replace_html, "new_comment_",  :partial => 'comment_form'
+  end
+  
+  def test_7_should_succeed_on_new_main_comment_html
+    get (:new, :content_id => article.id)
+    assert_template("new")
+    savefile(@response.body)
   end
   
   def test_7_should_succeed_on_new_child_comment_form_rjs
