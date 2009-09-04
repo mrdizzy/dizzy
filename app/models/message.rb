@@ -3,6 +3,8 @@ class Message < ActiveRecord::Base
 	
 	validates_presence_of :email, :name, :message, :recaptcha_response_field
 	validates_confirmation_of :email
+	
+	after_save :deliver_message
 
 	def validate
 		recaptcha = Net::HTTP.post_form URI.parse("http://api-verify.recaptcha.net/verify"), {
@@ -14,6 +16,10 @@ class Message < ActiveRecord::Base
 		result =  recaptcha.body
 		success,error = result.split("\n")
 		errors.add(:recaptcha_response_field, 'was not entered correctly') unless success == "true"
+	end
+	
+	def deliver_message
+		Mercury.deliver_new_message(self)
 	end
 		
 end

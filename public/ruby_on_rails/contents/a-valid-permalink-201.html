@@ -1,0 +1,279 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<title>Ruby on Rails - Article 35 - Dizzy</title>
+	
+	<link href="/stylesheets/main.css?1251926880" media="all" rel="stylesheet" type="text/css" />
+	<link href="/stylesheets/syntax_highlighting.css?1251235641" media="all" rel="stylesheet" type="text/css" />
+	
+	<script src="/javascripts/prototype.js?1252092259" type="text/javascript"></script>
+<script src="/javascripts/effects.js?1252092259" type="text/javascript"></script>
+<script src="/javascripts/dragdrop.js?1252092259" type="text/javascript"></script>
+<script src="/javascripts/controls.js?1252092259" type="text/javascript"></script>
+<script src="/javascripts/application.js?1251235641" type="text/javascript"></script>
+	
+	 <!--[if IE]>
+    <style type="text/css">
+    	code { font: normal 100%/18px monospace;}
+	</style>
+    <![endif]-->
+	<script type="text/javascript">
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+	</script>
+	<script type="text/javascript">
+		try {
+			var pageTracker = _gat._getTracker("UA-900217-1");
+			pageTracker._trackPageview();
+		} catch(err) {}
+	</script>
+	<script type="text/javascript" src="http://api.recaptcha.net/js/recaptcha_ajax.js"></script>
+</head>
+
+<body>	
+
+	<div id="page_container">
+		
+		<div id="top_container">
+	
+	<div id="logo"><img alt="Dizzy logo" height="84" src="/images/f/branding/header/logo.png?1251235641" width="85" /></div>
+	
+	<div id="right_of_logo">
+		<img alt="Making business beautiful" height="32" src="/images/f/branding/header/slogan_new.png?1251235641" width="182" />	
+		<img alt="Makeover" src="/images/f/branding/header/2.png?1251235641" />
+	</div>
+	
+</div>
+		<div id="navigation">
+	
+	<div id="rss_feed"
+			><p><img src="/images/f/small_icons/feed-icon-small.png" alt="Feed-icon-small"/> 
+			<a href="/ruby_on_rails/contents.rss">Subscribe</a></p>
+	</div>
+	
+<!-- HOME -->
+	<div class="nav_button">
+		
+			<a href="/"><img alt="Home" src="/images/f/nav/home.png?1251235641" /></a> <a href="/">Home</a>
+		
+	</div>
+
+<!-- CHEATSHEETS -->
+	<div class="nav_button">
+		
+			<a href="/ruby_on_rails/cheatsheets"><img alt="Cheats" src="/images/f/nav/cheats.png?1251235641" /></a> <a href="/ruby_on_rails/cheatsheets">Cheatsheets</a>
+		
+	</div>	
+	
+<!-- RUBY ON RAILS -->
+	<div class="nav_button">
+		
+		<a href="/ruby_on_rails/latest"><img alt="Rails_over" src="/images/f/nav/rails_over.png?1251235641" /></a> <b>Ruby on Rails</b>
+		
+	</div>
+	
+<!-- PORTFOLIO -->
+	<div class="nav_button">
+		
+			<a href="/portfolios"><img alt="Portfolio" src="/images/f/nav/portfolio.png?1251235641" /></a> <a href="/portfolios">Portfolio</a>
+		
+	</div>
+	
+<!-- CONTACT -->
+	<div id="contact_icon" class="nav_button">
+		<a before="Element.show('contact_spinner')" complete="Element.hide('contact_spinner')" href="#" onclick="$(&quot;contact_form&quot;).toggle();; return false;"><img alt="Contact" src="/images/f/nav/contact.png?1251235641" /></a> 
+	<a before="Element.show('contact_spinner')" complete="Element.hide('contact_spinner')" href="#" onclick="$(&quot;contact_form&quot;).toggle();; return false;">Contact</a>
+		<div id="contact_spinner" style="display:none;"><img alt="Spinner" src="/images/f/spinner.gif" /></div>
+	</div>
+	
+</div>
+
+<div id="contact_form" style="display:none;">
+	
+
+<div id="contact_inside">
+	
+	<div id="close_window"><a before="Element.show('contact_spinner')" complete="Element.hide('contact_spinner')" href="#" onclick="$(&quot;contact_form&quot;).toggle();; return false;"><img alt="Close_window" src="/images/f/small_icons/close_window.png?1251235641" /></a> </div>
+
+	<span class="posted_in"><img alt="&mdash;" src="/images/f/bullets/pixels/square.png?1251235641" /> CONTACT US</span>
+	
+	
+	
+	<form action="/messages" class="new_message" id="new_message" method="post" onsubmit="Element.show('contact_spinner'); new Ajax.Request('/messages', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('contact_spinner');}, parameters:Form.serialize(this)}); return false;">
+		<table>
+			<tr>
+				<td><label for="message_name">Name</label></td>
+				<td><input id="message_name" name="message[name]" size="30" type="text" /></td>
+			</tr>
+			<tr>
+				<td><label for="message_email">Email</label></td>
+				<td><input id="message_email" name="message[email]" size="30" type="text" /></td>
+			</tr>
+			<tr>
+				<td><label for="message_email_confirmation">Email confirmation</label></td>
+				<td><input id="message_email_confirmation" name="message[email_confirmation]" size="30" type="text" /></td>
+			</tr>
+			<tr>
+				<td><label for="message_message">Message</label></td>
+				<td><textarea cols="60" id="message_message" name="message[message]" rows="10"></textarea></td>
+			</tr>
+			<tr>
+				<td><label for="message_recaptcha_response_field">Security verification</label></td>
+				<td>
+					
+					<div id="recaptcha_div">
+						<div id="recaptcha_image"></div>
+						<input id="recaptcha_response_field" name="message[recaptcha_response_field]" size="30" type="text" />
+					</div>
+					
+					<script type="text/javascript">
+						Recaptcha.create("6LfP1AQAAAAAAAKhfOUrKLj87PfBp77czQ87drhk",
+							"recaptcha_div", {
+							   theme: "custom",
+							}
+						);
+					</script>
+				</td>
+			</tr>
+		</table>
+
+	<input name="commit" type="submit" value="Save changes" />
+	
+</form>
+
+</div>
+</div>
+		
+		<div id="contact_form" style="display:none;"></div>
+		
+		<div id="content_container">
+			<div id="breadcrumbs">
+   <p><img alt="You are here:" height="24" src="/images/f/small_icons/you-are-here.gif?1251235641" width="25" /> 
+      <a href="/">Home</a> 
+      
+      <img alt="Solidarrow" src="/images/f/bullets/arrows/solidarrow.png?1251235641" /> 
+      <a href="/ruby_on_rails/latest">Ruby on Rails</a> 
+      
+      <img alt="Solidarrow" src="/images/f/bullets/arrows/solidarrow.png?1251235641" /> 
+      <a href="/ruby_on_rails/categories/a-valid-permalink-202">Category 148</a> 
+      
+      <img alt="Solidarrow" src="/images/f/bullets/arrows/solidarrow.png?1251235641" />
+   </p>
+</div>
+				
+<div id="left_column">
+	
+	<ul id="category_list" class="categories">
+
+
+	
+		<li id="category_149"><a href="/ruby_on_rails/categories/a-valid-permalink-202">Category 148</a>
+		
+		</li>
+	
+
+	
+		<li id="category_150"><a href="/ruby_on_rails/categories/a-valid-permalink-203">Category 149</a>
+		
+		</li>
+	
+
+	
+		<li id="category_151"><a href="/ruby_on_rails/categories/a-valid-permalink-205">Category 150</a>
+		
+		</li>
+	
+
+	
+		<li id="category_152"><a href="/ruby_on_rails/categories/a-valid-permalink-206">Category 151</a>
+		
+		</li>
+	
+
+	
+		<li id="category_153"><a href="/ruby_on_rails/categories/a-valid-permalink-208">Category 152</a>
+		
+		</li>
+	
+
+	
+		<li id="category_154"><a href="/ruby_on_rails/categories/a-valid-permalink-209">Category 153</a>
+		
+		</li>
+	
+
+</ul>
+
+
+	
+	
+		
+	
+				
+</div>
+			
+<div id="right_column">
+            
+   
+
+   
+
+   <h1>Article 35</h1>
+   <h2>Here is a description</h2>
+
+   <div class="spiro"> &nbsp;</div>
+
+   <div id="article"><p>Here is the content</p></div>
+
+   <div class="spiro"> &nbsp;</div>
+
+   <div id="comments">
+
+      <div id="comments_header"><p class="posted_in"> <img alt="*" src="/images/f/bullets/pixels/asterisk.png?1251235641" /> COMMENTS </p></div>
+      
+      
+      
+      <div id="new_comment_" %>
+         <p><img alt="*" height="5" src="/images/f/bullets/pixels/diamond.png?1251235641" width="5" /> <a href="/ruby_on_rails/contents/55/comments/new" id="new_comment_link">Add new comment</a></p>
+      </div>
+
+   </div>
+
+</div>
+
+<script>
+
+function watchForms(originalRequest) {
+   $$('.comment_form').invoke('observe', 'submit', function(e)
+      {
+      e.stop();
+      new Ajax.Request(e.element().action, {parameters: e.element().serialize()});
+      }
+   );
+}
+
+$('new_comment_link').observe('click', function(e) 
+   {
+      e.stop();
+      new Ajax.Request('/ruby_on_rails/contents/55/comments/new', {method:'get', onComplete: watchForms});
+   }
+);
+
+$$('.child_comment_link').invoke('observe', 'click', function(e)
+   {
+      e.stop();
+      new Ajax.Request('/ruby_on_rails/contents/55/comments/' + e.element().id + '/child_comments/new', {method:'get', onComplete: watchForms});
+   }
+);
+
+</script>
+		</div>
+		
+		<div id="footer" class="clearfix">
+	<div id="footer_man"><img alt="Footer_man" src="/images/f/backgrounds/footer_man.png?1251235641" /></div>
+	<img alt="Spiral_circle" src="/images/f/backgrounds/spiral_circle.png?1251235641" />
+</div>
+	
+	</div>
+</body>
+</html>

@@ -2,15 +2,14 @@
 
 <div id="contact_inside">
 	
-	<div id="close_window"><%= link_to_function image_tag("f/small_icons/close_window.png"), :before => "Element.show('contact_spinner')", :complete => "Element.hide('contact_spinner')" do |page| 
-	page['contact_form'].toggle
-end %> </div>
+	<div id="close_window"><%= link_to image_tag("f/small_icons/close_window.png"), "#", :class => "contact_link" %> </div>
 
 	<span class="posted_in"><%= square %> CONTACT US</span>
 	
 	<%= error_messages_for :message %>
 	
-	<% remote_form_for @message, :before => "Element.show('contact_spinner')", :complete => "Element.hide('contact_spinner');" do |form| %>
+	<% form_for @message do |form| %>
+	
 		<table>
 			<tr>
 				<td><%= form.label :name%></td>
@@ -44,6 +43,7 @@ end %> </div>
 							}
 						);
 					</script>
+
 				</td>
 			</tr>
 		</table>

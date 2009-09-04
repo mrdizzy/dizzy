@@ -42,7 +42,7 @@ class CommentsController < ApplicationController
          if @comment.save
             redirect_to content_path(@comment.content.permalink)
          else
-            render :action => "new"
+            render :new
          end
       end
       

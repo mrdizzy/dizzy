@@ -13,17 +13,48 @@
     	code { font: normal 100%/18px monospace;}
 	</style>
     <![endif]-->
+	
 	<script type="text/javascript">
+	
 		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
 		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-	</script>
-	<script type="text/javascript">
+
 		try {
 			var pageTracker = _gat._getTracker("UA-900217-1");
 			pageTracker._trackPageview();
 		} catch(err) {}
+		
 	</script>
+	
 	<script type="text/javascript" src="http://api.recaptcha.net/js/recaptcha_ajax.js"></script>
+	
+	<script type="text/javascript">
+	
+   function watchCommentForm(originalRequest) {
+	  $('new_message').observe('submit', function(e)
+		 {
+		 e.stop();
+		 new Ajax.Request(e.element().action, {parameters: e.element().serialize(), onComplete: watchCommentForm});
+		 }
+	  );
+   }
+	<%= yield :javascript %>
+	
+	document.observe("dom:loaded", function() {   
+	
+	$$('.contact_link').invoke('observe', 'click', function(e)
+	{
+		e.stop();
+		$('contact_form').show();
+		watchCommentForm();
+	}
+	);
+	
+	<%= yield :dom_loaded %>
+	});
+
+	</script>
+
 </head>
 
 <body>	
@@ -32,8 +63,6 @@
 		
 		<%= render :partial => "/layouts/header" %>
 		<%= render :partial => "/layouts/navigation" %>
-		
-		<div id="contact_form" style="display:none;"></div>
 		
 		<div id="content_container">
 			<%= yield %>
