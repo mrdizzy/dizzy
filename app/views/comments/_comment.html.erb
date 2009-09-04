@@ -19,7 +19,7 @@
       </div>
       
       <% div_for comment, :new, :class=> "reply_comment" do %>
-         <%= diamond %> <%= link_to_remote("Reply to this comment", :url => new_content_comment_child_comment_path(comment.content, comment), :method => :get)%>
+         <%= diamond %> <%= link_to "Reply to this comment", new_content_comment_child_comment_path(comment.content, comment), :id => comment.id, :class => "child_comment_link" %>
       <% end %>
    
    <!-- CHILD COMMENTS -->

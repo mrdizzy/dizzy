@@ -1,27 +1,27 @@
-	<% remote_form_for :comment, :url => content_comments_path, :before => "Element.show('spinner_#{params[:comment_id]}');Element.hide('submit_button_#{params[:comment_id]}')", :complete => "Element.hide('spinner_#{params[:comment_id]}')" do |form| %>
-      
-    <%= error_messages_for :comment, :header_tag => "h2" %>
+<% form_for @comment, :url => content_comments_path do |form| %>
 
-    <%= form.label :subject %>
-    <%= form.text_field :subject %>
+   <%= error_messages_for :comment, :header_tag => "h2" %>
 
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-      
-    <%= form.label :email %>   
-    <%= form.text_field :email %>
+   <%= form.label :subject %>
+   <%= form.text_field :subject %>
 
-    <%= form.label :body %>
-    <%= form.text_area :body, :size=>"20x10" %>
+   <%= form.label :name %>
+   <%= form.text_field :name %>
 
-    <%= form.hidden_field :parent_id %>
-    
-    <div id="submit_button_<%=params[:comment_id] %>">
-      <%= submit_button %>	
-    </div>
+   <%= form.label :email %>   
+   <%= form.text_field :email %>
 
-    <div id="spinner_<%= params[:comment_id] %>" class="left" style="display:none;">
-      <img alt="Spinner" src="/images/f/spinner.gif" />
-    </div>
-		
-  <% end %>
+   <%= form.label :body %>
+   <%= form.text_area :body, :size=>"20x10" %>
+
+   <%= form.hidden_field :parent_id %>
+
+   <div id="submit_button_<%=params[:comment_id] %>">
+   <%= submit_button %>	
+   </div>
+
+   <div id="spinner_<%= params[:comment_id] %>" class="left" style="display:none;">
+   <img alt="Spinner" src="/images/f/spinner.gif" />
+   </div>
+   
+<% end %>

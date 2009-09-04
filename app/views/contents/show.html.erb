@@ -1,8 +1,14 @@
 <div id="breadcrumbs">
    <p><%= location_icon %> 
-      <%= link_to "Hom", "/" %> <%= image_tag("f/bullets/arrows/solidarrow.png") %> 
-      <%= link_to "Ruby on Rails", latest_path %> <%= image_tag("f/bullets/arrows/solidarrow.png") %> 
-      <%= link_to @content.main_category.name, category_path(@content.main_category.permalink) %> <%= image_tag("f/bullets/arrows/solidarrow.png") %>
+      <%= link_to "Home", "/" %> 
+      
+      <%= image_tag("f/bullets/arrows/solidarrow.png") %> 
+      <%= link_to "Ruby on Rails", latest_path %> 
+      
+      <%= image_tag("f/bullets/arrows/solidarrow.png") %> 
+      <%= link_to @content.main_category.name, category_path(@content.main_category.permalink) %> 
+      
+      <%= image_tag("f/bullets/arrows/solidarrow.png") %>
    </p>
 </div>
 				
@@ -45,9 +51,26 @@
       <%= render :partial => "comments/comment", :collection => @content.comments.roots %>
       
       <div id="new_comment_" %>
-         <p><%= diamond %> <%= link_to_remote "Add new comment", :url => new_content_comment_path(@content), :method => :get %></p>
+         <p><%= diamond %> <%= link_to "Add new comment", new_content_comment_path(@content), :id => "new_comment_link" %></p>
       </div>
 
    </div>
 
 </div>
+
+<script>
+
+$('new_comment_link').observe('click', function(e) 
+   {
+      e.stop();
+      new Ajax.Request('/ruby_on_rails/contents/<%= @content.id %>/comments/new', {method:'get'});
+   }
+)
+$$('.child_comment_link').invoke('observe', 'click', function(e)
+   {
+      e.stop();
+      new Ajax.Request('/ruby_on_rails/contents/<%= @content.id %>/comments/' + e.element().id + '/child_comments/new', {method:'get'});
+   }
+)
+
+</script>

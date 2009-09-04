@@ -38,7 +38,14 @@ class CommentsController < ApplicationController
 		@comment = Comment.new(params[:comment].merge({:content_id => params[:content_id]}))
     
     respond_to do |format|
-      format.html { redirect_to contents_path(@comment.content) }
+      format.html do 
+         if @comment.save
+         pp @comment.content
+            redirect_to content_path(@comment.content.permalink)
+         else
+            render :action => "new"
+         end
+      end
       
       format.js do
         render :update do |page|
