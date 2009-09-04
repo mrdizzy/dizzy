@@ -40,7 +40,6 @@ class CommentsController < ApplicationController
     respond_to do |format|
       format.html do 
          if @comment.save
-         pp @comment.content
             redirect_to content_path(@comment.content.permalink)
          else
             render :action => "new"

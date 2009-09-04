@@ -1,4 +1,4 @@
-<% form_for @comment, :url => content_comments_path do |form| %>
+<% form_for @comment, :url => content_comments_path, :html => { :class => "comment_form" } do |form| %>
 
    <%= error_messages_for :comment, :header_tag => "h2" %>
 

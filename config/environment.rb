@@ -3,7 +3,7 @@
 # Uncomment below to force Rails into production mode
 # (Use only when you can't set environment variables through your web/app server)
 # ENV['RAILS_ENV'] = 'production'
-RAILS_GEM_VERSION = '2.1.1'
+RAILS_GEM_VERSION = '2.3.3'
 
 # Recaptcha keys
 RECAPTCHA_PUBLIC_KEY = '6LfP1AQAAAAAAAKhfOUrKLj87PfBp77czQ87drhk'
