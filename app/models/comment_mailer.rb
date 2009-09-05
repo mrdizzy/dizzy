@@ -1,4 +1,4 @@
-class CommentMailer < ApplicationMailer
+class CommentMailer < ActionMailer::Base
   
   def response(parent_comment,sent_at = Time.now)
     subject    "#{parent_comment.name}: a reply to your comment at dizzy.co.uk..."

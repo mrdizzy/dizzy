@@ -112,7 +112,7 @@ class CommentsControllerTest < ActionController::TestCase
   end
   
   def test_7_should_succeed_on_new_main_comment_html
-    get (:new, :content_id => article.id)
+    get(:new, :content_id => article.id)
     assert_template("new")
     savefile(@response.body)
   end

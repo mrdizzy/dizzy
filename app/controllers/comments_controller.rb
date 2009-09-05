@@ -40,6 +40,7 @@ class CommentsController < ApplicationController
     respond_to do |format|
       format.html do 
          if @comment.save
+		 CommentMailer.create_email_dizzy(@comment)
             redirect_to content_path(@comment.content.permalink)
          else
             render :new
@@ -47,13 +48,8 @@ class CommentsController < ApplicationController
       end
       
       format.js do
-        render :update do |page|
-          if @comment.save
-            page.replace_html "new_comment_#{@comment.parent_id}", :partial => 'comment', :object => @comment 
-          else
-            page.replace_html "new_comment_#{@comment.parent_id}", :partial => 'comment_form'
-          end
-        end
+        puts @comment.save!
+		  
       end
       
     end

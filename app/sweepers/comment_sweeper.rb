@@ -14,9 +14,9 @@ class CommentSweeper < ActionController::Caching::Sweeper
 	
 	def expire_content_page(comment)
 		if comment.content.is_a?(Cheatsheet)			
-			expire_page hash_for_cheatsheet_path(:id => comment.content.permalink)
+			expire_page cheatsheet_path(:id => comment.content.permalink)
 		else
-			expire_page hash_for_content_path(:id => comment.content.permalink)	
+			expire_page content_path(:id => comment.content.permalink)	
 		end
 	end
 end

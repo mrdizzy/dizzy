@@ -1,0 +1,337 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Action Controller: Exception caught</title>
+  <style>
+    body { background-color: #fff; color: #333; }
+
+    body, p, ol, ul, td {
+      font-family: verdana, arial, helvetica, sans-serif;
+      font-size:   13px;
+      line-height: 18px;
+    }
+
+    pre {
+      background-color: #eee;
+      padding: 10px;
+      font-size: 11px;
+    }
+
+    a { color: #000; }
+    a:visited { color: #666; }
+    a:hover { color: #fff; background-color:#000; }
+  </style>
+</head>
+<body>
+
+<h1>
+  ArgumentError in
+  Comments#create
+</h1>
+
+<p>
+  Showing <i>app/mailers/views/comment_mailer/notification.html.erb</i> where line <b>#</b> raised:
+  <pre><code>wrong number of arguments (0 for 1)</code></pre>
+</p>
+
+<p>Extracted source (around line <b>#</b>):
+<pre><code></code></pre></p>
+
+<p></p>
+
+
+
+
+<p><code>RAILS_ROOT: H:/InstantRails-2.0-win/rails_apps/gitdizzy</code></p>
+
+<div id="traces">
+  
+    
+    <a href="#" onclick="document.getElementById('Framework-Trace').style.display='none';document.getElementById('Full-Trace').style.display='none';document.getElementById('Application-Trace').style.display='block';; return false;">Application Trace</a> |
+  
+    
+    <a href="#" onclick="document.getElementById('Application-Trace').style.display='none';document.getElementById('Full-Trace').style.display='none';document.getElementById('Framework-Trace').style.display='block';; return false;">Framework Trace</a> |
+  
+    
+    <a href="#" onclick="document.getElementById('Application-Trace').style.display='none';document.getElementById('Framework-Trace').style.display='none';document.getElementById('Full-Trace').style.display='block';; return false;">Full Trace</a> 
+  
+
+  
+    <div id="Application-Trace" style="display: block;">
+      <pre><code>H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_view/base.rb:326:in `response'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_view/base.rb:326:in `_set_controller_content_type'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_view/renderable.rb:32:in `send'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_view/renderable.rb:32:in `render_without_template_tracking'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_view/base.rb:301:in `with_template'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_view/renderable.rb:30:in `render_without_template_tracking'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_view/test_case.rb:20:in `render'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_view/template.rb:199:in `render_template'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_view/base.rb:260:in `render'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionmailer-2.3.3/lib/action_mailer/base.rb:566:in `render'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionmailer-2.3.3/lib/action_mailer/base.rb:552:in `render_message'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionmailer-2.3.3/lib/action_mailer/base.rb:493:in `create!'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionmailer-2.3.3/lib/action_mailer/base.rb:452:in `initialize'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionmailer-2.3.3/lib/action_mailer/base.rb:395:in `new'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionmailer-2.3.3/lib/action_mailer/base.rb:395:in `method_missing'
+H:/InstantRails-2.0-win/rails_apps/gitdizzy/app/models/comment.rb:27:in `send_email_notification'
+H:/InstantRails-2.0-win/rails_apps/gitdizzy/app/controllers/comments_controller.rb:42:in `create'
+H:/InstantRails-2.0-win/rails_apps/gitdizzy/app/controllers/comments_controller.rb:40:in `create'</code></pre>
+    </div>
+  
+    <div id="Framework-Trace" style="display: none;">
+      <pre><code>H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_view/base.rb:326:in `response'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_view/base.rb:326:in `_set_controller_content_type'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_view/renderable.rb:32:in `send'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_view/renderable.rb:32:in `render_without_template_tracking'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_view/base.rb:301:in `with_template'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_view/renderable.rb:30:in `render_without_template_tracking'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_view/test_case.rb:20:in `render'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_view/template.rb:199:in `render_template'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_view/base.rb:260:in `render'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionmailer-2.3.3/lib/action_mailer/base.rb:566:in `render'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionmailer-2.3.3/lib/action_mailer/base.rb:552:in `render_message'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionmailer-2.3.3/lib/action_mailer/base.rb:493:in `create!'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionmailer-2.3.3/lib/action_mailer/base.rb:452:in `initialize'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionmailer-2.3.3/lib/action_mailer/base.rb:395:in `new'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionmailer-2.3.3/lib/action_mailer/base.rb:395:in `method_missing'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.3/lib/active_support/callbacks.rb:178:in `send'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.3/lib/active_support/callbacks.rb:178:in `evaluate_method'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.3/lib/active_support/callbacks.rb:166:in `call'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.3/lib/active_support/callbacks.rb:93:in `run'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.3/lib/active_support/callbacks.rb:92:in `each'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.3/lib/active_support/callbacks.rb:92:in `send'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.3/lib/active_support/callbacks.rb:92:in `run'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.3/lib/active_support/callbacks.rb:276:in `run_callbacks'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.3/lib/active_record/callbacks.rb:344:in `callback'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.3/lib/active_record/callbacks.rb:251:in `create_or_update'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.3/lib/active_record/base.rb:2534:in `save_without_validation'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.3/lib/active_record/validations.rb:1009:in `save_without_dirty'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.3/lib/active_record/dirty.rb:79:in `save_without_transactions'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.3/lib/active_record/transactions.rb:229:in `send'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.3/lib/active_record/transactions.rb:229:in `with_transaction_returning_status'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.3/lib/active_record/connection_adapters/abstract/database_statements.rb:136:in `transaction'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.3/lib/active_record/transactions.rb:182:in `transaction'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.3/lib/active_record/transactions.rb:228:in `with_transaction_returning_status'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.3/lib/active_record/transactions.rb:196:in `save'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.3/lib/active_record/transactions.rb:208:in `rollback_active_record_state!'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.3/lib/active_record/transactions.rb:196:in `save'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/mime_responds.rb:135:in `call'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/mime_responds.rb:135:in `custom'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/mime_responds.rb:179:in `call'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/mime_responds.rb:179:in `respond'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/mime_responds.rb:173:in `each'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/mime_responds.rb:173:in `respond'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/mime_responds.rb:107:in `respond_to'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/base.rb:1327:in `send'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/base.rb:1327:in `perform_action_without_filters'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/filters.rb:617:in `call_filters'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/filters.rb:638:in `run_before_filters'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/filters.rb:206:in `call'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/filters.rb:206:in `around_proc'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.3/lib/active_support/callbacks.rb:182:in `call'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.3/lib/active_support/callbacks.rb:182:in `evaluate_method'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/filters.rb:184:in `call'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/filters.rb:635:in `run_before_filters'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/filters.rb:615:in `call_filters'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.3/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.3/lib/active_support/core_ext/benchmark.rb:10:in `realtime'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.3/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/rescue.rb:160:in `perform_action_without_flash'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/flash.rb:146:in `perform_action'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/base.rb:527:in `send'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/base.rb:527:in `process_without_filters'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/filters.rb:606:in `process'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/base.rb:391:in `process'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/base.rb:386:in `call'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/routing/route_set.rb:434:in `call'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/dispatcher.rb:88:in `dispatch'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/dispatcher.rb:111:in `_call'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/dispatcher.rb:82:in `initialize'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.3/lib/active_record/query_cache.rb:29:in `call'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.3/lib/active_record/query_cache.rb:29:in `call'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.3/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.3/lib/active_record/query_cache.rb:9:in `cache'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.3/lib/active_record/query_cache.rb:28:in `call'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.3/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/rack-1.0.0/lib/rack/head.rb:9:in `call'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/rack-1.0.0/lib/rack/methodoverride.rb:24:in `call'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/params_parser.rb:15:in `call'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/session/cookie_store.rb:93:in `call'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/failsafe.rb:26:in `call'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/rack-1.0.0/lib/rack/lock.rb:11:in `call'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/rack-1.0.0/lib/rack/lock.rb:11:in `synchronize'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/rack-1.0.0/lib/rack/lock.rb:11:in `call'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/dispatcher.rb:106:in `call'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/rack-1.0.0/lib/rack/lint.rb:47:in `_call'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/rack-1.0.0/lib/rack/lint.rb:35:in `call'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/integration.rb:313:in `process'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/integration.rb:202:in `post'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/integration.rb:491:in `__send__'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/integration.rb:491:in `post'
+H:/InstantRails-2.0-win/rails_apps/gitdizzy/vendor/plugins/cache_test/lib/cosinux/page_cache_test.rb:116:in `assert_expire_pages'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.3/lib/active_support/testing/setup_and_teardown.rb:62:in `__send__'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.3/lib/active_support/testing/setup_and_teardown.rb:62:in `run'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/integration.rb:645:in `run'
+H:/InstantRails-2.0-win/ruby/lib/ruby/1.8/test/unit/testsuite.rb:34:in `run'
+H:/InstantRails-2.0-win/ruby/lib/ruby/1.8/test/unit/testsuite.rb:33:in `each'
+H:/InstantRails-2.0-win/ruby/lib/ruby/1.8/test/unit/testsuite.rb:33:in `run'
+H:/InstantRails-2.0-win/ruby/lib/ruby/1.8/test/unit/testsuite.rb:34:in `run'
+H:/InstantRails-2.0-win/ruby/lib/ruby/1.8/test/unit/testsuite.rb:33:in `each'
+H:/InstantRails-2.0-win/ruby/lib/ruby/1.8/test/unit/testsuite.rb:33:in `run'
+H:/InstantRails-2.0-win/ruby/lib/ruby/1.8/test/unit/ui/testrunnermediator.rb:46:in `run_suite'
+H:/InstantRails-2.0-win/ruby/lib/ruby/1.8/test/unit/ui/console/testrunner.rb:67:in `start_mediator'
+H:/InstantRails-2.0-win/ruby/lib/ruby/1.8/test/unit/ui/console/testrunner.rb:41:in `start'
+H:/InstantRails-2.0-win/ruby/lib/ruby/1.8/test/unit/ui/testrunnerutilities.rb:29:in `run'
+H:/InstantRails-2.0-win/ruby/lib/ruby/1.8/test/unit/autorunner.rb:216:in `run'
+H:/InstantRails-2.0-win/ruby/lib/ruby/1.8/test/unit/autorunner.rb:12:in `run'
+H:/InstantRails-2.0-win/ruby/lib/ruby/1.8/test/unit.rb:278</code></pre>
+    </div>
+  
+    <div id="Full-Trace" style="display: none;">
+      <pre><code>H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_view/base.rb:326:in `response'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_view/base.rb:326:in `_set_controller_content_type'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_view/renderable.rb:32:in `send'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_view/renderable.rb:32:in `render_without_template_tracking'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_view/base.rb:301:in `with_template'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_view/renderable.rb:30:in `render_without_template_tracking'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_view/test_case.rb:20:in `render'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_view/template.rb:199:in `render_template'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_view/base.rb:260:in `render'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionmailer-2.3.3/lib/action_mailer/base.rb:566:in `render'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionmailer-2.3.3/lib/action_mailer/base.rb:552:in `render_message'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionmailer-2.3.3/lib/action_mailer/base.rb:493:in `create!'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionmailer-2.3.3/lib/action_mailer/base.rb:452:in `initialize'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionmailer-2.3.3/lib/action_mailer/base.rb:395:in `new'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionmailer-2.3.3/lib/action_mailer/base.rb:395:in `method_missing'
+H:/InstantRails-2.0-win/rails_apps/gitdizzy/app/models/comment.rb:27:in `send_email_notification'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.3/lib/active_support/callbacks.rb:178:in `send'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.3/lib/active_support/callbacks.rb:178:in `evaluate_method'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.3/lib/active_support/callbacks.rb:166:in `call'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.3/lib/active_support/callbacks.rb:93:in `run'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.3/lib/active_support/callbacks.rb:92:in `each'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.3/lib/active_support/callbacks.rb:92:in `send'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.3/lib/active_support/callbacks.rb:92:in `run'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.3/lib/active_support/callbacks.rb:276:in `run_callbacks'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.3/lib/active_record/callbacks.rb:344:in `callback'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.3/lib/active_record/callbacks.rb:251:in `create_or_update'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.3/lib/active_record/base.rb:2534:in `save_without_validation'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.3/lib/active_record/validations.rb:1009:in `save_without_dirty'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.3/lib/active_record/dirty.rb:79:in `save_without_transactions'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.3/lib/active_record/transactions.rb:229:in `send'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.3/lib/active_record/transactions.rb:229:in `with_transaction_returning_status'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.3/lib/active_record/connection_adapters/abstract/database_statements.rb:136:in `transaction'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.3/lib/active_record/transactions.rb:182:in `transaction'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.3/lib/active_record/transactions.rb:228:in `with_transaction_returning_status'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.3/lib/active_record/transactions.rb:196:in `save'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.3/lib/active_record/transactions.rb:208:in `rollback_active_record_state!'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.3/lib/active_record/transactions.rb:196:in `save'
+H:/InstantRails-2.0-win/rails_apps/gitdizzy/app/controllers/comments_controller.rb:42:in `create'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/mime_responds.rb:135:in `call'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/mime_responds.rb:135:in `custom'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/mime_responds.rb:179:in `call'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/mime_responds.rb:179:in `respond'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/mime_responds.rb:173:in `each'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/mime_responds.rb:173:in `respond'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/mime_responds.rb:107:in `respond_to'
+H:/InstantRails-2.0-win/rails_apps/gitdizzy/app/controllers/comments_controller.rb:40:in `create'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/base.rb:1327:in `send'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/base.rb:1327:in `perform_action_without_filters'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/filters.rb:617:in `call_filters'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/filters.rb:638:in `run_before_filters'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/filters.rb:206:in `call'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/filters.rb:206:in `around_proc'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.3/lib/active_support/callbacks.rb:182:in `call'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.3/lib/active_support/callbacks.rb:182:in `evaluate_method'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/filters.rb:184:in `call'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/filters.rb:635:in `run_before_filters'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/filters.rb:615:in `call_filters'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.3/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.3/lib/active_support/core_ext/benchmark.rb:10:in `realtime'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.3/lib/active_support/core_ext/benchmark.rb:17:in `ms'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/rescue.rb:160:in `perform_action_without_flash'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/flash.rb:146:in `perform_action'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/base.rb:527:in `send'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/base.rb:527:in `process_without_filters'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/filters.rb:606:in `process'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/base.rb:391:in `process'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/base.rb:386:in `call'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/routing/route_set.rb:434:in `call'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/dispatcher.rb:88:in `dispatch'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/dispatcher.rb:111:in `_call'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/dispatcher.rb:82:in `initialize'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.3/lib/active_record/query_cache.rb:29:in `call'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.3/lib/active_record/query_cache.rb:29:in `call'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.3/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.3/lib/active_record/query_cache.rb:9:in `cache'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.3/lib/active_record/query_cache.rb:28:in `call'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activerecord-2.3.3/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/rack-1.0.0/lib/rack/head.rb:9:in `call'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/rack-1.0.0/lib/rack/methodoverride.rb:24:in `call'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/params_parser.rb:15:in `call'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/session/cookie_store.rb:93:in `call'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/failsafe.rb:26:in `call'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/rack-1.0.0/lib/rack/lock.rb:11:in `call'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/rack-1.0.0/lib/rack/lock.rb:11:in `synchronize'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/rack-1.0.0/lib/rack/lock.rb:11:in `call'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/dispatcher.rb:106:in `call'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/rack-1.0.0/lib/rack/lint.rb:47:in `_call'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/rack-1.0.0/lib/rack/lint.rb:35:in `call'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/integration.rb:313:in `process'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/integration.rb:202:in `post'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/integration.rb:491:in `__send__'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/integration.rb:491:in `post'
+cache_contents_test.rb:57:in `test_7_should_expire_show_contents_on_comments_create'
+H:/InstantRails-2.0-win/rails_apps/gitdizzy/vendor/plugins/cache_test/lib/cosinux/page_cache_test.rb:116:in `assert_expire_pages'
+cache_contents_test.rb:56:in `test_7_should_expire_show_contents_on_comments_create'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.3/lib/active_support/testing/setup_and_teardown.rb:62:in `__send__'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/activesupport-2.3.3/lib/active_support/testing/setup_and_teardown.rb:62:in `run'
+H:/InstantRails-2.0-win/ruby/lib/ruby/gems/1.8/gems/actionpack-2.3.3/lib/action_controller/integration.rb:645:in `run'
+H:/InstantRails-2.0-win/ruby/lib/ruby/1.8/test/unit/testsuite.rb:34:in `run'
+H:/InstantRails-2.0-win/ruby/lib/ruby/1.8/test/unit/testsuite.rb:33:in `each'
+H:/InstantRails-2.0-win/ruby/lib/ruby/1.8/test/unit/testsuite.rb:33:in `run'
+H:/InstantRails-2.0-win/ruby/lib/ruby/1.8/test/unit/testsuite.rb:34:in `run'
+H:/InstantRails-2.0-win/ruby/lib/ruby/1.8/test/unit/testsuite.rb:33:in `each'
+H:/InstantRails-2.0-win/ruby/lib/ruby/1.8/test/unit/testsuite.rb:33:in `run'
+H:/InstantRails-2.0-win/ruby/lib/ruby/1.8/test/unit/ui/testrunnermediator.rb:46:in `run_suite'
+H:/InstantRails-2.0-win/ruby/lib/ruby/1.8/test/unit/ui/console/testrunner.rb:67:in `start_mediator'
+H:/InstantRails-2.0-win/ruby/lib/ruby/1.8/test/unit/ui/console/testrunner.rb:41:in `start'
+H:/InstantRails-2.0-win/ruby/lib/ruby/1.8/test/unit/ui/testrunnerutilities.rb:29:in `run'
+H:/InstantRails-2.0-win/ruby/lib/ruby/1.8/test/unit/autorunner.rb:216:in `run'
+H:/InstantRails-2.0-win/ruby/lib/ruby/1.8/test/unit/autorunner.rb:12:in `run'
+H:/InstantRails-2.0-win/ruby/lib/ruby/1.8/test/unit.rb:278
+cache_contents_test.rb:69</code></pre>
+    </div>
+  
+</div>
+
+
+
+
+
+
+
+<h2 style="margin-top: 30px">Request</h2>
+<p><b>Parameters</b>: <pre>{&quot;content_id&quot;=&gt;&quot;79&quot;,
+ &quot;comment&quot;=&gt;{&quot;name&quot;=&gt;&quot;Malandra Mysogynist&quot;,
+ &quot;body&quot;=&gt;&quot;This is a comment&quot;,
+ &quot;subject&quot;=&gt;&quot;Hello&quot;,
+ &quot;email&quot;=&gt;&quot;malandra@dutyfree.com&quot;}}</pre></p>
+
+<p><a href="#" onclick="document.getElementById('session_dump').style.display='block'; return false;">Show session dump</a></p>
+<div id="session_dump" style="display:none"><pre class='debug_dump'>--- 
+</pre></div>
+
+
+<h2 style="margin-top: 30px">Response</h2>
+<p><b>Headers</b>: <pre>{&quot;Content-Type&quot;=&gt;&quot;text/html&quot;,
+ &quot;Cache-Control&quot;=&gt;&quot;no-cache&quot;}</pre></p>
+
+
+
+</body>
+</html>

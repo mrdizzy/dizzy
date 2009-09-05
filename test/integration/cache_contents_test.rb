@@ -50,8 +50,11 @@ class CacheContentsTest < ActionController::IntegrationTest
  
   def test_7_should_expire_show_contents_on_comments_create
     article = Factory.create(:article, :permalink => "store-file-uploads-in-database")
+    #comment_parent = Factory.create(:comment, :content_id => article.id)
+    #comment_child = Factory.create(:comment, :content_id => article.id, :parent_id => comment_parent.id)
+    
   	assert_expire_pages("/ruby_on_rails/contents/#{article.permalink}") do |*urls|
-  		post content_comments_path(article.id), 
+  		post content_comments_path(article), 
   								{ :comment => { 	
   												:subject => "Hello", 
 		  										:body => "This is a comment", 
@@ -59,6 +62,7 @@ class CacheContentsTest < ActionController::IntegrationTest
 		  										:email => 'malandra@dutyfree.com' }, 
   								:content_id => article.id  									
   								}
+                  savefile(@response.body)
   	end
   end
   
