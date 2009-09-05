@@ -45,7 +45,7 @@
 	$$('.contact_link').invoke('observe', 'click', function(e)
 	{
 		e.stop();
-		$('contact_form').show();
+		$('contact_form').toggle();
 		watchCommentForm();
 	}
 	);
