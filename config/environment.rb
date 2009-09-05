@@ -3,7 +3,7 @@
 # Uncomment below to force Rails into production mode
 # (Use only when you can't set environment variables through your web/app server)
 # ENV['RAILS_ENV'] = 'production'
-RAILS_GEM_VERSION = '2.2.2'
+RAILS_GEM_VERSION = '2.3.3'
 
 # Recaptcha keys
 RECAPTCHA_PUBLIC_KEY = '6LfP1AQAAAAAAAKhfOUrKLj87PfBp77czQ87drhk'
@@ -19,7 +19,7 @@ Rails::Initializer.run do |config|
   
   # Add load paths for sweepers and mailers
   config.load_paths << "#{RAILS_ROOT}/app/sweepers"
-  #config.load_paths << "#{RAILS_ROOT}/app/mailers"
+  config.load_paths << "#{RAILS_ROOT}/app/mailers"
   
   config.action_controller.session = { :session_key => "_dizzy_session", :secret => "beaslewig175world66607814752865" }
   

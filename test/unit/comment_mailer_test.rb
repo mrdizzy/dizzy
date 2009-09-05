@@ -5,9 +5,9 @@ class CommentMailerTest < ActionMailer::TestCase
   def test_1_response_to_parent  	
    mother = Factory(:comment)
    mother.children << [ Factory.build(:comment, :content_id => mother.content_id ), Factory.build(:comment, :content_id => mother.content_id) ]
-   assert_valid mother
+   assert mother.valid?
    
-	response = CommentMailer.create_response(mother)
+	response = CommentMailer.create_reply_notification(mother)
    
 	assert_equal "#{mother.name}: a reply to your comment at dizzy.co.uk...", response.subject
 	assert_match /Dear #{mother.name},/, response.body
@@ -16,8 +16,6 @@ class CommentMailerTest < ActionMailer::TestCase
 	assert_match /Comment: #{mother.children.last.body}/, response.body
 	assert_equal "#{mother.email}", response.to[0]
 	assert_equal FROM_EMAIL, response.from[0]
-   
-   puts response.body
    
   end
 
