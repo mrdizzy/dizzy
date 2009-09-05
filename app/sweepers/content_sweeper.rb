@@ -19,7 +19,6 @@ class ContentSweeper < ActionController::Caching::Sweeper
 	def expire_content_page(record,permalink)
 		if record.is_a?(Cheatsheet)			
 			expire_page hash_for_cheatsheet_path(:id => permalink)
-			expire_page hash_for_formatted_cheatsheet_path(:id => permalink, :format => :png)
 			expire_page hash_for_formatted_cheatsheet_path(:id => permalink, :format => :pdf)	
 		else		
 			expire_page hash_for_content_path(:id => permalink)
