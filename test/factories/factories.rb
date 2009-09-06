@@ -109,8 +109,6 @@ Factory.define :portfolio_type do |p|
   p.visible true
   p.column_space 1
   p.description { Factory.next(:portfolio_type_name) }
-  p.uploaded_data { ActionController::TestUploadedFile.new(File.join(Rails.root,
-'test', 'fixtures', 'letterhead.png'), 'image/png') }
   p.position { Factory.next(:number) }
 end
 
@@ -118,8 +116,6 @@ Factory.define :portfolio_type_header, :class => PortfolioType do |p|
   p.visible true
   p.column_space 1
   p.description "Header"
-  p.uploaded_data { ActionController::TestUploadedFile.new(File.join(Rails.root,
-'test', 'fixtures', 'letterhead.png'), 'image/png') }
   p.position 0
 end
 

@@ -5,11 +5,11 @@ class PortfolioItem < ActiveRecord::Base
 	belongs_to 	:portfolio_type
 	belongs_to	:company
 	
-	validates_uniqueness_of :portfolio_type_id, :scope => 'company_id', :message => "must not be a duplicate"
+	validates_uniqueness_of :portfolio_type_id, :scope => 'company_id', :message => "must be unique"
 	validates_format_of :content_type,
 						:with => /png$/i,
 						:message => "must be a PNG file"
-	validates_inclusion_of		:size, :in => 1.kilobyte..100.kilobytes,:message => "must be between 1kb and 100kb"
+	validates_inclusion_of		:size, :in => 1.byte..100.kilobytes, :message => "must be between 1kb and 100kb"
 	validates_presence_of :data
 	validates_existence_of :portfolio_type
 	
@@ -20,8 +20,7 @@ class PortfolioItem < ActiveRecord::Base
 		@content_type ? @content_type : "image/png" 
 	end
 	
-	def uploaded_data=(binary_data)
-   
+	def uploaded_data=(binary_data)   
 		self.data = binary_data.read
 		self.size = binary_data.size
 	end

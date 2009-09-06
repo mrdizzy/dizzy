@@ -5,7 +5,7 @@ class CompaniesController < ApplicationController
 	before_filter :authorize
 		
 	def index
-		@companies = Company.all(:order => :name)
+		@companies = Company.all
 	end  
 	
   	def edit
@@ -14,7 +14,7 @@ class CompaniesController < ApplicationController
 
  	def new
     	@company 	= Company.new
-    	@portfolio_item = PortfolioItem.new
+    	@company.portfolio_items.build
 		render :edit
   	end
 
@@ -29,8 +29,8 @@ class CompaniesController < ApplicationController
 
 	def update
 		@company = Company.find(params[:id])
-      
-      if @company.update_attributes(params[:company])        
+
+      if @company.update_attributes(params[:company])   
          redirect_to companies_path
       else    
          render :edit

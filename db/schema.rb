@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090830112439) do
+ActiveRecord::Schema.define(:version => 20090906162410) do
 
   create_table "categories", :force => true do |t|
     t.string "name"
@@ -95,11 +95,10 @@ ActiveRecord::Schema.define(:version => 20090830112439) do
   add_index "portfolio_items", ["portfolio_type_id"], :name => "portfolio_type_id"
 
   create_table "portfolio_types", :force => true do |t|
-    t.string  "description",   :limit => 40
+    t.string  "description",  :limit => 40
     t.integer "column_space"
     t.integer "position"
-    t.binary  "header_binary"
-    t.boolean "visible",                     :default => true
+    t.boolean "visible",                    :default => true
   end
 
   create_table "versions", :force => true do |t|

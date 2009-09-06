@@ -146,7 +146,6 @@ class CompaniesControllerTest < ActionController::TestCase
   
     company.portfolio_items.each do |item| 
       assert_select "div#portfolio_item_#{item.id}" 
-      assert_select "img[alt='#{item.portfolio_type.description}']"
       assert_select "img[src='#{portfolio_item_path(item,:png)}']"
     end 
    
@@ -162,15 +161,15 @@ class CompaniesControllerTest < ActionController::TestCase
    post :update, { 	:id => company.id, 
                      :company =>
   								{ :name => "An updated company!", :description => "An updated description!",
-  						:existing_portfolio_items =>
+  						:portfolio_items_attributes =>
                      {  portfolio_item_a.id.to_s =>
   								
-  										{ :uploaded_data => fixture_file_upload("compliment.png", "image/png"), :portfolio_type_id => @portfolio_type_1.id }, 
+  										{ :uploaded_data => fixture_file_upload("compliment.png", "image/png"), :portfolio_type_id => @portfolio_type_1.id, :id => portfolio_item_a.id.to_s}, 
                         portfolio_item_b.id.to_s =>
   								
-  										{ :uploaded_data => fixture_file_upload("compliment.png", "image/png"), :portfolio_type_id => @portfolio_type_2.id }, 	
+  										{ :uploaded_data => fixture_file_upload("compliment.png", "image/png"), :portfolio_type_id => @portfolio_type_2.id, :id => portfolio_item_b.id.to_s }, 	
   								portfolio_item_c.id.to_s =>
-  										{ :uploaded_data => fixture_file_upload("compliment.png", "image/png"), :portfolio_type_id => @portfolio_type_header.id }, 	
+  										{ :uploaded_data => fixture_file_upload("compliment.png", "image/png"), :portfolio_type_id => @portfolio_type_header.id, :id => portfolio_item_c.id.to_s  }, 	
   								}
                        }
   					}, { :admin_password => PASSWORD }

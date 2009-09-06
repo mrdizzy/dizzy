@@ -12,14 +12,13 @@
  		
  	<%= f.label :description %>
   <%= f.text_field :description %>
-  	
-    <%= render :partial => "portfolio_items/edit", :collection => @company.portfolio_items.map { |item| item if item.new_record? }.compact %>
- 	  <%= render :partial => "item", :collection => @company.portfolio_items.map { |item| item unless item.new_record? }.compact %>
-  	
- 	<div id="new_items"></div>
-    
-  	<%= render :partial => "portfolio_items/new_link" %>
-    
-  	<%= submit_button %>
-    
+  
+  <%= render :partial => "item", :collection => @company.portfolio_items %>
+  
+  <div id="new_items"></div>
+  
+  <p><%= link_to_remote 'Add Another Item', :url => new_portfolio_item_path, :method => :get %></p>
+
+  <%= submit_button %>
+  
 <% end %>

@@ -2,6 +2,11 @@ class Company < ActiveRecord::Base
 
 	has_many :portfolio_items, :dependent => :destroy
 	has_many :portfolio_types, :through => :portfolio_items
+	
+	default_scope :order => :name
+	
+	accepts_nested_attributes_for :portfolio_items
+	
 	validates_presence_of :description, :name
 	validates_uniqueness_of :name
 	
@@ -18,21 +23,9 @@ class Company < ActiveRecord::Base
 	end
 	
 	def portfolio_items_for_display
-		self.portfolio_items.visible.find(:all, :order => "portfolio_types.position")
+		self.portfolio_items.visible.all(:order => "portfolio_types.position")
 	end
 	
-	def new_portfolio_items=(new_portfolio_items)
-		new_portfolio_items.each do |item|
-			self.portfolio_items.build(item)
-		end
-	end
-   
-   def existing_portfolio_items=(existing_portfolio_items)
-      self.portfolio_items.each do |item| 
-         item.update_attributes(existing_portfolio_items[item.id.to_s]) unless existing_portfolio_items[item.id.to_s].nil?  
-      end
-   end
-
 end
 
 # == Schema Info
