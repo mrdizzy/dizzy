@@ -1,6 +1,6 @@
 <h1><%= asterisk %> <%= @company.name || "New company" %></h1>
 
-<% form_for @company, :html =>{ :multipart => true } do |f| %>
+<% form_for @company, :html => { :multipart => true } do |f| %>
 	
 	<%= error_messages_for :company %>
 	

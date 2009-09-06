@@ -1,9 +1,10 @@
-<% div_for item do %>
+<% div_for item, item.new_record? ? item.object_id.to_s : nil do %>
 
-	<%= diamond %> 
-	<%= item.portfolio_type.description %>
+
 
 	<% unless item.new_record? %>
+		<%= diamond %> 
+		<%= item.portfolio_type.description %>
 		<p><%= image_tag(portfolio_item_path(item, :png)) %></p>
 		<p>
 			<%= link_to_remote 'edit', :url => edit_portfolio_item_path(item), :method => :get %> 
