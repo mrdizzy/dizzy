@@ -1,8 +1,9 @@
-<div id="portfolio_item_form_<%= portfolio_item.id %>">
-<% fields_for "company[existing_portfolio_items][]", portfolio_item do |f| %>  
-	<p>
+<% fields_for edit.new_record? ? "company[new_portfolio_items][]" : "company[existing_portfolio_items][]", edit do |f| %>  
+
+	<%= f.label :uploaded_data, "Choose file" %>
 	<%= f.file_field :uploaded_data %>
-	<%= f.collection_select :portfolio_type_id, designs, :id, :description %>
-	</p>  
+
+	<%= f.label :portfolio_type_id, "Choose type" %>
+	<%= f.collection_select :portfolio_type_id, PortfolioType.all, :id, :description %>
+
 <% end %>
-</div>

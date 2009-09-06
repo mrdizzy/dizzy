@@ -1,0 +1,14 @@
+<% div_for item do %>
+
+	<%= diamond %> 
+	<%= image_tag(portfolio_type_path(item.portfolio_type, :png), :alt => "#{item.portfolio_type.description}") %>
+
+	<p><%= image_tag(portfolio_item_path(item, :png)) %></p>
+
+	<p>
+		<%= link_to_remote 'edit', :url => edit_portfolio_item_path(item), :method => :get %> 
+		<%= diamond %> 
+		<%= link_to_remote 'delete', :url => portfolio_item_path(item), :method => :delete %> 
+	</p>
+
+<% end %>

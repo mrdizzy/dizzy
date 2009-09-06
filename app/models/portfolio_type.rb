@@ -1,5 +1,7 @@
 class PortfolioType < ActiveRecord::Base
 
+  default_scope :order => :description
+	
   attr_accessor :content_type, :size
 
 	has_many 					:portfolio_items, :dependent => :destroy

@@ -1,43 +1,25 @@
-<h1><%= asterisk %> <%= @company.name %></h1>
+<h1><%= asterisk %> <%= @company.name || "New company" %></h1>
 
-<% form_for :company, :url => company_path(@company.id), :html =>{:multipart => true, :method => :put}  do |form| %>
+<% form_for @company, :html =>{ :multipart => true } do |f| %>
 	
 	<%= error_messages_for :company %>
 	
-	<p><label for="company_name">Company</label>		
- 	<%= form.text_field :name %></p>
+	<%= f.label :name %>		
+ 	<%= f.text_field :name %>
  	
- 	<p><label for="company_visible">Visible?</label>
- 	<%= form.check_box :visible %></p>	
+ 	<%= f.label :visible %>
+ 	<%= f.check_box :visible %>
  		
- 	<p><label for="company_description">Description</label>
-  	<%= form.text_field :description %></p>  	  
+ 	<%= f.label :description %>
+  <%= f.text_field :description %>
   	
-  	<div id="existing_items">
+    <%= render :partial => "portfolio_items/edit", :collection => @company.portfolio_items.map { |item| item if item.new_record? }.compact %>
+ 	  <%= render :partial => "item", :collection => @company.portfolio_items.map { |item| item unless item.new_record? }.compact %>
   	
-  	<% @company.portfolio_items.each do |@portfolio_item| %>  
-	
-		<div id="portfolio_item_container_<%= @portfolio_item.id %>" class="portfolio_item_header">
-  			<%= diamond %> <%= image_tag(formatted_portfolio_type_path(@portfolio_item.portfolio_type.id, :png), :alt => "#{@portfolio_item.portfolio_type.description}") %>
-  			
-  			<div id="portfolio_item_<%= @portfolio_item.id %>" class="portfolio_item">
-	  			<ul>
-	  			<% for message in @portfolio_item.errors.full_messages %>  
-	  				<li><%= message %></li>
-	  			<% end %>
-	  			</ul>
-	  			
-	  			<p><%= image_tag(formatted_portfolio_item_path(@portfolio_item.id, :png)) unless @portfolio_item.id.nil? %></p>
-  			
-  				<p>
- 					<%= link_to_remote 'edit', :url => edit_portfolio_item_path(@portfolio_item.id), :method => :get %> <%= diamond %> <%= link_to_remote 'delete', :url =>  portfolio_item_path(@portfolio_item.id), :method => :delete %> 
- 				</p>
- 			</div>
- 		</div>
-  	<% end %>
-  	</div>
-  	
-  	<div id="new_items"></div>
-  	<%= render :partial => "portfolio_items/new_link", :locals => { :index => 1 } %>
+ 	<div id="new_items"></div>
+    
+  	<%= render :partial => "portfolio_items/new_link" %>
+    
   	<%= submit_button %>
+    
 <% end %>

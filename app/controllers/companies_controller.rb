@@ -5,27 +5,25 @@ class CompaniesController < ApplicationController
 	before_filter :authorize
 		
 	def index
-		@companies = Company.find(:all, :order => :name)
+		@companies = Company.all(:order => :name)
 	end  
 	
   	def edit
-  		@company = Company.find(params[:id] )
-   		@designs = PortfolioType.find(:all, :order => :description)
+  		@company = Company.find(params[:id])
    	end	
 
  	def new
     	@company 	= Company.new
-    	@designs	= PortfolioType.find(:all, :order => :description)
-    	@company.portfolio_items.build
+    	@portfolio_item = PortfolioItem.new
+		render :edit
   	end
 
 	def create    
-	  	@designs	= PortfolioType.find(:all)
 		@company 	= Company.new(params[:company])   	
 		if @company.save
 			redirect_to companies_path 	  			
 	  	else
-	  		render :action => 'new' 
+	  		render :edit
 	  	end
 	end
 
@@ -35,14 +33,17 @@ class CompaniesController < ApplicationController
       if @company.update_attributes(params[:company])        
          redirect_to companies_path
       else    
-         @designs = PortfolioType.find(:all)
-         render :action => 'edit'  
+         render :edit
       end 	 
  	end
 
 	def destroy
-		@company = Company.find(params[:id])
-		@company.destroy
+		company = Company.find(params[:id])
+		if company.destroy
+			render :update do |page|
+				page.remove "company_#{company.id}" 
+			end
+		end
 	end
 	
 end

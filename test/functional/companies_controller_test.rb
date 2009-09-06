@@ -3,14 +3,14 @@ require File.dirname(__FILE__) + '/../test_helper'
 class CompaniesControllerTest < ActionController::TestCase
 	
   def test_truth
-    assert true #
+    assert true 
   end
   
   def setup
     @portfolio_type_1 = Factory(:portfolio_type)
-	@portfolio_type_2 = Factory(:portfolio_type)
-	@portfolio_type_3 = Factory(:portfolio_type)
-	@portfolio_type_header = Factory(:portfolio_type_header)
+    @portfolio_type_2 = Factory(:portfolio_type)
+	  @portfolio_type_3 = Factory(:portfolio_type)
+	  @portfolio_type_header = Factory(:portfolio_type_header)
   end
  
   # NEW
@@ -18,7 +18,14 @@ class CompaniesControllerTest < ActionController::TestCase
   def test_1_new_company
   	get :new, {}, { :admin_password => PASSWORD }
   	assert_response :success
-  	assert_template "companies/new"
+    assert_select "form[id=new_company]" do 
+        assert_select "input[value=put]", :count => 0
+    end
+    assert_select "form[enctype='multipart/form-data']"
+    assert_select "form[action='#{companies_path}']"
+    
+    savefile(@response.body)
+  	assert_template "companies/edit"
   end
   
   def test_2_new_company_should_fail_when_not_logged_in
@@ -41,12 +48,12 @@ class CompaniesControllerTest < ActionController::TestCase
   										{ :uploaded_data => fixture_file_upload("letterhead.png", "image/png"), :portfolio_type_id => @portfolio_type_3.id }, 	
   								}	
   					}, { :admin_password => PASSWORD }
-	savefile(@response.body)
+  
 	assert_equal 1, assigns(:company).errors.size, assigns(:company).errors.full_messages
 	assert_equal ["Company must have a header graphic"], assigns(:company).errors.full_messages, "Company must have a header graphic"				
 					
   	assert_response :success
-  	assert_template "companies/new"
+  	assert_template "companies/edit"
   end
 
   def test_4_should_pass_new_company_with_valid_header_graphic
@@ -92,7 +99,7 @@ class CompaniesControllerTest < ActionController::TestCase
 		assert_equal 1, assigns(:company).errors.size, assigns(:company).errors.full_messages
 		assert_equal "can't be blank", assigns(:company).errors[:name], "Name should have error message"
   		assert_response :success
-  		assert_template "companies/new"
+  		assert_template "companies/edit"
   end
 
   def test_6_should_fail_new_company_with_no_description
@@ -112,7 +119,7 @@ class CompaniesControllerTest < ActionController::TestCase
 		assert_equal 1, assigns(:company).errors.size, assigns(:company).errors.full_messages
 		assert_equal "can't be blank", assigns(:company).errors[:description], "description can't be blank!"
   		assert_response :success
-  		assert_template "companies/new"
+  		assert_template "companies/edit"
   end
   
   # EDIT
@@ -128,9 +135,21 @@ class CompaniesControllerTest < ActionController::TestCase
    company = Factory(:company, :portfolio_items => [ Factory(:portfolio_item), Factory(:portfolio_item), Factory(:portfolio_item, :portfolio_type => @portfolio_type_header)] )
    
    post :edit, { :id => company.id }, { :admin_password => PASSWORD}
-   assert_response :success
-  
+   
+   assert_response :success  
    assert_select "h1", :text => "Heavenly Chocolate Fountains"
+   assert_select "form[enctype=multipart/form-data]"
+   assert_select "form[action=/companies/#{company.id}]"
+   assert_select "form[id=edit_company_#{company.id}]" do
+    assert_select "input[value=put]"
+   end
+  
+    company.portfolio_items.each do |item| 
+      assert_select "div#portfolio_item_#{item.id}" 
+      assert_select "img[alt='#{item.portfolio_type.description}']"
+      assert_select "img[src='#{portfolio_item_path(item,:png)}']"
+    end 
+   
  end
  
  def test_9_should_succeed_on_update
@@ -158,7 +177,7 @@ class CompaniesControllerTest < ActionController::TestCase
 
 		assert_equal 0, assigns(:company).errors.size, assigns(:company).errors.full_messages
 		assert_equal assigns(:company).name, "An updated company!", "Name should have been updated!"
-      assert_equal assigns(:company).description, "An updated description!", "Description should have been updated!"  
+    assert_equal assigns(:company).description, "An updated description!", "Description should have been updated!"  
 
    company = Company.find(company.id)
    assert company, "Company must exist"
