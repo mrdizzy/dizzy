@@ -1,4 +1,4 @@
-<% div_for item, item.new_record? ? item.object_id.to_s : nil do %>
+<% div_for item do %>
   
   <% unless item.new_record? %>
   
@@ -8,7 +8,7 @@
     <p>
     <%= link_to_remote 'edit', :url => edit_portfolio_item_path(item), :method => :get %> 
     <%= diamond %> 
-    <%= link_to_remote 'delete', :url => portfolio_item_path(item), :method => :delete %> 
+    <%= link_to_remote 'delete', :url => item, :method => :delete %> 
     </p>
   
   <% end %>

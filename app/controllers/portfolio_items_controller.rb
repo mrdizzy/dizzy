@@ -13,9 +13,9 @@ class PortfolioItemsController < ApplicationController
 	end
 	
 	def edit
-		@portfolio_item		= PortfolioItem.find(params[:id])
+		portfolio_item		= PortfolioItem.find(params[:id])
 		render :update do |page|
-			page.insert_html :bottom, "portfolio_item_#{@portfolio_item.id}", :partial => 'edit', :object => @portfolio_item
+			page[portfolio_item].insert render(:partial => 'edit', :object => portfolio_item), :bottom
 		end
 	end
 	
