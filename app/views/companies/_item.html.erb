@@ -1,18 +1,18 @@
 <% div_for item, item.new_record? ? item.object_id.to_s : nil do %>
-
-
-
-	<% unless item.new_record? %>
-		<%= diamond %> 
-		<%= item.portfolio_type.description %>
-		<p><%= image_tag(portfolio_item_path(item, :png)) %></p>
-		<p>
-			<%= link_to_remote 'edit', :url => edit_portfolio_item_path(item), :method => :get %> 
-			<%= diamond %> 
-			<%= link_to_remote 'delete', :url => portfolio_item_path(item), :method => :delete %> 
-		</p>
-	<% end %>
-	
-	<%= render :partial => "portfolio_items/edit", :object => item unless item.errors.empty? %>
+  
+  <% unless item.new_record? %>
+  
+    <%= diamond %> 
+    <%= item.portfolio_type.description %>
+    <p><%= image_tag(portfolio_item_path(item, :png)) %></p>
+    <p>
+    <%= link_to_remote 'edit', :url => edit_portfolio_item_path(item), :method => :get %> 
+    <%= diamond %> 
+    <%= link_to_remote 'delete', :url => portfolio_item_path(item), :method => :delete %> 
+    </p>
+  
+  <% end %>
+  
+  <%= render :partial => "portfolio_items/edit", :object => item unless item.errors.empty? %>
 
 <% end %>

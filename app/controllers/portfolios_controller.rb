@@ -7,7 +7,7 @@ class PortfoliosController < ApplicationController
 		@company = Company.find_by_name("Hurricane Sound")
 		@header		= PortfolioItem.header.find_by_company_id(@company.id)
 		respond_to do |wants|
-			wants.html { render :action => "show"}
+			wants.html { render :show}
 			wants.js do
 				render :update do |page|
 					page.replace_html :portfolio_list, :partial => "company_list"
