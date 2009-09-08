@@ -26,12 +26,16 @@
 				<td><%= form.text_area :message, :size => "60x10" %></td>
 			</tr>
 			<tr>
+<<<<<<< HEAD:app/views/shared/_contact_form.html.erb
 				<td><%= form.label :answer, @message.question %></td>
 				<td><%= form.text_field :answer %>
 				<% @message.answer_confirmation.each do |answer| %>
 					<%= form.text_field :answer_confirmation %>
 				<% end %>
 				</td>
+=======
+				<td><%= form.captcha %></td>
+>>>>>>> ab2cf48d7a7b2c4fe990743320e794c6e86bbd78:app/views/shared/_contact_form.html.erb
 			</tr>
 		</table>
 
