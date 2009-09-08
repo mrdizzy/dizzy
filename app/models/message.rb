@@ -6,6 +6,8 @@ class Message < ActiveRecord::Base
 	
 	after_save :deliver_message
 
+	acts_as_textcaptcha
+
 	def validate
 		recaptcha = Net::HTTP.post_form URI.parse("http://api-verify.recaptcha.net/verify"), {
 			:privatekey => RECAPTCHA_PRIVATE_KEY,
