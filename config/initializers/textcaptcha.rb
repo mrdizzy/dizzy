@@ -1,0 +1,1 @@
+TEXTCAPTCHA = "1l9vs903fvj4coc48cc0gckw8"

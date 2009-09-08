@@ -1,7 +1,11 @@
+require 'digest/md5'
+
 class Message < ActiveRecord::Base
-	attr_accessor :recaptcha_response_field, :recaptcha_challenge_field, :remote_ip
 	
-	validates_presence_of :email, :name, :message, :recaptcha_response_field
+	attr_accessor :answer
+  attr_reader   :answer_confirmation
+	
+	validates_presence_of :email, :name, :message, :answer
 	validates_confirmation_of :email
 	
 	after_save :deliver_message
@@ -21,7 +25,20 @@ class Message < ActiveRecord::Base
 	def deliver_message
 		Mercury.deliver_new_message(self)
 	end
+	
+	def question
+    @question ||= get_question
+	end
 		
+  private  
+  
+  def get_question
+    xml                        = Net::HTTP.get_response(URI.parse("http://textcaptcha.com/api/#{TEXTCAPTCHA}")).body
+    response                   = Hash.from_xml(xml)
+    @answer_confirmation       = response["captcha"]["answer"] 
+    @question                  = response["captcha"]["question"]
+  end
+  
 end
 
 # == Schema Info

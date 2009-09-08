@@ -1,5 +1,3 @@
-<% @message ||= Message.new %>
-
 <div id="contact_inside">
 	
 	<div id="close_window"><%= link_to image_tag("f/small_icons/close_window.png"), "#", :class => "contact_link" %> </div>
@@ -28,22 +26,11 @@
 				<td><%= form.text_area :message, :size => "60x10" %></td>
 			</tr>
 			<tr>
-				<td><%= form.label :recaptcha_response_field, "Security verification" %></td>
-				<td>
-					
-					<div id="recaptcha_div">
-						<div id="recaptcha_image"></div>
-						<%= form.text_field :recaptcha_response_field, :id=>"recaptcha_response_field" %>
-					</div>
-					
-					<script type="text/javascript">
-						Recaptcha.create("6LfP1AQAAAAAAAKhfOUrKLj87PfBp77czQ87drhk",
-							"recaptcha_div", {
-							   theme: "custom",
-							}
-						);
-					</script>
-
+				<td><%= form.label :answer, @message.question %></td>
+				<td><%= form.text_field :answer %>
+				<% @message.answer_confirmation.each do |answer| %>
+					<%= form.text_field :answer_confirmation %>
+				<% end %>
 				</td>
 			</tr>
 		</table>

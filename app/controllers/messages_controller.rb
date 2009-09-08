@@ -2,6 +2,10 @@ class MessagesController < ApplicationController
 
 	before_filter :authorize, :except => [:create, :new]
 	
+	def new
+	  @message = Message.new
+	end
+	
 	def create
 	
 		@message = Message.new(params[:message])
