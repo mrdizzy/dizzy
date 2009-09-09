@@ -3,9 +3,9 @@ require 'active_record'
 require 'action_controller'
 require 'action_view'
 require 'action_view/test_case'
-require 'text_captcha'
-require 'captcha_view'
-require 'init'
+require '../lib/text_captcha'
+require '../lib/captcha_form_builder'
+require '../init'
 
 ActiveRecord::Base.establish_connection(:adapter => "sqlite3", :database => ":memory:")
 
@@ -32,7 +32,7 @@ class CaptchaTest < ActionView::TestCase
   def test_1_forms
   
     form_for Book.new do |f|
-      puts f.captcha
+      puts f.captcha_question
     end
     
   end
