@@ -7,29 +7,12 @@ class MessagesController < ApplicationController
 	end
 	
 	def create
-	
 		@message = Message.new(params[:message])
 		
-		respond_to do |format|
-		
-			format.html do
-				if @message.save 
-					redirect_to welcome_path
-				else
-					render :new
-				end
-			end
-			
-			format.js do
-				render :update do |page|
-					if @message.save
-						page.hide "contact_form"			
-					else				
-						page.replace_html "contact_form", :partial => "shared/contact_form"						
-					end
-				end
-			end
-			
+		if @message.save 
+			redirect_to welcome_path
+		else
+			render :new
 		end
 	end
 	

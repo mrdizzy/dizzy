@@ -17,7 +17,7 @@ class PortfolioItem < ActiveRecord::Base
 	named_scope :header, { :conditions => "portfolio_type_id = '7'" }
 	
 	def content_type
-		@content_type ? @content_type : "image/png" 
+		@content_type || "image/png" 
 	end
 	
 	def uploaded_data=(binary_data)   

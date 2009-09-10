@@ -1,12 +1,8 @@
 require 'test_helper'
 require 'net/http'
 require 'active_record'
-require 'action_controller'
-require 'action_controller/test_case'
-require 'action_view'
-require 'action_view/test_case'
+require '../lib/dizzy/form_builder'
 require '../lib/text_captcha'
-require '../lib/action_view/helpers/form_builder'
 require '../init'
 
 ActiveRecord::Base.establish_connection(:adapter => "sqlite3", :database => ":memory:")
@@ -68,14 +64,14 @@ class CaptchaTest < ActionView::TestCase
     assert_equal 3, author.books.size
     
     form_for author do |f|
-      p f.text_field :name
-      p f.captcha_question
-      p f.captcha_answer
+      f.text_field :name
+      f.captcha_question
+      f.captcha_answer
       f.fields_for :books do |b|
-        p b.text_field :title
-        p b.captcha_question
-        p b.captcha_answer
-        p b.object_name
+        b.text_field :title
+        b.captcha_question
+        b.captcha_answer
+        b.object_name
       end
      
     end
