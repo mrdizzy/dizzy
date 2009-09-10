@@ -11,7 +11,8 @@ module ActionView
 			end
 	
 			def captcha_question(options = {})
-				label(:answer, @object.question)
+				label(:answer, @object.question) +
+				hidden_field(:question) 
 			end
 			
 		end

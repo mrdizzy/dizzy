@@ -9,14 +9,12 @@ class MessagesController < ApplicationController
 	def create
 	
 		@message = Message.new(params[:message])
-		@message.recaptcha_challenge_field = params[:recaptcha_challenge_field]
-		@message.remote_ip = request.remote_ip
 		
 		respond_to do |format|
 		
 			format.html do
 				if @message.save 
-					redirect_to "/" 
+					redirect_to welcome_path
 				else
 					render :new
 				end

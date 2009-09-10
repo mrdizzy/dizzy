@@ -18,15 +18,15 @@ module TextCaptcha
        ActiveRecord::Base.before_validation :remove_whitespace
     
        ActiveRecord::Base.validates_each :answer do |record, attr, value|
-        record.errors.add attr, "is not the correct answer." unless record.answer_confirmation.values.detect { |v| v[:answer_confirmation] == record.encrypted_answer }
+        record.errors.add attr, "is not the correct answer." unless record.answer_confirmation.detect { |v| v == record.encrypted_answer }
        end
        
     end 
     
     module InstanceMethods
     
-      attr_accessor :answer
-      attr_accessor :answer_confirmation
+      attr_accessor :answer, :answer_confirmation
+      attr_writer :question
       
       def question
         @question ||= get_question
