@@ -1,5 +1,8 @@
+p "Loading dizzy"
+
 module Dizzy
-	module FormBuilder
+module Cumber
+	module FormBuilderddd
 			
 		def captcha_answer(options = {})
 			result = text_field(:answer, options)
@@ -15,4 +18,5 @@ module Dizzy
 		end
 			
 	end
+end
 end
