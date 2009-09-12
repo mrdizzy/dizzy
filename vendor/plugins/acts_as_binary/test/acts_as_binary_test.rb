@@ -117,3 +117,23 @@ class ActsAsBinaryTest < ActiveSupport::TestCase
   end
 
 end
+
+class FileFieldTest < ActionView::TestCase
+
+  def test_file_field
+  
+    @product = Product.new
+    @category = Category.create(:name => "Televisions")
+   
+  result = form_for [@category, @product] do |f|
+      p f.text_field :name
+      p f.file_field :image
+    end
+    p result
+  end
+  
+  def protect_against_forgery?
+    false
+  end
+
+end

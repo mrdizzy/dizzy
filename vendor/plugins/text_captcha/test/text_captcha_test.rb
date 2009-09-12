@@ -35,18 +35,6 @@ class Book < ActiveRecord::Base
 end
 
 class AuthorsController < ActionController::Base
-
-end
-
-class TestAction < ActionController::TestCase
-  
-  def setup
-    @controller = AuthorsController.new
-  end
-  
-  def test_1
-  end
- 
 end
 
 class CaptchaTest < ActionView::TestCase
