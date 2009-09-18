@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090906162410) do
+ActiveRecord::Schema.define(:version => 20090918003951) do
 
   create_table "categories", :force => true do |t|
     t.string "name"
@@ -54,6 +54,9 @@ ActiveRecord::Schema.define(:version => 20090906162410) do
     t.integer  "version_id"
     t.string   "user"
     t.boolean  "has_toc"
+    t.binary   "pdf_binary_data",  :limit => 16777215
+    t.string   "pdf_filename"
+    t.string   "pdf_content_type"
   end
 
   add_index "contents", ["version_id"], :name => "version_id"
@@ -74,21 +77,12 @@ ActiveRecord::Schema.define(:version => 20090906162410) do
     t.string   "email"
   end
 
-  create_table "pdfs", :force => true do |t|
-    t.binary  "binary_data",  :limit => 16777215
-    t.string  "content_type"
-    t.integer "size"
-    t.string  "filename"
-    t.integer "content_id",                       :default => 0, :null => false
-  end
-
-  add_index "pdfs", ["content_id"], :name => "content_id"
-
   create_table "portfolio_items", :force => true do |t|
-    t.integer "portfolio_type_id", :default => 0, :null => false
-    t.integer "company_id",        :default => 0, :null => false
-    t.integer "size"
-    t.binary  "data"
+    t.integer "portfolio_type_id",  :default => 0, :null => false
+    t.integer "company_id",         :default => 0, :null => false
+    t.binary  "image_binary_data"
+    t.string  "image_filename"
+    t.string  "image_content_type"
   end
 
   add_index "portfolio_items", ["company_id"], :name => "company_id"

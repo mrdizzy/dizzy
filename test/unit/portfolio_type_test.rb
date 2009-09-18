@@ -82,13 +82,12 @@ class PortfolioTypeTest < ActiveSupport::TestCase
 end
 
 # == Schema Info
-# Schema version: 20090827143534
+# Schema version: 20090918003951
 #
 # Table name: portfolio_types
 #
-#  id            :integer(4)      not null, primary key
-#  column_space  :integer(4)
-#  description   :string(40)
-#  header_binary :binary
-#  position      :integer(4)
-#  visible       :boolean(1)      default(TRUE)
+#  id           :integer(4)      not null, primary key
+#  column_space :integer(4)
+#  description  :string(40)
+#  position     :integer(4)
+#  visible      :boolean(1)      default(TRUE)

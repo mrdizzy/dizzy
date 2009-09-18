@@ -68,7 +68,7 @@ module ApplicationHelper
 	# Footer
 	
 	def get_random_companies
-		@five_random_companies = Company.find(:all, :order => 'RAND()', :limit => 5)
+		@five_random_companies = Company.all(:order => 'RAND()', :limit => 5)
 	end	
 	
 	# Random number
@@ -88,3 +88,27 @@ module ApplicationHelper
 	end	
 
 end
+
+class DizzyFormBuilder < ActionView::Helpers::FormBuilder
+
+	def self.create_labelled_field(method_name)
+		define_method(method_name) do |meth, *args|
+			@template.content_tag("p", label(meth) + super(meth, *args))
+		end
+	end
+
+	(field_helpers - %w(label fields_for)).each do |name|
+		create_labelled_field(name)
+	end
+	
+	def datetime_select(meth, *args)
+		@template.content_tag("p", label(meth) + super(meth, *args))
+	end
+	
+	def collection_select(meth, *args)
+		@template.content_tag("p", label(meth) + super(meth, *args))
+	end
+end
+
+ActionView::Base.default_form_builder = DizzyFormBuilder
+

@@ -44,7 +44,7 @@ class VersionTest < ActiveSupport::TestCase
 end
 
 # == Schema Info
-# Schema version: 20090827143534
+# Schema version: 20090918003951
 #
 # Table name: versions
 #

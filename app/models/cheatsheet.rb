@@ -1,10 +1,9 @@
 class Cheatsheet < Content
-	
-	has_one :pdf, :dependent => :destroy, :foreign_key => "content_id"
-	
-	validates_presence_of :pdf
-	validates_associated :pdf
-	
+
+	validates_binary :pdf, 
+				   :content_type => /(application\/pdf|binary\/octet-stream)/,
+				   :size => 1.kilobyte..700.kilobytes
+				   	
 	def parsed_content
 		result = "Use numbered headers: true
 HTML use syntax: true
@@ -22,26 +21,6 @@ HTML use syntax: true
 		result = Maruku.new(result).to_html
 	end
 	
-	def binary_attributes=(binaries)
-			pdf_data 		= binaries[:pdf][:uploaded_data]
-         
-		if self.new_record?		
-			unless pdf_data.blank?			
-				self.build_pdf(:filename 		=> pdf_data.original_filename,
-								:content_type 	=> pdf_data.content_type.chomp,
-								:binary_data 	=> pdf_data.read,
-								:size			=> pdf_data.size)
-			end
-		else
-			unless pdf_data.blank?					
-				self.pdf.update_attributes(:filename 		=> pdf_data.original_filename,
-								:content_type 	=> pdf_data.content_type.chomp,
-								:binary_data 	=> pdf_data.read,
-								:size			=> pdf_data.size)
-			end
-		end
-	end
-	
 	def title
 		result = super 
 		result + " Cheatsheet" if result
@@ -49,17 +28,20 @@ HTML use syntax: true
 end
 
 # == Schema Info
-# Schema version: 20090827143534
+# Schema version: 20090918003951
 #
 # Table name: contents
 #
-#  id          :integer(4)      not null, primary key
-#  version_id  :integer(4)
-#  content     :text
-#  date        :datetime
-#  description :string(255)
-#  has_toc     :boolean(1)
-#  permalink   :string(255)
-#  title       :string(255)
-#  type        :string(255)
-#  user        :string(255)
+#  id               :integer(4)      not null, primary key
+#  version_id       :integer(4)
+#  content          :text
+#  date             :datetime
+#  description      :string(255)
+#  has_toc          :boolean(1)
+#  pdf_binary_data  :binary(16777215
+#  pdf_content_type :string(255)
+#  pdf_filename     :string(255)
+#  permalink        :string(255)
+#  title            :string(255)
+#  type             :string(255)
+#  user             :string(255)

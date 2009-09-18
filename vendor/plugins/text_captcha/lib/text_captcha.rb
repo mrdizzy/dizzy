@@ -1,4 +1,3 @@
-puts "Loading textcapthca"
 module TextCaptcha
 
 	def self.included(base)

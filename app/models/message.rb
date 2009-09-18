@@ -5,7 +5,7 @@ class Message < ActiveRecord::Base
 	
 	after_save :deliver_message
 
-	acts_as_textcaptcha
+	#acts_as_textcaptcha
 	
 	def deliver_message
 		Mercury.deliver_new_message(self)
@@ -14,7 +14,7 @@ class Message < ActiveRecord::Base
 end
 
 # == Schema Info
-# Schema version: 20090827143534
+# Schema version: 20090918003951
 #
 # Table name: messages
 #

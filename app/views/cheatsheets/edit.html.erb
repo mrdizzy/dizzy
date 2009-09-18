@@ -1,13 +1,10 @@
 <%= javascript_include_tag :defaults %>
+
 <h1>Editing <%= @cheatsheet.title %></h1>
 
-<%= error_messages_for :cheatsheet %>
-<%= @cheatsheet.errors.full_messages %>
+<% form_for @cheatsheet, :html => { :multipart => true } do |form| %>
 
-	<!-- MAIN EDIT FORM -->
-
-<% form_for :cheatsheet, :url => cheatsheet_path, :html => { :multipart => true, :method => :put } do |form| %>
-	<%= render :partial => "form", :object => form %>
-  	<%= submit_button %>
+	<%= render :partial => form %>
+  
 <% end %>
  

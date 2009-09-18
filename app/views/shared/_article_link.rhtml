@@ -30,7 +30,7 @@
 <td>
 	
 	<p><%= posted_in(article_link.categories) %><br/>
-<%= article_link.version.version_number %></p>
+  <%= article_link.version.version_number %></p>
 	
 	</td>
 	
@@ -57,7 +57,7 @@
 		<p>
 			<%= image_tag("f/small_icons/pdf.png") %>	
 			<%= diamond %> <%= link_to "PDF", formatted_cheatsheet_path(article_link.permalink, "pdf") %> 
-			(<%= number_to_human_size(article_link.pdf.size) %>)
+			(<%= number_to_human_size(article_link.pdf_binary_data.size) %>)
 		</p>
 	</td>
 

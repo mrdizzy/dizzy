@@ -1,4 +1,7 @@
 require 'test_helper'
+require '../lib/acts_as_binary'
+require '../lib/validates_binary'
+require '../init.rb'
 
 ActiveRecord::Base.establish_connection(:adapter => "sqlite3", :database => ":memory:")
 
@@ -6,8 +9,7 @@ ActiveRecord::Schema.define do
   create_table :products do |t|
     t.belongs_to :category
     t.string :name
-    t.binary :image
-    t.integer :image_size
+    t.binary :image_binary_data
     t.string :image_content_type
     t.string :image_filename
     t.string :type
@@ -23,39 +25,28 @@ ActionController::Routing::Routes.draw do |map|
   end
 end
 
-ActiveRecord::Base.connection.tables.each do |table|
-  klass = table.singularize.camelize
-  eval("#{klass} = Class.new(ActiveRecord::Base)")
-  eval("#{klass}.columns").each do |col|
-    if col.type == :binary
-      eval("#{klass}").class_eval <<-EOV
-        def #{col.name}=(input)                                     # def image=(input)
-          unless input.blank?                                       #   unless input.blank?
-            #{col.name}_size = input.size                           #     image_size = input.size
-            #{col.name}_filename = input.original_filename          #     image_filename = input.original_filename
-            #{col.name}_content_type = input.content_type           #     image_content_type = input.content_type
-            write_attribute(:#{col.name}, input.read)               #     write_attribute(:image, input.read)
-          end                                                       #   end
-        end                                                         # end
-      EOV
-    end
-  end
-end
-  
+ActiveRecord::Base.extend(ValidatesBinary)
+
 class Product < ActiveRecord::Base
-  validates_presence_of :image
+  validates_binary :image, 
+                   :content_type => /(application\/pdf|binary\/octet-stream|image\/png)/,
+                   :size => 1.kilobyte..700.kilobytes
   belongs_to :category 
 end
+
 
 class Category < ActiveRecord::Base
   has_many :products
   accepts_nested_attributes_for :products
 end
 
+class Jona < Product
+end
+
 class ActsAsBinaryTest < ActiveSupport::TestCase
   
   def setup
-    @valid_product = Product.create!(:name => "Pepsi Cola", :image => ActionController::TestUploadedFile.new("letterhead.png", "image/png"))
+    @valid_product = Product.create!(:name => "Pepsi Cola", :image => ActionController::TestUploadedFile.new("letterhead.png", "image/png", :binary))
     @valid_category = Category.create!(:name => "Category")
   end
   
@@ -65,14 +56,15 @@ class ActsAsBinaryTest < ActiveSupport::TestCase
   end
 
   def test_1_should_succeed_on_update_with_valid_attributes
-    @valid_product.update_attributes(:name => "Coca Cola", :image => ActionController::TestUploadedFile.new("compliment.png", "image/png"))
+    @valid_product.update_attributes(:name => "Coca Cola", :image => ActionController::TestUploadedFile.new("compliment.png", "image/png", :binary))
     assert @valid_product.valid?
-    assert_equal ActionController::TestUploadedFile.new("compliment.png", "image/png").read, @valid_product.image
+
+    assert_equal ActionController::TestUploadedFile.new("compliment.png", "image/png", :binary).read, @valid_product.image_binary_data
     assert_equal "Coca Cola", @valid_product.name
   end
   
   def test_3_should_succeed_on_create_with_nested_model 
-    @valid_category.products_attributes = [ { :name => "Fanta", :image => ActionController::TestUploadedFile.new("letterhead.png", "image/png") } ]
+    @valid_category.products_attributes = [ { :name => "Fanta", :image => ActionController::TestUploadedFile.new("letterhead.png", "image/png", :binary) } ]
    
     child_product = @valid_category.products.first
     
@@ -86,7 +78,7 @@ class ActsAsBinaryTest < ActiveSupport::TestCase
     
     @valid_category.products_attributes = [ { :name => "Lucozade", :id => @valid_product.id } ]
     assert_equal "Lucozade", @valid_category.products.first.name
-    assert_equal ActionController::TestUploadedFile.new("letterhead.png", "image/png").read, @valid_category.products.first.image
+    assert_equal ActionController::TestUploadedFile.new("letterhead.png", "image/png", :binary).read, @valid_category.products.first.image_binary_data
   end
   
   def test_5_should_succeed_on_update_with_nested_model_and_empty_file_upload
@@ -97,17 +89,30 @@ class ActsAsBinaryTest < ActiveSupport::TestCase
     @valid_category.save!
     
     assert_equal "7UP", @valid_category.products.first.name
-    assert_equal ActionController::TestUploadedFile.new("letterhead.png", "image/png").read, @valid_category.products.first.image
+    assert_equal ActionController::TestUploadedFile.new("letterhead.png", "image/png", :binary).read, @valid_category.products.first.image_binary_data
 
   end
   
   def test_6_should_fail_on_create_with_empty_file_upload
     product = Product.new(:name => "Pepsi Cola", :image => "")
     assert !product.valid?
-    assert_equal 1, product.errors.size, product.errors.size
+    assert_equal 1, product.errors.size, "Should have 1 error message but has #{product.errors.size}: #{product.errors.full_messages}"
     assert_equal "can't be blank", product.errors[:image], product.errors.full_messages
   end
 
+  def test_7_should_fail_on_create_with_invalid_content_type
+    product = Product.new(:name => "Pepsi Cola", :image => ActionController::TestUploadedFile.new("letterhead.png", "image/gif", :binary))
+    assert !product.valid?
+    assert_equal 1, product.errors.size, "Should have 1 error message but has #{product.errors.size}: #{product.errors.full_messages}"
+    assert_equal "is invalid", product.errors[:image_content_type], product.errors.full_messages
+  end
+
+  def test_8_should_fail_on_create_with_invalid_size
+    product = Product.new(:name => "Pepsi Cola", :image => ActionController::TestUploadedFile.new("image_140_bytes.png", "image/png", :binary))
+    assert !product.valid?
+    assert_equal 1, product.errors.size, "Should have 1 error message but has #{product.errors.size}: #{product.errors.full_messages}"
+    assert_equal =/should be between/, product.errors[:image], product.errors.full_messages
+  end
 end
 
 class FileFieldTest < ActionView::TestCase
@@ -118,10 +123,10 @@ class FileFieldTest < ActionView::TestCase
     @category = Category.create(:name => "Televisions")
    
   result = form_for [@category, @product] do |f|
-      p f.text_field :name
-      p f.file_field :image
+     # p f.text_field :name
+      #p f.file_field :image
     end
-    p result
+    #p result
   end
   
   def protect_against_forgery?

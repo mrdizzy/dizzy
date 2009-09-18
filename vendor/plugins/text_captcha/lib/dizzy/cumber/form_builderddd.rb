@@ -1,5 +1,3 @@
-p "Loading dizzy"
-
 module Dizzy
 module Cumber
 	module FormBuilderddd

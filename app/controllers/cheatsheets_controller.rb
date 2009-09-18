@@ -5,9 +5,9 @@ class CheatsheetsController < ContentsController
   end
  
  def show
- 	@content = Cheatsheet.permalink(params[:id])
+ 	@content    = Cheatsheet.permalink(params[:id])
 	@comment 		= Comment.new				
-	@categories 	= Category.find(:all, :order => :name) 	
+	@categories = Category.find(:all, :order => :name) 	
 		respond_to do |wants|
 			wants.html { render :template => "contents/show"}
 			wants.pdf { send_data(@content.pdf.binary_data, :type => "application/pdf", :disposition => 'inline') }
@@ -15,8 +15,7 @@ class CheatsheetsController < ContentsController
 	end
   
   def new
-	@cheatsheet = Cheatsheet.new
-  	@pdf 		= Pdf.new
+    @cheatsheet = Cheatsheet.new
   end
   
   def update
@@ -26,7 +25,7 @@ class CheatsheetsController < ContentsController
       flash[:notice] = 'Cheatsheet was successfully updated.'
       redirect_to cheatsheet_path(@cheatsheet.permalink)
     else
-      render :action => 'edit'
+      render :edit
     end
   end
   
@@ -38,12 +37,12 @@ class CheatsheetsController < ContentsController
       flash[:notice] = 'Cheatsheet was successfully created.'    
       redirect_to cheatsheet_path(@cheatsheet.permalink)
     else
-      render :action => 'new'
+      render :new
     end
   end
   
   def edit
-  	@cheatsheet =  Cheatsheet.find(params[:id]) 
+  	@cheatsheet = Cheatsheet.find(params[:id]) 
   end
 
 end

@@ -86,23 +86,15 @@ Factory.define :company do |c|
 	c.description "Fun, hilarity, zany, bold, offbeat"
 end
 
-Factory.define :pdf, :default_strategy => :build do |p|
-	p.content_type "application/pdf"
-	p.filename "cheatsheet.pdf"
-	p.size 102324
-	p.binary_data "0101010101"
-end
-
 Factory.define :portfolio_item do |p|
   p.association :portfolio_type
-  p.data "data"
-  p.size 10.kilobytes
 end
 
 Factory.define :portfolio_item_header, :class => PortfolioItem do |p|
   p.association :portfolio_type, :factory => :portfolio_type_header
-  p.data "data"
-  p.size 5.kilobytes
+  p.image_binary_data "data"
+  p.image_content_type "image/png"
+  p.image_filename "filename.jpg"
 end
 
 Factory.define :portfolio_type do |p|
