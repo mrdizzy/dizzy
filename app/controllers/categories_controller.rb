@@ -1,5 +1,4 @@
 class CategoriesController < ApplicationController
-	helper :contents
 
 	before_filter :authorize, :except => :show
 
@@ -16,7 +15,7 @@ class CategoriesController < ApplicationController
 				page.visual_effect(:highlight, "category_#{@category.id.to_s}", :duration => 1.5, :endcolor => "#ffffff", :startcolor => "#D1ECF9")
 			end
 		else
-			render :action => "new"
+			render :new
 		end				
 	end
    
@@ -28,5 +27,4 @@ class CategoriesController < ApplicationController
   			end
   	    end
  	end
-  	
 end

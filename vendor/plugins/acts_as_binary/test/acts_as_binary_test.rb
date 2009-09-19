@@ -1,6 +1,7 @@
 require 'test_helper'
-require '../lib/acts_as_binary'
-require '../lib/validates_binary'
+require '../lib/has_binary'
+require '../lib/migrations_binary'
+require '../lib/render_binary'
 require '../init.rb'
 
 ActiveRecord::Base.establish_connection(:adapter => "sqlite3", :database => ":memory:")
@@ -9,9 +10,7 @@ ActiveRecord::Schema.define do
   create_table :products do |t|
     t.belongs_to :category
     t.string :name
-    t.binary :image_binary_data
-    t.string :image_content_type
-    t.string :image_filename
+    t.binary :image
     t.string :type
   end
   create_table :categories do |t| 
@@ -23,12 +22,12 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :categories do |categories|
     categories.resources :products
   end
+  map.resources :products
 end
 
-ActiveRecord::Base.extend(ValidatesBinary)
 
 class Product < ActiveRecord::Base
-  validates_binary :image, 
+  has_binary :image, 
                    :content_type => /(application\/pdf|binary\/octet-stream|image\/png)/,
                    :size => 1.kilobyte..700.kilobytes
   belongs_to :category 
@@ -115,22 +114,23 @@ class ActsAsBinaryTest < ActiveSupport::TestCase
   end
 end
 
-class FileFieldTest < ActionView::TestCase
-
-  def test_file_field
-  
-    @product = Product.new
-    @category = Category.create(:name => "Televisions")
-   
-  result = form_for [@category, @product] do |f|
-     # p f.text_field :name
-      #p f.file_field :image
-    end
-    #p result
+class ProductsController < ActionController::Base
+  def show
+    @product = Product.find(params[:id])
+    render :binary, @product => :image 
   end
+end
+
+class ProductsControllerTest < ActionController::TestCase
+
+  def test_truth() assert true end
   
-  def protect_against_forgery?
-    false
+  def test_1_should_succeed_on_show
+    @valid_product = Product.create!(:name => "Pepsi Cola", :image => ActionController::TestUploadedFile.new("letterhead.png", "image/png", :binary))
+
+    get :show, :id => @valid_product.id
+    assert_response :success
+    assert_equal @valid_product.image_binary_data, @response.body, "Binary should be identical"
   end
 
 end

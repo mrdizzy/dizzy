@@ -1,46 +1,22 @@
-## Sequences
+require 'action_controller/test_case'
+require 'test_help'
 
-Factory.sequence :permalink do |d|
-	"a-valid-permalink-#{d}"
+Factory.sequence(:permalink) { |d| "a-valid-permalink-#{d}" }
+Factory.sequence(:version_number) { |v| v + 0.0 }
+Factory.sequence(:name) { |d| "A Valid Name #{d}" }
+Factory.sequence(:comment_name) { |d| "Comment name #{d}" }
+Factory.sequence(:portfolio_type_name) { |d| "Portfolio Type #{d}" }
+Factory.sequence(:category_name) { |d| "Category #{d}" }
+Factory.sequence(:comment_subject) { |c| "Comment subject #{c}" }
+Factory.sequence(:cheatsheet_name) { |d| "Cheatsheet #{d}" }
+Factory.sequence(:article_name) { |d| "Article #{d}" }
+Factory.sequence(:number) { |n| n }
+Factory.sequence(:binary) do |b| 
+	ActionController::TestUploadedFile.new(ActiveSupport::TestCase.fixture_path + "letterhead.png", "image/png", :binary) 
 end
-
-Factory.sequence :version_number do |v|
-	v + 0.0
+Factory.sequence(:pdf_file) do |b| 
+	ActionController::TestUploadedFile.new(ActiveSupport::TestCase.fixture_path + "letterhead.png", "application/pdf", :binary) 
 end
-
-Factory.sequence :name do |d|
-	"A Valid Name #{d}"
-end
-
-Factory.sequence :comment_name do |d|
-	"Comment name #{d}"
-end
-
-Factory.sequence :portfolio_type_name do |d|
-	"Portfolio Type #{d}"
-end
-
-Factory.sequence :category_name do |d|
-	"Category #{d}"
-end
-
-Factory.sequence :comment_subject do |c|
-   "Comment subject #{c}"
-end
-
-Factory.sequence :cheatsheet_name do |d|
-	"Cheatsheet #{d}"
-end
-
-Factory.sequence :article_name do |d|
-	"Article #{d}"
-end
-
-Factory.sequence :number do |n|
-	n
-end
-
-### Factories
 
 Factory.define :article do |c|
 	c.permalink { Factory.next(:permalink) }
@@ -58,15 +34,18 @@ Factory.define :category do |c|
 	c.name { Factory.next(:category_name) }
 end
 
+Factory.define(:version) { |v| v.version_number { Factory.next(:version_number) } }
+
 Factory.define :cheatsheet, :default_strategy => :build do |c|
-	c.association :version, :factory => :version
+	c.version_id { Factory(:version).id }
 	c.content "Here is the content of the cheatsheet"
-	c.date        Time.now
+	c.date Time.now
 	c.description "A brief description"
 	c.permalink { Factory.next(:permalink) }
 	c.title { Factory.next(:cheatsheet_name) }  
-	c.user  "mr_dizzy"
-	c.categories { |categories| [categories.association(:category), categories.association(:category)] }
+	c.user "mr_dizzy"
+	c.category_ids { [ Factory(:category).id, Factory(:category).id] }
+	c.pdf { Factory.next(:pdf_file) }
 end
 
 Factory.define :comment do |c|
@@ -86,15 +65,14 @@ Factory.define :company do |c|
 	c.description "Fun, hilarity, zany, bold, offbeat"
 end
 
-Factory.define :portfolio_item do |p|
-  p.association :portfolio_type
+Factory.define :portfolio_item do |p| 
+	p.association :portfolio_type 
+	p.image { Factory.next(:binary) }
 end
 
 Factory.define :portfolio_item_header, :class => PortfolioItem do |p|
   p.association :portfolio_type, :factory => :portfolio_type_header
-  p.image_binary_data "data"
-  p.image_content_type "image/png"
-  p.image_filename "filename.jpg"
+  p.image { Factory.next(:binary) }
 end
 
 Factory.define :portfolio_type do |p|
@@ -110,8 +88,3 @@ Factory.define :portfolio_type_header, :class => PortfolioType do |p|
   p.description "Header"
   p.position 0
 end
-
-Factory.define :version do |v|
-	v.version_number { Factory.next(:version_number) }
-end
-

@@ -25,29 +25,29 @@ class CommentTest < ActiveSupport::TestCase
   end
 
   def test_3_should_pass_valid_email
-  	comment = Factory.build(:comment)
-  	
-  	good_addresses = %w{ melinda@dizzy.co.uk jamie@dizzy.com louise.smith@germany.de mr_lewis@lewis.co.uk david.pettifer@dizzy.co.uk jamie.han@motif-switcher.com }
-  	good_addresses.each do |address|
-  		comment.email = address
-  		assert comment.valid?, comment.errors.full_messages
-  	end
+    comment = Factory.build(:comment)
+
+    good_addresses = %w{ melinda@dizzy.co.uk jamie@dizzy.com louise.smith@germany.de mr_lewis@lewis.co.uk david.pettifer@dizzy.co.uk jamie.han@motif-switcher.com }
+    good_addresses.each do |address|
+      comment.email = address
+      assert comment.valid?, comment.errors.full_messages
+    end
   end
   
   def test_4_should_fail_with_invalid_parent
-  	comment = Factory(:comment)
-  	comment.parent_id = 13434
-  	assert !comment.valid?, comment.errors.full_messages
-  	assert_equal "does not exist", comment.errors[:parent]
-   assert_equal 1, comment.errors.size
+    comment = Factory(:comment)
+    comment.parent_id = 13434
+    assert !comment.valid?, comment.errors.full_messages
+    assert_equal "does not exist", comment.errors[:parent]
+    assert_equal 1, comment.errors.size
   end
   
   def test_5_should_pass_with_valid_parent
-  	parent = Factory(:comment)
-	child = Factory(:comment)
-	child.parent_id = parent.id
-   child.content_id = child.parent.content_id
-  	assert child.valid?, child.errors.full_messages
+    parent = Factory(:comment)
+    child = Factory(:comment)
+    child.parent_id = parent.id
+    child.content_id = child.parent.content_id
+    assert child.valid?, child.errors.full_messages
   end
   
   def test_6_should_fail_without_linked_article
@@ -74,21 +74,21 @@ class CommentTest < ActiveSupport::TestCase
    end
    
    
-   def test_a_should_fail_with_empty_content
-      parent = Factory.build(:comment, :content => nil)
-      assert !parent.valid?, parent.errors.full_messages
-      assert_equal "can't be blank", parent.errors[:content_id]
-      assert_equal 1, parent.errors.count
-   end   
+  def test_a_should_fail_with_empty_content
+    parent = Factory.build(:comment, :content => nil)
+    assert !parent.valid?, parent.errors.full_messages
+    assert_equal "can't be blank", parent.errors[:content_id]
+    assert_equal 1, parent.errors.count
+  end   
    
-   def test_a1_should_display_new_comments_order_newest_first
-      comment1 = Factory(:comment, :created_at => Time.now)
-      comment2 = Factory(:comment, :created_at => 5.hours.ago)
-      comment3 = Factory(:comment, :new => false)
-      assert_equal [comment1, comment2], Comment.new_comments, "New comments should be displayed in ascending order"
-   end
-  
+  def test_a1_should_display_new_comments_order_newest_first
+    comment1 = Factory(:comment, :created_at => Time.now)
+    comment2 = Factory(:comment, :created_at => 5.hours.ago)
+    comment3 = Factory(:comment, :new => false)
+    assert_equal [comment1, comment2], Comment.new_comments, "New comments should be displayed in ascending order"
   end
+  
+end
 
 # == Schema Info
 # Schema version: 20090918003951

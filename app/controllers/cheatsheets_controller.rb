@@ -7,10 +7,10 @@ class CheatsheetsController < ContentsController
  def show
  	@content    = Cheatsheet.permalink(params[:id])
 	@comment 		= Comment.new				
-	@categories = Category.find(:all, :order => :name) 	
+	@categories = Category.all	
 		respond_to do |wants|
 			wants.html { render :template => "contents/show"}
-			wants.pdf { send_data(@content.pdf.binary_data, :type => "application/pdf", :disposition => 'inline') }
+			wants.pdf { render :binary, @content => :pdf }
 		end 
 	end
   

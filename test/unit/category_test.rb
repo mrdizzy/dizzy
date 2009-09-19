@@ -7,29 +7,30 @@ class CategoryTest < ActiveSupport::TestCase
   end
   
   def test_1_should_fail_with_empty_name
-	category = Factory.build(:category, :name => "")
-	assert !category.valid?
-
-	assert_equal "can't be blank", category.errors[:name]
-	assert_equal 1, category.errors.size
+    category = Factory.build(:category, :name => "")
+    assert !category.valid?
+  
+    assert_equal "can't be blank", category.errors[:name]
+    assert_equal 1, category.errors.size
   end
   
   def test_2_should_fail_with_empty_permalink
- category = Factory.build(:category, :permalink => "")
-	assert !category.valid?
-	assert_equal "can't be blank", category.errors[:permalink]
-	assert_equal 1, category.errors.size
+    category = Factory.build(:category, :permalink => "")
+    assert !category.valid?
+    assert_equal "can't be blank", category.errors[:permalink]
+    assert_equal 1, category.errors.size
   end
 
   def test_3_should_fail_on_create_with_invalid_permalink
   	bad_permalinks = ["underscore_not_valid", "&no-!weird-%#\"/'characters)$", "no spaces", "NO-CAPITALS"]
-	category = Factory.build(:category)
+  	category = Factory.build(:category)
+    
   	bad_permalinks.each do |permalink|
   		category.permalink = permalink
   		assert !category.valid?, "Permalink #{permalink} should be invalid"
   		assert_equal category.errors[:permalink], "is invalid"
   	 	assert_equal 1, category.errors.size 	 
-	end
+	  end
   end 
   
   def test_4_should_succeed_on_create_with_valid_permalink
@@ -37,7 +38,7 @@ class CategoryTest < ActiveSupport::TestCase
   	good_permalinks.each do |permalink|
   		category = Category.new(:name => "New Category", :permalink => permalink)
   	 	assert category.valid?  	 
-	end
+	  end
   end
 
   def test_5_should_fail_on_create_with_duplicate_name
@@ -49,18 +50,18 @@ class CategoryTest < ActiveSupport::TestCase
   	end
 
   def test_6_should_fail_on_create_with_duplicate_permalink
-   category = Factory(:category)
+    category = Factory(:category)
   	duplicate = Factory.build(:category, :permalink => category.permalink)
-   assert !duplicate.valid?, "{Permalink should be invalid"
+    assert !duplicate.valid?, "{Permalink should be invalid"
   	assert_equal "has already been taken", duplicate.errors[:permalink]
   	assert_equal 1, duplicate.errors.size  
   end 	  
   
   def test_7_should_remove_category
-	categories = []
+	  categories = []
     10.times do |n|
-		categories << Factory(:category)
-	end
+		  categories << Factory(:category)
+	  end
   	assert_difference('Category.count', -2) do
   		2.times { |n| categories.shift.destroy }
   	end
@@ -77,11 +78,14 @@ class CategoryTest < ActiveSupport::TestCase
   end
   
   def test_a_should_display_contents
-   cheatsheet_latest = Factory(:cheatsheet, :date => Time.now, :pdf => Factory(:pdf))
+   cheatsheet_latest = Factory(:cheatsheet, :date => Time.now, :pdf => ActionController::TestUploadedFile.new("../fixtures/rails-migrations.pdf", "application/pdf", :binary))
    cheatsheet_middle = Factory(:article, :date => 5.days.ago)
-   cheatsheet_oldest = Factory(:cheatsheet, :date => 10.days.ago, :pdf => Factory(:pdf))
+   cheatsheet_oldest = Factory(:cheatsheet, :date => 10.days.ago, :pdf => ActionController::TestUploadedFile.new("../fixtures/rails-migrations.pdf", "application/pdf", :binary))
+   
+   assert [cheatsheet_latest, cheatsheet_middle, cheatsheet_oldest].all? { |c| c.valid? }, "Cheatsheets are invalid"
    
    category = Factory(:category, :contents => [ cheatsheet_middle, cheatsheet_oldest, cheatsheet_latest ])
+   
    assert category.save
    category = Category.find(category.id)
    assert_equal [ cheatsheet_latest, cheatsheet_middle, cheatsheet_oldest ], category.contents, "Should be contents in order"

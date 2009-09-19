@@ -59,26 +59,6 @@ class PortfolioTypeTest < ActiveSupport::TestCase
      assert Factory(:portfolio_type, :position => "", :visible => false).valid?
     end
   end
-  
-  def test_8_should_fail_on_invalid_content_type
-   portfolio_type = Factory.build(:portfolio_type)
-   ["image/jpg", "application/pdf", "image/gif", ""].each do |type|
-      portfolio_type.content_type = type
-      assert !portfolio_type.valid?
-      assert_equal 1, portfolio_type.errors.size
-      assert_equal "must be a PNG file", portfolio_type.errors[:content_type]
-   end
-  end
-  
-  def test_9_should_fail_when_size_invalid
-   portfolio_type = Factory.build(:portfolio_type)
-   [21.kilobytes, 999.bytes, ""].each do |size|
-      portfolio_type.size = size
-      assert !portfolio_type.valid?
-      assert_equal 1, portfolio_type.errors.size
-      assert_equal "must be between 1k and 20k", portfolio_type.errors[:size]
-   end
-  end
 end
 
 # == Schema Info

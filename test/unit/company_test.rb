@@ -26,13 +26,13 @@ class CompanyTest < ActiveSupport::TestCase
 		assert_equal "Company must have a header graphic", company.errors.on_base
 	end
 
-	def test_3_should_succeed_if_valid_header
-	flunk
-	end	
+  def test_3_should_succeed_if_valid_header
+    flunk
+  end	
 
 	def test_4_should_destroy_dependencies
 		company = Factory(:company)
-		company.portfolio_items << [Factory(:portfolio_item), Factory(:portfolio_item), Factory(:portfolio_item)] 
+		company.portfolio_items << [Factory(:portfolio_item, :image => ActionController::TestUploadedFile.new("../fixtures/letterhead.png", "image/png", :binary)), Factory(:portfolio_item, :image => ActionController::TestUploadedFile.new("../fixtures/letterhead.png", "image/png", :binary)), Factory(:portfolio_item, :image => ActionController::TestUploadedFile.new("../fixtures/letterhead.png", "image/png", :binary))] 
 		portfolio_items = company.portfolio_items.size
 
 		assert_difference('PortfolioItem.count', 0 - portfolio_items ) do 

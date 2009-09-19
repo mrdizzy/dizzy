@@ -8,7 +8,7 @@ class PortfolioItemsController < ApplicationController
 	def show
 		@portfolio_item = PortfolioItem.find(params[:id])
 		respond_to do |wants|
-			wants.png { send_data(@portfolio_item.data, :type => "image/png", :disposition => 'inline') }
+			wants.png { render :binary, @portfolio_item => :image }
 		end
 	end
 	

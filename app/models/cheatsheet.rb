@@ -1,6 +1,6 @@
 class Cheatsheet < Content
 
-	validates_binary :pdf, 
+	has_binary :pdf, 
 				   :content_type => /(application\/pdf|binary\/octet-stream)/,
 				   :size => 1.kilobyte..700.kilobytes
 				   	
