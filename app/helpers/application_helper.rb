@@ -5,7 +5,7 @@ module ApplicationHelper
 
 	def posted_in(categories)
 		categories.map! { |c| link_to(c.name.upcase, category_path(c.permalink)) }
-		result = categories.to_sentence(:skip_last_comma => true, :connector => "<span class=\"amp\">&amp;</span>")
+		result = categories.to_sentence(:last_word_connector => false, :words_connector => "<span class=\"amp\">&amp;</span>")
 		"<span class=\"posted_in\">" + result + "</span>"
 	end
 

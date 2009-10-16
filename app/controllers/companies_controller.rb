@@ -1,7 +1,6 @@
 class CompaniesController < ApplicationController
 		
 	cache_sweeper :portfolio_item_sweeper, :company_sweeper
-	
 	before_filter :authorize
 		
 	def index

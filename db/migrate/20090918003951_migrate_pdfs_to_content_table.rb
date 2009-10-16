@@ -1,3 +1,11 @@
+class Pdf < ActiveRecord::Base
+  belongs_to :cheatsheet, :foreign_key => :content_id 
+end
+
+class Cheatsheet < Content
+  has_one :pdf, :foreign_key => :content_id 
+end
+
 class MigratePdfsToContentTable < ActiveRecord::Migration
   def self.up
     add_column :contents, :pdf_binary_data, :binary, :limit => 2.megabytes

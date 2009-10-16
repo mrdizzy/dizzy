@@ -5,6 +5,7 @@
     <%= diamond %> 
     <%= item.portfolio_type.description %>
     <p><%= image_tag(portfolio_item_path(item, :png)) %></p>
+    
     <p>
     <%= link_to_remote 'edit', :url => edit_portfolio_item_path(item), :method => :get %> 
     <%= diamond %> 

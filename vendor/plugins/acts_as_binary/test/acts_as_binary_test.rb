@@ -10,7 +10,7 @@ ActiveRecord::Schema.define do
   create_table :products do |t|
     t.belongs_to :category
     t.string :name
-    t.binary :image
+    t.file :image
     t.string :type
   end
   create_table :categories do |t| 

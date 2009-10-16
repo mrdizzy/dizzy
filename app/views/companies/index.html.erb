@@ -2,14 +2,10 @@
 
 <table class="articles">
 	<% @companies.each do |company| %>
-	 <tr id="company_<%= company.id %>">
-	 
+	 <tr id="company_<%= company.id %>">	 
 	 	<td><%= diamond %> <%= link_to company.name, edit_company_path(company) %></td>
-		
 		<td><%= company.description %></td>
-		
 		<td><%= link_to_remote "X", :url => company_path(company), :method => :delete %></td>
-		
 	</tr>
 	<% end %>
 </table>

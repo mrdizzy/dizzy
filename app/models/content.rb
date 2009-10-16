@@ -28,16 +28,8 @@ class Content < ActiveRecord::Base
 	end
 	
 	def parsed_content
-		result = "Use numbered headers: true
-HTML use syntax: true
-
-{:rhtml: lang=rhtml html_use_syntax=true}
-{:ruby: lang=ruby  html_use_syntax=true}
-
-" 
-self.has_toc ? toc = "# Table of Contents\n\n* TOC\n{:toc}\n" : toc = ""
-result = result + toc + self.content
-		result = Maruku.new(result).to_html
+		
+		result = SyntaxHighlighter.highlight_code(self.content)
 
 	end
    

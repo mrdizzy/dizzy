@@ -19,7 +19,8 @@
 #++
 
 
-class String
+class String 
+
 	def quote_if_needed
 		if /[\s\'\"]/.match self
 			inspect

@@ -2,7 +2,7 @@
 
 <% form_for @company, :html => { :multipart => true } do |f| %>
 	
-	<%= error_messages_for :company %>
+	<%= f.error_messages %>
 	
 	<%= f.label :name %>		
  	<%= f.text_field :name %>

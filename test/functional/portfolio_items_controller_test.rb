@@ -2,20 +2,14 @@ require File.dirname(__FILE__) + '/../test_helper'
 
 class PortfolioItemsControllerTest < ActionController::TestCase
 
-  def test_truth
-    assert true
-  end
-  
-  def pass
-    @pass ||= { :admin_password => PASSWORD }
-  end
-  
+  def test_truth; assert true; end
+
   # EDIT
   
   def test_1_edit_portfolio_item_should_succeed
     item = Factory(:portfolio_item)
     
-    xhr(:get, :edit, { :id => item.id }, pass )
+    xhr(:get, :edit, { :id => item.id }, admin_pass )
     assert_select_rjs :insert_html, :bottom, "portfolio_item_#{item.id}", :partial => "edit"
     assert_template "_edit"
     

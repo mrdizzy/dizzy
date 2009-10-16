@@ -34,28 +34,46 @@
 <p><%= link_to content.comments.size.to_s + " comments", content_path(content.permalink) %></p>
 </div>
          <% else %>
-         <span class="posted_ago">POSTED <%= time_ago_in_words(content.date).upcase %> AGO</span>   
-<h1 class="welcome"><%= link_to content.title, content_path(content.permalink) %></h1>
-         	<p><%= posted_in(content.categories) %><br/>
- <%= content.version.version_number %></p>
-		
-		<h2 class="lead_in"><%= content.description %></h2>
-		
+		 
+	<span class="posted_ago">POSTED <%= time_ago_in_words(content.date).upcase %> AGO</span>   
+	
 		<table>
 	
+	<tr>
+	<td>
+<h1 class="welcome"></h1>
+			<p><%= posted_in(content.categories) %><br/>
+ <%= content.version.version_number %></p>
+ </td>
+
+	<td>			
+		<h2><%= square %> <%= link_to content.title, cheatsheet_path(content.permalink) %></h2>
+
+		
+		<p class="article_link_description"><%= content.description %></p>
+
+		<% if administrator? %>
+			<p><%= link_to 'edit', edit_polymorphic_path(content) %> 
+			<%= diamond %> <%= link_to 'delete', cheatsheet_path(content.id), :method => "delete" %></p>
+		<% end %>
+
+	</td>
+
 	<td class="icons">
 		<p>
 			<%= image_tag("f/small_icons/html.png") %>
 			<%= diamond %> 	<%= link_to "HTML", cheatsheet_path(content.permalink) %> 
 		</p>
-		</td>
-      <td>
+
 		<p>
 			<%= image_tag("f/small_icons/pdf.png") %>	
-			<%= diamond %> <%= link_to "PDF", formatted_cheatsheet_path(content.permalink, "pdf") %> 
-			(<%= number_to_human_size(content.pdf.size) %>)
+			<%= diamond %> <%= link_to "PDF", cheatsheet_path(content.permalink, :pdf) %> 
+			(<%= number_to_human_size(content.pdf_binary_data.size) %>)
 		</p>
 	</td>
+
+
+</tr>
 
 	</table>
          <% end %> 

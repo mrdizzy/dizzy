@@ -1,8 +1,7 @@
 module TableHelper
 	
 	def table(cells, options={}, html_options={})
-		table = TableParser.new(cells, options, html_options)
-		table.parse
+		TableParser.new(cells, options, html_options).parse
 	end
 	
 	class TableParser

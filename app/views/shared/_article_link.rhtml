@@ -16,7 +16,8 @@
 		<p><%= article_link.description %></p>
 
 		<% if administrator? %>
-			<p><%= link_to 'edit', edit_content_path(article_link.id) %> <%= diamond %> <%= link_to 'delete', content_path(article_link.id), :method => "delete" %> </p>			
+			<p><%= link_to 'edit', edit_content_path(article_link.id) %> 
+			<%= diamond %> <%= link_to 'delete', content_path(article_link.id), :method => "delete" %> </p>			
 		<% end %>
 	
 	</td>
@@ -27,15 +28,12 @@
 
 <% else %>
 
-<td>
-	
+<td>	
 	<p><%= posted_in(article_link.categories) %><br/>
-  <%= article_link.version.version_number %></p>
-	
+  <%= article_link.version.version_number %></p>	
 	</td>
 	
-	<td>
-			
+	<td>			
 		<h2><%= square %> <%= link_to article_link.title, cheatsheet_path(article_link.permalink) %></h2>
 		
 		<span class="posted_ago">POSTED <%= time_ago_in_words(article_link.date).upcase %> AGO</span>
@@ -43,7 +41,8 @@
 		<p class="article_link_description"><%= article_link.description %></p>
 		
 		<% if administrator? %>
-			<p><%= link_to 'edit', edit_polymorphic_path(article_link) %> <%= diamond %> <%= link_to 'delete', cheatsheet_path(article_link.id), :method => "delete" %></p>
+			<p><%= link_to 'edit', edit_polymorphic_path(article_link) %> 
+			<%= diamond %> <%= link_to 'delete', cheatsheet_path(article_link.id), :method => "delete" %></p>
 		<% end %>
 		
 	</td>
@@ -56,7 +55,7 @@
 		
 		<p>
 			<%= image_tag("f/small_icons/pdf.png") %>	
-			<%= diamond %> <%= link_to "PDF", formatted_cheatsheet_path(article_link.permalink, "pdf") %> 
+			<%= diamond %> <%= link_to "PDF", cheatsheet_path(article_link.permalink, :pdf) %> 
 			(<%= number_to_human_size(article_link.pdf_binary_data.size) %>)
 		</p>
 	</td>

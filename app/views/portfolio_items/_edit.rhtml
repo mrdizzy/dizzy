@@ -1,7 +1,6 @@
 <% fields_for "company[portfolio_items_attributes][#{edit.object_id}]", edit do |c| %>
 
-	<%= c.error_message_on :portfolio_type_id, "Portfolio Type" %>
-	<%= c.file_field :uploaded_data %>
+	<%= c.file_field :image %>
 	<%= c.hidden_field :id %>
 	<%= c.collection_select :portfolio_type_id, PortfolioType.all, :id, :description %>
 	

@@ -1,26 +1,7 @@
-#--
-#   Copyright (C) 2006  Andrea Censi  <andrea (at) rubyforge.org>
-#
-# This file is part of Maruku.
-# 
-#   Maruku is free software; you can redistribute it and/or modify
-#   it under the terms of the GNU General Public License as published by
-#   the Free Software Foundation; either version 2 of the License, or
-#   (at your option) any later version.
-# 
-#   Maruku is distributed in the hope that it will be useful,
-#   but WITHOUT ANY WARRANTY; without even the implied warranty of
-#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#   GNU General Public License for more details.
-# 
-#   You should have received a copy of the GNU General Public License
-#   along with Maruku; if not, write to the Free Software
-#   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-#++
-
 require 'rexml/document'
 
-# :include:MaRuKu.txt
+# include:MaRuKu.txt
+
 module MaRuKu
 
 	module In
@@ -57,8 +38,7 @@ module MaRuKu
 		include Helpers
 		include Errors
 	end
-	
-	
+		
 	class MDDocument < MDElement
 		include In::Markdown
 		include In::Markdown::SpanLevelParser
@@ -68,9 +48,6 @@ end
 
 # This is the public interface
 class Maruku < MaRuKu::MDDocument; end
-
-
-
 require 'rexml/document'
 
 # Structures definition
@@ -78,6 +55,7 @@ require 'maruku/structures'
 require 'maruku/structures_inspect'
 
 require 'maruku/defaults'
+
 # Less typing
 require 'maruku/helpers'
 
@@ -114,24 +92,8 @@ require 'maruku/toc'
 # Version and URL
 require 'maruku/version'
 
-
 # Exporting to html
 require 'maruku/output/to_html'
-
-# Exporting to latex
-require 'maruku/output/to_latex'
-require 'maruku/output/to_latex_strings'
-require 'maruku/output/to_latex_entities'
-
-# Pretty print
-require 'maruku/output/to_markdown'
-
-# S5 slides
-require 'maruku/output/s5/to_s5'
-require 'maruku/output/s5/fancy'
-
-# Exporting to text: strips all formatting (not complete)
-require 'maruku/output/to_s'
 
 # class Maruku is the global interface
 require 'maruku/maruku'
