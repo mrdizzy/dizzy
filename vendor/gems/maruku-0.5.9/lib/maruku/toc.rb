@@ -1,24 +1,3 @@
-#--
-#   Copyright (C) 2006  Andrea Censi  <andrea (at) rubyforge.org>
-#
-# This file is part of Maruku.
-# 
-#   Maruku is free software; you can redistribute it and/or modify
-#   it under the terms of the GNU General Public License as published by
-#   the Free Software Foundation; either version 2 of the License, or
-#   (at your option) any later version.
-# 
-#   Maruku is distributed in the hope that it will be useful,
-#   but WITHOUT ANY WARRANTY; without even the implied warranty of
-#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#   GNU General Public License for more details.
-# 
-#   You should have received a copy of the GNU General Public License
-#   along with Maruku; if not, write to the Free Software
-#   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-#++
-
-
 module MaRuKu
 	
 class MDDocument
@@ -104,30 +83,7 @@ end
 				ul << li
 			end
 			ul
-		end
-
-		# Creates a latex toc.
-		# Call this on the root 
-		def to_latex
-			to_latex_rec + "\n\n"
-		end
-		
-		def to_latex_rec
-			s = ""
-			@section_children.each do |c|
-				s += "\\noindent"
-				number = c.header_element.section_number
-				s += number if number
-					text = c.header_element.children_to_latex
-					id = c.header_element.attributes[:id]
-				s += "\\hyperlink{#{id}}{#{text}}"
-				s += "\\dotfill \\pageref*{#{id}} \\linebreak\n"
-				s += c.to_latex_rec  if c.section_children.size>0
-
-			end
-			s
-		end
-		
+		end		
 	end
 
 	class MDDocument
