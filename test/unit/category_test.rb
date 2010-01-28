@@ -77,10 +77,12 @@ class CategoryTest < ActiveSupport::TestCase
     assert_raise(ActiveRecord::RecordNotFound) { Category.find_by_permalink("no-such-permalink") }
   end
   
-  def test_a_should_display_contents
+  def test_a_should_display_articles_in_order_of_time
+  
+   cheatsheet_oldest = Factory(:cheatsheet, :date => 10.days.ago, :pdf => ActionController::TestUploadedFile.new("../fixtures/rails-migrations.pdf", "application/pdf", :binary))
+   
    cheatsheet_latest = Factory(:cheatsheet, :date => Time.now, :pdf => ActionController::TestUploadedFile.new("../fixtures/rails-migrations.pdf", "application/pdf", :binary))
    cheatsheet_middle = Factory(:article, :date => 5.days.ago)
-   cheatsheet_oldest = Factory(:cheatsheet, :date => 10.days.ago, :pdf => ActionController::TestUploadedFile.new("../fixtures/rails-migrations.pdf", "application/pdf", :binary))
    
    assert [cheatsheet_latest, cheatsheet_middle, cheatsheet_oldest].all? { |c| c.valid? }, "Cheatsheets are invalid"
    
@@ -95,7 +97,7 @@ class CategoryTest < ActiveSupport::TestCase
     assert_raise(ActiveRecord::RecordNotFound) { Category.find_by_permalink("hello-david") }
   end
   
-  def test_c_categories_should_be_ordered_by_name
+  def test_c_categories_should_be_ordered_alphabetically_by_name
     category_1, category_2, category_3, category_4, category_5 = Factory(:category), Factory(:category), Factory(:category), Factory(:category, :name => "B Category"), Factory(:category, :name => "A Category")
     categories = Category.all
     assert_equal [ category_5, category_4, category_1, category_2, category_3 ], categories
