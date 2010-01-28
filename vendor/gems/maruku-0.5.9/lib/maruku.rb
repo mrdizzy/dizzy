@@ -1,7 +1,5 @@
 require 'rexml/document'
 
-# include:MaRuKu.txt
-
 module MaRuKu
 
 	module In
@@ -48,7 +46,6 @@ end
 
 # This is the public interface
 class Maruku < MaRuKu::MDDocument; end
-require 'rexml/document'
 
 # Structures definition
 require 'maruku/structures'
@@ -56,7 +53,7 @@ require 'maruku/structures_inspect'
 
 require 'maruku/defaults'
 
-# Less typing
+# Less typings
 require 'maruku/helpers'
 
 # Code for parsing whole Markdown documents
@@ -97,4 +94,3 @@ require 'maruku/output/to_html'
 
 # class Maruku is the global interface
 require 'maruku/maruku'
-
