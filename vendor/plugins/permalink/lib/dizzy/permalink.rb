@@ -5,15 +5,11 @@ module Dizzy
 			base.extend ClassMethods
 		end
 		
-		module ClassMethods
-			
-			def permalink(permalink)
-				if result=find_by_permalink(permalink)
-					result
-				else
-					raise ActiveRecord::RecordNotFound, "Sorry, no record"
-				end
+		module ClassMethods			
+			def find_by_permalink(permalink)
+				find(:first, :conditions => ["permalink = ?", permalink]) or raise ActiveRecord::RecordNotFound, "Sorry, no record"
 			end
 		end
 	end
-end
+	
+end 
