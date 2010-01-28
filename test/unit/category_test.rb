@@ -91,6 +91,16 @@ class CategoryTest < ActiveSupport::TestCase
    assert_equal [ cheatsheet_latest, cheatsheet_middle, cheatsheet_oldest ], category.contents, "Should be contents in order"
   end
   
+  def test_b_should_raise_error_when_category_not_found
+    assert_raise(ActiveRecord::RecordNotFound) { Category.find_by_permalink("hello-david") }
+  end
+  
+  def test_c_categories_should_be_ordered_by_name
+    category_1, category_2, category_3, category_4, category_5 = Factory(:category), Factory(:category), Factory(:category), Factory(:category, :name => "B Category"), Factory(:category, :name => "A Category")
+    categories = Category.all
+    assert_equal [ category_5, category_4, category_1, category_2, category_3 ], categories
+  end
+  
 end
 
 # == Schema Info

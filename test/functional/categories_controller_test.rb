@@ -9,7 +9,7 @@ class CategoriesControllerTest < ActionController::TestCase
     @main_category = Factory(:category, :contents => [cheatsheet_latest, cheatsheet_middle, cheatsheet_oldest])
   end
 
-  def test_truth; assert true; end
+  def test_truth() assert true   end
   
   def test_1_should_succeed_on_show_with_valid_permalink
   	get :show, :id => @main_category.permalink
@@ -71,5 +71,6 @@ class CategoriesControllerTest < ActionController::TestCase
     assert_template("new")
     assert_response :success        
   end
+  
 
 end

@@ -9,11 +9,7 @@ class Category < ActiveRecord::Base
 	
 	def self.find_by_permalink(id)
 		result = find(:first, :conditions => ["permalink = ?", id])
-		unless result 
-			raise ActiveRecord::RecordNotFound 
-		else
-			result
-		end	
+		result or raise ActiveRecord::RecordNotFound
 	end
 end
 
