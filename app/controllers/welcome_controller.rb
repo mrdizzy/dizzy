@@ -4,8 +4,8 @@ class WelcomeController < ApplicationController
 	helper :portfolios
 	
 	def index
-		@companies = Company.find(:all, :order => 'RAND()', :limit => 6)
-		@articles 			= Content.recent.all(:limit => 12)		
+		@companies 	= Company.find(:all, :order => 'RAND()', :limit => 6)
+		@articles 	= Content.recent.all(:limit => 12)		
 	end	
 	
 	def show
@@ -23,7 +23,7 @@ class WelcomeController < ApplicationController
 					page.replace_html :logo_pagination, :partial => "logo_pagination"
 				end
 			end
-		end
-	
+		end	
 	end
+	
 end
