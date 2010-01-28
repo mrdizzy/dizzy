@@ -11,9 +11,11 @@ Factory.sequence(:comment_subject) { |c| "Comment subject #{c}" }
 Factory.sequence(:cheatsheet_name) { |d| "Cheatsheet #{d}" }
 Factory.sequence(:article_name) { |d| "Article #{d}" }
 Factory.sequence(:number) { |n| n }
+
 Factory.sequence(:binary) do |b| 
 	ActionController::TestUploadedFile.new(ActiveSupport::TestCase.fixture_path + "letterhead.png", "image/png", :binary) 
 end
+
 Factory.sequence(:pdf_file) do |b| 
 	ActionController::TestUploadedFile.new(ActiveSupport::TestCase.fixture_path + "letterhead.png", "application/pdf", :binary) 
 end

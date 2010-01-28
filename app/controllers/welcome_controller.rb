@@ -5,13 +5,10 @@ class WelcomeController < ApplicationController
 	
 	def index
 		@companies = Company.find(:all, :order => 'RAND()', :limit => 6)
-		@articles 			= Content.recent.all(:limit => 12)
-
-		
+		@articles 			= Content.recent.all(:limit => 12)		
 	end	
 	
 	def show
-		
 		@logos = PortfolioItem.paginate :per_page => 1, :page => params[:page], :conditions => [ "portfolio_type_id = ?", 4]
 		
 		respond_to do |wants|

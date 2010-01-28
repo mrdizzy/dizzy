@@ -7,10 +7,8 @@ class Content < ActiveRecord::Base
 	belongs_to 				:version
 	
 	validates_existence_of	:version
-	validates_presence_of 	:content	 
-	validates_presence_of 	:category_ids
 	validates_format_of		:permalink, :with => /^[a-z0-9-]+$/, :allow_blank => true
-	validates_presence_of 	:title, :description, :date, :user, :permalink, :version_id 
+	validates_presence_of 	:content, :category_ids, :title, :description, :date, :user, :permalink, :version_id 
 	validates_uniqueness_of :permalink	
 
 	named_scope :recent, lambda { { :conditions => ["date < ?", 1.hour.ago], :order => "date DESC"  } }
@@ -27,10 +25,8 @@ class Content < ActiveRecord::Base
 		create_version(:version_number => new_version) unless new_version.blank?
 	end
 	
-	def parsed_content
-		
+	def parsed_content		
 		result = SyntaxHighlighter.highlight_code(self.content)
-
 	end
    
    def content_without_toc

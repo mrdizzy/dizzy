@@ -7,7 +7,7 @@ class Message < ActiveRecord::Base
 
 	#acts_as_textcaptcha
 	
-	def deliver_message; Mercury.deliver_new_message(self); end
+	def deliver_message()	Mercury.deliver_new_message(self)	end
   
 end
 

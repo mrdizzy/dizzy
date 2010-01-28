@@ -8,15 +8,12 @@ production:
   username: #{database_username}
   password: #{database_password}
   host: #{database_hostname}
-
 EOF
 
-namespace :deploy do
-	
+namespace :deploy do	
 	desc "Dump and download the production database"
 		task :download_database, :roles => :app do 
 		run("mysqldump --opt -u #{database_username} --password=#{database_password} -h #{database_hostname} dizzy_production > export.sql")
 		download "export.sql", "export.sql"
 	end
-
 end
