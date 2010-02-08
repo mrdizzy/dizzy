@@ -4,10 +4,9 @@ class BinariesController < ApplicationController
 	
 	def show 
 		respond_to do |wants|
-
 			wants.png do
 				if @image_data = PortfolioItem.find_by_company_id_and_portfolio_type_id(params[:id],5)
-					send_data(@image_data.data, :type => @image_data.content_type, :disposition => 'inline')	
+					render(:binary, @image_data => :image)	
 				else
 					raise ActiveRecord::RecordNotFound, "Record not found"
 				end
@@ -19,7 +18,7 @@ class BinariesController < ApplicationController
 		respond_to do |wants|
 				wants.png do
 				if @image_data = PortfolioItem.find_by_company_id_and_portfolio_type_id(params[:id],6)
-					send_data(@image_data.data, :type => @image_data.content_type, :disposition => 'inline')
+					render(:binary, @image_data => :image)
 				else
 					raise ActiveRecord::RecordNotFound, "Record not found"
 				end
