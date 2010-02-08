@@ -15,18 +15,21 @@ module MaRuKu
 				if use_syntax && lang
 					
 						
+	# eliminate trailing newlines otherwise Syntax crashes
+						source = source.gsub(/\n*\Z/,'')
+
 						#html = convertor.convert( source )
 						#html = html.gsub(/\&apos;/,'&#39;') # IE bug
 						#html = html.gsub(/'/,'&#39;') # IE bug
 			#			html = html.gsub(/&/,'&amp;') 
-						html = "<pre>" + SyntaxHighlighter.highlight_code(source) + "</pre>"
+						html = "<pre>" + CodeRay.scan(source, lang.to_sym).html + "</pre>"
 						code = Document.new(html, {:respect_whitespace =>:all}).root
-						
+
 						code.attributes['class'] = lang
-						
+
 						code.name = 'code'
 						#code.attributes['lang'] = lang
-						
+
 						pre = Element.new 'pre'
 						pre << code
 						pre
