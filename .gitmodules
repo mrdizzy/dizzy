@@ -19,3 +19,6 @@
 [submodule "vendor/plugins/acts_as_binary"]
 	path = vendor/plugins/acts_as_binary
 	url = git@github.com:mrdizzy/acts_as_binary.git
+[submodule "vendor/plugins/text_captcha"]
+	path = vendor/plugins/text_captcha
+	url = git@github.com:mrdizzy/text_captcha.git
