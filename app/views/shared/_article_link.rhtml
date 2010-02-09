@@ -22,7 +22,7 @@
 	
 
 <% if article_link.is_a?(Cheatsheet) %>	
-<td>
+<td class="icons">
 		<p>
 			<%= image_tag("f/small_icons/html.png") %>
 			<%= diamond %> 	<%= link_to "HTML", cheatsheet_path(article_link.permalink) %> 
