@@ -16,3 +16,6 @@
 [submodule "vendor/plugins/cache_test"]
 	path = vendor/plugins/cache_test
 	url = git@github.com:mrdizzy/cache_test.git
+[submodule "vendor/plugins/acts_as_binary"]
+	path = vendor/plugins/acts_as_binary
+	url = git@github.com:mrdizzy/acts_as_binary.git
