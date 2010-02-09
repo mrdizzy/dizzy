@@ -3,23 +3,7 @@ class Cheatsheet < Content
 	has_binary :pdf, 
 				   :content_type => /(application\/pdf|binary\/octet-stream)/,
 				   :size => 1.kilobyte..700.kilobytes
-				   	
-	def parsed_content
-		result = "Use numbered headers: true
-HTML use syntax: true
-
-{:rhtml: lang=rhtml html_use_syntax=true}
-{:ruby: lang=ruby  html_use_syntax=true}
-{:plaintext: lang=plaintext html_use_syntax=true}
-
-# Table of Contents
-
-* Table of Contents
-{:toc}
-
-" + self.content
-		result = Maruku.new(result).to_html
-	end
+	def has_toc() true end
 	
 	def title
 		result = super 
@@ -28,7 +12,7 @@ HTML use syntax: true
 end
 
 # == Schema Info
-# Schema version: 20090918003951
+# Schema version: 20090919133116
 #
 # Table name: contents
 #

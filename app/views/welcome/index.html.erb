@@ -29,7 +29,7 @@
    
 <h2 class="lead_in"><%= content.description %></h2>
 <div id="article">
-<%= content.content_without_toc %>
+<%= content.parsed_content %>
 
 <p><%= link_to content.comments.size.to_s + " comments", content_path(content.permalink) %></p>
 </div>

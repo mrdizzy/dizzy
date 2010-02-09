@@ -43,7 +43,7 @@ class CompanyTest < ActiveSupport::TestCase
 end
 
 # == Schema Info
-# Schema version: 20090918003951
+# Schema version: 20090919133116
 #
 # Table name: companies
 #
