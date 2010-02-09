@@ -1,5 +1,5 @@
 <% @companies.each do |company| %>
-	<p><%= link_to_remote company.name, { :url => formatted_portfolio_path(company.id, :js), :method => :get } %></p>
+	<p><%= link_to_remote company.name, { :url => portfolio_path(company.id, :js), :method => :get } %></p>
 <% end %>
 
 <p>
