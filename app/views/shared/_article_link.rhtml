@@ -1,17 +1,10 @@
-<tr class="<%= cycle('even', '') %>"> 
+<tr> 
 	
 <!--  ARTICLE -->
+	
+	<td>
 
-<% if article_link.is_a?(Article) %>
-	
-	<td>
-		<p><%= posted_in(article_link.categories) %><br/>
-		<i>Rails <%= article_link.version.version_number %></i></p>
-	</td>
-	
-	<td>
-		
-		<h2><%= square %> <%= link_to article_link.title, content_path(article_link.permalink) %></h2>
+<h2><%= square %> <%= link_to article_link.title, content_path(article_link.permalink) %></h2>
 		<span class="posted_ago">POSTED <%= time_ago_in_words(article_link.date).upcase %> AGO</span>
 		<p><%= article_link.description %></p>
 
@@ -19,35 +12,17 @@
 			<p><%= link_to 'edit', edit_content_path(article_link.id) %> 
 			<%= diamond %> <%= link_to 'delete', content_path(article_link.id), :method => "delete" %> </p>			
 		<% end %>
-	
+
 	</td>
 	
-	<td></td>
+			<td><p><%= posted_in(article_link.categories) %><br/>
+		<i>Rails <%= article_link.version.version_number %></i></p>
 
-<!-- CHEATSHEET -->
-
-<% else %>
-
-<td>	
-	<p><%= posted_in(article_link.categories) %><br/>
-  <%= article_link.version.version_number %></p>	
-	</td>
+</td>
 	
-	<td>			
-		<h2><%= square %> <%= link_to article_link.title, cheatsheet_path(article_link.permalink) %></h2>
-		
-		<span class="posted_ago">POSTED <%= time_ago_in_words(article_link.date).upcase %> AGO</span>
-		
-		<p class="article_link_description"><%= article_link.description %></p>
-		
-		<% if administrator? %>
-			<p><%= link_to 'edit', edit_polymorphic_path(article_link) %> 
-			<%= diamond %> <%= link_to 'delete', cheatsheet_path(article_link.id), :method => "delete" %></p>
-		<% end %>
-		
-	</td>
-	
-	<td class="icons">
+
+<% if article_link.is_a?(Cheatsheet) %>	
+<td>
 		<p>
 			<%= image_tag("f/small_icons/html.png") %>
 			<%= diamond %> 	<%= link_to "HTML", cheatsheet_path(article_link.permalink) %> 
@@ -58,8 +33,6 @@
 			<%= diamond %> <%= link_to "PDF", cheatsheet_path(article_link.permalink, :pdf) %> 
 			(<%= number_to_human_size(article_link.pdf_binary_data.size) %>)
 		</p>
-	</td>
-
+		</td>
 <% end %>
-
 </tr>

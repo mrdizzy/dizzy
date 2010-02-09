@@ -69,6 +69,13 @@
    #welcome h1:first { border-top: 0; }
 	#first_half { margin-top:9px;width:326px;float:left;}		
 	#second_half { margin-top:9px;width:648px; float:right; }	
+		#second_half table.cheatsheet { border-top: 1px solid #000; }
+		#second_half table.cheatsheet td.first { width:20%; }
+		#second_half table.cheatsheet td.second { width:55%; }
+		#second_half table.cheatsheet td.third { width:25%; }
+		#second_half table.cheatsheet .posted_in { line-height: 9px; }
+		#second_half table.cheatsheet h2 a { color: #000; font-weight:bold; text-decoration:none;}
+		#second_half table.cheatsheet h2 a:hover { color: #000; font-weight:bold; text-decoration:underline;;}
 	#welcome #category_list { margin-left:0; margin-top:9px;}
 	#welcome h1 a { text-decoration:none;color:#000;}
 		#welcome a:hover { text-decoration:underline; }
@@ -112,10 +119,9 @@
 
 /* =CATEGORY PAGES ========================= */
 #article_links { width:100%;}
-	#article_links h2 a { text-decoration:none; color:black;}
-	#article_links h2 { font-family: Arial; font-weight:bold; font-style:normal;}
+	#article_links h2 a { text-decoration:none; color:black; font-weight:bold;}
 	#article_links h2 a:hover { text-decoration:underline; }
-	#article_links td { width:38%; padding-bottom:17px; border-bottom: 1px dashed #999; vertical-align:top; }
+	#article_links td { width:38%; padding-bottom:17px; border-bottom: 1px solid #000; vertical-align:top; }
 	#article_links td.icons { width:24%; vertical-align:middle; }
 		#article_links td.icons p {text-align:center; margin-top:9px; margin-bottom:9px; }
 		#category_list { margin-top:18px;}

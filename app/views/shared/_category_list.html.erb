@@ -1,6 +1,6 @@
 <ul id="category_list" class="categories">
 
-<% Category.find(:all, :order => :name).each do |category| %>
+<% Category.all.each do |category| %>
 	<% if category.permalink == "cheatsheets" %>
 		<li id="category_<%= category.id %>"><%= link_to("Cheatsheets", cheatsheets_path) %></li>
 	<% else %>

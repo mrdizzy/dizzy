@@ -3,6 +3,7 @@ class Cheatsheet < Content
 	has_binary :pdf, 
 				   :content_type => /(application\/pdf|binary\/octet-stream)/,
 				   :size => 1.kilobyte..700.kilobytes
+				   
 	def has_toc() true end
 	
 	def title

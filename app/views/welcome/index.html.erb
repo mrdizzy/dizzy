@@ -1,85 +1,74 @@
 <div id="welcome">
 	<div id="first_half">
+	
 		<div class="mini_column"><%= render :partial => "shared/category_list" %></div>
 		
-		<div class="mini_column">
-			
-		<span class="posted_in"><%= solid_arrow%> LATEST WORK </span>
+		<div class="mini_column">			
+			<span class="posted_in"><%= solid_arrow%> LATEST WORK </span>
 			<table id="logo_table">
 				<% @companies.each do |footer_logo| %>
-				<tr>
-			<td>
-	<%= link_to image_tag(formatted_grey_binary_path(footer_logo,:png), :class => "footer_logo", :id => "footerlogo_#{footer_logo.id}"), portfolio_path(footer_logo) %>
-	<div style="display:none;"><%= image_tag(formatted_binary_path(footer_logo,:png)) %></div>
-</td>
-</tr>
-<tr><td><%= diamond %></td></tr>
-<% end %>
-</table></div>
+					<tr>
+						<td>
+							<%= link_to image_tag(formatted_grey_binary_path(footer_logo,:png), :class => "footer_logo", :id => "footerlogo_#{footer_logo.id}"), portfolio_path(footer_logo) %>
+							<div style="display:none;"><%= image_tag(formatted_binary_path(footer_logo,:png)) %></div>
+						</td>
+					</tr>
+					<tr><td><%= diamond %></td></tr>
+				<% end %>
+			</table>
 		</div>
+	</div>
 	
 	<div id="second_half">
 	
 		<% @articles.each do |content| %>
-      	<% if content.is_a?(Article) %>
-         
-	<span class="posted_ago">POSTED <%= time_ago_in_words(content.date).upcase %> AGO</span>   
-<h1 class="welcome"><%= link_to content.title, content_path(content.permalink) %></h1>
+			<% if content.is_a?(Article) %>
 
-   
-<h2 class="lead_in"><%= content.description %></h2>
-<div id="article">
-<%= content.parsed_content %>
-
-<p><%= link_to content.comments.size.to_s + " comments", content_path(content.permalink) %></p>
-</div>
-         <% else %>
+				<span class="posted_ago">POSTED <%= time_ago_in_words(content.date).upcase %> AGO</span>   
+				<h1 class="welcome"><%= link_to content.title, content_path(content.permalink) %></h1>
+				<h2 class="lead_in"><%= content.description %></h2>
+				
+				<div id="article">
+					<%= content.parsed_content %>
+					<p><%= link_to content.comments.size.to_s + " comments", content_path(content.permalink) %></p>
+				</div>
+				
+         	<% else %>
 		 
-	<span class="posted_ago">POSTED <%= time_ago_in_words(content.date).upcase %> AGO</span>   
+				<span class="posted_ago">POSTED <%= time_ago_in_words(content.date).upcase %> AGO</span>   
 	
-		<table>
+				<table class="cheatsheet">
 	
-	<tr>
-	<td>
-<h1 class="welcome"></h1>
-			<p><%= posted_in(content.categories) %><br/>
- <%= content.version.version_number %></p>
- </td>
+					<tr>
+						<td class="first">
+							<p><%= posted_in(content.categories, false) %><br/>
+ 							<%= content.version.version_number %></p>
+ 						</td>
 
-	<td>			
-		<h2><%= square %> <%= link_to content.title, cheatsheet_path(content.permalink) %></h2>
+						<td class="second">			
+							<h2><%= square %> <%= link_to content.title, cheatsheet_path(content.permalink) %></h2>
+							<p class="article_link_description"><%= content.description %></p>
+						</td>
+	
+						<td class="third">
+							<p>
+								<%= image_tag("f/small_icons/html.png") %>
+								<%= diamond %> 	<%= link_to "HTML", cheatsheet_path(content.permalink) %> 
+							</p>	
+							<p>
+								<%= image_tag("f/small_icons/pdf.png") %>	
+								<%= diamond %> <%= link_to "PDF", cheatsheet_path(content.permalink, :pdf) %> 
+								(<%= number_to_human_size(content.pdf_binary_data.size) %>)
+							</p>
+						</td>
+					</tr>
 
-		
-		<p class="article_link_description"><%= content.description %></p>
+				</table>
+				
+			<% end %> 
 
-		<% if administrator? %>
-			<p><%= link_to 'edit', edit_polymorphic_path(content) %> 
-			<%= diamond %> <%= link_to 'delete', cheatsheet_path(content.id), :method => "delete" %></p>
-		<% end %>
-
-	</td>
-
-	<td class="icons">
-		<p>
-			<%= image_tag("f/small_icons/html.png") %>
-			<%= diamond %> 	<%= link_to "HTML", cheatsheet_path(content.permalink) %> 
-		</p>
-
-		<p>
-			<%= image_tag("f/small_icons/pdf.png") %>	
-			<%= diamond %> <%= link_to "PDF", cheatsheet_path(content.permalink, :pdf) %> 
-			(<%= number_to_human_size(content.pdf_binary_data.size) %>)
-		</p>
-	</td>
-
-
-</tr>
-
-	</table>
-         <% end %> 
-      
-<%= spiro %>
+		<%= spiro %>
             
-      <% end %>
+	<% end %>
 
 </div> 
