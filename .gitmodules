@@ -22,3 +22,6 @@
 [submodule "vendor/plugins/text_captcha"]
 	path = vendor/plugins/text_captcha
 	url = git@github.com:mrdizzy/text_captcha.git
+[submodule "vendor/plugins/table_helper"]
+	path = vendor/plugins/table_helper
+	url = git@github.com:mrdizzy/table_helper.git
