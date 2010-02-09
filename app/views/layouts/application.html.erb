@@ -15,7 +15,7 @@
 	</style>
     <![endif]-->
 	
-	<script type="text/javascript">
+	<% javascript_tag do -%>
 	
 		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
 		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
@@ -25,10 +25,8 @@
 			pageTracker._trackPageview();
 		} catch(err) {}
 		
-	</script>
-	
-	<script type="text/javascript" src="http://api.recaptcha.net/js/recaptcha_ajax.js"></script>
-	
+	<% end %>
+		
 	<script type="text/javascript">
 	
    function watchCommentForm(originalRequest) {
@@ -65,8 +63,10 @@
 		<%= render :partial => "/layouts/header" %>
 		<%= render :partial => "/layouts/navigation" %>
 		
+		<%= yield :breadcrumbs %>
+		
 		<div id="content_container">
-			<%= yield %>
+			<%= yield :content or yield %>
 		</div>
 		
 		<%= render :partial => "/layouts/footer" %>

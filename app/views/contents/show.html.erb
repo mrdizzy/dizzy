@@ -1,3 +1,5 @@
+<% content_for :breadcrumbs do %> 
+
 <div id="breadcrumbs">
    <p><%= location_icon %> 
       <%= link_to "Home", "/" %> 
@@ -11,10 +13,12 @@
       <%= image_tag("f/bullets/arrows/solidarrow.png") %>
    </p>
 </div>
-				
+
+<% end %>				
+ 
 <div id="left_column">
-	
-	<%= render :partial => "shared/category_list" %>
+
+   <%= render :partial => "layouts/category_list" %>
 	
 	<% unless @content.nil? %>
 		<% @content.related_articles.each do |related| %>
