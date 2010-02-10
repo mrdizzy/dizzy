@@ -2,8 +2,7 @@
   
   <% unless item.new_record? %>
   
-    <%= diamond %> 
-    <%= item.portfolio_type.description %>
+    <%= diamond %> <%= item.portfolio_type.description %>
     <p><%= image_tag(portfolio_item_path(item, :png)) %></p>
     
     <p>
