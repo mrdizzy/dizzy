@@ -16,11 +16,13 @@ function watchCommentForm(originalRequest) {
 }
 
 document.observe("dom:loaded", function() {   
-
-$$('.contact_link').invoke('observe', 'click', function(e)
-{
-	e.stop();
-	$('contact_form').toggle();
-	watchCommentForm();
+	
+	$$('.contact_link').invoke('observe', 'click', function(e)
+	{
+		e.stop();
+		$('contact_form').toggle();
+		watchCommentForm();
+	}
+);
 }
 );

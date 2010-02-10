@@ -28,8 +28,10 @@
 		<%= render :partial => "/layouts/navigation" %>
 
 		<div id="contact_form"></div>
-
-		<%= yield :breadcrumbs %>
+		
+		<div id="breadcrumbs">
+			<%= yield :breadcrumbs %>
+		</div>
 		
 		<div id="content_container">
 			<%= yield :content or yield %>

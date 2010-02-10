@@ -1,19 +1,22 @@
 <% content_for :breadcrumbs do -%>
-
-<div id="breadcrumbs">
 	<p><%= location_icon %>
 	<a href="/">Home</a> <%= solid_arrow %> <span class="destination">Portfolio</span></p>
-	</div>
 <% end %> 
 
 <div id="column1">
 	
-	<div id="company_description"><%= render :partial => "company_description" %></div>
+	<div id="company_description">
+		<%= render :partial => "company_description" %>
+	</div>
 	
-	<div id="portfolio_list"><%= render :partial => "company_list" %></div>
+	<div id="portfolio_list">
+		<%= render :partial => "company_list" %>
+	</div>
 	
 	<div id="next"></div>
 		
 </div>
 
-<div id="logos"><%=	portfolio_table %></div>
+<div id="logos">
+	<%=	portfolio_table %>
+</div>

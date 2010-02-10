@@ -11,8 +11,8 @@
 				<% @companies.each do |footer_logo| %>
 					<tr>
 						<td>
-							<%= link_to image_tag(formatted_grey_binary_path(footer_logo,:png), :class => "footer_logo", :id => "footerlogo_#{footer_logo.id}"), portfolio_path(footer_logo) %>
-							<div style="display:none;"><%= image_tag(formatted_binary_path(footer_logo,:png)) %></div>
+							<%= link_to image_tag(grey_binary_path(footer_logo,:png), :class => "footer_logo", :id => "footerlogo_#{footer_logo.id}"), portfolio_path(footer_logo) %>
+							<div style="display:none;"><%= image_tag(binary_path(footer_logo,:png)) %></div>
 						</td>
 					</tr>
 					<tr><td><%= diamond %></td></tr>
