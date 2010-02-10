@@ -14,12 +14,12 @@ class ActiveSupport::TestCase
     aFile.close
   end
    
-  def login
-  	 post "/administrator_sessions", :admin_password => PASSWORD
-  end
-  
   def admin_pass
     { :admin_password => PASSWORD }
   end
 
+  def login
+  	 post "/administrator_sessions", admin_pass
+  end
+  
 end

@@ -16,9 +16,10 @@ function watchCommentForm(originalRequest) {
 }
 
 document.observe("dom:loaded", function() {   
+
+	<%= yield :dom_loaded %>
 	
-	$$('.contact_link').invoke('observe', 'click', function(e)
-	{
+	$$('.contact_link').invoke('observe', 'click', function(e) {
 		e.stop();
 		$('contact_form').toggle();
 		watchCommentForm();

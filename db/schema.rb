@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090919133116) do
+ActiveRecord::Schema.define(:version => 20100210214302) do
 
   create_table "categories", :force => true do |t|
     t.string "name"
@@ -68,14 +68,6 @@ ActiveRecord::Schema.define(:version => 20090919133116) do
 
   add_index "contents_contents", ["content_id"], :name => "content_id"
   add_index "contents_contents", ["related_id"], :name => "related_id"
-
-  create_table "messages", :force => true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "name"
-    t.string   "message"
-    t.string   "email"
-  end
 
   create_table "portfolio_items", :force => true do |t|
     t.integer "portfolio_type_id",  :default => 0, :null => false
