@@ -1,6 +1,5 @@
 module ApplicationHelper
 
-	def core_front_end_stylesheets;  stylesheet_link_tag("main", :media => "all"); end	
     def article_link(object); link_to object.title, content_path(object.permalink); end
 
 	def posted_in(categories, and_connector = true)

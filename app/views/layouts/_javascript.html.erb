@@ -1,0 +1,26 @@
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+
+try {
+	var pageTracker = _gat._getTracker("UA-900217-1");
+	pageTracker._trackPageview();
+} catch(err) {}
+
+function watchCommentForm(originalRequest) {
+  $('new_message').observe('submit', function(e)
+	 {
+	 e.stop();
+	 new Ajax.Request(e.element().action, {parameters: e.element().serialize(), onComplete: watchCommentForm});
+	 }
+  );
+}
+
+document.observe("dom:loaded", function() {   
+
+$$('.contact_link').invoke('observe', 'click', function(e)
+{
+	e.stop();
+	$('contact_form').toggle();
+	watchCommentForm();
+}
+);
