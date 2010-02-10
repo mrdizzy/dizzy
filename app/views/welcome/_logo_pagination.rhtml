@@ -1,2 +1,0 @@
-<p><%= link_to_remote "&lt; Previous", :url => welcome_path(:page => @logos.previous_page, :format => "js"), :method => :get if @logos.previous_page%>
-| <%= link_to_remote "Next &gt;", :url => welcome_path(:page => @logos.next_page, :format => "js"), :method => :get if @logos.next_page %></p>
