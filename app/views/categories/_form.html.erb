@@ -1,9 +1,7 @@
 <div id="new_category_form">
-
-	
-	<%= flash[:errors] %>
 	
 	<% remote_form_for form, :url => categories_path do |f| %>
+	
 		<%= f.error_messages %>
 		<%= f.text_field :name, :size => 20 %>
 		<%= f.text_field :permalink, :size => 20 %>
