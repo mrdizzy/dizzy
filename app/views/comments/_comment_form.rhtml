@@ -1,27 +1,20 @@
-<% form_for @comment, :url => content_comments_path, :html => { :class => "comment_form" } do |form| %>
+<% form_for @comment, :url => content_comments_path, :html => { :class => "comment_form" } do |f| %>
 
    <%= error_messages_for :comment, :header_tag => "h2" %>
 
-   <%= form.label :subject %>
-   <%= form.text_field :subject %>
+   <%= f.text_field :subject %>
+   <%= f.text_field :name %>
+   <%= f.text_field :email %>
+   <%= f.text_area :body, :size=>"20x10" %>
 
-   <%= form.label :name %>
-   <%= form.text_field :name %>
+   <%= f.hidden_field :parent_id %>
 
-   <%= form.label :email %>   
-   <%= form.text_field :email %>
-
-   <%= form.label :body %>
-   <%= form.text_area :body, :size=>"20x10" %>
-
-   <%= form.hidden_field :parent_id %>
-
-   <div id="submit_button_<%=params[:comment_id] %>">
-   <%= submit_button %>	
+   <div id="submit_button_<%= params[:comment_id] %>">
+      <%= submit_button %>	
    </div>
 
    <div id="spinner_<%= params[:comment_id] %>" class="left" style="display:none;">
-   <img alt="Spinner" src="/images/f/spinner.gif" />
+      <%= image_tag("/images/f/spinner.gif") %>
    </div>
    
 <% end %>

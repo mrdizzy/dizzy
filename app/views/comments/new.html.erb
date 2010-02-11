@@ -1,17 +1,10 @@
 <% form_for @comment, :url => content_comments_path do |form| %>
     
   <%= error_messages_for :comment, :header_tag => "h2" %>
-
-  <%= form.label :subject %>
+  
   <%= form.text_field :subject %>
-
-  <%= form.label :name %>
   <%= form.text_field :name %>
-    
-  <%= form.label :email %>   
   <%= form.text_field :email %>
-
-  <%= form.label :body %>
   <%= form.text_area :body, :size=>"20x10" %>
 
   <%= form.hidden_field :parent_id %>

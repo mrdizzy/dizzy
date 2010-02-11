@@ -74,8 +74,11 @@
  
    $('new_comment_link').observe('click', function(e) 
       {
-         e.stop();
-         new Ajax.Request('/ruby_on_rails/contents/<%= @content.id %>/comments/new', {method:'get', onComplete: watchForms});
+      e.stop();
+            new Ajax.Request('/ruby_on_rails/contents/<%= @content.id %>/comments/new', {method:'get', onComplete: watchForms});
+      alert(e);
+   
+       
       }
    );
    

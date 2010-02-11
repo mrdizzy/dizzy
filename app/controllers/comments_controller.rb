@@ -1,7 +1,6 @@
 class CommentsController < ApplicationController
 	
 	cache_sweeper :comment_sweeper, :only => [ :destroy, :update, :create ]	
-	
 	before_filter :authorize, :only => [:destroy, :index]
 	
 	# TODO: If administrator logged in, then create comments from administrator rather than external user 
@@ -39,7 +38,7 @@ class CommentsController < ApplicationController
     
     respond_to do |format|
       format.html do 
-         if @comment.sa
+         if @comment.save
             redirect_to content_path(@comment.content.permalink)
          else
             render :new
