@@ -39,7 +39,6 @@ class CommentsController < ApplicationController
             page.insert_html :bottom, "comment_#{@comment.parent_id}", :partial => 'comment', :object => @comment
             page.hide "form_comment_#{@comment.parent_id}"
             page.replace_html "form_comment_#{@comment.parent_id}", :partial => 'comment_form', :object => Comment.new(:parent_id => @comment.parent_id, :content_id => @comment.content_id), :locals => { :content_id => @comment.content_id }
-
           else
             page.replace_html "form_comment_#{@comment.parent_id}", :partial => 'comment_form', :object => @comment, :locals => { :content_id => @comment.content_id } 
           end
