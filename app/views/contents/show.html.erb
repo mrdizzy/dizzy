@@ -62,33 +62,30 @@
 
 <% content_for :javascript do %>
 
-   function watchCommentLinks() {
-         $$('.new_comment').invoke('observe', 'submit', function(e)
-         {
-         e.stop();
-         new Ajax.Request(e.element().action, {parameters: e.element().serialize()});
-         }
-      );
-      
-   $('new_comment_link').observe('click', function(e) {
-      e.stop();
-      $('form_comment_').toggle();
-      e.element().hide();
-     
-      }
-   );
 
-   $$('.child_comment_link').invoke('observe', 'click', function(e)
-      {
-         e.stop();
-         //new Ajax.Request('/ruby_on_rails/contents/<%= @content.id %>/comments/' + e.element().id + '/child_comments/new', {method:'get', onComplete: watchCommentLinks});
-         $('form_comment_' + e.element().id).toggle();
-         
-      }
-   );
-   }
 <% end %>
  
 <% content_for :dom_loaded do %>  
-   watchCommentLinks();
+     $('new_comment_link').observe('click', function(e) {
+      e.stop();
+
+      $('form_comment_').toggle();
+
+      }
+   );
+
+     $$('.child_comment_link').invoke('observe', 'click', function(e) {
+       e.stop();
+
+       $('form_comment_' + e.element().id).toggle(); 
+     }
+     );
+     $$('.new_comment').invoke('observe', 'submit', function(e)
+       {
+       e.stop();
+       new Ajax.Request(e.element().action, {parameters: e.element().serialize()});
+
+       }
+
+     );
 <% end %>
