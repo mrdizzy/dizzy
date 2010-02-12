@@ -50,39 +50,45 @@
       
       <%= render :partial => "comments/comment", :collection => @content.comments.roots %>
       
-      <div id="new_comment_" %>
-         <p><%= diamond %> <%= link_to "Add new comment", new_content_comment_path(@content), :id => "new_comment_link" %></p>
+      <div id="form_comment_" style="display:none;">
+         <%= render :partial => "comments/comment_form", :object => @comment, :locals => { :content_id => @content.id } %>
       </div>
 
+         <p><%= diamond %> <%= link_to "Add new comment", new_content_comment_path(@content), :id => "new_comment_link" %></p>
+      
    </div>
 
 </div>
 
 <% content_for :javascript do %>
 
-   function watchForms(originalRequest) {
-      $$('.new_comment').invoke('observe', 'submit', function(e)
+   function watchCommentLinks() {
+         $$('.new_comment').invoke('observe', 'submit', function(e)
          {
          e.stop();
-         new Ajax.Request(e.element().action, {parameters: e.element().serialize(), onComplete: watchForms});
+         new Ajax.Request(e.element().action, {parameters: e.element().serialize()});
          }
       );
-   }
- <% end %>
- 
- <% content_for :dom_loaded do %>  
- 
+      
    $('new_comment_link').observe('click', function(e) {
       e.stop();
-            new Ajax.Request('<%= new_content_comment_path(@content) %>', {method:'get', onComplete: watchForms});
-      }
-   );
-   
-   $$('.child_comment_link').invoke('observe', 'click', function(e)
-      {
-         e.stop();
-         new Ajax.Request('/ruby_on_rails/contents/<%= @content.id %>/comments/' + e.element().id + '/child_comments/new', {method:'get', onComplete: watchForms});
+      $('form_comment_').toggle();
+      e.element().hide();
+      
       }
    );
 
+   $$('.child_comment_link').invoke('observe', 'click', function(e)
+      {
+         e.stop();
+         //new Ajax.Request('/ruby_on_rails/contents/<%= @content.id %>/comments/' + e.element().id + '/child_comments/new', {method:'get', onComplete: watchCommentLinks});
+         $('form_comment_' + e.element().id).toggle();
+
+      }
+   );
+   }
+<% end %>
+ 
+<% content_for :dom_loaded do %>  
+   watchCommentLinks();
 <% end %>

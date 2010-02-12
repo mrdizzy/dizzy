@@ -1,29 +1,29 @@
 <!-- COMMENT -->
 
-<% if comment.parent_id? %>
-   <div class="single_comment" id="comment_<%= comment.id %>">
-<% else %>
-	<div class="root_comment" id="comment_<%= comment.id %>">
-<% end %>
-	
-      <div class="comments_left">
-         <p>
-            <span class="posted_ago"><%= time_ago_in_words(comment.created_at).upcase %> AGO</span><br/> 
-            <span class="email"><%= comment.email %></span>
-         </p>
-      </div>
-	
-      <div class="comments_right">
-         <h6><%= comment.subject %></h6>
-         <p><%= comment.body %></p>
-      </div>
-      
-      <% div_for comment, :new, :class=> "reply_comment" do %>
-         <%= diamond %> <%= link_to "Reply to this comment", new_content_comment_child_comment_path(comment.content, comment), :id => comment.id, :class => "child_comment_link" %>
-      <% end %>
-   
-   <!-- CHILD COMMENTS -->
-   
-   <%= render(:partial => "comments/comment", :collection => comment.children) unless comment.children.empty? %> 
+<div class="<%= comment.parent_id? ? "single" : "root" %>_comment" id="comment_<%= comment.id %>">
 
+   <div class="comments_left">
+      <p>
+         <span class="posted_ago"><%= time_ago_in_words(comment.created_at).upcase %> AGO</span><br/> 
+         <span class="email"><%= comment.email %></span>
+      </p>
    </div>
+
+   <div class="comments_right">
+      <h6><%= comment.subject %></h6>
+      <p><%= comment.body %></p>
+   </div>
+
+   <% div_for comment, :container_new, :class=> "reply_comment" do %>
+      <%= diamond %> <%= link_to "Reply to this comment", new_content_comment_child_comment_path(comment.content, comment), :id => comment.id, :class => "child_comment_link" %>
+   <% end %>
+
+   <% div_for comment, :form, :style => "display:none;" do %>
+      <%= render :partial => "comments/comment_form", :object => Comment.new(:parent_id => comment.id, :content_id => comment.content.id), :locals => { :content_id => comment.content.id } %>
+   <% end %>
+
+<!-- CHILD COMMENTS -->
+
+<%= render(:partial => "comments/comment", :collection => comment.children) unless comment.children.empty? %> 
+
+</div>

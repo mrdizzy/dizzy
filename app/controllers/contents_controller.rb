@@ -11,8 +11,7 @@ class ContentsController < ApplicationController
 	
 	def show 
 		@content 		= Article.find_by_permalink(params[:id])
-		@comment 		= Comment.new				
-		@categories 	= Category.find(:all, :order => :name)
+		@comment 		= Comment.new(:content_id => @content.id)			
 	end
 	
 	def edit 
@@ -43,7 +42,7 @@ HTML use syntax: true
       flash[:notice] = 'Successfully updated.'
       redirect_to content_path(@article.permalink)
     else
-      render :action => 'edit'
+      render :edit
     end
   end  	
 	
@@ -55,7 +54,7 @@ HTML use syntax: true
       		flash[:notice] = 'Successfully created.'
       		redirect_to latest_path
     	else
-      		render :action => 'new'
+      		render :new
    		end
 	end
 	

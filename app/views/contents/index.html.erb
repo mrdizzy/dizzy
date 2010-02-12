@@ -4,10 +4,11 @@
 	<a href="/">Home</a> <%= solid_arrow %> <span class="destination">Ruby on Rails</span></p>
 </div>
 <% end %>
+
 <div id="left_column"><%= render :partial => "layouts/category_list" %></div>
 
 <div id="right_column">
-<table id="article_links">
-	<%= render :partial => "article_link", :collection => @latest %>
-</table>
+	<table id="article_links">
+		<%= render :partial => "article_link", :collection => @latest %>
+	</table>
 </div>
