@@ -51,7 +51,7 @@
       <%= render :partial => "comments/comment", :collection => @content.comments.roots %>
       
       <div id="form_comment_" style="display:none;">
-         <%= render :partial => "comments/comment_form", :object => @comment, :locals => { :content_id => @content.id } %>
+         <%= render :partial => "comments/comment_form", :object => Comment.new(:content_id => @content.id) %>
       </div>
 
          <p><%= diamond %> <%= link_to "Add new comment", new_content_comment_path(@content), :id => "new_comment_link" %></p>
@@ -74,7 +74,7 @@
       e.stop();
       $('form_comment_').toggle();
       e.element().hide();
-      
+     
       }
    );
 
@@ -83,6 +83,7 @@
          e.stop();
          //new Ajax.Request('/ruby_on_rails/contents/<%= @content.id %>/comments/' + e.element().id + '/child_comments/new', {method:'get', onComplete: watchCommentLinks});
          $('form_comment_' + e.element().id).toggle();
+         
       }
    );
    }

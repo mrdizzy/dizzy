@@ -11,14 +11,12 @@ class CommentsController < ApplicationController
 	end
 	
 	def destroy
-		@comment = Comment.find(params[:id])
-      
+		@comment = Comment.find(params[:id])      
  	 	if @comment.destroy
 			render :update do |page|
 				page.remove "comment_#{@comment.id}"
 			end
 		end
-      
 	end
 	
 	def create			
@@ -38,9 +36,9 @@ class CommentsController < ApplicationController
           if @comment.save
             page.insert_html :bottom, "comment_#{@comment.parent_id}", :partial => 'comment', :object => @comment
             page.hide "form_comment_#{@comment.parent_id}"
-            page.replace_html "form_comment_#{@comment.parent_id}", :partial => 'comment_form', :object => Comment.new(:parent_id => @comment.parent_id, :content_id => @comment.content_id), :locals => { :content_id => @comment.content_id }
+            page.replace_html "form_comment_#{@comment.parent_id}", :partial => 'comment_form', :object => Comment.new(:parent_id => @comment.parent_id, :content_id => @comment.content_id)
           else
-            page.replace_html "form_comment_#{@comment.parent_id}", :partial => 'comment_form', :object => @comment, :locals => { :content_id => @comment.content_id } 
+            page.replace_html "form_comment_#{@comment.parent_id}", :partial => 'comment_form', :object => @comment 
           end
         end
       end

@@ -10,8 +10,7 @@ class ContentsController < ApplicationController
 	end
 	
 	def show 
-		@content 		= Article.find_by_permalink(params[:id])
-		@comment 		= Comment.new(:content_id => @content.id)			
+		@content 		= Article.find_by_permalink(params[:id])			
 	end
 	
 	def edit 
