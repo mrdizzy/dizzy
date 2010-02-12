@@ -9,21 +9,21 @@ module ApplicationHelper
 		"<span class=\"posted_in\">" + result + "</span>"
 	end
 
-	def location_icon; image_tag("f/small_icons/you-are-here.gif", :alt => "You are here:", :size=> "25x24"); end	
-	def asterisk; image_tag("f/bullets/pixels/asterisk.png", :alt => "*"); end
-	def square;	image_tag("f/bullets/pixels/square.png", :alt => "&mdash;"); end
-	def bigarrow; image_tag("f/bullets/pixels/bigarrow.png", :size=> "17x13", :alt => "->"); end	
-	def bigleftarrow; image_tag("f/bullets/arrows/bigleftarrow.png", :size => "17x13", :alt => "->"); end		
-	def diamond; image_tag("f/bullets/pixels/diamond.png", :size=> "5x5", :alt => "*"); end
-	def solid_arrow; image_tag("f/bullets/arrows/solidarrow.png", :size => "13x9", :alt => ">"); end
-	def spiro; "<div class=\"spiro\">&nbsp;</div>"; end	
-	def visible?(input); diamond if input; end 	
+	def location_icon() 	image_tag("f/small_icons/you-are-here.gif", :alt => "You are here:", :size=> "25x24"); end	
+	def asterisk() 			image_tag("f/bullets/pixels/asterisk.png", :alt => "*"); end
+	def square()			image_tag("f/bullets/pixels/square.png", :alt => "&mdash;"); end
+	def bigarrow() 			image_tag("f/bullets/pixels/bigarrow.png", :size=> "17x13", :alt => "->"); end	
+	def bigleftarrow() 		image_tag("f/bullets/arrows/bigleftarrow.png", :size => "17x13", :alt => "->"); end		
+	def diamond() 			image_tag("f/bullets/pixels/diamond.png", :size=> "5x5", :alt => "*"); end
+	def solid_arrow() 		image_tag("f/bullets/arrows/solidarrow.png", :size => "13x9", :alt => ">"); end
+	def spiro() 			"<div class=\"spiro\">&nbsp;</div>"; end	
+	def visible?(input) 	diamond if input; end 	
 		
-	def submit_button; submit_tag('', { :class => 'submit' });	end
-	def get_random_companies; @five_random_companies = Company.all(:order => 'RAND()', :limit => 5); end	
-	def random_number(higher=4); (higher * rand).to_i; end
+	def submit_button() 		submit_tag('', { :class => 'submit' });	end
+	def get_random_companies() 	Company.all(:order => 'RAND()', :limit => 5); end	
+	def random_number(higher=4)	(higher * rand).to_i; end
 
-	def administrator?; session[:administrator_id] ? true : false; end
+	def administrator?() 		session[:administrator_id] ? true : false; end
 end
 
 class DizzyFormBuilder < ActionView::Helpers::FormBuilder

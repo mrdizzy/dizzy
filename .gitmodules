@@ -25,3 +25,6 @@
 [submodule "vendor/plugins/table_helper"]
 	path = vendor/plugins/table_helper
 	url = git@github.com:mrdizzy/table_helper.git
+[submodule "vendor/plugins/dom_id"]
+	path = vendor/plugins/dom_id
+	url = git@github.com:mrdizzy/dom_id.git

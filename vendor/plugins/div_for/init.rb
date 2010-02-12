@@ -1,1 +1,0 @@
-require 'div_for'

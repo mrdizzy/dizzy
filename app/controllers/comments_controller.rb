@@ -8,14 +8,14 @@ class CommentsController < ApplicationController
    
 	def new
 		@comment = Comment.new(:parent_id => params[:comment_id])
-    @parent_id = params[:comment_id]
+    parent_id = params[:comment_id]
 		
     respond_to do |format|
       format.html
       
       format.js do 
         render :update do |page|
-          page.replace_html "new_comment_#{@parent_id}", :partial => 'comment_form'
+          page.replace_html "new_comment_#{parent_id}", :partial => 'comment_form'
         end
       end		
       
