@@ -14,9 +14,9 @@
       <p><%= comment.body %></p>
    </div>
 
-   <% div_for comment, :container_new, :class=> "reply_comment" do %>
+   <div class= "reply_comment">
       <%= diamond %> <%= link_to "Reply to this comment", new_content_comment_child_comment_path(comment.content, comment), :id => comment.id, :class => "child_comment_link" %>
-   <% end %>
+   </div>
 
    <% div_for comment, :form, :style => "display:none;" do %>
       <%= render :partial => "comments/comment_form", :object => Comment.new(:parent_id => comment.id, :content_id => comment.content.id) %>

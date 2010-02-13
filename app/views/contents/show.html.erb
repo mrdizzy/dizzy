@@ -59,33 +59,24 @@
    </div>
 
 </div>
-
 <% content_for :javascript do %>
 
-
-<% end %>
- 
-<% content_for :dom_loaded do %>  
-     $('new_comment_link').observe('click', function(e) {
-      e.stop();
-
-      $('form_comment_').toggle();
-
-      }
-   );
-
-     $$('.child_comment_link').invoke('observe', 'click', function(e) {
-       e.stop();
-
-       $('form_comment_' + e.element().id).toggle(); 
-     }
-     );
-     $$('.new_comment').invoke('observe', 'submit', function(e)
-       {
+function sendCommentForm(e) {
        e.stop();
        new Ajax.Request(e.element().action, {parameters: e.element().serialize()});
+}
+function toggleReplyCommentForm(e) {
+   e.stop();
+   $('form_comment_' + e.element().id).toggle();
+}
+function toggleNewCommentForm(e) {
+   e.stop();
+   $('form_comment_').toggle();
+}
+<% end %>
 
-       }
-
-     );
+<% content_for :dom_loaded do %>  
+     $('new_comment_link').observe('click', toggleNewCommentForm);
+     $$('.child_comment_link').invoke('observe', 'click', toggleReplyCommentForm);
+     $$('.new_comment').invoke('observe', 'submit', sendCommentForm);
 <% end %>

@@ -38,17 +38,12 @@ class CommentsController < ApplicationController
 			
             page.hide "form_comment_#{@comment.parent_id}"
             page.replace_html "form_comment_#{@comment.parent_id}", :partial => 'comment_form', :object => Comment.new(:parent_id => @comment.parent_id, :content_id => @comment.content_id)
-			page << "$('#{@comment.id}').observe('click', function(e) { 
-			e.stop();
-			$('form_comment_' + e.element().id).toggle();
-			});"
+			page << "$('#{@comment.id}').observe('click', toggleReplyCommentForm)"
+			page << "$('form_comment_#{@comment.id}').observe('submit', sendCommentForm)"
 			
           else
             page.replace_html "form_comment_#{@comment.parent_id}", :partial => 'comment_form', :object => @comment 
-			page << "$('new_comment_#{@comment.object_id}').observe('submit', function(e) {
-			e.stop();
-			new Ajax.Request(e.element().action, {parameters: e.element().serialize()});
-			});"
+			page << "$('new_comment_#{@comment.object_id}').observe('submit', sendCommentForm)"
           end
         end
       end
