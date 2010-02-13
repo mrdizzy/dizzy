@@ -8,8 +8,6 @@ class MarkdownsController < ApplicationController
 	end
 	
 	def create
-		@content = params[:content]
-		@content = Maruku.new(@content).to_html
-		render :text => @content
+		render :text => Maruku.new(params[:content]).to_html
 	end
 end

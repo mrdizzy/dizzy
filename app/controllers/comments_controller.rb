@@ -34,13 +34,11 @@ class CommentsController < ApplicationController
       format.js do
         render :update do |page|
           if @comment.save
-            page.insert_html :bottom, "comment_#{@comment.parent_id}", :partial => 'comment', :object => @comment
-			
+            page.insert_html :bottom, "comment_#{@comment.parent_id}", :partial => 'comment', :object => @comment			
             page.hide "form_comment_#{@comment.parent_id}"
             page.replace_html "form_comment_#{@comment.parent_id}", :partial => 'comment_form', :object => Comment.new(:parent_id => @comment.parent_id, :content_id => @comment.content_id)
 			page << "$('#{@comment.id}').observe('click', toggleReplyCommentForm)"
-			page << "$('form_comment_#{@comment.id}').observe('submit', sendCommentForm)"
-			
+			page << "$('form_comment_#{@comment.id}').observe('submit', sendCommentForm)"			
           else
             page.replace_html "form_comment_#{@comment.parent_id}", :partial => 'comment_form', :object => @comment 
 			page << "$('new_comment_#{@comment.object_id}').observe('submit', sendCommentForm)"

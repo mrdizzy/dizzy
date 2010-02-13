@@ -5,7 +5,7 @@
    <%= f.text_field :subject %>
    <%= f.text_field :name %>
    <%= f.text_field :email %>
-   <%= f.text_area :body, :size=>"20x10" %>
+   <%= f.text_area :body, :size=>"20x10", :id => "comment_body_#{comment_form.object_id}" %>
 
    <%= f.hidden_field :parent_id %>
    <%= f.hidden_field :content_id %>
