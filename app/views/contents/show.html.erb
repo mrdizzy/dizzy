@@ -59,28 +59,37 @@
    </div>
 
 </div>
+
 <% content_for :javascript do %>
 
   function previewCommentForm(e) {
     e.preventDefault();
-    new Ajax.Updater(e.element().id, {parameters: e.element().serialize()});
+    
+    var id = e.element().id.split('_').last();
+    var markdown = $('#' + e.element().id + ' textarea')[0].value;
+    alert('comment_preview_' + id);
+    new Ajax.Updater('comment_preview_' + id, "/markdowns", { method: 'post', parameters: { content: markdown } });
   }
+  
   function sendCommentForm(e) {
     e.preventDefault();
     new Ajax.Request(e.element().action, {parameters: e.element().serialize()});
   }
+  
   function toggleReplyCommentForm(e) {
     e.preventDefault();
     $('form_comment_' + e.element().id).toggle();
   }
+  
   function toggleNewCommentForm(e) {
     e.preventDefault();
     $('form_comment_').toggle();
   }
+  
 <% end %>
 
 <% content_for :dom_loaded do %>  
      $('new_comment_link').observe('click', toggleNewCommentForm);
      $$('.child_comment_link').invoke('observe', 'click', toggleReplyCommentForm);
-     $$('.new_comment').invoke('observe', 'submit', previewCommentForm);
+     $$('.new_comment').invoke('observe', 'submit', sendCommentForm);
 <% end %>

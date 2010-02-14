@@ -5,17 +5,13 @@
    <%= f.text_field :subject %>
    <%= f.text_field :name %>
    <%= f.text_field :email %>
-   <%= f.text_area :body, :size=>"20x10", :id => "comment_body_#{comment_form.object_id}" %>
+   <%= f.text_area :body, :size=>"20x10" %>
 
    <%= f.hidden_field :parent_id %>
    <%= f.hidden_field :content_id %>
 
-   <div id="submit_button_<%= params[:comment_id] %>">
-      <%= submit_button %>	
-   </div>
+   <%= submit_button %>	
 
-   <div id="spinner_<%= params[:comment_id] %>" class="left" style="display:none;">
-      <%= image_tag("f/spinner.gif") %>
-   </div>
+   <% div_for comment_form, :preview do %><% end %>
    
 <% end %>
