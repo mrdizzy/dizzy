@@ -41,7 +41,7 @@ if has_toc
 "
 end
 
-result << self.content
+	result << self.content
 		result = Maruku.new(result).to_html
 	end
  

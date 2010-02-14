@@ -7,7 +7,4 @@ class MarkdownsController < ApplicationController
 		render :text => @content
 	end
 	
-	def create
-		render :text => Maruku.new(params[:content]).to_html
-	end
 end

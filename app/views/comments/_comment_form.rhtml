@@ -1,4 +1,4 @@
-<% form_for comment_form, :url => content_comments_path(comment_form.content_id) do |f| %>
+<% form_for_comments comment_form, :url => content_comments_path(comment_form.content_id) do |f| %>
 
    <%= f.error_messages %>
 
@@ -12,6 +12,4 @@
 
    <%= submit_button %>	
 
-   <% div_for comment_form, :preview do %><% end %>
-   
 <% end %>

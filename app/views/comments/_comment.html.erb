@@ -11,16 +11,14 @@
 
    <div class="comments_right">
       <h6><%= comment.subject %></h6>
-      <p><%= comment.body %></p>
+      <p><%= comment.body_to_markdown %></p>
    </div>
 
    <div class= "reply_comment">
       <%= diamond %> <%= link_to "Reply to this comment", new_content_comment_child_comment_path(comment.content, comment), :id => comment.id, :class => "child_comment_link" %>
    </div>
-
-   <% div_for comment, :form, :style => "display:none;" do %>
+   
       <%= render :partial => "comments/comment_form", :object => Comment.new(:parent_id => comment.id, :content_id => comment.content.id) %>
-   <% end %>
 
 <!-- CHILD COMMENTS -->
 

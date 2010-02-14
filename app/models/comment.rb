@@ -21,6 +21,16 @@ class Comment < ActiveRecord::Base
       end
 	end 
    
+   def body_to_markdown		
+      result = "Use numbered headers: false
+HTML use syntax: true
+
+{:rhtml: lang=rhtml html_use_syntax=true}
+{:ruby: lang=ruby  html_use_syntax=true}
+{:plaintext: lang=plaintext html_use_syntax=true}
+" << body
+Maruku.new(result).to_html
+end
    private
    
    def send_email_notification
