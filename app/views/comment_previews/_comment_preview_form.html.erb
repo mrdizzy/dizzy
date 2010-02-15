@@ -1,0 +1,15 @@
+<% form_for_comments @comment do |f| %>
+
+   <%= f.error_messages %>
+
+   <%= f.text_field :subject %>
+   <%= f.text_field :name %>
+   <%= f.text_field :email %>
+   <%= f.text_area :body, :size=>"20x10" %>
+
+   <%= f.hidden_field :parent_id %>
+   <%= f.hidden_field :content_id %>
+
+   <%= submit_button %>	
+   
+<% end %>

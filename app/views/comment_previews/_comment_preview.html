@@ -1,0 +1,20 @@
+<% form_for @comment do |f| %>
+
+   <p><%= @comment.subject %></p>
+   <%= f.hidden_field :subject %>
+   
+   <p><%= @comment.name %></p>
+   <%= f.hidden_field :name %>
+   
+   <p><%= @comment.email %></p>
+   <%= f.hidden_field :email %>
+   
+   <p><%= @comment.body_to_markdown %></p>
+   <%= f.hidden_field :body %>
+   
+   <%= f.hidden_field :parent_id %>
+   <%= f.hidden_field :content_id %>
+
+   <%= submit_button %>	
+   
+<% end %>
