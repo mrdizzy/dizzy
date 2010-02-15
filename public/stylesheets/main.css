@@ -20,8 +20,7 @@
 	pre, code, kbd, samp, tt { font-family:monospace;*font-size:100%; }
 
 /* =CSS TYPOGRAPHY =====================================================*/
-	i { font-style:italic; }
-	em { font-style:italic;}
+	i, em { font-style:italic; }
 	strong { font-weight:bold;}
 
 	img { vertical-align:middle;}
@@ -50,9 +49,6 @@
 	.posted_in { font: 77% "Arial Black"; letter-spacing:0.2em; color: #29A4BD; text-decoration: none; line-height:36px;  }
 	#comments_header { height:36px; }
 	.posted_ago { font: normal 77% "Verdana"; color: #878787; letter-spacing:0.2em; line-height:36px;  }
-	.amp { font: italic normal 120% "Georgia"; color:#434343; }	
-
-	.padded { padding:5px;}
 	
 	#page_container { width: 994px; margin:	0 auto; padding-left:10px; padding-right:10px; background-color:white;}
 	
@@ -69,20 +65,13 @@
    #welcome h1:first { border-top: 0; }
 	#first_half { margin-top:9px;width:326px;float:left;}		
 	#second_half { margin-top:9px;width:648px; float:right; }	
-		#second_half table.cheatsheet { border-top: 1px solid #000; }
-		#second_half table.cheatsheet td.first { width:20%; }
-		#second_half table.cheatsheet td.second { width:55%; }
-		#second_half table.cheatsheet td.third { width:25%; }
-		#second_half table.cheatsheet .posted_in { line-height: 9px; }
-		#second_half table.cheatsheet h2 a { color: #000; font-weight:bold; text-decoration:none;}
-		#second_half table.cheatsheet h2 a:hover { color: #000; font-weight:bold; text-decoration:underline;;}
+	
 	#welcome #category_list { margin-left:0; margin-top:9px;}
 	#welcome h1 a { text-decoration:none;color:#000;}
 		#welcome a:hover { text-decoration:underline; }
 		#welcome .posted_in a,	#welcome #category_list a { color: #29A4BD; }
 		
-	.mini_column, .mini_column_clear { width:150px; padding-right:10px; float:left; }
-	.mini_column_clear { clear:both;}
+	.mini_column { width:150px; padding-right:10px; float:left; }
 
 	#logo_table { text-align:center;}
 	#logo_table td { padding:10px;}
@@ -130,14 +119,11 @@
 
 /* =CSS COMMENTS ==================================== */
 #comments { line-height:18px;}
-	#comments h1 { line-height:54px; }
 	#comments h6 { font:bold 116%/18px Arial; color:black; margin-bottom:18px; margin-top:18px;}
 	
-	.comment_form { border-top:1px solid black; margin-top:17px;}
-	
-	.root_comment { border-top: 1px solid black;  clear:both; margin-top:17px; }
+	.root_comment { border-top: 1px solid black; margin-top:17px; }
 	.single_comment { border-top: 1px dashed black; margin-left:30px;  margin-top:17px;}
-	.reply_comment { width:100%; text-align:center; clear:both; }
+	.reply_comment { width:100%; text-align:center; }
 	.comments_left { float:right; width:19%;}
 
 	.comments_right { width:80%; }
@@ -151,33 +137,27 @@
 /* =CSS NAVIGATION ======================*/
 	#navigation { height: 53px;	border-bottom: 1px dotted #B2B1B1;}
 	.nav_button { width: 165px; float: left; font: 85% "Helvetica", Arial, serif; color:#000;}
-	.nav_button a { color:#B3DFE8;}
-	.nav_button a:hover { color:#29A4BD;}
+		.nav_button a { color:#B3DFE8;}
+		.nav_button a:hover { color:#29A4BD;}
 	#breadcrumbs { padding-top:9px; padding-bottom:9px; height:36px; }
-	#breadcrumbs a { font: normal 85%/18px Helvetica, Arial; }
+		#breadcrumbs a { font: normal 85%/18px Helvetica, Arial; }
 	.destination { font: bold italic 123.1% Georgia; color:#000;}
 	#category_list { margin-left:0;}
-		#rss_feed { padding-top:18px; width: 165px; float: left; }
+	#rss_feed { padding-top:18px; width: 165px; float: left; }
 	#rss_feed p a {  color: #29A4BD; font: bold 108%/18px Arial; }
+	
 /* =CSS FOOTER ==================================== */
 	#footer {  clear:both; border-top: 1px dashed #B2B1B1; height:90px; }
-		#footer_man { float:left; width:50%;}
-		#footer_spiral {}
+		#footer_man { float:left; width:50%; }
 	
 /* =CSS FORMS ==================================== */
 	input { line-height:18px; height:18px; border:1px solid black; padding:0; }
 		input.submit { width: 136px; height:34px; margin: 0 auto; background:url('/images/f/buttons/submit2.png') no-repeat; outline: none; padding:0; border:0; }
 		input.submit:hover { background: url('/images/f/buttons/submit2.png') no-repeat 0 -34px; padding:0; border:0; }
+		
+		input:hover, input:focus, textarea:hover, textarea:focus { background-color: #D1ECF9; }
 	label {font: bold 108%/18px Helvetica, Arial; display:block; margin-top:18px; color: black; }	
 	textarea { width:100%; font: normal 100%/18px monospace; border:1px solid black; height:162px;}
-	
-	#contact_form { padding:3px; border:1px dashed black; margin-bottom:9px; color:black;}
-	#contact_form td { padding-top:10px; border-bottom:1px solid black; padding-bottom:5px;}
-	#contact_form td:first-child { text-align:left; vertical-align:top;}
-	#contact_form td label { margin-top: 0px; }
-	
-	#contact_inside { border:1px solid black; padding:5px;}
-	#close_window { float:right; height:36px;}
 	
 /* ERRORS==================================== */
 	#errorExplanation h2 { color:black; font-weight:bold; margin-top:9px;margin-bottom:9px; padding:0;}
@@ -187,8 +167,6 @@
 	.fieldWithErrors label {  color:#29A4BD; }
 	.formError { color:#29A4BD;}
 
-	input:hover, input:focus, textarea:hover, textarea:focus { background-color: #D1ECF9; }
-	
 /* =CSS FRONTEND PORTFOLIO ==================================== */
 	#column1 { float:left; width: 25%; }
 	#logos { float:right; width: 75% }
