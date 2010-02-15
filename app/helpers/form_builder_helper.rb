@@ -3,12 +3,12 @@ module FormBuilderHelper
 	def form_for_comments(name, *args, &block)
 		options = args.extract_options!
 		options = options.merge(:builder => DizzyCommentFormBuilder)
-		options = options.merge(:html => { :id => "new_comment_#{name.parent_id}", :style => "display:none;" } )
+		options = options.merge(:html => { :id => "new_comment_#{name.parent_id}" } )
 		args = (args << options) 
 		form_for(name, *args, &block)
 	end	
 	
-	def submit_button() 		submit_tag('', { :class => 'submit' });	end
+	def submit_button() 	submit_tag('', { :class => 'submit' }) end
 end
 
 class DizzyFormBuilder < ActionView::Helpers::FormBuilder

@@ -7,12 +7,10 @@ class CommentPreviewsController < ApplicationController
       format.js do
           if @comment.valid?
             render :partial => "comment_preview"
-		  else
+		      else
             render :partial => "comment_preview_form"
-          end
-        
-      end
-      
+          end        
+      end      
     end
       
 	end

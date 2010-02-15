@@ -1,15 +1,15 @@
-<% form_for @comment do |f| %>
+<% form_for_comments @comment do |f| %>
 
-   <p><%= @comment.subject %></p>
+   <p><b>Subject:</b> <%= @comment.subject %></p>
    <%= f.hidden_field :subject %>
    
-   <p><%= @comment.name %></p>
+   <p><b>Name:</b> <%= @comment.name %></p>
    <%= f.hidden_field :name %>
    
-   <p><%= @comment.email %></p>
+   <p><b>Email:</b> <%= @comment.email %></p>
    <%= f.hidden_field :email %>
    
-   <p><%= @comment.body_to_markdown %></p>
+   <p><b>Comment:</b> <%= @comment.body_to_markdown %></p>
    <%= f.hidden_field :body %>
    
    <%= f.hidden_field :parent_id %>

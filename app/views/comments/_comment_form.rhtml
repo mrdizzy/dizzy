@@ -1,15 +1,17 @@
-<% form_for_comments comment_form, :url => content_comments_path(comment_form.content_id) do |f| %>
-
-   <%= f.error_messages %>
-
-   <%= f.text_field :subject %>
-   <%= f.text_field :name %>
-   <%= f.text_field :email %>
-   <%= f.text_area :body, :size=>"20x10" %>
-
-   <%= f.hidden_field :parent_id %>
-   <%= f.hidden_field :content_id %>
-
-   <%= submit_button %>	
-
-<% end %>
+<div id="new_comment_container_<%= comment_form.parent_id %>" style="display:none;">
+   <% form_for_comments comment_form, :url => comment_previews_path do |f| %>
+   
+      <%= f.error_messages %>
+   
+      <%= f.text_field :subject %>
+      <%= f.text_field :name %>
+      <%= f.text_field :email %>
+      <%= f.text_area :body, :size=>"20x10" %>
+   
+      <%= f.hidden_field :parent_id %>
+      <%= f.hidden_field :content_id %>
+   
+      <%= submit_button %>	
+   
+   <% end %>
+</div>

@@ -63,12 +63,12 @@
 <% content_for :javascript do %>
 
   function previewCommentForm(e) {
-    e.preventDefault();    
-    var id = e.element().id.split('_').last();
-    alert(id);
-    var markdown = $('comment_body_' + id).value;
-    new Ajax.Updater('new_comment_' + id, "/comment_previews", { method: 'post', parameters: e.element().serialize() });
-  $('new_comment_' + id).observe('submit', previewCommentForm);
+   e.preventDefault();    
+   var id = e.element().id.split('_').last();
+   var markdown = $('comment_body_' + id).value;
+   new Ajax.Updater('new_comment_container_' + id, e.element().action, { method: 'post', parameters: e.element().serialize() });
+   alert('new_comment_' + id);
+    $('new_comment_' + id).observe('submit', previewCommentForm);
   }
   
   function sendCommentForm(e) {
@@ -78,7 +78,7 @@
   
   function toggleReplyCommentForm(e) {
     e.preventDefault();
-    $('new_comment_' + e.element().id).toggle();
+    $('new_comment_container_' + e.element().id).toggle();
   }
   
   function toggleNewCommentForm(e) {
