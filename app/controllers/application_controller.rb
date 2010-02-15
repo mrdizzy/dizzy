@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-	
+	helper :all 
 	require_dependency 'content'
 	helper_method :administrator?
 	
