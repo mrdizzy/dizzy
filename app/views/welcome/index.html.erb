@@ -1,5 +1,5 @@
 <% @articles.each do |content| %>
-	<% if content.is_a?(Article) %>
+	<% if content.layout != "Cheatsheet" %>
 
 		<span class="posted_ago">POSTED <%= time_ago_in_words(content.date).upcase %> AGO</span>   
 		<h1 class="welcome"><%= link_to content.title, content_path(content.permalink) %></h1>

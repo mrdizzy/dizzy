@@ -14,9 +14,13 @@ class Content < ActiveRecord::Base
   
 	before_save :create_new_version
 	
+	has_binary :pdf, 
+				   :content_type => /(application\/pdf|binary\/octet-stream)/,
+				   :size => 1.kilobyte..700.kilobytes	
+	
 	attr_accessor :new_version
 	
-	def main_category
+	def main_category()
 		self.categories.first
 	end
 	
@@ -44,14 +48,9 @@ end
 	result << self.content
 		result = Maruku.new(result).to_html
 	end
- 
-   def to_param
-   	permalink
-	end
- 
-end
 
-class Article < Content
+	def to_param()	permalink	end
+	def title		layout == "Cheatsheet" ? super + " Cheatsheet" : super end
 end
 
 # == Schema Info

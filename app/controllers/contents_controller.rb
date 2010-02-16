@@ -10,7 +10,7 @@ class ContentsController < ApplicationController
 	end
 	
 	def show 
-		@content 		= Article.find_by_permalink(params[:id])			
+		@content 		= Content.find_by_permalink(params[:id])			
 	end
 	
 	def edit 

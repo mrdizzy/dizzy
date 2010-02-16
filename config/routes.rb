@@ -23,7 +23,6 @@ ActionController::Routing::Routes.draw do |map|
   # RESTful routes 
   map.resources :administrator_sessions
   map.resources :categories, :path_prefix => "/ruby_on_rails"    
-  map.resources :cheatsheets, :path_prefix => "/ruby_on_rails", :collection => { :preview => :post }
 	
 	map.resources :contents, :path_prefix => "/ruby_on_rails" do |contents|
 		contents.resources :comments do |comments|

@@ -1,42 +1,46 @@
-<tr> 
-	
-<!--  ARTICLE -->
-	
+<tr> 	
 	<td>
-
 		<h2>
-			<%= square %> <%= link_to article_link.title, article_link.is_a?(Cheatsheet) ? cheatsheet_path(article_link) : content_path(article_link) %>
+			<%= square %> <%= link_to article_link.title, content_path(article_link) %>
 		</h2>
-		<span class="posted_ago">POSTED <%= time_ago_in_words(article_link.date).upcase %> AGO</span>
+		
+		<span class="posted_ago">
+			POSTED <%= time_ago_in_words(article_link.date).upcase %> AGO
+		</span>
+		
 		<p><%= article_link.description %></p>
 	
 		<% if administrator? %>
-			<p><%= link_to 'edit', edit_content_path(article_link.id) %> 
-			<%= diamond %> <%= link_to 'delete', content_path(article_link.id), :method => "delete" %> </p>			
+			<p>
+				<%= link_to 'edit', edit_content_path(article_link) %> 
+				<%= diamond %> <%= link_to 'delete', content_path(article_link), :method => "delete" %> 
+			</p>			
 		<% end %>
 
 	</td>
 	
-			<td><p><%= posted_in(article_link.categories) %><br/>
-		<i>Rails <%= article_link.version.version_number %></i></p>
-
-</td>
+	<td>
+		<p>
+			<%= posted_in(article_link.categories) %><br/>
+			<i>Rails <%= article_link.version.version_number %></i>
+		</p>
+	</td>
 	
 
-<% if article_link.is_a?(Cheatsheet) %>	
-<td class="icons">
-		<p>
-			<%= image_tag("f/small_icons/html.png") %>
-			<%= diamond %> 	<%= link_to "HTML", cheatsheet_path(article_link.permalink) %> 
-		</p>
-		
-		<p>
-			<%= image_tag("f/small_icons/pdf.png") %>	
-			<%= diamond %> <%= link_to "PDF", cheatsheet_path(article_link.permalink, :pdf) %> 
-			(<%= number_to_human_size(article_link.pdf_binary_data.size) %>)
-		</p>
+	<% if article_link.layout == "Cheatsheet" %>	
+		<td class="icons">
+			<p>
+				<%= image_tag("f/small_icons/html.png") %>
+				<%= diamond %> 	<%= link_to "HTML", content_path(article_link) %> 
+			</p>
+	
+			<p>
+				<%= image_tag("f/small_icons/pdf.png") %>	
+				<%= diamond %> <%= link_to "PDF", content_path(article_link, :pdf) %> 
+				(<%= number_to_human_size(article_link.pdf_binary_data.size) %>)
+			</p>
 		</td>
-		<% else %>
+	<% else %>
 		<td></td>
-<% end %>
+	<% end %>
 </tr>
