@@ -10,7 +10,11 @@ class ContentsController < ApplicationController
 	end
 	
 	def show 
-		@content 		= Content.find_by_permalink(params[:id])			
+		@content 		= Content.find_by_permalink(params[:id])		
+		respond_to do |wants|
+			wants.html { render :template => "show"}
+			wants.pdf { render :binary, @content => :pdf }
+		end	
 	end
 	
 	def edit 
