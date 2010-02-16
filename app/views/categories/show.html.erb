@@ -1,8 +1,8 @@
 <% content_for :breadcrumbs do -%>
-<div id="breadcrumbs">
-	<p>	<%= location_icon %>
-	<a href="/">Home</a> <%= solid_arrow %> <%= link_to "Ruby on Rails", latest_path %> <%= solid_arrow %> <span class="destination"><%= @category.name %></span></p>
-</div>
+	<div id="breadcrumbs">
+		<p>	<%= location_icon %>
+		<a href="/">Home</a> <%= solid_arrow %> <%= link_to "Ruby on Rails", latest_path %> <%= solid_arrow %> <span class="destination"><%= @category.name %></span></p>
+	</div>
 <% end %> 
 
 <div id="left_column"><%= render :partial => "layouts/category_list" %></div>

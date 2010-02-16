@@ -6,6 +6,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :binaries, :member => { :grey => :get }
   map.resources :comments
+
   map.resources :comment_previews
   map.resources :companies
   map.resources :portfolio_items

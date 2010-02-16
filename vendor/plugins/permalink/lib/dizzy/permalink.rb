@@ -7,7 +7,7 @@ module Dizzy
 		
 		module ClassMethods			
 			def find_by_permalink(permalink)
-				find(:first, :conditions => ["permalink = ?", permalink]) or raise ActiveRecord::RecordNotFound, "Sorry, no record"
+				first(:conditions => ["permalink = ?", permalink]) or raise ActiveRecord::RecordNotFound, "Sorry, no record"
 			end
 		end
 	end

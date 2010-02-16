@@ -45,6 +45,10 @@ end
 		result = Maruku.new(result).to_html
 	end
  
+   def to_param
+   	permalink
+	end
+ 
 end
 
 class Article < Content
