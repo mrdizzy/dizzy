@@ -25,8 +25,6 @@
 
 	img { vertical-align:middle;}
 	
-	hr { background:none; color:none; height:18px; margin:0; border:1px solid black; padding:0;}
-	
 	h1 { font-size:197%; color:#000; font-weight:bold; line-height:36px; }
 	h2 { font: italic normal 123.1%/18px "Trebuchet MS"; color:black; }
 	h3 { font-size:167%;   }
@@ -47,34 +45,43 @@
 	a:visited { color:#006A8C; }
 	
 	.posted_in { font: 77% "Arial Black"; letter-spacing:0.2em; color: #29A4BD; text-decoration: none; line-height:36px;  }
-	#comments_header { height:36px; }
 	.posted_ago { font: normal 77% "Verdana"; color: #878787; letter-spacing:0.2em; line-height:36px;  }
-	
-	#page_container { width: 994px; margin:	0 auto; padding-left:10px; padding-right:10px; background-color:white;}
 	
 /* TABLES =================================== */
 	table {width:100%; border-collapse:collapse;}	
 
 /* PAGE FURNITURE ==================================== */
+	#page_container { width: 994px; margin:	0 auto; padding-left:10px; padding-right:10px; background-color:white;}
+		#second_half { margin-top:9px;width:648px; float:right; }
 	.spiro { background: url("/images/f/branding/spirosmall.png") center no-repeat; width: 100%; height:54px; padding:0; }
 
-/* =CSS WELCOME =====================================================*/
-	#welcome { clear:both;}
-	#welcome h2 { font-weight:bold; font-family:Arial, Helvetica; font-size:131%; font-style:normal;}
-   #welcome h1.welcome { border-top: 1px solid black; }
-   #welcome h1:first { border-top: 0; }
-	#first_half { margin-top:9px;width:326px;float:left;}		
-	#second_half { margin-top:9px;width:648px; float:right; }	
-	
-	#welcome #category_list { margin-left:0; margin-top:9px;}
-	#welcome h1 a { text-decoration:none;color:#000;}
-		#welcome a:hover { text-decoration:underline; }
-		#welcome .posted_in a,	#welcome #category_list a { color: #29A4BD; }
-		
-	.mini_column { width:150px; padding-right:10px; float:left; }
+/* =CSS HEADER ==================================== */
+	#top_container 	{ width:100%; height:107px; border-bottom:1px dotted #B2B1B1;}
+		#logo			{ padding-top:7px; text-align:left; width:320px; height:90px; margin: 0 auto; float:left; }
+		#right_of_logo { text-align:right; width:510px; height:105px; float:left; }
 
-	#logo_table { text-align:center;}
-	#logo_table td { padding:10px;}
+/* =CSS NAVIGATION ======================*/
+	#navigation { height: 53px;	border-bottom: 1px dotted #B2B1B1;}
+	.nav_button { width: 165px; float: left; font: 85% "Helvetica", Arial, serif; color:#000;}
+		.nav_button a { color:#B3DFE8;}
+		.nav_button a:hover { color:#29A4BD;}
+	#breadcrumbs { padding-top:9px; padding-bottom:9px; height:36px; }
+		#breadcrumbs a { font: normal 85%/18px Helvetica, Arial; }
+		.destination { font: bold italic 123.1% Georgia; color:#000;}
+	#category_list { margin-left:0;}
+	#rss_feed { padding-top:18px; width: 165px; float: left; }
+	#rss_feed p a {  color: #29A4BD; font: bold 108%/18px Arial; }
+
+/* =CSS FOOTER ==================================== */
+	#footer {  clear:both; border-top: 1px dashed #B2B1B1; height:90px; }
+		#footer_man { float:left; width:50%; }
+
+/* =CSS WELCOME =====================================================*/
+	#left_column, #centre_column { width:150px; padding-right:10px; float:left; }
+		
+		h1 a { text-decoration:none;color:#000;}
+		h1 a:hover { text-decoration:underline; }
+		#welcome .posted_in a,	#welcome #category_list a { color: #29A4BD; }
 
 /* =CSS CONTENT ======================*/
 	#left_column {	width: 163px; float: left; }
@@ -102,23 +109,20 @@
 	.footnotes ol p { font-weight:normal; color: #434343;}
 	
 	#blurb { border: 1px dashed #878787; padding:0 7px 0px 7px; }
-	#blurb h2 { font: italic 1.5em "Georgia"; }	
-	#blurb h4 {	font: normal 0.76em/1.8em "Verdana"; color: #29A4BD; margin: 0.6em 0 0.8em; letter-spacing:0.2em; }	
-	#blurb p { font: italic 1.2em "Trebuchet MS"; }
 
 /* =CATEGORY PAGES ========================= */
-#article_links { width:100%;}
 	#article_links h2 a { text-decoration:none; color:black; font-weight:bold;}
 	#article_links h2 a:hover { text-decoration:underline; }
 	#article_links td { width:38%; padding-bottom:17px; border-bottom: 1px solid #000; vertical-align:top; }
 	#article_links td.icons { width:24%; vertical-align:middle; }
 		#article_links td.icons p {text-align:center; margin-top:9px; margin-bottom:9px; }
-		#category_list { margin-top:18px;}
-	#category_list li { background:url('/images/f/bullets/pixels/diamond.png') no-repeat 0 0.5em; padding-bottom:18px;padding-left:1em; line-height:18px; vertical-align:middle}
-	#category_list li a { text-decoration:underline;}
+	
+	#category_list { margin-top:18px;}
+		#category_list li { background:url('/images/f/bullets/pixels/diamond.png') no-repeat 0 0.5em; padding-bottom:18px; padding-left:1em; line-height:18px; vertical-align:middle}
 
 /* =CSS COMMENTS ==================================== */
 #comments { line-height:18px;}
+	#comments_header { height:36px; }
 	#comments h6 { font:bold 116%/18px Arial; color:black; margin-bottom:18px; margin-top:18px;}
 	
 	.root_comment { border-top: 1px solid black; margin-top:17px; }
@@ -128,27 +132,6 @@
 
 	.comments_right { width:80%; }
 	#comments .email { font-weight:bold; }
-	
-/* =CSS HEADER ==================================== */
-	#top_container 	{ width:100%; height:107px; border-bottom:1px dotted #B2B1B1;}
-		#logo			{ padding-top:7px; text-align:left; width:320px; height:90px; margin: 0 auto; float:left; }
-		#right_of_logo { text-align:right; width:510px; height:105px; float:left; }
-		
-/* =CSS NAVIGATION ======================*/
-	#navigation { height: 53px;	border-bottom: 1px dotted #B2B1B1;}
-	.nav_button { width: 165px; float: left; font: 85% "Helvetica", Arial, serif; color:#000;}
-		.nav_button a { color:#B3DFE8;}
-		.nav_button a:hover { color:#29A4BD;}
-	#breadcrumbs { padding-top:9px; padding-bottom:9px; height:36px; }
-		#breadcrumbs a { font: normal 85%/18px Helvetica, Arial; }
-	.destination { font: bold italic 123.1% Georgia; color:#000;}
-	#category_list { margin-left:0;}
-	#rss_feed { padding-top:18px; width: 165px; float: left; }
-	#rss_feed p a {  color: #29A4BD; font: bold 108%/18px Arial; }
-	
-/* =CSS FOOTER ==================================== */
-	#footer {  clear:both; border-top: 1px dashed #B2B1B1; height:90px; }
-		#footer_man { float:left; width:50%; }
 	
 /* =CSS FORMS ==================================== */
 	input { line-height:18px; height:18px; border:1px solid black; padding:0; }

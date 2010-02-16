@@ -26,9 +26,9 @@
 <!-- RUBY ON RAILS -->
 	<div class="nav_button">
 		<% if ((request.request_uri =~/ruby_on_rails/i) && (request.request_uri =~/cheatsheets/i).nil?) %>
-		<%= link_to image_tag("f/nav/rails_over.png"), latest_path %> <b>Ruby on Rails</b>
+		<%= link_to image_tag("f/nav/rails_over.png"), contents_path %> <b>Ruby on Rails</b>
 		<% else %>
-		<%= link_to image_tag("f/nav/rails.png"), latest_path %> <%= link_to "Ruby On Rails", latest_path %>
+		<%= link_to image_tag("f/nav/rails.png"), contents_path %> <%= link_to "Ruby On Rails", contents_path %>
 		<% end %>
 	</div>
 	

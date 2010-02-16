@@ -27,8 +27,12 @@ class DizzyFormBuilder < ActionView::Helpers::FormBuilder
 		@template.content_tag("p", label(meth) + super(meth, *args))
 	end
 
+	def select(meth, *args)
+		@template.content_tag("p", label(meth) + super(meth, *args))
+	end
+
 	def collection_select(meth, *args)
-		@template.content_tag("p", label(meth,meth.to_s.gsub("_ids","").pluralize.capitalize) + super(meth, *args))
+		@template.content_tag("p", label(meth,meth.to_s.gsub("_ids","").pluralize.capitalize.humanize) + super(meth, *args))
 	end
 end
 

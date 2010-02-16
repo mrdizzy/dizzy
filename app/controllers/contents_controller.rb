@@ -12,7 +12,7 @@ class ContentsController < ApplicationController
 	def show 
 		@content 		= Content.find_by_permalink(params[:id])		
 		respond_to do |wants|
-			wants.html { render :template => "show"}
+			wants.html 
 			wants.pdf { render :binary, @content => :pdf }
 		end	
 	end

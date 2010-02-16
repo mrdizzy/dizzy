@@ -1,22 +1,17 @@
 <%= form.error_messages %>
 
 <%= form.text_field :title %>
-
 <%= form.text_field :permalink %>
 
 <%= form.text_area :description %>
-
 <%= form.text_area :content %>
 
 <div id="article" style="height:350px; overflow:auto;width:100%;"></div>
 
 <%= form.datetime_select :date %>
-
-<%= form.collection_select(:version_id, Version.all, :id, :version_number) %> <i>or add new version</i>
-<%= form.text_field :new_version %>
+<%= form.select(:version, Content.VERSIONS.invert) %> 
 
 <%= form.collection_select("category_ids", Category.all, :id, :name, {}, :multiple=> :true, :name=>'cheatsheet[category_ids][]') %></p>
-
 <%= form.collection_select("related_article_ids", Content.all, :id, :title, {}, :multiple=> :true, :name=>'cheatsheet[related_article_ids][]') %></p>
 
 <%= form.file_field :pdf %>

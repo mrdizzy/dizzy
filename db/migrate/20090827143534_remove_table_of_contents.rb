@@ -1,3 +1,12 @@
+class Content < ActiveRecord::Base
+end
+
+class Cheatsheet < Content
+end
+
+class Article < Content
+end
+
 class RemoveTableOfContents < ActiveRecord::Migration
   def self.up
    add_column :contents, :has_toc, :boolean

@@ -1,31 +1,24 @@
 class Content < ActiveRecord::Base
 
+	@@VERSIONS = { 1  => "1.2.0", 2 => "1.2.3", 3 => "2.0", 4 => "2.1", 5 => "3.0" }.freeze
+	cattr_reader :VERSIONS
+	
 	has_and_belongs_to_many :categories
 	has_and_belongs_to_many :related_articles, :class_name => "Content", :foreign_key => "related_id"
 	has_many 				:comments, :dependent => :destroy, :order => "'created_at' DESC"
-	belongs_to 				:version
 	
-	validates_existence_of	:version
 	validates_format_of		:permalink, :with => /^[a-z0-9-]+$/, :allow_blank => true
-	validates_presence_of 	:content, :category_ids, :title, :description, :date, :user, :permalink, :version_id 
+	validates_presence_of 	:content, :category_ids, :title, :description, :date, :user, :permalink, :version
 	validates_uniqueness_of :permalink	
 
 	named_scope :recent, lambda { { :conditions => ["date < ?", 1.hour.ago], :order => "date DESC"  } }
   
-	before_save :create_new_version
-	
 	has_binary :pdf, 
 				   :content_type => /(application\/pdf|binary\/octet-stream)/,
 				   :size => 1.kilobyte..700.kilobytes	
 	
-	attr_accessor :new_version
-	
 	def main_category()
 		self.categories.first
-	end
-	
-	def create_new_version
-		create_version(:version_number => new_version) unless new_version.blank?
 	end
 	
 	def parsed_content		
@@ -48,7 +41,10 @@ end
 	result << self.content
 		result = Maruku.new(result).to_html
 	end
-
+	
+	def version
+		Content.VERSIONS[super]
+	end
 	def to_param()	permalink	end
 	def title()		layout == "Cheatsheet" ? super + " Cheatsheet" : super end
 end
