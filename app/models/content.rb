@@ -50,7 +50,7 @@ end
 	end
 
 	def to_param()	permalink	end
-	def title		layout == "Cheatsheet" ? super + " Cheatsheet" : super end
+	def title()		layout == "Cheatsheet" ? super + " Cheatsheet" : super end
 end
 
 # == Schema Info

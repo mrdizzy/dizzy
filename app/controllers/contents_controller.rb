@@ -14,7 +14,7 @@ class ContentsController < ApplicationController
 	end
 	
 	def edit 
-    	@article = Article.find(params[:id]) 
+    	@article 		= Content.find_by_permalink(params[:id]) 
   	end
   	
   	def new

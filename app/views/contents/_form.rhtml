@@ -1,30 +1,24 @@
-<p><label for="article_title"><%= diamond %> Title</label>
-<%= form.text_field :title %></p>
+<%= form.error_messages %>
 
-<p><label for="article_permalink"><%= diamond %> Link</label>
-	<%= form.text_field :permalink %></p>
+<%= form.text_field :title %>
 
-<p><label for="article_excerpt"><%= diamond %> Description/Excerpt</label>
-<%= form.text_area :description, :size => "100x4" %></p>
+<%= form.text_field :permalink %>
 
-<p><label for="article_content"><%= diamond %> Content</label>
-<%= form.text_area :content %></p>
+<%= form.text_area :description %>
 
- <%= observe_field :article_content, :url => preview_cheatsheets_path,
-      :update => :article, :frequency => 2,
-      :with => "content"    %>
-	  
+<%= form.text_area :content %>
+
 <div id="article" style="height:350px; overflow:auto;width:100%;"></div>
 
-<p><label for="article_date"><%= diamond %> Date</label>
-<%= form.datetime_select :date %></p>
+<%= form.datetime_select :date %>
 
-<p><label for="article_version_number"><%= diamond %> Version</label>
-<%= form.collection_select(:version_id, Version.find(:all, :order => :version_number), :id, :version_number) %> <i>or add new version</i>
-<%= form.text_field :new_version %></p>
+<%= form.collection_select(:version_id, Version.all, :id, :version_number) %> <i>or add new version</i>
+<%= form.text_field :new_version %>
 
-<p><label for="categories"><%= diamond %> Categories</label>
-<%= form.collection_select("category_ids", Category.find(:all, :order => :name), :id, :name, {}, :multiple=> :true, :name=>'article[category_ids][]') %></p>
+<%= form.collection_select("category_ids", Category.all, :id, :name, {}, :multiple=> :true, :name=>'cheatsheet[category_ids][]') %></p>
 
-<p><label for="related_articles"><%= diamond %> Related articles</label>
-	<%= form.collection_select("related_article_ids", Content.find(:all, :order => :title), :id, :title, {}, :multiple=> :true, :name=>'article[related_article_ids][]') %></p>
+<%= form.collection_select("related_article_ids", Content.all, :id, :title, {}, :multiple=> :true, :name=>'cheatsheet[related_article_ids][]') %></p>
+
+<%= form.file_field :pdf %>
+
+<%= submit_button %>
