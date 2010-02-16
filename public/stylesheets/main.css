@@ -26,7 +26,12 @@
 	img { vertical-align:middle;}
 	
 	h1 { font-size:197%; color:#000; font-weight:bold; line-height:36px; }
-	h2 { font: italic normal 123.1%/18px "Trebuchet MS"; color:black; }
+	h2 { font: italic 123.1%/18px "Trebuchet MS"; color:black; margin-top:9px; margin-bottom:9px; }
+		h2.lead_in { font-style:italic;
+		#article h2, #article h1 { font: bold italic 135.8%/17px "Georgia"; color:black; text-align:center; border-bottom:1px dashed black; margin:0; margin-bottom:18px; padding:0;}	
+			#article_links h2 a { text-decoration:none; color:black; font-weight:bold;}
+			#article_links h2 a:hover { text-decoration:underline; }
+	
 	h3 { font-size:167%;   }
 	h4 { font-size:123.1; }
 	h5 { font-size:100%; }
@@ -85,12 +90,10 @@
 
 /* =CSS CONTENT ======================*/
 	#left_column {	width: 163px; float: left; }
-	#right_column {	width: 811px; float: right;	}
-		#right_column h2, #second_half h2 { font: italic 123.1%/18px "Trebuchet MS"; color:black; margin-top:9px; margin-bottom:9px; }		
+	#right_column {	width: 811px; float: right;	}	
 		
 	#article ul, #article p { margin-bottom:18px;}	
-	
-	#article h2, #article h1 { font: bold italic 135.8%/17px "Georgia"; color:black; text-align:center; border-bottom:1px dashed black; margin:0; margin-bottom:18px; padding:0;}	
+
 	#article h3 { font: bold italic 123.1%/18px "Trebuchet MS"; color:black; margin-bottom:18px;}
 	#article h4, #article h5 { font: bold 100%/18px "Trebuchet MS"; color:black; }
 	#article h6 { font: bold italic 100%/17px "Trebuchet MS"; color:black;text-align:center; border-bottom:1px solid black;}
@@ -111,8 +114,7 @@
 	#blurb { border: 1px dashed #878787; padding:0 7px 0px 7px; }
 
 /* =CATEGORY PAGES ========================= */
-	#article_links h2 a { text-decoration:none; color:black; font-weight:bold;}
-	#article_links h2 a:hover { text-decoration:underline; }
+
 	#article_links td { width:38%; padding-bottom:17px; border-bottom: 1px solid #000; vertical-align:top; }
 	#article_links td.icons { width:24%; vertical-align:middle; }
 		#article_links td.icons p {text-align:center; margin-top:9px; margin-bottom:9px; }
