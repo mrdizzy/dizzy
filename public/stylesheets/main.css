@@ -26,8 +26,8 @@
 	img { vertical-align:middle;}
 	
 	h1 { font-size:197%; color:#000; font-weight:bold; line-height:36px; }
-	h2 { font: italic 123.1%/18px "Trebuchet MS"; color:black; margin-top:9px; margin-bottom:9px; }
-		h2.lead_in { font-style:italic;
+	h2 { font: italic 123.1%/18px "Trebuchet MS"; color:black; margin:9px 0 9px; }
+
 		#article h2, #article h1 { font: bold italic 135.8%/17px "Georgia"; color:black; text-align:center; border-bottom:1px dashed black; margin:0; margin-bottom:18px; padding:0;}	
 			#article_links h2 a { text-decoration:none; color:black; font-weight:bold;}
 			#article_links h2 a:hover { text-decoration:underline; }
@@ -44,7 +44,7 @@
 	
 	dl { line-height:18px;}
 	dt { font-weight:bold; }
-	dd { margin-left:1em;padding-bottom:18px; }
+	dd { margin-left:1em; padding-bottom:18px; }
 	
 	a:link { color: #29A4BD; }	
 	a:visited { color:#006A8C; }
@@ -86,7 +86,6 @@
 		
 		h1 a { text-decoration:none;color:#000;}
 		h1 a:hover { text-decoration:underline; }
-		#welcome .posted_in a,	#welcome #category_list a { color: #29A4BD; }
 
 /* =CSS CONTENT ======================*/
 	#left_column {	width: 163px; float: left; }
@@ -98,9 +97,9 @@
 	#article h4, #article h5 { font: bold 100%/18px "Trebuchet MS"; color:black; }
 	#article h6 { font: bold italic 100%/17px "Trebuchet MS"; color:black;text-align:center; border-bottom:1px solid black;}
 	
-	#article table {margin-bottom:18px;padding:0; line-height:18px;}
-		#article td {border-left: 1px solid black; border-right:1px solid black; border-bottom:1px solid black; padding-bottom:9px; padding-top:8px; border-top: 1px solid black; padding-left:10px; padding-right:10px;}
-		#article th { font: bold italic 100%/18px "Trebuchet MS", serif; color: black; text-align:center; padding-bottom:9px; padding-top:8px; }
+	#article table { margin-bottom:18px;padding:0; line-height:18px; }
+		#article td {border: 1px solid black;  padding: 8px 10px 9px 10px; }
+		#article th { font: bold italic 100%/18px "Trebuchet MS", serif; color: black; text-align:center; padding:8px 0px 9px 0px }
 		#article tr td:first-child code{ color: #29A4BD;}
 	
 	#article .footnotes h1 { font: bold 138%/18px helvetica,arial,clean,sans-serif; color:black; border-bottom:1px solid black; text-align:left; padding-bottom:17px;}
@@ -111,16 +110,16 @@
 	#article .footnotes ol li { margin-top:18px;}
 	.footnotes ol p { font-weight:normal; color: #434343;}
 	
-	#blurb { border: 1px dashed #878787; padding:0 7px 0px 7px; }
+	#blurb { border: 1px dashed #878787; padding:0 7px 0 7px; }
 
 /* =CATEGORY PAGES ========================= */
 
 	#article_links td { width:38%; padding-bottom:17px; border-bottom: 1px solid #000; vertical-align:top; }
 	#article_links td.icons { width:24%; vertical-align:middle; }
-		#article_links td.icons p {text-align:center; margin-top:9px; margin-bottom:9px; }
+		#article_links td.icons p {text-align:center; margin:9px 0 9px; }
 	
-	#category_list { margin-top:18px;}
-		#category_list li { background:url('/images/f/bullets/pixels/diamond.png') no-repeat 0 0.5em; padding-bottom:18px; padding-left:1em; line-height:18px; vertical-align:middle}
+	#category_list { margin-top:18px; }
+		#category_list li {padding: 0 0 18px 1em; line-height:18px; }
 
 /* =CSS COMMENTS ==================================== */
 #comments { line-height:18px;}
