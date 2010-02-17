@@ -1,21 +1,23 @@
-<% @articles.each do |content| %>
-	<% if content.layout != "Cheatsheet" %>
-
-		<span class="posted_ago">POSTED <%= time_ago_in_words(content.date).upcase %> AGO</span>   
-		<h1 class="welcome"><%= link_to content.title, content_path(content.permalink) %></h1>
-		<h2 class="lead_in"><%= content.description %></h2>
-
-		<div id="article">
-			<%= content.parsed_content %>
-			<p><%= link_to content.comments.size.to_s + " comments", content_path(content.permalink) %></p>
-		</div>
-
-	<% else %>
-		<table id="article_links">
-			<%= render :partial => "contents/article_link", :object => content %>
-		</table>
-	<% end %> 
-
-<%= spiro %>
-
-<% end %>
+<div id="welcome">
+	<% @articles.each do |content| %>
+		<% if content.layout != "Cheatsheet" %>
+	
+			<span class="posted_ago">POSTED <%= time_ago_in_words(content.date).upcase %> AGO</span>   
+			<h1 class="welcome"><%= link_to content.title, content_path(content.permalink) %></h1>
+			<h2 class="lead_in"><%= content.description %></h2>
+	
+			<div id="article">
+				<%= content.parsed_content %>
+				<p><%= link_to content.comments.size.to_s + " comments", content_path(content.permalink) %></p>
+			</div>
+	
+		<% else %>
+			<table id="article_links">
+				<%= render :partial => "contents/article_link", :object => content %>
+			</table>
+		<% end %> 
+	
+	<%= spiro %>
+	
+	<% end %>
+</div>
