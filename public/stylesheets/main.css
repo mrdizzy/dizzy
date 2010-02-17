@@ -25,7 +25,7 @@
 	strong { font-weight:bold;}
 	
 /* img --------------------- */
-	img { vertical-align:middle;}
+	img { vertical-align:middle; }
 
 /* p --------------------- */
 p { }
@@ -35,13 +35,13 @@ p { }
 	
 /* h1 --------------------- */
 	h1 { font-size:197%; color:#000; font-weight:bold; line-height:36px; }
-		#welcome h1 a { text-decoration:none;color:#000;}
+		#welcome h1 a { text-decoration:none; color:black; }
 		#welcome h1 a:hover { text-decoration:underline; }
 				
-		#article .footnotes h1 { font: bold 138%/18px helvetica,arial,clean,sans-serif; border-bottom:1px solid black; padding-bottom:17px; }
+		#article .footnotes h1 { font: bold 138%/18px helvetica, arial ,clean, sans-serif; border-bottom:1px solid black; padding-bottom:17px; }
 		
 /* h2 --------------------- */
-	h2 { font: italic 123.1%/18px "Trebuchet MS"; color:black; margin:9px 0 9px; }
+	h2 { font: italic 123.1%/18px "Trebuchet MS"; margin:9px 0 9px; }
 	
 		#article h2, #article h1 { font: bold italic 135.8%/17px "Georgia"; text-align:center; border-bottom:1px dashed black; margin-bottom:18px; }	
 		
@@ -57,21 +57,18 @@ p { }
 	h4 { font: bold 100%/18px "Trebuchet MS"; }
 	
 /* h5 --------------------- */	
-	h5 { font-size:100%; }
+	h5 { font-size:100%; font:bold 116%/18px Arial; margin: 18px 0 18px 0; border:0; text-align:left; }
 	
 /* h6 --------------------- */	
 	h6 { font: bold italic 100%/17px "Trebuchet MS"; text-align:center; border-bottom:1px solid black; }
-
-		#comments h6 { font:bold 116%/18px Arial; margin-bottom:18px; margin-top:18px;}
 		
 /* ul, ol --------------------- */	
 	ul, ol { font-size:100%; margin-left:2em; }		
 
 /* ol --------------------- */			
 	ol li { background:none; list-style-type:decimal; }
-	
-	.footnotes ol { font-weight: bold; color:black;}
-	.footnotes ol p:first-child { font-weight:bold; color:black; }		
+
+		.footnotes ol p:first-child { font-weight:bold; }		
 		
 /* ul --------------------- */	
 	ul li { background:url('/images/f/bullets/pixels/diamond.png') no-repeat 0 0.7em; padding-left:1em; }
@@ -81,7 +78,6 @@ p { }
 		.maruku_toc li { background:none;}			
 		
 /* dl dt dd --------------------- */	
-	dl { line-height:18px;}
 	dt { font-weight:bold; }
 	dd { margin-left:1em; padding-bottom:18px; }
 	
@@ -91,8 +87,6 @@ p { }
 	
 		.nav_button a { color:#B3DFE8; }
 		.nav_button a:hover { color:#29A4BD; }
-		
-		.footnotes a { font-weight:normal; }
 		
 		#rss_feed p a { color: #29A4BD; font: bold 108%/18px Arial; }
 		
@@ -107,7 +101,7 @@ p { }
 		th { font: bold italic 100%/18px "Trebuchet MS", serif; color: black; text-align:center; padding:8px 0px 9px 0px }
 		
 		#article td { border: 1px solid black; }
-		#article tr td:first-child code{ color: #29A4BD;}
+		#article tr td:first-child code { color: #29A4BD; }
 			
 		#article_links td { width:38%; padding-bottom:17px; }
 			#article_links td.icons { width:24%; }
@@ -117,24 +111,24 @@ p { }
 
 /* PAGE FURNITURE ===========================
    ==========================================*/
-	#page_container { width: 994px; margin:	0 auto; padding-left:10px; padding-right:10px; background-color:white;}
-		#second_half { margin-top:9px;width:648px; float:right; }
-	.spiro { background: url("/images/f/branding/spirosmall.png") center no-repeat; width: 100%; height:54px; padding:0; }
+	#page_container { width: 994px; margin:	0 auto; padding: 0 10px 0 10px; background-color:white; }
+		#second_half { margin-top:9px; width:648px; float:right; }
+	.spiro { background: url("/images/f/branding/spirosmall.png") center no-repeat; width: 100%; height:54px; }
 
 /* =CSS HEADER ==============================
    ==========================================*/
-	#top_container 	{ width:100%; height:107px; border-bottom:1px dotted #B2B1B1;}
-		#logo			{ padding-top:7px; text-align:left; width:320px; height:90px; margin: 0 auto; float:left; }
+	#top_container 	{ width:100%; height:107px; border-bottom:1px dotted #B2B1B1; }
+		#logo { padding-top:7px; text-align:left; width:320px; height:90px; margin: 0 auto; float:left; }
 		#right_of_logo { text-align:right; width:510px; height:105px; float:left; }
 
 /* =CSS NAVIGATION ==========================
    ==========================================*/
-	#navigation { height: 53px;	border-bottom: 1px dotted #B2B1B1;}
-		.nav_button { width: 165px; float: left; font: 85% "Helvetica", Arial, serif; color:#000;}
+	#navigation { height: 53px;	border-bottom: 1px dotted #B2B1B1; }
+		.nav_button { width: 165px; float: left; font: 85% "Helvetica", Arial, serif; color:#000; }
 		
-	#breadcrumbs { padding-top:9px; padding-bottom:9px; height:36px; }
+	#breadcrumbs { padding: 9px 0 9px; }
 		#breadcrumbs a { font: normal 85%/18px Helvetica, Arial; }
-		.destination { font: bold italic 123.1% Georgia; color:#000;}
+		#breadcrumbs span.destination { font: bold italic 123.1% Georgia; color:#000; }
 	
 	#rss_feed { padding-top:18px; width: 165px; float: left; }
 
@@ -164,16 +158,16 @@ p { }
 
 /* =CSS COMMENTS ============================
    ==========================================*/
-#comments { line-height:18px;}
-	#comments_header { height:36px; }
+	#comments { line-height:18px;}
+		#comments_header { height:36px; }
 	
-	.root_comment { border-top: 1px solid black; margin-top:17px; }
-	.single_comment { border-top: 1px dashed black; margin-left:30px;  margin-top:17px;}
-	.reply_comment { width:100%; text-align:center; }
-	.comments_left { float:right; width:19%;}
-
-	.comments_right { width:80%; }
-	#comments .email { font-weight:bold; }
+		.root_comment, .single_comment { border-top: 1px solid black; margin-top:17px; }
+			.single_comment { border-top: 1px dashed black; margin-left:30px; }
+		.reply_to_comment_link { width:100%; text-align:center; }
+	
+		.comments_left { float:right; width:19%;}
+				.comments_left .email { font-weight:bold; }
+		.comments_right { width:80%; }
 	
 /* =CSS FORMS ===============================
    ==========================================*/
@@ -184,7 +178,7 @@ p { }
 		input:hover, input:focus, textarea:hover, textarea:focus { background-color: #D1ECF9; }
 		
 	label { font: bold 108%/18px Helvetica, Arial; display:block; margin-top:18px; color: black; }	
-	textarea { width:100%; font: normal 100%/18px monospace; border:1px solid black; height:162px;}
+	textarea { width:100%; font: normal 100%/18px monospace; border:1px solid black; height:162px; }
 	
 /* ERRORS====================================
    ==========================================*/
@@ -196,6 +190,6 @@ p { }
    ==========================================*/
 	#column1 { float:left; width: 25%; }
 	#logos { float:right; width: 75% }
-	#portfolio_header { padding-top:0px; padding-bottom:18px;}
-	#portfolio_list { padding-top:18px; padding-bottom:18px; line-height:36px;}
+	#portfolio_header { padding: 0 0 18px; }
+	#portfolio_list { padding: 18px 0 18px; line-height:36px;}
 	

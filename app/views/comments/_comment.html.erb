@@ -10,11 +10,11 @@
    </div>
 
    <div class="comments_right">
-      <h6><%= comment.subject %></h6>
+      <h5><%= comment.subject %></h5>
       <p><%= comment.body_to_markdown %></p>
    </div>
 
-   <div class= "reply_comment">
+   <div class="reply_to_comment_link">
       <%= diamond %> <%= link_to "Reply to this comment", new_content_comment_child_comment_path(comment.content, comment), :id => comment.id, :class => "child_comment_link" %>
    </div>
    
