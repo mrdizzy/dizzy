@@ -1,5 +1,4 @@
 <% form_for_comments @comment, :url => comment_previews_path do |f| %>
-
    <%= f.error_messages %>
 
    <%= f.text_field :subject %>
@@ -10,6 +9,9 @@
    <%= f.hidden_field :parent_id %>
    <%= f.hidden_field :content_id %>
 
-   <%= submit_button %>	
+  <%= f.submit %>	
+      <div id="new_comment_spinner_<%= @comment.parent_id %>" style="display:none;">
+      <%= image_tag("f/bar_spinner.gif") %>
+      </div>
    
 <% end %>

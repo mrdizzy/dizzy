@@ -1,4 +1,5 @@
-<div id="new_comment_container_<%= comment_form.parent_id %>" style="display:none;">
+<div id="new_comment_container_<%= comment_form.parent_id %>" class="comment_reply_form" style="display:none;">
+
    <% form_for_comments comment_form, :url => comment_previews_path do |f| %>
    
       <%= f.error_messages %>
@@ -6,12 +7,28 @@
       <%= f.text_field :subject %>
       <%= f.text_field :name %>
       <%= f.text_field :email %>
+      
+   <div class="comment_preview_container">
+      <div id="comment_preview_<%= comment_form.parent_id %>" class="comment_preview" style="display:none;">
+      <h5>Preview comment</h5>
+      <p><b>Subject</b>:<br/>
+      Hello!</p>
+     <p><b>Name</b>:<br/>
+      Hello!</p>
+      <p><b>Body</b>:<br/>
+      Hello!</p>
+     </div>
+     </div>
       <%= f.text_area :body, :size=>"20x10" %>
    
       <%= f.hidden_field :parent_id %>
       <%= f.hidden_field :content_id %>
    
-      <%= submit_button %>	
+      <%= f.submit %>	
+      
+      <div id="new_comment_spinner_<%= comment_form.parent_id %>" style="display:none;">
+       <%= image_tag("f/bar_spinner.gif") %>
+      </div>
    
    <% end %>
 </div>

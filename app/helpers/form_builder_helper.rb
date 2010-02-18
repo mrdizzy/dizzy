@@ -56,6 +56,10 @@ class DizzyCommentFormBuilder < ActionView::Helpers::FormBuilder
 	(field_helpers - %w(label fields_for hidden_field)).each do |name|
 		create_labelled_field(name)
 	end
+	
+	def submit
+		@template.submit_tag("Submit", :id => "#{object_name}_submit_#{object.parent_id}")
+	end
 end
 
 ActionView::Base.default_form_builder = DizzyFormBuilder

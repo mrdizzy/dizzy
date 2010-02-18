@@ -65,11 +65,22 @@
   function previewCommentForm(e) {
    e.preventDefault();    
    var id = e.element().id.split('_').last();
+   $('new_comment_spinner_' + id).toggle();
+   $('comment_submit_' + id).toggle();
+
    var markdown = $('comment_body_' + id).value;
-   new Ajax.Updater('new_comment_container_' + id, e.element().action, { method: 'post', parameters: e.element().serialize() });
-   alert('new_comment_' + id);
-    $('new_comment_' + id).observe('submit', previewCommentForm);
-  }
+   new Ajax.Updater( {success: 'comment_preview_' + id, failure: 'new_comment_container_' + id }, e.element().action, { method: 'post', parameters: e.element().serialize(), onComplete: function(response) {
+      if (response.status == 409) {
+         $('new_comment_' + id).highlight();
+         $('new_comment_' + id).observe('submit', previewCommentForm);
+      }
+      else {
+      alert('GO!')
+         $('comment_preview_' + id).appear();
+      }
+      } 
+     });
+  }  
   
   function sendCommentForm(e) {
     e.preventDefault();
@@ -78,7 +89,7 @@
   
   function toggleReplyCommentForm(e) {
     e.preventDefault();
-    $('new_comment_container_' + e.element().id).toggle();
+    Effect.toggle('new_comment_container_' + e.element().id, 'slide');
   }
   
   function toggleNewCommentForm(e) {

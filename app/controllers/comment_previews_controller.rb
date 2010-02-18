@@ -8,7 +8,7 @@ class CommentPreviewsController < ApplicationController
           if @comment.valid?
             render :partial => "comment_preview"
 		      else
-            render :partial => "comment_preview_form"
+            render :partial => "comment_preview_form", :status => 409
           end        
       end      
     end
