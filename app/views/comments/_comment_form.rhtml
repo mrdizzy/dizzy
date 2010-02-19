@@ -1,26 +1,46 @@
 <div id="new_comment_container_<%= comment_form.parent_id %>" class="comment_reply_form" style="display:none;">
 
-   <% form_for_comments comment_form, :url => comment_previews_path do |f| %>
+  <% form_for_comments comment_form, :url => comment_previews_path do |f| %>
    
-      <%= f.error_messages %>
-   
-      <%= f.text_field :subject %>
-      <%= f.text_field :name %>
-      <%= f.text_field :email %>
-       <a href="" id="comment_preview_link_<%=comment_form.parent_id %>" class="comment_preview_link">Hide</a>
-      <div id="comment_preview_container_<%= comment_form.parent_id %>" class="comment_preview_container" style="display:none;">     
-     </div>
-     <div id="comment_body_container_<%= comment_form.parent_id %>" class="comment_body_container">
-      <%= f.text_area :body, :size=>"20x10" %>
-   </div>
-      <%= f.hidden_field :parent_id %>
-      <%= f.hidden_field :content_id %>
-   
-      <%= f.submit %>	
+    <%= f.error_messages %>
+    <%= f.label :subject %>
+    <%= f.text_field :subject %>
+     
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+     
+    
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+    
+    <%= f.label :body %>
+    
+    <div class="comment_controls">
+      <div class="comment_control" id="comment_control_bold_<%= comment_form.parent_id %>"><a href="">bold</a></div>
+      <div class="comment_control" id="comment_control_bold_<%= comment_form.parent_id %>"><a href="">code</a></div>
+      <div class="comment_control" id="comment_control_bold_<%= comment_form.parent_id %>"><a href="">list</a></div>
       
-      <div id="new_comment_spinner_<%= comment_form.parent_id %>" style="display:none;">
-       <%= image_tag("f/bar_spinner.gif") %>
-      </div>
+    <div class="comment_control">
+      <a href="" id="comment_preview_link_<%=comment_form.parent_id %>" class="comment_preview_link">Hide</a>
+     </div>
+    </div>
+        
+    <div id="comment_preview_container_<%= comment_form.parent_id %>" class="comment_preview_container" style="display:none;">     
+    </div>
+     
+    <div id="comment_body_container_<%= comment_form.parent_id %>" class="comment_body_container">
+      <%= f.text_area :body, :style => "width:400px;clear:both;height:100px;" %>
+    </div>
+     
+    <%= f.hidden_field :parent_id %>
+    <%= f.hidden_field :content_id %>
+    
+    <%= f.submit %>	
+     
+    <div id="new_comment_spinner_<%= comment_form.parent_id %>" style="display:none;">
+      <%= image_tag("f/bar_spinner.gif") %>
+    </div>
    
-   <% end %>
+  <% end %>
+   
 </div>

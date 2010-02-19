@@ -42,8 +42,12 @@ class DizzyCommentFormBuilder < ActionView::Helpers::FormBuilder
 			options = args.extract_options!
 			options = options.merge(:id => "#{object_name}_#{meth}_#{object.parent_id}")
 			args = (args << options)
-			@template.content_tag("p", label(meth, nil, :for => "#{object_name}_#{meth}_#{object.parent_id}") + super(meth, *args))
+			super(meth, *args)
 		end
+	end
+
+	def label(meth, text=nil)
+		super(meth, text, :for => "#{object_name}_#{meth}_#{object.parent_id}")
 	end
 
 	def hidden_field(meth, *args)

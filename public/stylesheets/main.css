@@ -93,7 +93,7 @@ p { }
 /* .classes --------------------- */		
 	.posted_in { font: 77% "Arial Black"; letter-spacing:0.2em; color: #29A4BD; text-decoration: none; line-height:36px;  }
 	.posted_ago { font: normal 77% "Verdana"; color: #878787; letter-spacing:0.2em; line-height:36px;  }
-	
+
 /* TABLES =================================== 
    ==========================================*/
 	table {width:100%; border-collapse:collapse; }	
@@ -161,6 +161,9 @@ p { }
 	#comments { line-height:18px;}
 		#comments .comment_reply_form { border:1px solid black; padding:17px 0.5em 17px 0.5em;  }
 		#comments .comment_preview { z-index:10; position: relative; border:1px solid black; top:1px; background-color:white; }
+		#comments .comment_control { float: left; border:1px solid black; margin: 4px 5px 4px 0; padding:5px; font: bold 100%/18px "Trebuchet MS"; font-style:italic; color:#000; }
+		#comments .comment_preview_container { width:400px; border:1px solid black; clear:both; }
+		#comments textarea { clear:both; }
 		
 		#comments_header { height:36px; }
 	
