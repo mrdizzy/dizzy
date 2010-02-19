@@ -160,19 +160,22 @@ p { }
    ==========================================*/
 	#comments { line-height:18px;}
 		#comments .comment_reply_form { border:1px solid black; padding:17px 0.5em 17px 0.5em;  }
-		#comments .comment_preview { z-index:10; position: relative; border:1px solid black; top:1px; background-color:white; }
-		#comments .comment_preview_link_container { float:right; } 
-		#comments .comment_control { text-align:center; border:1px solid black; margin: 4px 5px 4px 0; padding:5px;  }
-		#comments .comment_control a { color:#000; text-decoration:none; }
+
+		#comments .comment_control { text-align:center; border:1px solid black; margin: 4px 5px 4px 0; padding:5px; }
+			#comments .comment_control a { color:#000; text-decoration:none; }
 		#comments .bold { font: bold 123.1%/18px "Georgia"; }
 		#comments .italic { font: italic 123.1%/18px "Georgia"; }
-		#comments .code { font-family:monospace;*font-size:123.1%; }
-		#comments .comment_controls { float:left; width:100px; }
+		#comments .code { font-family: monospace; *font-size: 123.1%; }
+
+		#comments .comment_editor_first_column {  width:150px;  }
+		#comments .comment_editor_second_column { width:661px; float:right;}
+		#comments .comment_controls { width:130px; }
 			#comments .comment_control:hover { background-color: #D1ECF9; }
 
-		#comments .comment_preview_container { height:100px; width:400px; border:1px solid black; }
-		
-		#comments textarea { width:400px; height:100px;  }
+		#comments .comment_preview_container { height:100px; width:661px; border:1px solid black; }
+		#comments .comment_preview_link_container { float:right; } 
+				
+		#comments textarea { height:100px; width:661px;  }
 		#comments_header { height:36px; }
 	
 		.root_comment, .single_comment { border-top: 1px solid black; margin-top:17px; }
