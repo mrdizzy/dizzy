@@ -161,10 +161,18 @@ p { }
 	#comments { line-height:18px;}
 		#comments .comment_reply_form { border:1px solid black; padding:17px 0.5em 17px 0.5em;  }
 		#comments .comment_preview { z-index:10; position: relative; border:1px solid black; top:1px; background-color:white; }
-		#comments .comment_control { float: left; border:1px solid black; margin: 4px 5px 4px 0; padding:5px; font: bold 100%/18px "Trebuchet MS"; font-style:italic; color:#000; }
-		#comments .comment_preview_container { width:400px; border:1px solid black; clear:both; }
-		#comments textarea { clear:both; }
+		#comments .comment_preview_link_container { float:right; } 
+		#comments .comment_control { text-align:center; border:1px solid black; margin: 4px 5px 4px 0; padding:5px;  }
+		#comments .comment_control a { color:#000; text-decoration:none; }
+		#comments .bold { font: bold 123.1%/18px "Georgia"; }
+		#comments .italic { font: italic 123.1%/18px "Georgia"; }
+		#comments .code { font-family:monospace;*font-size:123.1%; }
+		#comments .comment_controls { float:left; width:100px; }
+			#comments .comment_control:hover { background-color: #D1ECF9; }
+
+		#comments .comment_preview_container { height:100px; width:400px; border:1px solid black; }
 		
+		#comments textarea { width:400px; height:100px;  }
 		#comments_header { height:36px; }
 	
 		.root_comment, .single_comment { border-top: 1px solid black; margin-top:17px; }
@@ -183,7 +191,7 @@ p { }
 		
 		input:hover, input:focus, textarea:hover, textarea:focus { background-color: #D1ECF9; }
 		
-	label { font: bold 108%/18px Helvetica, Arial; display:block; margin-top:18px; color: black; }	
+	label { font: bold italic 123.1%/18px "Trebuchet MS"; display:block; margin-top:18px; color: black; }	
 	textarea { width:100%; font: normal 100%/18px monospace; border:1px solid black; height:162px; }
 	
 /* ERRORS====================================
