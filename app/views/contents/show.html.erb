@@ -62,25 +62,15 @@
 
 <% content_for :javascript do %>
 
-  function previewCommentForm(e) {
+  function previewComment(e) {
    e.preventDefault();    
    var id = e.element().id.split('_').last();
-   $('new_comment_spinner_' + id).toggle();
-   $('comment_submit_' + id).toggle();
-
-   var markdown = $('comment_body_' + id).value;
-   new Ajax.Updater( {success: 'comment_preview_' + id, failure: 'new_comment_container_' + id }, e.element().action, { method: 'post', parameters: e.element().serialize(), onComplete: function(response) {
-      if (response.status == 409) {
-         $('new_comment_' + id).highlight();
-         $('new_comment_' + id).observe('submit', previewCommentForm);
-      }
-      else {
-      alert('GO!')
-         $('comment_preview_' + id).appear();
-      }
-      } 
-     });
-  }  
+   preview = $('comment_preview_container_' + id);
+   preview.toggle();
+   $('comment_body_container_' + id).toggle();
+   var body = $('comment_body_' + id).value
+   preview.update(body);
+   }  
   
   function sendCommentForm(e) {
     e.preventDefault();
@@ -102,5 +92,5 @@
 <% content_for :dom_loaded do %>  
      $('new_comment_link').observe('click', toggleNewCommentForm);
      $$('.child_comment_link').invoke('observe', 'click', toggleReplyCommentForm);
-     $$('.new_comment').invoke('observe', 'submit', previewCommentForm);
+     $$('.comment_preview_link').invoke('observe', 'click', previewComment);
 <% end %>
