@@ -13,23 +13,22 @@
     <%= f.label :email %>
     <%= f.text_field :email %>
     
-          <div class="comment_preview_link_container">
-              <a href="" id="comment_preview_link_<%=comment_form.parent_id %>" class="comment_preview_link">Preview &gt;&gt;</a>
-            </div>
+    <div class="comment_preview_link_container">
+      <a href="" id="comment_preview_link_<%=comment_form.parent_id %>" class="comment_preview_link">Preview &gt;&gt;</a>
+    </div>
+    
     <%= f.label :body %>
  
-
     <div class="comment_editor">
         
-        <div class="comment_editor_second_column">
+      <div class="comment_editor_second_column">
+        
+        <div id="comment_preview_container_<%= comment_form.parent_id %>" class="comment_preview_container" style="display:none;">     
+        </div>       
 
-         
-            <div id="comment_preview_container_<%= comment_form.parent_id %>" class="comment_preview_container" style="display:none;">     
-            </div>       
-
-            <div id="comment_body_container_<%= comment_form.parent_id %>" class="comment_body_container">
-              <%= f.text_area :body %>
-            </div>
+        <div id="comment_body_container_<%= comment_form.parent_id %>" class="comment_body_container">
+          <%= f.text_area :body %>
+        </div>
 
         </div>
         <div class="comment_editor_first_column">
