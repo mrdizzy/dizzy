@@ -13,34 +13,33 @@
     <%= f.label :email %>
     <%= f.text_field :email %>
     
-          <div class="comment_preview_link_container">
-              <a href="" id="comment_preview_link_<%=comment_form.parent_id %>" class="comment_preview_link">Preview &gt;&gt;</a>
-            </div>
+    <div class="comment_preview_link_container">
+      <a href="" id="comment_preview_link_<%=comment_form.parent_id %>" class="comment_preview_link">Preview &gt;&gt;</a>
+    </div>
+            
     <%= f.label :body %>
- 
 
     <div class="comment_editor">
         
-        <div class="comment_editor_second_column">
-
+      <div class="comment_editor_second_column">
          
-            <div id="comment_preview_container_<%= comment_form.parent_id %>" class="comment_preview_container" style="display:none;">     
-            </div>       
+        <div id="comment_preview_container_<%= comment_form.parent_id %>" class="comment_preview_container" style="display:none;">     
+        </div>       
 
-            <div id="comment_body_container_<%= comment_form.parent_id %>" class="comment_body_container">
-              <%= f.text_area :body %>
-            </div>
-
-        </div>
-        <div class="comment_editor_first_column">
-            <div class="comment_controls">    
-              <div class="comment_control bold" id="comment_control_bold_<%= comment_form.parent_id %>"><a href="">bold</a></div>
-              <div class="comment_control italic" id="comment_control_italic_<%= comment_form.parent_id %>"><a href="">italic</a></div>
-              <div class="comment_control code" id="comment_control_list_<%= comment_form.parent_id %>"><a href="">code</a></div>
-            </div>
+        <div id="comment_body_container_<%= comment_form.parent_id %>" class="comment_body_container">
+          <%= f.text_area :body %>
         </div>
 
-        
+      </div>
+      
+      <div class="comment_editor_first_column">
+        <div class="comment_controls">    
+          <div class="comment_control bold" id="comment_control_bold_<%= comment_form.parent_id %>"><a href="">bold</a></div>
+          <div class="comment_control italic" id="comment_control_italic_<%= comment_form.parent_id %>"><a href="">italic</a></div>
+          <div class="comment_control code" id="comment_control_list_<%= comment_form.parent_id %>"><a href="">code</a></div>
+        </div>
+      </div>   
+      
     </div>
      
     <%= f.hidden_field :parent_id %>
