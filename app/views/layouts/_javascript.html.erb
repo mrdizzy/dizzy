@@ -6,26 +6,9 @@ try {
 	pageTracker._trackPageview();
 } catch(err) {}
 
-function watchCommentForm(originalRequest) {
-  $('new_message').observe('submit', function(e)
-	 {
-	 e.stop();
-	 new Ajax.Request(e.element().action, {parameters: e.element().serialize(), onComplete: watchCommentForm});
-	 }
-  );
-}
-
 <%= yield :javascript %>
 
 document.observe("dom:loaded", function() {   
-
 	<%= yield :dom_loaded %>
-	
-	$$('.contact_link').invoke('observe', 'click', function(e) {
-		e.stop();
-		$('contact_form').toggle();
-		watchCommentForm();
-	}
-);
 }
 );

@@ -63,13 +63,13 @@
 <% content_for :javascript do %>
 
   function previewComment(e) {
-   e.preventDefault();    
-   var id = e.element().id.split('_').last();
-   preview = $('comment_preview_container_' + id);
-   preview.toggle();
-   $('comment_body_container_' + id).toggle();
-   var body = $('comment_body_' + id).value
-   preview.update(body);
+    e.preventDefault();    
+    var id = e.element().id.split('_').last();
+    preview = $('comment_preview_container_' + id);
+    preview.toggle();
+    $('comment_body_container_' + id).toggle();
+    var body = $('comment_body_' + id).value
+    preview.update(body);
    }  
   
   function sendCommentForm(e) {
@@ -87,10 +87,26 @@
     $('form_comment_').toggle();
   }
   
+  function clickFormatButton(e) {
+   e.preventDefault();
+   var button = e.element();
+   if (button.hasClassName('code')) {
+      alert('Has code');
+   }
+   else if (button.hasClassName('bold')) {
+      alert('Is Bold');
+   }
+   else if (button.hasClassName('italic')) {
+      alert('Is Italic');
+   }
+    
+  }
+  
 <% end %>
 
 <% content_for :dom_loaded do %>  
      $('new_comment_link').observe('click', toggleNewCommentForm);
      $$('.child_comment_link').invoke('observe', 'click', toggleReplyCommentForm);
      $$('.comment_preview_link').invoke('observe', 'click', previewComment);
+     $$('div[class~="comment_control"]').invoke('observe', 'click', clickFormatButton);
 <% end %>
