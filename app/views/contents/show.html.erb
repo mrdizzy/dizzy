@@ -88,25 +88,29 @@
   }
   
   function clickFormatButton(e) {
-   e.preventDefault();
-   var button = e.element();
-   if (button.hasClassName('code')) {
-      alert('Has code');
-   }
-   else if (button.hasClassName('bold')) {
-      alert('Is Bold');
-   }
-   else if (button.hasClassName('italic')) {
-      alert('Is Italic');
-   }
+    e.preventDefault();
+    var button = e.element();
+    var id = e.element().id.split('_').last();
+    var textarea = $('comment_body_' + id);
     
+    if (button.hasClassName('code')) {
+      insertTextIntoTextarea(textarea, "code");
+    }
+    else if (button.hasClassName('bold')) {
+      alert('Is Bold');
+    }
+    else if (button.hasClassName('italic')) {
+      alert('Is Italic');
+    }
   }
   
 <% end %>
 
 <% content_for :dom_loaded do %>  
+
      $('new_comment_link').observe('click', toggleNewCommentForm);
      $$('.child_comment_link').invoke('observe', 'click', toggleReplyCommentForm);
      $$('.comment_preview_link').invoke('observe', 'click', previewComment);
      $$('div[class~="comment_control"]').invoke('observe', 'click', clickFormatButton);
+     
 <% end %>

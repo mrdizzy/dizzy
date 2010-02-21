@@ -1,5 +1,4 @@
 
-<script>
 function insertTextIntoTextarea(txtarea, textToInsert) {
 	var CaretPos = 0;
 
@@ -44,5 +43,3 @@ function calculateCaretPosition(startPosition, insertedText) { // FF
 	caretPosition = startPosition + insertedText.length
 	return(caretPosition)
 }
-
-</script>
