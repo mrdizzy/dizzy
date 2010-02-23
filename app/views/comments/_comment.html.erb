@@ -18,7 +18,7 @@
       <%= diamond %> <%= link_to "Reply to this comment", new_content_comment_child_comment_path(comment.content, comment), :id => comment.id, :class => "child_comment_link" %>
    </div>
    
-      <%= render :partial => "comments/comment_form", :object => Comment.new(:parent_id => comment.id, :content_id => comment.content.id) %>
+   <%= render :partial => "comments/comment_form", :object => Comment.new(:parent_id => comment.id, :content_id => comment.content.id) %>
 
 <!-- CHILD COMMENTS -->
 

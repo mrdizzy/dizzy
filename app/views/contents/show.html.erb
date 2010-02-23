@@ -94,13 +94,13 @@
     var textarea = $('comment_body_' + id);
     
     if (button.hasClassName('code')) {
-      insertTextIntoTextarea(textarea, "code");
+      insertTextIntoTextarea(textarea, '`', 'wrap');
     }
     else if (button.hasClassName('bold')) {
-      alert('Is Bold');
+      insertTextIntoTextarea(textarea, '**', 'wrap');
     }
     else if (button.hasClassName('italic')) {
-      alert('Is Italic');
+      insertTextIntoTextarea(textarea, '*', 'wrap');
     }
   }
   
