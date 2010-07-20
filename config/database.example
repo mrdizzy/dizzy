@@ -1,20 +1,17 @@
-development:
+login: &login
   adapter: mysql
-  database: dizzy_development
   username: root
   timeout: 50000
   host: localhost
+
+development:
+  <<: *login
+  database: dizzy_development
 
 test:
-  adapter: mysql
+  <<: *login
   database: dizzy_test
-  username: root
-  password:
-  host: localhost
 
 production:
-  adapter: mysql
+  <<: *login
   database: dizzy_production
-  username: root
-  timeout: 50000
-  host: localhost

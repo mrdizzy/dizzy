@@ -1,5 +1,6 @@
-set :default_stage, 'staging'
 require 'capistrano/ext/multistage'
+
+set :default_stage, 'staging'
 
 # Git
 set :repository,  "git@github.com:mrdizzy/dizzy.git"
@@ -63,8 +64,6 @@ end
 
 desc "Create database.yml file"
 task :setup_database do
-	
 	run "mkdir -p #{shared_path}/config" 
 	put database_configuration, "#{shared_path}/config/database.yml"
-	
 end
