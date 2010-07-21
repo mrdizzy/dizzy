@@ -14,8 +14,8 @@ class Content < ActiveRecord::Base
 	named_scope :recent, lambda { { :conditions => ["date < ?", 1.hour.ago], :order => "date DESC"  } }
   
 	#has_binary :pdf, 
-				   :content_type => /(application\/pdf|binary\/octet-stream)/,
-				   :size => 1.kilobyte..700.kilobytes	
+				#   :content_type => /(application\/pdf|binary\/octet-stream)/,
+				#   :size => 1.kilobyte..700.kilobytes	
 	
 	def main_category()
 		self.categories.first
