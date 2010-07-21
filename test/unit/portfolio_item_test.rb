@@ -67,3 +67,15 @@ end
 #  image_binary_data  :binary
 #  image_content_type :string(255)
 #  image_filename     :string(255)
+# == Schema Information
+#
+# Table name: portfolio_items
+#
+#  id                 :integer(4)      not null, primary key
+#  portfolio_type_id  :integer(4)      default(0), not null
+#  company_id         :integer(4)      default(0), not null
+#  image_binary_data  :binary
+#  image_filename     :string(255)
+#  image_content_type :string(255)
+#
+

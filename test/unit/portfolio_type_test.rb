@@ -71,3 +71,14 @@ end
 #  description  :string(40)
 #  position     :integer(4)
 #  visible      :boolean(1)      default(TRUE)
+# == Schema Information
+#
+# Table name: portfolio_types
+#
+#  id           :integer(4)      not null, primary key
+#  description  :string(40)
+#  column_space :integer(4)
+#  position     :integer(4)
+#  visible      :boolean(1)      default(TRUE)
+#
+

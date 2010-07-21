@@ -102,3 +102,22 @@ end
 #  title            :string(255)
 #  type             :string(255)
 #  user             :string(255)
+# == Schema Information
+#
+# Table name: contents
+#
+#  id               :integer(4)      not null, primary key
+#  layout           :string(255)
+#  title            :string(255)
+#  description      :string(255)
+#  date             :datetime
+#  content          :text
+#  permalink        :string(255)
+#  version          :integer(4)
+#  user             :string(255)
+#  has_toc          :boolean(1)
+#  pdf_binary_data  :binary(16777215
+#  pdf_filename     :string(255)
+#  pdf_content_type :string(255)
+#
+

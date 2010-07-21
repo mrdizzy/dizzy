@@ -51,3 +51,13 @@ end
 #  description :string(255)
 #  name        :string(40)
 #  visible     :boolean(1)
+# == Schema Information
+#
+# Table name: companies
+#
+#  id          :integer(4)      not null, primary key
+#  name        :string(40)
+#  description :string(255)
+#  visible     :boolean(1)      default(FALSE)
+#
+

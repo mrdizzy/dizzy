@@ -52,3 +52,18 @@ end
 #  new        :boolean(1)      default(TRUE)
 #  subject    :string(255)
 #  created_at :datetime
+# == Schema Information
+#
+# Table name: comments
+#
+#  id         :integer(4)      not null, primary key
+#  body       :text
+#  subject    :string(255)
+#  email      :string(255)
+#  parent_id  :integer(4)
+#  content_id :integer(4)      default(0), not null
+#  created_at :datetime
+#  new        :boolean(1)      default(TRUE)
+#  name       :string(255)
+#
+
