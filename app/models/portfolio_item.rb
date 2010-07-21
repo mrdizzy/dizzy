@@ -7,7 +7,7 @@ class PortfolioItem < ActiveRecord::Base
 	
 	#has_binary :image, :content_type => /png$/i, :size => 1.byte..100.kilobytes
 					 
-	validates_existence_of :portfolio_type
+	#validates_existence_of :portfolio_type
 	
 	named_scope :visible, { :conditions => ("portfolio_types.visible = '1'"), :include => "portfolio_type"}
 	named_scope :header, { :conditions => "portfolio_type_id = '7'" }

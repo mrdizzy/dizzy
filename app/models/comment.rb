@@ -5,8 +5,8 @@ class Comment < ActiveRecord::Base
 	acts_as_tree :order => "subject"
 	
 	validates_presence_of :name, :email, :body, :subject, :content_id
-   validates_existence_of :parent, :allow_nil => true
-   validates_existence_of :content, :allow_nil => true
+   #validates_existence_of :parent, :allow_nil => true
+   #validates_existence_of :content, :allow_nil => true
 	validates_format_of :email, :with => /^[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i, :message => "must contain a valid address", :allow_blank => true
    
    after_save :send_email_notification
