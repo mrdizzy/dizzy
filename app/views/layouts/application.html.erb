@@ -1,14 +1,46 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
 <head>
-  <title>Dizzy</title>
-  <%= stylesheet_link_tag :all %>
+  <title>Ruby on Rails - <%= yield :title %> - Dizzy</title>
+
+  <%= stylesheet_link_tag("main", :media => "all") %>
+  <%= stylesheet_link_tag "syntax_highlighting", 	:media => "all" %>
+
   <%= javascript_include_tag :defaults %>
+  <%= javascript_include_tag "textarea_insert" %>
   <%= csrf_meta_tag %>
+   <!--[if IE]>
+    <style type="text/css">
+      code { font: normal 100%/18px monospace;}
+  </style>
+    <![endif]-->
+
+  <% javascript_tag do -%>	
+    <%= render :partial => "/layouts/javascript" %>
+  <% end %>
+
 </head>
-<body>
 
-<%= yield %>
+<body>	
 
+  <div id="page_container">
+
+    <%= render :partial => "/layouts/header" %>
+    <%= render :partial => "/layouts/navigation" %>
+
+    <div id="contact_form"></div>
+
+    <div id="breadcrumbs">
+      <%= yield :breadcrumbs %>
+    </div>
+
+    <div id="content_container">
+      <%# yield :content or yield %>
+      <%= yield %>
+    </div>
+
+    <%= render :partial => "/layouts/footer" %>
+
+  </div>
 </body>
 </html>
