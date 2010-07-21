@@ -5,7 +5,7 @@ class PortfolioItem < ActiveRecord::Base
 	
 	validates_uniqueness_of :portfolio_type_id, :scope => 'company_id', :message => "must be unique"
 	
-	has_binary :image, :content_type => /png$/i, :size => 1.byte..100.kilobytes
+	#has_binary :image, :content_type => /png$/i, :size => 1.byte..100.kilobytes
 					 
 	validates_existence_of :portfolio_type
 	
