@@ -1,5 +1,5 @@
 require 'action_controller/test_case'
-require 'test_help'
+#require 'test_helper'
 
 Factory.sequence(:permalink) { |d| "a-valid-permalink-#{d}" }
 Factory.sequence(:version_number) { |v| v + 0.0 }
